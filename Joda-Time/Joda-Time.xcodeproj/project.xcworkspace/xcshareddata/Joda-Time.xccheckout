@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EE68831B-F233-421C-AAB8-7AB3C7532BC7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Joda-Time</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>04D61C2BCCCE7513D0D1220FF1B8D0778F3C28C5</key>
+		<string>https://github.com/JodaOrg/joda-time.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Joda-Time/Joda-Time.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>04D61C2BCCCE7513D0D1220FF1B8D0778F3C28C5</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/JodaOrg/joda-time.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>04D61C2BCCCE7513D0D1220FF1B8D0778F3C28C5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>04D61C2BCCCE7513D0D1220FF1B8D0778F3C28C5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>joda-time</string>
+		</dict>
+	</array>
+</dict>
+</plist>

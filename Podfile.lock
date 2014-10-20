@@ -1,0 +1,21 @@
+PODS:
+  - J2ObjC (0.9.3.1):
+    - J2ObjC/lib/jre
+  - J2ObjC/lib/jre (0.9.3.1)
+  - Joda-Convert (1.7)
+
+DEPENDENCIES:
+  - J2ObjC (from `git@github.com:laundrapp/j2objc.git`)
+  - Joda-Convert (from `git@github.com:hambroperks/joda-convert.git`)
+
+EXTERNAL SOURCES:
+  J2ObjC:
+    :git: git@github.com:laundrapp/j2objc.git
+  Joda-Convert:
+    :git: git@github.com:hambroperks/joda-convert.git
+
+SPEC CHECKSUMS:
+  J2ObjC: 8978b51aea3bc6fcb38c5e3ffe973c6fbeb001a2
+  Joda-Convert: 767ef1fce1f25d1d5e8f9f465194f782d269069a
+
+COCOAPODS: 0.34.1
