@@ -23,7 +23,7 @@ s.dependency 'J2ObjC/lib/guava', '~> 0.9.3'
 
   s.source_files = 'src/gen/objc/*.{h,m}'
   s.exclude_files = 'src/main/java/*.java'
-s.resources = "src/main/java/*", "src/tz-data/*"
+s.resources = "src/tz-data/*"
 
 
   s.public_header_files = 'src/gen/objc/*.h'
