@@ -13,17 +13,16 @@ Pod::Spec.new do |s|
   s.homepage         = "http://www.joda.org/joda-time/"
   s.license          = { :type => 'Apache License, Version 2.0', :file => 'LICENSE.txt' }
 
-s.dependency 'J2ObjC/lib/jre', '~> 0.9.3'
-s.dependency 'J2ObjC/lib/jsr305', '~> 0.9.3'
-s.dependency 'J2ObjC/lib/guava', '~> 0.9.3'
+  s.dependency 'J2ObjC/lib/jre', '~> 0.9.3'
+  s.dependency 'J2ObjC/lib/jsr305', '~> 0.9.3'
 
   s.ios.deployment_target = '7.0'
   s.osx.deployment_target = '10.7'
-  s.requires_arc = true
+  s.requires_arc = false
 
   s.source_files = 'src/gen/objc/*.{h,m}'
   s.exclude_files = 'src/main/java/*.java'
-s.resources = "src/tz-data/*"
+  s.resources = "src/tz-data/*"
 
 
   s.public_header_files = 'src/gen/objc/*.h'
