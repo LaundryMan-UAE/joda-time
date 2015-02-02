@@ -12,8 +12,8 @@
 @class OrgJodaTimeDateTimeField;
 @class OrgJodaTimeDateTimeZone;
 
-#import "JreEmulation.h"
 #include "BasicFixedMonthChronology.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoCopticChronology_AM 1
 #define OrgJodaTimeChronoCopticChronology_MAX_YEAR 292272708
@@ -66,11 +66,6 @@
                                       withInt:(jint)minDaysInFirstWeek;
 
 /**
- @brief Serialization singleton.
- */
-- (id)readResolve;
-
-/**
  @brief Gets the Chronology in the UTC time zone.
  @return the chronology in UTC
  */
@@ -99,9 +94,15 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeChronoCopticChronology_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeChronoCopticChronology)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeChronoCopticChronology *OrgJodaTimeChronoCopticChronology_getInstanceUTC();
+
 FOUNDATION_EXPORT OrgJodaTimeChronoCopticChronology *OrgJodaTimeChronoCopticChronology_getInstance();
+
 FOUNDATION_EXPORT OrgJodaTimeChronoCopticChronology *OrgJodaTimeChronoCopticChronology_getInstanceWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
+
 FOUNDATION_EXPORT OrgJodaTimeChronoCopticChronology *OrgJodaTimeChronoCopticChronology_getInstanceWithOrgJodaTimeDateTimeZone_withInt_(OrgJodaTimeDateTimeZone *zone, jint minDaysInFirstWeek);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoCopticChronology, serialVersionUID, jlong)
@@ -120,5 +121,8 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoCopticChronology, cCache_, JavaUtilC
 
 FOUNDATION_EXPORT OrgJodaTimeChronoCopticChronology *OrgJodaTimeChronoCopticChronology_INSTANCE_UTC_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoCopticChronology, INSTANCE_UTC_, OrgJodaTimeChronoCopticChronology *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoCopticChronology)
 
 #endif // _OrgJodaTimeChronoCopticChronology_H_

@@ -5,6 +5,7 @@
 
 #include "Chronology.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "PeriodType.h"
 #include "ReadWritablePeriod.h"
 #include "ReadablePeriod.h"
@@ -32,7 +33,7 @@ OrgJodaTimeConvertReadablePeriodConverter * OrgJodaTimeConvertReadablePeriodConv
 }
 
 - (IOSClass *)getSupportedType {
-  return [IOSClass classWithProtocol:@protocol(OrgJodaTimeReadablePeriod)];
+  return OrgJodaTimeReadablePeriod_class_();
 }
 
 + (void)initialize {
@@ -52,8 +53,10 @@ OrgJodaTimeConvertReadablePeriodConverter * OrgJodaTimeConvertReadablePeriodConv
   static const J2ObjcFieldInfo fields[] = {
     { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.ReadablePeriodConverter;", &OrgJodaTimeConvertReadablePeriodConverter_INSTANCE_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertReadablePeriodConverter = { "ReadablePeriodConverter", "org.joda.time.convert", NULL, 0x0, 4, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertReadablePeriodConverter = { 1, "ReadablePeriodConverter", "org.joda.time.convert", NULL, 0x0, 4, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeConvertReadablePeriodConverter;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertReadablePeriodConverter)

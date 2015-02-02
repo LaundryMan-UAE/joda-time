@@ -19,8 +19,8 @@
 @protocol OrgJodaTimeReadablePartial;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
 #include "BaseSingleFieldPeriod.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeWeeks_serialVersionUID 87525275727380866LL
 
@@ -87,19 +87,6 @@
  @throws IllegalArgumentException if the string format is invalid
  */
 + (OrgJodaTimeWeeks *)parseWeeksWithNSString:(NSString *)periodStr;
-
-/**
- @brief Creates a new instance representing a number of weeks.
- You should consider using the factory method #weeks(int) instead of the constructor.
- @param weeks the number of weeks to represent
- */
-- (instancetype)initWithInt:(jint)weeks;
-
-/**
- @brief Resolves singletons.
- @return the singleton instance
- */
-- (id)readResolve;
 
 /**
  @brief Gets the duration field type, which is <code>weeks</code>.
@@ -244,11 +231,19 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeWeeks_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeWeeks)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeWeeks *OrgJodaTimeWeeks_weeksWithInt_(jint weeks);
+
 FOUNDATION_EXPORT OrgJodaTimeWeeks *OrgJodaTimeWeeks_weeksBetweenWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end);
+
 FOUNDATION_EXPORT OrgJodaTimeWeeks *OrgJodaTimeWeeks_weeksBetweenWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end);
+
 FOUNDATION_EXPORT OrgJodaTimeWeeks *OrgJodaTimeWeeks_weeksInWithOrgJodaTimeReadableInterval_(id<OrgJodaTimeReadableInterval> interval);
+
 FOUNDATION_EXPORT OrgJodaTimeWeeks *OrgJodaTimeWeeks_standardWeeksInWithOrgJodaTimeReadablePeriod_(id<OrgJodaTimeReadablePeriod> period);
+
 FOUNDATION_EXPORT OrgJodaTimeWeeks *OrgJodaTimeWeeks_parseWeeksWithNSString_(NSString *periodStr);
 
 FOUNDATION_EXPORT OrgJodaTimeWeeks *OrgJodaTimeWeeks_ZERO_;
@@ -273,5 +268,8 @@ FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeWeeks_PARSER_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeWeeks, PARSER_, OrgJodaTimeFormatPeriodFormatter *)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeWeeks, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeWeeks)
 
 #endif // _OrgJodaTimeWeeks_H_

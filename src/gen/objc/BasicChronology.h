@@ -15,8 +15,8 @@
 @class OrgJodaTimeDateTimeZone;
 @class OrgJodaTimeDurationField;
 
-#import "JreEmulation.h"
 #include "AssembledChronology.h"
+#include "J2ObjC_header.h"
 #include "PreciseDateTimeField.h"
 
 #define OrgJodaTimeChronoBasicChronology_CACHE_MASK 1023
@@ -32,9 +32,6 @@
  @since 1.2, renamed from BaseGJChronology
  */
 @interface OrgJodaTimeChronoBasicChronology : OrgJodaTimeChronoAssembledChronology {
- @public
-  IOSObjectArray *iYearInfoCache_;
-  jint iMinDaysInFirstWeek_;
 }
 
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
@@ -359,18 +356,12 @@
 - (jlong)setYearWithLong:(jlong)instant
                  withInt:(jint)year;
 
-- (OrgJodaTimeChronoBasicChronology_YearInfo *)getYearInfoWithInt:(jint)year;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoBasicChronology *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeChronoBasicChronology_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeChronoBasicChronology)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoBasicChronology, iYearInfoCache_, IOSObjectArray *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicChronology, serialVersionUID, jlong)
 
@@ -431,6 +422,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicChronology, cHalfdayOfDayField_
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicChronology, CACHE_SIZE, jint)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicChronology, CACHE_MASK, jint)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicChronology)
 
 #define OrgJodaTimeChronoBasicChronology_HalfdayField_serialVersionUID 581601443656929254LL
 
@@ -450,9 +444,14 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicChronology, CACHE_MASK, jint)
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoBasicChronology_HalfdayField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoBasicChronology_HalfdayField)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicChronology_HalfdayField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicChronology_HalfdayField)
 
 @interface OrgJodaTimeChronoBasicChronology_YearInfo : NSObject {
  @public
@@ -463,10 +462,13 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicChronology_HalfdayField, serial
 - (instancetype)initWithInt:(jint)year
                    withLong:(jlong)firstDayMillis;
 
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoBasicChronology_YearInfo *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoBasicChronology_YearInfo_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoBasicChronology_YearInfo)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicChronology_YearInfo)
 
 #endif // _OrgJodaTimeChronoBasicChronology_H_

@@ -9,7 +9,16 @@
 #include "DateTimeFieldType.h"
 #include "DurationField.h"
 #include "FieldUtils.h"
-#include "IOSClass.h"
+#include "J2ObjC_source.h"
+
+@interface OrgJodaTimeChronoBasicYearDateTimeField () {
+}
+
+/**
+ @brief Serialization singleton
+ */
+- (id)readResolve;
+@end
 
 @implementation OrgJodaTimeChronoBasicYearDateTimeField
 
@@ -118,7 +127,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoBasicYearDateTimeField_set_iChronology_(self, nil);
+  RELEASE_(iChronology_);
   [super dealloc];
 }
 
@@ -152,8 +161,10 @@
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoBasicYearDateTimeField_serialVersionUID },
     { "iChronology_", NULL, 0x14, "Lorg.joda.time.chrono.BasicChronology;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicYearDateTimeField = { "BasicYearDateTimeField", "org.joda.time.chrono", NULL, 0x0, 18, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicYearDateTimeField = { 1, "BasicYearDateTimeField", "org.joda.time.chrono", NULL, 0x0, 18, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeChronoBasicYearDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicYearDateTimeField)

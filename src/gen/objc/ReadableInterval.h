@@ -15,7 +15,7 @@
 @class OrgJodaTimePeriodType;
 @protocol OrgJodaTimeReadableInstant;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Readable interface for an interval of time between two instants.
@@ -180,6 +180,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeReadableInterval_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeReadableInterval)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadableInterval)
 
 #endif // _OrgJodaTimeReadableInterval_H_

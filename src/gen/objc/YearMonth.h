@@ -22,9 +22,9 @@
 @class OrgJodaTimeYearMonth_Property;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
 #include "AbstractPartialFieldProperty.h"
 #include "BasePartial.h"
+#include "J2ObjC_header.h"
 #include "ReadablePartial.h"
 #include "java/io/Serializable.h"
 
@@ -193,12 +193,6 @@
  */
 - (instancetype)initWithOrgJodaTimeYearMonth:(OrgJodaTimeYearMonth *)partial
                    withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
-
-/**
- @brief Handle broken serialization from other tools.
- @return the resolved object, not null
- */
-- (id)readResolve;
 
 /**
  @brief Gets the number of fields in this partial, which is two.
@@ -421,12 +415,21 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeYearMonth_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeYearMonth)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeYearMonth *OrgJodaTimeYearMonth_now();
+
 FOUNDATION_EXPORT OrgJodaTimeYearMonth *OrgJodaTimeYearMonth_nowWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
+
 FOUNDATION_EXPORT OrgJodaTimeYearMonth *OrgJodaTimeYearMonth_nowWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chronology);
+
 FOUNDATION_EXPORT OrgJodaTimeYearMonth *OrgJodaTimeYearMonth_parseWithNSString_(NSString *str);
+
 FOUNDATION_EXPORT OrgJodaTimeYearMonth *OrgJodaTimeYearMonth_parseWithNSString_withOrgJodaTimeFormatDateTimeFormatter_(NSString *str, OrgJodaTimeFormatDateTimeFormatter *formatter);
+
 FOUNDATION_EXPORT OrgJodaTimeYearMonth *OrgJodaTimeYearMonth_fromCalendarFieldsWithJavaUtilCalendar_(JavaUtilCalendar *calendar);
+
 FOUNDATION_EXPORT OrgJodaTimeYearMonth *OrgJodaTimeYearMonth_fromDateFieldsWithJavaUtilDate_(JavaUtilDate *date);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonth, serialVersionUID, jlong)
@@ -437,6 +440,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonth, FIELD_TYPES_, IOSObjectArray *)
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonth, YEAR, jint)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonth, MONTH_OF_YEAR, jint)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeYearMonth)
 
 #define OrgJodaTimeYearMonth_Property_serialVersionUID 5727734012190224363LL
 
@@ -447,15 +453,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonth, MONTH_OF_YEAR, jint)
  @since 2.0
  */
 @interface OrgJodaTimeYearMonth_Property : OrgJodaTimeFieldAbstractPartialFieldProperty < JavaIoSerializable > {
- @public
-  /**
-   @brief The partial
-   */
-  OrgJodaTimeYearMonth *iBase_;
-  /**
-   @brief The field index
-   */
-  jint iFieldIndex_;
 }
 
 /**
@@ -537,16 +534,15 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonth, MONTH_OF_YEAR, jint)
  */
 - (OrgJodaTimeYearMonth *)setCopyWithNSString:(NSString *)text;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeYearMonth_Property *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeYearMonth_Property_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeYearMonth_Property)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeYearMonth_Property, iBase_, OrgJodaTimeYearMonth *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonth_Property, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeYearMonth_Property)
 
 #endif // _OrgJodaTimeYearMonth_H_

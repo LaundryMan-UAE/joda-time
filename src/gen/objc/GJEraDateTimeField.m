@@ -12,10 +12,23 @@
 #include "FieldUtils.h"
 #include "GJEraDateTimeField.h"
 #include "GJLocaleSymbols.h"
-#include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "UnsupportedDurationField.h"
 #include "java/lang/Long.h"
 #include "java/util/Locale.h"
+
+@interface OrgJodaTimeChronoGJEraDateTimeField () {
+ @public
+  OrgJodaTimeChronoBasicChronology *iChronology_;
+}
+
+/**
+ @brief Serialization singleton
+ */
+- (id)readResolve;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJEraDateTimeField, iChronology_, OrgJodaTimeChronoBasicChronology *)
 
 @implementation OrgJodaTimeChronoGJEraDateTimeField
 
@@ -118,7 +131,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoGJEraDateTimeField_set_iChronology_(self, nil);
+  RELEASE_(iChronology_);
   [super dealloc];
 }
 
@@ -151,8 +164,10 @@
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoGJEraDateTimeField_serialVersionUID },
     { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoGJEraDateTimeField = { "GJEraDateTimeField", "org.joda.time.chrono", NULL, 0x10, 17, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoGJEraDateTimeField = { 1, "GJEraDateTimeField", "org.joda.time.chrono", NULL, 0x10, 17, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeChronoGJEraDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJEraDateTimeField)

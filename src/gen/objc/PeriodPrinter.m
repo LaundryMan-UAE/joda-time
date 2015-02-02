@@ -4,6 +4,7 @@
 //
 
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "PeriodPrinter.h"
 #include "ReadablePeriod.h"
 #include "java/io/IOException.h"
@@ -23,9 +24,10 @@
     { "printToWithJavaLangStringBuffer:withOrgJodaTimeReadablePeriod:withJavaUtilLocale:", "printTo", "V", 0x401, NULL },
     { "printToWithJavaIoWriter:withOrgJodaTimeReadablePeriod:withJavaUtilLocale:", "printTo", "V", 0x401, "Ljava.io.IOException;" },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodPrinter = { "PeriodPrinter", "org.joda.time.format", NULL, 0x201, 4, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodPrinter = { 1, "PeriodPrinter", "org.joda.time.format", NULL, 0x201, 4, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeFormatPeriodPrinter;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodPrinter)

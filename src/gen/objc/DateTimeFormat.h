@@ -19,9 +19,9 @@
 @protocol JavaLangCharSequence;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "InternalParser.h"
 #include "InternalPrinter.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeFormatDateTimeFormat_DATE 0
 #define OrgJodaTimeFormatDateTimeFormat_DATETIME 2
@@ -171,89 +171,43 @@
  */
 - (instancetype)init;
 
-/**
- @brief Parses the given pattern and appends the rules to the given DateTimeFormatterBuilder.
- @param pattern pattern specification
- @throws IllegalArgumentException if the pattern is invalid
- */
-+ (void)parsePatternToWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)builder
-                                                       withNSString:(NSString *)pattern;
-
-/**
- @brief Parses an individual token.
- @param pattern the pattern string
- @param indexRef a single element array, where the input is the start location and the output is the location after parsing the token
- @return the parsed token
- */
-+ (NSString *)parseTokenWithNSString:(NSString *)pattern
-                        withIntArray:(IOSIntArray *)indexRef;
-
-/**
- @brief Returns true if token should be parsed as a numeric field.
- @param token the token to parse
- @return true if numeric field
- */
-+ (jboolean)isNumericTokenWithNSString:(NSString *)token;
-
-/**
- @brief Select a format from a custom pattern.
- @param pattern pattern specification
- @throws IllegalArgumentException if the pattern is invalid
- */
-+ (OrgJodaTimeFormatDateTimeFormatter *)createFormatterForPatternWithNSString:(NSString *)pattern;
-
-/**
- @brief Select a format from a two character style pattern.
- The first character is the date style, and the second character is the time style. Specify a character of 'S' for short style, 'M' for medium, 'L' for long, and 'F' for full. A date or time may be ommitted by specifying a style character '-'.
- @param style two characters from the set {"S", "M", "L", "F", "-"}
- @throws IllegalArgumentException if the style is invalid
- */
-+ (OrgJodaTimeFormatDateTimeFormatter *)createFormatterForStyleWithNSString:(NSString *)style;
-
-/**
- @brief Gets the formatter for the specified style.
- @param dateStyle the date style
- @param timeStyle the time style
- @return the formatter
- */
-+ (OrgJodaTimeFormatDateTimeFormatter *)createFormatterForStyleIndexWithInt:(jint)dateStyle
-                                                                    withInt:(jint)timeStyle;
-
-/**
- @brief Creates a formatter for the specified style.
- @param dateStyle the date style
- @param timeStyle the time style
- @return the formatter
- */
-+ (OrgJodaTimeFormatDateTimeFormatter *)createDateTimeFormatterWithInt:(jint)dateStyle
-                                                               withInt:(jint)timeStyle;
-
-/**
- @brief Gets the JDK style code from the Joda code.
- @param ch the Joda style code
- @return the JDK style code
- */
-+ (jint)selectStyleWithChar:(jchar)ch;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeFormatDateTimeFormat_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeFormatDateTimeFormat)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_forPatternWithNSString_(NSString *pattern);
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_forStyleWithNSString_(NSString *style);
+
 FOUNDATION_EXPORT NSString *OrgJodaTimeFormatDateTimeFormat_patternForStyleWithNSString_withJavaUtilLocale_(NSString *style, JavaUtilLocale *locale);
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_shortDate();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_shortTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_shortDateTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_mediumDate();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_mediumTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_mediumDateTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_longDate();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_longTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_longDateTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_fullDate();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_fullTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_fullDateTime();
+
 FOUNDATION_EXPORT void OrgJodaTimeFormatDateTimeFormat_appendPatternToWithOrgJodaTimeFormatDateTimeFormatterBuilder_withNSString_(OrgJodaTimeFormatDateTimeFormatterBuilder *builder, NSString *pattern);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatDateTimeFormat, FULL, jint)
@@ -279,12 +233,11 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatDateTimeFormat, cPatternCache_, Java
 
 FOUNDATION_EXPORT JavaUtilConcurrentAtomicAtomicReferenceArray *OrgJodaTimeFormatDateTimeFormat_cStyleCache_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatDateTimeFormat, cStyleCache_, JavaUtilConcurrentAtomicAtomicReferenceArray *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormat)
 
 @interface OrgJodaTimeFormatDateTimeFormat_StyleFormatter : NSObject < OrgJodaTimeFormatInternalPrinter, OrgJodaTimeFormatInternalParser > {
- @public
-  jint iDateStyle_;
-  jint iTimeStyle_;
-  jint iType_;
 }
 
 - (instancetype)initWithInt:(jint)dateStyle
@@ -310,24 +263,22 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatDateTimeFormat, cStyleCache_, JavaUt
                                   withJavaLangCharSequence:(id<JavaLangCharSequence>)text
                                                    withInt:(jint)position;
 
-- (OrgJodaTimeFormatDateTimeFormatter *)getFormatterWithJavaUtilLocale:(JavaUtilLocale *)locale;
-
 - (NSString *)getPatternWithJavaUtilLocale:(JavaUtilLocale *)locale;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormat_StyleFormatter *)other;
 
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeFormatDateTimeFormat_StyleFormatter_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeFormatDateTimeFormat_StyleFormatter)
 
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT JavaUtilConcurrentConcurrentHashMap *OrgJodaTimeFormatDateTimeFormat_StyleFormatter_cCache_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatDateTimeFormat_StyleFormatter, cCache_, JavaUtilConcurrentConcurrentHashMap *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormat_StyleFormatter)
 
 @interface OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey : NSObject {
- @public
-  jint combinedTypeAndStyle_;
-  JavaUtilLocale *locale_;
 }
 
 - (instancetype)initWithInt:(jint)iType
@@ -339,14 +290,13 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatDateTimeFormat_StyleFormatter, cCach
 
 - (jboolean)isEqual:(id)obj;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey, locale_, JavaUtilLocale *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey)
 
 #endif // _OrgJodaTimeFormatDateTimeFormat_H_

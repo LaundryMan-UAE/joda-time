@@ -26,6 +26,7 @@
 #include "GJYearOfEraDateTimeField.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
+#include "J2ObjC_source.h"
 #include "MillisDurationField.h"
 #include "OffsetDateTimeField.h"
 #include "PreciseDateTimeField.h"
@@ -35,6 +36,23 @@
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/StringBuilder.h"
 #include "java/util/Locale.h"
+
+__attribute__((unused)) static OrgJodaTimeChronoBasicChronology_YearInfo *OrgJodaTimeChronoBasicChronology_getYearInfoWithInt_(OrgJodaTimeChronoBasicChronology *self, jint year);
+
+@interface OrgJodaTimeChronoBasicChronology () {
+ @public
+  IOSObjectArray *iYearInfoCache_;
+  jint iMinDaysInFirstWeek_;
+}
+
+- (OrgJodaTimeChronoBasicChronology_YearInfo *)getYearInfoWithInt:(jint)year;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoBasicChronology, iYearInfoCache_, IOSObjectArray *)
+
+@interface OrgJodaTimeChronoBasicChronology_HalfdayField () {
+}
+@end
 
 BOOL OrgJodaTimeChronoBasicChronology_initialized = NO;
 
@@ -63,7 +81,7 @@ OrgJodaTimeDateTimeField * OrgJodaTimeChronoBasicChronology_cHalfdayOfDayField_;
                                        withId:(id)param
                                       withInt:(jint)minDaysInFirstWeek {
   if (self = [super initWithOrgJodaTimeChronology:base withId:param]) {
-    OrgJodaTimeChronoBasicChronology_setAndConsume_iYearInfoCache_(self, [IOSObjectArray newArrayWithLength:OrgJodaTimeChronoBasicChronology_CACHE_SIZE type:[IOSClass classWithClass:[OrgJodaTimeChronoBasicChronology_YearInfo class]]]);
+    OrgJodaTimeChronoBasicChronology_setAndConsume_iYearInfoCache_(self, [IOSObjectArray newArrayWithLength:OrgJodaTimeChronoBasicChronology_CACHE_SIZE type:OrgJodaTimeChronoBasicChronology_YearInfo_class_()]);
     if (minDaysInFirstWeek < 1 || minDaysInFirstWeek > 7) {
       @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:JreStrcat("$I", @"Invalid min days in first week: ", minDaysInFirstWeek)] autorelease];
     }
@@ -216,7 +234,7 @@ OrgJodaTimeDateTimeField * OrgJodaTimeChronoBasicChronology_cHalfdayOfDayField_;
 }
 
 - (jlong)getYearMillisWithInt:(jint)year {
-  return ((OrgJodaTimeChronoBasicChronology_YearInfo *) nil_chk([self getYearInfoWithInt:year]))->iFirstDayMillis_;
+  return ((OrgJodaTimeChronoBasicChronology_YearInfo *) nil_chk(OrgJodaTimeChronoBasicChronology_getYearInfoWithInt_(self, year)))->iFirstDayMillis_;
 }
 
 - (jlong)getYearMonthMillisWithInt:(jint)year
@@ -476,16 +494,11 @@ OrgJodaTimeDateTimeField * OrgJodaTimeChronoBasicChronology_cHalfdayOfDayField_;
 }
 
 - (OrgJodaTimeChronoBasicChronology_YearInfo *)getYearInfoWithInt:(jint)year {
-  OrgJodaTimeChronoBasicChronology_YearInfo *info = IOSObjectArray_Get(nil_chk(iYearInfoCache_), year & OrgJodaTimeChronoBasicChronology_CACHE_MASK);
-  if (info == nil || info->iYear_ != year) {
-    info = [[[OrgJodaTimeChronoBasicChronology_YearInfo alloc] initWithInt:year withLong:[self calculateFirstDayOfYearMillisWithInt:year]] autorelease];
-    IOSObjectArray_Set(iYearInfoCache_, year & OrgJodaTimeChronoBasicChronology_CACHE_MASK, info);
-  }
-  return info;
+  return OrgJodaTimeChronoBasicChronology_getYearInfoWithInt_(self, year);
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoBasicChronology_set_iYearInfoCache_(self, nil);
+  RELEASE_(iYearInfoCache_);
   [super dealloc];
 }
 
@@ -599,11 +612,22 @@ OrgJodaTimeDateTimeField * OrgJodaTimeChronoBasicChronology_cHalfdayOfDayField_;
     { "iYearInfoCache_", NULL, 0x92, "[Lorg.joda.time.chrono.BasicChronology$YearInfo;", NULL,  },
     { "iMinDaysInFirstWeek_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicChronology = { "BasicChronology", "org.joda.time.chrono", NULL, 0x400, 50, methods, 23, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicChronology = { 1, "BasicChronology", "org.joda.time.chrono", NULL, 0x400, 50, methods, 23, fields, 0, NULL};
   return &_OrgJodaTimeChronoBasicChronology;
 }
 
 @end
+
+OrgJodaTimeChronoBasicChronology_YearInfo *OrgJodaTimeChronoBasicChronology_getYearInfoWithInt_(OrgJodaTimeChronoBasicChronology *self, jint year) {
+  OrgJodaTimeChronoBasicChronology_YearInfo *info = IOSObjectArray_Get(nil_chk(self->iYearInfoCache_), year & OrgJodaTimeChronoBasicChronology_CACHE_MASK);
+  if (info == nil || info->iYear_ != year) {
+    info = [[[OrgJodaTimeChronoBasicChronology_YearInfo alloc] initWithInt:year withLong:[self calculateFirstDayOfYearMillisWithInt:year]] autorelease];
+    IOSObjectArray_Set(self->iYearInfoCache_, year & OrgJodaTimeChronoBasicChronology_CACHE_MASK, info);
+  }
+  return info;
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicChronology)
 
 @implementation OrgJodaTimeChronoBasicChronology_HalfdayField
 
@@ -636,11 +660,13 @@ OrgJodaTimeDateTimeField * OrgJodaTimeChronoBasicChronology_cHalfdayOfDayField_;
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoBasicChronology_HalfdayField_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicChronology_HalfdayField = { "HalfdayField", "org.joda.time.chrono", "BasicChronology", 0xa, 4, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicChronology_HalfdayField = { 1, "HalfdayField", "org.joda.time.chrono", "BasicChronology", 0xa, 4, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeChronoBasicChronology_HalfdayField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicChronology_HalfdayField)
 
 @implementation OrgJodaTimeChronoBasicChronology_YearInfo
 
@@ -667,8 +693,10 @@ OrgJodaTimeDateTimeField * OrgJodaTimeChronoBasicChronology_cHalfdayOfDayField_;
     { "iYear_", NULL, 0x11, "I", NULL,  },
     { "iFirstDayMillis_", NULL, 0x11, "J", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicChronology_YearInfo = { "YearInfo", "org.joda.time.chrono", "BasicChronology", 0xa, 1, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicChronology_YearInfo = { 1, "YearInfo", "org.joda.time.chrono", "BasicChronology", 0xa, 1, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeChronoBasicChronology_YearInfo;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicChronology_YearInfo)

@@ -5,6 +5,7 @@
 
 #include "DurationField.h"
 #include "DurationFieldType.h"
+#include "J2ObjC_source.h"
 #include "java/lang/ArithmeticException.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Long.h"
@@ -173,8 +174,10 @@
     { "description", "toString", "Ljava.lang.String;", 0x401, NULL },
     { "init", NULL, NULL, 0x1, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDurationField = { "DurationField", "org.joda.time", NULL, 0x401, 21, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDurationField = { 1, "DurationField", "org.joda.time", NULL, 0x401, 21, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeDurationField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDurationField)

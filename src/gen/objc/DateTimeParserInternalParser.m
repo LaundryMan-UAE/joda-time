@@ -6,10 +6,19 @@
 #include "DateTimeParser.h"
 #include "DateTimeParserBucket.h"
 #include "DateTimeParserInternalParser.h"
-#include "IOSClass.h"
 #include "InternalParser.h"
 #include "InternalParserDateTimeParser.h"
+#include "J2ObjC_source.h"
 #include "java/lang/CharSequence.h"
+
+@interface OrgJodaTimeFormatDateTimeParserInternalParser () {
+ @public
+  id<OrgJodaTimeFormatDateTimeParser> underlying_;
+}
+- (instancetype)initWithOrgJodaTimeFormatDateTimeParser:(id<OrgJodaTimeFormatDateTimeParser>)underlying;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserInternalParser, underlying_, id<OrgJodaTimeFormatDateTimeParser>)
 
 @implementation OrgJodaTimeFormatDateTimeParserInternalParser
 
@@ -39,7 +48,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeParserInternalParser_set_underlying_(self, nil);
+  RELEASE_(underlying_);
   [super dealloc];
 }
 
@@ -59,7 +68,7 @@
   static const J2ObjcFieldInfo fields[] = {
     { "underlying_", NULL, 0x12, "Lorg.joda.time.format.DateTimeParser;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeParserInternalParser = { "DateTimeParserInternalParser", "org.joda.time.format", NULL, 0x0, 5, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeParserInternalParser = { 1, "DateTimeParserInternalParser", "org.joda.time.format", NULL, 0x0, 5, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeParserInternalParser;
 }
 
@@ -67,7 +76,7 @@
 
 id<OrgJodaTimeFormatInternalParser> OrgJodaTimeFormatDateTimeParserInternalParser_ofWithOrgJodaTimeFormatDateTimeParser_(id<OrgJodaTimeFormatDateTimeParser> underlying) {
   OrgJodaTimeFormatDateTimeParserInternalParser_init();
-  if ([(id) underlying isKindOfClass:[OrgJodaTimeFormatInternalParserDateTimeParser class]]) {
+  if ([underlying isKindOfClass:[OrgJodaTimeFormatInternalParserDateTimeParser class]]) {
     return (id<OrgJodaTimeFormatInternalParser>) check_protocol_cast(underlying, @protocol(OrgJodaTimeFormatInternalParser));
   }
   if (underlying == nil) {
@@ -75,3 +84,5 @@ id<OrgJodaTimeFormatInternalParser> OrgJodaTimeFormatDateTimeParserInternalParse
   }
   return [[[OrgJodaTimeFormatDateTimeParserInternalParser alloc] initWithOrgJodaTimeFormatDateTimeParser:underlying] autorelease];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeParserInternalParser)

@@ -9,9 +9,24 @@
 #include "DateTimeField.h"
 #include "DateTimeUtils.h"
 #include "DateTimeZone.h"
-#include "IOSClass.h"
 #include "ISOChronology.h"
 #include "InstantConverter.h"
+#include "J2ObjC_source.h"
+
+@interface OrgJodaTimeBaseBaseDateTime () {
+ @public
+  /**
+   @brief The millis from 1970-01-01T00:00:00Z
+   */
+  jlong iMillis_;
+  /**
+   @brief The chronology to use
+   */
+  OrgJodaTimeChronology *iChronology_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeBaseBaseDateTime, iChronology_, OrgJodaTimeChronology *)
 
 @implementation OrgJodaTimeBaseBaseDateTime
 
@@ -148,7 +163,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
 }
 
 - (void)dealloc {
-  OrgJodaTimeBaseBaseDateTime_set_iChronology_(self, nil);
+  RELEASE_(iChronology_);
   [super dealloc];
 }
 
@@ -183,8 +198,10 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
     { "iMillis_", NULL, 0x42, "J", NULL,  },
     { "iChronology_", NULL, 0x42, "Lorg.joda.time.Chronology;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseDateTime = { "BaseDateTime", "org.joda.time.base", NULL, 0x401, 17, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseDateTime = { 1, "BaseDateTime", "org.joda.time.base", NULL, 0x401, 17, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeBaseBaseDateTime;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseBaseDateTime)

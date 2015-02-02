@@ -8,7 +8,7 @@
 
 @class IOSClass;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Basic converter interface for specifying what object type can be converted.
@@ -25,6 +25,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeConvertConverter_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeConvertConverter)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertConverter)
 
 #endif // _OrgJodaTimeConvertConverter_H_

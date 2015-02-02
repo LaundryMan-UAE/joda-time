@@ -10,9 +10,9 @@
 @class OrgJodaTimeDurationField;
 @class OrgJodaTimeDurationFieldType;
 
-#import "JreEmulation.h"
 #include "BaseDateTimeField.h"
 #include "BaseDurationField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeFieldImpreciseDateTimeField_serialVersionUID 7190739608550251860LL
 
@@ -25,7 +25,6 @@
 @interface OrgJodaTimeFieldImpreciseDateTimeField : OrgJodaTimeFieldBaseDateTimeField {
  @public
   jlong iUnitMillis_;
-  OrgJodaTimeDurationField *iDurationField_;
 }
 
 /**
@@ -75,23 +74,20 @@
 
 - (jlong)getDurationUnitMillis;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldImpreciseDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldImpreciseDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldImpreciseDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldImpreciseDateTimeField, iDurationField_, OrgJodaTimeDurationField *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldImpreciseDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldImpreciseDateTimeField)
 
 #define OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_serialVersionUID -203813474600094134LL
 
 @interface OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField : OrgJodaTimeFieldBaseDurationField {
- @public
-  OrgJodaTimeFieldImpreciseDateTimeField *this$0_;
 }
 
 - (instancetype)initWithOrgJodaTimeFieldImpreciseDateTimeField:(OrgJodaTimeFieldImpreciseDateTimeField *)outer$
@@ -125,16 +121,15 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldImpreciseDateTimeField, serialVersion
 - (jlong)getDifferenceAsLongWithLong:(jlong)minuendInstant
                             withLong:(jlong)subtrahendInstant;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField, this$0_, OrgJodaTimeFieldImpreciseDateTimeField *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField)
 
 #endif // _OrgJodaTimeFieldImpreciseDateTimeField_H_

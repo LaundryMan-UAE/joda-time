@@ -26,7 +26,7 @@
 @protocol OrgJodaTimeReadableInstant;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Controls the printing and parsing of a datetime to and from a string.
@@ -37,39 +37,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFormatDateTimeFormatter : NSObject {
- @public
-  /**
-   @brief The internal printer used to output the datetime.
-   */
-  id<OrgJodaTimeFormatInternalPrinter> iPrinter_;
-  /**
-   @brief The internal parser used to output the datetime.
-   */
-  id<OrgJodaTimeFormatInternalParser> iParser_;
-  /**
-   @brief The locale to use for printing and parsing.
-   */
-  JavaUtilLocale *iLocale_;
-  /**
-   @brief Whether the offset is parsed.
-   */
-  jboolean iOffsetParsed_;
-  /**
-   @brief The chronology to use as an override.
-   */
-  OrgJodaTimeChronology *iChrono_;
-  /**
-   @brief The zone to use as an override.
-   */
-  OrgJodaTimeDateTimeZone *iZone_;
-  /**
-   @brief The pivot year to use for two-digit year parsing.
-   */
-  JavaLangInteger *iPivotYear_;
-  /**
-   @brief The default year for parsing month/day without year.
-   */
-  jint iDefaultYear_;
 }
 
 /**
@@ -87,18 +54,6 @@
  */
 - (instancetype)initWithOrgJodaTimeFormatInternalPrinter:(id<OrgJodaTimeFormatInternalPrinter>)printer
                      withOrgJodaTimeFormatInternalParser:(id<OrgJodaTimeFormatInternalParser>)parser;
-
-/**
- @brief Constructor.
- */
-- (instancetype)initWithOrgJodaTimeFormatInternalPrinter:(id<OrgJodaTimeFormatInternalPrinter>)printer
-                     withOrgJodaTimeFormatInternalParser:(id<OrgJodaTimeFormatInternalParser>)parser
-                                      withJavaUtilLocale:(JavaUtilLocale *)locale
-                                             withBoolean:(jboolean)offsetParsed
-                               withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono
-                             withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone
-                                     withJavaLangInteger:(JavaLangInteger *)pivotYear
-                                                 withInt:(jint)defaultYear;
 
 /**
  @brief Is this formatter capable of printing.
@@ -344,16 +299,6 @@
  */
 - (NSString *)printWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial;
 
-- (void)printToWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
-                             withLong:(jlong)instant
-            withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
-
-/**
- @brief Checks whether printing is supported.
- @throws UnsupportedOperationException if printing is not supported
- */
-- (id<OrgJodaTimeFormatInternalPrinter>)requirePrinter;
-
 /**
  @brief Parses a datetime from the given text, at the given position, saving the result into the fields of the given ReadWritableInstant.
  If the parse succeeds, the return value is the new text position. Note that the parse may succeed without fully reading the text and in this case those fields that were read will be set. <p> Only those fields present in the string will be changed in the specified instant. All other fields will remain unaltered. Thus if the string only contains a year and a month, then the day and time will be retained from the input instant. If this is not the behaviour you want, then reset the fields before calling this method, or use #parseDateTime(String) or #parseMutableDateTime(String) . <p> If it fails, the return value is negative, but the instant may still be modified. To determine the position where the parse failed, apply the one's complement operator (~) on the return value. <p> This parse method ignores the #getDefaultYear() default year and parses using the year from the supplied instant based on the chronology and time-zone of the supplied instant. <p> The parse will use the chronology of the instant.
@@ -432,32 +377,13 @@
  */
 - (OrgJodaTimeMutableDateTime *)parseMutableDateTimeWithNSString:(NSString *)text;
 
-/**
- @brief Checks whether parsing is supported.
- @throws UnsupportedOperationException if parsing is not supported
- */
-- (id<OrgJodaTimeFormatInternalParser>)requireParser;
-
-/**
- @brief Determines the correct chronology to use.
- @param chrono the proposed chronology
- @return the actual chronology
- */
-- (OrgJodaTimeChronology *)selectChronologyWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatter *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatter_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatter)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatter, iPrinter_, id<OrgJodaTimeFormatInternalPrinter>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatter, iParser_, id<OrgJodaTimeFormatInternalParser>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatter, iLocale_, JavaUtilLocale *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatter, iChrono_, OrgJodaTimeChronology *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatter, iZone_, OrgJodaTimeDateTimeZone *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatter, iPivotYear_, JavaLangInteger *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatter)
 
 #endif // _OrgJodaTimeFormatDateTimeFormatter_H_

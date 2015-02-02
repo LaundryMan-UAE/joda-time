@@ -6,8 +6,8 @@
 #ifndef _OrgJodaTimeBaseBaseLocal_H_
 #define _OrgJodaTimeBaseBaseLocal_H_
 
-#import "JreEmulation.h"
 #include "AbstractPartial.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeBaseBaseLocal_serialVersionUID 276453175381783LL
 
@@ -35,8 +35,13 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeBaseBaseLocal_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeBaseBaseLocal)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseLocal, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseBaseLocal)
 
 #endif // _OrgJodaTimeBaseBaseLocal_H_

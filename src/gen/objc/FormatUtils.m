@@ -5,6 +5,7 @@
 
 #include "FormatUtils.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "java/io/IOException.h"
 #include "java/io/Writer.h"
 #include "java/lang/Appendable.h"
@@ -13,6 +14,11 @@
 #include "java/lang/Long.h"
 #include "java/lang/Math.h"
 #include "java/lang/StringBuffer.h"
+
+@interface OrgJodaTimeFormatFormatUtils () {
+}
+- (instancetype)init;
+@end
 
 BOOL OrgJodaTimeFormatFormatUtils_initialized = NO;
 
@@ -133,7 +139,7 @@ jdouble OrgJodaTimeFormatFormatUtils_LOG_10_;
   static const J2ObjcFieldInfo fields[] = {
     { "LOG_10_", NULL, 0x1a, "D", &OrgJodaTimeFormatFormatUtils_LOG_10_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatFormatUtils = { "FormatUtils", "org.joda.time.format", NULL, 0x1, 16, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatFormatUtils = { 1, "FormatUtils", "org.joda.time.format", NULL, 0x1, 16, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeFormatFormatUtils;
 }
 
@@ -440,3 +446,5 @@ NSString *OrgJodaTimeFormatFormatUtils_createErrorMessageWithNSString_withInt_(N
   }
   return JreStrcat("$$$$C", @"Invalid format: \"", sampleText, @"\" is malformed at \"", [((NSString *) nil_chk(sampleText)) substring:errorPos], '"');
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatFormatUtils)

@@ -9,11 +9,22 @@
 #include "DurationField.h"
 #include "DurationFieldType.h"
 #include "FieldUtils.h"
-#include "IOSClass.h"
 #include "IllegalFieldValueException.h"
+#include "J2ObjC_source.h"
 #include "UnsupportedDurationField.h"
 #include "java/lang/Long.h"
 #include "java/util/Locale.h"
+
+@interface OrgJodaTimeChronoBasicSingleEraDateTimeField () {
+ @public
+  /**
+   @brief Text value of the era.
+   */
+  NSString *iEraText_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoBasicSingleEraDateTimeField, iEraText_, NSString *)
 
 @implementation OrgJodaTimeChronoBasicSingleEraDateTimeField
 
@@ -93,7 +104,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoBasicSingleEraDateTimeField_set_iEraText_(self, nil);
+  RELEASE_(iEraText_);
   [super dealloc];
 }
 
@@ -125,8 +136,10 @@
     { "ERA_VALUE_", NULL, 0x1a, "I", NULL, .constantValue.asInt = OrgJodaTimeChronoBasicSingleEraDateTimeField_ERA_VALUE },
     { "iEraText_", NULL, 0x12, "Ljava.lang.String;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicSingleEraDateTimeField = { "BasicSingleEraDateTimeField", "org.joda.time.chrono", NULL, 0x10, 16, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicSingleEraDateTimeField = { 1, "BasicSingleEraDateTimeField", "org.joda.time.chrono", NULL, 0x10, 16, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeChronoBasicSingleEraDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicSingleEraDateTimeField)

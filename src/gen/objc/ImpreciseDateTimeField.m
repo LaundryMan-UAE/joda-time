@@ -7,8 +7,24 @@
 #include "DurationField.h"
 #include "DurationFieldType.h"
 #include "FieldUtils.h"
-#include "IOSClass.h"
 #include "ImpreciseDateTimeField.h"
+#include "J2ObjC_source.h"
+
+@interface OrgJodaTimeFieldImpreciseDateTimeField () {
+ @public
+  OrgJodaTimeDurationField *iDurationField_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldImpreciseDateTimeField, iDurationField_, OrgJodaTimeDurationField *)
+
+@interface OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField () {
+ @public
+  OrgJodaTimeFieldImpreciseDateTimeField *this$0_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField, this$0_, OrgJodaTimeFieldImpreciseDateTimeField *)
 
 @implementation OrgJodaTimeFieldImpreciseDateTimeField
 
@@ -96,7 +112,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeFieldImpreciseDateTimeField_set_iDurationField_(self, nil);
+  RELEASE_(iDurationField_);
   [super dealloc];
 }
 
@@ -125,11 +141,13 @@
     { "iUnitMillis_", NULL, 0x10, "J", NULL,  },
     { "iDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldImpreciseDateTimeField = { "ImpreciseDateTimeField", "org.joda.time.field", NULL, 0x401, 11, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldImpreciseDateTimeField = { 1, "ImpreciseDateTimeField", "org.joda.time.field", NULL, 0x401, 11, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeFieldImpreciseDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldImpreciseDateTimeField)
 
 @implementation OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField
 
@@ -188,7 +206,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_set_this$0_(self, nil);
+  RELEASE_(this$0_);
   [super dealloc];
 }
 
@@ -215,8 +233,10 @@
     { "this$0_", NULL, 0x1012, "Lorg.joda.time.field.ImpreciseDateTimeField;", NULL,  },
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField = { "LinkedDurationField", "org.joda.time.field", "ImpreciseDateTimeField", 0x12, 11, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField = { 1, "LinkedDurationField", "org.joda.time.field", "ImpreciseDateTimeField", 0x12, 11, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField)

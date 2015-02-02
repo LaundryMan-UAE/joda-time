@@ -10,8 +10,8 @@
 @class IOSLongArray;
 @class OrgJodaTimeChronology;
 
-#import "JreEmulation.h"
 #include "BasicChronology.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoBasicGJChronology_FEB_29 5097600000LL
 #define OrgJodaTimeChronoBasicGJChronology_serialVersionUID 538276888268LL
@@ -67,6 +67,8 @@
 FOUNDATION_EXPORT BOOL OrgJodaTimeChronoBasicGJChronology_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeChronoBasicGJChronology)
 
+CF_EXTERN_C_BEGIN
+
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicGJChronology, serialVersionUID, jlong)
 
 FOUNDATION_EXPORT IOSIntArray *OrgJodaTimeChronoBasicGJChronology_MIN_DAYS_PER_MONTH_ARRAY_;
@@ -82,5 +84,8 @@ FOUNDATION_EXPORT IOSLongArray *OrgJodaTimeChronoBasicGJChronology_MAX_TOTAL_MIL
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicGJChronology, MAX_TOTAL_MILLIS_BY_MONTH_ARRAY_, IOSLongArray *)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicGJChronology, FEB_29, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicGJChronology)
 
 #endif // _OrgJodaTimeChronoBasicGJChronology_H_

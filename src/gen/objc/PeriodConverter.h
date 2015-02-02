@@ -10,8 +10,8 @@
 @class OrgJodaTimePeriodType;
 @protocol OrgJodaTimeReadWritablePeriod;
 
-#import "JreEmulation.h"
 #include "Converter.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief PeriodConverter defines how an object is converted to a time period.
@@ -41,6 +41,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeConvertPeriodConverter_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeConvertPeriodConverter)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertPeriodConverter)
 
 #endif // _OrgJodaTimeConvertPeriodConverter_H_

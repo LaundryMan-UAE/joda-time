@@ -15,7 +15,7 @@
 @protocol OrgJodaTimeReadableInstant;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 
 #define OrgJodaTimeFieldAbstractReadableInstantFieldProperty_serialVersionUID 1971226328211649661LL
@@ -253,8 +253,13 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldAbstractReadableInstantFieldProperty_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldAbstractReadableInstantFieldProperty)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldAbstractReadableInstantFieldProperty, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldAbstractReadableInstantFieldProperty)
 
 #endif // _OrgJodaTimeFieldAbstractReadableInstantFieldProperty_H_

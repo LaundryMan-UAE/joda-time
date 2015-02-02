@@ -17,6 +17,7 @@
 #include "FieldUtils.h"
 #include "IOSClass.h"
 #include "ISODateTimeFormat.h"
+#include "J2ObjC_source.h"
 #include "LimitChronology.h"
 #include "MutableDateTime.h"
 #include "ReadableDateTime.h"
@@ -24,6 +25,57 @@
 #include "java/lang/StringBuffer.h"
 #include "java/util/HashMap.h"
 #include "java/util/Locale.h"
+
+__attribute__((unused)) static OrgJodaTimeDurationField *OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(OrgJodaTimeChronoLimitChronology *self, OrgJodaTimeDurationField *field, JavaUtilHashMap *converted);
+__attribute__((unused)) static OrgJodaTimeDateTimeField *OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(OrgJodaTimeChronoLimitChronology *self, OrgJodaTimeDateTimeField *field, JavaUtilHashMap *converted);
+
+@interface OrgJodaTimeChronoLimitChronology () {
+ @public
+  OrgJodaTimeChronoLimitChronology *iWithUTC_;
+}
+- (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
+                      withOrgJodaTimeDateTime:(OrgJodaTimeDateTime *)lowerLimit
+                      withOrgJodaTimeDateTime:(OrgJodaTimeDateTime *)upperLimit;
+
+- (OrgJodaTimeDurationField *)convertFieldWithOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)field
+                                                   withJavaUtilHashMap:(JavaUtilHashMap *)converted;
+
+- (OrgJodaTimeDateTimeField *)convertFieldWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
+                                                   withJavaUtilHashMap:(JavaUtilHashMap *)converted;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology, iWithUTC_, OrgJodaTimeChronoLimitChronology *)
+
+@interface OrgJodaTimeChronoLimitChronology_LimitException () {
+ @public
+  OrgJodaTimeChronoLimitChronology *this$0_;
+  jboolean iIsLow_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology_LimitException, this$0_, OrgJodaTimeChronoLimitChronology *)
+
+@interface OrgJodaTimeChronoLimitChronology_LimitDurationField () {
+ @public
+  OrgJodaTimeChronoLimitChronology *this$0_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology_LimitDurationField, this$0_, OrgJodaTimeChronoLimitChronology *)
+
+@interface OrgJodaTimeChronoLimitChronology_LimitDateTimeField () {
+ @public
+  OrgJodaTimeChronoLimitChronology *this$0_;
+  OrgJodaTimeDurationField *iDurationField_;
+  OrgJodaTimeDurationField *iRangeDurationField_;
+  OrgJodaTimeDurationField *iLeapDurationField_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField, this$0_, OrgJodaTimeChronoLimitChronology *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField, iDurationField_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField, iRangeDurationField_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField, iLeapDurationField_, OrgJodaTimeDurationField *)
 
 @implementation OrgJodaTimeChronoLimitChronology
 
@@ -118,67 +170,51 @@
 
 - (void)assembleWithOrgJodaTimeChronoAssembledChronology_Fields:(OrgJodaTimeChronoAssembledChronology_Fields *)fields {
   JavaUtilHashMap *converted = [[[JavaUtilHashMap alloc] init] autorelease];
-  OrgJodaTimeChronoAssembledChronology_Fields_set_eras_(nil_chk(fields), [self convertFieldWithOrgJodaTimeDurationField:fields->eras_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_centuries_(fields, [self convertFieldWithOrgJodaTimeDurationField:fields->centuries_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_years_(fields, [self convertFieldWithOrgJodaTimeDurationField:fields->years_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_months_(fields, [self convertFieldWithOrgJodaTimeDurationField:fields->months_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyears_(fields, [self convertFieldWithOrgJodaTimeDurationField:fields->weekyears_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weeks_(fields, [self convertFieldWithOrgJodaTimeDurationField:fields->weeks_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_days_(fields, [self convertFieldWithOrgJodaTimeDurationField:fields->days_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_halfdays_(fields, [self convertFieldWithOrgJodaTimeDurationField:fields->halfdays_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_hours_(fields, [self convertFieldWithOrgJodaTimeDurationField:fields->hours_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_minutes_(fields, [self convertFieldWithOrgJodaTimeDurationField:fields->minutes_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_seconds_(fields, [self convertFieldWithOrgJodaTimeDurationField:fields->seconds_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_millis_(fields, [self convertFieldWithOrgJodaTimeDurationField:fields->millis_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_year_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->year_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_yearOfEra_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->yearOfEra_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_yearOfCentury_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->yearOfCentury_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_centuryOfEra_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->centuryOfEra_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_era_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->era_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfWeek_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->dayOfWeek_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfMonth_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->dayOfMonth_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfYear_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->dayOfYear_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_monthOfYear_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->monthOfYear_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekOfWeekyear_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->weekOfWeekyear_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyear_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->weekyear_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyearOfCentury_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->weekyearOfCentury_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_millisOfSecond_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->millisOfSecond_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_millisOfDay_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->millisOfDay_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_secondOfMinute_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->secondOfMinute_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_secondOfDay_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->secondOfDay_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_minuteOfHour_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->minuteOfHour_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_minuteOfDay_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->minuteOfDay_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_hourOfDay_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->hourOfDay_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_hourOfHalfday_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->hourOfHalfday_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_clockhourOfDay_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->clockhourOfDay_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_clockhourOfHalfday_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->clockhourOfHalfday_ withJavaUtilHashMap:converted]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_halfdayOfDay_(fields, [self convertFieldWithOrgJodaTimeDateTimeField:fields->halfdayOfDay_ withJavaUtilHashMap:converted]);
+  OrgJodaTimeChronoAssembledChronology_Fields_set_eras_(nil_chk(fields), OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->eras_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_centuries_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->centuries_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_years_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->years_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_months_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->months_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyears_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->weekyears_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_weeks_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->weeks_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_days_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->days_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_halfdays_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->halfdays_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_hours_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->hours_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_minutes_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->minutes_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_seconds_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->seconds_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_millis_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->millis_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_year_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->year_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_yearOfEra_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->yearOfEra_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_yearOfCentury_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->yearOfCentury_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_centuryOfEra_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->centuryOfEra_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_era_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->era_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfWeek_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->dayOfWeek_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfMonth_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->dayOfMonth_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfYear_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->dayOfYear_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_monthOfYear_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->monthOfYear_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_weekOfWeekyear_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->weekOfWeekyear_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyear_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->weekyear_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyearOfCentury_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->weekyearOfCentury_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_millisOfSecond_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->millisOfSecond_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_millisOfDay_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->millisOfDay_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_secondOfMinute_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->secondOfMinute_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_secondOfDay_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->secondOfDay_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_minuteOfHour_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->minuteOfHour_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_minuteOfDay_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->minuteOfDay_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_hourOfDay_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->hourOfDay_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_hourOfHalfday_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->hourOfHalfday_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_clockhourOfDay_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->clockhourOfDay_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_clockhourOfHalfday_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->clockhourOfHalfday_, converted));
+  OrgJodaTimeChronoAssembledChronology_Fields_set_halfdayOfDay_(fields, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->halfdayOfDay_, converted));
 }
 
 - (OrgJodaTimeDurationField *)convertFieldWithOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)field
                                                    withJavaUtilHashMap:(JavaUtilHashMap *)converted {
-  if (field == nil || ![field isSupported]) {
-    return field;
-  }
-  if ([((JavaUtilHashMap *) nil_chk(converted)) containsKeyWithId:field]) {
-    return (OrgJodaTimeDurationField *) check_class_cast([converted getWithId:field], [OrgJodaTimeDurationField class]);
-  }
-  OrgJodaTimeChronoLimitChronology_LimitDurationField *limitField = [[[OrgJodaTimeChronoLimitChronology_LimitDurationField alloc] initWithOrgJodaTimeChronoLimitChronology:self withOrgJodaTimeDurationField:field] autorelease];
-  [converted putWithId:field withId:limitField];
-  return limitField;
+  return OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, field, converted);
 }
 
 - (OrgJodaTimeDateTimeField *)convertFieldWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
                                                    withJavaUtilHashMap:(JavaUtilHashMap *)converted {
-  if (field == nil || ![field isSupported]) {
-    return field;
-  }
-  if ([((JavaUtilHashMap *) nil_chk(converted)) containsKeyWithId:field]) {
-    return (OrgJodaTimeDateTimeField *) check_class_cast([converted getWithId:field], [OrgJodaTimeDateTimeField class]);
-  }
-  OrgJodaTimeChronoLimitChronology_LimitDateTimeField *limitField = [[[OrgJodaTimeChronoLimitChronology_LimitDateTimeField alloc] initWithOrgJodaTimeChronoLimitChronology:self withOrgJodaTimeDateTimeField:field withOrgJodaTimeDurationField:[self convertFieldWithOrgJodaTimeDurationField:[((OrgJodaTimeDateTimeField *) nil_chk(field)) getDurationField] withJavaUtilHashMap:converted] withOrgJodaTimeDurationField:[self convertFieldWithOrgJodaTimeDurationField:[field getRangeDurationField] withJavaUtilHashMap:converted] withOrgJodaTimeDurationField:[self convertFieldWithOrgJodaTimeDurationField:[field getLeapDurationField] withJavaUtilHashMap:converted]] autorelease];
-  [converted putWithId:field withId:limitField];
-  return limitField;
+  return OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, field, converted);
 }
 
 - (void)checkLimitsWithLong:(jlong)instant
@@ -216,9 +252,9 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoLimitChronology_set_iLowerLimit_(self, nil);
-  OrgJodaTimeChronoLimitChronology_set_iUpperLimit_(self, nil);
-  OrgJodaTimeChronoLimitChronology_set_iWithUTC_(self, nil);
+  RELEASE_(iLowerLimit_);
+  RELEASE_(iUpperLimit_);
+  RELEASE_(iWithUTC_);
   [super dealloc];
 }
 
@@ -254,7 +290,7 @@
     { "iUpperLimit_", NULL, 0x10, "Lorg.joda.time.DateTime;", NULL,  },
     { "iWithUTC_", NULL, 0x82, "Lorg.joda.time.chrono.LimitChronology;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology = { "LimitChronology", "org.joda.time.chrono", NULL, 0x11, 16, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology = { 1, "LimitChronology", "org.joda.time.chrono", NULL, 0x11, 16, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeChronoLimitChronology;
 }
 
@@ -274,6 +310,32 @@ OrgJodaTimeChronoLimitChronology *OrgJodaTimeChronoLimitChronology_getInstanceWi
   }
   return [[[OrgJodaTimeChronoLimitChronology alloc] initWithOrgJodaTimeChronology:base withOrgJodaTimeDateTime:(OrgJodaTimeDateTime *) check_class_cast(lowerLimit, [OrgJodaTimeDateTime class]) withOrgJodaTimeDateTime:(OrgJodaTimeDateTime *) check_class_cast(upperLimit, [OrgJodaTimeDateTime class])] autorelease];
 }
+
+OrgJodaTimeDurationField *OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(OrgJodaTimeChronoLimitChronology *self, OrgJodaTimeDurationField *field, JavaUtilHashMap *converted) {
+  if (field == nil || ![field isSupported]) {
+    return field;
+  }
+  if ([((JavaUtilHashMap *) nil_chk(converted)) containsKeyWithId:field]) {
+    return (OrgJodaTimeDurationField *) check_class_cast([converted getWithId:field], [OrgJodaTimeDurationField class]);
+  }
+  OrgJodaTimeChronoLimitChronology_LimitDurationField *limitField = [[[OrgJodaTimeChronoLimitChronology_LimitDurationField alloc] initWithOrgJodaTimeChronoLimitChronology:self withOrgJodaTimeDurationField:field] autorelease];
+  [converted putWithId:field withId:limitField];
+  return limitField;
+}
+
+OrgJodaTimeDateTimeField *OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(OrgJodaTimeChronoLimitChronology *self, OrgJodaTimeDateTimeField *field, JavaUtilHashMap *converted) {
+  if (field == nil || ![field isSupported]) {
+    return field;
+  }
+  if ([((JavaUtilHashMap *) nil_chk(converted)) containsKeyWithId:field]) {
+    return (OrgJodaTimeDateTimeField *) check_class_cast([converted getWithId:field], [OrgJodaTimeDateTimeField class]);
+  }
+  OrgJodaTimeChronoLimitChronology_LimitDateTimeField *limitField = [[[OrgJodaTimeChronoLimitChronology_LimitDateTimeField alloc] initWithOrgJodaTimeChronoLimitChronology:self withOrgJodaTimeDateTimeField:field withOrgJodaTimeDurationField:OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, [((OrgJodaTimeDateTimeField *) nil_chk(field)) getDurationField], converted) withOrgJodaTimeDurationField:OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, [field getRangeDurationField], converted) withOrgJodaTimeDurationField:OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, [field getLeapDurationField], converted)] autorelease];
+  [converted putWithId:field withId:limitField];
+  return limitField;
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoLimitChronology)
 
 @implementation OrgJodaTimeChronoLimitChronology_LimitException
 
@@ -317,7 +379,7 @@ OrgJodaTimeChronoLimitChronology *OrgJodaTimeChronoLimitChronology_getInstanceWi
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoLimitChronology_LimitException_set_this$0_(self, nil);
+  RELEASE_(this$0_);
   [super dealloc];
 }
 
@@ -338,11 +400,13 @@ OrgJodaTimeChronoLimitChronology *OrgJodaTimeChronoLimitChronology_getInstanceWi
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoLimitChronology_LimitException_serialVersionUID },
     { "iIsLow_", NULL, 0x12, "Z", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology_LimitException = { "LimitException", "org.joda.time.chrono", "LimitChronology", 0x2, 3, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology_LimitException = { 1, "LimitException", "org.joda.time.chrono", "LimitChronology", 0x2, 3, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeChronoLimitChronology_LimitException;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoLimitChronology_LimitException)
 
 @implementation OrgJodaTimeChronoLimitChronology_LimitDurationField
 
@@ -407,7 +471,7 @@ OrgJodaTimeChronoLimitChronology *OrgJodaTimeChronoLimitChronology_getInstanceWi
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoLimitChronology_LimitDurationField_set_this$0_(self, nil);
+  RELEASE_(this$0_);
   [super dealloc];
 }
 
@@ -432,11 +496,13 @@ OrgJodaTimeChronoLimitChronology *OrgJodaTimeChronoLimitChronology_getInstanceWi
     { "this$0_", NULL, 0x1012, "Lorg.joda.time.chrono.LimitChronology;", NULL,  },
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoLimitChronology_LimitDurationField_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology_LimitDurationField = { "LimitDurationField", "org.joda.time.chrono", "LimitChronology", 0x2, 9, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology_LimitDurationField = { 1, "LimitDurationField", "org.joda.time.chrono", "LimitChronology", 0x2, 9, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeChronoLimitChronology_LimitDurationField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoLimitChronology_LimitDurationField)
 
 @implementation OrgJodaTimeChronoLimitChronology_LimitDateTimeField
 
@@ -609,10 +675,10 @@ OrgJodaTimeChronoLimitChronology *OrgJodaTimeChronoLimitChronology_getInstanceWi
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoLimitChronology_LimitDateTimeField_set_this$0_(self, nil);
-  OrgJodaTimeChronoLimitChronology_LimitDateTimeField_set_iDurationField_(self, nil);
-  OrgJodaTimeChronoLimitChronology_LimitDateTimeField_set_iRangeDurationField_(self, nil);
-  OrgJodaTimeChronoLimitChronology_LimitDateTimeField_set_iLeapDurationField_(self, nil);
+  RELEASE_(this$0_);
+  RELEASE_(iDurationField_);
+  RELEASE_(iRangeDurationField_);
+  RELEASE_(iLeapDurationField_);
   [super dealloc];
 }
 
@@ -660,8 +726,10 @@ OrgJodaTimeChronoLimitChronology *OrgJodaTimeChronoLimitChronology_getInstanceWi
     { "iRangeDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL,  },
     { "iLeapDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology_LimitDateTimeField = { "LimitDateTimeField", "org.joda.time.chrono", "LimitChronology", 0x2, 26, methods, 5, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology_LimitDateTimeField = { 1, "LimitDateTimeField", "org.joda.time.chrono", "LimitChronology", 0x2, 26, methods, 5, fields, 0, NULL};
   return &_OrgJodaTimeChronoLimitChronology_LimitDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoLimitChronology_LimitDateTimeField)

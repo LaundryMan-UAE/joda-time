@@ -11,11 +11,11 @@
 @protocol OrgJodaTimeReadWritableInterval;
 @protocol OrgJodaTimeReadWritablePeriod;
 
-#import "JreEmulation.h"
 #include "AbstractConverter.h"
 #include "DurationConverter.h"
 #include "InstantConverter.h"
 #include "IntervalConverter.h"
+#include "J2ObjC_header.h"
 #include "PartialConverter.h"
 #include "PeriodConverter.h"
 
@@ -74,7 +74,12 @@
 FOUNDATION_EXPORT BOOL OrgJodaTimeConvertNullConverter_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeConvertNullConverter)
 
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeConvertNullConverter *OrgJodaTimeConvertNullConverter_INSTANCE_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeConvertNullConverter, INSTANCE_, OrgJodaTimeConvertNullConverter *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertNullConverter)
 
 #endif // _OrgJodaTimeConvertNullConverter_H_

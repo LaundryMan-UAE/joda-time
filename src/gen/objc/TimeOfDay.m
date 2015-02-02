@@ -20,6 +20,7 @@
 #include "IOSPrimitiveArray.h"
 #include "ISOChronology.h"
 #include "ISODateTimeFormat.h"
+#include "J2ObjC_source.h"
 #include "LocalTime.h"
 #include "ReadablePartial.h"
 #include "ReadablePeriod.h"
@@ -30,6 +31,25 @@
 #include "java/util/Calendar.h"
 #include "java/util/Date.h"
 #include "java/util/Locale.h"
+
+@interface OrgJodaTimeTimeOfDay () {
+}
+@end
+
+@interface OrgJodaTimeTimeOfDay_Property () {
+ @public
+  /**
+   @brief The partial
+   */
+  OrgJodaTimeTimeOfDay *iTimeOfDay_;
+  /**
+   @brief The field index
+   */
+  jint iFieldIndex_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeTimeOfDay_Property, iTimeOfDay_, OrgJodaTimeTimeOfDay *)
 
 BOOL OrgJodaTimeTimeOfDay_initialized = NO;
 
@@ -342,14 +362,14 @@ OrgJodaTimeTimeOfDay * OrgJodaTimeTimeOfDay_MIDNIGHT_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeTimeOfDay class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeTimeOfDay_FIELD_TYPES_, nil, [IOSObjectArray newArrayWithObjects:(id[]){ OrgJodaTimeDateTimeFieldType_hourOfDay(), OrgJodaTimeDateTimeFieldType_minuteOfHour(), OrgJodaTimeDateTimeFieldType_secondOfMinute(), OrgJodaTimeDateTimeFieldType_millisOfSecond() } count:4 type:[IOSClass classWithClass:[OrgJodaTimeDateTimeFieldType class]]]);
+    JreStrongAssignAndConsume(&OrgJodaTimeTimeOfDay_FIELD_TYPES_, nil, [IOSObjectArray newArrayWithObjects:(id[]){ OrgJodaTimeDateTimeFieldType_hourOfDay(), OrgJodaTimeDateTimeFieldType_minuteOfHour(), OrgJodaTimeDateTimeFieldType_secondOfMinute(), OrgJodaTimeDateTimeFieldType_millisOfSecond() } count:4 type:OrgJodaTimeDateTimeFieldType_class_()]);
     JreStrongAssignAndConsume(&OrgJodaTimeTimeOfDay_MIDNIGHT_, nil, [[OrgJodaTimeTimeOfDay alloc] initWithInt:0 withInt:0 withInt:0 withInt:0]);
     J2OBJC_SET_INITIALIZED(OrgJodaTimeTimeOfDay)
   }
 }
 
 + (IOSObjectArray *)__annotations {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -418,7 +438,7 @@ OrgJodaTimeTimeOfDay * OrgJodaTimeTimeOfDay_MIDNIGHT_;
     { "SECOND_OF_MINUTE_", NULL, 0x19, "I", NULL, .constantValue.asInt = OrgJodaTimeTimeOfDay_SECOND_OF_MINUTE },
     { "MILLIS_OF_SECOND_", NULL, 0x19, "I", NULL, .constantValue.asInt = OrgJodaTimeTimeOfDay_MILLIS_OF_SECOND },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTimeOfDay = { "TimeOfDay", "org.joda.time", NULL, 0x11, 54, methods, 7, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeTimeOfDay = { 1, "TimeOfDay", "org.joda.time", NULL, 0x11, 54, methods, 7, fields, 0, NULL};
   return &_OrgJodaTimeTimeOfDay;
 }
 
@@ -451,6 +471,8 @@ OrgJodaTimeTimeOfDay *OrgJodaTimeTimeOfDay_fromMillisOfDayWithLong_withOrgJodaTi
   chrono = [((OrgJodaTimeChronology *) nil_chk(chrono)) withUTC];
   return [[[OrgJodaTimeTimeOfDay alloc] initWithLong:millisOfDay withOrgJodaTimeChronology:chrono] autorelease];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTimeOfDay)
 
 @implementation OrgJodaTimeTimeOfDay_Property
 
@@ -523,7 +545,7 @@ OrgJodaTimeTimeOfDay *OrgJodaTimeTimeOfDay_fromMillisOfDayWithLong_withOrgJodaTi
 }
 
 - (void)dealloc {
-  OrgJodaTimeTimeOfDay_Property_set_iTimeOfDay_(self, nil);
+  RELEASE_(iTimeOfDay_);
   [super dealloc];
 }
 
@@ -534,7 +556,7 @@ OrgJodaTimeTimeOfDay *OrgJodaTimeTimeOfDay_fromMillisOfDayWithLong_withOrgJodaTi
 }
 
 + (IOSObjectArray *)__annotations {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -558,8 +580,10 @@ OrgJodaTimeTimeOfDay *OrgJodaTimeTimeOfDay_fromMillisOfDayWithLong_withOrgJodaTi
     { "iTimeOfDay_", NULL, 0x12, "Lorg.joda.time.TimeOfDay;", NULL,  },
     { "iFieldIndex_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTimeOfDay_Property = { "Property", "org.joda.time", "TimeOfDay", 0x9, 13, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeTimeOfDay_Property = { 1, "Property", "org.joda.time", "TimeOfDay", 0x9, 13, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeTimeOfDay_Property;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTimeOfDay_Property)

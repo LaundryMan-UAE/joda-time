@@ -5,6 +5,7 @@
 
 #include "FormatUtils.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "MutablePeriod.h"
 #include "Period.h"
 #include "PeriodFormatter.h"
@@ -19,6 +20,58 @@
 #include "java/lang/StringBuffer.h"
 #include "java/lang/UnsupportedOperationException.h"
 #include "java/util/Locale.h"
+
+__attribute__((unused)) static void OrgJodaTimeFormatPeriodFormatter_checkPrinter(OrgJodaTimeFormatPeriodFormatter *self);
+__attribute__((unused)) static void OrgJodaTimeFormatPeriodFormatter_checkPeriodWithOrgJodaTimeReadablePeriod_(OrgJodaTimeFormatPeriodFormatter *self, id<OrgJodaTimeReadablePeriod> period);
+__attribute__((unused)) static void OrgJodaTimeFormatPeriodFormatter_checkParser(OrgJodaTimeFormatPeriodFormatter *self);
+
+@interface OrgJodaTimeFormatPeriodFormatter () {
+ @public
+  /**
+   @brief The internal printer used to output the datetime.
+   */
+  id<OrgJodaTimeFormatPeriodPrinter> iPrinter_;
+  /**
+   @brief The internal parser used to output the datetime.
+   */
+  id<OrgJodaTimeFormatPeriodParser> iParser_;
+  /**
+   @brief The locale to use for printing and parsing.
+   */
+  JavaUtilLocale *iLocale_;
+  /**
+   @brief The period type used in parsing.
+   */
+  OrgJodaTimePeriodType *iParseType_;
+}
+- (instancetype)initWithOrgJodaTimeFormatPeriodPrinter:(id<OrgJodaTimeFormatPeriodPrinter>)printer
+                     withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)parser
+                                    withJavaUtilLocale:(JavaUtilLocale *)locale
+                             withOrgJodaTimePeriodType:(OrgJodaTimePeriodType *)type;
+
+/**
+ @brief Checks whether printing is supported.
+ @throws UnsupportedOperationException if printing is not supported
+ */
+- (void)checkPrinter;
+
+/**
+ @brief Checks whether the period is non-null.
+ @throws IllegalArgumentException if the period is null
+ */
+- (void)checkPeriodWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period;
+
+/**
+ @brief Checks whether parsing is supported.
+ @throws UnsupportedOperationException if parsing is not supported
+ */
+- (void)checkParser;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatter, iPrinter_, id<OrgJodaTimeFormatPeriodPrinter>)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatter, iParser_, id<OrgJodaTimeFormatPeriodParser>)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatter, iLocale_, JavaUtilLocale *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatter, iParseType_, OrgJodaTimePeriodType *)
 
 @implementation OrgJodaTimeFormatPeriodFormatter
 
@@ -86,21 +139,21 @@
 
 - (void)printToWithJavaLangStringBuffer:(JavaLangStringBuffer *)buf
           withOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period {
-  [self checkPrinter];
-  [self checkPeriodWithOrgJodaTimeReadablePeriod:period];
+  OrgJodaTimeFormatPeriodFormatter_checkPrinter(self);
+  OrgJodaTimeFormatPeriodFormatter_checkPeriodWithOrgJodaTimeReadablePeriod_(self, period);
   [((id<OrgJodaTimeFormatPeriodPrinter>) nil_chk([self getPrinter])) printToWithJavaLangStringBuffer:buf withOrgJodaTimeReadablePeriod:period withJavaUtilLocale:iLocale_];
 }
 
 - (void)printToWithJavaIoWriter:(JavaIoWriter *)outArg
   withOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period {
-  [self checkPrinter];
-  [self checkPeriodWithOrgJodaTimeReadablePeriod:period];
+  OrgJodaTimeFormatPeriodFormatter_checkPrinter(self);
+  OrgJodaTimeFormatPeriodFormatter_checkPeriodWithOrgJodaTimeReadablePeriod_(self, period);
   [((id<OrgJodaTimeFormatPeriodPrinter>) nil_chk([self getPrinter])) printToWithJavaIoWriter:outArg withOrgJodaTimeReadablePeriod:period withJavaUtilLocale:iLocale_];
 }
 
 - (NSString *)printWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period {
-  [self checkPrinter];
-  [self checkPeriodWithOrgJodaTimeReadablePeriod:period];
+  OrgJodaTimeFormatPeriodFormatter_checkPrinter(self);
+  OrgJodaTimeFormatPeriodFormatter_checkPeriodWithOrgJodaTimeReadablePeriod_(self, period);
   id<OrgJodaTimeFormatPeriodPrinter> printer = [self getPrinter];
   JavaLangStringBuffer *buf = [[[JavaLangStringBuffer alloc] initWithInt:[((id<OrgJodaTimeFormatPeriodPrinter>) nil_chk(printer)) calculatePrintedLengthWithOrgJodaTimeReadablePeriod:period withJavaUtilLocale:iLocale_]] autorelease];
   [printer printToWithJavaLangStringBuffer:buf withOrgJodaTimeReadablePeriod:period withJavaUtilLocale:iLocale_];
@@ -108,32 +161,28 @@
 }
 
 - (void)checkPrinter {
-  if (iPrinter_ == nil) {
-    @throw [[[JavaLangUnsupportedOperationException alloc] initWithNSString:@"Printing not supported"] autorelease];
-  }
+  OrgJodaTimeFormatPeriodFormatter_checkPrinter(self);
 }
 
 - (void)checkPeriodWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period {
-  if (period == nil) {
-    @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"Period must not be null"] autorelease];
-  }
+  OrgJodaTimeFormatPeriodFormatter_checkPeriodWithOrgJodaTimeReadablePeriod_(self, period);
 }
 
 - (jint)parseIntoWithOrgJodaTimeReadWritablePeriod:(id<OrgJodaTimeReadWritablePeriod>)period
                                       withNSString:(NSString *)text
                                            withInt:(jint)position {
-  [self checkParser];
-  [self checkPeriodWithOrgJodaTimeReadablePeriod:period];
+  OrgJodaTimeFormatPeriodFormatter_checkParser(self);
+  OrgJodaTimeFormatPeriodFormatter_checkPeriodWithOrgJodaTimeReadablePeriod_(self, period);
   return [((id<OrgJodaTimeFormatPeriodParser>) nil_chk([self getParser])) parseIntoWithOrgJodaTimeReadWritablePeriod:period withNSString:text withInt:position withJavaUtilLocale:iLocale_];
 }
 
 - (OrgJodaTimePeriod *)parsePeriodWithNSString:(NSString *)text {
-  [self checkParser];
+  OrgJodaTimeFormatPeriodFormatter_checkParser(self);
   return [((OrgJodaTimeMutablePeriod *) nil_chk([self parseMutablePeriodWithNSString:text])) toPeriod];
 }
 
 - (OrgJodaTimeMutablePeriod *)parseMutablePeriodWithNSString:(NSString *)text {
-  [self checkParser];
+  OrgJodaTimeFormatPeriodFormatter_checkParser(self);
   OrgJodaTimeMutablePeriod *period = [[[OrgJodaTimeMutablePeriod alloc] initWithLong:0 withOrgJodaTimePeriodType:iParseType_] autorelease];
   jint newPos = [((id<OrgJodaTimeFormatPeriodParser>) nil_chk([self getParser])) parseIntoWithOrgJodaTimeReadWritablePeriod:period withNSString:text withInt:0 withJavaUtilLocale:iLocale_];
   if (newPos >= 0) {
@@ -148,16 +197,14 @@
 }
 
 - (void)checkParser {
-  if (iParser_ == nil) {
-    @throw [[[JavaLangUnsupportedOperationException alloc] initWithNSString:@"Parsing not supported"] autorelease];
-  }
+  OrgJodaTimeFormatPeriodFormatter_checkParser(self);
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatPeriodFormatter_set_iPrinter_(self, nil);
-  OrgJodaTimeFormatPeriodFormatter_set_iParser_(self, nil);
-  OrgJodaTimeFormatPeriodFormatter_set_iLocale_(self, nil);
-  OrgJodaTimeFormatPeriodFormatter_set_iParseType_(self, nil);
+  RELEASE_(iPrinter_);
+  RELEASE_(iParser_);
+  RELEASE_(iLocale_);
+  RELEASE_(iParseType_);
   [super dealloc];
 }
 
@@ -197,8 +244,28 @@
     { "iLocale_", NULL, 0x12, "Ljava.util.Locale;", NULL,  },
     { "iParseType_", NULL, 0x12, "Lorg.joda.time.PeriodType;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormatter = { "PeriodFormatter", "org.joda.time.format", NULL, 0x1, 19, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormatter = { 1, "PeriodFormatter", "org.joda.time.format", NULL, 0x1, 19, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeFormatPeriodFormatter;
 }
 
 @end
+
+void OrgJodaTimeFormatPeriodFormatter_checkPrinter(OrgJodaTimeFormatPeriodFormatter *self) {
+  if (self->iPrinter_ == nil) {
+    @throw [[[JavaLangUnsupportedOperationException alloc] initWithNSString:@"Printing not supported"] autorelease];
+  }
+}
+
+void OrgJodaTimeFormatPeriodFormatter_checkPeriodWithOrgJodaTimeReadablePeriod_(OrgJodaTimeFormatPeriodFormatter *self, id<OrgJodaTimeReadablePeriod> period) {
+  if (period == nil) {
+    @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"Period must not be null"] autorelease];
+  }
+}
+
+void OrgJodaTimeFormatPeriodFormatter_checkParser(OrgJodaTimeFormatPeriodFormatter *self) {
+  if (self->iParser_ == nil) {
+    @throw [[[JavaLangUnsupportedOperationException alloc] initWithNSString:@"Parsing not supported"] autorelease];
+  }
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatter)

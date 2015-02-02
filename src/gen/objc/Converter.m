@@ -5,6 +5,7 @@
 
 #include "Converter.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 
 @interface OrgJodaTimeConvertConverter : NSObject
 @end
@@ -15,9 +16,10 @@
   static const J2ObjcMethodInfo methods[] = {
     { "getSupportedType", NULL, "Ljava.lang.Class;", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertConverter = { "Converter", "org.joda.time.convert", NULL, 0x201, 1, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertConverter = { 1, "Converter", "org.joda.time.convert", NULL, 0x201, 1, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeConvertConverter;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertConverter)

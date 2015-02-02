@@ -6,7 +6,17 @@
 #include "BaseDurationField.h"
 #include "DurationFieldType.h"
 #include "FieldUtils.h"
+#include "J2ObjC_source.h"
 #include "PreciseDurationField.h"
+
+@interface OrgJodaTimeFieldPreciseDurationField () {
+ @public
+  /**
+   @brief The size of the unit
+   */
+  jlong iUnitMillis_;
+}
+@end
 
 @implementation OrgJodaTimeFieldPreciseDurationField
 
@@ -100,8 +110,10 @@
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeFieldPreciseDurationField_serialVersionUID },
     { "iUnitMillis_", NULL, 0x12, "J", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldPreciseDurationField = { "PreciseDurationField", "org.joda.time.field", NULL, 0x1, 11, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldPreciseDurationField = { 1, "PreciseDurationField", "org.joda.time.field", NULL, 0x1, 11, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeFieldPreciseDurationField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldPreciseDurationField)

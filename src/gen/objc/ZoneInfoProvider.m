@@ -7,6 +7,7 @@
 #include "DateTimeZoneBuilder.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
+#include "J2ObjC_source.h"
 #include "ZoneInfoProvider.h"
 #include "java/io/DataInputStream.h"
 #include "java/io/File.h"
@@ -24,8 +25,69 @@
 #include "java/util/TreeSet.h"
 #include "java/util/concurrent/ConcurrentHashMap.h"
 
+__attribute__((unused)) static JavaIoInputStream *OrgJodaTimeTzZoneInfoProvider_openResourceWithNSString_(OrgJodaTimeTzZoneInfoProvider *self, NSString *name);
+__attribute__((unused)) static OrgJodaTimeDateTimeZone *OrgJodaTimeTzZoneInfoProvider_loadZoneDataWithNSString_(OrgJodaTimeTzZoneInfoProvider *self, NSString *id_);
 __attribute__((unused)) static id<JavaUtilMap> OrgJodaTimeTzZoneInfoProvider_loadZoneInfoMapWithJavaIoInputStream_(JavaIoInputStream *inArg);
 __attribute__((unused)) static void OrgJodaTimeTzZoneInfoProvider_readZoneInfoMapWithJavaIoDataInputStream_withJavaUtilMap_(JavaIoDataInputStream *din, id<JavaUtilMap> zimap);
+
+@interface OrgJodaTimeTzZoneInfoProvider () {
+ @public
+  /**
+   @brief The directory where the files are held.
+   */
+  JavaIoFile *iFileDir_;
+  /**
+   @brief The resource path.
+   */
+  NSString *iResourcePath_;
+  /**
+   @brief The class loader to use.
+   */
+  JavaLangClassLoader *iLoader_;
+  /**
+   @brief Maps ids to strings or SoftReferences to DateTimeZones.
+   */
+  id<JavaUtilMap> iZoneInfoMap_;
+}
+- (instancetype)initWithNSString:(NSString *)resourcePath
+         withJavaLangClassLoader:(JavaLangClassLoader *)loader
+                     withBoolean:(jboolean)favorSystemLoader;
+
+/**
+ @brief Opens a resource from file or classpath.
+ @param name the name to open
+ @return the input stream
+ @throws IOException if an error occurs
+ */
+- (JavaIoInputStream *)openResourceWithNSString:(NSString *)name;
+
+/**
+ @brief Loads the time zone data for one id.
+ @param id the id to load
+ @return the zone
+ */
+- (OrgJodaTimeDateTimeZone *)loadZoneDataWithNSString:(NSString *)id_;
+
+/**
+ @brief Loads the zone info map.
+ @param in the input stream
+ @return the map
+ */
++ (id<JavaUtilMap>)loadZoneInfoMapWithJavaIoInputStream:(JavaIoInputStream *)inArg;
+
+/**
+ @brief Reads the zone info map from file.
+ @param din the input stream
+ @param zimap gets filled with string id to string id mappings
+ */
++ (void)readZoneInfoMapWithJavaIoDataInputStream:(JavaIoDataInputStream *)din
+                                 withJavaUtilMap:(id<JavaUtilMap>)zimap;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoProvider, iFileDir_, JavaIoFile *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoProvider, iResourcePath_, NSString *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoProvider, iLoader_, JavaLangClassLoader *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoProvider, iZoneInfoMap_, id<JavaUtilMap>)
 
 @implementation OrgJodaTimeTzZoneInfoProvider
 
@@ -43,7 +105,7 @@ __attribute__((unused)) static void OrgJodaTimeTzZoneInfoProvider_readZoneInfoMa
     OrgJodaTimeTzZoneInfoProvider_set_iFileDir_(self, fileDir);
     OrgJodaTimeTzZoneInfoProvider_set_iResourcePath_(self, nil);
     OrgJodaTimeTzZoneInfoProvider_set_iLoader_(self, nil);
-    OrgJodaTimeTzZoneInfoProvider_set_iZoneInfoMap_(self, OrgJodaTimeTzZoneInfoProvider_loadZoneInfoMapWithJavaIoInputStream_([self openResourceWithNSString:@"ZoneInfoMap"]));
+    OrgJodaTimeTzZoneInfoProvider_set_iZoneInfoMap_(self, OrgJodaTimeTzZoneInfoProvider_loadZoneInfoMapWithJavaIoInputStream_(OrgJodaTimeTzZoneInfoProvider_openResourceWithNSString_(self, @"ZoneInfoMap")));
   }
   return self;
 }
@@ -73,7 +135,7 @@ __attribute__((unused)) static void OrgJodaTimeTzZoneInfoProvider_readZoneInfoMa
       loader = [[self getClass] getClassLoader];
     }
     OrgJodaTimeTzZoneInfoProvider_set_iLoader_(self, loader);
-    OrgJodaTimeTzZoneInfoProvider_set_iZoneInfoMap_(self, OrgJodaTimeTzZoneInfoProvider_loadZoneInfoMapWithJavaIoInputStream_([self openResourceWithNSString:@"ZoneInfoMap"]));
+    OrgJodaTimeTzZoneInfoProvider_set_iZoneInfoMap_(self, OrgJodaTimeTzZoneInfoProvider_loadZoneInfoMapWithJavaIoInputStream_(OrgJodaTimeTzZoneInfoProvider_openResourceWithNSString_(self, @"ZoneInfoMap")));
   }
   return self;
 }
@@ -98,10 +160,10 @@ __attribute__((unused)) static void OrgJodaTimeTzZoneInfoProvider_readZoneInfoMa
     if (tz != nil) {
       return tz;
     }
-    return [self loadZoneDataWithNSString:id_];
+    return OrgJodaTimeTzZoneInfoProvider_loadZoneDataWithNSString_(self, id_);
   }
   else if ([((NSString *) nil_chk(id_)) isEqual:obj]) {
-    return [self loadZoneDataWithNSString:id_];
+    return OrgJodaTimeTzZoneInfoProvider_loadZoneDataWithNSString_(self, id_);
   }
   return [self getZoneWithNSString:(NSString *) check_class_cast(obj, [NSString class])];
 }
@@ -115,48 +177,11 @@ __attribute__((unused)) static void OrgJodaTimeTzZoneInfoProvider_readZoneInfoMa
 }
 
 - (JavaIoInputStream *)openResourceWithNSString:(NSString *)name {
-  JavaIoInputStream *in;
-  if (iFileDir_ != nil) {
-    in = [[[JavaIoFileInputStream alloc] initWithJavaIoFile:[[[JavaIoFile alloc] initWithJavaIoFile:iFileDir_ withNSString:name] autorelease]] autorelease];
-  }
-  else {
-    NSString *path = [((NSString *) nil_chk(iResourcePath_)) concat:name];
-    if (iLoader_ != nil) {
-      in = [iLoader_ getResourceAsStreamWithNSString:path];
-    }
-    else {
-      in = JavaLangClassLoader_getSystemResourceAsStreamWithNSString_(path);
-    }
-    if (in == nil) {
-      JavaLangStringBuilder *buf = [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) [[[JavaLangStringBuilder alloc] initWithInt:40] autorelease]) appendWithNSString:@"Resource not found: \""])) appendWithNSString:path])) appendWithNSString:@"\" ClassLoader: "])) appendWithNSString:iLoader_ != nil ? [iLoader_ description] : @"system"];
-      @throw [[[JavaIoIOException alloc] initWithNSString:[((JavaLangStringBuilder *) nil_chk(buf)) description]] autorelease];
-    }
-  }
-  return in;
+  return OrgJodaTimeTzZoneInfoProvider_openResourceWithNSString_(self, name);
 }
 
 - (OrgJodaTimeDateTimeZone *)loadZoneDataWithNSString:(NSString *)id_ {
-  JavaIoInputStream *in = nil;
-  @try {
-    in = [self openResourceWithNSString:id_];
-    OrgJodaTimeDateTimeZone *tz = OrgJodaTimeTzDateTimeZoneBuilder_readFromWithJavaIoInputStream_withNSString_(in, id_);
-    [((id<JavaUtilMap>) nil_chk(iZoneInfoMap_)) putWithId:id_ withId:[[[JavaLangRefSoftReference alloc] initWithId:tz] autorelease]];
-    return tz;
-  }
-  @catch (JavaIoIOException *ex) {
-    [self uncaughtExceptionWithJavaLangException:ex];
-    [((id<JavaUtilMap>) nil_chk(iZoneInfoMap_)) removeWithId:id_];
-    return nil;
-  }
-  @finally {
-    @try {
-      if (in != nil) {
-        [in close];
-      }
-    }
-    @catch (JavaIoIOException *ex) {
-    }
-  }
+  return OrgJodaTimeTzZoneInfoProvider_loadZoneDataWithNSString_(self, id_);
 }
 
 + (id<JavaUtilMap>)loadZoneInfoMapWithJavaIoInputStream:(JavaIoInputStream *)inArg {
@@ -169,10 +194,10 @@ __attribute__((unused)) static void OrgJodaTimeTzZoneInfoProvider_readZoneInfoMa
 }
 
 - (void)dealloc {
-  OrgJodaTimeTzZoneInfoProvider_set_iFileDir_(self, nil);
-  OrgJodaTimeTzZoneInfoProvider_set_iResourcePath_(self, nil);
-  OrgJodaTimeTzZoneInfoProvider_set_iLoader_(self, nil);
-  OrgJodaTimeTzZoneInfoProvider_set_iZoneInfoMap_(self, nil);
+  RELEASE_(iFileDir_);
+  RELEASE_(iResourcePath_);
+  RELEASE_(iLoader_);
+  RELEASE_(iZoneInfoMap_);
   [super dealloc];
 }
 
@@ -204,11 +229,56 @@ __attribute__((unused)) static void OrgJodaTimeTzZoneInfoProvider_readZoneInfoMa
     { "iLoader_", NULL, 0x12, "Ljava.lang.ClassLoader;", NULL,  },
     { "iZoneInfoMap_", NULL, 0x12, "Ljava.util.Map;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzZoneInfoProvider = { "ZoneInfoProvider", "org.joda.time.tz", NULL, 0x1, 11, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeTzZoneInfoProvider = { 1, "ZoneInfoProvider", "org.joda.time.tz", NULL, 0x1, 11, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeTzZoneInfoProvider;
 }
 
 @end
+
+JavaIoInputStream *OrgJodaTimeTzZoneInfoProvider_openResourceWithNSString_(OrgJodaTimeTzZoneInfoProvider *self, NSString *name) {
+  JavaIoInputStream *in;
+  if (self->iFileDir_ != nil) {
+    in = [[[JavaIoFileInputStream alloc] initWithJavaIoFile:[[[JavaIoFile alloc] initWithJavaIoFile:self->iFileDir_ withNSString:name] autorelease]] autorelease];
+  }
+  else {
+    NSString *path = [((NSString *) nil_chk(self->iResourcePath_)) concat:name];
+    if (self->iLoader_ != nil) {
+      in = [self->iLoader_ getResourceAsStreamWithNSString:path];
+    }
+    else {
+      in = JavaLangClassLoader_getSystemResourceAsStreamWithNSString_(path);
+    }
+    if (in == nil) {
+      JavaLangStringBuilder *buf = [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) [[[JavaLangStringBuilder alloc] initWithInt:40] autorelease]) appendWithNSString:@"Resource not found: \""])) appendWithNSString:path])) appendWithNSString:@"\" ClassLoader: "])) appendWithNSString:self->iLoader_ != nil ? [self->iLoader_ description] : @"system"];
+      @throw [[[JavaIoIOException alloc] initWithNSString:[((JavaLangStringBuilder *) nil_chk(buf)) description]] autorelease];
+    }
+  }
+  return in;
+}
+
+OrgJodaTimeDateTimeZone *OrgJodaTimeTzZoneInfoProvider_loadZoneDataWithNSString_(OrgJodaTimeTzZoneInfoProvider *self, NSString *id_) {
+  JavaIoInputStream *in = nil;
+  @try {
+    in = OrgJodaTimeTzZoneInfoProvider_openResourceWithNSString_(self, id_);
+    OrgJodaTimeDateTimeZone *tz = OrgJodaTimeTzDateTimeZoneBuilder_readFromWithJavaIoInputStream_withNSString_(in, id_);
+    [((id<JavaUtilMap>) nil_chk(self->iZoneInfoMap_)) putWithId:id_ withId:[[[JavaLangRefSoftReference alloc] initWithId:tz] autorelease]];
+    return tz;
+  }
+  @catch (JavaIoIOException *ex) {
+    [self uncaughtExceptionWithJavaLangException:ex];
+    [((id<JavaUtilMap>) nil_chk(self->iZoneInfoMap_)) removeWithId:id_];
+    return nil;
+  }
+  @finally {
+    @try {
+      if (in != nil) {
+        [in close];
+      }
+    }
+    @catch (JavaIoIOException *ex) {
+    }
+  }
+}
 
 id<JavaUtilMap> OrgJodaTimeTzZoneInfoProvider_loadZoneInfoMapWithJavaIoInputStream_(JavaIoInputStream *inArg) {
   OrgJodaTimeTzZoneInfoProvider_init();
@@ -231,7 +301,7 @@ id<JavaUtilMap> OrgJodaTimeTzZoneInfoProvider_loadZoneInfoMapWithJavaIoInputStre
 void OrgJodaTimeTzZoneInfoProvider_readZoneInfoMapWithJavaIoDataInputStream_withJavaUtilMap_(JavaIoDataInputStream *din, id<JavaUtilMap> zimap) {
   OrgJodaTimeTzZoneInfoProvider_init();
   jint size = [((JavaIoDataInputStream *) nil_chk(din)) readUnsignedShort];
-  IOSObjectArray *pool = [IOSObjectArray arrayWithLength:size type:[IOSClass classWithClass:[NSString class]]];
+  IOSObjectArray *pool = [IOSObjectArray arrayWithLength:size type:NSString_class_()];
   for (jint i = 0; i < size; i++) {
     IOSObjectArray_Set(pool, i, [((NSString *) nil_chk([din readUTF])) intern]);
   }
@@ -245,3 +315,5 @@ void OrgJodaTimeTzZoneInfoProvider_readZoneInfoMapWithJavaIoDataInputStream_with
     }
   }
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzZoneInfoProvider)

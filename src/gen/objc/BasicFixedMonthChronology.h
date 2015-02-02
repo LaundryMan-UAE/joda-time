@@ -8,8 +8,8 @@
 
 @class OrgJodaTimeChronology;
 
-#import "JreEmulation.h"
 #include "BasicChronology.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoBasicFixedMonthChronology_MILLIS_PER_MONTH 2592000000LL
 #define OrgJodaTimeChronoBasicFixedMonthChronology_MILLIS_PER_YEAR 31557600000LL
@@ -71,7 +71,9 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoBasicFixedMonthChronology_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoBasicFixedMonthChronology)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicFixedMonthChronology, serialVersionUID, jlong)
 
@@ -80,5 +82,8 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicFixedMonthChronology, MONTH_LEN
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicFixedMonthChronology, MILLIS_PER_YEAR, jlong)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicFixedMonthChronology, MILLIS_PER_MONTH, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicFixedMonthChronology)
 
 #endif // _OrgJodaTimeChronoBasicFixedMonthChronology_H_

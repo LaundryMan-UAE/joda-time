@@ -12,7 +12,7 @@
 @protocol JavaUtilMap;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 
 #define OrgJodaTimePeriodType_serialVersionUID 2274324892792009998LL
@@ -25,19 +25,6 @@
  @since 1.0
  */
 @interface OrgJodaTimePeriodType : NSObject < JavaIoSerializable > {
- @public
-  /**
-   @brief The name of the type
-   */
-  NSString *iName_;
-  /**
-   @brief The array of types
-   */
-  IOSObjectArray *iTypes_;
-  /**
-   @brief The array of indices
-   */
-  IOSIntArray *iIndices_;
 }
 
 /**
@@ -298,15 +285,6 @@ withOrgJodaTimeDurationFieldTypeArray:(IOSObjectArray *)types
 - (OrgJodaTimePeriodType *)withMillisRemoved;
 
 /**
- @brief Removes the field specified by indices index.
- @param indicesIndex the index to remove
- @param name the name addition
- @return the new type
- */
-- (OrgJodaTimePeriodType *)withFieldRemovedWithInt:(jint)indicesIndex
-                                      withNSString:(NSString *)name;
-
-/**
  @brief Compares this type to another object.
  To be equal, the object must be a PeriodType with the same set of fields.
  @param obj the object to compare to
@@ -320,35 +298,47 @@ withOrgJodaTimeDurationFieldTypeArray:(IOSObjectArray *)types
  */
 - (NSUInteger)hash;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimePeriodType *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimePeriodType_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimePeriodType)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimePeriodType, iName_, NSString *)
-J2OBJC_FIELD_SETTER(OrgJodaTimePeriodType, iTypes_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimePeriodType, iIndices_, IOSIntArray *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_standard();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_yearMonthDayTime();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_yearMonthDay();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_yearWeekDayTime();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_yearWeekDay();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_yearDayTime();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_yearDay();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_dayTime();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_time();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_years();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_months();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_weeks();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_days();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_hours();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_minutes();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_seconds();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_millis();
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_forFieldsWithOrgJodaTimeDurationFieldTypeArray_(IOSObjectArray *types);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimePeriodType, serialVersionUID, jlong)
@@ -455,5 +445,8 @@ J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimePeriodType, cSeconds_, OrgJodaTimePeriodTy
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimePeriodType_cMillis_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimePeriodType, cMillis_, OrgJodaTimePeriodType *)
 J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimePeriodType, cMillis_, OrgJodaTimePeriodType *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimePeriodType)
 
 #endif // _OrgJodaTimePeriodType_H_

@@ -16,10 +16,10 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadableDateTime;
 
-#import "JreEmulation.h"
 #include "AssembledChronology.h"
 #include "DecoratedDateTimeField.h"
 #include "DecoratedDurationField.h"
+#include "J2ObjC_header.h"
 #include "java/lang/IllegalArgumentException.h"
 
 #define OrgJodaTimeChronoLimitChronology_serialVersionUID 7670866536893052522LL
@@ -35,7 +35,6 @@
  @public
   OrgJodaTimeDateTime *iLowerLimit_;
   OrgJodaTimeDateTime *iUpperLimit_;
-  OrgJodaTimeChronoLimitChronology *iWithUTC_;
 }
 
 /**
@@ -49,16 +48,6 @@
 + (OrgJodaTimeChronoLimitChronology *)getInstanceWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
                                            withOrgJodaTimeReadableDateTime:(id<OrgJodaTimeReadableDateTime>)lowerLimit
                                            withOrgJodaTimeReadableDateTime:(id<OrgJodaTimeReadableDateTime>)upperLimit;
-
-/**
- @brief Wraps another chronology, with datetime limits.
- When withUTC or withZone is called, the returned LimitChronology instance has the same limits, except they are time zone adjusted.
- @param lowerLimit inclusive lower limit, or null if none
- @param upperLimit exclusive upper limit, or null if none
- */
-- (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
-                      withOrgJodaTimeDateTime:(OrgJodaTimeDateTime *)lowerLimit
-                      withOrgJodaTimeDateTime:(OrgJodaTimeDateTime *)upperLimit;
 
 /**
  @brief Returns the inclusive lower limit instant.
@@ -105,12 +94,6 @@
 
 - (void)assembleWithOrgJodaTimeChronoAssembledChronology_Fields:(OrgJodaTimeChronoAssembledChronology_Fields *)fields;
 
-- (OrgJodaTimeDurationField *)convertFieldWithOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)field
-                                                   withJavaUtilHashMap:(JavaUtilHashMap *)converted;
-
-- (OrgJodaTimeDateTimeField *)convertFieldWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
-                                                   withJavaUtilHashMap:(JavaUtilHashMap *)converted;
-
 - (void)checkLimitsWithLong:(jlong)instant
                withNSString:(NSString *)desc;
 
@@ -135,20 +118,21 @@
  */
 - (NSString *)description;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoLimitChronology *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoLimitChronology_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoLimitChronology)
 
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology, iLowerLimit_, OrgJodaTimeDateTime *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology, iUpperLimit_, OrgJodaTimeDateTime *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology, iWithUTC_, OrgJodaTimeChronoLimitChronology *)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeChronoLimitChronology *OrgJodaTimeChronoLimitChronology_getInstanceWithOrgJodaTimeChronology_withOrgJodaTimeReadableDateTime_withOrgJodaTimeReadableDateTime_(OrgJodaTimeChronology *base, id<OrgJodaTimeReadableDateTime> lowerLimit, id<OrgJodaTimeReadableDateTime> upperLimit);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoLimitChronology, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoLimitChronology)
 
 #define OrgJodaTimeChronoLimitChronology_LimitException_serialVersionUID -5924689995607498581LL
 
@@ -156,9 +140,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoLimitChronology, serialVersionUID, j
  @brief Extends IllegalArgumentException such that the exception message is not generated unless it is actually requested.
  */
 @interface OrgJodaTimeChronoLimitChronology_LimitException : JavaLangIllegalArgumentException {
- @public
-  OrgJodaTimeChronoLimitChronology *this$0_;
-  jboolean iIsLow_;
 }
 
 - (instancetype)initWithOrgJodaTimeChronoLimitChronology:(OrgJodaTimeChronoLimitChronology *)outer$
@@ -169,23 +150,20 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoLimitChronology, serialVersionUID, j
 
 - (NSString *)description;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoLimitChronology_LimitException *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoLimitChronology_LimitException_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoLimitChronology_LimitException)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology_LimitException, this$0_, OrgJodaTimeChronoLimitChronology *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoLimitChronology_LimitException, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoLimitChronology_LimitException)
 
 #define OrgJodaTimeChronoLimitChronology_LimitDurationField_serialVersionUID 8049297699408782284LL
 
 @interface OrgJodaTimeChronoLimitChronology_LimitDurationField : OrgJodaTimeFieldDecoratedDurationField {
- @public
-  OrgJodaTimeChronoLimitChronology *this$0_;
 }
 
 - (instancetype)initWithOrgJodaTimeChronoLimitChronology:(OrgJodaTimeChronoLimitChronology *)outer$
@@ -215,26 +193,20 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoLimitChronology_LimitException, seri
 - (jlong)getDifferenceAsLongWithLong:(jlong)minuendInstant
                             withLong:(jlong)subtrahendInstant;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoLimitChronology_LimitDurationField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoLimitChronology_LimitDurationField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoLimitChronology_LimitDurationField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology_LimitDurationField, this$0_, OrgJodaTimeChronoLimitChronology *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoLimitChronology_LimitDurationField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoLimitChronology_LimitDurationField)
 
 #define OrgJodaTimeChronoLimitChronology_LimitDateTimeField_serialVersionUID -2435306746995699312LL
 
 @interface OrgJodaTimeChronoLimitChronology_LimitDateTimeField : OrgJodaTimeFieldDecoratedDateTimeField {
- @public
-  OrgJodaTimeChronoLimitChronology *this$0_;
-  OrgJodaTimeDurationField *iDurationField_;
-  OrgJodaTimeDurationField *iRangeDurationField_;
-  OrgJodaTimeDurationField *iLeapDurationField_;
 }
 
 - (instancetype)initWithOrgJodaTimeChronoLimitChronology:(OrgJodaTimeChronoLimitChronology *)outer$
@@ -303,19 +275,15 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoLimitChronology_LimitDurationField, 
 
 - (jint)getMaximumShortTextLengthWithJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoLimitChronology_LimitDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoLimitChronology_LimitDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoLimitChronology_LimitDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField, this$0_, OrgJodaTimeChronoLimitChronology *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField, iDurationField_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField, iRangeDurationField_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField, iLeapDurationField_, OrgJodaTimeDurationField *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField)
 
 #endif // _OrgJodaTimeChronoLimitChronology_H_

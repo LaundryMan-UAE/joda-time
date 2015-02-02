@@ -13,6 +13,7 @@
 #include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "ISOPeriodFormat.h"
+#include "J2ObjC_source.h"
 #include "MutablePeriod.h"
 #include "Period.h"
 #include "PeriodFormatter.h"
@@ -23,6 +24,10 @@
 #include "ReadablePeriod.h"
 #include "java/lang/CloneNotSupportedException.h"
 #include "java/lang/InternalError.h"
+
+@interface OrgJodaTimeMutablePeriod () {
+}
+@end
 
 @implementation OrgJodaTimeMutablePeriod
 
@@ -413,7 +418,7 @@ withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
 }
 
 + (IOSObjectArray *)__annotations_parseWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -494,7 +499,7 @@ withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeMutablePeriod_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeMutablePeriod = { "MutablePeriod", "org.joda.time", NULL, 0x1, 72, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeMutablePeriod = { 1, "MutablePeriod", "org.joda.time", NULL, 0x1, 72, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeMutablePeriod;
 }
 
@@ -509,3 +514,5 @@ OrgJodaTimeMutablePeriod *OrgJodaTimeMutablePeriod_parseWithNSString_withOrgJoda
   OrgJodaTimeMutablePeriod_init();
   return [((OrgJodaTimePeriod *) nil_chk([((OrgJodaTimeFormatPeriodFormatter *) nil_chk(formatter)) parsePeriodWithNSString:str])) toMutablePeriod];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeMutablePeriod)

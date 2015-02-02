@@ -6,10 +6,22 @@
 #include "DateTimeFieldType.h"
 #include "DurationField.h"
 #include "FieldUtils.h"
-#include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "PreciseDateTimeField.h"
 #include "PreciseDurationDateTimeField.h"
 #include "java/lang/IllegalArgumentException.h"
+
+@interface OrgJodaTimeFieldPreciseDateTimeField () {
+ @public
+  /**
+   @brief The maximum range in the correct units
+   */
+  jint iRange_;
+  OrgJodaTimeDurationField *iRangeField_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldPreciseDateTimeField, iRangeField_, OrgJodaTimeDurationField *)
 
 @implementation OrgJodaTimeFieldPreciseDateTimeField
 
@@ -65,7 +77,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeFieldPreciseDateTimeField_set_iRangeField_(self, nil);
+  RELEASE_(iRangeField_);
   [super dealloc];
 }
 
@@ -90,8 +102,10 @@
     { "iRange_", NULL, 0x12, "I", NULL,  },
     { "iRangeField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldPreciseDateTimeField = { "PreciseDateTimeField", "org.joda.time.field", NULL, 0x1, 7, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldPreciseDateTimeField = { 1, "PreciseDateTimeField", "org.joda.time.field", NULL, 0x1, 7, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeFieldPreciseDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldPreciseDateTimeField)

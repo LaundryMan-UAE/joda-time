@@ -8,8 +8,8 @@
 
 @class JavaUtilTimeZone;
 
-#import "JreEmulation.h"
 #include "DateTimeZone.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeUTCDateTimeZone_serialVersionUID -3513011772763289092LL
 
@@ -47,9 +47,14 @@
 FOUNDATION_EXPORT BOOL OrgJodaTimeUTCDateTimeZone_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeUTCDateTimeZone)
 
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeZone *OrgJodaTimeUTCDateTimeZone_INSTANCE_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeUTCDateTimeZone, INSTANCE_, OrgJodaTimeDateTimeZone *)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeUTCDateTimeZone, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeUTCDateTimeZone)
 
 #endif // _OrgJodaTimeUTCDateTimeZone_H_

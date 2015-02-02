@@ -26,6 +26,7 @@
 #include "InternalParserDateTimeParser.h"
 #include "InternalPrinter.h"
 #include "InternalPrinterDateTimePrinter.h"
+#include "J2ObjC_source.h"
 #include "MillisDurationField.h"
 #include "MutableDateTime.h"
 #include "PreciseDateTimeField.h"
@@ -51,6 +52,191 @@
 
 #pragma clang diagnostic ignored "-Wprotocol"
 
+__attribute__((unused)) static void OrgJodaTimeFormatDateTimeFormatterBuilder_checkParserWithOrgJodaTimeFormatDateTimeParser_(OrgJodaTimeFormatDateTimeFormatterBuilder *self, id<OrgJodaTimeFormatDateTimeParser> parser);
+__attribute__((unused)) static void OrgJodaTimeFormatDateTimeFormatterBuilder_checkPrinterWithOrgJodaTimeFormatDateTimePrinter_(OrgJodaTimeFormatDateTimeFormatterBuilder *self, id<OrgJodaTimeFormatDateTimePrinter> printer);
+__attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatterBuilder *OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(OrgJodaTimeFormatDateTimeFormatterBuilder *self, id element);
+__attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatterBuilder *OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(OrgJodaTimeFormatDateTimeFormatterBuilder *self, id<OrgJodaTimeFormatInternalPrinter> printer, id<OrgJodaTimeFormatInternalParser> parser);
+__attribute__((unused)) static id OrgJodaTimeFormatDateTimeFormatterBuilder_getFormatter(OrgJodaTimeFormatDateTimeFormatterBuilder *self);
+__attribute__((unused)) static jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_isPrinterWithId_(OrgJodaTimeFormatDateTimeFormatterBuilder *self, id f);
+__attribute__((unused)) static jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_isParserWithId_(OrgJodaTimeFormatDateTimeFormatterBuilder *self, id f);
+__attribute__((unused)) static jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_isFormatterWithId_(OrgJodaTimeFormatDateTimeFormatterBuilder *self, id f);
+__attribute__((unused)) static jint OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear_getTwoDigitYearWithLong_withOrgJodaTimeChronology_(OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear *self, jlong instant, OrgJodaTimeChronology *chrono);
+__attribute__((unused)) static jint OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear_getTwoDigitYearWithOrgJodaTimeReadablePartial_(OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear *self, id<OrgJodaTimeReadablePartial> partial);
+__attribute__((unused)) static NSString *OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_printWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField *self, jlong instant, OrgJodaTimeChronology *chrono, JavaUtilLocale *locale);
+__attribute__((unused)) static NSString *OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_printWithOrgJodaTimeReadablePartial_withJavaUtilLocale_(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField *self, id<OrgJodaTimeReadablePartial> partial, JavaUtilLocale *locale);
+__attribute__((unused)) static IOSLongArray *OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction_getFractionDataWithLong_withOrgJodaTimeDateTimeField_(OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction *self, jlong fraction, OrgJodaTimeDateTimeField *field);
+__attribute__((unused)) static jint OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset_digitCountWithJavaLangCharSequence_withInt_withInt_(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset *self, id<JavaLangCharSequence> text, jint position, jint amount);
+__attribute__((unused)) static NSString *OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_printWithLong_withOrgJodaTimeDateTimeZone_withJavaUtilLocale_(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName *self, jlong instant, OrgJodaTimeDateTimeZone *displayZone, JavaUtilLocale *locale);
+__attribute__((unused)) static void OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_decomposeWithJavaUtilList_withJavaUtilList_withJavaUtilList_(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *self, id<JavaUtilList> elementPairs, id<JavaUtilList> printerList, id<JavaUtilList> parserList);
+__attribute__((unused)) static void OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_addArrayToListWithJavaUtilList_withNSObjectArray_(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *self, id<JavaUtilList> list, IOSObjectArray *array);
+
+@interface OrgJodaTimeFormatDateTimeFormatterBuilder () {
+ @public
+  /**
+   @brief Array of printers and parsers (alternating).
+   */
+  JavaUtilArrayList *iElementPairs_;
+  /**
+   @brief Cache of the last returned formatter.
+   */
+  id iFormatter_;
+}
+
+/**
+ @brief Checks if the parser is non null and a provider.
+ @param parser the parser to check
+ */
+- (void)checkParserWithOrgJodaTimeFormatDateTimeParser:(id<OrgJodaTimeFormatDateTimeParser>)parser;
+
+/**
+ @brief Checks if the printer is non null and a provider.
+ @param printer the printer to check
+ */
+- (void)checkPrinterWithOrgJodaTimeFormatDateTimePrinter:(id<OrgJodaTimeFormatDateTimePrinter>)printer;
+
+- (OrgJodaTimeFormatDateTimeFormatterBuilder *)append0WithId:(id)element;
+
+- (OrgJodaTimeFormatDateTimeFormatterBuilder *)append0WithOrgJodaTimeFormatInternalPrinter:(id<OrgJodaTimeFormatInternalPrinter>)printer
+                                                       withOrgJodaTimeFormatInternalParser:(id<OrgJodaTimeFormatInternalParser>)parser;
+
+- (id)getFormatter;
+
+- (jboolean)isPrinterWithId:(id)f;
+
+- (jboolean)isParserWithId:(id)f;
+
+- (jboolean)isFormatterWithId:(id)f;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder, iElementPairs_, JavaUtilArrayList *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder, iFormatter_, id)
+
+@interface OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral () {
+ @public
+  jchar iValue_;
+}
+@end
+
+@interface OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral () {
+ @public
+  NSString *iValue_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral, iValue_, NSString *)
+
+@interface OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear () {
+ @public
+  /**
+   @brief The field to print/parse.
+   */
+  OrgJodaTimeDateTimeFieldType *iType_;
+  /**
+   @brief The pivot year.
+   */
+  jint iPivot_;
+  jboolean iLenientParse_;
+}
+
+- (jint)getTwoDigitYearWithLong:(jlong)instant
+      withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
+
+- (jint)getTwoDigitYearWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear, iType_, OrgJodaTimeDateTimeFieldType *)
+
+@interface OrgJodaTimeFormatDateTimeFormatterBuilder_TextField () {
+ @public
+  OrgJodaTimeDateTimeFieldType *iFieldType_;
+  jboolean iShort_;
+}
+
+- (NSString *)printWithLong:(jlong)instant
+  withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono
+         withJavaUtilLocale:(JavaUtilLocale *)locale;
+
+- (NSString *)printWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
+                               withJavaUtilLocale:(JavaUtilLocale *)locale;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField, iFieldType_, OrgJodaTimeDateTimeFieldType *)
+
+@interface OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction () {
+ @public
+  OrgJodaTimeDateTimeFieldType *iFieldType_;
+}
+
+- (IOSLongArray *)getFractionDataWithLong:(jlong)fraction
+             withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction, iFieldType_, OrgJodaTimeDateTimeFieldType *)
+
+@interface OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset () {
+ @public
+  NSString *iZeroOffsetPrintText_;
+  NSString *iZeroOffsetParseText_;
+  jboolean iShowSeparators_;
+  jint iMinFields_;
+  jint iMaxFields_;
+}
+
+/**
+ @brief Returns actual amount of digits to parse, but no more than original 'amount' parameter.
+ */
+- (jint)digitCountWithJavaLangCharSequence:(id<JavaLangCharSequence>)text
+                                   withInt:(jint)position
+                                   withInt:(jint)amount;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset, iZeroOffsetPrintText_, NSString *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset, iZeroOffsetParseText_, NSString *)
+
+@interface OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName () {
+ @public
+  id<JavaUtilMap> iParseLookup_;
+  jint iType_;
+}
+
+- (NSString *)printWithLong:(jlong)instant
+withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
+         withJavaUtilLocale:(JavaUtilLocale *)locale;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName, iParseLookup_, id<JavaUtilMap>)
+
+@interface OrgJodaTimeFormatDateTimeFormatterBuilder_Composite () {
+ @public
+  IOSObjectArray *iPrinters_;
+  IOSObjectArray *iParsers_;
+  jint iPrintedLengthEstimate_;
+  jint iParsedLengthEstimate_;
+}
+
+/**
+ @brief Processes the element pairs, putting results into the given printer and parser lists.
+ */
+- (void)decomposeWithJavaUtilList:(id<JavaUtilList>)elementPairs
+                 withJavaUtilList:(id<JavaUtilList>)printerList
+                 withJavaUtilList:(id<JavaUtilList>)parserList;
+
+- (void)addArrayToListWithJavaUtilList:(id<JavaUtilList>)list
+                     withNSObjectArray:(IOSObjectArray *)array;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite, iPrinters_, IOSObjectArray *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite, iParsers_, IOSObjectArray *)
+
+@interface OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser () {
+ @public
+  IOSObjectArray *iParsers_;
+  jint iParsedLengthEstimate_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser, iParsers_, IOSObjectArray *)
+
 @implementation OrgJodaTimeFormatDateTimeFormatterBuilder
 
 - (instancetype)init {
@@ -61,13 +247,13 @@
 }
 
 - (OrgJodaTimeFormatDateTimeFormatter *)toFormatter {
-  id f = [self getFormatter];
+  id f = OrgJodaTimeFormatDateTimeFormatterBuilder_getFormatter(self);
   id<OrgJodaTimeFormatInternalPrinter> printer = nil;
-  if ([self isPrinterWithId:f]) {
+  if (OrgJodaTimeFormatDateTimeFormatterBuilder_isPrinterWithId_(self, f)) {
     printer = (id<OrgJodaTimeFormatInternalPrinter>) check_protocol_cast(f, @protocol(OrgJodaTimeFormatInternalPrinter));
   }
   id<OrgJodaTimeFormatInternalParser> parser = nil;
-  if ([self isParserWithId:f]) {
+  if (OrgJodaTimeFormatDateTimeFormatterBuilder_isParserWithId_(self, f)) {
     parser = (id<OrgJodaTimeFormatInternalParser>) check_protocol_cast(f, @protocol(OrgJodaTimeFormatInternalParser));
   }
   if (printer != nil || parser != nil) {
@@ -77,8 +263,8 @@
 }
 
 - (id<OrgJodaTimeFormatDateTimePrinter>)toPrinter {
-  id f = [self getFormatter];
-  if ([self isPrinterWithId:f]) {
+  id f = OrgJodaTimeFormatDateTimeFormatterBuilder_getFormatter(self);
+  if (OrgJodaTimeFormatDateTimeFormatterBuilder_isPrinterWithId_(self, f)) {
     id<OrgJodaTimeFormatInternalPrinter> ip = (id<OrgJodaTimeFormatInternalPrinter>) check_protocol_cast(f, @protocol(OrgJodaTimeFormatInternalPrinter));
     return OrgJodaTimeFormatInternalPrinterDateTimePrinter_ofWithOrgJodaTimeFormatInternalPrinter_(ip);
   }
@@ -86,8 +272,8 @@
 }
 
 - (id<OrgJodaTimeFormatDateTimeParser>)toParser {
-  id f = [self getFormatter];
-  if ([self isParserWithId:f]) {
+  id f = OrgJodaTimeFormatDateTimeFormatterBuilder_getFormatter(self);
+  if (OrgJodaTimeFormatDateTimeFormatterBuilder_isParserWithId_(self, f)) {
     id<OrgJodaTimeFormatInternalParser> ip = (id<OrgJodaTimeFormatInternalParser>) check_protocol_cast(f, @protocol(OrgJodaTimeFormatInternalParser));
     return OrgJodaTimeFormatInternalParserDateTimeParser_ofWithOrgJodaTimeFormatInternalParser_(ip);
   }
@@ -95,15 +281,15 @@
 }
 
 - (jboolean)canBuildFormatter {
-  return [self isFormatterWithId:[self getFormatter]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_isFormatterWithId_(self, OrgJodaTimeFormatDateTimeFormatterBuilder_getFormatter(self));
 }
 
 - (jboolean)canBuildPrinter {
-  return [self isPrinterWithId:[self getFormatter]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_isPrinterWithId_(self, OrgJodaTimeFormatDateTimeFormatterBuilder_getFormatter(self));
 }
 
 - (jboolean)canBuildParser {
-  return [self isParserWithId:[self getFormatter]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_isParserWithId_(self, OrgJodaTimeFormatDateTimeFormatterBuilder_getFormatter(self));
 }
 
 - (void)clear {
@@ -115,30 +301,30 @@
   if (formatter == nil) {
     @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"No formatter supplied"] autorelease];
   }
-  return [self append0WithOrgJodaTimeFormatInternalPrinter:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(formatter)) getPrinter0] withOrgJodaTimeFormatInternalParser:[formatter getParser0]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(self, [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(formatter)) getPrinter0], [formatter getParser0]);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendWithOrgJodaTimeFormatDateTimePrinter:(id<OrgJodaTimeFormatDateTimePrinter>)printer {
-  [self checkPrinterWithOrgJodaTimeFormatDateTimePrinter:printer];
-  return [self append0WithOrgJodaTimeFormatInternalPrinter:OrgJodaTimeFormatDateTimePrinterInternalPrinter_ofWithOrgJodaTimeFormatDateTimePrinter_(printer) withOrgJodaTimeFormatInternalParser:nil];
+  OrgJodaTimeFormatDateTimeFormatterBuilder_checkPrinterWithOrgJodaTimeFormatDateTimePrinter_(self, printer);
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(self, OrgJodaTimeFormatDateTimePrinterInternalPrinter_ofWithOrgJodaTimeFormatDateTimePrinter_(printer), nil);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendWithOrgJodaTimeFormatDateTimeParser:(id<OrgJodaTimeFormatDateTimeParser>)parser {
-  [self checkParserWithOrgJodaTimeFormatDateTimeParser:parser];
-  return [self append0WithOrgJodaTimeFormatInternalPrinter:nil withOrgJodaTimeFormatInternalParser:OrgJodaTimeFormatDateTimeParserInternalParser_ofWithOrgJodaTimeFormatDateTimeParser_(parser)];
+  OrgJodaTimeFormatDateTimeFormatterBuilder_checkParserWithOrgJodaTimeFormatDateTimeParser_(self, parser);
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(self, nil, OrgJodaTimeFormatDateTimeParserInternalParser_ofWithOrgJodaTimeFormatDateTimeParser_(parser));
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendWithOrgJodaTimeFormatDateTimePrinter:(id<OrgJodaTimeFormatDateTimePrinter>)printer
                                                       withOrgJodaTimeFormatDateTimeParser:(id<OrgJodaTimeFormatDateTimeParser>)parser {
-  [self checkPrinterWithOrgJodaTimeFormatDateTimePrinter:printer];
-  [self checkParserWithOrgJodaTimeFormatDateTimeParser:parser];
-  return [self append0WithOrgJodaTimeFormatInternalPrinter:OrgJodaTimeFormatDateTimePrinterInternalPrinter_ofWithOrgJodaTimeFormatDateTimePrinter_(printer) withOrgJodaTimeFormatInternalParser:OrgJodaTimeFormatDateTimeParserInternalParser_ofWithOrgJodaTimeFormatDateTimeParser_(parser)];
+  OrgJodaTimeFormatDateTimeFormatterBuilder_checkPrinterWithOrgJodaTimeFormatDateTimePrinter_(self, printer);
+  OrgJodaTimeFormatDateTimeFormatterBuilder_checkParserWithOrgJodaTimeFormatDateTimeParser_(self, parser);
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(self, OrgJodaTimeFormatDateTimePrinterInternalPrinter_ofWithOrgJodaTimeFormatDateTimePrinter_(printer), OrgJodaTimeFormatDateTimeParserInternalParser_ofWithOrgJodaTimeFormatDateTimeParser_(parser));
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendWithOrgJodaTimeFormatDateTimePrinter:(id<OrgJodaTimeFormatDateTimePrinter>)printer
                                                  withOrgJodaTimeFormatDateTimeParserArray:(IOSObjectArray *)parsers {
   if (printer != nil) {
-    [self checkPrinterWithOrgJodaTimeFormatDateTimePrinter:printer];
+    OrgJodaTimeFormatDateTimeFormatterBuilder_checkPrinterWithOrgJodaTimeFormatDateTimePrinter_(self, printer);
   }
   if (parsers == nil) {
     @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"No parsers supplied"] autorelease];
@@ -148,9 +334,9 @@
     if (IOSObjectArray_Get(parsers, 0) == nil) {
       @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"No parser supplied"] autorelease];
     }
-    return [self append0WithOrgJodaTimeFormatInternalPrinter:OrgJodaTimeFormatDateTimePrinterInternalPrinter_ofWithOrgJodaTimeFormatDateTimePrinter_(printer) withOrgJodaTimeFormatInternalParser:OrgJodaTimeFormatDateTimeParserInternalParser_ofWithOrgJodaTimeFormatDateTimeParser_(IOSObjectArray_Get(parsers, 0))];
+    return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(self, OrgJodaTimeFormatDateTimePrinterInternalPrinter_ofWithOrgJodaTimeFormatDateTimePrinter_(printer), OrgJodaTimeFormatDateTimeParserInternalParser_ofWithOrgJodaTimeFormatDateTimeParser_(IOSObjectArray_Get(parsers, 0)));
   }
-  IOSObjectArray *copyOfParsers = [IOSObjectArray arrayWithLength:length type:[IOSClass classWithProtocol:@protocol(OrgJodaTimeFormatInternalParser)]];
+  IOSObjectArray *copyOfParsers = [IOSObjectArray arrayWithLength:length type:OrgJodaTimeFormatInternalParser_class_()];
   jint i;
   for (i = 0; i < length - 1; i++) {
     if ((IOSObjectArray_Set(copyOfParsers, i, OrgJodaTimeFormatDateTimeParserInternalParser_ofWithOrgJodaTimeFormatDateTimeParser_(IOSObjectArray_Get(parsers, i)))) == nil) {
@@ -158,44 +344,34 @@
     }
   }
   IOSObjectArray_Set(copyOfParsers, i, OrgJodaTimeFormatDateTimeParserInternalParser_ofWithOrgJodaTimeFormatDateTimeParser_(IOSObjectArray_Get(parsers, i)));
-  return [self append0WithOrgJodaTimeFormatInternalPrinter:OrgJodaTimeFormatDateTimePrinterInternalPrinter_ofWithOrgJodaTimeFormatDateTimePrinter_(printer) withOrgJodaTimeFormatInternalParser:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser alloc] initWithOrgJodaTimeFormatInternalParserArray:copyOfParsers] autorelease]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(self, OrgJodaTimeFormatDateTimePrinterInternalPrinter_ofWithOrgJodaTimeFormatDateTimePrinter_(printer), [[[OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser alloc] initWithOrgJodaTimeFormatInternalParserArray:copyOfParsers] autorelease]);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendOptionalWithOrgJodaTimeFormatDateTimeParser:(id<OrgJodaTimeFormatDateTimeParser>)parser {
-  [self checkParserWithOrgJodaTimeFormatDateTimeParser:parser];
-  IOSObjectArray *parsers = [IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeFormatDateTimeParserInternalParser_ofWithOrgJodaTimeFormatDateTimeParser_(parser), nil } count:2 type:[IOSClass classWithProtocol:@protocol(OrgJodaTimeFormatInternalParser)]];
-  return [self append0WithOrgJodaTimeFormatInternalPrinter:nil withOrgJodaTimeFormatInternalParser:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser alloc] initWithOrgJodaTimeFormatInternalParserArray:parsers] autorelease]];
+  OrgJodaTimeFormatDateTimeFormatterBuilder_checkParserWithOrgJodaTimeFormatDateTimeParser_(self, parser);
+  IOSObjectArray *parsers = [IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeFormatDateTimeParserInternalParser_ofWithOrgJodaTimeFormatDateTimeParser_(parser), nil } count:2 type:OrgJodaTimeFormatInternalParser_class_()];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(self, nil, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser alloc] initWithOrgJodaTimeFormatInternalParserArray:parsers] autorelease]);
 }
 
 - (void)checkParserWithOrgJodaTimeFormatDateTimeParser:(id<OrgJodaTimeFormatDateTimeParser>)parser {
-  if (parser == nil) {
-    @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"No parser supplied"] autorelease];
-  }
+  OrgJodaTimeFormatDateTimeFormatterBuilder_checkParserWithOrgJodaTimeFormatDateTimeParser_(self, parser);
 }
 
 - (void)checkPrinterWithOrgJodaTimeFormatDateTimePrinter:(id<OrgJodaTimeFormatDateTimePrinter>)printer {
-  if (printer == nil) {
-    @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"No printer supplied"] autorelease];
-  }
+  OrgJodaTimeFormatDateTimeFormatterBuilder_checkPrinterWithOrgJodaTimeFormatDateTimePrinter_(self, printer);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)append0WithId:(id)element {
-  OrgJodaTimeFormatDateTimeFormatterBuilder_set_iFormatter_(self, nil);
-  [((JavaUtilArrayList *) nil_chk(iElementPairs_)) addWithId:element];
-  [iElementPairs_ addWithId:element];
-  return self;
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, element);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)append0WithOrgJodaTimeFormatInternalPrinter:(id<OrgJodaTimeFormatInternalPrinter>)printer
                                                        withOrgJodaTimeFormatInternalParser:(id<OrgJodaTimeFormatInternalParser>)parser {
-  OrgJodaTimeFormatDateTimeFormatterBuilder_set_iFormatter_(self, nil);
-  [((JavaUtilArrayList *) nil_chk(iElementPairs_)) addWithId:printer];
-  [iElementPairs_ addWithId:parser];
-  return self;
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(self, printer, parser);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendLiteralWithChar:(jchar)c {
-  return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral alloc] initWithChar:c] autorelease]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral alloc] initWithChar:c] autorelease]);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendLiteralWithNSString:(NSString *)text {
@@ -206,9 +382,9 @@
     case 0:
     return self;
     case 1:
-    return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral alloc] initWithChar:[text charAtWithInt:0]] autorelease]];
+    return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral alloc] initWithChar:[text charAtWithInt:0]] autorelease]);
     default:
-    return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral alloc] initWithNSString:text] autorelease]];
+    return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral alloc] initWithNSString:text] autorelease]);
   }
 }
 
@@ -225,10 +401,10 @@
     @throw [[[JavaLangIllegalArgumentException alloc] init] autorelease];
   }
   if (minDigits <= 1) {
-    return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withInt:maxDigits withBoolean:NO] autorelease]];
+    return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withInt:maxDigits withBoolean:NO] autorelease]);
   }
   else {
-    return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withInt:maxDigits withBoolean:NO withInt:minDigits] autorelease]];
+    return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withInt:maxDigits withBoolean:NO withInt:minDigits] autorelease]);
   }
 }
 
@@ -240,7 +416,7 @@
   if (numDigits <= 0) {
     @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:JreStrcat("$I", @"Illegal number of digits: ", numDigits)] autorelease];
   }
-  return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withInt:numDigits withBoolean:NO] autorelease]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withInt:numDigits withBoolean:NO] autorelease]);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendSignedDecimalWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType
@@ -256,10 +432,10 @@
     @throw [[[JavaLangIllegalArgumentException alloc] init] autorelease];
   }
   if (minDigits <= 1) {
-    return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withInt:maxDigits withBoolean:YES] autorelease]];
+    return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withInt:maxDigits withBoolean:YES] autorelease]);
   }
   else {
-    return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withInt:maxDigits withBoolean:YES withInt:minDigits] autorelease]];
+    return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withInt:maxDigits withBoolean:YES withInt:minDigits] autorelease]);
   }
 }
 
@@ -271,21 +447,21 @@
   if (numDigits <= 0) {
     @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:JreStrcat("$I", @"Illegal number of digits: ", numDigits)] autorelease];
   }
-  return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withInt:numDigits withBoolean:YES] autorelease]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withInt:numDigits withBoolean:YES] autorelease]);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTextWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType {
   if (fieldType == nil) {
     @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"Field type must not be null"] autorelease];
   }
-  return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_TextField alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withBoolean:NO] autorelease]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_TextField alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withBoolean:NO] autorelease]);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendShortTextWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType {
   if (fieldType == nil) {
     @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"Field type must not be null"] autorelease];
   }
-  return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_TextField alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withBoolean:YES] autorelease]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_TextField alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withBoolean:YES] autorelease]);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendFractionWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType
@@ -300,7 +476,7 @@
   if (minDigits < 0 || maxDigits <= 0) {
     @throw [[[JavaLangIllegalArgumentException alloc] init] autorelease];
   }
-  return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withInt:minDigits withInt:maxDigits] autorelease]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction alloc] initWithOrgJodaTimeDateTimeFieldType:fieldType withInt:minDigits withInt:maxDigits] autorelease]);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendFractionOfSecondWithInt:(jint)minDigits
@@ -399,7 +575,7 @@
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTwoDigitYearWithInt:(jint)pivot
                                                              withBoolean:(jboolean)lenientParse {
-  return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear alloc] initWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_year() withInt:pivot withBoolean:lenientParse] autorelease]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear alloc] initWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_year() withInt:pivot withBoolean:lenientParse] autorelease]);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTwoDigitWeekyearWithInt:(jint)pivot {
@@ -408,7 +584,7 @@
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTwoDigitWeekyearWithInt:(jint)pivot
                                                                  withBoolean:(jboolean)lenientParse {
-  return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear alloc] initWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_weekyear() withInt:pivot withBoolean:lenientParse] autorelease]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear alloc] initWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_weekyear() withInt:pivot withBoolean:lenientParse] autorelease]);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendYearOfEraWithInt:(jint)minDigits
@@ -451,32 +627,32 @@
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTimeZoneName {
-  return [self append0WithOrgJodaTimeFormatInternalPrinter:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName alloc] initWithInt:OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_LONG_NAME withJavaUtilMap:nil] autorelease] withOrgJodaTimeFormatInternalParser:nil];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName alloc] initWithInt:OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_LONG_NAME withJavaUtilMap:nil] autorelease], nil);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTimeZoneNameWithJavaUtilMap:(id<JavaUtilMap>)parseLookup {
   OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName *pp = [[[OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName alloc] initWithInt:OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_LONG_NAME withJavaUtilMap:parseLookup] autorelease];
-  return [self append0WithOrgJodaTimeFormatInternalPrinter:pp withOrgJodaTimeFormatInternalParser:pp];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(self, pp, pp);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTimeZoneShortName {
-  return [self append0WithOrgJodaTimeFormatInternalPrinter:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName alloc] initWithInt:OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_SHORT_NAME withJavaUtilMap:nil] autorelease] withOrgJodaTimeFormatInternalParser:nil];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName alloc] initWithInt:OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_SHORT_NAME withJavaUtilMap:nil] autorelease], nil);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTimeZoneShortNameWithJavaUtilMap:(id<JavaUtilMap>)parseLookup {
   OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName *pp = [[[OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName alloc] initWithInt:OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_SHORT_NAME withJavaUtilMap:parseLookup] autorelease];
-  return [self append0WithOrgJodaTimeFormatInternalPrinter:pp withOrgJodaTimeFormatInternalParser:pp];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(self, pp, pp);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTimeZoneId {
-  return [self append0WithOrgJodaTimeFormatInternalPrinter:OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_get_INSTANCE() withOrgJodaTimeFormatInternalParser:OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_get_INSTANCE()];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(self, OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_get_INSTANCE(), OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_get_INSTANCE());
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTimeZoneOffsetWithNSString:(NSString *)zeroOffsetText
                                                                     withBoolean:(jboolean)showSeparators
                                                                         withInt:(jint)minFields
                                                                         withInt:(jint)maxFields {
-  return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset alloc] initWithNSString:zeroOffsetText withNSString:zeroOffsetText withBoolean:showSeparators withInt:minFields withInt:maxFields] autorelease]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset alloc] initWithNSString:zeroOffsetText withNSString:zeroOffsetText withBoolean:showSeparators withInt:minFields withInt:maxFields] autorelease]);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTimeZoneOffsetWithNSString:(NSString *)zeroOffsetPrintText
@@ -484,7 +660,7 @@
                                                                     withBoolean:(jboolean)showSeparators
                                                                         withInt:(jint)minFields
                                                                         withInt:(jint)maxFields {
-  return [self append0WithId:[[[OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset alloc] initWithNSString:zeroOffsetPrintText withNSString:zeroOffsetParseText withBoolean:showSeparators withInt:minFields withInt:maxFields] autorelease]];
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(self, [[[OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset alloc] initWithNSString:zeroOffsetPrintText withNSString:zeroOffsetParseText withBoolean:showSeparators withInt:minFields withInt:maxFields] autorelease]);
 }
 
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendPatternWithNSString:(NSString *)pattern {
@@ -493,50 +669,19 @@
 }
 
 - (id)getFormatter {
-  id f = iFormatter_;
-  if (f == nil) {
-    if ([((JavaUtilArrayList *) nil_chk(iElementPairs_)) size] == 2) {
-      id printer = [iElementPairs_ getWithInt:0];
-      id parser = [iElementPairs_ getWithInt:1];
-      if (printer != nil) {
-        if (printer == parser || parser == nil) {
-          f = printer;
-        }
-      }
-      else {
-        f = parser;
-      }
-    }
-    if (f == nil) {
-      f = [[[OrgJodaTimeFormatDateTimeFormatterBuilder_Composite alloc] initWithJavaUtilList:iElementPairs_] autorelease];
-    }
-    OrgJodaTimeFormatDateTimeFormatterBuilder_set_iFormatter_(self, f);
-  }
-  return f;
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_getFormatter(self);
 }
 
 - (jboolean)isPrinterWithId:(id)f {
-  if ([f conformsToProtocol: @protocol(OrgJodaTimeFormatInternalPrinter)]) {
-    if ([f isKindOfClass:[OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class]]) {
-      return [((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) nil_chk(((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) check_class_cast(f, [OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class])))) isPrinter];
-    }
-    return YES;
-  }
-  return NO;
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_isPrinterWithId_(self, f);
 }
 
 - (jboolean)isParserWithId:(id)f {
-  if ([f conformsToProtocol: @protocol(OrgJodaTimeFormatInternalParser)]) {
-    if ([f isKindOfClass:[OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class]]) {
-      return [((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) nil_chk(((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) check_class_cast(f, [OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class])))) isParser];
-    }
-    return YES;
-  }
-  return NO;
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_isParserWithId_(self, f);
 }
 
 - (jboolean)isFormatterWithId:(id)f {
-  return ([self isPrinterWithId:f] || [self isParserWithId:f]);
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_isFormatterWithId_(self, f);
 }
 
 + (void)appendUnknownStringWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
@@ -557,8 +702,8 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeFormatterBuilder_set_iElementPairs_(self, nil);
-  OrgJodaTimeFormatDateTimeFormatterBuilder_set_iFormatter_(self, nil);
+  RELEASE_(iElementPairs_);
+  RELEASE_(iFormatter_);
   [super dealloc];
 }
 
@@ -651,11 +796,84 @@
     { "iElementPairs_", NULL, 0x2, "Ljava.util.ArrayList;", NULL,  },
     { "iFormatter_", NULL, 0x2, "Ljava.lang.Object;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder = { "DateTimeFormatterBuilder", "org.joda.time.format", NULL, 0x1, 76, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder = { 1, "DateTimeFormatterBuilder", "org.joda.time.format", NULL, 0x1, 76, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormatterBuilder;
 }
 
 @end
+
+void OrgJodaTimeFormatDateTimeFormatterBuilder_checkParserWithOrgJodaTimeFormatDateTimeParser_(OrgJodaTimeFormatDateTimeFormatterBuilder *self, id<OrgJodaTimeFormatDateTimeParser> parser) {
+  if (parser == nil) {
+    @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"No parser supplied"] autorelease];
+  }
+}
+
+void OrgJodaTimeFormatDateTimeFormatterBuilder_checkPrinterWithOrgJodaTimeFormatDateTimePrinter_(OrgJodaTimeFormatDateTimeFormatterBuilder *self, id<OrgJodaTimeFormatDateTimePrinter> printer) {
+  if (printer == nil) {
+    @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"No printer supplied"] autorelease];
+  }
+}
+
+OrgJodaTimeFormatDateTimeFormatterBuilder *OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithId_(OrgJodaTimeFormatDateTimeFormatterBuilder *self, id element) {
+  OrgJodaTimeFormatDateTimeFormatterBuilder_set_iFormatter_(self, nil);
+  [((JavaUtilArrayList *) nil_chk(self->iElementPairs_)) addWithId:element];
+  [self->iElementPairs_ addWithId:element];
+  return self;
+}
+
+OrgJodaTimeFormatDateTimeFormatterBuilder *OrgJodaTimeFormatDateTimeFormatterBuilder_append0WithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(OrgJodaTimeFormatDateTimeFormatterBuilder *self, id<OrgJodaTimeFormatInternalPrinter> printer, id<OrgJodaTimeFormatInternalParser> parser) {
+  OrgJodaTimeFormatDateTimeFormatterBuilder_set_iFormatter_(self, nil);
+  [((JavaUtilArrayList *) nil_chk(self->iElementPairs_)) addWithId:printer];
+  [self->iElementPairs_ addWithId:parser];
+  return self;
+}
+
+id OrgJodaTimeFormatDateTimeFormatterBuilder_getFormatter(OrgJodaTimeFormatDateTimeFormatterBuilder *self) {
+  id f = self->iFormatter_;
+  if (f == nil) {
+    if ([((JavaUtilArrayList *) nil_chk(self->iElementPairs_)) size] == 2) {
+      id printer = [self->iElementPairs_ getWithInt:0];
+      id parser = [self->iElementPairs_ getWithInt:1];
+      if (printer != nil) {
+        if (printer == parser || parser == nil) {
+          f = printer;
+        }
+      }
+      else {
+        f = parser;
+      }
+    }
+    if (f == nil) {
+      f = [[[OrgJodaTimeFormatDateTimeFormatterBuilder_Composite alloc] initWithJavaUtilList:self->iElementPairs_] autorelease];
+    }
+    OrgJodaTimeFormatDateTimeFormatterBuilder_set_iFormatter_(self, f);
+  }
+  return f;
+}
+
+jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_isPrinterWithId_(OrgJodaTimeFormatDateTimeFormatterBuilder *self, id f) {
+  if ([OrgJodaTimeFormatInternalPrinter_class_() isInstance:f]) {
+    if ([f isKindOfClass:[OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class]]) {
+      return [((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) nil_chk(((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) check_class_cast(f, [OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class])))) isPrinter];
+    }
+    return YES;
+  }
+  return NO;
+}
+
+jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_isParserWithId_(OrgJodaTimeFormatDateTimeFormatterBuilder *self, id f) {
+  if ([OrgJodaTimeFormatInternalParser_class_() isInstance:f]) {
+    if ([f isKindOfClass:[OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class]]) {
+      return [((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) nil_chk(((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) check_class_cast(f, [OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class])))) isParser];
+    }
+    return YES;
+  }
+  return NO;
+}
+
+jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_isFormatterWithId_(OrgJodaTimeFormatDateTimeFormatterBuilder *self, id f) {
+  return (OrgJodaTimeFormatDateTimeFormatterBuilder_isPrinterWithId_(self, f) || OrgJodaTimeFormatDateTimeFormatterBuilder_isParserWithId_(self, f));
+}
 
 void OrgJodaTimeFormatDateTimeFormatterBuilder_appendUnknownStringWithJavaLangAppendable_withInt_(id<JavaLangAppendable> appendable, jint len) {
   OrgJodaTimeFormatDateTimeFormatterBuilder_init();
@@ -697,6 +915,8 @@ jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithIgnoreCaseWithJav
   }
   return YES;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder)
 
 @implementation OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral
 
@@ -769,11 +989,13 @@ jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithIgnoreCaseWithJav
   static const J2ObjcFieldInfo fields[] = {
     { "iValue_", NULL, 0x12, "C", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral = { "CharacterLiteral", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 6, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral = { 1, "CharacterLiteral", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 6, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral)
 
 @implementation OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral
 
@@ -817,7 +1039,7 @@ jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithIgnoreCaseWithJav
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral_set_iValue_(self, nil);
+  RELEASE_(iValue_);
   [super dealloc];
 }
 
@@ -838,11 +1060,13 @@ jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithIgnoreCaseWithJav
   static const J2ObjcFieldInfo fields[] = {
     { "iValue_", NULL, 0x12, "Ljava.lang.String;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral = { "StringLiteral", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 6, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral = { 1, "StringLiteral", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 6, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral)
 
 @implementation OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter
 
@@ -919,7 +1143,7 @@ jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithIgnoreCaseWithJav
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter_set_iFieldType_(self, nil);
+  RELEASE_(iFieldType_);
   [super dealloc];
 }
 
@@ -941,11 +1165,13 @@ jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithIgnoreCaseWithJav
     { "iMaxParsedDigits_", NULL, 0x14, "I", NULL,  },
     { "iSigned_", NULL, 0x14, "Z", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter = { "NumberFormatter", "org.joda.time.format", "DateTimeFormatterBuilder", 0x408, 3, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter = { 1, "NumberFormatter", "org.joda.time.format", "DateTimeFormatterBuilder", 0x408, 3, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter)
 
 @implementation OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber
 
@@ -997,11 +1223,13 @@ jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithIgnoreCaseWithJav
     { "printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:", "printTo", "V", 0x1, "Ljava.io.IOException;" },
     { "printToWithJavaLangAppendable:withOrgJodaTimeReadablePartial:withJavaUtilLocale:", "printTo", "V", 0x1, "Ljava.io.IOException;" },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber = { "UnpaddedNumber", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 4, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber = { 1, "UnpaddedNumber", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 4, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber)
 
 @implementation OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber
 
@@ -1065,11 +1293,13 @@ jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithIgnoreCaseWithJav
   static const J2ObjcFieldInfo fields[] = {
     { "iMinPrintedDigits_", NULL, 0x14, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber = { "PaddedNumber", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 4, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber = { 1, "PaddedNumber", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 4, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber)
 
 @implementation OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber
 
@@ -1109,11 +1339,13 @@ jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithIgnoreCaseWithJav
     { "initWithOrgJodaTimeDateTimeFieldType:withInt:withBoolean:", "FixedNumber", NULL, 0x4, NULL },
     { "parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withJavaLangCharSequence:withInt:", "parseInto", "I", 0x1, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber = { "FixedNumber", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 2, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber = { 1, "FixedNumber", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 2, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber)
 
 @implementation OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear
 
@@ -1234,7 +1466,7 @@ jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithIgnoreCaseWithJav
                               withInt:(jint)displayOffset
           withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
                    withJavaUtilLocale:(JavaUtilLocale *)locale {
-  jint year = [self getTwoDigitYearWithLong:instant withOrgJodaTimeChronology:chrono];
+  jint year = OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear_getTwoDigitYearWithLong_withOrgJodaTimeChronology_(self, instant, chrono);
   if (year < 0) {
     [((id<JavaLangAppendable>) nil_chk(appendable)) appendWithChar:0xfffd];
     [appendable appendWithChar:0xfffd];
@@ -1246,22 +1478,13 @@ jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithIgnoreCaseWithJav
 
 - (jint)getTwoDigitYearWithLong:(jlong)instant
       withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
-  @try {
-    jint year = [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeDateTimeFieldType *) nil_chk(iType_)) getFieldWithOrgJodaTimeChronology:chrono])) getWithLong:instant];
-    if (year < 0) {
-      year = -year;
-    }
-    return year % 100;
-  }
-  @catch (JavaLangRuntimeException *e) {
-    return -1;
-  }
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear_getTwoDigitYearWithLong_withOrgJodaTimeChronology_(self, instant, chrono);
 }
 
 - (void)printToWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
        withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                    withJavaUtilLocale:(JavaUtilLocale *)locale {
-  jint year = [self getTwoDigitYearWithOrgJodaTimeReadablePartial:partial];
+  jint year = OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear_getTwoDigitYearWithOrgJodaTimeReadablePartial_(self, partial);
   if (year < 0) {
     [((id<JavaLangAppendable>) nil_chk(appendable)) appendWithChar:0xfffd];
     [appendable appendWithChar:0xfffd];
@@ -1272,22 +1495,11 @@ jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithIgnoreCaseWithJav
 }
 
 - (jint)getTwoDigitYearWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial {
-  if ([((id<OrgJodaTimeReadablePartial>) nil_chk(partial)) isSupportedWithOrgJodaTimeDateTimeFieldType:iType_]) {
-    @try {
-      jint year = [partial getWithOrgJodaTimeDateTimeFieldType:iType_];
-      if (year < 0) {
-        year = -year;
-      }
-      return year % 100;
-    }
-    @catch (JavaLangRuntimeException *e) {
-    }
-  }
-  return -1;
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear_getTwoDigitYearWithOrgJodaTimeReadablePartial_(self, partial);
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear_set_iType_(self, nil);
+  RELEASE_(iType_);
   [super dealloc];
 }
 
@@ -1314,11 +1526,41 @@ jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithIgnoreCaseWithJav
     { "iPivot_", NULL, 0x12, "I", NULL,  },
     { "iLenientParse_", NULL, 0x12, "Z", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear = { "TwoDigitYear", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 8, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear = { 1, "TwoDigitYear", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 8, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear;
 }
 
 @end
+
+jint OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear_getTwoDigitYearWithLong_withOrgJodaTimeChronology_(OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear *self, jlong instant, OrgJodaTimeChronology *chrono) {
+  @try {
+    jint year = [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeDateTimeFieldType *) nil_chk(self->iType_)) getFieldWithOrgJodaTimeChronology:chrono])) getWithLong:instant];
+    if (year < 0) {
+      year = -year;
+    }
+    return year % 100;
+  }
+  @catch (JavaLangRuntimeException *e) {
+    return -1;
+  }
+}
+
+jint OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear_getTwoDigitYearWithOrgJodaTimeReadablePartial_(OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear *self, id<OrgJodaTimeReadablePartial> partial) {
+  if ([((id<OrgJodaTimeReadablePartial>) nil_chk(partial)) isSupportedWithOrgJodaTimeDateTimeFieldType:self->iType_]) {
+    @try {
+      jint year = [partial getWithOrgJodaTimeDateTimeFieldType:self->iType_];
+      if (year < 0) {
+        year = -year;
+      }
+      return year % 100;
+    }
+    @catch (JavaLangRuntimeException *e) {
+    }
+  }
+  return -1;
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear)
 
 BOOL OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_initialized = NO;
 
@@ -1346,7 +1588,7 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
           withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
                    withJavaUtilLocale:(JavaUtilLocale *)locale {
   @try {
-    [((id<JavaLangAppendable>) nil_chk(appendable)) appendWithJavaLangCharSequence:[self printWithLong:instant withOrgJodaTimeChronology:chrono withJavaUtilLocale:locale]];
+    [((id<JavaLangAppendable>) nil_chk(appendable)) appendWithJavaLangCharSequence:OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_printWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_(self, instant, chrono, locale)];
   }
   @catch (JavaLangRuntimeException *e) {
     [((id<JavaLangAppendable>) nil_chk(appendable)) appendWithChar:0xfffd];
@@ -1357,7 +1599,7 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
        withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                    withJavaUtilLocale:(JavaUtilLocale *)locale {
   @try {
-    [((id<JavaLangAppendable>) nil_chk(appendable)) appendWithJavaLangCharSequence:[self printWithOrgJodaTimeReadablePartial:partial withJavaUtilLocale:locale]];
+    [((id<JavaLangAppendable>) nil_chk(appendable)) appendWithJavaLangCharSequence:OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_printWithOrgJodaTimeReadablePartial_withJavaUtilLocale_(self, partial, locale)];
   }
   @catch (JavaLangRuntimeException *e) {
     [((id<JavaLangAppendable>) nil_chk(appendable)) appendWithChar:0xfffd];
@@ -1367,29 +1609,12 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
 - (NSString *)printWithLong:(jlong)instant
   withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono
          withJavaUtilLocale:(JavaUtilLocale *)locale {
-  OrgJodaTimeDateTimeField *field = [((OrgJodaTimeDateTimeFieldType *) nil_chk(iFieldType_)) getFieldWithOrgJodaTimeChronology:chrono];
-  if (iShort_) {
-    return [((OrgJodaTimeDateTimeField *) nil_chk(field)) getAsShortTextWithLong:instant withJavaUtilLocale:locale];
-  }
-  else {
-    return [((OrgJodaTimeDateTimeField *) nil_chk(field)) getAsTextWithLong:instant withJavaUtilLocale:locale];
-  }
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_printWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_(self, instant, chrono, locale);
 }
 
 - (NSString *)printWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                                withJavaUtilLocale:(JavaUtilLocale *)locale {
-  if ([((id<OrgJodaTimeReadablePartial>) nil_chk(partial)) isSupportedWithOrgJodaTimeDateTimeFieldType:iFieldType_]) {
-    OrgJodaTimeDateTimeField *field = [((OrgJodaTimeDateTimeFieldType *) nil_chk(iFieldType_)) getFieldWithOrgJodaTimeChronology:[partial getChronology]];
-    if (iShort_) {
-      return [((OrgJodaTimeDateTimeField *) nil_chk(field)) getAsShortTextWithOrgJodaTimeReadablePartial:partial withJavaUtilLocale:locale];
-    }
-    else {
-      return [((OrgJodaTimeDateTimeField *) nil_chk(field)) getAsTextWithOrgJodaTimeReadablePartial:partial withJavaUtilLocale:locale];
-    }
-  }
-  else {
-    return @"\ufffd";
-  }
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_printWithOrgJodaTimeReadablePartial_withJavaUtilLocale_(self, partial, locale);
 }
 
 - (jint)estimateParsedLength {
@@ -1434,7 +1659,7 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
       [validValues putWithId:@"ce" withId:JavaLangBoolean_get_TRUE__()];
       maxLength = 3;
     }
-    array = [IOSObjectArray arrayWithObjects:(id[]){ validValues, JavaLangInteger_valueOfWithInt_(maxLength) } count:2 type:[IOSClass classWithClass:[NSObject class]]];
+    array = [IOSObjectArray arrayWithObjects:(id[]){ validValues, JavaLangInteger_valueOfWithInt_(maxLength) } count:2 type:NSObject_class_()];
     [innerMap putWithId:iFieldType_ withId:array];
   }
   else {
@@ -1453,7 +1678,7 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_set_iFieldType_(self, nil);
+  RELEASE_(iFieldType_);
   [super dealloc];
 }
 
@@ -1486,11 +1711,38 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
     { "iFieldType_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL,  },
     { "iShort_", NULL, 0x12, "Z", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_TextField = { "TextField", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 8, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_TextField = { 1, "TextField", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 8, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormatterBuilder_TextField;
 }
 
 @end
+
+NSString *OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_printWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField *self, jlong instant, OrgJodaTimeChronology *chrono, JavaUtilLocale *locale) {
+  OrgJodaTimeDateTimeField *field = [((OrgJodaTimeDateTimeFieldType *) nil_chk(self->iFieldType_)) getFieldWithOrgJodaTimeChronology:chrono];
+  if (self->iShort_) {
+    return [((OrgJodaTimeDateTimeField *) nil_chk(field)) getAsShortTextWithLong:instant withJavaUtilLocale:locale];
+  }
+  else {
+    return [((OrgJodaTimeDateTimeField *) nil_chk(field)) getAsTextWithLong:instant withJavaUtilLocale:locale];
+  }
+}
+
+NSString *OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_printWithOrgJodaTimeReadablePartial_withJavaUtilLocale_(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField *self, id<OrgJodaTimeReadablePartial> partial, JavaUtilLocale *locale) {
+  if ([((id<OrgJodaTimeReadablePartial>) nil_chk(partial)) isSupportedWithOrgJodaTimeDateTimeFieldType:self->iFieldType_]) {
+    OrgJodaTimeDateTimeField *field = [((OrgJodaTimeDateTimeFieldType *) nil_chk(self->iFieldType_)) getFieldWithOrgJodaTimeChronology:[partial getChronology]];
+    if (self->iShort_) {
+      return [((OrgJodaTimeDateTimeField *) nil_chk(field)) getAsShortTextWithOrgJodaTimeReadablePartial:partial withJavaUtilLocale:locale];
+    }
+    else {
+      return [((OrgJodaTimeDateTimeField *) nil_chk(field)) getAsTextWithOrgJodaTimeReadablePartial:partial withJavaUtilLocale:locale];
+    }
+  }
+  else {
+    return @"\ufffd";
+  }
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField)
 
 @implementation OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction
 
@@ -1548,7 +1800,7 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
     return;
   }
   NSString *str;
-  IOSLongArray *fractionData = [self getFractionDataWithLong:fraction withOrgJodaTimeDateTimeField:field];
+  IOSLongArray *fractionData = OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction_getFractionDataWithLong_withOrgJodaTimeDateTimeField_(self, fraction, field);
   jlong scaled = IOSLongArray_Get(nil_chk(fractionData), 0);
   jint maxDigits = (jint) IOSLongArray_Get(fractionData, 1);
   if ((scaled & (jint) 0x7fffffff) == scaled) {
@@ -1584,9 +1836,81 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
 
 - (IOSLongArray *)getFractionDataWithLong:(jlong)fraction
              withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field {
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction_getFractionDataWithLong_withOrgJodaTimeDateTimeField_(self, fraction, field);
+}
+
+- (jint)estimateParsedLength {
+  return iMaxDigits_;
+}
+
+- (jint)parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:(OrgJodaTimeFormatDateTimeParserBucket *)bucket
+                                  withJavaLangCharSequence:(id<JavaLangCharSequence>)text
+                                                   withInt:(jint)position {
+  OrgJodaTimeDateTimeField *field = [((OrgJodaTimeDateTimeFieldType *) nil_chk(iFieldType_)) getFieldWithOrgJodaTimeChronology:[((OrgJodaTimeFormatDateTimeParserBucket *) nil_chk(bucket)) getChronology]];
+  jint limit = JavaLangMath_minWithInt_withInt_(iMaxDigits_, [((id<JavaLangCharSequence>) nil_chk(text)) sequenceLength] - position);
+  jlong value = 0;
+  jlong n = [((OrgJodaTimeDurationField *) nil_chk([((OrgJodaTimeDateTimeField *) nil_chk(field)) getDurationField])) getUnitMillis] * 10;
+  jint length = 0;
+  while (length < limit) {
+    jchar c = [text charAtWithInt:position + length];
+    if (c < '0' || c > '9') {
+      break;
+    }
+    length++;
+    jlong nn = n / 10;
+    value += (c - '0') * nn;
+    n = nn;
+  }
+  value /= 10;
+  if (length == 0) {
+    return ~position;
+  }
+  if (value > JavaLangInteger_MAX_VALUE) {
+    return ~position;
+  }
+  OrgJodaTimeDateTimeField *parseField = [[[OrgJodaTimeFieldPreciseDateTimeField alloc] initWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_millisOfSecond() withOrgJodaTimeDurationField:OrgJodaTimeFieldMillisDurationField_get_INSTANCE_() withOrgJodaTimeDurationField:[field getDurationField]] autorelease];
+  [bucket saveFieldWithOrgJodaTimeDateTimeField:parseField withInt:(jint) value];
+  return position + length;
+}
+
+- (void)dealloc {
+  RELEASE_(iFieldType_);
+  [super dealloc];
+}
+
+- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction *)other {
+  [super copyAllFieldsTo:other];
+  OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction_set_iFieldType_(other, iFieldType_);
+  other->iMinDigits_ = iMinDigits_;
+  other->iMaxDigits_ = iMaxDigits_;
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static const J2ObjcMethodInfo methods[] = {
+    { "initWithOrgJodaTimeDateTimeFieldType:withInt:withInt:", "Fraction", NULL, 0x4, NULL },
+    { "estimatePrintedLength", NULL, "I", 0x1, NULL },
+    { "printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:", "printTo", "V", 0x1, "Ljava.io.IOException;" },
+    { "printToWithJavaLangAppendable:withOrgJodaTimeReadablePartial:withJavaUtilLocale:", "printTo", "V", 0x1, "Ljava.io.IOException;" },
+    { "printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:", "printTo", "V", 0x4, "Ljava.io.IOException;" },
+    { "getFractionDataWithLong:withOrgJodaTimeDateTimeField:", "getFractionData", "[J", 0x2, NULL },
+    { "estimateParsedLength", NULL, "I", 0x1, NULL },
+    { "parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withJavaLangCharSequence:withInt:", "parseInto", "I", 0x1, NULL },
+  };
+  static const J2ObjcFieldInfo fields[] = {
+    { "iFieldType_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL,  },
+    { "iMinDigits_", NULL, 0x4, "I", NULL,  },
+    { "iMaxDigits_", NULL, 0x4, "I", NULL,  },
+  };
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction = { 1, "Fraction", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 8, methods, 3, fields, 0, NULL};
+  return &_OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction;
+}
+
+@end
+
+IOSLongArray *OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction_getFractionDataWithLong_withOrgJodaTimeDateTimeField_(OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction *self, jlong fraction, OrgJodaTimeDateTimeField *field) {
   jlong rangeMillis = [((OrgJodaTimeDurationField *) nil_chk([((OrgJodaTimeDateTimeField *) nil_chk(field)) getDurationField])) getUnitMillis];
   jlong scalar;
-  jint maxDigits = iMaxDigits_;
+  jint maxDigits = self->iMaxDigits_;
   while (YES) {
     switch (maxDigits) {
       default:
@@ -1655,73 +1979,7 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
   return [IOSLongArray arrayWithLongs:(jlong[]){ fraction * scalar / rangeMillis, maxDigits } count:2];
 }
 
-- (jint)estimateParsedLength {
-  return iMaxDigits_;
-}
-
-- (jint)parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:(OrgJodaTimeFormatDateTimeParserBucket *)bucket
-                                  withJavaLangCharSequence:(id<JavaLangCharSequence>)text
-                                                   withInt:(jint)position {
-  OrgJodaTimeDateTimeField *field = [((OrgJodaTimeDateTimeFieldType *) nil_chk(iFieldType_)) getFieldWithOrgJodaTimeChronology:[((OrgJodaTimeFormatDateTimeParserBucket *) nil_chk(bucket)) getChronology]];
-  jint limit = JavaLangMath_minWithInt_withInt_(iMaxDigits_, [((id<JavaLangCharSequence>) nil_chk(text)) sequenceLength] - position);
-  jlong value = 0;
-  jlong n = [((OrgJodaTimeDurationField *) nil_chk([((OrgJodaTimeDateTimeField *) nil_chk(field)) getDurationField])) getUnitMillis] * 10;
-  jint length = 0;
-  while (length < limit) {
-    jchar c = [text charAtWithInt:position + length];
-    if (c < '0' || c > '9') {
-      break;
-    }
-    length++;
-    jlong nn = n / 10;
-    value += (c - '0') * nn;
-    n = nn;
-  }
-  value /= 10;
-  if (length == 0) {
-    return ~position;
-  }
-  if (value > JavaLangInteger_MAX_VALUE) {
-    return ~position;
-  }
-  OrgJodaTimeDateTimeField *parseField = [[[OrgJodaTimeFieldPreciseDateTimeField alloc] initWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_millisOfSecond() withOrgJodaTimeDurationField:OrgJodaTimeFieldMillisDurationField_get_INSTANCE_() withOrgJodaTimeDurationField:[field getDurationField]] autorelease];
-  [bucket saveFieldWithOrgJodaTimeDateTimeField:parseField withInt:(jint) value];
-  return position + length;
-}
-
-- (void)dealloc {
-  OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction_set_iFieldType_(self, nil);
-  [super dealloc];
-}
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction *)other {
-  [super copyAllFieldsTo:other];
-  OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction_set_iFieldType_(other, iFieldType_);
-  other->iMinDigits_ = iMinDigits_;
-  other->iMaxDigits_ = iMaxDigits_;
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeDateTimeFieldType:withInt:withInt:", "Fraction", NULL, 0x4, NULL },
-    { "estimatePrintedLength", NULL, "I", 0x1, NULL },
-    { "printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:", "printTo", "V", 0x1, "Ljava.io.IOException;" },
-    { "printToWithJavaLangAppendable:withOrgJodaTimeReadablePartial:withJavaUtilLocale:", "printTo", "V", 0x1, "Ljava.io.IOException;" },
-    { "printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:", "printTo", "V", 0x4, "Ljava.io.IOException;" },
-    { "getFractionDataWithLong:withOrgJodaTimeDateTimeField:", "getFractionData", "[J", 0x2, NULL },
-    { "estimateParsedLength", NULL, "I", 0x1, NULL },
-    { "parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withJavaLangCharSequence:withInt:", "parseInto", "I", 0x1, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "iFieldType_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL,  },
-    { "iMinDigits_", NULL, 0x4, "I", NULL,  },
-    { "iMaxDigits_", NULL, 0x4, "I", NULL,  },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction = { "Fraction", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 8, methods, 3, fields, 0, NULL};
-  return &_OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction;
-}
-
-@end
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction)
 
 @implementation OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset
 
@@ -1863,7 +2121,7 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
   }
   limit--;
   position++;
-  if ([self digitCountWithJavaLangCharSequence:text withInt:position withInt:2] < 2) {
+  if (OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset_digitCountWithJavaLangCharSequence_withInt_withInt_(self, text, position, 2) < 2) {
     return ~position;
   }
   jint offset;
@@ -1891,7 +2149,7 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
     else {
       goto break_parse;
     }
-    jint count = [self digitCountWithJavaLangCharSequence:text withInt:position withInt:2];
+    jint count = OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset_digitCountWithJavaLangCharSequence_withInt_withInt_(self, text, position, 2);
     if (count == 0 && !expectSeparators) {
       goto break_parse;
     }
@@ -1915,7 +2173,7 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
       limit--;
       position++;
     }
-    count = [self digitCountWithJavaLangCharSequence:text withInt:position withInt:2];
+    count = OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset_digitCountWithJavaLangCharSequence_withInt_withInt_(self, text, position, 2);
     if (count == 0 && !expectSeparators) {
       goto break_parse;
     }
@@ -1939,7 +2197,7 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
       limit--;
       position++;
     }
-    count = [self digitCountWithJavaLangCharSequence:text withInt:position withInt:3];
+    count = OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset_digitCountWithJavaLangCharSequence_withInt_withInt_(self, text, position, 3);
     if (count == 0 && !expectSeparators) {
       goto break_parse;
     }
@@ -1962,21 +2220,12 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
 - (jint)digitCountWithJavaLangCharSequence:(id<JavaLangCharSequence>)text
                                    withInt:(jint)position
                                    withInt:(jint)amount {
-  jint limit = JavaLangMath_minWithInt_withInt_([((id<JavaLangCharSequence>) nil_chk(text)) sequenceLength] - position, amount);
-  amount = 0;
-  for (; limit > 0; limit--) {
-    jchar c = [text charAtWithInt:position + amount];
-    if (c < '0' || c > '9') {
-      break;
-    }
-    amount++;
-  }
-  return amount;
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset_digitCountWithJavaLangCharSequence_withInt_withInt_(self, text, position, amount);
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset_set_iZeroOffsetPrintText_(self, nil);
-  OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset_set_iZeroOffsetParseText_(self, nil);
+  RELEASE_(iZeroOffsetPrintText_);
+  RELEASE_(iZeroOffsetParseText_);
   [super dealloc];
 }
 
@@ -2006,11 +2255,26 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
     { "iMinFields_", NULL, 0x12, "I", NULL,  },
     { "iMaxFields_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset = { "TimeZoneOffset", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 7, methods, 5, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset = { 1, "TimeZoneOffset", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 7, methods, 5, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset;
 }
 
 @end
+
+jint OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset_digitCountWithJavaLangCharSequence_withInt_withInt_(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset *self, id<JavaLangCharSequence> text, jint position, jint amount) {
+  jint limit = JavaLangMath_minWithInt_withInt_([((id<JavaLangCharSequence>) nil_chk(text)) sequenceLength] - position, amount);
+  amount = 0;
+  for (; limit > 0; limit--) {
+    jchar c = [text charAtWithInt:position + amount];
+    if (c < '0' || c > '9') {
+      break;
+    }
+    amount++;
+  }
+  return amount;
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset)
 
 @implementation OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName
 
@@ -2033,22 +2297,13 @@ id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_
                               withInt:(jint)displayOffset
           withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
                    withJavaUtilLocale:(JavaUtilLocale *)locale {
-  [((id<JavaLangAppendable>) nil_chk(appendable)) appendWithJavaLangCharSequence:[self printWithLong:instant - displayOffset withOrgJodaTimeDateTimeZone:displayZone withJavaUtilLocale:locale]];
+  [((id<JavaLangAppendable>) nil_chk(appendable)) appendWithJavaLangCharSequence:OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_printWithLong_withOrgJodaTimeDateTimeZone_withJavaUtilLocale_(self, instant - displayOffset, displayZone, locale)];
 }
 
 - (NSString *)printWithLong:(jlong)instant
 withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
          withJavaUtilLocale:(JavaUtilLocale *)locale {
-  if (displayZone == nil) {
-    return @"";
-  }
-  switch (iType_) {
-    case OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_LONG_NAME:
-    return [((OrgJodaTimeDateTimeZone *) nil_chk(displayZone)) getNameWithLong:instant withJavaUtilLocale:locale];
-    case OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_SHORT_NAME:
-    return [((OrgJodaTimeDateTimeZone *) nil_chk(displayZone)) getShortNameWithLong:instant withJavaUtilLocale:locale];
-  }
-  return @"";
+  return OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_printWithLong_withOrgJodaTimeDateTimeZone_withJavaUtilLocale_(self, instant, displayZone, locale);
 }
 
 - (void)printToWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
@@ -2081,7 +2336,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_set_iParseLookup_(self, nil);
+  RELEASE_(iParseLookup_);
   [super dealloc];
 }
 
@@ -2107,11 +2362,26 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
     { "iParseLookup_", NULL, 0x12, "Ljava.util.Map;", NULL,  },
     { "iType_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName = { "TimeZoneName", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 7, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName = { 1, "TimeZoneName", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 7, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName;
 }
 
 @end
+
+NSString *OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_printWithLong_withOrgJodaTimeDateTimeZone_withJavaUtilLocale_(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName *self, jlong instant, OrgJodaTimeDateTimeZone *displayZone, JavaUtilLocale *locale) {
+  if (displayZone == nil) {
+    return @"";
+  }
+  switch (self->iType_) {
+    case OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_LONG_NAME:
+    return [((OrgJodaTimeDateTimeZone *) nil_chk(displayZone)) getNameWithLong:instant withJavaUtilLocale:locale];
+    case OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_SHORT_NAME:
+    return [((OrgJodaTimeDateTimeZone *) nil_chk(displayZone)) getShortNameWithLong:instant withJavaUtilLocale:locale];
+  }
+  return @"";
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName)
 
 BOOL OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_initialized = NO;
 
@@ -2167,8 +2437,9 @@ jint OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_MAX_LENGTH_;
   return [super initWithNSString:__name withInt:__ordinal];
 }
 
-FOUNDATION_EXPORT IOSObjectArray *OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_values() {
-  return [IOSObjectArray arrayWithObjects:OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_values_ count:1 type:[IOSClass classWithClass:[OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum class]]];
+IOSObjectArray *OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_values() {
+  OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_init();
+  return [IOSObjectArray arrayWithObjects:OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_values_ count:1 type:OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_class_()];
 }
 + (IOSObjectArray *)values {
   return OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_values();
@@ -2179,6 +2450,7 @@ FOUNDATION_EXPORT IOSObjectArray *OrgJodaTimeFormatDateTimeFormatterBuilder_Time
 }
 
 OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum *OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_valueOfWithNSString_(NSString *name) {
+  OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_init();
   for (int i = 0; i < 1; i++) {
     OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum *e = OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_values_[i];
     if ([name isEqual:[e name]]) {
@@ -2223,11 +2495,13 @@ OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum *OrgJodaTimeFormatDateT
     { "MAX_LENGTH_", NULL, 0x18, "I", &OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_MAX_LENGTH_,  },
   };
   static const char *superclass_type_args[] = {"Lorg.joda.time.format.DateTimeFormatterBuilder$TimeZoneId;"};
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum = { "TimeZoneId", "org.joda.time.format", "DateTimeFormatterBuilder", 0x4018, 6, methods, 3, fields, 1, superclass_type_args};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum = { 1, "TimeZoneId", "org.joda.time.format", "DateTimeFormatterBuilder", 0x4018, 6, methods, 3, fields, 1, superclass_type_args};
   return &_OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum)
 
 @implementation OrgJodaTimeFormatDateTimeFormatterBuilder_Composite
 
@@ -2235,14 +2509,14 @@ OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum *OrgJodaTimeFormatDateT
   if (self = [super init]) {
     id<JavaUtilList> printerList = [[[JavaUtilArrayList alloc] init] autorelease];
     id<JavaUtilList> parserList = [[[JavaUtilArrayList alloc] init] autorelease];
-    [self decomposeWithJavaUtilList:elementPairs withJavaUtilList:printerList withJavaUtilList:parserList];
+    OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_decomposeWithJavaUtilList_withJavaUtilList_withJavaUtilList_(self, elementPairs, printerList, parserList);
     if ([printerList containsWithId:nil] || [printerList isEmpty]) {
       OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_set_iPrinters_(self, nil);
       iPrintedLengthEstimate_ = 0;
     }
     else {
       jint size = [printerList size];
-      OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_setAndConsume_iPrinters_(self, [IOSObjectArray newArrayWithLength:size type:[IOSClass classWithProtocol:@protocol(OrgJodaTimeFormatInternalPrinter)]]);
+      OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_setAndConsume_iPrinters_(self, [IOSObjectArray newArrayWithLength:size type:OrgJodaTimeFormatInternalPrinter_class_()]);
       jint printEst = 0;
       for (jint i = 0; i < size; i++) {
         id<OrgJodaTimeFormatInternalPrinter> printer = (id<OrgJodaTimeFormatInternalPrinter>) check_protocol_cast([printerList getWithInt:i], @protocol(OrgJodaTimeFormatInternalPrinter));
@@ -2257,7 +2531,7 @@ OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum *OrgJodaTimeFormatDateT
     }
     else {
       jint size = [parserList size];
-      OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_setAndConsume_iParsers_(self, [IOSObjectArray newArrayWithLength:size type:[IOSClass classWithProtocol:@protocol(OrgJodaTimeFormatInternalParser)]]);
+      OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_setAndConsume_iParsers_(self, [IOSObjectArray newArrayWithLength:size type:OrgJodaTimeFormatInternalParser_class_()]);
       jint parseEst = 0;
       for (jint i = 0; i < size; i++) {
         id<OrgJodaTimeFormatInternalParser> parser = (id<OrgJodaTimeFormatInternalParser>) check_protocol_cast([parserList getWithInt:i], @protocol(OrgJodaTimeFormatInternalParser));
@@ -2338,37 +2612,17 @@ OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum *OrgJodaTimeFormatDateT
 - (void)decomposeWithJavaUtilList:(id<JavaUtilList>)elementPairs
                  withJavaUtilList:(id<JavaUtilList>)printerList
                  withJavaUtilList:(id<JavaUtilList>)parserList {
-  jint size = [((id<JavaUtilList>) nil_chk(elementPairs)) size];
-  for (jint i = 0; i < size; i += 2) {
-    id element = [elementPairs getWithInt:i];
-    if ([element isKindOfClass:[OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class]]) {
-      [self addArrayToListWithJavaUtilList:printerList withNSObjectArray:((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) nil_chk(((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) check_class_cast(element, [OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class]))))->iPrinters_];
-    }
-    else {
-      [((id<JavaUtilList>) nil_chk(printerList)) addWithId:element];
-    }
-    element = [elementPairs getWithInt:i + 1];
-    if ([element isKindOfClass:[OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class]]) {
-      [self addArrayToListWithJavaUtilList:parserList withNSObjectArray:((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) nil_chk(((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) check_class_cast(element, [OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class]))))->iParsers_];
-    }
-    else {
-      [((id<JavaUtilList>) nil_chk(parserList)) addWithId:element];
-    }
-  }
+  OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_decomposeWithJavaUtilList_withJavaUtilList_withJavaUtilList_(self, elementPairs, printerList, parserList);
 }
 
 - (void)addArrayToListWithJavaUtilList:(id<JavaUtilList>)list
                      withNSObjectArray:(IOSObjectArray *)array {
-  if (array != nil) {
-    for (jint i = 0; i < array->size_; i++) {
-      [((id<JavaUtilList>) nil_chk(list)) addWithId:IOSObjectArray_Get(array, i)];
-    }
-  }
+  OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_addArrayToListWithJavaUtilList_withNSObjectArray_(self, list, array);
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_set_iPrinters_(self, nil);
-  OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_set_iParsers_(self, nil);
+  RELEASE_(iPrinters_);
+  RELEASE_(iParsers_);
   [super dealloc];
 }
 
@@ -2399,11 +2653,41 @@ OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum *OrgJodaTimeFormatDateT
     { "iPrintedLengthEstimate_", NULL, 0x12, "I", NULL,  },
     { "iParsedLengthEstimate_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_Composite = { "Composite", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 10, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_Composite = { 1, "Composite", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 10, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormatterBuilder_Composite;
 }
 
 @end
+
+void OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_decomposeWithJavaUtilList_withJavaUtilList_withJavaUtilList_(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *self, id<JavaUtilList> elementPairs, id<JavaUtilList> printerList, id<JavaUtilList> parserList) {
+  jint size = [((id<JavaUtilList>) nil_chk(elementPairs)) size];
+  for (jint i = 0; i < size; i += 2) {
+    id element = [elementPairs getWithInt:i];
+    if ([element isKindOfClass:[OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class]]) {
+      OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_addArrayToListWithJavaUtilList_withNSObjectArray_(self, printerList, ((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) nil_chk(((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) check_class_cast(element, [OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class]))))->iPrinters_);
+    }
+    else {
+      [((id<JavaUtilList>) nil_chk(printerList)) addWithId:element];
+    }
+    element = [elementPairs getWithInt:i + 1];
+    if ([element isKindOfClass:[OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class]]) {
+      OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_addArrayToListWithJavaUtilList_withNSObjectArray_(self, parserList, ((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) nil_chk(((OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *) check_class_cast(element, [OrgJodaTimeFormatDateTimeFormatterBuilder_Composite class]))))->iParsers_);
+    }
+    else {
+      [((id<JavaUtilList>) nil_chk(parserList)) addWithId:element];
+    }
+  }
+}
+
+void OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_addArrayToListWithJavaUtilList_withNSObjectArray_(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *self, id<JavaUtilList> list, IOSObjectArray *array) {
+  if (array != nil) {
+    for (jint i = 0; i < array->size_; i++) {
+      [((id<JavaUtilList>) nil_chk(list)) addWithId:IOSObjectArray_Get(array, i)];
+    }
+  }
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite)
 
 @implementation OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser
 
@@ -2478,7 +2762,7 @@ OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum *OrgJodaTimeFormatDateT
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser_set_iParsers_(self, nil);
+  RELEASE_(iParsers_);
   [super dealloc];
 }
 
@@ -2498,8 +2782,10 @@ OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum *OrgJodaTimeFormatDateT
     { "iParsers_", NULL, 0x12, "[Lorg.joda.time.format.InternalParser;", NULL,  },
     { "iParsedLengthEstimate_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser = { "MatchingParser", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 3, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser = { 1, "MatchingParser", "org.joda.time.format", "DateTimeFormatterBuilder", 0x8, 3, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser)

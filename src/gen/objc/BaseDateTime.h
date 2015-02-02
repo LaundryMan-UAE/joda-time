@@ -9,8 +9,8 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeZone;
 
-#import "JreEmulation.h"
 #include "AbstractDateTime.h"
+#include "J2ObjC_header.h"
 #include "ReadableDateTime.h"
 #include "java/io/Serializable.h"
 
@@ -25,15 +25,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeBaseBaseDateTime : OrgJodaTimeBaseAbstractDateTime < OrgJodaTimeReadableDateTime, JavaIoSerializable > {
- @public
-  /**
-   @brief The millis from 1970-01-01T00:00:00Z
-   */
-  jlong iMillis_;
-  /**
-   @brief The chronology to use
-   */
-  OrgJodaTimeChronology *iChronology_;
 }
 
 /**
@@ -203,16 +194,15 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
  */
 - (void)setChronologyWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeBaseBaseDateTime *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeBaseBaseDateTime_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeBaseBaseDateTime)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeBaseBaseDateTime, iChronology_, OrgJodaTimeChronology *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseDateTime, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseBaseDateTime)
 
 #endif // _OrgJodaTimeBaseBaseDateTime_H_

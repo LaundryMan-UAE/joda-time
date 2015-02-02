@@ -9,7 +9,7 @@
 @class OrgJodaTimeDateTimeFieldType;
 @class OrgJodaTimeDurationFieldType;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/lang/IllegalArgumentException.h"
 
 #define OrgJodaTimeIllegalFieldValueException_serialVersionUID 6305711765985447737LL
@@ -20,40 +20,7 @@
  @since 1.1
  */
 @interface OrgJodaTimeIllegalFieldValueException : JavaLangIllegalArgumentException {
- @public
-  OrgJodaTimeDateTimeFieldType *iDateTimeFieldType_;
-  OrgJodaTimeDurationFieldType *iDurationFieldType_;
-  NSString *iFieldName_;
-  NSNumber *iNumberValue_;
-  NSString *iStringValue_;
-  NSNumber *iLowerBound_;
-  NSNumber *iUpperBound_;
-  NSString *iMessage_;
 }
-
-/**
- @brief Creates a message for the exception.
- @param fieldName the field name
- @param value the value rejected
- @param lowerBound the lower bound allowed
- @param upperBound the uppe bound allowed
- @param explain an explanation
- @return the message
- */
-+ (NSString *)createMessageWithNSString:(NSString *)fieldName
-                           withNSNumber:(NSNumber *)value
-                           withNSNumber:(NSNumber *)lowerBound
-                           withNSNumber:(NSNumber *)upperBound
-                           withNSString:(NSString *)explain;
-
-/**
- @brief Creates a message for the exception.
- @param fieldName the field name
- @param value the value rejected
- @return the message
- */
-+ (NSString *)createMessageWithNSString:(NSString *)fieldName
-                           withNSString:(NSString *)value;
 
 /**
  @brief Constructor.
@@ -183,23 +150,15 @@
  */
 - (void)prependMessageWithNSString:(NSString *)message;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeIllegalFieldValueException *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeIllegalFieldValueException_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeIllegalFieldValueException)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iDateTimeFieldType_, OrgJodaTimeDateTimeFieldType *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iDurationFieldType_, OrgJodaTimeDurationFieldType *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iFieldName_, NSString *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iNumberValue_, NSNumber *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iStringValue_, NSString *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iLowerBound_, NSNumber *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iUpperBound_, NSNumber *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iMessage_, NSString *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeIllegalFieldValueException, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeIllegalFieldValueException)
 
 #endif // _OrgJodaTimeIllegalFieldValueException_H_

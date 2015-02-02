@@ -13,8 +13,8 @@
 @protocol OrgJodaTimeReadableInterval;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "BaseSingleFieldPeriod.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeMonths_serialVersionUID 87525275727380867LL
 
@@ -74,19 +74,6 @@
  @throws IllegalArgumentException if the string format is invalid
  */
 + (OrgJodaTimeMonths *)parseMonthsWithNSString:(NSString *)periodStr;
-
-/**
- @brief Creates a new instance representing a number of months.
- You should consider using the factory method #months(int) instead of the constructor.
- @param months the number of months to represent
- */
-- (instancetype)initWithInt:(jint)months;
-
-/**
- @brief Resolves singletons.
- @return the singleton instance
- */
-- (id)readResolve;
 
 /**
  @brief Gets the duration field type, which is <code>months</code>.
@@ -192,10 +179,17 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeMonths_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeMonths)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeMonths *OrgJodaTimeMonths_monthsWithInt_(jint months);
+
 FOUNDATION_EXPORT OrgJodaTimeMonths *OrgJodaTimeMonths_monthsBetweenWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end);
+
 FOUNDATION_EXPORT OrgJodaTimeMonths *OrgJodaTimeMonths_monthsBetweenWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end);
+
 FOUNDATION_EXPORT OrgJodaTimeMonths *OrgJodaTimeMonths_monthsInWithOrgJodaTimeReadableInterval_(id<OrgJodaTimeReadableInterval> interval);
+
 FOUNDATION_EXPORT OrgJodaTimeMonths *OrgJodaTimeMonths_parseMonthsWithNSString_(NSString *periodStr);
 
 FOUNDATION_EXPORT OrgJodaTimeMonths *OrgJodaTimeMonths_ZERO_;
@@ -247,5 +241,8 @@ FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeMonths_PARSER_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMonths, PARSER_, OrgJodaTimeFormatPeriodFormatter *)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMonths, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeMonths)
 
 #endif // _OrgJodaTimeMonths_H_

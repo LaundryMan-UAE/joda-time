@@ -17,6 +17,7 @@
 #include "FromString.h"
 #include "IOSClass.h"
 #include "IllegalInstantException.h"
+#include "J2ObjC_source.h"
 #include "JodaTimePermission.h"
 #include "LocalDateTime.h"
 #include "NameProvider.h"
@@ -57,6 +58,96 @@ __attribute__((unused)) static NSString *OrgJodaTimeDateTimeZone_getConvertedIdW
 __attribute__((unused)) static jint OrgJodaTimeDateTimeZone_parseOffsetWithNSString_(NSString *str);
 __attribute__((unused)) static NSString *OrgJodaTimeDateTimeZone_printOffsetWithInt_(jint offset);
 __attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeDateTimeZone_offsetFormatter();
+__attribute__((unused)) static NSString *OrgJodaTimeDateTimeZone_getID(OrgJodaTimeDateTimeZone *self);
+
+@interface OrgJodaTimeDateTimeZone () {
+ @public
+  NSString *iID_;
+}
+
+/**
+ @brief Gets the zone using a fixed offset amount.
+ @param id the zone id
+ @param offset the offset in millis
+ @return the zone
+ */
++ (OrgJodaTimeDateTimeZone *)fixedOffsetZoneWithNSString:(NSString *)id_
+                                                 withInt:(jint)offset;
+
+/**
+ @brief Sets the zone provider factory without performing the security check.
+ @param provider provider to use, or null for default
+ @throws IllegalArgumentException if the provider is invalid
+ */
++ (void)setProvider0WithOrgJodaTimeTzProvider:(id<OrgJodaTimeTzProvider>)provider;
+
+/**
+ @brief Gets the default zone provider.
+ <p> Tries the system property <code>org.joda.time.DateTimeZone.Provider</code>. Then tries a <code>ZoneInfoProvider</code> using the data in <code>org/joda/time/tz/data</code>. Then uses <code>UTCProvider</code>.
+ @return the default name provider
+ */
++ (id<OrgJodaTimeTzProvider>)getDefaultProvider;
+
+/**
+ @brief Sets the name provider factory without performing the security check.
+ @param nameProvider provider to use, or null for default
+ @throws IllegalArgumentException if the provider is invalid
+ */
++ (void)setNameProvider0WithOrgJodaTimeTzNameProvider:(id<OrgJodaTimeTzNameProvider>)nameProvider;
+
+/**
+ @brief Gets the default name provider.
+ <p> Tries the system property <code>org.joda.time.DateTimeZone.NameProvider</code>. Then uses <code>DefaultNameProvider</code>.
+ @return the default name provider
+ */
++ (id<OrgJodaTimeTzNameProvider>)getDefaultNameProvider;
+
+/**
+ @brief Converts an old style id to a new style id.
+ @param id the old style id
+ @return the new style id, null if not found
+ */
++ (NSString *)getConvertedIdWithNSString:(NSString *)id_;
+
++ (jint)parseOffsetWithNSString:(NSString *)str;
+
+/**
+ @brief Formats a timezone offset string.
+ <p> This method is kept separate from the formatting classes to speed and simplify startup and classloading.
+ @param offset the offset in milliseconds
+ @return the time zone string
+ */
++ (NSString *)printOffsetWithInt:(jint)offset;
+
+/**
+ @brief Gets a printer/parser for managing the offset id formatting.
+ @return the formatter
+ */
++ (OrgJodaTimeFormatDateTimeFormatter *)offsetFormatter;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeDateTimeZone, iID_, NSString *)
+
+@interface OrgJodaTimeDateTimeZone_Stub () {
+ @public
+  /**
+   @brief The ID of the zone.
+   */
+  NSString *iID_;
+}
+
+- (void)writeObjectWithJavaIoObjectOutputStream:(JavaIoObjectOutputStream *)outArg;
+
+- (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)inArg;
+
+- (id)readResolve;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeDateTimeZone_Stub, iID_, NSString *)
+
+@interface OrgJodaTimeDateTimeZone_$1 () {
+}
+@end
 
 BOOL OrgJodaTimeDateTimeZone_initialized = NO;
 
@@ -168,7 +259,7 @@ id<JavaUtilMap> OrgJodaTimeDateTimeZone_cZoneIdConversion_;
 }
 
 - (NSString *)getID {
-  return iID_;
+  return OrgJodaTimeDateTimeZone_getID(self);
 }
 
 - (NSString *)getNameKeyWithLong:(jlong)instant {
@@ -309,7 +400,7 @@ id<JavaUtilMap> OrgJodaTimeDateTimeZone_cZoneIdConversion_;
       }
       if (nextLocal != nextAdjusted) {
         if (strict) {
-          @throw [[[OrgJodaTimeIllegalInstantException alloc] initWithLong:instantLocal withNSString:[self getID]] autorelease];
+          @throw [[[OrgJodaTimeIllegalInstantException alloc] initWithLong:instantLocal withNSString:OrgJodaTimeDateTimeZone_getID(self)] autorelease];
         }
         else {
           offset = offsetLocal;
@@ -403,11 +494,11 @@ id<JavaUtilMap> OrgJodaTimeDateTimeZone_cZoneIdConversion_;
 }
 
 - (NSUInteger)hash {
-  return 57 + ((jint) [((NSString *) nil_chk([self getID])) hash]);
+  return 57 + ((jint) [((NSString *) nil_chk(OrgJodaTimeDateTimeZone_getID(self))) hash]);
 }
 
 - (NSString *)description {
-  return [self getID];
+  return OrgJodaTimeDateTimeZone_getID(self);
 }
 
 - (id)writeReplace {
@@ -415,7 +506,7 @@ id<JavaUtilMap> OrgJodaTimeDateTimeZone_cZoneIdConversion_;
 }
 
 - (void)dealloc {
-  OrgJodaTimeDateTimeZone_set_iID_(self, nil);
+  RELEASE_(iID_);
   [super dealloc];
 }
 
@@ -436,11 +527,11 @@ id<JavaUtilMap> OrgJodaTimeDateTimeZone_cZoneIdConversion_;
 }
 
 + (IOSObjectArray *)__annotations_forIDWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_getID {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -506,7 +597,7 @@ id<JavaUtilMap> OrgJodaTimeDateTimeZone_cZoneIdConversion_;
     { "cZoneIdConversion_", NULL, 0xa, "Ljava.util.Map;", &OrgJodaTimeDateTimeZone_cZoneIdConversion_,  },
     { "iID_", NULL, 0x12, "Ljava.lang.String;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeZone = { "DateTimeZone", "org.joda.time", NULL, 0x401, 47, methods, 11, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeZone = { 1, "DateTimeZone", "org.joda.time", NULL, 0x401, 47, methods, 11, fields, 0, NULL};
   return &_OrgJodaTimeDateTimeZone;
 }
 
@@ -516,7 +607,7 @@ OrgJodaTimeDateTimeZone *OrgJodaTimeDateTimeZone_getDefault() {
   OrgJodaTimeDateTimeZone_init();
   OrgJodaTimeDateTimeZone *zone = OrgJodaTimeDateTimeZone_cDefault_;
   if (zone == nil) {
-    @synchronized([IOSClass classWithClass:[OrgJodaTimeDateTimeZone class]]) {
+    @synchronized(OrgJodaTimeDateTimeZone_class_()) {
       zone = OrgJodaTimeDateTimeZone_cDefault_;
       if (zone == nil) {
         OrgJodaTimeDateTimeZone *temp = nil;
@@ -554,7 +645,7 @@ void OrgJodaTimeDateTimeZone_setDefaultWithOrgJodaTimeDateTimeZone_(OrgJodaTimeD
   if (zone == nil) {
     @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"The datetime zone must not be null"] autorelease];
   }
-  @synchronized([IOSClass classWithClass:[OrgJodaTimeDateTimeZone class]]) {
+  @synchronized(OrgJodaTimeDateTimeZone_class_()) {
     JreStrongAssign(&OrgJodaTimeDateTimeZone_cDefault_, nil, zone);
   }
 }
@@ -671,7 +762,7 @@ OrgJodaTimeDateTimeZone *OrgJodaTimeDateTimeZone_forTimeZoneWithJavaUtilTimeZone
 
 OrgJodaTimeDateTimeZone *OrgJodaTimeDateTimeZone_fixedOffsetZoneWithNSString_withInt_(NSString *id_, jint offset) {
   OrgJodaTimeDateTimeZone_init();
-  @synchronized([IOSClass classWithClass:[OrgJodaTimeDateTimeZone class]]) {
+  @synchronized(OrgJodaTimeDateTimeZone_class_()) {
     if (offset == 0) {
       return OrgJodaTimeDateTimeZone_UTC_;
     }
@@ -806,7 +897,7 @@ id<OrgJodaTimeTzNameProvider> OrgJodaTimeDateTimeZone_getDefaultNameProvider() {
 
 NSString *OrgJodaTimeDateTimeZone_getConvertedIdWithNSString_(NSString *id_) {
   OrgJodaTimeDateTimeZone_init();
-  @synchronized([IOSClass classWithClass:[OrgJodaTimeDateTimeZone class]]) {
+  @synchronized(OrgJodaTimeDateTimeZone_class_()) {
     id<JavaUtilMap> map = OrgJodaTimeDateTimeZone_cZoneIdConversion_;
     if (map == nil) {
       map = [[[JavaUtilHashMap alloc] init] autorelease];
@@ -889,13 +980,19 @@ NSString *OrgJodaTimeDateTimeZone_printOffsetWithInt_(jint offset) {
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeDateTimeZone_offsetFormatter() {
   OrgJodaTimeDateTimeZone_init();
-  @synchronized([IOSClass classWithClass:[OrgJodaTimeDateTimeZone class]]) {
+  @synchronized(OrgJodaTimeDateTimeZone_class_()) {
     if (OrgJodaTimeDateTimeZone_cOffsetFormatter_ == nil) {
       JreStrongAssign(&OrgJodaTimeDateTimeZone_cOffsetFormatter_, nil, [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendTimeZoneOffsetWithNSString:nil withBoolean:YES withInt:2 withInt:4])) toFormatter]);
     }
     return OrgJodaTimeDateTimeZone_cOffsetFormatter_;
   }
 }
+
+NSString *OrgJodaTimeDateTimeZone_getID(OrgJodaTimeDateTimeZone *self) {
+  return self->iID_;
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeZone)
 
 @implementation OrgJodaTimeDateTimeZone_Stub
 
@@ -919,7 +1016,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeDateTimeZone_offsetFormatter() {
 }
 
 - (void)dealloc {
-  OrgJodaTimeDateTimeZone_Stub_set_iID_(self, nil);
+  RELEASE_(iID_);
   [super dealloc];
 }
 
@@ -939,11 +1036,13 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeDateTimeZone_offsetFormatter() {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeDateTimeZone_Stub_serialVersionUID },
     { "iID_", NULL, 0x82, "Ljava.lang.String;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeZone_Stub = { "Stub", "org.joda.time", "DateTimeZone", 0x1a, 4, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeZone_Stub = { 1, "Stub", "org.joda.time", "DateTimeZone", 0x1a, 4, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeDateTimeZone_Stub;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeZone_Stub)
 
 @implementation OrgJodaTimeDateTimeZone_$1
 
@@ -978,8 +1077,10 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeDateTimeZone_offsetFormatter() {
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeDateTimeZone_$1_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeZone_$1 = { "$1", "org.joda.time", "DateTimeZone", 0x8000, 5, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeZone_$1 = { 1, "$1", "org.joda.time", "DateTimeZone", 0x8000, 5, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeDateTimeZone_$1;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeZone_$1)

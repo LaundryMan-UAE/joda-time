@@ -10,7 +10,7 @@
 @class OrgJodaTimeDateTime;
 @class OrgJodaTimeMutableDateTime;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "ReadableInstant.h"
 
 /**
@@ -163,6 +163,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeReadableDateTime_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeReadableDateTime)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadableDateTime)
 
 #endif // _OrgJodaTimeReadableDateTime_H_

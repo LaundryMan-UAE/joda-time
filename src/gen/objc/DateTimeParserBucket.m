@@ -19,6 +19,7 @@
 #include "IllegalFieldValueException.h"
 #include "IllegalInstantException.h"
 #include "InternalParser.h"
+#include "J2ObjC_source.h"
 #include "java/lang/CharSequence.h"
 #include "java/lang/Deprecated.h"
 #include "java/lang/IllegalArgumentException.h"
@@ -27,7 +28,80 @@
 #include "java/util/Arrays.h"
 #include "java/util/Locale.h"
 
+__attribute__((unused)) static OrgJodaTimeFormatDateTimeParserBucket_SavedField *OrgJodaTimeFormatDateTimeParserBucket_obtainSaveField(OrgJodaTimeFormatDateTimeParserBucket *self);
 __attribute__((unused)) static void OrgJodaTimeFormatDateTimeParserBucket_sortWithOrgJodaTimeFormatDateTimeParserBucket_SavedFieldArray_withInt_(IOSObjectArray *array, jint high);
+
+@interface OrgJodaTimeFormatDateTimeParserBucket () {
+ @public
+  /**
+   @brief The chronology to use for parsing.
+   */
+  OrgJodaTimeChronology *iChrono_;
+  /**
+   @brief The initial millis.
+   */
+  jlong iMillis_;
+  /**
+   @brief The locale to use for parsing.
+   */
+  JavaUtilLocale *iLocale_;
+  /**
+   @brief Used for parsing month/day without year.
+   */
+  jint iDefaultYear_;
+  /**
+   @brief The default zone from the constructor.
+   */
+  OrgJodaTimeDateTimeZone *iDefaultZone_;
+  /**
+   @brief The default pivot year from the constructor.
+   */
+  JavaLangInteger *iDefaultPivotYear_;
+  /**
+   @brief The parsed zone, initialised to formatter zone.
+   */
+  OrgJodaTimeDateTimeZone *iZone_;
+  /**
+   @brief The parsed offset.
+   */
+  JavaLangInteger *iOffset_;
+  /**
+   @brief Used for parsing two-digit years.
+   */
+  JavaLangInteger *iPivotYear_;
+  IOSObjectArray *iSavedFields_;
+  jint iSavedFieldsCount_;
+  jboolean iSavedFieldsShared_;
+  id iSavedState_;
+}
+
+- (OrgJodaTimeFormatDateTimeParserBucket_SavedField *)obtainSaveField;
+
+/**
+ @brief Sorts elements [0,high).
+ Calling java.util.Arrays isn't always the right choice since it always creates an internal copy of the array, even if it doesn't need to. If the array slice is small enough, an insertion sort is chosen instead, but it doesn't need a copy! <p> This method has a modified version of that insertion sort, except it doesn't create an unnecessary array copy. If high is over 10, then java.util.Arrays is called, which will perform a merge sort, which is faster than insertion sort on large lists. <p> The end result is much greater performance when computeMillis is called. Since the amount of saved fields is small, the insertion sort is a better choice. Additional performance is gained since there is no extra array allocation and copying. Also, the insertion sort here does not perform any casting operations. The version in java.util.Arrays performs casts within the insertion sort loop.
+ */
++ (void)sortWithOrgJodaTimeFormatDateTimeParserBucket_SavedFieldArray:(IOSObjectArray *)array
+                                                              withInt:(jint)high;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iChrono_, OrgJodaTimeChronology *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iLocale_, JavaUtilLocale *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iDefaultZone_, OrgJodaTimeDateTimeZone *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iDefaultPivotYear_, JavaLangInteger *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iZone_, OrgJodaTimeDateTimeZone *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iOffset_, JavaLangInteger *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iPivotYear_, JavaLangInteger *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iSavedFields_, IOSObjectArray *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iSavedState_, id)
+
+@interface OrgJodaTimeFormatDateTimeParserBucket_SavedState () {
+ @public
+  OrgJodaTimeFormatDateTimeParserBucket *this$0_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket_SavedState, this$0_, OrgJodaTimeFormatDateTimeParserBucket *)
 
 @implementation OrgJodaTimeFormatDateTimeParserBucket
 
@@ -59,7 +133,7 @@ __attribute__((unused)) static void OrgJodaTimeFormatDateTimeParserBucket_sortWi
     OrgJodaTimeFormatDateTimeParserBucket_set_iDefaultPivotYear_(self, pivotYear);
     OrgJodaTimeFormatDateTimeParserBucket_set_iZone_(self, iDefaultZone_);
     OrgJodaTimeFormatDateTimeParserBucket_set_iPivotYear_(self, iDefaultPivotYear_);
-    OrgJodaTimeFormatDateTimeParserBucket_setAndConsume_iSavedFields_(self, [IOSObjectArray newArrayWithLength:8 type:[IOSClass classWithClass:[OrgJodaTimeFormatDateTimeParserBucket_SavedField class]]]);
+    OrgJodaTimeFormatDateTimeParserBucket_setAndConsume_iSavedFields_(self, [IOSObjectArray newArrayWithLength:8 type:OrgJodaTimeFormatDateTimeParserBucket_SavedField_class_()]);
   }
   return self;
 }
@@ -146,36 +220,22 @@ __attribute__((unused)) static void OrgJodaTimeFormatDateTimeParserBucket_sortWi
 
 - (void)saveFieldWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
                                       withInt:(jint)value {
-  [((OrgJodaTimeFormatDateTimeParserBucket_SavedField *) nil_chk([self obtainSaveField])) init__WithOrgJodaTimeDateTimeField:field withInt:value];
+  [((OrgJodaTimeFormatDateTimeParserBucket_SavedField *) nil_chk(OrgJodaTimeFormatDateTimeParserBucket_obtainSaveField(self))) init__WithOrgJodaTimeDateTimeField:field withInt:value];
 }
 
 - (void)saveFieldWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType
                                           withInt:(jint)value {
-  [((OrgJodaTimeFormatDateTimeParserBucket_SavedField *) nil_chk([self obtainSaveField])) init__WithOrgJodaTimeDateTimeField:[((OrgJodaTimeDateTimeFieldType *) nil_chk(fieldType)) getFieldWithOrgJodaTimeChronology:iChrono_] withInt:value];
+  [((OrgJodaTimeFormatDateTimeParserBucket_SavedField *) nil_chk(OrgJodaTimeFormatDateTimeParserBucket_obtainSaveField(self))) init__WithOrgJodaTimeDateTimeField:[((OrgJodaTimeDateTimeFieldType *) nil_chk(fieldType)) getFieldWithOrgJodaTimeChronology:iChrono_] withInt:value];
 }
 
 - (void)saveFieldWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType
                                      withNSString:(NSString *)text
                                withJavaUtilLocale:(JavaUtilLocale *)locale {
-  [((OrgJodaTimeFormatDateTimeParserBucket_SavedField *) nil_chk([self obtainSaveField])) init__WithOrgJodaTimeDateTimeField:[((OrgJodaTimeDateTimeFieldType *) nil_chk(fieldType)) getFieldWithOrgJodaTimeChronology:iChrono_] withNSString:text withJavaUtilLocale:locale];
+  [((OrgJodaTimeFormatDateTimeParserBucket_SavedField *) nil_chk(OrgJodaTimeFormatDateTimeParserBucket_obtainSaveField(self))) init__WithOrgJodaTimeDateTimeField:[((OrgJodaTimeDateTimeFieldType *) nil_chk(fieldType)) getFieldWithOrgJodaTimeChronology:iChrono_] withNSString:text withJavaUtilLocale:locale];
 }
 
 - (OrgJodaTimeFormatDateTimeParserBucket_SavedField *)obtainSaveField {
-  IOSObjectArray *savedFields = iSavedFields_;
-  jint savedFieldsCount = iSavedFieldsCount_;
-  if (savedFieldsCount == ((IOSObjectArray *) nil_chk(savedFields))->size_ || iSavedFieldsShared_) {
-    IOSObjectArray *newArray = [IOSObjectArray arrayWithLength:savedFieldsCount == savedFields->size_ ? savedFieldsCount * 2 : savedFields->size_ type:[IOSClass classWithClass:[OrgJodaTimeFormatDateTimeParserBucket_SavedField class]]];
-    JavaLangSystem_arraycopyWithId_withInt_withId_withInt_withInt_(savedFields, 0, newArray, 0, savedFieldsCount);
-    OrgJodaTimeFormatDateTimeParserBucket_set_iSavedFields_(self, savedFields = newArray);
-    iSavedFieldsShared_ = NO;
-  }
-  OrgJodaTimeFormatDateTimeParserBucket_set_iSavedState_(self, nil);
-  OrgJodaTimeFormatDateTimeParserBucket_SavedField *saved = IOSObjectArray_Get(savedFields, savedFieldsCount);
-  if (saved == nil) {
-    saved = IOSObjectArray_SetAndConsume(savedFields, savedFieldsCount, [[OrgJodaTimeFormatDateTimeParserBucket_SavedField alloc] init]);
-  }
-  iSavedFieldsCount_ = savedFieldsCount + 1;
-  return saved;
+  return OrgJodaTimeFormatDateTimeParserBucket_obtainSaveField(self);
 }
 
 - (id)saveState {
@@ -271,15 +331,15 @@ __attribute__((unused)) static void OrgJodaTimeFormatDateTimeParserBucket_sortWi
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeParserBucket_set_iChrono_(self, nil);
-  OrgJodaTimeFormatDateTimeParserBucket_set_iLocale_(self, nil);
-  OrgJodaTimeFormatDateTimeParserBucket_set_iDefaultZone_(self, nil);
-  OrgJodaTimeFormatDateTimeParserBucket_set_iDefaultPivotYear_(self, nil);
-  OrgJodaTimeFormatDateTimeParserBucket_set_iZone_(self, nil);
-  OrgJodaTimeFormatDateTimeParserBucket_set_iOffset_(self, nil);
-  OrgJodaTimeFormatDateTimeParserBucket_set_iPivotYear_(self, nil);
-  OrgJodaTimeFormatDateTimeParserBucket_set_iSavedFields_(self, nil);
-  OrgJodaTimeFormatDateTimeParserBucket_set_iSavedState_(self, nil);
+  RELEASE_(iChrono_);
+  RELEASE_(iLocale_);
+  RELEASE_(iDefaultZone_);
+  RELEASE_(iDefaultPivotYear_);
+  RELEASE_(iZone_);
+  RELEASE_(iOffset_);
+  RELEASE_(iPivotYear_);
+  RELEASE_(iSavedFields_);
+  RELEASE_(iSavedState_);
   [super dealloc];
 }
 
@@ -300,24 +360,24 @@ __attribute__((unused)) static void OrgJodaTimeFormatDateTimeParserBucket_sortWi
   OrgJodaTimeFormatDateTimeParserBucket_set_iSavedState_(other, iSavedState_);
 }
 
-+ (IOSObjectArray *)__annotations_OrgJodaTimeFormatDateTimeParserBucketWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
++ (IOSObjectArray *)__annotations_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_ {
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
-+ (IOSObjectArray *)__annotations_OrgJodaTimeFormatDateTimeParserBucketWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_withJavaLangInteger_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
++ (IOSObjectArray *)__annotations_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_withJavaLangInteger_ {
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_getOffset {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_setOffsetWithInt_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_setPivotYearWithJavaLangInteger_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -366,11 +426,29 @@ __attribute__((unused)) static void OrgJodaTimeFormatDateTimeParserBucket_sortWi
     { "iSavedFieldsShared_", NULL, 0x2, "Z", NULL,  },
     { "iSavedState_", NULL, 0x2, "Ljava.lang.Object;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeParserBucket = { "DateTimeParserBucket", "org.joda.time.format", NULL, 0x1, 28, methods, 13, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeParserBucket = { 1, "DateTimeParserBucket", "org.joda.time.format", NULL, 0x1, 28, methods, 13, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeParserBucket;
 }
 
 @end
+
+OrgJodaTimeFormatDateTimeParserBucket_SavedField *OrgJodaTimeFormatDateTimeParserBucket_obtainSaveField(OrgJodaTimeFormatDateTimeParserBucket *self) {
+  IOSObjectArray *savedFields = self->iSavedFields_;
+  jint savedFieldsCount = self->iSavedFieldsCount_;
+  if (savedFieldsCount == ((IOSObjectArray *) nil_chk(savedFields))->size_ || self->iSavedFieldsShared_) {
+    IOSObjectArray *newArray = [IOSObjectArray arrayWithLength:savedFieldsCount == savedFields->size_ ? savedFieldsCount * 2 : savedFields->size_ type:OrgJodaTimeFormatDateTimeParserBucket_SavedField_class_()];
+    JavaLangSystem_arraycopyWithId_withInt_withId_withInt_withInt_(savedFields, 0, newArray, 0, savedFieldsCount);
+    OrgJodaTimeFormatDateTimeParserBucket_set_iSavedFields_(self, savedFields = newArray);
+    self->iSavedFieldsShared_ = NO;
+  }
+  OrgJodaTimeFormatDateTimeParserBucket_set_iSavedState_(self, nil);
+  OrgJodaTimeFormatDateTimeParserBucket_SavedField *saved = IOSObjectArray_Get(savedFields, savedFieldsCount);
+  if (saved == nil) {
+    saved = IOSObjectArray_SetAndConsume(savedFields, savedFieldsCount, [[OrgJodaTimeFormatDateTimeParserBucket_SavedField alloc] init]);
+  }
+  self->iSavedFieldsCount_ = savedFieldsCount + 1;
+  return saved;
+}
 
 void OrgJodaTimeFormatDateTimeParserBucket_sortWithOrgJodaTimeFormatDateTimeParserBucket_SavedFieldArray_withInt_(IOSObjectArray *array, jint high) {
   OrgJodaTimeFormatDateTimeParserBucket_init();
@@ -402,6 +480,8 @@ jint OrgJodaTimeFormatDateTimeParserBucket_compareReverseWithOrgJodaTimeDuration
   return -[((OrgJodaTimeDurationField *) nil_chk(a)) compareToWithId:b];
 }
 
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeParserBucket)
+
 @implementation OrgJodaTimeFormatDateTimeParserBucket_SavedState
 
 - (instancetype)initWithOrgJodaTimeFormatDateTimeParserBucket:(OrgJodaTimeFormatDateTimeParserBucket *)outer$ {
@@ -430,10 +510,10 @@ jint OrgJodaTimeFormatDateTimeParserBucket_compareReverseWithOrgJodaTimeDuration
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeParserBucket_SavedState_set_this$0_(self, nil);
-  OrgJodaTimeFormatDateTimeParserBucket_SavedState_set_iZone_(self, nil);
-  OrgJodaTimeFormatDateTimeParserBucket_SavedState_set_iOffset_(self, nil);
-  OrgJodaTimeFormatDateTimeParserBucket_SavedState_set_iSavedFields_(self, nil);
+  RELEASE_(this$0_);
+  RELEASE_(iZone_);
+  RELEASE_(iOffset_);
+  RELEASE_(iSavedFields_);
   [super dealloc];
 }
 
@@ -458,11 +538,13 @@ jint OrgJodaTimeFormatDateTimeParserBucket_compareReverseWithOrgJodaTimeDuration
     { "iSavedFields_", NULL, 0x10, "[Lorg.joda.time.format.DateTimeParserBucket$SavedField;", NULL,  },
     { "iSavedFieldsCount_", NULL, 0x10, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeParserBucket_SavedState = { "SavedState", "org.joda.time.format", "DateTimeParserBucket", 0x0, 2, methods, 5, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeParserBucket_SavedState = { 1, "SavedState", "org.joda.time.format", "DateTimeParserBucket", 0x0, 2, methods, 5, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeParserBucket_SavedState;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeParserBucket_SavedState)
 
 @implementation OrgJodaTimeFormatDateTimeParserBucket_SavedField
 
@@ -512,9 +594,9 @@ jint OrgJodaTimeFormatDateTimeParserBucket_compareReverseWithOrgJodaTimeDuration
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeParserBucket_SavedField_set_iField_(self, nil);
-  OrgJodaTimeFormatDateTimeParserBucket_SavedField_set_iText_(self, nil);
-  OrgJodaTimeFormatDateTimeParserBucket_SavedField_set_iLocale_(self, nil);
+  RELEASE_(iField_);
+  RELEASE_(iText_);
+  RELEASE_(iLocale_);
   [super dealloc];
 }
 
@@ -540,8 +622,10 @@ jint OrgJodaTimeFormatDateTimeParserBucket_compareReverseWithOrgJodaTimeDuration
     { "iText_", NULL, 0x0, "Ljava.lang.String;", NULL,  },
     { "iLocale_", NULL, 0x0, "Ljava.util.Locale;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeParserBucket_SavedField = { "SavedField", "org.joda.time.format", "DateTimeParserBucket", 0x8, 5, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeParserBucket_SavedField = { 1, "SavedField", "org.joda.time.format", "DateTimeParserBucket", 0x8, 5, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeParserBucket_SavedField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeParserBucket_SavedField)

@@ -10,8 +10,8 @@
 @class JavaUtilHashMap;
 @class OrgJodaTimeDurationFieldType;
 
-#import "JreEmulation.h"
 #include "DurationField.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 
 #define OrgJodaTimeFieldUnsupportedDurationField_serialVersionUID -6390301302770925357LL
@@ -23,11 +23,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFieldUnsupportedDurationField : OrgJodaTimeDurationField < JavaIoSerializable > {
- @public
-  /**
-   @brief The name of the field
-   */
-  OrgJodaTimeDurationFieldType *iType_;
 }
 
 /**
@@ -37,12 +32,6 @@
  @return the instance
  */
 + (OrgJodaTimeFieldUnsupportedDurationField *)getInstanceWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)type;
-
-/**
- @brief Constructor.
- @param type the type to use
- */
-- (instancetype)initWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)type;
 
 - (OrgJodaTimeDurationFieldType *)getType;
 
@@ -171,22 +160,12 @@
  */
 - (NSString *)description;
 
-/**
- @brief Ensure proper singleton serialization
- */
-- (id)readResolve;
-
-- (JavaLangUnsupportedOperationException *)unsupported;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldUnsupportedDurationField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldUnsupportedDurationField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldUnsupportedDurationField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldUnsupportedDurationField, iType_, OrgJodaTimeDurationFieldType *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeFieldUnsupportedDurationField *OrgJodaTimeFieldUnsupportedDurationField_getInstanceWithOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationFieldType *type);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldUnsupportedDurationField, serialVersionUID, jlong)
@@ -194,5 +173,8 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldUnsupportedDurationField, serialVersi
 FOUNDATION_EXPORT JavaUtilHashMap *OrgJodaTimeFieldUnsupportedDurationField_cCache_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldUnsupportedDurationField, cCache_, JavaUtilHashMap *)
 J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeFieldUnsupportedDurationField, cCache_, JavaUtilHashMap *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldUnsupportedDurationField)
 
 #endif // _OrgJodaTimeFieldUnsupportedDurationField_H_

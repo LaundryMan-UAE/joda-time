@@ -11,8 +11,8 @@
 @class OrgJodaTimeDateTimeField;
 @class OrgJodaTimeDateTimeZone;
 
-#import "JreEmulation.h"
 #include "AssembledChronology.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoStrictChronology_serialVersionUID 6633006628097111960LL
 
@@ -23,8 +23,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeChronoStrictChronology : OrgJodaTimeChronoAssembledChronology {
- @public
-  OrgJodaTimeChronology *iWithUTC_;
 }
 
 /**
@@ -34,19 +32,11 @@
  */
 + (OrgJodaTimeChronoStrictChronology *)getInstanceWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base;
 
-/**
- @brief Create a StrictChronology for any chronology.
- @param base the chronology to wrap
- */
-- (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base;
-
 - (OrgJodaTimeChronology *)withUTC;
 
 - (OrgJodaTimeChronology *)withZoneWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
 - (void)assembleWithOrgJodaTimeChronoAssembledChronology_Fields:(OrgJodaTimeChronoAssembledChronology_Fields *)fields;
-
-+ (OrgJodaTimeDateTimeField *)convertFieldWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
 
 /**
  @brief A strict chronology is only equal to a strict chronology with the same base chronology.
@@ -69,17 +59,17 @@
  */
 - (NSString *)description;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoStrictChronology *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoStrictChronology_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoStrictChronology)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoStrictChronology, iWithUTC_, OrgJodaTimeChronology *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeChronoStrictChronology *OrgJodaTimeChronoStrictChronology_getInstanceWithOrgJodaTimeChronology_(OrgJodaTimeChronology *base);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoStrictChronology, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoStrictChronology)
 
 #endif // _OrgJodaTimeChronoStrictChronology_H_

@@ -20,6 +20,7 @@
 #include "InternalParserDateTimeParser.h"
 #include "InternalPrinter.h"
 #include "InternalPrinterDateTimePrinter.h"
+#include "J2ObjC_source.h"
 #include "LocalDate.h"
 #include "LocalDateTime.h"
 #include "LocalTime.h"
@@ -37,6 +38,86 @@
 #include "java/lang/StringBuilder.h"
 #include "java/lang/UnsupportedOperationException.h"
 #include "java/util/Locale.h"
+
+__attribute__((unused)) static void OrgJodaTimeFormatDateTimeFormatter_printToWithJavaLangAppendable_withLong_withOrgJodaTimeChronology_(OrgJodaTimeFormatDateTimeFormatter *self, id<JavaLangAppendable> appendable, jlong instant, OrgJodaTimeChronology *chrono);
+__attribute__((unused)) static id<OrgJodaTimeFormatInternalPrinter> OrgJodaTimeFormatDateTimeFormatter_requirePrinter(OrgJodaTimeFormatDateTimeFormatter *self);
+__attribute__((unused)) static id<OrgJodaTimeFormatInternalParser> OrgJodaTimeFormatDateTimeFormatter_requireParser(OrgJodaTimeFormatDateTimeFormatter *self);
+__attribute__((unused)) static OrgJodaTimeChronology *OrgJodaTimeFormatDateTimeFormatter_selectChronologyWithOrgJodaTimeChronology_(OrgJodaTimeFormatDateTimeFormatter *self, OrgJodaTimeChronology *chrono);
+
+@interface OrgJodaTimeFormatDateTimeFormatter () {
+ @public
+  /**
+   @brief The internal printer used to output the datetime.
+   */
+  id<OrgJodaTimeFormatInternalPrinter> iPrinter_;
+  /**
+   @brief The internal parser used to output the datetime.
+   */
+  id<OrgJodaTimeFormatInternalParser> iParser_;
+  /**
+   @brief The locale to use for printing and parsing.
+   */
+  JavaUtilLocale *iLocale_;
+  /**
+   @brief Whether the offset is parsed.
+   */
+  jboolean iOffsetParsed_;
+  /**
+   @brief The chronology to use as an override.
+   */
+  OrgJodaTimeChronology *iChrono_;
+  /**
+   @brief The zone to use as an override.
+   */
+  OrgJodaTimeDateTimeZone *iZone_;
+  /**
+   @brief The pivot year to use for two-digit year parsing.
+   */
+  JavaLangInteger *iPivotYear_;
+  /**
+   @brief The default year for parsing month/day without year.
+   */
+  jint iDefaultYear_;
+}
+- (instancetype)initWithOrgJodaTimeFormatInternalPrinter:(id<OrgJodaTimeFormatInternalPrinter>)printer
+                     withOrgJodaTimeFormatInternalParser:(id<OrgJodaTimeFormatInternalParser>)parser
+                                      withJavaUtilLocale:(JavaUtilLocale *)locale
+                                             withBoolean:(jboolean)offsetParsed
+                               withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono
+                             withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone
+                                     withJavaLangInteger:(JavaLangInteger *)pivotYear
+                                                 withInt:(jint)defaultYear;
+
+- (void)printToWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
+                             withLong:(jlong)instant
+            withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
+
+/**
+ @brief Checks whether printing is supported.
+ @throws UnsupportedOperationException if printing is not supported
+ */
+- (id<OrgJodaTimeFormatInternalPrinter>)requirePrinter;
+
+/**
+ @brief Checks whether parsing is supported.
+ @throws UnsupportedOperationException if parsing is not supported
+ */
+- (id<OrgJodaTimeFormatInternalParser>)requireParser;
+
+/**
+ @brief Determines the correct chronology to use.
+ @param chrono the proposed chronology
+ @return the actual chronology
+ */
+- (OrgJodaTimeChronology *)selectChronologyWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatter, iPrinter_, id<OrgJodaTimeFormatInternalPrinter>)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatter, iParser_, id<OrgJodaTimeFormatInternalParser>)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatter, iLocale_, JavaUtilLocale *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatter, iChrono_, OrgJodaTimeChronology *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatter, iZone_, OrgJodaTimeDateTimeZone *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatter, iPivotYear_, JavaLangInteger *)
 
 @implementation OrgJodaTimeFormatDateTimeFormatter
 
@@ -203,7 +284,7 @@
        withOrgJodaTimeReadableInstant:(id<OrgJodaTimeReadableInstant>)instant {
   jlong millis = OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(instant);
   OrgJodaTimeChronology *chrono = OrgJodaTimeDateTimeUtils_getInstantChronologyWithOrgJodaTimeReadableInstant_(instant);
-  [self printToWithJavaLangAppendable:appendable withLong:millis withOrgJodaTimeChronology:chrono];
+  OrgJodaTimeFormatDateTimeFormatter_printToWithJavaLangAppendable_withLong_withOrgJodaTimeChronology_(self, appendable, millis, chrono);
 }
 
 - (void)printToWithJavaLangStringBuffer:(JavaLangStringBuffer *)buf
@@ -222,7 +303,7 @@
 
 - (void)printToWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
                              withLong:(jlong)instant {
-  [self printToWithJavaLangAppendable:appendable withLong:instant withOrgJodaTimeChronology:nil];
+  OrgJodaTimeFormatDateTimeFormatter_printToWithJavaLangAppendable_withLong_withOrgJodaTimeChronology_(self, appendable, instant, nil);
 }
 
 - (void)printToWithJavaLangStringBuffer:(JavaLangStringBuffer *)buf
@@ -241,7 +322,7 @@
 
 - (void)printToWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
        withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial {
-  id<OrgJodaTimeFormatInternalPrinter> printer = [self requirePrinter];
+  id<OrgJodaTimeFormatInternalPrinter> printer = OrgJodaTimeFormatDateTimeFormatter_requirePrinter(self);
   if (partial == nil) {
     @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"The partial must not be null"] autorelease];
   }
@@ -249,7 +330,7 @@
 }
 
 - (NSString *)printWithOrgJodaTimeReadableInstant:(id<OrgJodaTimeReadableInstant>)instant {
-  JavaLangStringBuilder *buf = [[[JavaLangStringBuilder alloc] initWithInt:[((id<OrgJodaTimeFormatInternalPrinter>) nil_chk([self requirePrinter])) estimatePrintedLength]] autorelease];
+  JavaLangStringBuilder *buf = [[[JavaLangStringBuilder alloc] initWithInt:[((id<OrgJodaTimeFormatInternalPrinter>) nil_chk(OrgJodaTimeFormatDateTimeFormatter_requirePrinter(self))) estimatePrintedLength]] autorelease];
   @try {
     [self printToWithJavaLangAppendable:(id<JavaLangAppendable>) check_protocol_cast(buf, @protocol(JavaLangAppendable)) withOrgJodaTimeReadableInstant:instant];
   }
@@ -259,7 +340,7 @@
 }
 
 - (NSString *)printWithLong:(jlong)instant {
-  JavaLangStringBuilder *buf = [[[JavaLangStringBuilder alloc] initWithInt:[((id<OrgJodaTimeFormatInternalPrinter>) nil_chk([self requirePrinter])) estimatePrintedLength]] autorelease];
+  JavaLangStringBuilder *buf = [[[JavaLangStringBuilder alloc] initWithInt:[((id<OrgJodaTimeFormatInternalPrinter>) nil_chk(OrgJodaTimeFormatDateTimeFormatter_requirePrinter(self))) estimatePrintedLength]] autorelease];
   @try {
     [self printToWithJavaLangAppendable:(id<JavaLangAppendable>) check_protocol_cast(buf, @protocol(JavaLangAppendable)) withLong:instant];
   }
@@ -269,7 +350,7 @@
 }
 
 - (NSString *)printWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial {
-  JavaLangStringBuilder *buf = [[[JavaLangStringBuilder alloc] initWithInt:[((id<OrgJodaTimeFormatInternalPrinter>) nil_chk([self requirePrinter])) estimatePrintedLength]] autorelease];
+  JavaLangStringBuilder *buf = [[[JavaLangStringBuilder alloc] initWithInt:[((id<OrgJodaTimeFormatInternalPrinter>) nil_chk(OrgJodaTimeFormatDateTimeFormatter_requirePrinter(self))) estimatePrintedLength]] autorelease];
   @try {
     [self printToWithJavaLangAppendable:(id<JavaLangAppendable>) check_protocol_cast(buf, @protocol(JavaLangAppendable)) withOrgJodaTimeReadablePartial:partial];
   }
@@ -281,31 +362,17 @@
 - (void)printToWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
                              withLong:(jlong)instant
             withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
-  id<OrgJodaTimeFormatInternalPrinter> printer = [self requirePrinter];
-  chrono = [self selectChronologyWithOrgJodaTimeChronology:chrono];
-  OrgJodaTimeDateTimeZone *zone = [((OrgJodaTimeChronology *) nil_chk(chrono)) getZone];
-  jint offset = [((OrgJodaTimeDateTimeZone *) nil_chk(zone)) getOffsetWithLong:instant];
-  jlong adjustedInstant = instant + offset;
-  if ((instant ^ adjustedInstant) < 0 && (instant ^ offset) >= 0) {
-    zone = OrgJodaTimeDateTimeZone_get_UTC_();
-    offset = 0;
-    adjustedInstant = instant;
-  }
-  [((id<OrgJodaTimeFormatInternalPrinter>) nil_chk(printer)) printToWithJavaLangAppendable:appendable withLong:adjustedInstant withOrgJodaTimeChronology:[chrono withUTC] withInt:offset withOrgJodaTimeDateTimeZone:zone withJavaUtilLocale:iLocale_];
+  OrgJodaTimeFormatDateTimeFormatter_printToWithJavaLangAppendable_withLong_withOrgJodaTimeChronology_(self, appendable, instant, chrono);
 }
 
 - (id<OrgJodaTimeFormatInternalPrinter>)requirePrinter {
-  id<OrgJodaTimeFormatInternalPrinter> printer = iPrinter_;
-  if (printer == nil) {
-    @throw [[[JavaLangUnsupportedOperationException alloc] initWithNSString:@"Printing not supported"] autorelease];
-  }
-  return printer;
+  return OrgJodaTimeFormatDateTimeFormatter_requirePrinter(self);
 }
 
 - (jint)parseIntoWithOrgJodaTimeReadWritableInstant:(id<OrgJodaTimeReadWritableInstant>)instant
                                        withNSString:(NSString *)text
                                             withInt:(jint)position {
-  id<OrgJodaTimeFormatInternalParser> parser = [self requireParser];
+  id<OrgJodaTimeFormatInternalParser> parser = OrgJodaTimeFormatDateTimeFormatter_requireParser(self);
   if (instant == nil) {
     @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"Instant must not be null"] autorelease];
   }
@@ -313,7 +380,7 @@
   OrgJodaTimeChronology *chrono = [instant getChronology];
   jint defaultYear = [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeChronology *) nil_chk(OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chrono))) year])) getWithLong:instantMillis];
   jlong instantLocal = instantMillis + [((OrgJodaTimeDateTimeZone *) nil_chk([((OrgJodaTimeChronology *) nil_chk(chrono)) getZone])) getOffsetWithLong:instantMillis];
-  chrono = [self selectChronologyWithOrgJodaTimeChronology:chrono];
+  chrono = OrgJodaTimeFormatDateTimeFormatter_selectChronologyWithOrgJodaTimeChronology_(self, chrono);
   OrgJodaTimeFormatDateTimeParserBucket *bucket = [[[OrgJodaTimeFormatDateTimeParserBucket alloc] initWithLong:instantLocal withOrgJodaTimeChronology:chrono withJavaUtilLocale:iLocale_ withJavaLangInteger:iPivotYear_ withInt:defaultYear] autorelease];
   jint newPos = [((id<OrgJodaTimeFormatInternalParser>) nil_chk(parser)) parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:bucket withJavaLangCharSequence:text withInt:position];
   [instant setMillisWithLong:[bucket computeMillisWithBoolean:NO withNSString:text]];
@@ -333,8 +400,8 @@
 }
 
 - (jlong)parseMillisWithNSString:(NSString *)text {
-  id<OrgJodaTimeFormatInternalParser> parser = [self requireParser];
-  OrgJodaTimeChronology *chrono = [self selectChronologyWithOrgJodaTimeChronology:iChrono_];
+  id<OrgJodaTimeFormatInternalParser> parser = OrgJodaTimeFormatDateTimeFormatter_requireParser(self);
+  OrgJodaTimeChronology *chrono = OrgJodaTimeFormatDateTimeFormatter_selectChronologyWithOrgJodaTimeChronology_(self, iChrono_);
   OrgJodaTimeFormatDateTimeParserBucket *bucket = [[[OrgJodaTimeFormatDateTimeParserBucket alloc] initWithLong:0 withOrgJodaTimeChronology:chrono withJavaUtilLocale:iLocale_ withJavaLangInteger:iPivotYear_ withInt:iDefaultYear_] autorelease];
   return [bucket doParseMillisWithOrgJodaTimeFormatInternalParser:parser withJavaLangCharSequence:text];
 }
@@ -348,8 +415,8 @@
 }
 
 - (OrgJodaTimeLocalDateTime *)parseLocalDateTimeWithNSString:(NSString *)text {
-  id<OrgJodaTimeFormatInternalParser> parser = [self requireParser];
-  OrgJodaTimeChronology *chrono = [((OrgJodaTimeChronology *) nil_chk([self selectChronologyWithOrgJodaTimeChronology:nil])) withUTC];
+  id<OrgJodaTimeFormatInternalParser> parser = OrgJodaTimeFormatDateTimeFormatter_requireParser(self);
+  OrgJodaTimeChronology *chrono = [((OrgJodaTimeChronology *) nil_chk(OrgJodaTimeFormatDateTimeFormatter_selectChronologyWithOrgJodaTimeChronology_(self, nil))) withUTC];
   OrgJodaTimeFormatDateTimeParserBucket *bucket = [[[OrgJodaTimeFormatDateTimeParserBucket alloc] initWithLong:0 withOrgJodaTimeChronology:chrono withJavaUtilLocale:iLocale_ withJavaLangInteger:iPivotYear_ withInt:iDefaultYear_] autorelease];
   jint newPos = [((id<OrgJodaTimeFormatInternalParser>) nil_chk(parser)) parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:bucket withJavaLangCharSequence:text withInt:0];
   if (newPos >= 0) {
@@ -373,8 +440,8 @@
 }
 
 - (OrgJodaTimeDateTime *)parseDateTimeWithNSString:(NSString *)text {
-  id<OrgJodaTimeFormatInternalParser> parser = [self requireParser];
-  OrgJodaTimeChronology *chrono = [self selectChronologyWithOrgJodaTimeChronology:nil];
+  id<OrgJodaTimeFormatInternalParser> parser = OrgJodaTimeFormatDateTimeFormatter_requireParser(self);
+  OrgJodaTimeChronology *chrono = OrgJodaTimeFormatDateTimeFormatter_selectChronologyWithOrgJodaTimeChronology_(self, nil);
   OrgJodaTimeFormatDateTimeParserBucket *bucket = [[[OrgJodaTimeFormatDateTimeParserBucket alloc] initWithLong:0 withOrgJodaTimeChronology:chrono withJavaUtilLocale:iLocale_ withJavaLangInteger:iPivotYear_ withInt:iDefaultYear_] autorelease];
   jint newPos = [((id<OrgJodaTimeFormatInternalParser>) nil_chk(parser)) parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:bucket withJavaLangCharSequence:text withInt:0];
   if (newPos >= 0) {
@@ -402,8 +469,8 @@
 }
 
 - (OrgJodaTimeMutableDateTime *)parseMutableDateTimeWithNSString:(NSString *)text {
-  id<OrgJodaTimeFormatInternalParser> parser = [self requireParser];
-  OrgJodaTimeChronology *chrono = [self selectChronologyWithOrgJodaTimeChronology:nil];
+  id<OrgJodaTimeFormatInternalParser> parser = OrgJodaTimeFormatDateTimeFormatter_requireParser(self);
+  OrgJodaTimeChronology *chrono = OrgJodaTimeFormatDateTimeFormatter_selectChronologyWithOrgJodaTimeChronology_(self, nil);
   OrgJodaTimeFormatDateTimeParserBucket *bucket = [[[OrgJodaTimeFormatDateTimeParserBucket alloc] initWithLong:0 withOrgJodaTimeChronology:chrono withJavaUtilLocale:iLocale_ withJavaLangInteger:iPivotYear_ withInt:iDefaultYear_] autorelease];
   jint newPos = [((id<OrgJodaTimeFormatInternalParser>) nil_chk(parser)) parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:bucket withJavaLangCharSequence:text withInt:0];
   if (newPos >= 0) {
@@ -431,31 +498,20 @@
 }
 
 - (id<OrgJodaTimeFormatInternalParser>)requireParser {
-  id<OrgJodaTimeFormatInternalParser> parser = iParser_;
-  if (parser == nil) {
-    @throw [[[JavaLangUnsupportedOperationException alloc] initWithNSString:@"Parsing not supported"] autorelease];
-  }
-  return parser;
+  return OrgJodaTimeFormatDateTimeFormatter_requireParser(self);
 }
 
 - (OrgJodaTimeChronology *)selectChronologyWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
-  chrono = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chrono);
-  if (iChrono_ != nil) {
-    chrono = iChrono_;
-  }
-  if (iZone_ != nil) {
-    chrono = [((OrgJodaTimeChronology *) nil_chk(chrono)) withZoneWithOrgJodaTimeDateTimeZone:iZone_];
-  }
-  return chrono;
+  return OrgJodaTimeFormatDateTimeFormatter_selectChronologyWithOrgJodaTimeChronology_(self, chrono);
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeFormatter_set_iPrinter_(self, nil);
-  OrgJodaTimeFormatDateTimeFormatter_set_iParser_(self, nil);
-  OrgJodaTimeFormatDateTimeFormatter_set_iLocale_(self, nil);
-  OrgJodaTimeFormatDateTimeFormatter_set_iChrono_(self, nil);
-  OrgJodaTimeFormatDateTimeFormatter_set_iZone_(self, nil);
-  OrgJodaTimeFormatDateTimeFormatter_set_iPivotYear_(self, nil);
+  RELEASE_(iPrinter_);
+  RELEASE_(iParser_);
+  RELEASE_(iLocale_);
+  RELEASE_(iChrono_);
+  RELEASE_(iZone_);
+  RELEASE_(iPivotYear_);
   [super dealloc];
 }
 
@@ -472,7 +528,7 @@
 }
 
 + (IOSObjectArray *)__annotations_getChronolgy {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -535,8 +591,51 @@
     { "iPivotYear_", NULL, 0x12, "Ljava.lang.Integer;", NULL,  },
     { "iDefaultYear_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatter = { "DateTimeFormatter", "org.joda.time.format", NULL, 0x1, 47, methods, 8, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatter = { 1, "DateTimeFormatter", "org.joda.time.format", NULL, 0x1, 47, methods, 8, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormatter;
 }
 
 @end
+
+void OrgJodaTimeFormatDateTimeFormatter_printToWithJavaLangAppendable_withLong_withOrgJodaTimeChronology_(OrgJodaTimeFormatDateTimeFormatter *self, id<JavaLangAppendable> appendable, jlong instant, OrgJodaTimeChronology *chrono) {
+  id<OrgJodaTimeFormatInternalPrinter> printer = OrgJodaTimeFormatDateTimeFormatter_requirePrinter(self);
+  chrono = OrgJodaTimeFormatDateTimeFormatter_selectChronologyWithOrgJodaTimeChronology_(self, chrono);
+  OrgJodaTimeDateTimeZone *zone = [((OrgJodaTimeChronology *) nil_chk(chrono)) getZone];
+  jint offset = [((OrgJodaTimeDateTimeZone *) nil_chk(zone)) getOffsetWithLong:instant];
+  jlong adjustedInstant = instant + offset;
+  if ((instant ^ adjustedInstant) < 0 && (instant ^ offset) >= 0) {
+    zone = OrgJodaTimeDateTimeZone_get_UTC_();
+    offset = 0;
+    adjustedInstant = instant;
+  }
+  [((id<OrgJodaTimeFormatInternalPrinter>) nil_chk(printer)) printToWithJavaLangAppendable:appendable withLong:adjustedInstant withOrgJodaTimeChronology:[chrono withUTC] withInt:offset withOrgJodaTimeDateTimeZone:zone withJavaUtilLocale:self->iLocale_];
+}
+
+id<OrgJodaTimeFormatInternalPrinter> OrgJodaTimeFormatDateTimeFormatter_requirePrinter(OrgJodaTimeFormatDateTimeFormatter *self) {
+  id<OrgJodaTimeFormatInternalPrinter> printer = self->iPrinter_;
+  if (printer == nil) {
+    @throw [[[JavaLangUnsupportedOperationException alloc] initWithNSString:@"Printing not supported"] autorelease];
+  }
+  return printer;
+}
+
+id<OrgJodaTimeFormatInternalParser> OrgJodaTimeFormatDateTimeFormatter_requireParser(OrgJodaTimeFormatDateTimeFormatter *self) {
+  id<OrgJodaTimeFormatInternalParser> parser = self->iParser_;
+  if (parser == nil) {
+    @throw [[[JavaLangUnsupportedOperationException alloc] initWithNSString:@"Parsing not supported"] autorelease];
+  }
+  return parser;
+}
+
+OrgJodaTimeChronology *OrgJodaTimeFormatDateTimeFormatter_selectChronologyWithOrgJodaTimeChronology_(OrgJodaTimeFormatDateTimeFormatter *self, OrgJodaTimeChronology *chrono) {
+  chrono = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chrono);
+  if (self->iChrono_ != nil) {
+    chrono = self->iChrono_;
+  }
+  if (self->iZone_ != nil) {
+    chrono = [((OrgJodaTimeChronology *) nil_chk(chrono)) withZoneWithOrgJodaTimeDateTimeZone:self->iZone_];
+  }
+  return chrono;
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatter)

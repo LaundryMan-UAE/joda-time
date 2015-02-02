@@ -7,10 +7,15 @@
 #include "DateTimeFieldType.h"
 #include "FieldUtils.h"
 #include "IllegalFieldValueException.h"
+#include "J2ObjC_source.h"
 #include "java/lang/ArithmeticException.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Long.h"
+
+@interface OrgJodaTimeFieldFieldUtils ()
+- (instancetype)init;
+@end
 
 @implementation OrgJodaTimeFieldFieldUtils
 
@@ -125,7 +130,7 @@
     { "getWrappedValueWithInt:withInt:withInt:", "getWrappedValue", "I", 0x9, NULL },
     { "equalsWithId:withId:", "equals", "Z", 0x9, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldFieldUtils = { "FieldUtils", "org.joda.time.field", NULL, 0x1, 17, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldFieldUtils = { 1, "FieldUtils", "org.joda.time.field", NULL, 0x1, 17, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeFieldFieldUtils;
 }
 
@@ -288,3 +293,5 @@ jboolean OrgJodaTimeFieldFieldUtils_equalsWithId_withId_(id object1, id object2)
   }
   return [nil_chk(object1) isEqual:object2];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldFieldUtils)

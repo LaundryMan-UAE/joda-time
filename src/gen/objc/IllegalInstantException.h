@@ -8,7 +8,7 @@
 
 @class JavaLangThrowable;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/lang/IllegalArgumentException.h"
 
 #define OrgJodaTimeIllegalInstantException_serialVersionUID 2858712538216LL
@@ -36,9 +36,6 @@
 - (instancetype)initWithLong:(jlong)instantLocal
                 withNSString:(NSString *)zoneId;
 
-+ (NSString *)createMessageWithLong:(jlong)instantLocal
-                       withNSString:(NSString *)zoneId;
-
 /**
  @brief Checks if the exception is, or has a cause, of <code>IllegalInstantException</code> .
  @param ex the exception to check
@@ -48,9 +45,15 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeIllegalInstantException_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeIllegalInstantException)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT jboolean OrgJodaTimeIllegalInstantException_isIllegalInstantWithJavaLangThrowable_(JavaLangThrowable *ex);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeIllegalInstantException, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeIllegalInstantException)
 
 #endif // _OrgJodaTimeIllegalInstantException_H_

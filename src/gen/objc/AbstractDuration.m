@@ -7,6 +7,7 @@
 #include "Duration.h"
 #include "FormatUtils.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "Period.h"
 #include "ReadableDuration.h"
 #include "ToString.h"
@@ -66,7 +67,7 @@
   if (self == duration) {
     return YES;
   }
-  if ([duration conformsToProtocol: @protocol(OrgJodaTimeReadableDuration)] == NO) {
+  if ([OrgJodaTimeReadableDuration_class_() isInstance:duration] == NO) {
     return NO;
   }
   id<OrgJodaTimeReadableDuration> other = (id<OrgJodaTimeReadableDuration>) check_protocol_cast(duration, @protocol(OrgJodaTimeReadableDuration));
@@ -98,7 +99,7 @@
 }
 
 + (IOSObjectArray *)__annotations_description {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -114,8 +115,10 @@
     { "hash", "hashCode", "I", 0x1, NULL },
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractDuration = { "AbstractDuration", "org.joda.time.base", NULL, 0x401, 10, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractDuration = { 1, "AbstractDuration", "org.joda.time.base", NULL, 0x401, 10, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeBaseAbstractDuration;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseAbstractDuration)

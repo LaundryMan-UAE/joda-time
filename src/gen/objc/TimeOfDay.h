@@ -21,9 +21,9 @@
 @class OrgJodaTimeTimeOfDay_Property;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
 #include "AbstractPartialFieldProperty.h"
 #include "BasePartial.h"
+#include "J2ObjC_header.h"
 #include "ReadablePartial.h"
 #include "java/io/Serializable.h"
 
@@ -515,9 +515,15 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeTimeOfDay_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeTimeOfDay)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeTimeOfDay *OrgJodaTimeTimeOfDay_fromCalendarFieldsWithJavaUtilCalendar_(JavaUtilCalendar *calendar);
+
 FOUNDATION_EXPORT OrgJodaTimeTimeOfDay *OrgJodaTimeTimeOfDay_fromDateFieldsWithJavaUtilDate_(JavaUtilDate *date);
+
 FOUNDATION_EXPORT OrgJodaTimeTimeOfDay *OrgJodaTimeTimeOfDay_fromMillisOfDayWithLong_(jlong millisOfDay);
+
 FOUNDATION_EXPORT OrgJodaTimeTimeOfDay *OrgJodaTimeTimeOfDay_fromMillisOfDayWithLong_withOrgJodaTimeChronology_(jlong millisOfDay, OrgJodaTimeChronology *chrono);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTimeOfDay, serialVersionUID, jlong)
@@ -535,6 +541,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTimeOfDay, MINUTE_OF_HOUR, jint)
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTimeOfDay, SECOND_OF_MINUTE, jint)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTimeOfDay, MILLIS_OF_SECOND, jint)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTimeOfDay)
 
 #define OrgJodaTimeTimeOfDay_Property_serialVersionUID 5598459141741063833LL
 
@@ -545,15 +554,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTimeOfDay, MILLIS_OF_SECOND, jint)
  @since 1.0
  */
 @interface OrgJodaTimeTimeOfDay_Property : OrgJodaTimeFieldAbstractPartialFieldProperty < JavaIoSerializable > {
- @public
-  /**
-   @brief The partial
-   */
-  OrgJodaTimeTimeOfDay *iTimeOfDay_;
-  /**
-   @brief The field index
-   */
-  jint iFieldIndex_;
 }
 
 /**
@@ -660,16 +660,15 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTimeOfDay, MILLIS_OF_SECOND, jint)
  */
 - (OrgJodaTimeTimeOfDay *)withMinimumValue;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeTimeOfDay_Property *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeTimeOfDay_Property_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeTimeOfDay_Property)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeTimeOfDay_Property, iTimeOfDay_, OrgJodaTimeTimeOfDay *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTimeOfDay_Property, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTimeOfDay_Property)
 
 #endif // _OrgJodaTimeTimeOfDay_H_

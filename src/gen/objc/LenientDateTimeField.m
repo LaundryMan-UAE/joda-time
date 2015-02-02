@@ -9,9 +9,17 @@
 #include "DateTimeZone.h"
 #include "DelegatedDateTimeField.h"
 #include "FieldUtils.h"
-#include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "LenientDateTimeField.h"
 #include "StrictDateTimeField.h"
+
+@interface OrgJodaTimeFieldLenientDateTimeField () {
+ @public
+  OrgJodaTimeChronology *iBase_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldLenientDateTimeField, iBase_, OrgJodaTimeChronology *)
 
 @implementation OrgJodaTimeFieldLenientDateTimeField
 
@@ -41,7 +49,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeFieldLenientDateTimeField_set_iBase_(self, nil);
+  RELEASE_(iBase_);
   [super dealloc];
 }
 
@@ -61,7 +69,7 @@
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeFieldLenientDateTimeField_serialVersionUID },
     { "iBase_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldLenientDateTimeField = { "LenientDateTimeField", "org.joda.time.field", NULL, 0x1, 4, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldLenientDateTimeField = { 1, "LenientDateTimeField", "org.joda.time.field", NULL, 0x1, 4, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeFieldLenientDateTimeField;
 }
 
@@ -80,3 +88,5 @@ OrgJodaTimeDateTimeField *OrgJodaTimeFieldLenientDateTimeField_getInstanceWithOr
   }
   return [[[OrgJodaTimeFieldLenientDateTimeField alloc] initWithOrgJodaTimeDateTimeField:field withOrgJodaTimeChronology:base] autorelease];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldLenientDateTimeField)

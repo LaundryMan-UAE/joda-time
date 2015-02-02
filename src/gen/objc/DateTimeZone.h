@@ -19,8 +19,8 @@
 @protocol OrgJodaTimeTzNameProvider;
 @protocol OrgJodaTimeTzProvider;
 
-#import "JreEmulation.h"
 #include "BaseChronology.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 
 #define OrgJodaTimeDateTimeZone_MAX_MILLIS 86399999
@@ -34,8 +34,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeDateTimeZone : NSObject < JavaIoSerializable > {
- @public
-  NSString *iID_;
 }
 
 /**
@@ -100,15 +98,6 @@
 + (OrgJodaTimeDateTimeZone *)forTimeZoneWithJavaUtilTimeZone:(JavaUtilTimeZone *)zone;
 
 /**
- @brief Gets the zone using a fixed offset amount.
- @param id the zone id
- @param offset the offset in millis
- @return the zone
- */
-+ (OrgJodaTimeDateTimeZone *)fixedOffsetZoneWithNSString:(NSString *)id_
-                                                 withInt:(jint)offset;
-
-/**
  @brief Gets all the available IDs supported.
  @return an unmodifiable Set of String IDs
  */
@@ -131,20 +120,6 @@
 + (void)setProviderWithOrgJodaTimeTzProvider:(id<OrgJodaTimeTzProvider>)provider;
 
 /**
- @brief Sets the zone provider factory without performing the security check.
- @param provider provider to use, or null for default
- @throws IllegalArgumentException if the provider is invalid
- */
-+ (void)setProvider0WithOrgJodaTimeTzProvider:(id<OrgJodaTimeTzProvider>)provider;
-
-/**
- @brief Gets the default zone provider.
- <p> Tries the system property <code>org.joda.time.DateTimeZone.Provider</code>. Then tries a <code>ZoneInfoProvider</code> using the data in <code>org/joda/time/tz/data</code>. Then uses <code>UTCProvider</code>.
- @return the default name provider
- */
-+ (id<OrgJodaTimeTzProvider>)getDefaultProvider;
-
-/**
  @brief Gets the name provider factory.
  <p> The name provider is a pluggable instance factory that supplies the names of each DateTimeZone.
  @return the provider
@@ -159,43 +134,6 @@
  @throws IllegalArgumentException if the provider is invalid
  */
 + (void)setNameProviderWithOrgJodaTimeTzNameProvider:(id<OrgJodaTimeTzNameProvider>)nameProvider;
-
-/**
- @brief Sets the name provider factory without performing the security check.
- @param nameProvider provider to use, or null for default
- @throws IllegalArgumentException if the provider is invalid
- */
-+ (void)setNameProvider0WithOrgJodaTimeTzNameProvider:(id<OrgJodaTimeTzNameProvider>)nameProvider;
-
-/**
- @brief Gets the default name provider.
- <p> Tries the system property <code>org.joda.time.DateTimeZone.NameProvider</code>. Then uses <code>DefaultNameProvider</code>.
- @return the default name provider
- */
-+ (id<OrgJodaTimeTzNameProvider>)getDefaultNameProvider;
-
-/**
- @brief Converts an old style id to a new style id.
- @param id the old style id
- @return the new style id, null if not found
- */
-+ (NSString *)getConvertedIdWithNSString:(NSString *)id_;
-
-+ (jint)parseOffsetWithNSString:(NSString *)str;
-
-/**
- @brief Formats a timezone offset string.
- <p> This method is kept separate from the formatting classes to speed and simplify startup and classloading.
- @param offset the offset in milliseconds
- @return the time zone string
- */
-+ (NSString *)printOffsetWithInt:(jint)offset;
-
-/**
- @brief Gets a printer/parser for managing the offset id formatting.
- @return the formatter
- */
-+ (OrgJodaTimeFormatDateTimeFormatter *)offsetFormatter;
 
 /**
  @brief Constructor.
@@ -412,27 +350,35 @@
  */
 - (id)writeReplace;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeDateTimeZone *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeDateTimeZone_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeDateTimeZone)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeDateTimeZone, iID_, NSString *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeZone *OrgJodaTimeDateTimeZone_getDefault();
+
 FOUNDATION_EXPORT void OrgJodaTimeDateTimeZone_setDefaultWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeZone *OrgJodaTimeDateTimeZone_forIDWithNSString_(NSString *id_);
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeZone *OrgJodaTimeDateTimeZone_forOffsetHoursWithInt_(jint hoursOffset);
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeZone *OrgJodaTimeDateTimeZone_forOffsetHoursMinutesWithInt_withInt_(jint hoursOffset, jint minutesOffset);
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeZone *OrgJodaTimeDateTimeZone_forOffsetMillisWithInt_(jint millisOffset);
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeZone *OrgJodaTimeDateTimeZone_forTimeZoneWithJavaUtilTimeZone_(JavaUtilTimeZone *zone);
+
 FOUNDATION_EXPORT id<JavaUtilSet> OrgJodaTimeDateTimeZone_getAvailableIDs();
+
 FOUNDATION_EXPORT id<OrgJodaTimeTzProvider> OrgJodaTimeDateTimeZone_getProvider();
+
 FOUNDATION_EXPORT void OrgJodaTimeDateTimeZone_setProviderWithOrgJodaTimeTzProvider_(id<OrgJodaTimeTzProvider> provider);
+
 FOUNDATION_EXPORT id<OrgJodaTimeTzNameProvider> OrgJodaTimeDateTimeZone_getNameProvider();
+
 FOUNDATION_EXPORT void OrgJodaTimeDateTimeZone_setNameProviderWithOrgJodaTimeTzNameProvider_(id<OrgJodaTimeTzNameProvider> nameProvider);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeZone, serialVersionUID, jlong)
@@ -469,6 +415,9 @@ J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeDateTimeZone, iFixedOffsetCache_, id<JavaU
 FOUNDATION_EXPORT id<JavaUtilMap> OrgJodaTimeDateTimeZone_cZoneIdConversion_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeZone, cZoneIdConversion_, id<JavaUtilMap>)
 J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeDateTimeZone, cZoneIdConversion_, id<JavaUtilMap>)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeZone)
 
 #define OrgJodaTimeDateTimeZone_Stub_serialVersionUID -6471952376487863581LL
 
@@ -476,11 +425,6 @@ J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeDateTimeZone, cZoneIdConversion_, id<JavaU
  @brief Used to serialize DateTimeZones by id.
  */
 @interface OrgJodaTimeDateTimeZone_Stub : NSObject < JavaIoSerializable > {
- @public
-  /**
-   @brief The ID of the zone.
-   */
-  NSString *iID_;
 }
 
 /**
@@ -489,23 +433,16 @@ J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeDateTimeZone, cZoneIdConversion_, id<JavaU
  */
 - (instancetype)initWithNSString:(NSString *)id_;
 
-- (void)writeObjectWithJavaIoObjectOutputStream:(JavaIoObjectOutputStream *)outArg;
-
-- (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)inArg;
-
-- (id)readResolve;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeDateTimeZone_Stub *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeDateTimeZone_Stub_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeDateTimeZone_Stub)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeDateTimeZone_Stub, iID_, NSString *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeZone_Stub, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeZone_Stub)
 
 #define OrgJodaTimeDateTimeZone_$1_serialVersionUID -3128740902654445468LL
 
@@ -524,8 +461,13 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeZone_Stub, serialVersionUID, jlong
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeDateTimeZone_$1_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeDateTimeZone_$1)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeZone_$1, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeZone_$1)
 
 #endif // _OrgJodaTimeDateTimeZone_H_

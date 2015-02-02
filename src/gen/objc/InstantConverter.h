@@ -9,8 +9,8 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeZone;
 
-#import "JreEmulation.h"
 #include "Converter.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief InstantConverter defines how an object is converted to milliseconds/chronology.
@@ -54,6 +54,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeConvertInstantConverter_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeConvertInstantConverter)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertInstantConverter)
 
 #endif // _OrgJodaTimeConvertInstantConverter_H_

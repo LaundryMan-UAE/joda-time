@@ -10,9 +10,22 @@
 #include "DateTimeFieldType.h"
 #include "DurationField.h"
 #include "FieldUtils.h"
-#include "IOSClass.h"
 #include "ImpreciseDateTimeField.h"
+#include "J2ObjC_source.h"
 #include "java/lang/Math.h"
+
+@interface OrgJodaTimeChronoBasicWeekyearDateTimeField () {
+ @public
+  OrgJodaTimeChronoBasicChronology *iChronology_;
+}
+
+/**
+ @brief Serialization singleton
+ */
+- (id)readResolve;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoBasicWeekyearDateTimeField, iChronology_, OrgJodaTimeChronoBasicChronology *)
 
 @implementation OrgJodaTimeChronoBasicWeekyearDateTimeField
 
@@ -140,7 +153,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoBasicWeekyearDateTimeField_set_iChronology_(self, nil);
+  RELEASE_(iChronology_);
   [super dealloc];
 }
 
@@ -174,8 +187,10 @@
     { "WEEK_53_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoBasicWeekyearDateTimeField_WEEK_53 },
     { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicWeekyearDateTimeField = { "BasicWeekyearDateTimeField", "org.joda.time.chrono", NULL, 0x10, 17, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicWeekyearDateTimeField = { 1, "BasicWeekyearDateTimeField", "org.joda.time.chrono", NULL, 0x10, 17, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeChronoBasicWeekyearDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicWeekyearDateTimeField)

@@ -7,6 +7,7 @@
 #include "Chronology.h"
 #include "DateTimeUtils.h"
 #include "FieldUtils.h"
+#include "J2ObjC_source.h"
 #include "MutableInterval.h"
 #include "ReadableDuration.h"
 #include "ReadableInstant.h"
@@ -15,6 +16,10 @@
 #include "java/lang/CloneNotSupportedException.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/InternalError.h"
+
+@interface OrgJodaTimeMutableInterval () {
+}
+@end
 
 @implementation OrgJodaTimeMutableInterval
 
@@ -208,7 +213,7 @@
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeMutableInterval_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeMutableInterval = { "MutableInterval", "org.joda.time", NULL, 0x1, 27, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeMutableInterval = { 1, "MutableInterval", "org.joda.time", NULL, 0x1, 27, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeMutableInterval;
 }
 
@@ -218,3 +223,5 @@ OrgJodaTimeMutableInterval *OrgJodaTimeMutableInterval_parseWithNSString_(NSStri
   OrgJodaTimeMutableInterval_init();
   return [[[OrgJodaTimeMutableInterval alloc] initWithId:str] autorelease];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeMutableInterval)

@@ -6,8 +6,13 @@
 #include "DateTimeField.h"
 #include "DelegatedDateTimeField.h"
 #include "FieldUtils.h"
+#include "J2ObjC_source.h"
 #include "LenientDateTimeField.h"
 #include "StrictDateTimeField.h"
+
+@interface OrgJodaTimeFieldStrictDateTimeField () {
+}
+@end
 
 @implementation OrgJodaTimeFieldStrictDateTimeField
 
@@ -39,7 +44,7 @@
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeFieldStrictDateTimeField_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldStrictDateTimeField = { "StrictDateTimeField", "org.joda.time.field", NULL, 0x1, 4, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldStrictDateTimeField = { 1, "StrictDateTimeField", "org.joda.time.field", NULL, 0x1, 4, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeFieldStrictDateTimeField;
 }
 
@@ -58,3 +63,5 @@ OrgJodaTimeDateTimeField *OrgJodaTimeFieldStrictDateTimeField_getInstanceWithOrg
   }
   return [[[OrgJodaTimeFieldStrictDateTimeField alloc] initWithOrgJodaTimeDateTimeField:field] autorelease];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldStrictDateTimeField)

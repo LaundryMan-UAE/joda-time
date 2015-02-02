@@ -17,12 +17,22 @@
 #include "EthiopicChronology.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
+#include "J2ObjC_source.h"
 #include "LimitChronology.h"
 #include "SkipDateTimeField.h"
 #include "ZonedChronology.h"
 #include "java/lang/ArrayIndexOutOfBoundsException.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/util/concurrent/ConcurrentHashMap.h"
+
+@interface OrgJodaTimeChronoEthiopicChronology () {
+}
+
+/**
+ @brief Serialization singleton.
+ */
+- (id)readResolve;
+@end
 
 BOOL OrgJodaTimeChronoEthiopicChronology_initialized = NO;
 
@@ -154,7 +164,7 @@ OrgJodaTimeChronoEthiopicChronology * OrgJodaTimeChronoEthiopicChronology_INSTAN
     { "cCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoEthiopicChronology_cCache_,  },
     { "INSTANCE_UTC_", NULL, 0x1a, "Lorg.joda.time.chrono.EthiopicChronology;", &OrgJodaTimeChronoEthiopicChronology_INSTANCE_UTC_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoEthiopicChronology = { "EthiopicChronology", "org.joda.time.chrono", NULL, 0x11, 14, methods, 7, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoEthiopicChronology = { 1, "EthiopicChronology", "org.joda.time.chrono", NULL, 0x11, 14, methods, 7, fields, 0, NULL};
   return &_OrgJodaTimeChronoEthiopicChronology;
 }
 
@@ -183,7 +193,7 @@ OrgJodaTimeChronoEthiopicChronology *OrgJodaTimeChronoEthiopicChronology_getInst
   OrgJodaTimeChronoEthiopicChronology *chrono;
   IOSObjectArray *chronos = [((JavaUtilConcurrentConcurrentHashMap *) nil_chk(OrgJodaTimeChronoEthiopicChronology_cCache_)) getWithId:zone];
   if (chronos == nil) {
-    chronos = [IOSObjectArray arrayWithLength:7 type:[IOSClass classWithClass:[OrgJodaTimeChronoEthiopicChronology class]]];
+    chronos = [IOSObjectArray arrayWithLength:7 type:OrgJodaTimeChronoEthiopicChronology_class_()];
     IOSObjectArray *oldChronos = [OrgJodaTimeChronoEthiopicChronology_cCache_ putIfAbsentWithId:zone withId:chronos];
     if (oldChronos != nil) {
       chronos = oldChronos;
@@ -214,3 +224,5 @@ OrgJodaTimeChronoEthiopicChronology *OrgJodaTimeChronoEthiopicChronology_getInst
   }
   return chrono;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoEthiopicChronology)

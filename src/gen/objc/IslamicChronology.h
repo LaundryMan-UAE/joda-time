@@ -13,8 +13,8 @@
 @class OrgJodaTimeDateTimeField;
 @class OrgJodaTimeDateTimeZone;
 
-#import "JreEmulation.h"
 #include "BasicChronology.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 
 #define OrgJodaTimeChronoIslamicChronology_AH 1
@@ -41,11 +41,6 @@
  @since 1.2
  */
 @interface OrgJodaTimeChronoIslamicChronology : OrgJodaTimeChronoBasicChronology {
- @public
-  /**
-   @brief The leap years to use.
-   */
-  OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *iLeapYears_;
 }
 
 /**
@@ -83,11 +78,6 @@
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
                                        withId:(id)param
 withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType:(OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *)leapYears;
-
-/**
- @brief Serialization singleton.
- */
-- (id)readResolve;
 
 /**
  @brief Gets the leap year pattern type.
@@ -168,19 +158,19 @@ withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType:(OrgJodaTimeChronoIsl
 
 - (void)assembleWithOrgJodaTimeChronoAssembledChronology_Fields:(OrgJodaTimeChronoAssembledChronology_Fields *)fields;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoIslamicChronology *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeChronoIslamicChronology_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeChronoIslamicChronology)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoIslamicChronology, iLeapYears_, OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeChronoIslamicChronology *OrgJodaTimeChronoIslamicChronology_getInstanceUTC();
+
 FOUNDATION_EXPORT OrgJodaTimeChronoIslamicChronology *OrgJodaTimeChronoIslamicChronology_getInstance();
+
 FOUNDATION_EXPORT OrgJodaTimeChronoIslamicChronology *OrgJodaTimeChronoIslamicChronology_getInstanceWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
+
 FOUNDATION_EXPORT OrgJodaTimeChronoIslamicChronology *OrgJodaTimeChronoIslamicChronology_getInstanceWithOrgJodaTimeDateTimeZone_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_(OrgJodaTimeDateTimeZone *zone, OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *leapYears);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoIslamicChronology, serialVersionUID, jlong)
@@ -235,6 +225,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoIslamicChronology, cCache_, JavaUtil
 
 FOUNDATION_EXPORT OrgJodaTimeChronoIslamicChronology *OrgJodaTimeChronoIslamicChronology_INSTANCE_UTC_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoIslamicChronology, INSTANCE_UTC_, OrgJodaTimeChronoIslamicChronology *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoIslamicChronology)
 
 #define OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_serialVersionUID 26581275372698LL
 
@@ -270,22 +263,19 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoIslamicChronology, INSTANCE_UTC_, Or
  */
 - (jboolean)isLeapYearWithInt:(jint)year;
 
-/**
- @brief Ensure a singleton is returned if possible.
- @return the singleton instance
- */
-- (id)readResolve;
-
 - (jboolean)isEqual:(id)obj;
 
 - (NSUInteger)hash;
 
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoIslamicChronology_LeapYearPatternType)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoIslamicChronology_LeapYearPatternType, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoIslamicChronology_LeapYearPatternType)
 
 #endif // _OrgJodaTimeChronoIslamicChronology_H_

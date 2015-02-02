@@ -13,8 +13,8 @@
 @protocol OrgJodaTimeReadablePartial;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
 #include "Chronology.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 
 #define OrgJodaTimeChronoBaseChronology_serialVersionUID -7310865996721419676LL
@@ -392,8 +392,13 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoBaseChronology_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoBaseChronology)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBaseChronology, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBaseChronology)
 
 #endif // _OrgJodaTimeChronoBaseChronology_H_

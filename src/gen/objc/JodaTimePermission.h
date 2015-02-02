@@ -6,7 +6,7 @@
 #ifndef _OrgJodaTimeJodaTimePermission_H_
 #define _OrgJodaTimeJodaTimePermission_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/security/BasicPermission.h"
 
 #define OrgJodaTimeJodaTimePermission_serialVersionUID 1408944367355875472LL
@@ -28,8 +28,13 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeJodaTimePermission_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeJodaTimePermission)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeJodaTimePermission, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeJodaTimePermission)
 
 #endif // _OrgJodaTimeJodaTimePermission_H_

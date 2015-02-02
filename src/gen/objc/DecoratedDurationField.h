@@ -9,8 +9,8 @@
 @class OrgJodaTimeDurationField;
 @class OrgJodaTimeDurationFieldType;
 
-#import "JreEmulation.h"
 #include "BaseDurationField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeFieldDecoratedDurationField_serialVersionUID 8019982251647420015LL
 
@@ -21,11 +21,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFieldDecoratedDurationField : OrgJodaTimeFieldBaseDurationField {
- @public
-  /**
-   @brief The DurationField being wrapped
-   */
-  OrgJodaTimeDurationField *iField_;
 }
 
 /**
@@ -64,16 +59,15 @@
 
 - (jlong)getUnitMillis;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldDecoratedDurationField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldDecoratedDurationField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldDecoratedDurationField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldDecoratedDurationField, iField_, OrgJodaTimeDurationField *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldDecoratedDurationField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldDecoratedDurationField)
 
 #endif // _OrgJodaTimeFieldDecoratedDurationField_H_

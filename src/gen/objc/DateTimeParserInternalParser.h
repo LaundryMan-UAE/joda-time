@@ -10,8 +10,8 @@
 @protocol JavaLangCharSequence;
 @protocol OrgJodaTimeFormatDateTimeParser;
 
-#import "JreEmulation.h"
 #include "InternalParser.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Adapter between old and new parser interface.
@@ -19,13 +19,9 @@
  @since 2.4
  */
 @interface OrgJodaTimeFormatDateTimeParserInternalParser : NSObject < OrgJodaTimeFormatInternalParser > {
- @public
-  id<OrgJodaTimeFormatDateTimeParser> underlying_;
 }
 
 + (id<OrgJodaTimeFormatInternalParser>)ofWithOrgJodaTimeFormatDateTimeParser:(id<OrgJodaTimeFormatDateTimeParser>)underlying;
-
-- (instancetype)initWithOrgJodaTimeFormatDateTimeParser:(id<OrgJodaTimeFormatDateTimeParser>)underlying;
 
 - (id<OrgJodaTimeFormatDateTimeParser>)getUnderlying;
 
@@ -35,15 +31,15 @@
                                   withJavaLangCharSequence:(id<JavaLangCharSequence>)text
                                                    withInt:(jint)position;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeParserInternalParser *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeParserInternalParser_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeParserInternalParser)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserInternalParser, underlying_, id<OrgJodaTimeFormatDateTimeParser>)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT id<OrgJodaTimeFormatInternalParser> OrgJodaTimeFormatDateTimeParserInternalParser_ofWithOrgJodaTimeFormatDateTimeParser_(id<OrgJodaTimeFormatDateTimeParser> underlying);
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeParserInternalParser)
 
 #endif // _OrgJodaTimeFormatDateTimeParserInternalParser_H_

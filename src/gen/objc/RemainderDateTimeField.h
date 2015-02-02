@@ -11,8 +11,8 @@
 @class OrgJodaTimeDurationField;
 @class OrgJodaTimeFieldDividedDateTimeField;
 
-#import "JreEmulation.h"
 #include "DecoratedDateTimeField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeFieldRemainderDateTimeField_serialVersionUID 5708241235177666790LL
 
@@ -142,19 +142,18 @@
  */
 - (jint)getDivisor;
 
-- (jint)getDividedWithInt:(jint)value;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldRemainderDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldRemainderDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldRemainderDateTimeField)
 
 J2OBJC_FIELD_SETTER(OrgJodaTimeFieldRemainderDateTimeField, iDurationField_, OrgJodaTimeDurationField *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeFieldRemainderDateTimeField, iRangeField_, OrgJodaTimeDurationField *)
 
+CF_EXTERN_C_BEGIN
+
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldRemainderDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldRemainderDateTimeField)
 
 #endif // _OrgJodaTimeFieldRemainderDateTimeField_H_

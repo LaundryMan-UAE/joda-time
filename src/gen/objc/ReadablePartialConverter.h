@@ -12,8 +12,8 @@
 @class OrgJodaTimeDateTimeZone;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "AbstractConverter.h"
+#include "J2ObjC_header.h"
 #include "PartialConverter.h"
 
 /**
@@ -72,7 +72,12 @@
 FOUNDATION_EXPORT BOOL OrgJodaTimeConvertReadablePartialConverter_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeConvertReadablePartialConverter)
 
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeConvertReadablePartialConverter *OrgJodaTimeConvertReadablePartialConverter_INSTANCE_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeConvertReadablePartialConverter, INSTANCE_, OrgJodaTimeConvertReadablePartialConverter *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertReadablePartialConverter)
 
 #endif // _OrgJodaTimeConvertReadablePartialConverter_H_

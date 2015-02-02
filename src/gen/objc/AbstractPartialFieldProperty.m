@@ -10,6 +10,7 @@
 #include "DurationField.h"
 #include "FieldUtils.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "ReadableInstant.h"
 #include "ReadablePartial.h"
 #include "java/lang/IllegalArgumentException.h"
@@ -184,8 +185,10 @@
     { "hash", "hashCode", "I", 0x1, NULL },
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldAbstractPartialFieldProperty = { "AbstractPartialFieldProperty", "org.joda.time.field", NULL, 0x401, 24, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldAbstractPartialFieldProperty = { 1, "AbstractPartialFieldProperty", "org.joda.time.field", NULL, 0x401, 24, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeFieldAbstractPartialFieldProperty;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldAbstractPartialFieldProperty)

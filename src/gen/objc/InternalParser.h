@@ -9,7 +9,7 @@
 @class OrgJodaTimeFormatDateTimeParserBucket;
 @protocol JavaLangCharSequence;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Internal interface for parsing textual representations of datetimes.
@@ -41,6 +41,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatInternalParser_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatInternalParser)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatInternalParser)
 
 #endif // _OrgJodaTimeFormatInternalParser_H_

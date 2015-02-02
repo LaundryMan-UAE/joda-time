@@ -4,6 +4,7 @@
 //
 
 #include "Chronology.h"
+#include "J2ObjC_source.h"
 #include "PeriodConverter.h"
 #include "PeriodType.h"
 #include "ReadWritablePeriod.h"
@@ -18,9 +19,10 @@
     { "setIntoWithOrgJodaTimeReadWritablePeriod:withId:withOrgJodaTimeChronology:", "setInto", "V", 0x401, NULL },
     { "getPeriodTypeWithId:", "getPeriodType", "Lorg.joda.time.PeriodType;", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertPeriodConverter = { "PeriodConverter", "org.joda.time.convert", NULL, 0x201, 2, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertPeriodConverter = { 1, "PeriodConverter", "org.joda.time.convert", NULL, 0x201, 2, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeConvertPeriodConverter;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertPeriodConverter)

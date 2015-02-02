@@ -20,9 +20,9 @@
 @protocol OrgJodaTimeReadableInstant;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
 #include "AbstractReadableInstantFieldProperty.h"
 #include "BaseDateTime.h"
+#include "J2ObjC_header.h"
 #include "ReadWritableDateTime.h"
 #include "java/io/Serializable.h"
 
@@ -44,15 +44,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeMutableDateTime : OrgJodaTimeBaseBaseDateTime < OrgJodaTimeReadWritableDateTime, NSCopying, JavaIoSerializable > {
- @public
-  /**
-   @brief The field to round on
-   */
-  OrgJodaTimeDateTimeField *iRoundingField_;
-  /**
-   @brief The mode of rounding
-   */
-  jint iRoundingMode_;
 }
 
 /**
@@ -722,21 +713,20 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
  */
 - (id)clone;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeMutableDateTime *)other;
-
-- (id)copyWithZone:(NSZone *)zone;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeMutableDateTime_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeMutableDateTime)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeMutableDateTime, iRoundingField_, OrgJodaTimeDateTimeField *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeMutableDateTime *OrgJodaTimeMutableDateTime_now();
+
 FOUNDATION_EXPORT OrgJodaTimeMutableDateTime *OrgJodaTimeMutableDateTime_nowWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
+
 FOUNDATION_EXPORT OrgJodaTimeMutableDateTime *OrgJodaTimeMutableDateTime_nowWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chronology);
+
 FOUNDATION_EXPORT OrgJodaTimeMutableDateTime *OrgJodaTimeMutableDateTime_parseWithNSString_(NSString *str);
+
 FOUNDATION_EXPORT OrgJodaTimeMutableDateTime *OrgJodaTimeMutableDateTime_parseWithNSString_withOrgJodaTimeFormatDateTimeFormatter_(NSString *str, OrgJodaTimeFormatDateTimeFormatter *formatter);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMutableDateTime, serialVersionUID, jlong)
@@ -752,6 +742,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMutableDateTime, ROUND_HALF_FLOOR, jint)
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMutableDateTime, ROUND_HALF_CEILING, jint)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMutableDateTime, ROUND_HALF_EVEN, jint)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeMutableDateTime)
 
 #define OrgJodaTimeMutableDateTime_Property_serialVersionUID -4481126543819298617LL
 
@@ -763,15 +756,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMutableDateTime, ROUND_HALF_EVEN, jint)
  @since 1.0
  */
 @interface OrgJodaTimeMutableDateTime_Property : OrgJodaTimeFieldAbstractReadableInstantFieldProperty {
- @public
-  /**
-   @brief The instant this property is working against
-   */
-  OrgJodaTimeMutableDateTime *iInstant_;
-  /**
-   @brief The field this property is working against
-   */
-  OrgJodaTimeDateTimeField *iField_;
 }
 
 /**
@@ -781,16 +765,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMutableDateTime, ROUND_HALF_EVEN, jint)
  */
 - (instancetype)initWithOrgJodaTimeMutableDateTime:(OrgJodaTimeMutableDateTime *)instant
                       withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
-
-/**
- @brief Writes the property in a safe serialization format.
- */
-- (void)writeObjectWithJavaIoObjectOutputStream:(JavaIoObjectOutputStream *)oos;
-
-/**
- @brief Reads the property from a safe serialization format.
- */
-- (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)oos;
 
 /**
  @brief Gets the field being used.
@@ -894,17 +868,15 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMutableDateTime, ROUND_HALF_EVEN, jint)
  */
 - (OrgJodaTimeMutableDateTime *)roundHalfEven;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeMutableDateTime_Property *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeMutableDateTime_Property_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeMutableDateTime_Property)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeMutableDateTime_Property, iInstant_, OrgJodaTimeMutableDateTime *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeMutableDateTime_Property, iField_, OrgJodaTimeDateTimeField *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMutableDateTime_Property, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeMutableDateTime_Property)
 
 #endif // _OrgJodaTimeMutableDateTime_H_

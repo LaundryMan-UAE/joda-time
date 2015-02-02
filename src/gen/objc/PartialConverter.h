@@ -12,8 +12,8 @@
 @class OrgJodaTimeFormatDateTimeFormatter;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "Converter.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief PartialConverter defines how an object is converted to a ReadablePartial.
@@ -74,6 +74,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeConvertPartialConverter_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeConvertPartialConverter)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertPartialConverter)
 
 #endif // _OrgJodaTimeConvertPartialConverter_H_

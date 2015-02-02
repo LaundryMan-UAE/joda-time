@@ -9,7 +9,7 @@
 @class OrgJodaTimeDateTimeFieldType;
 @class OrgJodaTimeDurationField;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "PreciseDurationDateTimeField.h"
 
 #define OrgJodaTimeFieldPreciseDateTimeField_serialVersionUID -5586801265774496376LL
@@ -22,12 +22,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFieldPreciseDateTimeField : OrgJodaTimeFieldPreciseDurationDateTimeField {
- @public
-  /**
-   @brief The maximum range in the correct units
-   */
-  jint iRange_;
-  OrgJodaTimeDurationField *iRangeField_;
 }
 
 /**
@@ -88,16 +82,15 @@
  */
 - (jint)getRange;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldPreciseDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldPreciseDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldPreciseDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldPreciseDateTimeField, iRangeField_, OrgJodaTimeDurationField *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldPreciseDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldPreciseDateTimeField)
 
 #endif // _OrgJodaTimeFieldPreciseDateTimeField_H_

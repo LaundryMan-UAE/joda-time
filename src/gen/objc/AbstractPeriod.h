@@ -13,7 +13,7 @@
 @class OrgJodaTimeMutablePeriod;
 @class OrgJodaTimePeriod;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "ReadablePeriod.h"
 
 /**
@@ -127,6 +127,11 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeBaseAbstractPeriod_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeBaseAbstractPeriod)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseAbstractPeriod)
 
 #endif // _OrgJodaTimeBaseAbstractPeriod_H_

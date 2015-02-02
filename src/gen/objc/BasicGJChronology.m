@@ -11,6 +11,11 @@
 #include "DateTimeField.h"
 #include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
+#include "J2ObjC_source.h"
+
+@interface OrgJodaTimeChronoBasicGJChronology () {
+}
+@end
 
 BOOL OrgJodaTimeChronoBasicGJChronology_initialized = NO;
 
@@ -153,8 +158,10 @@ IOSLongArray * OrgJodaTimeChronoBasicGJChronology_MAX_TOTAL_MILLIS_BY_MONTH_ARRA
     { "MAX_TOTAL_MILLIS_BY_MONTH_ARRAY_", NULL, 0x1a, "[J", &OrgJodaTimeChronoBasicGJChronology_MAX_TOTAL_MILLIS_BY_MONTH_ARRAY_,  },
     { "FEB_29_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoBasicGJChronology_FEB_29 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicGJChronology = { "BasicGJChronology", "org.joda.time.chrono", NULL, 0x400, 9, methods, 6, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicGJChronology = { 1, "BasicGJChronology", "org.joda.time.chrono", NULL, 0x400, 9, methods, 6, fields, 0, NULL};
   return &_OrgJodaTimeChronoBasicGJChronology;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicGJChronology)

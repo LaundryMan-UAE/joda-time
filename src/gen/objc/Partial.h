@@ -18,9 +18,9 @@
 @protocol OrgJodaTimeReadableInstant;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
 #include "AbstractPartial.h"
 #include "AbstractPartialFieldProperty.h"
+#include "J2ObjC_header.h"
 #include "ReadablePartial.h"
 #include "java/io/Serializable.h"
 
@@ -33,23 +33,6 @@
  @since 1.1
  */
 @interface OrgJodaTimePartial : OrgJodaTimeBaseAbstractPartial < OrgJodaTimeReadablePartial, JavaIoSerializable > {
- @public
-  /**
-   @brief The chronology in use.
-   */
-  OrgJodaTimeChronology *iChronology_;
-  /**
-   @brief The set of field types.
-   */
-  IOSObjectArray *iTypes_;
-  /**
-   @brief The values of each field in this partial.
-   */
-  IOSIntArray *iValues_;
-  /**
-   @brief The formatter to use, [0] may miss some fields, [1] doesn't miss any fields.
-   */
-  IOSObjectArray *iFormatter_;
 }
 
 /**
@@ -347,20 +330,16 @@
 - (NSString *)toStringWithNSString:(NSString *)pattern
                 withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimePartial *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimePartial_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimePartial)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimePartial, iChronology_, OrgJodaTimeChronology *)
-J2OBJC_FIELD_SETTER(OrgJodaTimePartial, iTypes_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimePartial, iValues_, IOSIntArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimePartial, iFormatter_, IOSObjectArray *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimePartial, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimePartial)
 
 #define OrgJodaTimePartial_Property_serialVersionUID 53278362873888LL
 
@@ -371,15 +350,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimePartial, serialVersionUID, jlong)
  @since 1.1
  */
 @interface OrgJodaTimePartial_Property : OrgJodaTimeFieldAbstractPartialFieldProperty < JavaIoSerializable > {
- @public
-  /**
-   @brief The partial
-   */
-  OrgJodaTimePartial *iPartial_;
-  /**
-   @brief The field index
-   */
-  jint iFieldIndex_;
 }
 
 /**
@@ -477,16 +447,15 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimePartial, serialVersionUID, jlong)
  */
 - (OrgJodaTimePartial *)withMinimumValue;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimePartial_Property *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimePartial_Property_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimePartial_Property)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimePartial_Property, iPartial_, OrgJodaTimePartial *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimePartial_Property, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimePartial_Property)
 
 #endif // _OrgJodaTimePartial_H_

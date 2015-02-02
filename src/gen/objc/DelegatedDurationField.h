@@ -8,8 +8,8 @@
 
 @class OrgJodaTimeDurationFieldType;
 
-#import "JreEmulation.h"
 #include "DurationField.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 
 #define OrgJodaTimeFieldDelegatedDurationField_serialVersionUID -5576443481242007829LL
@@ -21,15 +21,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFieldDelegatedDurationField : OrgJodaTimeDurationField < JavaIoSerializable > {
- @public
-  /**
-   @brief The DurationField being wrapped
-   */
-  OrgJodaTimeDurationField *iField_;
-  /**
-   @brief The field type
-   */
-  OrgJodaTimeDurationFieldType *iType_;
 }
 
 /**
@@ -105,17 +96,15 @@
 
 - (NSString *)description;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldDelegatedDurationField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldDelegatedDurationField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldDelegatedDurationField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldDelegatedDurationField, iField_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldDelegatedDurationField, iType_, OrgJodaTimeDurationFieldType *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldDelegatedDurationField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldDelegatedDurationField)
 
 #endif // _OrgJodaTimeFieldDelegatedDurationField_H_

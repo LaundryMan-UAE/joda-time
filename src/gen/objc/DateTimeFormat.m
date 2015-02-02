@@ -14,6 +14,7 @@
 #include "IOSPrimitiveArray.h"
 #include "InternalParser.h"
 #include "InternalPrinter.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
 #include "java/io/IOException.h"
 #include "java/lang/Appendable.h"
@@ -34,6 +35,94 @@ __attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFo
 __attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_createFormatterForStyleIndexWithInt_withInt_(jint dateStyle, jint timeStyle);
 __attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_createDateTimeFormatterWithInt_withInt_(jint dateStyle, jint timeStyle);
 __attribute__((unused)) static jint OrgJodaTimeFormatDateTimeFormat_selectStyleWithChar_(jchar ch);
+__attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_StyleFormatter_getFormatterWithJavaUtilLocale_(OrgJodaTimeFormatDateTimeFormat_StyleFormatter *self, JavaUtilLocale *locale);
+
+@interface OrgJodaTimeFormatDateTimeFormat () {
+}
+
+/**
+ @brief Parses the given pattern and appends the rules to the given DateTimeFormatterBuilder.
+ @param pattern pattern specification
+ @throws IllegalArgumentException if the pattern is invalid
+ */
++ (void)parsePatternToWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)builder
+                                                       withNSString:(NSString *)pattern;
+
+/**
+ @brief Parses an individual token.
+ @param pattern the pattern string
+ @param indexRef a single element array, where the input is the start location and the output is the location after parsing the token
+ @return the parsed token
+ */
++ (NSString *)parseTokenWithNSString:(NSString *)pattern
+                        withIntArray:(IOSIntArray *)indexRef;
+
+/**
+ @brief Returns true if token should be parsed as a numeric field.
+ @param token the token to parse
+ @return true if numeric field
+ */
++ (jboolean)isNumericTokenWithNSString:(NSString *)token;
+
+/**
+ @brief Select a format from a custom pattern.
+ @param pattern pattern specification
+ @throws IllegalArgumentException if the pattern is invalid
+ */
++ (OrgJodaTimeFormatDateTimeFormatter *)createFormatterForPatternWithNSString:(NSString *)pattern;
+
+/**
+ @brief Select a format from a two character style pattern.
+ The first character is the date style, and the second character is the time style. Specify a character of 'S' for short style, 'M' for medium, 'L' for long, and 'F' for full. A date or time may be ommitted by specifying a style character '-'.
+ @param style two characters from the set {"S", "M", "L", "F", "-"}
+ @throws IllegalArgumentException if the style is invalid
+ */
++ (OrgJodaTimeFormatDateTimeFormatter *)createFormatterForStyleWithNSString:(NSString *)style;
+
+/**
+ @brief Gets the formatter for the specified style.
+ @param dateStyle the date style
+ @param timeStyle the time style
+ @return the formatter
+ */
++ (OrgJodaTimeFormatDateTimeFormatter *)createFormatterForStyleIndexWithInt:(jint)dateStyle
+                                                                    withInt:(jint)timeStyle;
+
+/**
+ @brief Creates a formatter for the specified style.
+ @param dateStyle the date style
+ @param timeStyle the time style
+ @return the formatter
+ */
++ (OrgJodaTimeFormatDateTimeFormatter *)createDateTimeFormatterWithInt:(jint)dateStyle
+                                                               withInt:(jint)timeStyle;
+
+/**
+ @brief Gets the JDK style code from the Joda code.
+ @param ch the Joda style code
+ @return the JDK style code
+ */
++ (jint)selectStyleWithChar:(jchar)ch;
+@end
+
+@interface OrgJodaTimeFormatDateTimeFormat_StyleFormatter () {
+ @public
+  jint iDateStyle_;
+  jint iTimeStyle_;
+  jint iType_;
+}
+
+- (OrgJodaTimeFormatDateTimeFormatter *)getFormatterWithJavaUtilLocale:(JavaUtilLocale *)locale;
+@end
+
+@interface OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey () {
+ @public
+  jint combinedTypeAndStyle_;
+  JavaUtilLocale *locale_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey, locale_, JavaUtilLocale *)
 
 BOOL OrgJodaTimeFormatDateTimeFormat_initialized = NO;
 
@@ -197,7 +286,7 @@ JavaUtilConcurrentAtomicAtomicReferenceArray * OrgJodaTimeFormatDateTimeFormat_c
     { "cPatternCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeFormatDateTimeFormat_cPatternCache_,  },
     { "cStyleCache_", NULL, 0x1a, "Ljava.util.concurrent.atomic.AtomicReferenceArray;", &OrgJodaTimeFormatDateTimeFormat_cStyleCache_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormat = { "DateTimeFormat", "org.joda.time.format", NULL, 0x1, 25, methods, 11, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormat = { 1, "DateTimeFormat", "org.joda.time.format", NULL, 0x1, 25, methods, 11, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormat;
 }
 
@@ -606,6 +695,8 @@ jint OrgJodaTimeFormatDateTimeFormat_selectStyleWithChar_(jchar ch) {
   }
 }
 
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormat)
+
 BOOL OrgJodaTimeFormatDateTimeFormat_StyleFormatter_initialized = NO;
 
 @implementation OrgJodaTimeFormatDateTimeFormat_StyleFormatter
@@ -633,14 +724,14 @@ JavaUtilConcurrentConcurrentHashMap * OrgJodaTimeFormatDateTimeFormat_StyleForma
                               withInt:(jint)displayOffset
           withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
                    withJavaUtilLocale:(JavaUtilLocale *)locale {
-  id<OrgJodaTimeFormatInternalPrinter> p = [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk([self getFormatterWithJavaUtilLocale:locale])) getPrinter0];
+  id<OrgJodaTimeFormatInternalPrinter> p = [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatDateTimeFormat_StyleFormatter_getFormatterWithJavaUtilLocale_(self, locale))) getPrinter0];
   [((id<OrgJodaTimeFormatInternalPrinter>) nil_chk(p)) printToWithJavaLangAppendable:appenadble withLong:instant withOrgJodaTimeChronology:chrono withInt:displayOffset withOrgJodaTimeDateTimeZone:displayZone withJavaUtilLocale:locale];
 }
 
 - (void)printToWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
        withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                    withJavaUtilLocale:(JavaUtilLocale *)locale {
-  id<OrgJodaTimeFormatInternalPrinter> p = [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk([self getFormatterWithJavaUtilLocale:locale])) getPrinter0];
+  id<OrgJodaTimeFormatInternalPrinter> p = [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatDateTimeFormat_StyleFormatter_getFormatterWithJavaUtilLocale_(self, locale))) getPrinter0];
   [((id<OrgJodaTimeFormatInternalPrinter>) nil_chk(p)) printToWithJavaLangAppendable:appendable withOrgJodaTimeReadablePartial:partial withJavaUtilLocale:locale];
 }
 
@@ -651,22 +742,12 @@ JavaUtilConcurrentConcurrentHashMap * OrgJodaTimeFormatDateTimeFormat_StyleForma
 - (jint)parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:(OrgJodaTimeFormatDateTimeParserBucket *)bucket
                                   withJavaLangCharSequence:(id<JavaLangCharSequence>)text
                                                    withInt:(jint)position {
-  id<OrgJodaTimeFormatInternalParser> p = [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk([self getFormatterWithJavaUtilLocale:[((OrgJodaTimeFormatDateTimeParserBucket *) nil_chk(bucket)) getLocale]])) getParser0];
+  id<OrgJodaTimeFormatInternalParser> p = [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatDateTimeFormat_StyleFormatter_getFormatterWithJavaUtilLocale_(self, [((OrgJodaTimeFormatDateTimeParserBucket *) nil_chk(bucket)) getLocale]))) getParser0];
   return [((id<OrgJodaTimeFormatInternalParser>) nil_chk(p)) parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:bucket withJavaLangCharSequence:text withInt:position];
 }
 
 - (OrgJodaTimeFormatDateTimeFormatter *)getFormatterWithJavaUtilLocale:(JavaUtilLocale *)locale {
-  locale = (locale == nil ? JavaUtilLocale_getDefault() : locale);
-  OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey *key = [[[OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey alloc] initWithInt:iType_ withInt:iDateStyle_ withInt:iTimeStyle_ withJavaUtilLocale:locale] autorelease];
-  OrgJodaTimeFormatDateTimeFormatter *f = [((JavaUtilConcurrentConcurrentHashMap *) nil_chk(OrgJodaTimeFormatDateTimeFormat_StyleFormatter_cCache_)) getWithId:key];
-  if (f == nil) {
-    f = OrgJodaTimeFormatDateTimeFormat_forPatternWithNSString_([self getPatternWithJavaUtilLocale:locale]);
-    OrgJodaTimeFormatDateTimeFormatter *oldFormatter = [OrgJodaTimeFormatDateTimeFormat_StyleFormatter_cCache_ putIfAbsentWithId:key withId:f];
-    if (oldFormatter != nil) {
-      f = oldFormatter;
-    }
-  }
-  return f;
+  return OrgJodaTimeFormatDateTimeFormat_StyleFormatter_getFormatterWithJavaUtilLocale_(self, locale);
 }
 
 - (NSString *)getPatternWithJavaUtilLocale:(JavaUtilLocale *)locale {
@@ -719,11 +800,27 @@ JavaUtilConcurrentConcurrentHashMap * OrgJodaTimeFormatDateTimeFormat_StyleForma
     { "iTimeStyle_", NULL, 0x12, "I", NULL,  },
     { "iType_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormat_StyleFormatter = { "StyleFormatter", "org.joda.time.format", "DateTimeFormat", 0x8, 8, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormat_StyleFormatter = { 1, "StyleFormatter", "org.joda.time.format", "DateTimeFormat", 0x8, 8, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormat_StyleFormatter;
 }
 
 @end
+
+OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_StyleFormatter_getFormatterWithJavaUtilLocale_(OrgJodaTimeFormatDateTimeFormat_StyleFormatter *self, JavaUtilLocale *locale) {
+  locale = (locale == nil ? JavaUtilLocale_getDefault() : locale);
+  OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey *key = [[[OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey alloc] initWithInt:self->iType_ withInt:self->iDateStyle_ withInt:self->iTimeStyle_ withJavaUtilLocale:locale] autorelease];
+  OrgJodaTimeFormatDateTimeFormatter *f = [((JavaUtilConcurrentConcurrentHashMap *) nil_chk(OrgJodaTimeFormatDateTimeFormat_StyleFormatter_cCache_)) getWithId:key];
+  if (f == nil) {
+    f = OrgJodaTimeFormatDateTimeFormat_forPatternWithNSString_([self getPatternWithJavaUtilLocale:locale]);
+    OrgJodaTimeFormatDateTimeFormatter *oldFormatter = [OrgJodaTimeFormatDateTimeFormat_StyleFormatter_cCache_ putIfAbsentWithId:key withId:f];
+    if (oldFormatter != nil) {
+      f = oldFormatter;
+    }
+  }
+  return f;
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormat_StyleFormatter)
 
 @implementation OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey
 
@@ -772,7 +869,7 @@ JavaUtilConcurrentConcurrentHashMap * OrgJodaTimeFormatDateTimeFormat_StyleForma
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey_set_locale_(self, nil);
+  RELEASE_(locale_);
   [super dealloc];
 }
 
@@ -792,8 +889,10 @@ JavaUtilConcurrentConcurrentHashMap * OrgJodaTimeFormatDateTimeFormat_StyleForma
     { "combinedTypeAndStyle_", NULL, 0x12, "I", NULL,  },
     { "locale_", NULL, 0x12, "Ljava.util.Locale;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey = { "StyleFormatterCacheKey", "org.joda.time.format", "DateTimeFormat", 0x8, 3, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey = { 1, "StyleFormatterCacheKey", "org.joda.time.format", "DateTimeFormat", 0x8, 3, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey)

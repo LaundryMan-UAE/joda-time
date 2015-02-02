@@ -11,12 +11,17 @@
 #include "FromString.h"
 #include "Hours.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "Minutes.h"
 #include "ReadableDuration.h"
 #include "ReadableInstant.h"
 #include "Seconds.h"
 #include "java/lang/ArithmeticException.h"
 #include "java/lang/Long.h"
+
+@interface OrgJodaTimeDuration () {
+}
+@end
 
 BOOL OrgJodaTimeDuration_initialized = NO;
 
@@ -182,7 +187,7 @@ OrgJodaTimeDuration * OrgJodaTimeDuration_ZERO_;
 }
 
 + (IOSObjectArray *)__annotations_parseWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -221,7 +226,7 @@ OrgJodaTimeDuration * OrgJodaTimeDuration_ZERO_;
     { "ZERO_", NULL, 0x19, "Lorg.joda.time.Duration;", &OrgJodaTimeDuration_ZERO_,  },
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeDuration_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDuration = { "Duration", "org.joda.time", NULL, 0x11, 29, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDuration = { 1, "Duration", "org.joda.time", NULL, 0x11, 29, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeDuration;
 }
 
@@ -271,3 +276,5 @@ OrgJodaTimeDuration *OrgJodaTimeDuration_millisWithLong_(jlong millis) {
   }
   return [[[OrgJodaTimeDuration alloc] initWithLong:millis] autorelease];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDuration)

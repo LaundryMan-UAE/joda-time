@@ -12,7 +12,7 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Defines the calculation engine for date and time fields.
@@ -485,6 +485,11 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeDateTimeField)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeField)
 
 #endif // _OrgJodaTimeDateTimeField_H_

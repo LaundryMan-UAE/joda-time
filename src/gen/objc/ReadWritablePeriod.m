@@ -4,6 +4,7 @@
 //
 
 #include "DurationFieldType.h"
+#include "J2ObjC_source.h"
 #include "ReadWritablePeriod.h"
 #include "ReadableInterval.h"
 #include "ReadablePeriod.h"
@@ -42,9 +43,10 @@
     { "setMillisWithInt:", "setMillis", "V", 0x401, NULL },
     { "addMillisWithInt:", "addMillis", "V", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadWritablePeriod = { "ReadWritablePeriod", "org.joda.time", NULL, 0x201, 26, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeReadWritablePeriod = { 1, "ReadWritablePeriod", "org.joda.time", NULL, 0x201, 26, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeReadWritablePeriod;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeReadWritablePeriod)

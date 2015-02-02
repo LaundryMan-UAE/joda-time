@@ -10,9 +10,9 @@
 @class OrgJodaTimeChronology;
 @protocol OrgJodaTimeReadWritablePeriod;
 
-#import "JreEmulation.h"
 #include "AbstractConverter.h"
 #include "DurationConverter.h"
+#include "J2ObjC_header.h"
 #include "PeriodConverter.h"
 
 /**
@@ -63,7 +63,12 @@
 FOUNDATION_EXPORT BOOL OrgJodaTimeConvertReadableDurationConverter_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeConvertReadableDurationConverter)
 
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeConvertReadableDurationConverter *OrgJodaTimeConvertReadableDurationConverter_INSTANCE_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeConvertReadableDurationConverter, INSTANCE_, OrgJodaTimeConvertReadableDurationConverter *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertReadableDurationConverter)
 
 #endif // _OrgJodaTimeConvertReadableDurationConverter_H_

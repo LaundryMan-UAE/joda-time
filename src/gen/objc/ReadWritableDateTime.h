@@ -6,7 +6,7 @@
 #ifndef _OrgJodaTimeReadWritableDateTime_H_
 #define _OrgJodaTimeReadWritableDateTime_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "ReadWritableInstant.h"
 #include "ReadableDateTime.h"
 
@@ -227,6 +227,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeReadWritableDateTime_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeReadWritableDateTime)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadWritableDateTime)
 
 #endif // _OrgJodaTimeReadWritableDateTime_H_

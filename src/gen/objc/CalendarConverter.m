@@ -11,6 +11,7 @@
 #include "GregorianChronology.h"
 #include "IOSClass.h"
 #include "ISOChronology.h"
+#include "J2ObjC_source.h"
 #include "JulianChronology.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Long.h"
@@ -75,7 +76,7 @@ OrgJodaTimeConvertCalendarConverter * OrgJodaTimeConvertCalendarConverter_INSTAN
 }
 
 - (IOSClass *)getSupportedType {
-  return [IOSClass classWithClass:[JavaUtilCalendar class]];
+  return JavaUtilCalendar_class_();
 }
 
 + (void)initialize {
@@ -96,8 +97,10 @@ OrgJodaTimeConvertCalendarConverter * OrgJodaTimeConvertCalendarConverter_INSTAN
   static const J2ObjcFieldInfo fields[] = {
     { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.CalendarConverter;", &OrgJodaTimeConvertCalendarConverter_INSTANCE_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertCalendarConverter = { "CalendarConverter", "org.joda.time.convert", NULL, 0x10, 5, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertCalendarConverter = { 1, "CalendarConverter", "org.joda.time.convert", NULL, 0x10, 5, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeConvertCalendarConverter;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertCalendarConverter)

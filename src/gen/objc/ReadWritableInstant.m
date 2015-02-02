@@ -7,6 +7,7 @@
 #include "DateTimeFieldType.h"
 #include "DateTimeZone.h"
 #include "DurationFieldType.h"
+#include "J2ObjC_source.h"
 #include "ReadWritableInstant.h"
 #include "ReadableDuration.h"
 #include "ReadableInstant.h"
@@ -32,9 +33,10 @@
     { "setWithOrgJodaTimeDateTimeFieldType:withInt:", "set", "V", 0x401, NULL },
     { "addWithOrgJodaTimeDurationFieldType:withInt:", "add", "V", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadWritableInstant = { "ReadWritableInstant", "org.joda.time", NULL, 0x201, 12, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeReadWritableInstant = { 1, "ReadWritableInstant", "org.joda.time", NULL, 0x201, 12, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeReadWritableInstant;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeReadWritableInstant)

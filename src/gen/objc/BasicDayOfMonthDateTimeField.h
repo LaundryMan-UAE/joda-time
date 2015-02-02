@@ -11,7 +11,7 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "PreciseDurationDateTimeField.h"
 
 #define OrgJodaTimeChronoBasicDayOfMonthDateTimeField_serialVersionUID -4677223814028011723LL
@@ -24,8 +24,6 @@
  @since 1.1, refactored from GJDayOfMonthDateTimeField
  */
 @interface OrgJodaTimeChronoBasicDayOfMonthDateTimeField : OrgJodaTimeFieldPreciseDurationDateTimeField {
- @public
-  OrgJodaTimeChronoBasicChronology *iChronology_;
 }
 
 /**
@@ -54,21 +52,15 @@
 
 - (jboolean)isLeapWithLong:(jlong)instant;
 
-/**
- @brief Serialization singleton
- */
-- (id)readResolve;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoBasicDayOfMonthDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoBasicDayOfMonthDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoBasicDayOfMonthDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoBasicDayOfMonthDateTimeField, iChronology_, OrgJodaTimeChronoBasicChronology *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicDayOfMonthDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicDayOfMonthDateTimeField)
 
 #endif // _OrgJodaTimeChronoBasicDayOfMonthDateTimeField_H_

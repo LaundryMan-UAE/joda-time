@@ -6,7 +6,7 @@
 #ifndef _OrgJodaTimeDateTimeConstants_H_
 #define _OrgJodaTimeDateTimeConstants_H_
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeDateTimeConstants_AD 1
 #define OrgJodaTimeDateTimeConstants_AM 0
@@ -66,7 +66,9 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeDateTimeConstants_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeDateTimeConstants)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeConstants, JANUARY, jint)
 
@@ -147,5 +149,8 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeConstants, MINUTES_PER_WEEK, jint)
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeConstants, SECONDS_PER_WEEK, jint)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeConstants, MILLIS_PER_WEEK, jint)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeConstants)
 
 #endif // _OrgJodaTimeDateTimeConstants_H_

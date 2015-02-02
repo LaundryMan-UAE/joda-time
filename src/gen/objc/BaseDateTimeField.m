@@ -12,11 +12,26 @@
 #include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "IllegalFieldValueException.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
 #include "java/lang/NumberFormatException.h"
 #include "java/util/Locale.h"
+
+__attribute__((unused)) static OrgJodaTimeDateTimeFieldType *OrgJodaTimeFieldBaseDateTimeField_getType(OrgJodaTimeFieldBaseDateTimeField *self);
+__attribute__((unused)) static NSString *OrgJodaTimeFieldBaseDateTimeField_getName(OrgJodaTimeFieldBaseDateTimeField *self);
+
+@interface OrgJodaTimeFieldBaseDateTimeField () {
+ @public
+  /**
+   @brief The field type.
+   */
+  OrgJodaTimeDateTimeFieldType *iType_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldBaseDateTimeField, iType_, OrgJodaTimeDateTimeFieldType *)
 
 @implementation OrgJodaTimeFieldBaseDateTimeField
 
@@ -31,11 +46,11 @@
 }
 
 - (OrgJodaTimeDateTimeFieldType *)getType {
-  return iType_;
+  return OrgJodaTimeFieldBaseDateTimeField_getType(self);
 }
 
 - (NSString *)getName {
-  return [((OrgJodaTimeDateTimeFieldType *) nil_chk(iType_)) getName];
+  return OrgJodaTimeFieldBaseDateTimeField_getName(self);
 }
 
 - (jboolean)isSupported {
@@ -65,7 +80,7 @@
 
 - (NSString *)getAsTextWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                                    withJavaUtilLocale:(JavaUtilLocale *)locale {
-  return [self getAsTextWithOrgJodaTimeReadablePartial:partial withInt:[((id<OrgJodaTimeReadablePartial>) nil_chk(partial)) getWithOrgJodaTimeDateTimeFieldType:[self getType]] withJavaUtilLocale:locale];
+  return [self getAsTextWithOrgJodaTimeReadablePartial:partial withInt:[((id<OrgJodaTimeReadablePartial>) nil_chk(partial)) getWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeFieldBaseDateTimeField_getType(self)] withJavaUtilLocale:locale];
 }
 
 - (NSString *)getAsTextWithInt:(jint)fieldValue
@@ -90,7 +105,7 @@
 
 - (NSString *)getAsShortTextWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                                         withJavaUtilLocale:(JavaUtilLocale *)locale {
-  return [self getAsShortTextWithOrgJodaTimeReadablePartial:partial withInt:[((id<OrgJodaTimeReadablePartial>) nil_chk(partial)) getWithOrgJodaTimeDateTimeFieldType:[self getType]] withJavaUtilLocale:locale];
+  return [self getAsShortTextWithOrgJodaTimeReadablePartial:partial withInt:[((id<OrgJodaTimeReadablePartial>) nil_chk(partial)) getWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeFieldBaseDateTimeField_getType(self)] withJavaUtilLocale:locale];
 }
 
 - (NSString *)getAsShortTextWithInt:(jint)fieldValue
@@ -292,7 +307,7 @@
     return JavaLangInteger_parseIntWithNSString_(text);
   }
   @catch (JavaLangNumberFormatException *ex) {
-    @throw [[[OrgJodaTimeIllegalFieldValueException alloc] initWithOrgJodaTimeDateTimeFieldType:[self getType] withNSString:text] autorelease];
+    @throw [[[OrgJodaTimeIllegalFieldValueException alloc] initWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeFieldBaseDateTimeField_getType(self) withNSString:text] autorelease];
   }
 }
 
@@ -442,11 +457,11 @@
 }
 
 - (NSString *)description {
-  return JreStrcat("$$C", @"DateTimeField[", [self getName], ']');
+  return JreStrcat("$$C", @"DateTimeField[", OrgJodaTimeFieldBaseDateTimeField_getName(self), ']');
 }
 
 - (void)dealloc {
-  OrgJodaTimeFieldBaseDateTimeField_set_iType_(self, nil);
+  RELEASE_(iType_);
   [super dealloc];
 }
 
@@ -512,8 +527,18 @@
   static const J2ObjcFieldInfo fields[] = {
     { "iType_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldBaseDateTimeField = { "BaseDateTimeField", "org.joda.time.field", NULL, 0x401, 51, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldBaseDateTimeField = { 1, "BaseDateTimeField", "org.joda.time.field", NULL, 0x401, 51, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeFieldBaseDateTimeField;
 }
 
 @end
+
+OrgJodaTimeDateTimeFieldType *OrgJodaTimeFieldBaseDateTimeField_getType(OrgJodaTimeFieldBaseDateTimeField *self) {
+  return self->iType_;
+}
+
+NSString *OrgJodaTimeFieldBaseDateTimeField_getName(OrgJodaTimeFieldBaseDateTimeField *self) {
+  return [((OrgJodaTimeDateTimeFieldType *) nil_chk(self->iType_)) getName];
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldBaseDateTimeField)

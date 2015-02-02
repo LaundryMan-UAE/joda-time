@@ -10,12 +10,22 @@
 #include "IOSClass.h"
 #include "InternalPrinter.h"
 #include "InternalPrinterDateTimePrinter.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
 #include "java/io/IOException.h"
 #include "java/io/Writer.h"
 #include "java/lang/Appendable.h"
 #include "java/lang/StringBuffer.h"
 #include "java/util/Locale.h"
+
+@interface OrgJodaTimeFormatInternalPrinterDateTimePrinter () {
+ @public
+  id<OrgJodaTimeFormatInternalPrinter> underlying_;
+}
+- (instancetype)initWithOrgJodaTimeFormatInternalPrinter:(id<OrgJodaTimeFormatInternalPrinter>)underlying;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatInternalPrinterDateTimePrinter, underlying_, id<OrgJodaTimeFormatInternalPrinter>)
 
 @implementation OrgJodaTimeFormatInternalPrinterDateTimePrinter
 
@@ -99,7 +109,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatInternalPrinterDateTimePrinter_set_underlying_(self, nil);
+  RELEASE_(underlying_);
   [super dealloc];
 }
 
@@ -124,7 +134,7 @@
   static const J2ObjcFieldInfo fields[] = {
     { "underlying_", NULL, 0x12, "Lorg.joda.time.format.InternalPrinter;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatInternalPrinterDateTimePrinter = { "InternalPrinterDateTimePrinter", "org.joda.time.format", NULL, 0x0, 10, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatInternalPrinterDateTimePrinter = { 1, "InternalPrinterDateTimePrinter", "org.joda.time.format", NULL, 0x0, 10, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeFormatInternalPrinterDateTimePrinter;
 }
 
@@ -132,10 +142,10 @@
 
 id<OrgJodaTimeFormatDateTimePrinter> OrgJodaTimeFormatInternalPrinterDateTimePrinter_ofWithOrgJodaTimeFormatInternalPrinter_(id<OrgJodaTimeFormatInternalPrinter> underlying) {
   OrgJodaTimeFormatInternalPrinterDateTimePrinter_init();
-  if ([(id) underlying isKindOfClass:[OrgJodaTimeFormatDateTimePrinterInternalPrinter class]]) {
+  if ([underlying isKindOfClass:[OrgJodaTimeFormatDateTimePrinterInternalPrinter class]]) {
     return [((OrgJodaTimeFormatDateTimePrinterInternalPrinter *) nil_chk(((OrgJodaTimeFormatDateTimePrinterInternalPrinter *) check_class_cast(underlying, [OrgJodaTimeFormatDateTimePrinterInternalPrinter class])))) getUnderlying];
   }
-  if ([(id) underlying conformsToProtocol: @protocol(OrgJodaTimeFormatDateTimePrinter)]) {
+  if ([OrgJodaTimeFormatDateTimePrinter_class_() isInstance:underlying]) {
     return (id<OrgJodaTimeFormatDateTimePrinter>) check_protocol_cast(underlying, @protocol(OrgJodaTimeFormatDateTimePrinter));
   }
   if (underlying == nil) {
@@ -143,3 +153,5 @@ id<OrgJodaTimeFormatDateTimePrinter> OrgJodaTimeFormatInternalPrinterDateTimePri
   }
   return [[[OrgJodaTimeFormatInternalPrinterDateTimePrinter alloc] initWithOrgJodaTimeFormatInternalPrinter:underlying] autorelease];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatInternalPrinterDateTimePrinter)

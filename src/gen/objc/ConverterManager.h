@@ -14,7 +14,7 @@
 @protocol OrgJodaTimeConvertPartialConverter;
 @protocol OrgJodaTimeConvertPeriodConverter;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief ConverterManager controls the date and time converters.
@@ -24,12 +24,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeConvertConverterManager : NSObject {
- @public
-  OrgJodaTimeConvertConverterSet *iInstantConverters_;
-  OrgJodaTimeConvertConverterSet *iPartialConverters_;
-  OrgJodaTimeConvertConverterSet *iDurationConverters_;
-  OrgJodaTimeConvertConverterSet *iPeriodConverters_;
-  OrgJodaTimeConvertConverterSet *iIntervalConverters_;
 }
 
 + (OrgJodaTimeConvertConverterManager *)getInstance;
@@ -71,12 +65,6 @@
 - (id<OrgJodaTimeConvertInstantConverter>)removeInstantConverterWithOrgJodaTimeConvertInstantConverter:(id<OrgJodaTimeConvertInstantConverter>)converter;
 
 /**
- @brief Checks whether the user has permission 'ConverterManager.alterInstantConverters'.
- @throws SecurityException if the user does not have the permission
- */
-- (void)checkAlterInstantConverters;
-
-/**
  @brief Gets the best converter for the object specified.
  @param object the object to convert
  @return the converter to use
@@ -106,12 +94,6 @@
  @return replaced converter, or null
  */
 - (id<OrgJodaTimeConvertPartialConverter>)removePartialConverterWithOrgJodaTimeConvertPartialConverter:(id<OrgJodaTimeConvertPartialConverter>)converter;
-
-/**
- @brief Checks whether the user has permission 'ConverterManager.alterPartialConverters'.
- @throws SecurityException if the user does not have the permission
- */
-- (void)checkAlterPartialConverters;
 
 /**
  @brief Gets the best converter for the object specified.
@@ -145,12 +127,6 @@
 - (id<OrgJodaTimeConvertDurationConverter>)removeDurationConverterWithOrgJodaTimeConvertDurationConverter:(id<OrgJodaTimeConvertDurationConverter>)converter;
 
 /**
- @brief Checks whether the user has permission 'ConverterManager.alterDurationConverters'.
- @throws SecurityException if the user does not have the permission
- */
-- (void)checkAlterDurationConverters;
-
-/**
  @brief Gets the best converter for the object specified.
  @param object the object to convert
  @return the converter to use
@@ -180,12 +156,6 @@
  @return replaced converter, or null
  */
 - (id<OrgJodaTimeConvertPeriodConverter>)removePeriodConverterWithOrgJodaTimeConvertPeriodConverter:(id<OrgJodaTimeConvertPeriodConverter>)converter;
-
-/**
- @brief Checks whether the user has permission 'ConverterManager.alterPeriodConverters'.
- @throws SecurityException if the user does not have the permission
- */
-- (void)checkAlterPeriodConverters;
 
 /**
  @brief Gets the best converter for the object specified.
@@ -219,33 +189,23 @@
 - (id<OrgJodaTimeConvertIntervalConverter>)removeIntervalConverterWithOrgJodaTimeConvertIntervalConverter:(id<OrgJodaTimeConvertIntervalConverter>)converter;
 
 /**
- @brief Checks whether the user has permission 'ConverterManager.alterIntervalConverters'.
- @throws SecurityException if the user does not have the permission
- */
-- (void)checkAlterIntervalConverters;
-
-/**
  @brief Gets a debug representation of the object.
  */
 - (NSString *)description;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeConvertConverterManager *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeConvertConverterManager_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeConvertConverterManager)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeConvertConverterManager, iInstantConverters_, OrgJodaTimeConvertConverterSet *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeConvertConverterManager, iPartialConverters_, OrgJodaTimeConvertConverterSet *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeConvertConverterManager, iDurationConverters_, OrgJodaTimeConvertConverterSet *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeConvertConverterManager, iPeriodConverters_, OrgJodaTimeConvertConverterSet *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeConvertConverterManager, iIntervalConverters_, OrgJodaTimeConvertConverterSet *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeConvertConverterManager *OrgJodaTimeConvertConverterManager_getInstance();
 
 FOUNDATION_EXPORT OrgJodaTimeConvertConverterManager *OrgJodaTimeConvertConverterManager_INSTANCE_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeConvertConverterManager, INSTANCE_, OrgJodaTimeConvertConverterManager *)
 J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeConvertConverterManager, INSTANCE_, OrgJodaTimeConvertConverterManager *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertConverterManager)
 
 #endif // _OrgJodaTimeConvertConverterManager_H_

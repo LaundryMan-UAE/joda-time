@@ -13,8 +13,8 @@
 @protocol OrgJodaTimeFormatDateTimePrinter;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "InternalPrinter.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Adapter between old and new printer interface.
@@ -22,13 +22,9 @@
  @since 2.4
  */
 @interface OrgJodaTimeFormatDateTimePrinterInternalPrinter : NSObject < OrgJodaTimeFormatInternalPrinter > {
- @public
-  id<OrgJodaTimeFormatDateTimePrinter> underlying_;
 }
 
 + (id<OrgJodaTimeFormatInternalPrinter>)ofWithOrgJodaTimeFormatDateTimePrinter:(id<OrgJodaTimeFormatDateTimePrinter>)underlying;
-
-- (instancetype)initWithOrgJodaTimeFormatDateTimePrinter:(id<OrgJodaTimeFormatDateTimePrinter>)underlying;
 
 - (id<OrgJodaTimeFormatDateTimePrinter>)getUnderlying;
 
@@ -45,15 +41,15 @@
        withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                    withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimePrinterInternalPrinter *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimePrinterInternalPrinter_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimePrinterInternalPrinter)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimePrinterInternalPrinter, underlying_, id<OrgJodaTimeFormatDateTimePrinter>)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT id<OrgJodaTimeFormatInternalPrinter> OrgJodaTimeFormatDateTimePrinterInternalPrinter_ofWithOrgJodaTimeFormatDateTimePrinter_(id<OrgJodaTimeFormatDateTimePrinter> underlying);
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimePrinterInternalPrinter)
 
 #endif // _OrgJodaTimeFormatDateTimePrinterInternalPrinter_H_

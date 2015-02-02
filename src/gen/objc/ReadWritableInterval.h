@@ -11,7 +11,7 @@
 @protocol OrgJodaTimeReadableInstant;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "ReadableInterval.h"
 
 /**
@@ -114,6 +114,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeReadWritableInterval_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeReadWritableInterval)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadWritableInterval)
 
 #endif // _OrgJodaTimeReadWritableInterval_H_

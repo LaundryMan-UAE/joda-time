@@ -22,9 +22,9 @@
 @protocol JavaUtilSet;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
 #include "AbstractReadableInstantFieldProperty.h"
 #include "BaseLocal.h"
+#include "J2ObjC_header.h"
 #include "ReadablePartial.h"
 #include "java/io/Serializable.h"
 
@@ -41,15 +41,6 @@
  @since 1.3
  */
 @interface OrgJodaTimeLocalTime : OrgJodaTimeBaseBaseLocal < OrgJodaTimeReadablePartial, JavaIoSerializable > {
- @public
-  /**
-   @brief The local millis from 1970-01-01T00:00:00
-   */
-  jlong iLocalMillis_;
-  /**
-   @brief The chronology to use, in UTC
-   */
-  OrgJodaTimeChronology *iChronology_;
 }
 
 /**
@@ -248,12 +239,6 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
                     withInt:(jint)secondOfMinute
                     withInt:(jint)millisOfSecond
   withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology;
-
-/**
- @brief Handle broken serialization from other tools.
- @return the resolved object, not null
- */
-- (id)readResolve;
 
 /**
  @brief Gets the number of fields in this partial, which is four.
@@ -615,24 +600,29 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 - (NSString *)toStringWithNSString:(NSString *)pattern
                 withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeLocalTime *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeLocalTime_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeLocalTime)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeLocalTime, iChronology_, OrgJodaTimeChronology *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *OrgJodaTimeLocalTime_now();
+
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *OrgJodaTimeLocalTime_nowWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
+
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *OrgJodaTimeLocalTime_nowWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chronology);
+
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *OrgJodaTimeLocalTime_parseWithNSString_(NSString *str);
+
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *OrgJodaTimeLocalTime_parseWithNSString_withOrgJodaTimeFormatDateTimeFormatter_(NSString *str, OrgJodaTimeFormatDateTimeFormatter *formatter);
+
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *OrgJodaTimeLocalTime_fromMillisOfDayWithLong_(jlong millisOfDay);
+
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *OrgJodaTimeLocalTime_fromMillisOfDayWithLong_withOrgJodaTimeChronology_(jlong millisOfDay, OrgJodaTimeChronology *chrono);
+
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *OrgJodaTimeLocalTime_fromCalendarFieldsWithJavaUtilCalendar_(JavaUtilCalendar *calendar);
+
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *OrgJodaTimeLocalTime_fromDateFieldsWithJavaUtilDate_(JavaUtilDate *date);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalTime, serialVersionUID, jlong)
@@ -650,6 +640,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalTime, MILLIS_OF_SECOND, jint)
 
 FOUNDATION_EXPORT id<JavaUtilSet> OrgJodaTimeLocalTime_TIME_DURATION_TYPES_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalTime, TIME_DURATION_TYPES_, id<JavaUtilSet>)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeLocalTime)
 
 #define OrgJodaTimeLocalTime_Property_serialVersionUID -325842547277223LL
 
@@ -661,15 +654,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalTime, TIME_DURATION_TYPES_, id<JavaUt
  @since 1.3
  */
 @interface OrgJodaTimeLocalTime_Property : OrgJodaTimeFieldAbstractReadableInstantFieldProperty {
- @public
-  /**
-   @brief The instant this property is working against
-   */
-  OrgJodaTimeLocalTime *iInstant_;
-  /**
-   @brief The field this property is working against
-   */
-  OrgJodaTimeDateTimeField *iField_;
 }
 
 /**
@@ -679,16 +663,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalTime, TIME_DURATION_TYPES_, id<JavaUt
  */
 - (instancetype)initWithOrgJodaTimeLocalTime:(OrgJodaTimeLocalTime *)instant
                 withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
-
-/**
- @brief Writes the property in a safe serialization format.
- */
-- (void)writeObjectWithJavaIoObjectOutputStream:(JavaIoObjectOutputStream *)oos;
-
-/**
- @brief Reads the property from a safe serialization format.
- */
-- (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)oos;
 
 /**
  @brief Gets the field being used.
@@ -825,17 +799,15 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalTime, TIME_DURATION_TYPES_, id<JavaUt
  */
 - (OrgJodaTimeLocalTime *)roundHalfEvenCopy;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeLocalTime_Property *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeLocalTime_Property_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeLocalTime_Property)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeLocalTime_Property, iInstant_, OrgJodaTimeLocalTime *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeLocalTime_Property, iField_, OrgJodaTimeDateTimeField *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalTime_Property, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeLocalTime_Property)
 
 #endif // _OrgJodaTimeLocalTime_H_

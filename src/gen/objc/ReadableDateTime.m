@@ -5,6 +5,7 @@
 
 #include "DateTime.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "MutableDateTime.h"
 #include "ReadableDateTime.h"
 #include "java/lang/IllegalArgumentException.h"
@@ -40,9 +41,10 @@
     { "toStringWithNSString:", "toString", "Ljava.lang.String;", 0x401, "Ljava.lang.IllegalArgumentException;" },
     { "toStringWithNSString:withJavaUtilLocale:", "toString", "Ljava.lang.String;", 0x401, "Ljava.lang.IllegalArgumentException;" },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadableDateTime = { "ReadableDateTime", "org.joda.time", NULL, 0x201, 22, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeReadableDateTime = { 1, "ReadableDateTime", "org.joda.time", NULL, 0x201, 22, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeReadableDateTime;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeReadableDateTime)

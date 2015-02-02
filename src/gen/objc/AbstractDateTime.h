@@ -11,8 +11,8 @@
 @class JavaUtilLocale;
 @class OrgJodaTimeDateTimeFieldType;
 
-#import "JreEmulation.h"
 #include "AbstractInstant.h"
+#include "J2ObjC_header.h"
 #include "ReadableDateTime.h"
 
 /**
@@ -191,6 +191,11 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeBaseAbstractDateTime_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeBaseAbstractDateTime)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseAbstractDateTime)
 
 #endif // _OrgJodaTimeBaseAbstractDateTime_H_

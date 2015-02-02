@@ -9,8 +9,8 @@
 @class OrgJodaTimeChronology;
 @protocol OrgJodaTimeReadWritableInterval;
 
-#import "JreEmulation.h"
 #include "Converter.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief IntervalConverter defines how an object is converted to an interval.
@@ -43,6 +43,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeConvertIntervalConverter_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeConvertIntervalConverter)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertIntervalConverter)
 
 #endif // _OrgJodaTimeConvertIntervalConverter_H_

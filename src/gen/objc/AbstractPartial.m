@@ -12,9 +12,9 @@
 #include "DateTimeUtils.h"
 #include "DurationFieldType.h"
 #include "FieldUtils.h"
-#include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
+#include "J2ObjC_source.h"
 #include "ReadableInstant.h"
 #include "ReadablePartial.h"
 #include "java/lang/ClassCastException.h"
@@ -40,7 +40,7 @@
 }
 
 - (IOSObjectArray *)getFieldTypes {
-  IOSObjectArray *result = [IOSObjectArray arrayWithLength:[self size] type:[IOSClass classWithClass:[OrgJodaTimeDateTimeFieldType class]]];
+  IOSObjectArray *result = [IOSObjectArray arrayWithLength:[self size] type:OrgJodaTimeDateTimeFieldType_class_()];
   for (jint i = 0; i < result->size_; i++) {
     IOSObjectArray_Set(result, i, [self getFieldTypeWithInt:i]);
   }
@@ -52,7 +52,7 @@
 }
 
 - (IOSObjectArray *)getFields {
-  IOSObjectArray *result = [IOSObjectArray arrayWithLength:[self size] type:[IOSClass classWithClass:[OrgJodaTimeDateTimeField class]]];
+  IOSObjectArray *result = [IOSObjectArray arrayWithLength:[self size] type:OrgJodaTimeDateTimeField_class_()];
   for (jint i = 0; i < result->size_; i++) {
     IOSObjectArray_Set(result, i, [self getFieldWithInt:i]);
   }
@@ -120,7 +120,7 @@
   if (self == partial) {
     return YES;
   }
-  if ([partial conformsToProtocol: @protocol(OrgJodaTimeReadablePartial)] == NO) {
+  if ([OrgJodaTimeReadablePartial_class_() isInstance:partial] == NO) {
     return NO;
   }
   id<OrgJodaTimeReadablePartial> other = (id<OrgJodaTimeReadablePartial>) check_protocol_cast(partial, @protocol(OrgJodaTimeReadablePartial));
@@ -221,8 +221,10 @@
     { "isEqualWithOrgJodaTimeReadablePartial:", "isEqual", "Z", 0x1, NULL },
     { "toStringWithOrgJodaTimeFormatDateTimeFormatter:", "toString", "Ljava.lang.String;", 0x1, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractPartial = { "AbstractPartial", "org.joda.time.base", NULL, 0x401, 21, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractPartial = { 1, "AbstractPartial", "org.joda.time.base", NULL, 0x401, 21, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeBaseAbstractPartial;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseAbstractPartial)

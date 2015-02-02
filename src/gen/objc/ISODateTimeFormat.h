@@ -10,7 +10,7 @@
 @class OrgJodaTimeFormatDateTimeFormatterBuilder;
 @protocol JavaUtilCollection;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Factory that creates instances of DateTimeFormatter based on the ISO8601 standard.
@@ -40,86 +40,6 @@
 + (OrgJodaTimeFormatDateTimeFormatter *)forFieldsWithJavaUtilCollection:(id<JavaUtilCollection>)fields
                                                             withBoolean:(jboolean)extended
                                                             withBoolean:(jboolean)strictISO;
-
-/**
- @brief Creates a date using the calendar date format.
- Specification reference: 5.2.1.
- @param bld the builder
- @param fields the fields
- @param extended true to use extended format
- @param strictISO true to only allow ISO formats
- @return true if reduced precision
- @since 1.1
- */
-+ (jboolean)dateByMonthWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)bld
-                                              withJavaUtilCollection:(id<JavaUtilCollection>)fields
-                                                         withBoolean:(jboolean)extended
-                                                         withBoolean:(jboolean)strictISO;
-
-/**
- @brief Creates a date using the ordinal date format.
- Specification reference: 5.2.2.
- @param bld the builder
- @param fields the fields
- @param extended true to use extended format
- @param strictISO true to only allow ISO formats
- @since 1.1
- */
-+ (jboolean)dateByOrdinalWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)bld
-                                                withJavaUtilCollection:(id<JavaUtilCollection>)fields
-                                                           withBoolean:(jboolean)extended
-                                                           withBoolean:(jboolean)strictISO;
-
-/**
- @brief Creates a date using the calendar date format.
- Specification reference: 5.2.3.
- @param bld the builder
- @param fields the fields
- @param extended true to use extended format
- @param strictISO true to only allow ISO formats
- @since 1.1
- */
-+ (jboolean)dateByWeekWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)bld
-                                             withJavaUtilCollection:(id<JavaUtilCollection>)fields
-                                                        withBoolean:(jboolean)extended
-                                                        withBoolean:(jboolean)strictISO;
-
-/**
- @brief Adds the time fields to the builder.
- Specification reference: 5.3.1.
- @param bld the builder
- @param fields the fields
- @param extended whether to use the extended format
- @param strictISO whether to be strict
- @param reducedPrec whether the date was reduced precision
- @param datePresent whether there was a date
- @since 1.1
- */
-+ (void)timeWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)bld
-                                   withJavaUtilCollection:(id<JavaUtilCollection>)fields
-                                              withBoolean:(jboolean)extended
-                                              withBoolean:(jboolean)strictISO
-                                              withBoolean:(jboolean)reducedPrec
-                                              withBoolean:(jboolean)datePresent;
-
-/**
- @brief Checks that the iso only flag is not set, throwing an exception if it is.
- @param fields the fields
- @param strictISO true if only ISO formats allowed
- @since 1.1
- */
-+ (void)checkNotStrictISOWithJavaUtilCollection:(id<JavaUtilCollection>)fields
-                                    withBoolean:(jboolean)strictISO;
-
-/**
- @brief Appends the separator if necessary.
- @param bld the builder
- @param extended whether to append the separator
- @param sep the separator
- @since 1.1
- */
-+ (void)appendSeparatorWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)bld
-                                                         withBoolean:(jboolean)extended;
 
 /**
  @brief Returns a generic ISO date parser for parsing dates with a possible zone.
@@ -481,180 +401,119 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatISODateTimeFormat_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatISODateTimeFormat)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_forFieldsWithJavaUtilCollection_withBoolean_withBoolean_(id<JavaUtilCollection> fields, jboolean extended, jboolean strictISO);
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateParser();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_localDateParser();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateElementParser();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_timeParser();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_localTimeParser();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_timeElementParser();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateTimeParser();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateOptionalTimeParser();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_localDateOptionalTimeParser();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_date();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_time();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_timeNoMillis();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_tTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_tTimeNoMillis();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateTimeNoMillis();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_ordinalDate();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_ordinalDateTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_ordinalDateTimeNoMillis();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_weekDate();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_weekDateTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_weekDateTimeNoMillis();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicDate();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicTimeNoMillis();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicTTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicTTimeNoMillis();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicDateTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicDateTimeNoMillis();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicOrdinalDate();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicOrdinalDateTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicOrdinalDateTimeNoMillis();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicWeekDate();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicWeekDateTime();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicWeekDateTimeNoMillis();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_year();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_yearMonth();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_yearMonthDay();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_weekyear();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_weekyearWeek();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_weekyearWeekDay();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_hour();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_hourMinute();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_hourMinuteSecond();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_hourMinuteSecondMillis();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_hourMinuteSecondFraction();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateHour();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateHourMinute();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateHourMinuteSecond();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateHourMinuteSecondMillis();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateHourMinuteSecondFraction();
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatISODateTimeFormat)
 
 @interface OrgJodaTimeFormatISODateTimeFormat_Constants : NSObject {
 }
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)dateParser;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)localDateParser;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)dateElementParser;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)timeParser;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)localTimeParser;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)timeElementParser;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)dateTimeParser;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)dateOptionalTimeParser;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)localDateOptionalTimeParser;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)time;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)timeNoMillis;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)tTime;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)tTimeNoMillis;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)dateTime;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)dateTimeNoMillis;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)ordinalDate;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)ordinalDateTime;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)ordinalDateTimeNoMillis;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)weekDateTime;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)weekDateTimeNoMillis;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)basicDate;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)basicTime;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)basicTimeNoMillis;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)basicTTime;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)basicTTimeNoMillis;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)basicDateTime;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)basicDateTimeNoMillis;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)basicOrdinalDate;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)basicOrdinalDateTime;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)basicOrdinalDateTimeNoMillis;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)basicWeekDate;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)basicWeekDateTime;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)basicWeekDateTimeNoMillis;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)yearMonth;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)yearMonthDay;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)weekyearWeek;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)weekyearWeekDay;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)hourMinute;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)hourMinuteSecond;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)hourMinuteSecondMillis;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)hourMinuteSecondFraction;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)dateHour;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)dateHourMinute;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)dateHourMinuteSecond;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)dateHourMinuteSecondMillis;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)dateHourMinuteSecondFraction;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)yearElement;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)monthElement;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)dayOfMonthElement;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)weekyearElement;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)weekElement;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)dayOfWeekElement;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)dayOfYearElement;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)literalTElement;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)hourElement;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)minuteElement;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)secondElement;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)fractionElement;
-
-+ (OrgJodaTimeFormatDateTimeFormatter *)offsetElement;
 
 - (instancetype)init;
 
@@ -662,6 +521,8 @@ FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTi
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeFormatISODateTimeFormat_Constants_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeFormatISODateTimeFormat_Constants)
+
+CF_EXTERN_C_BEGIN
 
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_ye_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatISODateTimeFormat_Constants, ye_, OrgJodaTimeFormatDateTimeFormatter *)
@@ -839,5 +700,8 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatISODateTimeFormat_Constants, dotp_, 
 
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_ldotp_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatISODateTimeFormat_Constants, ldotp_, OrgJodaTimeFormatDateTimeFormatter *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatISODateTimeFormat_Constants)
 
 #endif // _OrgJodaTimeFormatISODateTimeFormat_H_

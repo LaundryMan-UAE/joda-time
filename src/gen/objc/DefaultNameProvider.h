@@ -10,7 +10,7 @@
 @class JavaUtilHashMap;
 @class JavaUtilLocale;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "NameProvider.h"
 
 /**
@@ -20,8 +20,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeTzDefaultNameProvider : NSObject < OrgJodaTimeTzNameProvider > {
- @public
-  JavaUtilHashMap *iByLocaleCache_;
 }
 
 - (instancetype)init;
@@ -34,20 +32,13 @@
                            withNSString:(NSString *)id_
                            withNSString:(NSString *)nameKey;
 
-- (IOSObjectArray *)getNameSetWithJavaUtilLocale:(JavaUtilLocale *)locale
-                                    withNSString:(NSString *)id_
-                                    withNSString:(NSString *)nameKey;
-
-- (JavaUtilHashMap *)createCache;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeTzDefaultNameProvider *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeTzDefaultNameProvider_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeTzDefaultNameProvider)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeTzDefaultNameProvider, iByLocaleCache_, JavaUtilHashMap *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzDefaultNameProvider)
 
 #endif // _OrgJodaTimeTzDefaultNameProvider_H_

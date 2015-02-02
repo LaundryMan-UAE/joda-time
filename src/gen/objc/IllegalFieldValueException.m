@@ -7,11 +7,58 @@
 #include "DurationFieldType.h"
 #include "IOSClass.h"
 #include "IllegalFieldValueException.h"
+#include "J2ObjC_source.h"
 #include "java/lang/StringBuffer.h"
 #include "java/lang/StringBuilder.h"
 
 __attribute__((unused)) static NSString *OrgJodaTimeIllegalFieldValueException_createMessageWithNSString_withNSNumber_withNSNumber_withNSNumber_withNSString_(NSString *fieldName, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound, NSString *explain);
 __attribute__((unused)) static NSString *OrgJodaTimeIllegalFieldValueException_createMessageWithNSString_withNSString_(NSString *fieldName, NSString *value);
+
+@interface OrgJodaTimeIllegalFieldValueException () {
+ @public
+  OrgJodaTimeDateTimeFieldType *iDateTimeFieldType_;
+  OrgJodaTimeDurationFieldType *iDurationFieldType_;
+  NSString *iFieldName_;
+  NSNumber *iNumberValue_;
+  NSString *iStringValue_;
+  NSNumber *iLowerBound_;
+  NSNumber *iUpperBound_;
+  NSString *iMessage_;
+}
+
+/**
+ @brief Creates a message for the exception.
+ @param fieldName the field name
+ @param value the value rejected
+ @param lowerBound the lower bound allowed
+ @param upperBound the uppe bound allowed
+ @param explain an explanation
+ @return the message
+ */
++ (NSString *)createMessageWithNSString:(NSString *)fieldName
+                           withNSNumber:(NSNumber *)value
+                           withNSNumber:(NSNumber *)lowerBound
+                           withNSNumber:(NSNumber *)upperBound
+                           withNSString:(NSString *)explain;
+
+/**
+ @brief Creates a message for the exception.
+ @param fieldName the field name
+ @param value the value rejected
+ @return the message
+ */
++ (NSString *)createMessageWithNSString:(NSString *)fieldName
+                           withNSString:(NSString *)value;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iDateTimeFieldType_, OrgJodaTimeDateTimeFieldType *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iDurationFieldType_, OrgJodaTimeDurationFieldType *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iFieldName_, NSString *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iNumberValue_, NSNumber *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iStringValue_, NSString *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iLowerBound_, NSNumber *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iUpperBound_, NSNumber *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeIllegalFieldValueException, iMessage_, NSString *)
 
 @implementation OrgJodaTimeIllegalFieldValueException
 
@@ -190,14 +237,14 @@ __attribute__((unused)) static NSString *OrgJodaTimeIllegalFieldValueException_c
 }
 
 - (void)dealloc {
-  OrgJodaTimeIllegalFieldValueException_set_iDateTimeFieldType_(self, nil);
-  OrgJodaTimeIllegalFieldValueException_set_iDurationFieldType_(self, nil);
-  OrgJodaTimeIllegalFieldValueException_set_iFieldName_(self, nil);
-  OrgJodaTimeIllegalFieldValueException_set_iNumberValue_(self, nil);
-  OrgJodaTimeIllegalFieldValueException_set_iStringValue_(self, nil);
-  OrgJodaTimeIllegalFieldValueException_set_iLowerBound_(self, nil);
-  OrgJodaTimeIllegalFieldValueException_set_iUpperBound_(self, nil);
-  OrgJodaTimeIllegalFieldValueException_set_iMessage_(self, nil);
+  RELEASE_(iDateTimeFieldType_);
+  RELEASE_(iDurationFieldType_);
+  RELEASE_(iFieldName_);
+  RELEASE_(iNumberValue_);
+  RELEASE_(iStringValue_);
+  RELEASE_(iLowerBound_);
+  RELEASE_(iUpperBound_);
+  RELEASE_(iMessage_);
   [super dealloc];
 }
 
@@ -246,7 +293,7 @@ __attribute__((unused)) static NSString *OrgJodaTimeIllegalFieldValueException_c
     { "iUpperBound_", NULL, 0x12, "Ljava.lang.Number;", NULL,  },
     { "iMessage_", NULL, 0x2, "Ljava.lang.String;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeIllegalFieldValueException = { "IllegalFieldValueException", "org.joda.time", NULL, 0x1, 19, methods, 9, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeIllegalFieldValueException = { 1, "IllegalFieldValueException", "org.joda.time", NULL, 0x1, 19, methods, 9, fields, 0, NULL};
   return &_OrgJodaTimeIllegalFieldValueException;
 }
 
@@ -289,3 +336,5 @@ NSString *OrgJodaTimeIllegalFieldValueException_createMessageWithNSString_withNS
   [((JavaLangStringBuffer *) nil_chk([((JavaLangStringBuffer *) nil_chk([((JavaLangStringBuffer *) nil_chk([((JavaLangStringBuffer *) nil_chk(buf)) appendWithNSString:@" for "])) appendWithNSString:fieldName])) appendWithChar:' '])) appendWithNSString:@"is not supported"];
   return [buf description];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeIllegalFieldValueException)

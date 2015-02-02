@@ -25,9 +25,9 @@
 @protocol OrgJodaTimeFormatDateTimePrinter;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "InternalParser.h"
 #include "InternalPrinter.h"
+#include "J2ObjC_header.h"
 #include "java/lang/Enum.h"
 
 /**
@@ -39,15 +39,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFormatDateTimeFormatterBuilder : NSObject {
- @public
-  /**
-   @brief Array of printers and parsers (alternating).
-   */
-  JavaUtilArrayList *iElementPairs_;
-  /**
-   @brief Cache of the last returned formatter.
-   */
-  id iFormatter_;
 }
 
 /**
@@ -156,23 +147,6 @@
  @throws IllegalArgumentException if parser is null or of an invalid type
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendOptionalWithOrgJodaTimeFormatDateTimeParser:(id<OrgJodaTimeFormatDateTimeParser>)parser;
-
-/**
- @brief Checks if the parser is non null and a provider.
- @param parser the parser to check
- */
-- (void)checkParserWithOrgJodaTimeFormatDateTimeParser:(id<OrgJodaTimeFormatDateTimeParser>)parser;
-
-/**
- @brief Checks if the printer is non null and a provider.
- @param printer the printer to check
- */
-- (void)checkPrinterWithOrgJodaTimeFormatDateTimePrinter:(id<OrgJodaTimeFormatDateTimePrinter>)printer;
-
-- (OrgJodaTimeFormatDateTimeFormatterBuilder *)append0WithId:(id)element;
-
-- (OrgJodaTimeFormatDateTimeFormatterBuilder *)append0WithOrgJodaTimeFormatInternalPrinter:(id<OrgJodaTimeFormatInternalPrinter>)printer
-                                                       withOrgJodaTimeFormatInternalParser:(id<OrgJodaTimeFormatInternalParser>)parser;
 
 /**
  @brief Instructs the printer to emit a specific character, and the parser to expect it.
@@ -610,14 +584,6 @@
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendPatternWithNSString:(NSString *)pattern;
 
-- (id)getFormatter;
-
-- (jboolean)isPrinterWithId:(id)f;
-
-- (jboolean)isParserWithId:(id)f;
-
-- (jboolean)isFormatterWithId:(id)f;
-
 + (void)appendUnknownStringWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
                                           withInt:(jint)len;
 
@@ -629,23 +595,22 @@
                                                    withInt:(jint)position
                                               withNSString:(NSString *)search;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatterBuilder *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBuilder_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder, iElementPairs_, JavaUtilArrayList *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder, iFormatter_, id)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT void OrgJodaTimeFormatDateTimeFormatterBuilder_appendUnknownStringWithJavaLangAppendable_withInt_(id<JavaLangAppendable> appendable, jint len);
+
 FOUNDATION_EXPORT jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithWithJavaLangCharSequence_withInt_withNSString_(id<JavaLangCharSequence> text, jint position, NSString *search);
+
 FOUNDATION_EXPORT jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWithIgnoreCaseWithJavaLangCharSequence_withInt_withNSString_(id<JavaLangCharSequence> text, jint position, NSString *search);
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder)
 
 @interface OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral : NSObject < OrgJodaTimeFormatInternalPrinter, OrgJodaTimeFormatInternalParser > {
- @public
-  jchar iValue_;
 }
 
 - (instancetype)initWithChar:(jchar)value;
@@ -669,15 +634,16 @@ FOUNDATION_EXPORT jboolean OrgJodaTimeFormatDateTimeFormatterBuilder_csStartsWit
                                   withJavaLangCharSequence:(id<JavaLangCharSequence>)text
                                                    withInt:(jint)position;
 
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral)
 
 @interface OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral : NSObject < OrgJodaTimeFormatInternalPrinter, OrgJodaTimeFormatInternalParser > {
- @public
-  NSString *iValue_;
 }
 
 - (instancetype)initWithNSString:(NSString *)value;
@@ -701,15 +667,14 @@ __attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBui
                                   withJavaLangCharSequence:(id<JavaLangCharSequence>)text
                                                    withInt:(jint)position;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral, iValue_, NSString *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral)
 
 @interface OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter : NSObject < OrgJodaTimeFormatInternalPrinter, OrgJodaTimeFormatInternalParser > {
  @public
@@ -728,15 +693,16 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral, iVa
                                   withJavaLangCharSequence:(id<JavaLangCharSequence>)text
                                                    withInt:(jint)position;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter)
 
 J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter, iFieldType_, OrgJodaTimeDateTimeFieldType *)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter)
 
 @interface OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber : OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter {
 }
@@ -760,7 +726,12 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter, i
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber)
 
 @interface OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber : OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter {
  @public
@@ -785,11 +756,14 @@ __attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBui
        withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                    withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber)
 
 @interface OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber : OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber {
 }
@@ -804,19 +778,14 @@ __attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBui
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber)
 
 @interface OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear : NSObject < OrgJodaTimeFormatInternalPrinter, OrgJodaTimeFormatInternalParser > {
- @public
-  /**
-   @brief The field to print/parse.
-   */
-  OrgJodaTimeDateTimeFieldType *iType_;
-  /**
-   @brief The pivot year.
-   */
-  jint iPivot_;
-  jboolean iLenientParse_;
 }
 
 - (instancetype)initWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type
@@ -838,29 +807,20 @@ __attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBui
           withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
                    withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (jint)getTwoDigitYearWithLong:(jlong)instant
-      withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
-
 - (void)printToWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
        withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                    withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (jint)getTwoDigitYearWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear, iType_, OrgJodaTimeDateTimeFieldType *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear)
 
 @interface OrgJodaTimeFormatDateTimeFormatterBuilder_TextField : NSObject < OrgJodaTimeFormatInternalPrinter, OrgJodaTimeFormatInternalParser > {
- @public
-  OrgJodaTimeDateTimeFieldType *iFieldType_;
-  jboolean iShort_;
 }
 
 - (instancetype)initWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType
@@ -879,37 +839,28 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear, iTyp
        withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                    withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (NSString *)printWithLong:(jlong)instant
-  withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono
-         withJavaUtilLocale:(JavaUtilLocale *)locale;
-
-- (NSString *)printWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
-                               withJavaUtilLocale:(JavaUtilLocale *)locale;
-
 - (jint)estimateParsedLength;
 
 - (jint)parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:(OrgJodaTimeFormatDateTimeParserBucket *)bucket
                                   withJavaLangCharSequence:(id<JavaLangCharSequence>)text
                                                    withInt:(jint)position;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField, iFieldType_, OrgJodaTimeDateTimeFieldType *)
+CF_EXTERN_C_BEGIN
 
 FOUNDATION_EXPORT id<JavaUtilMap> OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_cParseCache_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField, cParseCache_, id<JavaUtilMap>)
 J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField, cParseCache_, id<JavaUtilMap>)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField)
 
 @interface OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction : NSObject < OrgJodaTimeFormatInternalPrinter, OrgJodaTimeFormatInternalParser > {
  @public
-  OrgJodaTimeDateTimeFieldType *iFieldType_;
   jint iMinDigits_;
   jint iMaxDigits_;
 }
@@ -935,32 +886,22 @@ J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField, 
                              withLong:(jlong)instant
             withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
 
-- (IOSLongArray *)getFractionDataWithLong:(jlong)fraction
-             withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
-
 - (jint)estimateParsedLength;
 
 - (jint)parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:(OrgJodaTimeFormatDateTimeParserBucket *)bucket
                                   withJavaLangCharSequence:(id<JavaLangCharSequence>)text
                                                    withInt:(jint)position;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction, iFieldType_, OrgJodaTimeDateTimeFieldType *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction)
 
 @interface OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset : NSObject < OrgJodaTimeFormatInternalPrinter, OrgJodaTimeFormatInternalParser > {
- @public
-  NSString *iZeroOffsetPrintText_;
-  NSString *iZeroOffsetParseText_;
-  jboolean iShowSeparators_;
-  jint iMinFields_;
-  jint iMaxFields_;
 }
 
 - (instancetype)initWithNSString:(NSString *)zeroOffsetPrintText
@@ -988,31 +929,19 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction, iFieldTy
                                   withJavaLangCharSequence:(id<JavaLangCharSequence>)text
                                                    withInt:(jint)position;
 
-/**
- @brief Returns actual amount of digits to parse, but no more than original 'amount' parameter.
- */
-- (jint)digitCountWithJavaLangCharSequence:(id<JavaLangCharSequence>)text
-                                   withInt:(jint)position
-                                   withInt:(jint)amount;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset, iZeroOffsetPrintText_, NSString *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset, iZeroOffsetParseText_, NSString *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset)
 
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_LONG_NAME 0
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_SHORT_NAME 1
 
 @interface OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName : NSObject < OrgJodaTimeFormatInternalPrinter, OrgJodaTimeFormatInternalParser > {
- @public
-  id<JavaUtilMap> iParseLookup_;
-  jint iType_;
 }
 
 - (instancetype)initWithInt:(jint)type
@@ -1027,10 +956,6 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset, iZ
           withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
                    withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (NSString *)printWithLong:(jlong)instant
-withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
-         withJavaUtilLocale:(JavaUtilLocale *)locale;
-
 - (void)printToWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
        withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                    withJavaUtilLocale:(JavaUtilLocale *)locale;
@@ -1041,19 +966,18 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
                                   withJavaLangCharSequence:(id<JavaLangCharSequence>)text
                                                    withInt:(jint)position;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName, iParseLookup_, id<JavaUtilMap>)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName, LONG_NAME, jint)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName, SHORT_NAME, jint)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName)
 
 typedef NS_ENUM(NSUInteger, OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId) {
   OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId_INSTANCE = 0,
@@ -1089,7 +1013,8 @@ FOUNDATION_EXPORT IOSObjectArray *OrgJodaTimeFormatDateTimeFormatterBuilder_Time
 
 + (OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum *)valueOfWithNSString:(NSString *)name;
 
-FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum *OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_valueOfWithNSString_(NSString *name);- (id)copyWithZone:(NSZone *)zone;
+FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum *OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_valueOfWithNSString_(NSString *name);
+- (id)copyWithZone:(NSZone *)zone;
 
 @end
 
@@ -1099,7 +1024,7 @@ J2OBJC_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum)
 FOUNDATION_EXPORT OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum *OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_values_[];
 
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_INSTANCE OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_values_[OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId_INSTANCE]
-J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum, INSTANCE, OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum *)
+J2OBJC_ENUM_CONSTANT_GETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum, INSTANCE)
 
 FOUNDATION_EXPORT id<JavaUtilSet> OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_ALL_IDS_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum, ALL_IDS_, id<JavaUtilSet>)
@@ -1107,12 +1032,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdE
 FOUNDATION_EXPORT jint OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum_MAX_LENGTH_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum, MAX_LENGTH_, jint)
 
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdEnum)
+
 @interface OrgJodaTimeFormatDateTimeFormatterBuilder_Composite : NSObject < OrgJodaTimeFormatInternalPrinter, OrgJodaTimeFormatInternalParser > {
- @public
-  IOSObjectArray *iPrinters_;
-  IOSObjectArray *iParsers_;
-  jint iPrintedLengthEstimate_;
-  jint iParsedLengthEstimate_;
 }
 
 - (instancetype)initWithJavaUtilList:(id<JavaUtilList>)elementPairs;
@@ -1140,31 +1062,16 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneIdE
 
 - (jboolean)isParser;
 
-/**
- @brief Processes the element pairs, putting results into the given printer and parser lists.
- */
-- (void)decomposeWithJavaUtilList:(id<JavaUtilList>)elementPairs
-                 withJavaUtilList:(id<JavaUtilList>)printerList
-                 withJavaUtilList:(id<JavaUtilList>)parserList;
-
-- (void)addArrayToListWithJavaUtilList:(id<JavaUtilList>)list
-                     withNSObjectArray:(IOSObjectArray *)array;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite, iPrinters_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite, iParsers_, IOSObjectArray *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite)
 
 @interface OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser : NSObject < OrgJodaTimeFormatInternalParser > {
- @public
-  IOSObjectArray *iParsers_;
-  jint iParsedLengthEstimate_;
 }
 
 - (instancetype)initWithOrgJodaTimeFormatInternalParserArray:(IOSObjectArray *)parsers;
@@ -1175,14 +1082,13 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite, iParser
                                   withJavaLangCharSequence:(id<JavaLangCharSequence>)text
                                                    withInt:(jint)position;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser, iParsers_, IOSObjectArray *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser)
 
 #endif // _OrgJodaTimeFormatDateTimeFormatterBuilder_H_

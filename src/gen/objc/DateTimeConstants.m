@@ -4,6 +4,7 @@
 //
 
 #include "DateTimeConstants.h"
+#include "J2ObjC_source.h"
 
 @implementation OrgJodaTimeDateTimeConstants
 
@@ -57,8 +58,10 @@
     { "SECONDS_PER_WEEK_", NULL, 0x19, "I", NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_SECONDS_PER_WEEK },
     { "MILLIS_PER_WEEK_", NULL, 0x19, "I", NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_MILLIS_PER_WEEK },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeConstants = { "DateTimeConstants", "org.joda.time", NULL, 0x1, 1, methods, 40, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeConstants = { 1, "DateTimeConstants", "org.joda.time", NULL, 0x1, 1, methods, 40, fields, 0, NULL};
   return &_OrgJodaTimeDateTimeConstants;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeConstants)

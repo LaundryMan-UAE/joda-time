@@ -12,8 +12,8 @@
 @class OrgJodaTimeSeconds;
 @protocol OrgJodaTimeReadableInstant;
 
-#import "JreEmulation.h"
 #include "BaseDuration.h"
+#include "J2ObjC_header.h"
 #include "ReadableDuration.h"
 #include "java/io/Serializable.h"
 
@@ -276,16 +276,27 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeDuration_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeDuration)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeDuration *OrgJodaTimeDuration_parseWithNSString_(NSString *str);
+
 FOUNDATION_EXPORT OrgJodaTimeDuration *OrgJodaTimeDuration_standardDaysWithLong_(jlong days);
+
 FOUNDATION_EXPORT OrgJodaTimeDuration *OrgJodaTimeDuration_standardHoursWithLong_(jlong hours);
+
 FOUNDATION_EXPORT OrgJodaTimeDuration *OrgJodaTimeDuration_standardMinutesWithLong_(jlong minutes);
+
 FOUNDATION_EXPORT OrgJodaTimeDuration *OrgJodaTimeDuration_standardSecondsWithLong_(jlong seconds);
+
 FOUNDATION_EXPORT OrgJodaTimeDuration *OrgJodaTimeDuration_millisWithLong_(jlong millis);
 
 FOUNDATION_EXPORT OrgJodaTimeDuration *OrgJodaTimeDuration_ZERO_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDuration, ZERO_, OrgJodaTimeDuration *)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDuration, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDuration)
 
 #endif // _OrgJodaTimeDuration_H_

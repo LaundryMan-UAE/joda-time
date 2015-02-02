@@ -9,6 +9,7 @@
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "ISOPeriodFormat.h"
+#include "J2ObjC_source.h"
 #include "MutablePeriod.h"
 #include "Period.h"
 #include "PeriodFormatter.h"
@@ -33,7 +34,7 @@
 }
 
 - (IOSObjectArray *)getFieldTypes {
-  IOSObjectArray *result = [IOSObjectArray arrayWithLength:[self size] type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]];
+  IOSObjectArray *result = [IOSObjectArray arrayWithLength:[self size] type:OrgJodaTimeDurationFieldType_class_()];
   for (jint i = 0; i < result->size_; i++) {
     IOSObjectArray_Set(result, i, [self getFieldTypeWithInt:i]);
   }
@@ -76,7 +77,7 @@
   if (self == period) {
     return YES;
   }
-  if ([period conformsToProtocol: @protocol(OrgJodaTimeReadablePeriod)] == NO) {
+  if ([OrgJodaTimeReadablePeriod_class_() isInstance:period] == NO) {
     return NO;
   }
   id<OrgJodaTimeReadablePeriod> other = (id<OrgJodaTimeReadablePeriod>) check_protocol_cast(period, @protocol(OrgJodaTimeReadablePeriod));
@@ -112,7 +113,7 @@
 }
 
 + (IOSObjectArray *)__annotations_description {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -132,8 +133,10 @@
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL },
     { "toStringWithOrgJodaTimeFormatPeriodFormatter:", "toString", "Ljava.lang.String;", 0x1, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractPeriod = { "AbstractPeriod", "org.joda.time.base", NULL, 0x401, 14, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractPeriod = { 1, "AbstractPeriod", "org.joda.time.base", NULL, 0x401, 14, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeBaseAbstractPeriod;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseAbstractPeriod)

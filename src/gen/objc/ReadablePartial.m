@@ -7,6 +7,7 @@
 #include "DateTime.h"
 #include "DateTimeField.h"
 #include "DateTimeFieldType.h"
+#include "J2ObjC_source.h"
 #include "ReadableInstant.h"
 #include "ReadablePartial.h"
 
@@ -29,9 +30,10 @@
     { "hash", "hashCode", "I", 0x401, NULL },
     { "description", "toString", "Ljava.lang.String;", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadablePartial = { "ReadablePartial", "org.joda.time", NULL, 0x201, 11, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeReadablePartial = { 1, "ReadablePartial", "org.joda.time", NULL, 0x201, 11, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeReadablePartial;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeReadablePartial)

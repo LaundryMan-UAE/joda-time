@@ -7,9 +7,17 @@
 #include "DateTimeFormatter.h"
 #include "IllegalInstantException.h"
 #include "Instant.h"
+#include "J2ObjC_source.h"
 #include "java/lang/Throwable.h"
 
 __attribute__((unused)) static NSString *OrgJodaTimeIllegalInstantException_createMessageWithLong_withNSString_(jlong instantLocal, NSString *zoneId);
+
+@interface OrgJodaTimeIllegalInstantException () {
+}
+
++ (NSString *)createMessageWithLong:(jlong)instantLocal
+                       withNSString:(NSString *)zoneId;
+@end
 
 @implementation OrgJodaTimeIllegalInstantException
 
@@ -41,7 +49,7 @@ __attribute__((unused)) static NSString *OrgJodaTimeIllegalInstantException_crea
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeIllegalInstantException_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeIllegalInstantException = { "IllegalInstantException", "org.joda.time", NULL, 0x1, 4, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeIllegalInstantException = { 1, "IllegalInstantException", "org.joda.time", NULL, 0x1, 4, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeIllegalInstantException;
 }
 
@@ -64,3 +72,5 @@ jboolean OrgJodaTimeIllegalInstantException_isIllegalInstantWithJavaLangThrowabl
   }
   return NO;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeIllegalInstantException)

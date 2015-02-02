@@ -8,7 +8,7 @@
 
 @class OrgJodaTimeFormatPeriodFormatter;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Factory that creates instances of PeriodFormatter for the ISO8601 standard.
@@ -62,11 +62,18 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatISOPeriodFormat_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatISOPeriodFormat)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_standard();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_alternate();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_alternateExtended();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_alternateWithWeeks();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_alternateExtendedWithWeeks();
 
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_cStandard_;
@@ -88,5 +95,8 @@ J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeFormatISOPeriodFormat, cAlternateWithWeeks
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_cAlternateExtendedWihWeeks_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatISOPeriodFormat, cAlternateExtendedWihWeeks_, OrgJodaTimeFormatPeriodFormatter *)
 J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeFormatISOPeriodFormat, cAlternateExtendedWihWeeks_, OrgJodaTimeFormatPeriodFormatter *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatISOPeriodFormat)
 
 #endif // _OrgJodaTimeFormatISOPeriodFormat_H_

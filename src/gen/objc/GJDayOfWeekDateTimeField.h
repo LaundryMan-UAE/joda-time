@@ -10,7 +10,7 @@
 @class OrgJodaTimeChronoBasicChronology;
 @class OrgJodaTimeDurationField;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "PreciseDurationDateTimeField.h"
 
 #define OrgJodaTimeChronoGJDayOfWeekDateTimeField_serialVersionUID -3857947176719041436LL
@@ -23,8 +23,6 @@
  @author Brian S O'Neill
  */
 @interface OrgJodaTimeChronoGJDayOfWeekDateTimeField : OrgJodaTimeFieldPreciseDurationDateTimeField {
- @public
-  OrgJodaTimeChronoBasicChronology *iChronology_;
 }
 
 /**
@@ -96,21 +94,15 @@
  */
 - (jint)getMaximumShortTextLengthWithJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
- @brief Serialization singleton
- */
-- (id)readResolve;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoGJDayOfWeekDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoGJDayOfWeekDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoGJDayOfWeekDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJDayOfWeekDateTimeField, iChronology_, OrgJodaTimeChronoBasicChronology *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJDayOfWeekDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJDayOfWeekDateTimeField)
 
 #endif // _OrgJodaTimeChronoGJDayOfWeekDateTimeField_H_

@@ -14,9 +14,19 @@
 #include "ISODateTimeFormat.h"
 #include "Instant.h"
 #include "InstantConverter.h"
+#include "J2ObjC_source.h"
 #include "MutableDateTime.h"
 #include "ReadableDuration.h"
 #include "java/lang/Deprecated.h"
+
+@interface OrgJodaTimeInstant () {
+ @public
+  /**
+   @brief The millis from 1970-01-01T00:00:00Z
+   */
+  jlong iMillis_;
+}
+@end
 
 @implementation OrgJodaTimeInstant
 
@@ -126,15 +136,15 @@
 }
 
 + (IOSObjectArray *)__annotations_parseWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_toDateTimeISO {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_toMutableDateTimeISO {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -164,7 +174,7 @@
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeInstant_serialVersionUID },
     { "iMillis_", NULL, 0x12, "J", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeInstant = { "Instant", "org.joda.time", NULL, 0x11, 20, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeInstant = { 1, "Instant", "org.joda.time", NULL, 0x11, 20, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeInstant;
 }
 
@@ -184,3 +194,5 @@ OrgJodaTimeInstant *OrgJodaTimeInstant_parseWithNSString_withOrgJodaTimeFormatDa
   OrgJodaTimeInstant_init();
   return [((OrgJodaTimeDateTime *) nil_chk([((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(formatter)) parseDateTimeWithNSString:str])) toInstant];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeInstant)

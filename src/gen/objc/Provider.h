@@ -9,7 +9,7 @@
 @class OrgJodaTimeDateTimeZone;
 @protocol JavaUtilSet;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Service provider factory for time zones.
@@ -33,6 +33,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeTzProvider_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeTzProvider)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzProvider)
 
 #endif // _OrgJodaTimeTzProvider_H_

@@ -18,12 +18,24 @@
 #include "DurationFieldType.h"
 #include "GJChronology.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "LimitChronology.h"
 #include "OffsetDateTimeField.h"
 #include "RemainderDateTimeField.h"
 #include "SkipUndoDateTimeField.h"
 #include "UnsupportedDurationField.h"
 #include "java/util/concurrent/ConcurrentHashMap.h"
+
+@interface OrgJodaTimeChronoBuddhistChronology () {
+}
+- (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
+                                       withId:(id)param;
+
+/**
+ @brief Serialization singleton
+ */
+- (id)readResolve;
+@end
 
 BOOL OrgJodaTimeChronoBuddhistChronology_initialized = NO;
 
@@ -144,7 +156,7 @@ OrgJodaTimeChronoBuddhistChronology * OrgJodaTimeChronoBuddhistChronology_INSTAN
     { "cCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoBuddhistChronology_cCache_,  },
     { "INSTANCE_UTC_", NULL, 0x1a, "Lorg.joda.time.chrono.BuddhistChronology;", &OrgJodaTimeChronoBuddhistChronology_INSTANCE_UTC_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBuddhistChronology = { "BuddhistChronology", "org.joda.time.chrono", NULL, 0x11, 11, methods, 6, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBuddhistChronology = { 1, "BuddhistChronology", "org.joda.time.chrono", NULL, 0x11, 11, methods, 6, fields, 0, NULL};
   return &_OrgJodaTimeChronoBuddhistChronology;
 }
 
@@ -177,3 +189,5 @@ OrgJodaTimeChronoBuddhistChronology *OrgJodaTimeChronoBuddhistChronology_getInst
   }
   return chrono;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBuddhistChronology)

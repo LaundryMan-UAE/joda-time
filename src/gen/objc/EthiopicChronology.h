@@ -12,8 +12,8 @@
 @class OrgJodaTimeDateTimeField;
 @class OrgJodaTimeDateTimeZone;
 
-#import "JreEmulation.h"
 #include "BasicFixedMonthChronology.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoEthiopicChronology_EE 1
 #define OrgJodaTimeChronoEthiopicChronology_MAX_YEAR 292272984
@@ -67,11 +67,6 @@
                                       withInt:(jint)minDaysInFirstWeek;
 
 /**
- @brief Serialization singleton.
- */
-- (id)readResolve;
-
-/**
  @brief Gets the Chronology in the UTC time zone.
  @return the chronology in UTC
  */
@@ -100,9 +95,15 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeChronoEthiopicChronology_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeChronoEthiopicChronology)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeChronoEthiopicChronology *OrgJodaTimeChronoEthiopicChronology_getInstanceUTC();
+
 FOUNDATION_EXPORT OrgJodaTimeChronoEthiopicChronology *OrgJodaTimeChronoEthiopicChronology_getInstance();
+
 FOUNDATION_EXPORT OrgJodaTimeChronoEthiopicChronology *OrgJodaTimeChronoEthiopicChronology_getInstanceWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
+
 FOUNDATION_EXPORT OrgJodaTimeChronoEthiopicChronology *OrgJodaTimeChronoEthiopicChronology_getInstanceWithOrgJodaTimeDateTimeZone_withInt_(OrgJodaTimeDateTimeZone *zone, jint minDaysInFirstWeek);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoEthiopicChronology, serialVersionUID, jlong)
@@ -121,5 +122,8 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoEthiopicChronology, cCache_, JavaUti
 
 FOUNDATION_EXPORT OrgJodaTimeChronoEthiopicChronology *OrgJodaTimeChronoEthiopicChronology_INSTANCE_UTC_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoEthiopicChronology, INSTANCE_UTC_, OrgJodaTimeChronoEthiopicChronology *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoEthiopicChronology)
 
 #endif // _OrgJodaTimeChronoEthiopicChronology_H_

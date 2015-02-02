@@ -10,9 +10,19 @@
 #include "DurationConverter.h"
 #include "FieldUtils.h"
 #include "Interval.h"
+#include "J2ObjC_source.h"
 #include "Period.h"
 #include "PeriodType.h"
 #include "ReadableInstant.h"
+
+@interface OrgJodaTimeBaseBaseDuration () {
+ @public
+  /**
+   @brief The duration length
+   */
+  jlong iMillis_;
+}
+@end
 
 @implementation OrgJodaTimeBaseBaseDuration
 
@@ -128,8 +138,10 @@
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeBaseBaseDuration_serialVersionUID },
     { "iMillis_", NULL, 0x42, "J", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseDuration = { "BaseDuration", "org.joda.time.base", NULL, 0x401, 15, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseDuration = { 1, "BaseDuration", "org.joda.time.base", NULL, 0x401, 15, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeBaseBaseDuration;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseBaseDuration)

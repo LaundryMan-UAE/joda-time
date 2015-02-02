@@ -13,6 +13,7 @@
 #include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "ISOChronology.h"
+#include "J2ObjC_source.h"
 #include "MutablePeriod.h"
 #include "Period.h"
 #include "PeriodType.h"
@@ -22,6 +23,15 @@
 #include "java/lang/ClassCastException.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/IndexOutOfBoundsException.h"
+
+@interface OrgJodaTimeBaseBaseSingleFieldPeriod () {
+ @public
+  /**
+   @brief The period in the units of this period.
+   */
+  jint iPeriod_;
+}
+@end
 
 @implementation OrgJodaTimeBaseBaseSingleFieldPeriod
 
@@ -112,7 +122,7 @@
   if (self == period) {
     return YES;
   }
-  if ([period conformsToProtocol: @protocol(OrgJodaTimeReadablePeriod)] == NO) {
+  if ([OrgJodaTimeReadablePeriod_class_() isInstance:period] == NO) {
     return NO;
   }
   id<OrgJodaTimeReadablePeriod> other = (id<OrgJodaTimeReadablePeriod>) check_protocol_cast(period, @protocol(OrgJodaTimeReadablePeriod));
@@ -173,7 +183,7 @@
     { "START_1972_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeBaseBaseSingleFieldPeriod_START_1972 },
     { "iPeriod_", NULL, 0x42, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseSingleFieldPeriod = { "BaseSingleFieldPeriod", "org.joda.time.base", NULL, 0x401, 18, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseSingleFieldPeriod = { 1, "BaseSingleFieldPeriod", "org.joda.time.base", NULL, 0x401, 18, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeBaseBaseSingleFieldPeriod;
 }
 
@@ -229,3 +239,5 @@ jint OrgJodaTimeBaseBaseSingleFieldPeriod_standardPeriodInWithOrgJodaTimeReadabl
   }
   return OrgJodaTimeFieldFieldUtils_safeToIntWithLong_(duration / millisPerUnit);
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseBaseSingleFieldPeriod)

@@ -8,8 +8,8 @@
 
 @class JavaUtilTimeZone;
 
-#import "JreEmulation.h"
 #include "DateTimeZone.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeTzFixedDateTimeZone_serialVersionUID -3513011772763289092LL
 
@@ -20,10 +20,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeTzFixedDateTimeZone : OrgJodaTimeDateTimeZone {
- @public
-  NSString *iNameKey_;
-  jint iWallOffset_;
-  jint iStandardOffset_;
 }
 
 - (instancetype)initWithNSString:(NSString *)id_
@@ -55,16 +51,15 @@
 
 - (NSUInteger)hash;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeTzFixedDateTimeZone *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeTzFixedDateTimeZone_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeTzFixedDateTimeZone)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeTzFixedDateTimeZone, iNameKey_, NSString *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTzFixedDateTimeZone, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzFixedDateTimeZone)
 
 #endif // _OrgJodaTimeTzFixedDateTimeZone_H_

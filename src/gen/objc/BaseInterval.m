@@ -9,15 +9,34 @@
 #include "ConverterManager.h"
 #include "DateTimeUtils.h"
 #include "FieldUtils.h"
-#include "IOSClass.h"
 #include "ISOChronology.h"
 #include "IntervalConverter.h"
+#include "J2ObjC_source.h"
 #include "MutableInterval.h"
 #include "ReadWritableInterval.h"
 #include "ReadableDuration.h"
 #include "ReadableInstant.h"
 #include "ReadableInterval.h"
 #include "ReadablePeriod.h"
+
+@interface OrgJodaTimeBaseBaseInterval () {
+ @public
+  /**
+   @brief The chronology of the interval
+   */
+  OrgJodaTimeChronology *iChronology_;
+  /**
+   @brief The start of the interval
+   */
+  jlong iStartMillis_;
+  /**
+   @brief The end of the interval
+   */
+  jlong iEndMillis_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeBaseBaseInterval, iChronology_, OrgJodaTimeChronology *)
 
 @implementation OrgJodaTimeBaseBaseInterval
 
@@ -118,7 +137,7 @@
       iStartMillis_ = [((id<OrgJodaTimeReadableInterval>) nil_chk(input)) getStartMillis];
       iEndMillis_ = [input getEndMillis];
     }
-    else if ([self conformsToProtocol: @protocol(OrgJodaTimeReadWritableInterval)]) {
+    else if ([OrgJodaTimeReadWritableInterval_class_() isInstance:self]) {
       [converter setIntoWithOrgJodaTimeReadWritableInterval:(id<OrgJodaTimeReadWritableInterval>) check_protocol_cast(self, @protocol(OrgJodaTimeReadWritableInterval)) withId:interval withOrgJodaTimeChronology:chrono];
     }
     else {
@@ -155,7 +174,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeBaseBaseInterval_set_iChronology_(self, nil);
+  RELEASE_(iChronology_);
   [super dealloc];
 }
 
@@ -186,8 +205,10 @@
     { "iStartMillis_", NULL, 0x42, "J", NULL,  },
     { "iEndMillis_", NULL, 0x42, "J", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseInterval = { "BaseInterval", "org.joda.time.base", NULL, 0x401, 11, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseInterval = { 1, "BaseInterval", "org.joda.time.base", NULL, 0x401, 11, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeBaseBaseInterval;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseBaseInterval)

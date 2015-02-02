@@ -11,8 +11,8 @@
 @class OrgJodaTimeDateTimeField;
 @class OrgJodaTimeDateTimeZone;
 
-#import "JreEmulation.h"
 #include "AssembledChronology.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoLenientChronology_serialVersionUID -3148237568046877177LL
 
@@ -23,8 +23,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeChronoLenientChronology : OrgJodaTimeChronoAssembledChronology {
- @public
-  OrgJodaTimeChronology *iWithUTC_;
 }
 
 /**
@@ -34,19 +32,11 @@
  */
 + (OrgJodaTimeChronoLenientChronology *)getInstanceWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base;
 
-/**
- @brief Create a LenientChronology for any chronology.
- @param base the chronology to wrap
- */
-- (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base;
-
 - (OrgJodaTimeChronology *)withUTC;
 
 - (OrgJodaTimeChronology *)withZoneWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
 - (void)assembleWithOrgJodaTimeChronoAssembledChronology_Fields:(OrgJodaTimeChronoAssembledChronology_Fields *)fields;
-
-- (OrgJodaTimeDateTimeField *)convertFieldWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
 
 /**
  @brief A lenient chronology is only equal to a lenient chronology with the same base chronology.
@@ -69,17 +59,17 @@
  */
 - (NSString *)description;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoLenientChronology *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoLenientChronology_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoLenientChronology)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoLenientChronology, iWithUTC_, OrgJodaTimeChronology *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeChronoLenientChronology *OrgJodaTimeChronoLenientChronology_getInstanceWithOrgJodaTimeChronology_(OrgJodaTimeChronology *base);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoLenientChronology, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoLenientChronology)
 
 #endif // _OrgJodaTimeChronoLenientChronology_H_

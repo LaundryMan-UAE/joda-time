@@ -9,6 +9,7 @@
 #include "DateTimeZone.h"
 #include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
 #include "ReadablePartialConverter.h"
 
@@ -50,7 +51,7 @@ OrgJodaTimeConvertReadablePartialConverter * OrgJodaTimeConvertReadablePartialCo
 }
 
 - (IOSClass *)getSupportedType {
-  return [IOSClass classWithProtocol:@protocol(OrgJodaTimeReadablePartial)];
+  return OrgJodaTimeReadablePartial_class_();
 }
 
 + (void)initialize {
@@ -71,8 +72,10 @@ OrgJodaTimeConvertReadablePartialConverter * OrgJodaTimeConvertReadablePartialCo
   static const J2ObjcFieldInfo fields[] = {
     { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.ReadablePartialConverter;", &OrgJodaTimeConvertReadablePartialConverter_INSTANCE_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertReadablePartialConverter = { "ReadablePartialConverter", "org.joda.time.convert", NULL, 0x0, 5, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertReadablePartialConverter = { 1, "ReadablePartialConverter", "org.joda.time.convert", NULL, 0x0, 5, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeConvertReadablePartialConverter;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertReadablePartialConverter)

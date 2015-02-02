@@ -20,6 +20,7 @@
 #include "IOSPrimitiveArray.h"
 #include "ISOChronology.h"
 #include "ISODateTimeFormat.h"
+#include "J2ObjC_source.h"
 #include "LocalDate.h"
 #include "LocalDateTime.h"
 #include "LocalTime.h"
@@ -40,6 +41,62 @@
 #include "java/util/GregorianCalendar.h"
 #include "java/util/Locale.h"
 #include "java/util/TimeZone.h"
+
+__attribute__((unused)) static JavaUtilDate *OrgJodaTimeLocalDateTime_correctDstTransitionWithJavaUtilDate_withJavaUtilTimeZone_(OrgJodaTimeLocalDateTime *self, JavaUtilDate *date, JavaUtilTimeZone *timeZone);
+
+@interface OrgJodaTimeLocalDateTime () {
+ @public
+  /**
+   @brief The local millis from 1970-01-01T00:00:00
+   */
+  jlong iLocalMillis_;
+  /**
+   @brief The chronology to use in UTC
+   */
+  OrgJodaTimeChronology *iChronology_;
+}
+
+/**
+ @brief Handle broken serialization from other tools.
+ @return the resolved object, not null
+ */
+- (id)readResolve;
+
+/**
+ @brief Correct <code>date</code> in case of DST overlap.
+ <p> The <code>Date</code> object created has exactly the same fields as this date-time, except when the time would be invalid due to a daylight savings gap. In that case, the time will be set to the earliest valid time after the gap. <p> In the case of a daylight savings overlap, the earlier instant is selected. <p> Converting to a JDK Date is full of complications as the JDK Date constructor doesn't behave as you might expect around DST transitions. This method works by taking a first guess and then adjusting. This also handles the situation where the JDK time zone data differs from the Joda-Time time zone data.
+ */
+- (JavaUtilDate *)correctDstTransitionWithJavaUtilDate:(JavaUtilDate *)date
+                                  withJavaUtilTimeZone:(JavaUtilTimeZone *)timeZone;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeLocalDateTime, iChronology_, OrgJodaTimeChronology *)
+
+@interface OrgJodaTimeLocalDateTime_Property () {
+ @public
+  /**
+   @brief The instant this property is working against
+   */
+  OrgJodaTimeLocalDateTime *iInstant_;
+  /**
+   @brief The field this property is working against
+   */
+  OrgJodaTimeDateTimeField *iField_;
+}
+
+/**
+ @brief Writes the property in a safe serialization format.
+ */
+- (void)writeObjectWithJavaIoObjectOutputStream:(JavaIoObjectOutputStream *)oos;
+
+/**
+ @brief Reads the property from a safe serialization format.
+ */
+- (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)oos;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeLocalDateTime_Property, iInstant_, OrgJodaTimeLocalDateTime *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeLocalDateTime_Property, iField_, OrgJodaTimeDateTimeField *)
 
 @implementation OrgJodaTimeLocalDateTime
 
@@ -291,7 +348,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   if (self == partial) {
     return 0;
   }
-  if ([(id) partial isKindOfClass:[OrgJodaTimeLocalDateTime class]]) {
+  if ([partial isKindOfClass:[OrgJodaTimeLocalDateTime class]]) {
     OrgJodaTimeLocalDateTime *other = (OrgJodaTimeLocalDateTime *) check_class_cast(partial, [OrgJodaTimeLocalDateTime class]);
     if ([((OrgJodaTimeChronology *) nil_chk(iChronology_)) isEqual:((OrgJodaTimeLocalDateTime *) nil_chk(other))->iChronology_]) {
       return (iLocalMillis_ < other->iLocalMillis_ ? -1 : (iLocalMillis_ == other->iLocalMillis_ ? 0 : 1));
@@ -322,7 +379,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   jint dom = [self getDayOfMonth];
   JavaUtilDate *date = [[[JavaUtilDate alloc] initWithInt:[self getYear] - 1900 withInt:[self getMonthOfYear] - 1 withInt:dom withInt:[self getHourOfDay] withInt:[self getMinuteOfHour] withInt:[self getSecondOfMinute]] autorelease];
   [date setTimeWithLong:[date getTime] + [self getMillisOfSecond]];
-  return [self correctDstTransitionWithJavaUtilDate:date withJavaUtilTimeZone:JavaUtilTimeZone_getDefault()];
+  return OrgJodaTimeLocalDateTime_correctDstTransitionWithJavaUtilDate_withJavaUtilTimeZone_(self, date, JavaUtilTimeZone_getDefault());
 }
 
 - (JavaUtilDate *)toDateWithJavaUtilTimeZone:(JavaUtilTimeZone *)timeZone {
@@ -331,34 +388,12 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   [calendar setWithInt:[self getYear] withInt:[self getMonthOfYear] - 1 withInt:[self getDayOfMonth] withInt:[self getHourOfDay] withInt:[self getMinuteOfHour] withInt:[self getSecondOfMinute]];
   JavaUtilDate *date = [calendar getTime];
   [date setTimeWithLong:[((JavaUtilDate *) nil_chk(date)) getTime] + [self getMillisOfSecond]];
-  return [self correctDstTransitionWithJavaUtilDate:date withJavaUtilTimeZone:timeZone];
+  return OrgJodaTimeLocalDateTime_correctDstTransitionWithJavaUtilDate_withJavaUtilTimeZone_(self, date, timeZone);
 }
 
 - (JavaUtilDate *)correctDstTransitionWithJavaUtilDate:(JavaUtilDate *)date
                                   withJavaUtilTimeZone:(JavaUtilTimeZone *)timeZone {
-  JavaUtilCalendar *calendar = JavaUtilCalendar_getInstanceWithJavaUtilTimeZone_(timeZone);
-  [((JavaUtilCalendar *) nil_chk(calendar)) setTimeWithJavaUtilDate:date];
-  OrgJodaTimeLocalDateTime *check = OrgJodaTimeLocalDateTime_fromCalendarFieldsWithJavaUtilCalendar_(calendar);
-  if ([((OrgJodaTimeLocalDateTime *) nil_chk(check)) isBeforeWithOrgJodaTimeReadablePartial:self]) {
-    while ([check isBeforeWithOrgJodaTimeReadablePartial:self]) {
-      [calendar setTimeInMillisWithLong:[calendar getTimeInMillis] + 60000];
-      check = OrgJodaTimeLocalDateTime_fromCalendarFieldsWithJavaUtilCalendar_(calendar);
-    }
-    while ([((OrgJodaTimeLocalDateTime *) nil_chk(check)) isBeforeWithOrgJodaTimeReadablePartial:self] == NO) {
-      [calendar setTimeInMillisWithLong:[calendar getTimeInMillis] - 1000];
-      check = OrgJodaTimeLocalDateTime_fromCalendarFieldsWithJavaUtilCalendar_(calendar);
-    }
-    [calendar setTimeInMillisWithLong:[calendar getTimeInMillis] + 1000];
-  }
-  else if ([check isEqual:self]) {
-    JavaUtilCalendar *earlier = JavaUtilCalendar_getInstanceWithJavaUtilTimeZone_(timeZone);
-    [((JavaUtilCalendar *) nil_chk(earlier)) setTimeInMillisWithLong:[calendar getTimeInMillis] - [((JavaUtilTimeZone *) nil_chk(timeZone)) getDSTSavings]];
-    check = OrgJodaTimeLocalDateTime_fromCalendarFieldsWithJavaUtilCalendar_(earlier);
-    if ([((OrgJodaTimeLocalDateTime *) nil_chk(check)) isEqual:self]) {
-      calendar = earlier;
-    }
-  }
-  return [calendar getTime];
+  return OrgJodaTimeLocalDateTime_correctDstTransitionWithJavaUtilDate_withJavaUtilTimeZone_(self, date, timeZone);
 }
 
 - (OrgJodaTimeLocalDateTime *)withLocalMillisWithLong:(jlong)newMillis {
@@ -801,7 +836,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
 }
 
 - (void)dealloc {
-  OrgJodaTimeLocalDateTime_set_iChronology_(self, nil);
+  RELEASE_(iChronology_);
   [super dealloc];
 }
 
@@ -812,11 +847,11 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
 }
 
 + (IOSObjectArray *)__annotations_parseWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_description {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -949,7 +984,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
     { "iLocalMillis_", NULL, 0x12, "J", NULL,  },
     { "iChronology_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeLocalDateTime = { "LocalDateTime", "org.joda.time", NULL, 0x11, 118, methods, 7, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeLocalDateTime = { 1, "LocalDateTime", "org.joda.time", NULL, 0x11, 118, methods, 7, fields, 0, NULL};
   return &_OrgJodaTimeLocalDateTime;
 }
 
@@ -1008,6 +1043,34 @@ OrgJodaTimeLocalDateTime *OrgJodaTimeLocalDateTime_fromDateFieldsWithJavaUtilDat
   }
   return [[[OrgJodaTimeLocalDateTime alloc] initWithInt:[date getYear] + 1900 withInt:[date getMonth] + 1 withInt:[date getDate] withInt:[date getHours] withInt:[date getMinutes] withInt:[date getSeconds] withInt:(((jint) ([date getTime] % 1000)) + 1000) % 1000] autorelease];
 }
+
+JavaUtilDate *OrgJodaTimeLocalDateTime_correctDstTransitionWithJavaUtilDate_withJavaUtilTimeZone_(OrgJodaTimeLocalDateTime *self, JavaUtilDate *date, JavaUtilTimeZone *timeZone) {
+  JavaUtilCalendar *calendar = JavaUtilCalendar_getInstanceWithJavaUtilTimeZone_(timeZone);
+  [((JavaUtilCalendar *) nil_chk(calendar)) setTimeWithJavaUtilDate:date];
+  OrgJodaTimeLocalDateTime *check = OrgJodaTimeLocalDateTime_fromCalendarFieldsWithJavaUtilCalendar_(calendar);
+  if ([((OrgJodaTimeLocalDateTime *) nil_chk(check)) isBeforeWithOrgJodaTimeReadablePartial:self]) {
+    while ([check isBeforeWithOrgJodaTimeReadablePartial:self]) {
+      [calendar setTimeInMillisWithLong:[calendar getTimeInMillis] + 60000];
+      check = OrgJodaTimeLocalDateTime_fromCalendarFieldsWithJavaUtilCalendar_(calendar);
+    }
+    while ([((OrgJodaTimeLocalDateTime *) nil_chk(check)) isBeforeWithOrgJodaTimeReadablePartial:self] == NO) {
+      [calendar setTimeInMillisWithLong:[calendar getTimeInMillis] - 1000];
+      check = OrgJodaTimeLocalDateTime_fromCalendarFieldsWithJavaUtilCalendar_(calendar);
+    }
+    [calendar setTimeInMillisWithLong:[calendar getTimeInMillis] + 1000];
+  }
+  else if ([check isEqual:self]) {
+    JavaUtilCalendar *earlier = JavaUtilCalendar_getInstanceWithJavaUtilTimeZone_(timeZone);
+    [((JavaUtilCalendar *) nil_chk(earlier)) setTimeInMillisWithLong:[calendar getTimeInMillis] - [((JavaUtilTimeZone *) nil_chk(timeZone)) getDSTSavings]];
+    check = OrgJodaTimeLocalDateTime_fromCalendarFieldsWithJavaUtilCalendar_(earlier);
+    if ([((OrgJodaTimeLocalDateTime *) nil_chk(check)) isEqual:self]) {
+      calendar = earlier;
+    }
+  }
+  return [calendar getTime];
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeLocalDateTime)
 
 @implementation OrgJodaTimeLocalDateTime_Property
 
@@ -1101,8 +1164,8 @@ OrgJodaTimeLocalDateTime *OrgJodaTimeLocalDateTime_fromDateFieldsWithJavaUtilDat
 }
 
 - (void)dealloc {
-  OrgJodaTimeLocalDateTime_Property_set_iInstant_(self, nil);
-  OrgJodaTimeLocalDateTime_Property_set_iField_(self, nil);
+  RELEASE_(iInstant_);
+  RELEASE_(iField_);
   [super dealloc];
 }
 
@@ -1140,8 +1203,10 @@ OrgJodaTimeLocalDateTime *OrgJodaTimeLocalDateTime_fromDateFieldsWithJavaUtilDat
     { "iInstant_", NULL, 0x82, "Lorg.joda.time.LocalDateTime;", NULL,  },
     { "iField_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeLocalDateTime_Property = { "Property", "org.joda.time", "LocalDateTime", 0x19, 20, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeLocalDateTime_Property = { 1, "Property", "org.joda.time", "LocalDateTime", 0x19, 20, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeLocalDateTime_Property;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeLocalDateTime_Property)

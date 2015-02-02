@@ -9,8 +9,8 @@
 @class OrgJodaTimeDurationField;
 @class OrgJodaTimeDurationFieldType;
 
-#import "JreEmulation.h"
 #include "DecoratedDurationField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeFieldScaledDurationField_serialVersionUID -3205227092378684157LL
 
@@ -21,8 +21,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFieldScaledDurationField : OrgJodaTimeFieldDecoratedDurationField {
- @public
-  jint iScalar_;
 }
 
 /**
@@ -90,12 +88,15 @@
  */
 - (NSUInteger)hash;
 
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldScaledDurationField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldScaledDurationField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldScaledDurationField)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldScaledDurationField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldScaledDurationField)
 
 #endif // _OrgJodaTimeFieldScaledDurationField_H_

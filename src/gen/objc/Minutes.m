@@ -17,6 +17,7 @@
 #include "Hours.h"
 #include "IOSClass.h"
 #include "ISOPeriodFormat.h"
+#include "J2ObjC_source.h"
 #include "LocalTime.h"
 #include "Minutes.h"
 #include "Period.h"
@@ -30,6 +31,17 @@
 #include "ToString.h"
 #include "Weeks.h"
 #include "java/lang/Integer.h"
+
+@interface OrgJodaTimeMinutes () {
+}
+- (instancetype)initWithInt:(jint)minutes;
+
+/**
+ @brief Resolves singletons.
+ @return the singleton instance
+ */
+- (id)readResolve;
+@end
 
 BOOL OrgJodaTimeMinutes_initialized = NO;
 
@@ -182,11 +194,11 @@ OrgJodaTimeFormatPeriodFormatter * OrgJodaTimeMinutes_PARSER_;
 }
 
 + (IOSObjectArray *)__annotations_parseMinutesWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_description {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -228,7 +240,7 @@ OrgJodaTimeFormatPeriodFormatter * OrgJodaTimeMinutes_PARSER_;
     { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeMinutes_PARSER_,  },
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeMinutes_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeMinutes = { "Minutes", "org.joda.time", NULL, 0x11, 26, methods, 8, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeMinutes = { 1, "Minutes", "org.joda.time", NULL, 0x11, 26, methods, 8, fields, 0, NULL};
   return &_OrgJodaTimeMinutes;
 }
 
@@ -262,7 +274,7 @@ OrgJodaTimeMinutes *OrgJodaTimeMinutes_minutesBetweenWithOrgJodaTimeReadableInst
 
 OrgJodaTimeMinutes *OrgJodaTimeMinutes_minutesBetweenWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end) {
   OrgJodaTimeMinutes_init();
-  if ([(id) start isKindOfClass:[OrgJodaTimeLocalTime class]] && [(id) end isKindOfClass:[OrgJodaTimeLocalTime class]]) {
+  if ([start isKindOfClass:[OrgJodaTimeLocalTime class]] && [end isKindOfClass:[OrgJodaTimeLocalTime class]]) {
     OrgJodaTimeChronology *chrono = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_([((id<OrgJodaTimeReadablePartial>) nil_chk(start)) getChronology]);
     jint minutes = [((OrgJodaTimeDurationField *) nil_chk([((OrgJodaTimeChronology *) nil_chk(chrono)) minutes])) getDifferenceWithLong:[((OrgJodaTimeLocalTime *) nil_chk(((OrgJodaTimeLocalTime *) check_class_cast(end, [OrgJodaTimeLocalTime class])))) getLocalMillis] withLong:[((OrgJodaTimeLocalTime *) check_class_cast(start, [OrgJodaTimeLocalTime class])) getLocalMillis]];
     return OrgJodaTimeMinutes_minutesWithInt_(minutes);
@@ -294,3 +306,5 @@ OrgJodaTimeMinutes *OrgJodaTimeMinutes_parseMinutesWithNSString_(NSString *perio
   OrgJodaTimePeriod *p = [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeMinutes_PARSER_)) parsePeriodWithNSString:periodStr];
   return OrgJodaTimeMinutes_minutesWithInt_([((OrgJodaTimePeriod *) nil_chk(p)) getMinutes]);
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeMinutes)

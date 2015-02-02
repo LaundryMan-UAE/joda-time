@@ -12,7 +12,7 @@
 @class OrgJodaTimeFormatPeriodFormatter;
 @protocol JavaUtilConcurrentConcurrentMap;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Factory that creates instances of PeriodFormatter.
@@ -52,21 +52,17 @@
  */
 + (OrgJodaTimeFormatPeriodFormatter *)wordBasedWithJavaUtilLocale:(JavaUtilLocale *)locale;
 
-+ (OrgJodaTimeFormatPeriodFormatter *)buildRegExFormatterWithJavaUtilResourceBundle:(JavaUtilResourceBundle *)b;
-
-+ (OrgJodaTimeFormatPeriodFormatter *)buildNonRegExFormatterWithJavaUtilResourceBundle:(JavaUtilResourceBundle *)b;
-
-+ (IOSObjectArray *)retrieveVariantsWithJavaUtilResourceBundle:(JavaUtilResourceBundle *)b;
-
-+ (jboolean)containsKeyWithJavaUtilResourceBundle:(JavaUtilResourceBundle *)bundle
-                                     withNSString:(NSString *)key;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeFormatPeriodFormat_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeFormatPeriodFormat)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormat_getDefault();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormat_wordBased();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormat_wordBasedWithJavaUtilLocale_(JavaUtilLocale *locale);
 
 FOUNDATION_EXPORT NSString *OrgJodaTimeFormatPeriodFormat_BUNDLE_NAME_;
@@ -74,5 +70,8 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatPeriodFormat, BUNDLE_NAME_, NSString
 
 FOUNDATION_EXPORT id<JavaUtilConcurrentConcurrentMap> OrgJodaTimeFormatPeriodFormat_FORMATTERS_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatPeriodFormat, FORMATTERS_, id<JavaUtilConcurrentConcurrentMap>)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormat)
 
 #endif // _OrgJodaTimeFormatPeriodFormat_H_

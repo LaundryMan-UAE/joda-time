@@ -5,6 +5,7 @@
 
 #include "Chronology.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "LongConverter.h"
 #include "java/lang/Long.h"
 
@@ -28,7 +29,7 @@ OrgJodaTimeConvertLongConverter * OrgJodaTimeConvertLongConverter_INSTANCE_;
 }
 
 - (IOSClass *)getSupportedType {
-  return [IOSClass classWithClass:[JavaLangLong class]];
+  return JavaLangLong_class_();
 }
 
 + (void)initialize {
@@ -48,8 +49,10 @@ OrgJodaTimeConvertLongConverter * OrgJodaTimeConvertLongConverter_INSTANCE_;
   static const J2ObjcFieldInfo fields[] = {
     { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.LongConverter;", &OrgJodaTimeConvertLongConverter_INSTANCE_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertLongConverter = { "LongConverter", "org.joda.time.convert", NULL, 0x0, 4, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertLongConverter = { 1, "LongConverter", "org.joda.time.convert", NULL, 0x0, 4, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeConvertLongConverter;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertLongConverter)

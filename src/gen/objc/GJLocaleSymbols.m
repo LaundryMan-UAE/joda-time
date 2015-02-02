@@ -9,6 +9,7 @@
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "IllegalFieldValueException.h"
+#include "J2ObjC_source.h"
 #include "java/lang/Integer.h"
 #include "java/text/DateFormatSymbols.h"
 #include "java/util/Comparator.h"
@@ -22,6 +23,52 @@ __attribute__((unused)) static IOSObjectArray *OrgJodaTimeChronoGJLocaleSymbols_
 __attribute__((unused)) static void OrgJodaTimeChronoGJLocaleSymbols_addSymbolsWithJavaUtilTreeMap_withNSStringArray_withJavaLangIntegerArray_(JavaUtilTreeMap *map, IOSObjectArray *symbols, IOSObjectArray *integers);
 __attribute__((unused)) static void OrgJodaTimeChronoGJLocaleSymbols_addNumeralsWithJavaUtilTreeMap_withInt_withInt_withJavaLangIntegerArray_(JavaUtilTreeMap *map, jint start, jint end, IOSObjectArray *integers);
 __attribute__((unused)) static jint OrgJodaTimeChronoGJLocaleSymbols_maxLengthWithNSStringArray_(IOSObjectArray *a);
+
+@interface OrgJodaTimeChronoGJLocaleSymbols () {
+ @public
+  IOSObjectArray *iEras_;
+  IOSObjectArray *iDaysOfWeek_;
+  IOSObjectArray *iShortDaysOfWeek_;
+  IOSObjectArray *iMonths_;
+  IOSObjectArray *iShortMonths_;
+  IOSObjectArray *iHalfday_;
+  JavaUtilTreeMap *iParseEras_;
+  JavaUtilTreeMap *iParseDaysOfWeek_;
+  JavaUtilTreeMap *iParseMonths_;
+  jint iMaxEraLength_;
+  jint iMaxDayOfWeekLength_;
+  jint iMaxShortDayOfWeekLength_;
+  jint iMaxMonthLength_;
+  jint iMaxShortMonthLength_;
+  jint iMaxHalfdayLength_;
+}
+
++ (IOSObjectArray *)realignMonthsWithNSStringArray:(IOSObjectArray *)months;
+
++ (IOSObjectArray *)realignDaysOfWeekWithNSStringArray:(IOSObjectArray *)daysOfWeek;
+
++ (void)addSymbolsWithJavaUtilTreeMap:(JavaUtilTreeMap *)map
+                    withNSStringArray:(IOSObjectArray *)symbols
+             withJavaLangIntegerArray:(IOSObjectArray *)integers;
+
++ (void)addNumeralsWithJavaUtilTreeMap:(JavaUtilTreeMap *)map
+                               withInt:(jint)start
+                               withInt:(jint)end
+              withJavaLangIntegerArray:(IOSObjectArray *)integers;
+
++ (jint)maxLengthWithNSStringArray:(IOSObjectArray *)a;
+- (instancetype)initWithJavaUtilLocale:(JavaUtilLocale *)locale;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iEras_, IOSObjectArray *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iDaysOfWeek_, IOSObjectArray *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iShortDaysOfWeek_, IOSObjectArray *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iMonths_, IOSObjectArray *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iShortMonths_, IOSObjectArray *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iHalfday_, IOSObjectArray *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iParseEras_, JavaUtilTreeMap *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iParseDaysOfWeek_, JavaUtilTreeMap *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iParseMonths_, JavaUtilTreeMap *)
 
 BOOL OrgJodaTimeChronoGJLocaleSymbols_initialized = NO;
 
@@ -67,7 +114,7 @@ id<JavaUtilConcurrentConcurrentMap> OrgJodaTimeChronoGJLocaleSymbols_cCache_;
     OrgJodaTimeChronoGJLocaleSymbols_set_iMonths_(self, OrgJodaTimeChronoGJLocaleSymbols_realignMonthsWithNSStringArray_([dfs getMonths]));
     OrgJodaTimeChronoGJLocaleSymbols_set_iShortMonths_(self, OrgJodaTimeChronoGJLocaleSymbols_realignMonthsWithNSStringArray_([dfs getShortMonths]));
     OrgJodaTimeChronoGJLocaleSymbols_set_iHalfday_(self, [dfs getAmPmStrings]);
-    IOSObjectArray *integers = [IOSObjectArray arrayWithLength:13 type:[IOSClass classWithClass:[JavaLangInteger class]]];
+    IOSObjectArray *integers = [IOSObjectArray arrayWithLength:13 type:JavaLangInteger_class_()];
     for (jint i = 0; i < 13; i++) {
       IOSObjectArray_Set(integers, i, JavaLangInteger_valueOfWithInt_(i));
     }
@@ -178,15 +225,15 @@ id<JavaUtilConcurrentConcurrentMap> OrgJodaTimeChronoGJLocaleSymbols_cCache_;
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoGJLocaleSymbols_set_iEras_(self, nil);
-  OrgJodaTimeChronoGJLocaleSymbols_set_iDaysOfWeek_(self, nil);
-  OrgJodaTimeChronoGJLocaleSymbols_set_iShortDaysOfWeek_(self, nil);
-  OrgJodaTimeChronoGJLocaleSymbols_set_iMonths_(self, nil);
-  OrgJodaTimeChronoGJLocaleSymbols_set_iShortMonths_(self, nil);
-  OrgJodaTimeChronoGJLocaleSymbols_set_iHalfday_(self, nil);
-  OrgJodaTimeChronoGJLocaleSymbols_set_iParseEras_(self, nil);
-  OrgJodaTimeChronoGJLocaleSymbols_set_iParseDaysOfWeek_(self, nil);
-  OrgJodaTimeChronoGJLocaleSymbols_set_iParseMonths_(self, nil);
+  RELEASE_(iEras_);
+  RELEASE_(iDaysOfWeek_);
+  RELEASE_(iShortDaysOfWeek_);
+  RELEASE_(iMonths_);
+  RELEASE_(iShortMonths_);
+  RELEASE_(iHalfday_);
+  RELEASE_(iParseEras_);
+  RELEASE_(iParseDaysOfWeek_);
+  RELEASE_(iParseMonths_);
   [super dealloc];
 }
 
@@ -260,7 +307,7 @@ id<JavaUtilConcurrentConcurrentMap> OrgJodaTimeChronoGJLocaleSymbols_cCache_;
     { "iMaxShortMonthLength_", NULL, 0x12, "I", NULL,  },
     { "iMaxHalfdayLength_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoGJLocaleSymbols = { "GJLocaleSymbols", "org.joda.time.chrono", NULL, 0x0, 23, methods, 16, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoGJLocaleSymbols = { 1, "GJLocaleSymbols", "org.joda.time.chrono", NULL, 0x0, 23, methods, 16, fields, 0, NULL};
   return &_OrgJodaTimeChronoGJLocaleSymbols;
 }
 
@@ -284,7 +331,7 @@ OrgJodaTimeChronoGJLocaleSymbols *OrgJodaTimeChronoGJLocaleSymbols_forLocaleWith
 
 IOSObjectArray *OrgJodaTimeChronoGJLocaleSymbols_realignMonthsWithNSStringArray_(IOSObjectArray *months) {
   OrgJodaTimeChronoGJLocaleSymbols_init();
-  IOSObjectArray *a = [IOSObjectArray arrayWithLength:13 type:[IOSClass classWithClass:[NSString class]]];
+  IOSObjectArray *a = [IOSObjectArray arrayWithLength:13 type:NSString_class_()];
   for (jint i = 1; i < 13; i++) {
     IOSObjectArray_Set(a, i, IOSObjectArray_Get(nil_chk(months), i - 1));
   }
@@ -293,7 +340,7 @@ IOSObjectArray *OrgJodaTimeChronoGJLocaleSymbols_realignMonthsWithNSStringArray_
 
 IOSObjectArray *OrgJodaTimeChronoGJLocaleSymbols_realignDaysOfWeekWithNSStringArray_(IOSObjectArray *daysOfWeek) {
   OrgJodaTimeChronoGJLocaleSymbols_init();
-  IOSObjectArray *a = [IOSObjectArray arrayWithLength:8 type:[IOSClass classWithClass:[NSString class]]];
+  IOSObjectArray *a = [IOSObjectArray arrayWithLength:8 type:NSString_class_()];
   for (jint i = 1; i < 8; i++) {
     IOSObjectArray_Set(a, i, IOSObjectArray_Get(nil_chk(daysOfWeek), (i < 7) ? i + 1 : 1));
   }
@@ -331,3 +378,5 @@ jint OrgJodaTimeChronoGJLocaleSymbols_maxLengthWithNSStringArray_(IOSObjectArray
   }
   return max;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJLocaleSymbols)

@@ -12,8 +12,8 @@
 @class OrgJodaTimePeriodType;
 @protocol OrgJodaTimeReadableInstant;
 
-#import "JreEmulation.h"
 #include "AbstractDuration.h"
+#include "J2ObjC_header.h"
 #include "ReadableDuration.h"
 #include "java/io/Serializable.h"
 
@@ -27,11 +27,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeBaseBaseDuration : OrgJodaTimeBaseAbstractDuration < OrgJodaTimeReadableDuration, JavaIoSerializable > {
- @public
-  /**
-   @brief The duration length
-   */
-  jlong iMillis_;
 }
 
 /**
@@ -153,12 +148,15 @@
  */
 - (OrgJodaTimeInterval *)toIntervalToWithOrgJodaTimeReadableInstant:(id<OrgJodaTimeReadableInstant>)endInstant;
 
-- (void)copyAllFieldsTo:(OrgJodaTimeBaseBaseDuration *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeBaseBaseDuration_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeBaseBaseDuration)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseDuration, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseBaseDuration)
 
 #endif // _OrgJodaTimeBaseBaseDuration_H_

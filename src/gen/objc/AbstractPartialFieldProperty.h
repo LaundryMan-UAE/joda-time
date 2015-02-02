@@ -13,7 +13,7 @@
 @protocol OrgJodaTimeReadableInstant;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief AbstractPartialFieldProperty is a base class for binding a ReadablePartial to a DateTimeField.
@@ -192,6 +192,11 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldAbstractPartialFieldProperty_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldAbstractPartialFieldProperty)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldAbstractPartialFieldProperty)
 
 #endif // _OrgJodaTimeFieldAbstractPartialFieldProperty_H_

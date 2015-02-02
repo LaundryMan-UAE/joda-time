@@ -9,8 +9,8 @@
 @class OrgJodaTimeChronoBasicChronology;
 @class OrgJodaTimeDurationField;
 
-#import "JreEmulation.h"
 #include "ImpreciseDateTimeField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoBasicYearDateTimeField_serialVersionUID -98628754872287LL
 
@@ -72,21 +72,17 @@
 
 - (jlong)remainderWithLong:(jlong)instant;
 
-/**
- @brief Serialization singleton
- */
-- (id)readResolve;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoBasicYearDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoBasicYearDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoBasicYearDateTimeField)
 
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoBasicYearDateTimeField, iChronology_, OrgJodaTimeChronoBasicChronology *)
 
+CF_EXTERN_C_BEGIN
+
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicYearDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicYearDateTimeField)
 
 #endif // _OrgJodaTimeChronoBasicYearDateTimeField_H_

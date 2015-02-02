@@ -7,6 +7,7 @@
 #include "ConverterSet.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
+#include "J2ObjC_source.h"
 #include "java/lang/IllegalStateException.h"
 #include "java/lang/IndexOutOfBoundsException.h"
 #include "java/lang/StringBuilder.h"
@@ -14,12 +15,28 @@
 
 __attribute__((unused)) static id<OrgJodaTimeConvertConverter> OrgJodaTimeConvertConverterSet_selectSlowWithOrgJodaTimeConvertConverterSet_withIOSClass_(OrgJodaTimeConvertConverterSet *set, IOSClass *type);
 
+@interface OrgJodaTimeConvertConverterSet () {
+ @public
+  IOSObjectArray *iConverters_;
+  IOSObjectArray *iSelectEntries_;
+}
+
+/**
+ @brief Returns the closest matching converter for the given type, but not very efficiently.
+ */
++ (id<OrgJodaTimeConvertConverter>)selectSlowWithOrgJodaTimeConvertConverterSet:(OrgJodaTimeConvertConverterSet *)set
+                                                                   withIOSClass:(IOSClass *)type;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeConvertConverterSet, iConverters_, IOSObjectArray *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeConvertConverterSet, iSelectEntries_, IOSObjectArray *)
+
 @implementation OrgJodaTimeConvertConverterSet
 
 - (instancetype)initWithOrgJodaTimeConvertConverterArray:(IOSObjectArray *)converters {
   if (self = [super init]) {
     OrgJodaTimeConvertConverterSet_set_iConverters_(self, converters);
-    OrgJodaTimeConvertConverterSet_setAndConsume_iSelectEntries_(self, [IOSObjectArray newArrayWithLength:LShift32(1, 4) type:[IOSClass classWithClass:[OrgJodaTimeConvertConverterSet_Entry class]]]);
+    OrgJodaTimeConvertConverterSet_setAndConsume_iSelectEntries_(self, [IOSObjectArray newArrayWithLength:LShift32(1, 4) type:OrgJodaTimeConvertConverterSet_Entry_class_()]);
   }
   return self;
 }
@@ -48,7 +65,7 @@ __attribute__((unused)) static id<OrgJodaTimeConvertConverter> OrgJodaTimeConver
     }
   }
   jint newLength = LShift32(length, 1);
-  IOSObjectArray *newEntries = [IOSObjectArray arrayWithLength:newLength type:[IOSClass classWithClass:[OrgJodaTimeConvertConverterSet_Entry class]]];
+  IOSObjectArray *newEntries = [IOSObjectArray arrayWithLength:newLength type:OrgJodaTimeConvertConverterSet_Entry_class_()];
   for (jint i = 0; i < length; i++) {
     e = IOSObjectArray_Get(entries, i);
     type = ((OrgJodaTimeConvertConverterSet_Entry *) nil_chk(e))->iType_;
@@ -85,7 +102,7 @@ __attribute__((unused)) static id<OrgJodaTimeConvertConverter> OrgJodaTimeConver
       return self;
     }
     if ([converter getSupportedType] == [((id<OrgJodaTimeConvertConverter>) nil_chk(existing)) getSupportedType]) {
-      IOSObjectArray *copy_ = [IOSObjectArray arrayWithLength:length type:[IOSClass classWithProtocol:@protocol(OrgJodaTimeConvertConverter)]];
+      IOSObjectArray *copy_ = [IOSObjectArray arrayWithLength:length type:OrgJodaTimeConvertConverter_class_()];
       for (jint j = 0; j < length; j++) {
         if (j != i) {
           IOSObjectArray_Set(copy_, j, IOSObjectArray_Get(converters, j));
@@ -100,7 +117,7 @@ __attribute__((unused)) static id<OrgJodaTimeConvertConverter> OrgJodaTimeConver
       return [[[OrgJodaTimeConvertConverterSet alloc] initWithOrgJodaTimeConvertConverterArray:copy_] autorelease];
     }
   }
-  IOSObjectArray *copy_ = [IOSObjectArray arrayWithLength:length + 1 type:[IOSClass classWithProtocol:@protocol(OrgJodaTimeConvertConverter)]];
+  IOSObjectArray *copy_ = [IOSObjectArray arrayWithLength:length + 1 type:OrgJodaTimeConvertConverter_class_()];
   JavaLangSystem_arraycopyWithId_withInt_withId_withInt_withInt_(converters, 0, copy_, 0, length);
   IOSObjectArray_Set(copy_, length, converter);
   if (removed != nil) {
@@ -134,7 +151,7 @@ __attribute__((unused)) static id<OrgJodaTimeConvertConverter> OrgJodaTimeConver
   if (removed != nil) {
     IOSObjectArray_Set(removed, 0, IOSObjectArray_Get(converters, index));
   }
-  IOSObjectArray *copy_ = [IOSObjectArray arrayWithLength:length - 1 type:[IOSClass classWithProtocol:@protocol(OrgJodaTimeConvertConverter)]];
+  IOSObjectArray *copy_ = [IOSObjectArray arrayWithLength:length - 1 type:OrgJodaTimeConvertConverter_class_()];
   jint j = 0;
   for (jint i = 0; i < length; i++) {
     if (i != index) {
@@ -150,8 +167,8 @@ __attribute__((unused)) static id<OrgJodaTimeConvertConverter> OrgJodaTimeConver
 }
 
 - (void)dealloc {
-  OrgJodaTimeConvertConverterSet_set_iConverters_(self, nil);
-  OrgJodaTimeConvertConverterSet_set_iSelectEntries_(self, nil);
+  RELEASE_(iConverters_);
+  RELEASE_(iSelectEntries_);
   [super dealloc];
 }
 
@@ -176,7 +193,7 @@ __attribute__((unused)) static id<OrgJodaTimeConvertConverter> OrgJodaTimeConver
     { "iConverters_", NULL, 0x12, "[Lorg.joda.time.convert.Converter;", NULL,  },
     { "iSelectEntries_", NULL, 0x2, "[Lorg.joda.time.convert.ConverterSet$Entry;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertConverterSet = { "ConverterSet", "org.joda.time.convert", NULL, 0x0, 8, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertConverterSet = { 1, "ConverterSet", "org.joda.time.convert", NULL, 0x0, 8, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeConvertConverterSet;
 }
 
@@ -235,6 +252,8 @@ id<OrgJodaTimeConvertConverter> OrgJodaTimeConvertConverterSet_selectSlowWithOrg
   @throw [[[JavaLangIllegalStateException alloc] initWithNSString:[msg description]] autorelease];
 }
 
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertConverterSet)
+
 @implementation OrgJodaTimeConvertConverterSet_Entry
 
 - (instancetype)initWithIOSClass:(IOSClass *)type
@@ -247,8 +266,8 @@ id<OrgJodaTimeConvertConverter> OrgJodaTimeConvertConverterSet_selectSlowWithOrg
 }
 
 - (void)dealloc {
-  OrgJodaTimeConvertConverterSet_Entry_set_iType_(self, nil);
-  OrgJodaTimeConvertConverterSet_Entry_set_iConverter_(self, nil);
+  RELEASE_(iType_);
+  RELEASE_(iConverter_);
   [super dealloc];
 }
 
@@ -266,8 +285,10 @@ id<OrgJodaTimeConvertConverter> OrgJodaTimeConvertConverterSet_selectSlowWithOrg
     { "iType_", NULL, 0x10, "Ljava.lang.Class;", NULL,  },
     { "iConverter_", NULL, 0x10, "Lorg.joda.time.convert.Converter;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertConverterSet_Entry = { "Entry", "org.joda.time.convert", "ConverterSet", 0x8, 1, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertConverterSet_Entry = { 1, "Entry", "org.joda.time.convert", "ConverterSet", 0x8, 1, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeConvertConverterSet_Entry;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertConverterSet_Entry)

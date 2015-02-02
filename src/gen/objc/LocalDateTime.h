@@ -25,9 +25,9 @@
 @protocol OrgJodaTimeReadableDuration;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
 #include "AbstractReadableInstantFieldProperty.h"
 #include "BaseLocal.h"
+#include "J2ObjC_header.h"
 #include "ReadablePartial.h"
 #include "java/io/Serializable.h"
 
@@ -44,15 +44,6 @@
  @since 1.3
  */
 @interface OrgJodaTimeLocalDateTime : OrgJodaTimeBaseBaseLocal < OrgJodaTimeReadablePartial, JavaIoSerializable > {
- @public
-  /**
-   @brief The local millis from 1970-01-01T00:00:00
-   */
-  jlong iLocalMillis_;
-  /**
-   @brief The chronology to use in UTC
-   */
-  OrgJodaTimeChronology *iChronology_;
 }
 
 /**
@@ -261,12 +252,6 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
   withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology;
 
 /**
- @brief Handle broken serialization from other tools.
- @return the resolved object, not null
- */
-- (id)readResolve;
-
-/**
  @brief Gets the number of fields in this partial, which is four.
  The supported fields are Year, MonthOfDay, DayOfMonth and MillisOfDay.
  @return the field count, four
@@ -390,13 +375,6 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
  @since 2.3
  */
 - (JavaUtilDate *)toDateWithJavaUtilTimeZone:(JavaUtilTimeZone *)timeZone;
-
-/**
- @brief Correct <code>date</code> in case of DST overlap.
- <p> The <code>Date</code> object created has exactly the same fields as this date-time, except when the time would be invalid due to a daylight savings gap. In that case, the time will be set to the earliest valid time after the gap. <p> In the case of a daylight savings overlap, the earlier instant is selected. <p> Converting to a JDK Date is full of complications as the JDK Date constructor doesn't behave as you might expect around DST transitions. This method works by taking a first guess and then adjusting. This also handles the situation where the JDK time zone data differs from the Joda-Time time zone data.
- */
-- (JavaUtilDate *)correctDstTransitionWithJavaUtilDate:(JavaUtilDate *)date
-                                  withJavaUtilTimeZone:(JavaUtilTimeZone *)timeZone;
 
 /**
  @brief Returns a copy of this datetime with different local millis.
@@ -1020,21 +998,24 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 - (NSString *)toStringWithNSString:(NSString *)pattern
                 withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeLocalDateTime *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeLocalDateTime_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeLocalDateTime)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeLocalDateTime, iChronology_, OrgJodaTimeChronology *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeLocalDateTime *OrgJodaTimeLocalDateTime_now();
+
 FOUNDATION_EXPORT OrgJodaTimeLocalDateTime *OrgJodaTimeLocalDateTime_nowWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
+
 FOUNDATION_EXPORT OrgJodaTimeLocalDateTime *OrgJodaTimeLocalDateTime_nowWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chronology);
+
 FOUNDATION_EXPORT OrgJodaTimeLocalDateTime *OrgJodaTimeLocalDateTime_parseWithNSString_(NSString *str);
+
 FOUNDATION_EXPORT OrgJodaTimeLocalDateTime *OrgJodaTimeLocalDateTime_parseWithNSString_withOrgJodaTimeFormatDateTimeFormatter_(NSString *str, OrgJodaTimeFormatDateTimeFormatter *formatter);
+
 FOUNDATION_EXPORT OrgJodaTimeLocalDateTime *OrgJodaTimeLocalDateTime_fromCalendarFieldsWithJavaUtilCalendar_(JavaUtilCalendar *calendar);
+
 FOUNDATION_EXPORT OrgJodaTimeLocalDateTime *OrgJodaTimeLocalDateTime_fromDateFieldsWithJavaUtilDate_(JavaUtilDate *date);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalDateTime, serialVersionUID, jlong)
@@ -1046,6 +1027,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalDateTime, MONTH_OF_YEAR, jint)
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalDateTime, DAY_OF_MONTH, jint)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalDateTime, MILLIS_OF_DAY, jint)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeLocalDateTime)
 
 #define OrgJodaTimeLocalDateTime_Property_serialVersionUID -358138762846288LL
 
@@ -1057,15 +1041,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalDateTime, MILLIS_OF_DAY, jint)
  @since 1.3
  */
 @interface OrgJodaTimeLocalDateTime_Property : OrgJodaTimeFieldAbstractReadableInstantFieldProperty {
- @public
-  /**
-   @brief The instant this property is working against
-   */
-  OrgJodaTimeLocalDateTime *iInstant_;
-  /**
-   @brief The field this property is working against
-   */
-  OrgJodaTimeDateTimeField *iField_;
 }
 
 /**
@@ -1075,16 +1050,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalDateTime, MILLIS_OF_DAY, jint)
  */
 - (instancetype)initWithOrgJodaTimeLocalDateTime:(OrgJodaTimeLocalDateTime *)instant
                     withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
-
-/**
- @brief Writes the property in a safe serialization format.
- */
-- (void)writeObjectWithJavaIoObjectOutputStream:(JavaIoObjectOutputStream *)oos;
-
-/**
- @brief Reads the property from a safe serialization format.
- */
-- (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)oos;
 
 /**
  @brief Gets the field being used.
@@ -1214,17 +1179,15 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalDateTime, MILLIS_OF_DAY, jint)
  */
 - (OrgJodaTimeLocalDateTime *)roundHalfEvenCopy;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeLocalDateTime_Property *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeLocalDateTime_Property_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeLocalDateTime_Property)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeLocalDateTime_Property, iInstant_, OrgJodaTimeLocalDateTime *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeLocalDateTime_Property, iField_, OrgJodaTimeDateTimeField *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalDateTime_Property, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeLocalDateTime_Property)
 
 #endif // _OrgJodaTimeLocalDateTime_H_

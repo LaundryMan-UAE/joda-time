@@ -10,12 +10,22 @@
 #include "IOSClass.h"
 #include "InternalPrinter.h"
 #include "InternalPrinterDateTimePrinter.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
 #include "java/io/IOException.h"
 #include "java/io/Writer.h"
 #include "java/lang/Appendable.h"
 #include "java/lang/StringBuffer.h"
 #include "java/util/Locale.h"
+
+@interface OrgJodaTimeFormatDateTimePrinterInternalPrinter () {
+ @public
+  id<OrgJodaTimeFormatDateTimePrinter> underlying_;
+}
+- (instancetype)initWithOrgJodaTimeFormatDateTimePrinter:(id<OrgJodaTimeFormatDateTimePrinter>)underlying;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimePrinterInternalPrinter, underlying_, id<OrgJodaTimeFormatDateTimePrinter>)
 
 @implementation OrgJodaTimeFormatDateTimePrinterInternalPrinter
 
@@ -44,11 +54,11 @@
                               withInt:(jint)displayOffset
           withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
                    withJavaUtilLocale:(JavaUtilLocale *)locale {
-  if ([(id) appendable isKindOfClass:[JavaLangStringBuffer class]]) {
+  if ([appendable isKindOfClass:[JavaLangStringBuffer class]]) {
     JavaLangStringBuffer *buf = (JavaLangStringBuffer *) check_class_cast(appendable, [JavaLangStringBuffer class]);
     [((id<OrgJodaTimeFormatDateTimePrinter>) nil_chk(underlying_)) printToWithJavaLangStringBuffer:buf withLong:instant withOrgJodaTimeChronology:chrono withInt:displayOffset withOrgJodaTimeDateTimeZone:displayZone withJavaUtilLocale:locale];
   }
-  if ([(id) appendable isKindOfClass:[JavaIoWriter class]]) {
+  if ([appendable isKindOfClass:[JavaIoWriter class]]) {
     JavaIoWriter *out = (JavaIoWriter *) check_class_cast(appendable, [JavaIoWriter class]);
     [((id<OrgJodaTimeFormatDateTimePrinter>) nil_chk(underlying_)) printToWithJavaIoWriter:out withLong:instant withOrgJodaTimeChronology:chrono withInt:displayOffset withOrgJodaTimeDateTimeZone:displayZone withJavaUtilLocale:locale];
   }
@@ -60,11 +70,11 @@
 - (void)printToWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
        withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                    withJavaUtilLocale:(JavaUtilLocale *)locale {
-  if ([(id) appendable isKindOfClass:[JavaLangStringBuffer class]]) {
+  if ([appendable isKindOfClass:[JavaLangStringBuffer class]]) {
     JavaLangStringBuffer *buf = (JavaLangStringBuffer *) check_class_cast(appendable, [JavaLangStringBuffer class]);
     [((id<OrgJodaTimeFormatDateTimePrinter>) nil_chk(underlying_)) printToWithJavaLangStringBuffer:buf withOrgJodaTimeReadablePartial:partial withJavaUtilLocale:locale];
   }
-  if ([(id) appendable isKindOfClass:[JavaIoWriter class]]) {
+  if ([appendable isKindOfClass:[JavaIoWriter class]]) {
     JavaIoWriter *out = (JavaIoWriter *) check_class_cast(appendable, [JavaIoWriter class]);
     [((id<OrgJodaTimeFormatDateTimePrinter>) nil_chk(underlying_)) printToWithJavaIoWriter:out withOrgJodaTimeReadablePartial:partial withJavaUtilLocale:locale];
   }
@@ -74,7 +84,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeFormatDateTimePrinterInternalPrinter_set_underlying_(self, nil);
+  RELEASE_(underlying_);
   [super dealloc];
 }
 
@@ -95,7 +105,7 @@
   static const J2ObjcFieldInfo fields[] = {
     { "underlying_", NULL, 0x12, "Lorg.joda.time.format.DateTimePrinter;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimePrinterInternalPrinter = { "DateTimePrinterInternalPrinter", "org.joda.time.format", NULL, 0x0, 6, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimePrinterInternalPrinter = { 1, "DateTimePrinterInternalPrinter", "org.joda.time.format", NULL, 0x0, 6, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeFormatDateTimePrinterInternalPrinter;
 }
 
@@ -103,7 +113,7 @@
 
 id<OrgJodaTimeFormatInternalPrinter> OrgJodaTimeFormatDateTimePrinterInternalPrinter_ofWithOrgJodaTimeFormatDateTimePrinter_(id<OrgJodaTimeFormatDateTimePrinter> underlying) {
   OrgJodaTimeFormatDateTimePrinterInternalPrinter_init();
-  if ([(id) underlying isKindOfClass:[OrgJodaTimeFormatInternalPrinterDateTimePrinter class]]) {
+  if ([underlying isKindOfClass:[OrgJodaTimeFormatInternalPrinterDateTimePrinter class]]) {
     return (id<OrgJodaTimeFormatInternalPrinter>) check_protocol_cast(underlying, @protocol(OrgJodaTimeFormatInternalPrinter));
   }
   if (underlying == nil) {
@@ -111,3 +121,5 @@ id<OrgJodaTimeFormatInternalPrinter> OrgJodaTimeFormatDateTimePrinterInternalPri
   }
   return [[[OrgJodaTimeFormatDateTimePrinterInternalPrinter alloc] initWithOrgJodaTimeFormatDateTimePrinter:underlying] autorelease];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimePrinterInternalPrinter)

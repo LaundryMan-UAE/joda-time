@@ -7,12 +7,23 @@
 #include "Chronology.h"
 #include "DateTimeField.h"
 #include "DateTimeZone.h"
-#include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "StrictChronology.h"
 #include "StrictDateTimeField.h"
 #include "java/lang/IllegalArgumentException.h"
 
 __attribute__((unused)) static OrgJodaTimeDateTimeField *OrgJodaTimeChronoStrictChronology_convertFieldWithOrgJodaTimeDateTimeField_(OrgJodaTimeDateTimeField *field);
+
+@interface OrgJodaTimeChronoStrictChronology () {
+ @public
+  OrgJodaTimeChronology *iWithUTC_;
+}
+- (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base;
+
++ (OrgJodaTimeDateTimeField *)convertFieldWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoStrictChronology, iWithUTC_, OrgJodaTimeChronology *)
 
 @implementation OrgJodaTimeChronoStrictChronology
 
@@ -99,7 +110,7 @@ __attribute__((unused)) static OrgJodaTimeDateTimeField *OrgJodaTimeChronoStrict
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoStrictChronology_set_iWithUTC_(self, nil);
+  RELEASE_(iWithUTC_);
   [super dealloc];
 }
 
@@ -124,7 +135,7 @@ __attribute__((unused)) static OrgJodaTimeDateTimeField *OrgJodaTimeChronoStrict
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoStrictChronology_serialVersionUID },
     { "iWithUTC_", NULL, 0x82, "Lorg.joda.time.Chronology;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoStrictChronology = { "StrictChronology", "org.joda.time.chrono", NULL, 0x11, 9, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoStrictChronology = { 1, "StrictChronology", "org.joda.time.chrono", NULL, 0x11, 9, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeChronoStrictChronology;
 }
 
@@ -142,3 +153,5 @@ OrgJodaTimeDateTimeField *OrgJodaTimeChronoStrictChronology_convertFieldWithOrgJ
   OrgJodaTimeChronoStrictChronology_init();
   return OrgJodaTimeFieldStrictDateTimeField_getInstanceWithOrgJodaTimeDateTimeField_(field);
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoStrictChronology)

@@ -13,8 +13,8 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeZone;
 
-#import "JreEmulation.h"
 #include "AssembledChronology.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 
 #define OrgJodaTimeChronoISOChronology_serialVersionUID -6212696554273812441LL
@@ -48,11 +48,6 @@
  @return a chronology in the specified time zone
  */
 + (OrgJodaTimeChronoISOChronology *)getInstanceWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
-
-/**
- @brief Restricted constructor
- */
-- (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base;
 
 /**
  @brief Gets the Chronology in the UTC time zone.
@@ -90,18 +85,17 @@
  */
 - (NSUInteger)hash;
 
-/**
- @brief Serialize ISOChronology instances using a small stub.
- This reduces the serialized size, and deserialized instances come from the cache.
- */
-- (id)writeReplace;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeChronoISOChronology_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeChronoISOChronology)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeChronoISOChronology *OrgJodaTimeChronoISOChronology_getInstanceUTC();
+
 FOUNDATION_EXPORT OrgJodaTimeChronoISOChronology *OrgJodaTimeChronoISOChronology_getInstance();
+
 FOUNDATION_EXPORT OrgJodaTimeChronoISOChronology *OrgJodaTimeChronoISOChronology_getInstanceWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoISOChronology, serialVersionUID, jlong)
@@ -111,32 +105,26 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoISOChronology, INSTANCE_UTC_, OrgJod
 
 FOUNDATION_EXPORT JavaUtilConcurrentConcurrentHashMap *OrgJodaTimeChronoISOChronology_cCache_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoISOChronology, cCache_, JavaUtilConcurrentConcurrentHashMap *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoISOChronology)
 
 #define OrgJodaTimeChronoISOChronology_Stub_serialVersionUID -6212696554273812441LL
 
 @interface OrgJodaTimeChronoISOChronology_Stub : NSObject < JavaIoSerializable > {
- @public
-  OrgJodaTimeDateTimeZone *iZone_;
 }
 
 - (instancetype)initWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
-- (id)readResolve;
-
-- (void)writeObjectWithJavaIoObjectOutputStream:(JavaIoObjectOutputStream *)outArg;
-
-- (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)inArg;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoISOChronology_Stub *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoISOChronology_Stub_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoISOChronology_Stub)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoISOChronology_Stub, iZone_, OrgJodaTimeDateTimeZone *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoISOChronology_Stub, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoISOChronology_Stub)
 
 #endif // _OrgJodaTimeChronoISOChronology_H_

@@ -13,6 +13,7 @@
 #include "FromString.h"
 #include "IOSClass.h"
 #include "ISOPeriodFormat.h"
+#include "J2ObjC_source.h"
 #include "LocalDate.h"
 #include "Period.h"
 #include "PeriodFormatter.h"
@@ -23,6 +24,17 @@
 #include "ToString.h"
 #include "Years.h"
 #include "java/lang/Integer.h"
+
+@interface OrgJodaTimeYears () {
+}
+- (instancetype)initWithInt:(jint)years;
+
+/**
+ @brief Resolves singletons.
+ @return the singleton instance
+ */
+- (id)readResolve;
+@end
 
 BOOL OrgJodaTimeYears_initialized = NO;
 
@@ -150,11 +162,11 @@ OrgJodaTimeFormatPeriodFormatter * OrgJodaTimeYears_PARSER_;
 }
 
 + (IOSObjectArray *)__annotations_parseYearsWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_description {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -190,7 +202,7 @@ OrgJodaTimeFormatPeriodFormatter * OrgJodaTimeYears_PARSER_;
     { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeYears_PARSER_,  },
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeYears_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeYears = { "Years", "org.joda.time", NULL, 0x11, 20, methods, 8, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeYears = { 1, "Years", "org.joda.time", NULL, 0x11, 20, methods, 8, fields, 0, NULL};
   return &_OrgJodaTimeYears;
 }
 
@@ -224,7 +236,7 @@ OrgJodaTimeYears *OrgJodaTimeYears_yearsBetweenWithOrgJodaTimeReadableInstant_wi
 
 OrgJodaTimeYears *OrgJodaTimeYears_yearsBetweenWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end) {
   OrgJodaTimeYears_init();
-  if ([(id) start isKindOfClass:[OrgJodaTimeLocalDate class]] && [(id) end isKindOfClass:[OrgJodaTimeLocalDate class]]) {
+  if ([start isKindOfClass:[OrgJodaTimeLocalDate class]] && [end isKindOfClass:[OrgJodaTimeLocalDate class]]) {
     OrgJodaTimeChronology *chrono = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_([((id<OrgJodaTimeReadablePartial>) nil_chk(start)) getChronology]);
     jint years = [((OrgJodaTimeDurationField *) nil_chk([((OrgJodaTimeChronology *) nil_chk(chrono)) years])) getDifferenceWithLong:[((OrgJodaTimeLocalDate *) nil_chk(((OrgJodaTimeLocalDate *) check_class_cast(end, [OrgJodaTimeLocalDate class])))) getLocalMillis] withLong:[((OrgJodaTimeLocalDate *) check_class_cast(start, [OrgJodaTimeLocalDate class])) getLocalMillis]];
     return OrgJodaTimeYears_yearsWithInt_(years);
@@ -250,3 +262,5 @@ OrgJodaTimeYears *OrgJodaTimeYears_parseYearsWithNSString_(NSString *periodStr) 
   OrgJodaTimePeriod *p = [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeYears_PARSER_)) parsePeriodWithNSString:periodStr];
   return OrgJodaTimeYears_yearsWithInt_([((OrgJodaTimePeriod *) nil_chk(p)) getYears]);
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeYears)

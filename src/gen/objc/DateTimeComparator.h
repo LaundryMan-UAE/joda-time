@@ -8,7 +8,7 @@
 
 @class OrgJodaTimeDateTimeFieldType;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 #include "java/util/Comparator.h"
 
@@ -23,15 +23,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeDateTimeComparator : NSObject < JavaUtilComparator, JavaIoSerializable > {
- @public
-  /**
-   @brief The lower limit of fields to compare, null if no limit
-   */
-  OrgJodaTimeDateTimeFieldType *iLowerLimit_;
-  /**
-   @brief The upper limit of fields to compare, null if no limit
-   */
-  OrgJodaTimeDateTimeFieldType *iUpperLimit_;
 }
 
 /**
@@ -103,12 +94,6 @@
                withId:(id)rhsObj;
 
 /**
- @brief Support serialization singletons.
- @return the resolved singleton instance
- */
-- (id)readResolve;
-
-/**
  @brief Compares this comparator to another.
  @param object the object to compare to
  @return true if equal
@@ -127,21 +112,21 @@
  */
 - (NSString *)description;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeDateTimeComparator *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeDateTimeComparator_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeDateTimeComparator)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeDateTimeComparator, iLowerLimit_, OrgJodaTimeDateTimeFieldType *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeDateTimeComparator, iUpperLimit_, OrgJodaTimeDateTimeFieldType *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeComparator *OrgJodaTimeDateTimeComparator_getInstance();
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeComparator *OrgJodaTimeDateTimeComparator_getInstanceWithOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeFieldType *lowerLimit);
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeComparator *OrgJodaTimeDateTimeComparator_getInstanceWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeFieldType *lowerLimit, OrgJodaTimeDateTimeFieldType *upperLimit);
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeComparator *OrgJodaTimeDateTimeComparator_getDateOnlyInstance();
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeComparator *OrgJodaTimeDateTimeComparator_getTimeOnlyInstance();
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeComparator, serialVersionUID, jlong)
@@ -154,5 +139,8 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeComparator, DATE_INSTANCE_, OrgJod
 
 FOUNDATION_EXPORT OrgJodaTimeDateTimeComparator *OrgJodaTimeDateTimeComparator_TIME_INSTANCE_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeComparator, TIME_INSTANCE_, OrgJodaTimeDateTimeComparator *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeComparator)
 
 #endif // _OrgJodaTimeDateTimeComparator_H_

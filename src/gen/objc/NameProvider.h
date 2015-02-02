@@ -8,7 +8,7 @@
 
 @class JavaUtilLocale;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Service provider factory for localized time zone names.
@@ -39,6 +39,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeTzNameProvider_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeTzNameProvider)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzNameProvider)
 
 #endif // _OrgJodaTimeTzNameProvider_H_

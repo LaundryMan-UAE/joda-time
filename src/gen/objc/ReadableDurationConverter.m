@@ -7,6 +7,7 @@
 #include "DateTimeUtils.h"
 #include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
+#include "J2ObjC_source.h"
 #include "ReadWritablePeriod.h"
 #include "ReadableDuration.h"
 #include "ReadableDurationConverter.h"
@@ -38,7 +39,7 @@ OrgJodaTimeConvertReadableDurationConverter * OrgJodaTimeConvertReadableDuration
 }
 
 - (IOSClass *)getSupportedType {
-  return [IOSClass classWithProtocol:@protocol(OrgJodaTimeReadableDuration)];
+  return OrgJodaTimeReadableDuration_class_();
 }
 
 + (void)initialize {
@@ -58,8 +59,10 @@ OrgJodaTimeConvertReadableDurationConverter * OrgJodaTimeConvertReadableDuration
   static const J2ObjcFieldInfo fields[] = {
     { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.ReadableDurationConverter;", &OrgJodaTimeConvertReadableDurationConverter_INSTANCE_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertReadableDurationConverter = { "ReadableDurationConverter", "org.joda.time.convert", NULL, 0x0, 4, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertReadableDurationConverter = { 1, "ReadableDurationConverter", "org.joda.time.convert", NULL, 0x0, 4, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeConvertReadableDurationConverter;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertReadableDurationConverter)

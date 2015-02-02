@@ -7,6 +7,7 @@
 #include "DateTimeFieldType.h"
 #include "DurationField.h"
 #include "IOSPrimitiveArray.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
 #include "java/util/Locale.h"
 
@@ -407,8 +408,10 @@
     { "description", "toString", "Ljava.lang.String;", 0x401, NULL },
     { "init", NULL, NULL, 0x1, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeField = { "DateTimeField", "org.joda.time", NULL, 0x401, 51, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeField = { 1, "DateTimeField", "org.joda.time", NULL, 0x401, 51, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeField)

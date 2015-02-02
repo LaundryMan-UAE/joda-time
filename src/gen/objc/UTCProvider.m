@@ -4,6 +4,7 @@
 //
 
 #include "DateTimeZone.h"
+#include "J2ObjC_source.h"
 #include "UTCProvider.h"
 #include "java/util/Collections.h"
 #include "java/util/Set.h"
@@ -31,8 +32,10 @@
     { "getZoneWithNSString:", "getZone", "Lorg.joda.time.DateTimeZone;", 0x1, NULL },
     { "getAvailableIDs", NULL, "Ljava.util.Set;", 0x1, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzUTCProvider = { "UTCProvider", "org.joda.time.tz", NULL, 0x11, 3, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeTzUTCProvider = { 1, "UTCProvider", "org.joda.time.tz", NULL, 0x11, 3, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeTzUTCProvider;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzUTCProvider)

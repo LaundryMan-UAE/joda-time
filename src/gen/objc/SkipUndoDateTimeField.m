@@ -8,8 +8,29 @@
 #include "DateTimeFieldType.h"
 #include "DelegatedDateTimeField.h"
 #include "FieldUtils.h"
-#include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "SkipUndoDateTimeField.h"
+
+@interface OrgJodaTimeFieldSkipUndoDateTimeField () {
+ @public
+  /**
+   @brief The chronology to wrap.
+   */
+  OrgJodaTimeChronology *iChronology_;
+  /**
+   @brief The value to skip.
+   */
+  jint iSkip_;
+  /**
+   @brief The calculated minimum value.
+   */
+  jint iMinValue_;
+}
+
+- (id)readResolve;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldSkipUndoDateTimeField, iChronology_, OrgJodaTimeChronology *)
 
 @implementation OrgJodaTimeFieldSkipUndoDateTimeField
 
@@ -70,7 +91,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeFieldSkipUndoDateTimeField_set_iChronology_(self, nil);
+  RELEASE_(iChronology_);
   [super dealloc];
 }
 
@@ -96,8 +117,10 @@
     { "iSkip_", NULL, 0x12, "I", NULL,  },
     { "iMinValue_", NULL, 0x82, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldSkipUndoDateTimeField = { "SkipUndoDateTimeField", "org.joda.time.field", NULL, 0x11, 6, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldSkipUndoDateTimeField = { 1, "SkipUndoDateTimeField", "org.joda.time.field", NULL, 0x11, 6, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeFieldSkipUndoDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldSkipUndoDateTimeField)

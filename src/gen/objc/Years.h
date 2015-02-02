@@ -13,8 +13,8 @@
 @protocol OrgJodaTimeReadableInterval;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "BaseSingleFieldPeriod.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeYears_serialVersionUID 87525275727380868LL
 
@@ -74,19 +74,6 @@
  @throws IllegalArgumentException if the string format is invalid
  */
 + (OrgJodaTimeYears *)parseYearsWithNSString:(NSString *)periodStr;
-
-/**
- @brief Creates a new instance representing a number of years.
- You should consider using the factory method #years(int) instead of the constructor.
- @param years the number of years to represent
- */
-- (instancetype)initWithInt:(jint)years;
-
-/**
- @brief Resolves singletons.
- @return the singleton instance
- */
-- (id)readResolve;
 
 /**
  @brief Gets the duration field type, which is <code>years</code>.
@@ -192,10 +179,17 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeYears_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeYears)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeYears *OrgJodaTimeYears_yearsWithInt_(jint years);
+
 FOUNDATION_EXPORT OrgJodaTimeYears *OrgJodaTimeYears_yearsBetweenWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end);
+
 FOUNDATION_EXPORT OrgJodaTimeYears *OrgJodaTimeYears_yearsBetweenWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end);
+
 FOUNDATION_EXPORT OrgJodaTimeYears *OrgJodaTimeYears_yearsInWithOrgJodaTimeReadableInterval_(id<OrgJodaTimeReadableInterval> interval);
+
 FOUNDATION_EXPORT OrgJodaTimeYears *OrgJodaTimeYears_parseYearsWithNSString_(NSString *periodStr);
 
 FOUNDATION_EXPORT OrgJodaTimeYears *OrgJodaTimeYears_ZERO_;
@@ -220,5 +214,8 @@ FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeYears_PARSER_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYears, PARSER_, OrgJodaTimeFormatPeriodFormatter *)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYears, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeYears)
 
 #endif // _OrgJodaTimeYears_H_

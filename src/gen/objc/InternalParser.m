@@ -5,6 +5,7 @@
 
 #include "DateTimeParserBucket.h"
 #include "InternalParser.h"
+#include "J2ObjC_source.h"
 #include "java/lang/CharSequence.h"
 
 @interface OrgJodaTimeFormatInternalParser : NSObject
@@ -17,9 +18,10 @@
     { "estimateParsedLength", NULL, "I", 0x401, NULL },
     { "parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withJavaLangCharSequence:withInt:", "parseInto", "I", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatInternalParser = { "InternalParser", "org.joda.time.format", NULL, 0x200, 2, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatInternalParser = { 1, "InternalParser", "org.joda.time.format", NULL, 0x200, 2, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeFormatInternalParser;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatInternalParser)

@@ -8,8 +8,8 @@
 
 @class OrgJodaTimeDurationFieldType;
 
-#import "JreEmulation.h"
 #include "DurationField.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 
 #define OrgJodaTimeFieldMillisDurationField_serialVersionUID 2656707858124633367LL
@@ -22,11 +22,6 @@
  */
 @interface OrgJodaTimeFieldMillisDurationField : OrgJodaTimeDurationField < JavaIoSerializable > {
 }
-
-/**
- @brief Restricted constructor.
- */
-- (instancetype)init;
 
 - (OrgJodaTimeDurationFieldType *)getType;
 
@@ -94,19 +89,19 @@
  */
 - (NSString *)description;
 
-/**
- @brief Deserialize to the singleton.
- */
-- (id)readResolve;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeFieldMillisDurationField_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeFieldMillisDurationField)
 
+CF_EXTERN_C_BEGIN
+
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldMillisDurationField, serialVersionUID, jlong)
 
 FOUNDATION_EXPORT OrgJodaTimeDurationField *OrgJodaTimeFieldMillisDurationField_INSTANCE_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldMillisDurationField, INSTANCE_, OrgJodaTimeDurationField *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldMillisDurationField)
 
 #endif // _OrgJodaTimeFieldMillisDurationField_H_

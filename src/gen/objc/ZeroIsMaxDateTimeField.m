@@ -9,9 +9,14 @@
 #include "DurationField.h"
 #include "FieldUtils.h"
 #include "IOSPrimitiveArray.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
 #include "ZeroIsMaxDateTimeField.h"
 #include "java/lang/IllegalArgumentException.h"
+
+@interface OrgJodaTimeFieldZeroIsMaxDateTimeField () {
+}
+@end
 
 @implementation OrgJodaTimeFieldZeroIsMaxDateTimeField
 
@@ -177,8 +182,10 @@
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeFieldZeroIsMaxDateTimeField_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldZeroIsMaxDateTimeField = { "ZeroIsMaxDateTimeField", "org.joda.time.field", NULL, 0x11, 26, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldZeroIsMaxDateTimeField = { 1, "ZeroIsMaxDateTimeField", "org.joda.time.field", NULL, 0x11, 26, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeFieldZeroIsMaxDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldZeroIsMaxDateTimeField)

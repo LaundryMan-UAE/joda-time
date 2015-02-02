@@ -20,10 +20,10 @@
 @protocol OrgJodaTimeReadableInstant;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "AssembledChronology.h"
 #include "BaseDateTimeField.h"
 #include "DecoratedDurationField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoGJChronology_serialVersionUID -2545574827706931671LL
 
@@ -35,27 +35,7 @@
  @since 1.0
  */
 @interface OrgJodaTimeChronoGJChronology : OrgJodaTimeChronoAssembledChronology {
- @public
-  OrgJodaTimeChronoJulianChronology *iJulianChronology_;
-  OrgJodaTimeChronoGregorianChronology *iGregorianChronology_;
-  OrgJodaTimeInstant *iCutoverInstant_;
-  jlong iCutoverMillis_;
-  jlong iGapDuration_;
 }
-
-/**
- @brief Convert a datetime from one chronology to another.
- */
-+ (jlong)convertByYearWithLong:(jlong)instant
-     withOrgJodaTimeChronology:(OrgJodaTimeChronology *)from
-     withOrgJodaTimeChronology:(OrgJodaTimeChronology *)to;
-
-/**
- @brief Convert a datetime from one chronology to another.
- */
-+ (jlong)convertByWeekyearWithLong:(jlong)instant
-         withOrgJodaTimeChronology:(OrgJodaTimeChronology *)from
-         withOrgJodaTimeChronology:(OrgJodaTimeChronology *)to;
 
 /**
  @brief Factory method returns instances of the default GJ cutover chronology.
@@ -106,28 +86,6 @@
 + (OrgJodaTimeChronoGJChronology *)getInstanceWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone
                                                                  withLong:(jlong)gregorianCutover
                                                                   withInt:(jint)minDaysInFirstWeek;
-
-/**
- @param julian chronology used before the cutover instant
- @param gregorian chronology used at and after the cutover instant
- @param cutoverInstant instant when the gregorian chronology began
- */
-- (instancetype)initWithOrgJodaTimeChronoJulianChronology:(OrgJodaTimeChronoJulianChronology *)julian
-                 withOrgJodaTimeChronoGregorianChronology:(OrgJodaTimeChronoGregorianChronology *)gregorian
-                                   withOrgJodaTimeInstant:(OrgJodaTimeInstant *)cutoverInstant;
-
-/**
- @brief Called when applying a time zone.
- */
-- (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
-        withOrgJodaTimeChronoJulianChronology:(OrgJodaTimeChronoJulianChronology *)julian
-     withOrgJodaTimeChronoGregorianChronology:(OrgJodaTimeChronoGregorianChronology *)gregorian
-                       withOrgJodaTimeInstant:(OrgJodaTimeInstant *)cutoverInstant;
-
-/**
- @brief Serialization singleton
- */
-- (id)readResolve;
 
 - (OrgJodaTimeDateTimeZone *)getZone;
 
@@ -200,23 +158,23 @@
 
 - (jlong)gregorianToJulianByWeekyearWithLong:(jlong)instant;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoGJChronology *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeChronoGJChronology_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeChronoGJChronology)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology, iJulianChronology_, OrgJodaTimeChronoJulianChronology *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology, iGregorianChronology_, OrgJodaTimeChronoGregorianChronology *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology, iCutoverInstant_, OrgJodaTimeInstant *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeChronoGJChronology *OrgJodaTimeChronoGJChronology_getInstanceUTC();
+
 FOUNDATION_EXPORT OrgJodaTimeChronoGJChronology *OrgJodaTimeChronoGJChronology_getInstance();
+
 FOUNDATION_EXPORT OrgJodaTimeChronoGJChronology *OrgJodaTimeChronoGJChronology_getInstanceWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
+
 FOUNDATION_EXPORT OrgJodaTimeChronoGJChronology *OrgJodaTimeChronoGJChronology_getInstanceWithOrgJodaTimeDateTimeZone_withOrgJodaTimeReadableInstant_(OrgJodaTimeDateTimeZone *zone, id<OrgJodaTimeReadableInstant> gregorianCutover);
+
 FOUNDATION_EXPORT OrgJodaTimeChronoGJChronology *OrgJodaTimeChronoGJChronology_getInstanceWithOrgJodaTimeDateTimeZone_withOrgJodaTimeReadableInstant_withInt_(OrgJodaTimeDateTimeZone *zone, id<OrgJodaTimeReadableInstant> gregorianCutover, jint minDaysInFirstWeek);
+
 FOUNDATION_EXPORT OrgJodaTimeChronoGJChronology *OrgJodaTimeChronoGJChronology_getInstanceWithOrgJodaTimeDateTimeZone_withLong_withInt_(OrgJodaTimeDateTimeZone *zone, jlong gregorianCutover, jint minDaysInFirstWeek);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJChronology, serialVersionUID, jlong)
@@ -226,6 +184,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJChronology, DEFAULT_CUTOVER_, OrgJ
 
 FOUNDATION_EXPORT JavaUtilConcurrentConcurrentHashMap *OrgJodaTimeChronoGJChronology_cCache_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJChronology, cCache_, JavaUtilConcurrentConcurrentHashMap *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJChronology)
 
 #define OrgJodaTimeChronoGJChronology_CutoverField_serialVersionUID 3528501219481026402LL
 
@@ -234,7 +195,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJChronology, cCache_, JavaUtilConcu
  */
 @interface OrgJodaTimeChronoGJChronology_CutoverField : OrgJodaTimeFieldBaseDateTimeField {
  @public
-  OrgJodaTimeChronoGJChronology *this$0_;
   OrgJodaTimeDateTimeField *iJulianField_;
   OrgJodaTimeDateTimeField *iGregorianField_;
   jlong iCutover_;
@@ -359,21 +319,21 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJChronology, cCache_, JavaUtilConcu
 
 - (jlong)gregorianToJulianWithLong:(jlong)instant;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoGJChronology_CutoverField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoGJChronology_CutoverField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoGJChronology_CutoverField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology_CutoverField, this$0_, OrgJodaTimeChronoGJChronology *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology_CutoverField, iJulianField_, OrgJodaTimeDateTimeField *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology_CutoverField, iGregorianField_, OrgJodaTimeDateTimeField *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology_CutoverField, iDurationField_, OrgJodaTimeDurationField *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology_CutoverField, iRangeDurationField_, OrgJodaTimeDurationField *)
 
+CF_EXTERN_C_BEGIN
+
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJChronology_CutoverField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJChronology_CutoverField)
 
 #define OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_serialVersionUID 3410248757173576441LL
 
@@ -382,8 +342,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJChronology_CutoverField, serialVer
  These fields internally call set whenever add is called. As a result, the same correction applied to set must be applied to add and addWrapField. Knowing when to use this field requires specific knowledge of how the GJ fields are implemented.
  */
 @interface OrgJodaTimeChronoGJChronology_ImpreciseCutoverField : OrgJodaTimeChronoGJChronology_CutoverField {
- @public
-  OrgJodaTimeChronoGJChronology *this$1_;
 }
 
 /**
@@ -442,17 +400,16 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJChronology_CutoverField, serialVer
 
 - (jint)getMaximumValueWithLong:(jlong)instant;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoGJChronology_ImpreciseCutoverField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology_ImpreciseCutoverField, this$1_, OrgJodaTimeChronoGJChronology *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJChronology_ImpreciseCutoverField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJChronology_ImpreciseCutoverField)
 
 #define OrgJodaTimeChronoGJChronology_LinkedDurationField_serialVersionUID 4097975388007713084LL
 
@@ -460,8 +417,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJChronology_ImpreciseCutoverField, 
  @brief Links the duration back to a ImpreciseCutoverField.
  */
 @interface OrgJodaTimeChronoGJChronology_LinkedDurationField : OrgJodaTimeFieldDecoratedDurationField {
- @public
-  OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *iField_LinkedDurationField_;
 }
 
 - (instancetype)initWithOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)durationField
@@ -479,16 +434,15 @@ withOrgJodaTimeChronoGJChronology_ImpreciseCutoverField:(OrgJodaTimeChronoGJChro
 - (jlong)getDifferenceAsLongWithLong:(jlong)minuendInstant
                             withLong:(jlong)subtrahendInstant;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoGJChronology_LinkedDurationField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoGJChronology_LinkedDurationField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoGJChronology_LinkedDurationField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology_LinkedDurationField, iField_LinkedDurationField_, OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJChronology_LinkedDurationField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJChronology_LinkedDurationField)
 
 #endif // _OrgJodaTimeChronoGJChronology_H_

@@ -16,6 +16,7 @@
 #include "ISOChronology.h"
 #include "ISODateTimeFormat.h"
 #include "Instant.h"
+#include "J2ObjC_source.h"
 #include "MutableDateTime.h"
 #include "ReadableInstant.h"
 #include "ToString.h"
@@ -103,7 +104,7 @@
   if (self == readableInstant) {
     return YES;
   }
-  if ([readableInstant conformsToProtocol: @protocol(OrgJodaTimeReadableInstant)] == NO) {
+  if ([OrgJodaTimeReadableInstant_class_() isInstance:readableInstant] == NO) {
     return NO;
   }
   id<OrgJodaTimeReadableInstant> otherInstant = (id<OrgJodaTimeReadableInstant>) check_protocol_cast(readableInstant, @protocol(OrgJodaTimeReadableInstant));
@@ -183,7 +184,7 @@
 }
 
 + (IOSObjectArray *)__annotations_description {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -218,8 +219,10 @@
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL },
     { "toStringWithOrgJodaTimeFormatDateTimeFormatter:", "toString", "Ljava.lang.String;", 0x1, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractInstant = { "AbstractInstant", "org.joda.time.base", NULL, 0x401, 29, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractInstant = { 1, "AbstractInstant", "org.joda.time.base", NULL, 0x401, 29, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeBaseAbstractInstant;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseAbstractInstant)

@@ -10,6 +10,7 @@
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "ISODateTimeFormat.h"
+#include "J2ObjC_source.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/UnsupportedOperationException.h"
 #include "java/util/Collection.h"
@@ -81,6 +82,211 @@ __attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFo
 __attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_secondElement();
 __attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_fractionElement();
 __attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement();
+
+@interface OrgJodaTimeFormatISODateTimeFormat ()
+
+/**
+ @brief Creates a date using the calendar date format.
+ Specification reference: 5.2.1.
+ @param bld the builder
+ @param fields the fields
+ @param extended true to use extended format
+ @param strictISO true to only allow ISO formats
+ @return true if reduced precision
+ @since 1.1
+ */
++ (jboolean)dateByMonthWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)bld
+                                              withJavaUtilCollection:(id<JavaUtilCollection>)fields
+                                                         withBoolean:(jboolean)extended
+                                                         withBoolean:(jboolean)strictISO;
+
+/**
+ @brief Creates a date using the ordinal date format.
+ Specification reference: 5.2.2.
+ @param bld the builder
+ @param fields the fields
+ @param extended true to use extended format
+ @param strictISO true to only allow ISO formats
+ @since 1.1
+ */
++ (jboolean)dateByOrdinalWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)bld
+                                                withJavaUtilCollection:(id<JavaUtilCollection>)fields
+                                                           withBoolean:(jboolean)extended
+                                                           withBoolean:(jboolean)strictISO;
+
+/**
+ @brief Creates a date using the calendar date format.
+ Specification reference: 5.2.3.
+ @param bld the builder
+ @param fields the fields
+ @param extended true to use extended format
+ @param strictISO true to only allow ISO formats
+ @since 1.1
+ */
++ (jboolean)dateByWeekWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)bld
+                                             withJavaUtilCollection:(id<JavaUtilCollection>)fields
+                                                        withBoolean:(jboolean)extended
+                                                        withBoolean:(jboolean)strictISO;
+
+/**
+ @brief Adds the time fields to the builder.
+ Specification reference: 5.3.1.
+ @param bld the builder
+ @param fields the fields
+ @param extended whether to use the extended format
+ @param strictISO whether to be strict
+ @param reducedPrec whether the date was reduced precision
+ @param datePresent whether there was a date
+ @since 1.1
+ */
++ (void)timeWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)bld
+                                   withJavaUtilCollection:(id<JavaUtilCollection>)fields
+                                              withBoolean:(jboolean)extended
+                                              withBoolean:(jboolean)strictISO
+                                              withBoolean:(jboolean)reducedPrec
+                                              withBoolean:(jboolean)datePresent;
+
+/**
+ @brief Checks that the iso only flag is not set, throwing an exception if it is.
+ @param fields the fields
+ @param strictISO true if only ISO formats allowed
+ @since 1.1
+ */
++ (void)checkNotStrictISOWithJavaUtilCollection:(id<JavaUtilCollection>)fields
+                                    withBoolean:(jboolean)strictISO;
+
+/**
+ @brief Appends the separator if necessary.
+ @param bld the builder
+ @param extended whether to append the separator
+ @param sep the separator
+ @since 1.1
+ */
++ (void)appendSeparatorWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)bld
+                                                         withBoolean:(jboolean)extended;
+@end
+
+@interface OrgJodaTimeFormatISODateTimeFormat_Constants () {
+}
+
++ (OrgJodaTimeFormatDateTimeFormatter *)dateParser;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)localDateParser;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)dateElementParser;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)timeParser;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)localTimeParser;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)timeElementParser;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)dateTimeParser;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)dateOptionalTimeParser;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)localDateOptionalTimeParser;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)time;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)timeNoMillis;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)tTime;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)tTimeNoMillis;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)dateTime;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)dateTimeNoMillis;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)ordinalDate;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)ordinalDateTime;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)ordinalDateTimeNoMillis;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)weekDateTime;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)weekDateTimeNoMillis;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)basicDate;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)basicTime;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)basicTimeNoMillis;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)basicTTime;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)basicTTimeNoMillis;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)basicDateTime;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)basicDateTimeNoMillis;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)basicOrdinalDate;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)basicOrdinalDateTime;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)basicOrdinalDateTimeNoMillis;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)basicWeekDate;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)basicWeekDateTime;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)basicWeekDateTimeNoMillis;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)yearMonth;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)yearMonthDay;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)weekyearWeek;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)weekyearWeekDay;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)hourMinute;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)hourMinuteSecond;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)hourMinuteSecondMillis;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)hourMinuteSecondFraction;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)dateHour;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)dateHourMinute;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)dateHourMinuteSecond;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)dateHourMinuteSecondMillis;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)dateHourMinuteSecondFraction;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)yearElement;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)monthElement;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)dayOfMonthElement;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)weekyearElement;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)weekElement;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)dayOfWeekElement;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)dayOfYearElement;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)literalTElement;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)hourElement;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)minuteElement;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)secondElement;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)fractionElement;
+
++ (OrgJodaTimeFormatDateTimeFormatter *)offsetElement;
+@end
 
 @implementation OrgJodaTimeFormatISODateTimeFormat
 
@@ -400,7 +606,7 @@ __attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFo
     { "dateHourMinuteSecondMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL },
     { "dateHourMinuteSecondFraction", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatISODateTimeFormat = { "ISODateTimeFormat", "org.joda.time.format", NULL, 0x1, 59, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatISODateTimeFormat = { 1, "ISODateTimeFormat", "org.joda.time.format", NULL, 0x1, 59, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeFormatISODateTimeFormat;
 }
 
@@ -903,6 +1109,8 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateHourM
   return OrgJodaTimeFormatISODateTimeFormat_Constants_get_dhmsf_();
 }
 
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatISODateTimeFormat)
+
 BOOL OrgJodaTimeFormatISODateTimeFormat_Constants_initialized = NO;
 
 @implementation OrgJodaTimeFormatISODateTimeFormat_Constants
@@ -1396,7 +1604,7 @@ OrgJodaTimeFormatDateTimeFormatter * OrgJodaTimeFormatISODateTimeFormat_Constant
     { "dotp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dotp_,  },
     { "ldotp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ldotp_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatISODateTimeFormat_Constants = { "Constants", "org.joda.time.format", "ISODateTimeFormat", 0x18, 60, methods, 59, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatISODateTimeFormat_Constants = { 1, "Constants", "org.joda.time.format", "ISODateTimeFormat", 0x18, 60, methods, 59, fields, 0, NULL};
   return &_OrgJodaTimeFormatISODateTimeFormat_Constants;
 }
 
@@ -1422,7 +1630,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dateElementParser() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_init();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dpe_ == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_monthElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfMonthElement())) getParser]])) toParser]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfWeekElement())) getParser]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfYearElement()])) toParser] } count:3 type:[IOSClass classWithProtocol:@protocol(OrgJodaTimeFormatDateTimeParser)]]])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_monthElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfMonthElement())) getParser]])) toParser]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfWeekElement())) getParser]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfYearElement()])) toParser] } count:3 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dpe_;
 }
@@ -1446,8 +1654,8 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_init();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_tpe_ == nil) {
-    id<OrgJodaTimeFormatDateTimeParser> decimalPoint = [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendLiteralWithChar:'.'])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendLiteralWithChar:','])) toParser] } count:2 type:[IOSClass classWithProtocol:@protocol(OrgJodaTimeFormatDateTimeParser)]]])) toParser];
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement()])) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement()])) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_secondElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeParser:decimalPoint])) appendFractionOfSecondWithInt:1 withInt:9])) toParser]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeParser:decimalPoint])) appendFractionOfMinuteWithInt:1 withInt:9])) toParser], nil } count:3 type:[IOSClass classWithProtocol:@protocol(OrgJodaTimeFormatDateTimeParser)]]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeParser:decimalPoint])) appendFractionOfHourWithInt:1 withInt:9])) toParser], nil } count:3 type:[IOSClass classWithProtocol:@protocol(OrgJodaTimeFormatDateTimeParser)]]])) toFormatter];
+    id<OrgJodaTimeFormatDateTimeParser> decimalPoint = [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendLiteralWithChar:'.'])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendLiteralWithChar:','])) toParser] } count:2 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toParser];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement()])) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement()])) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_secondElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeParser:decimalPoint])) appendFractionOfSecondWithInt:1 withInt:9])) toParser]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeParser:decimalPoint])) appendFractionOfMinuteWithInt:1 withInt:9])) toParser], nil } count:3 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimeParser:decimalPoint])) appendFractionOfHourWithInt:1 withInt:9])) toParser], nil } count:3 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_tpe_;
 }
@@ -1456,7 +1664,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
   OrgJodaTimeFormatISODateTimeFormat_Constants_init();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dtp_ == nil) {
     id<OrgJodaTimeFormatDateTimeParser> time = [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendLiteralWithChar:'T'])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement())) getParser]])) toParser];
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ time, [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_dateOptionalTimeParser())) getParser] } count:2 type:[IOSClass classWithProtocol:@protocol(OrgJodaTimeFormatDateTimeParser)]]])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [[[OrgJodaTimeFormatDateTimeFormatterBuilder alloc] init] autorelease]) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ time, [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_dateOptionalTimeParser())) getParser] } count:2 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dtp_;
 }
@@ -1878,3 +2086,5 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_ze_;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatISODateTimeFormat_Constants)

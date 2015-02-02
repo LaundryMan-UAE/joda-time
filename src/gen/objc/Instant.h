@@ -12,8 +12,8 @@
 @class OrgJodaTimeMutableDateTime;
 @protocol OrgJodaTimeReadableDuration;
 
-#import "JreEmulation.h"
 #include "AbstractInstant.h"
+#include "J2ObjC_header.h"
 #include "ReadableInstant.h"
 #include "java/io/Serializable.h"
 
@@ -26,11 +26,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeInstant : OrgJodaTimeBaseAbstractInstant < OrgJodaTimeReadableInstant, JavaIoSerializable > {
- @public
-  /**
-   @brief The millis from 1970-01-01T00:00:00Z
-   */
-  jlong iMillis_;
 }
 
 /**
@@ -189,15 +184,21 @@
  */
 - (OrgJodaTimeMutableDateTime *)toMutableDateTimeISO;
 
-- (void)copyAllFieldsTo:(OrgJodaTimeInstant *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeInstant_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeInstant)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeInstant *OrgJodaTimeInstant_now();
+
 FOUNDATION_EXPORT OrgJodaTimeInstant *OrgJodaTimeInstant_parseWithNSString_(NSString *str);
+
 FOUNDATION_EXPORT OrgJodaTimeInstant *OrgJodaTimeInstant_parseWithNSString_withOrgJodaTimeFormatDateTimeFormatter_(NSString *str, OrgJodaTimeFormatDateTimeFormatter *formatter);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeInstant, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeInstant)
 
 #endif // _OrgJodaTimeInstant_H_

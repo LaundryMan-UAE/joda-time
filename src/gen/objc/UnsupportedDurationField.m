@@ -6,9 +6,31 @@
 #include "DurationField.h"
 #include "DurationFieldType.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "UnsupportedDurationField.h"
 #include "java/lang/UnsupportedOperationException.h"
 #include "java/util/HashMap.h"
+
+__attribute__((unused)) static JavaLangUnsupportedOperationException *OrgJodaTimeFieldUnsupportedDurationField_unsupported(OrgJodaTimeFieldUnsupportedDurationField *self);
+
+@interface OrgJodaTimeFieldUnsupportedDurationField () {
+ @public
+  /**
+   @brief The name of the field
+   */
+  OrgJodaTimeDurationFieldType *iType_;
+}
+- (instancetype)initWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)type;
+
+/**
+ @brief Ensure proper singleton serialization
+ */
+- (id)readResolve;
+
+- (JavaLangUnsupportedOperationException *)unsupported;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldUnsupportedDurationField, iType_, OrgJodaTimeDurationFieldType *)
 
 @implementation OrgJodaTimeFieldUnsupportedDurationField
 
@@ -42,59 +64,59 @@ JavaUtilHashMap * OrgJodaTimeFieldUnsupportedDurationField_cCache_;
 }
 
 - (jint)getValueWithLong:(jlong)duration {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDurationField_unsupported(self);
 }
 
 - (jlong)getValueAsLongWithLong:(jlong)duration {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDurationField_unsupported(self);
 }
 
 - (jint)getValueWithLong:(jlong)duration
                 withLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDurationField_unsupported(self);
 }
 
 - (jlong)getValueAsLongWithLong:(jlong)duration
                        withLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDurationField_unsupported(self);
 }
 
 - (jlong)getMillisWithInt:(jint)value {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDurationField_unsupported(self);
 }
 
 - (jlong)getMillisWithLong:(jlong)value {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDurationField_unsupported(self);
 }
 
 - (jlong)getMillisWithInt:(jint)value
                  withLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDurationField_unsupported(self);
 }
 
 - (jlong)getMillisWithLong:(jlong)value
                   withLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDurationField_unsupported(self);
 }
 
 - (jlong)addWithLong:(jlong)instant
              withInt:(jint)value {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDurationField_unsupported(self);
 }
 
 - (jlong)addWithLong:(jlong)instant
             withLong:(jlong)value {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDurationField_unsupported(self);
 }
 
 - (jint)getDifferenceWithLong:(jlong)minuendInstant
                      withLong:(jlong)subtrahendInstant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDurationField_unsupported(self);
 }
 
 - (jlong)getDifferenceAsLongWithLong:(jlong)minuendInstant
                             withLong:(jlong)subtrahendInstant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDurationField_unsupported(self);
 }
 
 - (jlong)getUnitMillis {
@@ -133,11 +155,11 @@ JavaUtilHashMap * OrgJodaTimeFieldUnsupportedDurationField_cCache_;
 }
 
 - (JavaLangUnsupportedOperationException *)unsupported {
-  return [[[JavaLangUnsupportedOperationException alloc] initWithNSString:JreStrcat("@$", iType_, @" field is unsupported")] autorelease];
+  return OrgJodaTimeFieldUnsupportedDurationField_unsupported(self);
 }
 
 - (void)dealloc {
-  OrgJodaTimeFieldUnsupportedDurationField_set_iType_(self, nil);
+  RELEASE_(iType_);
   [super dealloc];
 }
 
@@ -179,7 +201,7 @@ JavaUtilHashMap * OrgJodaTimeFieldUnsupportedDurationField_cCache_;
     { "cCache_", NULL, 0xa, "Ljava.util.HashMap;", &OrgJodaTimeFieldUnsupportedDurationField_cCache_,  },
     { "iType_", NULL, 0x12, "Lorg.joda.time.DurationFieldType;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldUnsupportedDurationField = { "UnsupportedDurationField", "org.joda.time.field", NULL, 0x11, 25, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldUnsupportedDurationField = { 1, "UnsupportedDurationField", "org.joda.time.field", NULL, 0x11, 25, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeFieldUnsupportedDurationField;
 }
 
@@ -187,7 +209,7 @@ JavaUtilHashMap * OrgJodaTimeFieldUnsupportedDurationField_cCache_;
 
 OrgJodaTimeFieldUnsupportedDurationField *OrgJodaTimeFieldUnsupportedDurationField_getInstanceWithOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationFieldType *type) {
   OrgJodaTimeFieldUnsupportedDurationField_init();
-  @synchronized([IOSClass classWithClass:[OrgJodaTimeFieldUnsupportedDurationField class]]) {
+  @synchronized(OrgJodaTimeFieldUnsupportedDurationField_class_()) {
     OrgJodaTimeFieldUnsupportedDurationField *field;
     if (OrgJodaTimeFieldUnsupportedDurationField_cCache_ == nil) {
       JreStrongAssignAndConsume(&OrgJodaTimeFieldUnsupportedDurationField_cCache_, nil, [[JavaUtilHashMap alloc] initWithInt:7]);
@@ -203,3 +225,9 @@ OrgJodaTimeFieldUnsupportedDurationField *OrgJodaTimeFieldUnsupportedDurationFie
     return field;
   }
 }
+
+JavaLangUnsupportedOperationException *OrgJodaTimeFieldUnsupportedDurationField_unsupported(OrgJodaTimeFieldUnsupportedDurationField *self) {
+  return [[[JavaLangUnsupportedOperationException alloc] initWithNSString:JreStrcat("@$", self->iType_, @" field is unsupported")] autorelease];
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldUnsupportedDurationField)

@@ -9,8 +9,8 @@
 @class JavaUtilLocale;
 @class OrgJodaTimeChronoBasicChronology;
 
-#import "JreEmulation.h"
 #include "BasicMonthOfYearDateTimeField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoGJMonthOfYearDateTimeField_serialVersionUID -4748157875845286249LL
 
@@ -44,8 +44,13 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoGJMonthOfYearDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoGJMonthOfYearDateTimeField)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJMonthOfYearDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJMonthOfYearDateTimeField)
 
 #endif // _OrgJodaTimeChronoGJMonthOfYearDateTimeField_H_

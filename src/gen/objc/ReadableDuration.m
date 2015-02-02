@@ -4,6 +4,7 @@
 //
 
 #include "Duration.h"
+#include "J2ObjC_source.h"
 #include "Period.h"
 #include "ReadableDuration.h"
 
@@ -24,9 +25,10 @@
     { "hash", "hashCode", "I", 0x401, NULL },
     { "description", "toString", "Ljava.lang.String;", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadableDuration = { "ReadableDuration", "org.joda.time", NULL, 0x201, 9, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeReadableDuration = { 1, "ReadableDuration", "org.joda.time", NULL, 0x201, 9, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeReadableDuration;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeReadableDuration)

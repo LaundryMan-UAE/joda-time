@@ -7,11 +7,32 @@
 #include "DateTimeFieldType.h"
 #include "DelegatedDateTimeField.h"
 #include "DurationField.h"
-#include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/util/Locale.h"
+
+@interface OrgJodaTimeFieldDelegatedDateTimeField () {
+ @public
+  /**
+   @brief The DateTimeField being wrapped.
+   */
+  OrgJodaTimeDateTimeField *iField_;
+  /**
+   @brief The range duration.
+   */
+  OrgJodaTimeDurationField *iRangeDurationField_;
+  /**
+   @brief The override field type.
+   */
+  OrgJodaTimeDateTimeFieldType *iType_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldDelegatedDateTimeField, iField_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldDelegatedDateTimeField, iRangeDurationField_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldDelegatedDateTimeField, iType_, OrgJodaTimeDateTimeFieldType *)
 
 @implementation OrgJodaTimeFieldDelegatedDateTimeField
 
@@ -294,9 +315,9 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeFieldDelegatedDateTimeField_set_iField_(self, nil);
-  OrgJodaTimeFieldDelegatedDateTimeField_set_iRangeDurationField_(self, nil);
-  OrgJodaTimeFieldDelegatedDateTimeField_set_iType_(self, nil);
+  RELEASE_(iField_);
+  RELEASE_(iRangeDurationField_);
+  RELEASE_(iType_);
   [super dealloc];
 }
 
@@ -370,8 +391,10 @@
     { "iRangeDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL,  },
     { "iType_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldDelegatedDateTimeField = { "DelegatedDateTimeField", "org.joda.time.field", NULL, 0x1, 54, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldDelegatedDateTimeField = { 1, "DelegatedDateTimeField", "org.joda.time.field", NULL, 0x1, 54, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeFieldDelegatedDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldDelegatedDateTimeField)

@@ -11,7 +11,7 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "PreciseDurationDateTimeField.h"
 
 #define OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_serialVersionUID -1587436826395135328LL
@@ -24,8 +24,6 @@
  @since 1.1, refactored from GJWeekOfWeekyearDateTimeField
  */
 @interface OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField : OrgJodaTimeFieldPreciseDurationDateTimeField {
- @public
-  OrgJodaTimeChronoBasicChronology *iChronology_;
 }
 
 /**
@@ -63,21 +61,15 @@
 - (jint)getMaximumValueForSetWithLong:(jlong)instant
                               withInt:(jint)value;
 
-/**
- @brief Serialization singleton
- */
-- (id)readResolve;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField, iChronology_, OrgJodaTimeChronoBasicChronology *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField)
 
 #endif // _OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_H_

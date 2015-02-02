@@ -13,6 +13,7 @@
 #include "IOSPrimitiveArray.h"
 #include "ISODateTimeFormat.h"
 #include "ISOPeriodFormat.h"
+#include "J2ObjC_source.h"
 #include "MutablePeriod.h"
 #include "Period.h"
 #include "PeriodFormatter.h"
@@ -171,7 +172,7 @@ OrgJodaTimeConvertStringConverter * OrgJodaTimeConvertStringConverter_INSTANCE_;
 }
 
 - (IOSClass *)getSupportedType {
-  return [IOSClass classWithClass:[NSString class]];
+  return NSString_class_();
 }
 
 + (void)initialize {
@@ -194,8 +195,10 @@ OrgJodaTimeConvertStringConverter * OrgJodaTimeConvertStringConverter_INSTANCE_;
   static const J2ObjcFieldInfo fields[] = {
     { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.StringConverter;", &OrgJodaTimeConvertStringConverter_INSTANCE_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertStringConverter = { "StringConverter", "org.joda.time.convert", NULL, 0x0, 7, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertStringConverter = { 1, "StringConverter", "org.joda.time.convert", NULL, 0x0, 7, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeConvertStringConverter;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertStringConverter)

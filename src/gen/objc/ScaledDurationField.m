@@ -8,8 +8,15 @@
 #include "DurationField.h"
 #include "DurationFieldType.h"
 #include "FieldUtils.h"
+#include "J2ObjC_source.h"
 #include "ScaledDurationField.h"
 #include "java/lang/IllegalArgumentException.h"
+
+@interface OrgJodaTimeFieldScaledDurationField () {
+ @public
+  jint iScalar_;
+}
+@end
 
 @implementation OrgJodaTimeFieldScaledDurationField
 
@@ -143,8 +150,10 @@
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeFieldScaledDurationField_serialVersionUID },
     { "iScalar_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldScaledDurationField = { "ScaledDurationField", "org.joda.time.field", NULL, 0x1, 17, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldScaledDurationField = { 1, "ScaledDurationField", "org.joda.time.field", NULL, 0x1, 17, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeFieldScaledDurationField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldScaledDurationField)

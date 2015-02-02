@@ -23,9 +23,9 @@
 @protocol OrgJodaTimeReadablePartial;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
 #include "AbstractReadableInstantFieldProperty.h"
 #include "BaseDateTime.h"
+#include "J2ObjC_header.h"
 #include "ReadableDateTime.h"
 #include "java/io/Serializable.h"
 
@@ -622,14 +622,24 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeDateMidnight_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeDateMidnight)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeDateMidnight *OrgJodaTimeDateMidnight_now();
+
 FOUNDATION_EXPORT OrgJodaTimeDateMidnight *OrgJodaTimeDateMidnight_nowWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
+
 FOUNDATION_EXPORT OrgJodaTimeDateMidnight *OrgJodaTimeDateMidnight_nowWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chronology);
+
 FOUNDATION_EXPORT OrgJodaTimeDateMidnight *OrgJodaTimeDateMidnight_parseWithNSString_(NSString *str);
+
 FOUNDATION_EXPORT OrgJodaTimeDateMidnight *OrgJodaTimeDateMidnight_parseWithNSString_withOrgJodaTimeFormatDateTimeFormatter_(NSString *str, OrgJodaTimeFormatDateTimeFormatter *formatter);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateMidnight, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateMidnight)
 
 #define OrgJodaTimeDateMidnight_Property_serialVersionUID 257629620LL
 
@@ -641,15 +651,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateMidnight, serialVersionUID, jlong)
  @since 1.0
  */
 @interface OrgJodaTimeDateMidnight_Property : OrgJodaTimeFieldAbstractReadableInstantFieldProperty {
- @public
-  /**
-   @brief The instant this property is working against
-   */
-  OrgJodaTimeDateMidnight *iInstant_;
-  /**
-   @brief The field this property is working against
-   */
-  OrgJodaTimeDateTimeField *iField_;
 }
 
 /**
@@ -659,16 +660,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateMidnight, serialVersionUID, jlong)
  */
 - (instancetype)initWithOrgJodaTimeDateMidnight:(OrgJodaTimeDateMidnight *)instant
                    withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
-
-/**
- @brief Writes the property in a safe serialization format.
- */
-- (void)writeObjectWithJavaIoObjectOutputStream:(JavaIoObjectOutputStream *)oos;
-
-/**
- @brief Reads the property from a safe serialization format.
- */
-- (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)oos;
 
 /**
  @brief Gets the field being used.
@@ -798,17 +789,15 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateMidnight, serialVersionUID, jlong)
  */
 - (OrgJodaTimeDateMidnight *)roundHalfEvenCopy;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeDateMidnight_Property *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeDateMidnight_Property_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeDateMidnight_Property)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeDateMidnight_Property, iInstant_, OrgJodaTimeDateMidnight *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeDateMidnight_Property, iField_, OrgJodaTimeDateTimeField *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateMidnight_Property, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateMidnight_Property)
 
 #endif // _OrgJodaTimeDateMidnight_H_

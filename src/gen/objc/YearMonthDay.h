@@ -24,9 +24,9 @@
 @class OrgJodaTimeYearMonthDay_Property;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
 #include "AbstractPartialFieldProperty.h"
 #include "BasePartial.h"
+#include "J2ObjC_header.h"
 #include "ReadablePartial.h"
 #include "java/io/Serializable.h"
 
@@ -470,7 +470,11 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeYearMonthDay_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeYearMonthDay)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeYearMonthDay *OrgJodaTimeYearMonthDay_fromCalendarFieldsWithJavaUtilCalendar_(JavaUtilCalendar *calendar);
+
 FOUNDATION_EXPORT OrgJodaTimeYearMonthDay *OrgJodaTimeYearMonthDay_fromDateFieldsWithJavaUtilDate_(JavaUtilDate *date);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonthDay, serialVersionUID, jlong)
@@ -483,6 +487,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonthDay, YEAR, jint)
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonthDay, MONTH_OF_YEAR, jint)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonthDay, DAY_OF_MONTH, jint)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeYearMonthDay)
 
 #define OrgJodaTimeYearMonthDay_Property_serialVersionUID 5727734012190224363LL
 
@@ -493,15 +500,6 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonthDay, DAY_OF_MONTH, jint)
  @since 1.0
  */
 @interface OrgJodaTimeYearMonthDay_Property : OrgJodaTimeFieldAbstractPartialFieldProperty < JavaIoSerializable > {
- @public
-  /**
-   @brief The partial
-   */
-  OrgJodaTimeYearMonthDay *iYearMonthDay_;
-  /**
-   @brief The field index
-   */
-  jint iFieldIndex_;
 }
 
 /**
@@ -599,16 +597,15 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonthDay, DAY_OF_MONTH, jint)
  */
 - (OrgJodaTimeYearMonthDay *)withMinimumValue;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeYearMonthDay_Property *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeYearMonthDay_Property_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeYearMonthDay_Property)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeYearMonthDay_Property, iYearMonthDay_, OrgJodaTimeYearMonthDay *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonthDay_Property, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeYearMonthDay_Property)
 
 #endif // _OrgJodaTimeYearMonthDay_H_

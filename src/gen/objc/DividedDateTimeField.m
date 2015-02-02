@@ -11,9 +11,21 @@
 #include "DurationFieldType.h"
 #include "FieldUtils.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "RemainderDateTimeField.h"
 #include "ScaledDurationField.h"
 #include "java/lang/IllegalArgumentException.h"
+
+__attribute__((unused)) static jint OrgJodaTimeFieldDividedDateTimeField_getRemainderWithInt_(OrgJodaTimeFieldDividedDateTimeField *self, jint value);
+
+@interface OrgJodaTimeFieldDividedDateTimeField () {
+ @public
+  jint iMin_;
+  jint iMax_;
+}
+
+- (jint)getRemainderWithInt:(jint)value;
+@end
 
 @implementation OrgJodaTimeFieldDividedDateTimeField
 
@@ -131,7 +143,7 @@
 - (jlong)setWithLong:(jlong)instant
              withInt:(jint)value {
   OrgJodaTimeFieldFieldUtils_verifyValueBoundsWithOrgJodaTimeDateTimeField_withInt_withInt_withInt_(self, value, iMin_, iMax_);
-  jint remainder = [self getRemainderWithInt:[((OrgJodaTimeDateTimeField *) nil_chk([self getWrappedField])) getWithLong:instant]];
+  jint remainder = OrgJodaTimeFieldDividedDateTimeField_getRemainderWithInt_(self, [((OrgJodaTimeDateTimeField *) nil_chk([self getWrappedField])) getWithLong:instant]);
   return [((OrgJodaTimeDateTimeField *) nil_chk([self getWrappedField])) setWithLong:instant withInt:value * iDivisor_ + remainder];
 }
 
@@ -161,17 +173,12 @@
 }
 
 - (jint)getRemainderWithInt:(jint)value {
-  if (value >= 0) {
-    return value % iDivisor_;
-  }
-  else {
-    return (iDivisor_ - 1) + ((value + 1) % iDivisor_);
-  }
+  return OrgJodaTimeFieldDividedDateTimeField_getRemainderWithInt_(self, value);
 }
 
 - (void)dealloc {
-  OrgJodaTimeFieldDividedDateTimeField_set_iDurationField_(self, nil);
-  OrgJodaTimeFieldDividedDateTimeField_set_iRangeDurationField_(self, nil);
+  RELEASE_(iDurationField_);
+  RELEASE_(iRangeDurationField_);
   [super dealloc];
 }
 
@@ -214,8 +221,19 @@
     { "iMin_", NULL, 0x12, "I", NULL,  },
     { "iMax_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldDividedDateTimeField = { "DividedDateTimeField", "org.joda.time.field", NULL, 0x1, 19, methods, 6, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldDividedDateTimeField = { 1, "DividedDateTimeField", "org.joda.time.field", NULL, 0x1, 19, methods, 6, fields, 0, NULL};
   return &_OrgJodaTimeFieldDividedDateTimeField;
 }
 
 @end
+
+jint OrgJodaTimeFieldDividedDateTimeField_getRemainderWithInt_(OrgJodaTimeFieldDividedDateTimeField *self, jint value) {
+  if (value >= 0) {
+    return value % self->iDivisor_;
+  }
+  else {
+    return (self->iDivisor_ - 1) + ((value + 1) % self->iDivisor_);
+  }
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldDividedDateTimeField)

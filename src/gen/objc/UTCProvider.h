@@ -9,7 +9,7 @@
 @class OrgJodaTimeDateTimeZone;
 @protocol JavaUtilSet;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "Provider.h"
 
 /**
@@ -38,6 +38,11 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeTzUTCProvider_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeTzUTCProvider)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzUTCProvider)
 
 #endif // _OrgJodaTimeTzUTCProvider_H_

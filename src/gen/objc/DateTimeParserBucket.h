@@ -19,7 +19,7 @@
 @protocol OrgJodaTimeFormatDateTimeParser;
 @protocol OrgJodaTimeFormatInternalParser;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/lang/Comparable.h"
 
 /**
@@ -30,47 +30,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFormatDateTimeParserBucket : NSObject {
- @public
-  /**
-   @brief The chronology to use for parsing.
-   */
-  OrgJodaTimeChronology *iChrono_;
-  /**
-   @brief The initial millis.
-   */
-  jlong iMillis_;
-  /**
-   @brief The locale to use for parsing.
-   */
-  JavaUtilLocale *iLocale_;
-  /**
-   @brief Used for parsing month/day without year.
-   */
-  jint iDefaultYear_;
-  /**
-   @brief The default zone from the constructor.
-   */
-  OrgJodaTimeDateTimeZone *iDefaultZone_;
-  /**
-   @brief The default pivot year from the constructor.
-   */
-  JavaLangInteger *iDefaultPivotYear_;
-  /**
-   @brief The parsed zone, initialised to formatter zone.
-   */
-  OrgJodaTimeDateTimeZone *iZone_;
-  /**
-   @brief The parsed offset.
-   */
-  JavaLangInteger *iOffset_;
-  /**
-   @brief Used for parsing two-digit years.
-   */
-  JavaLangInteger *iPivotYear_;
-  IOSObjectArray *iSavedFields_;
-  jint iSavedFieldsCount_;
-  jboolean iSavedFieldsShared_;
-  id iSavedState_;
 }
 
 /**
@@ -217,8 +176,6 @@
                                      withNSString:(NSString *)text
                                withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (OrgJodaTimeFormatDateTimeParserBucket_SavedField *)obtainSaveField;
-
 /**
  @brief Saves the state of this bucket, returning it in an opaque object.
  Call restoreState to undo any changes that were made since the state was saved. Calls to saveState may be nested.
@@ -275,38 +232,22 @@
 - (jlong)computeMillisWithBoolean:(jboolean)resetFields
          withJavaLangCharSequence:(id<JavaLangCharSequence>)text;
 
-/**
- @brief Sorts elements [0,high).
- Calling java.util.Arrays isn't always the right choice since it always creates an internal copy of the array, even if it doesn't need to. If the array slice is small enough, an insertion sort is chosen instead, but it doesn't need a copy! <p> This method has a modified version of that insertion sort, except it doesn't create an unnecessary array copy. If high is over 10, then java.util.Arrays is called, which will perform a merge sort, which is faster than insertion sort on large lists. <p> The end result is much greater performance when computeMillis is called. Since the amount of saved fields is small, the insertion sort is a better choice. Additional performance is gained since there is no extra array allocation and copying. Also, the insertion sort here does not perform any casting operations. The version in java.util.Arrays performs casts within the insertion sort loop.
- */
-+ (void)sortWithOrgJodaTimeFormatDateTimeParserBucket_SavedFieldArray:(IOSObjectArray *)array
-                                                              withInt:(jint)high;
-
 + (jint)compareReverseWithOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)a
                       withOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)b;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeParserBucket *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeParserBucket_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeParserBucket)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iChrono_, OrgJodaTimeChronology *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iLocale_, JavaUtilLocale *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iDefaultZone_, OrgJodaTimeDateTimeZone *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iDefaultPivotYear_, JavaLangInteger *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iZone_, OrgJodaTimeDateTimeZone *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iOffset_, JavaLangInteger *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iPivotYear_, JavaLangInteger *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iSavedFields_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket, iSavedState_, id)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT jint OrgJodaTimeFormatDateTimeParserBucket_compareReverseWithOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDurationField *a, OrgJodaTimeDurationField *b);
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeParserBucket)
 
 @interface OrgJodaTimeFormatDateTimeParserBucket_SavedState : NSObject {
  @public
-  OrgJodaTimeFormatDateTimeParserBucket *this$0_;
   OrgJodaTimeDateTimeZone *iZone_;
   JavaLangInteger *iOffset_;
   IOSObjectArray *iSavedFields_;
@@ -317,18 +258,18 @@ FOUNDATION_EXPORT jint OrgJodaTimeFormatDateTimeParserBucket_compareReverseWithO
 
 - (jboolean)restoreStateWithOrgJodaTimeFormatDateTimeParserBucket:(OrgJodaTimeFormatDateTimeParserBucket *)enclosing;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeParserBucket_SavedState *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeParserBucket_SavedState_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeParserBucket_SavedState)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket_SavedState, this$0_, OrgJodaTimeFormatDateTimeParserBucket *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket_SavedState, iZone_, OrgJodaTimeDateTimeZone *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket_SavedState, iOffset_, JavaLangInteger *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket_SavedState, iSavedFields_, IOSObjectArray *)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeParserBucket_SavedState)
 
 @interface OrgJodaTimeFormatDateTimeParserBucket_SavedField : NSObject < JavaLangComparable > {
  @public
@@ -356,16 +297,17 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket_SavedState, iSavedFiel
  */
 - (jint)compareToWithId:(OrgJodaTimeFormatDateTimeParserBucket_SavedField *)obj;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatDateTimeParserBucket_SavedField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatDateTimeParserBucket_SavedField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatDateTimeParserBucket_SavedField)
 
 J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket_SavedField, iField_, OrgJodaTimeDateTimeField *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket_SavedField, iText_, NSString *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeFormatDateTimeParserBucket_SavedField, iLocale_, JavaUtilLocale *)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeParserBucket_SavedField)
 
 #endif // _OrgJodaTimeFormatDateTimeParserBucket_H_

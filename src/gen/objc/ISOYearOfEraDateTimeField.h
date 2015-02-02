@@ -11,8 +11,8 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "DecoratedDateTimeField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoISOYearOfEraDateTimeField_serialVersionUID 7037524068969447317LL
 
@@ -24,11 +24,6 @@
  */
 @interface OrgJodaTimeChronoISOYearOfEraDateTimeField : OrgJodaTimeFieldDecoratedDateTimeField {
 }
-
-/**
- @brief Restricted constructor.
- */
-- (instancetype)init;
 
 - (OrgJodaTimeDurationField *)getRangeDurationField;
 
@@ -67,19 +62,19 @@
 
 - (jlong)remainderWithLong:(jlong)instant;
 
-/**
- @brief Serialization singleton
- */
-- (id)readResolve;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeChronoISOYearOfEraDateTimeField_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeChronoISOYearOfEraDateTimeField)
 
+CF_EXTERN_C_BEGIN
+
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoISOYearOfEraDateTimeField, serialVersionUID, jlong)
 
 FOUNDATION_EXPORT OrgJodaTimeDateTimeField *OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoISOYearOfEraDateTimeField, INSTANCE_, OrgJodaTimeDateTimeField *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoISOYearOfEraDateTimeField)
 
 #endif // _OrgJodaTimeChronoISOYearOfEraDateTimeField_H_

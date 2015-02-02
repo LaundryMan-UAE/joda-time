@@ -11,7 +11,7 @@
 @class JavaUtilTreeMap;
 @protocol JavaUtilConcurrentConcurrentMap;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Utility class used by a few of the GJDateTimeFields.
@@ -19,22 +19,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeChronoGJLocaleSymbols : NSObject {
- @public
-  IOSObjectArray *iEras_;
-  IOSObjectArray *iDaysOfWeek_;
-  IOSObjectArray *iShortDaysOfWeek_;
-  IOSObjectArray *iMonths_;
-  IOSObjectArray *iShortMonths_;
-  IOSObjectArray *iHalfday_;
-  JavaUtilTreeMap *iParseEras_;
-  JavaUtilTreeMap *iParseDaysOfWeek_;
-  JavaUtilTreeMap *iParseMonths_;
-  jint iMaxEraLength_;
-  jint iMaxDayOfWeekLength_;
-  jint iMaxShortDayOfWeekLength_;
-  jint iMaxMonthLength_;
-  jint iMaxShortMonthLength_;
-  jint iMaxHalfdayLength_;
 }
 
 /**
@@ -43,26 +27,6 @@
  @return the symbols, not null
  */
 + (OrgJodaTimeChronoGJLocaleSymbols *)forLocaleWithJavaUtilLocale:(JavaUtilLocale *)locale;
-
-+ (IOSObjectArray *)realignMonthsWithNSStringArray:(IOSObjectArray *)months;
-
-+ (IOSObjectArray *)realignDaysOfWeekWithNSStringArray:(IOSObjectArray *)daysOfWeek;
-
-+ (void)addSymbolsWithJavaUtilTreeMap:(JavaUtilTreeMap *)map
-                    withNSStringArray:(IOSObjectArray *)symbols
-             withJavaLangIntegerArray:(IOSObjectArray *)integers;
-
-+ (void)addNumeralsWithJavaUtilTreeMap:(JavaUtilTreeMap *)map
-                               withInt:(jint)start
-                               withInt:(jint)end
-              withJavaLangIntegerArray:(IOSObjectArray *)integers;
-
-+ (jint)maxLengthWithNSStringArray:(IOSObjectArray *)a;
-
-/**
- @param locale must not be null
- */
-- (instancetype)initWithJavaUtilLocale:(JavaUtilLocale *)locale;
 
 - (NSString *)eraValueToTextWithInt:(jint)value;
 
@@ -96,28 +60,20 @@
 
 - (jint)getHalfdayMaxTextLength;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoGJLocaleSymbols *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeChronoGJLocaleSymbols_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeChronoGJLocaleSymbols)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iEras_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iDaysOfWeek_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iShortDaysOfWeek_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iMonths_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iShortMonths_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iHalfday_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iParseEras_, JavaUtilTreeMap *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iParseDaysOfWeek_, JavaUtilTreeMap *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, iParseMonths_, JavaUtilTreeMap *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeChronoGJLocaleSymbols *OrgJodaTimeChronoGJLocaleSymbols_forLocaleWithJavaUtilLocale_(JavaUtilLocale *locale);
 
 FOUNDATION_EXPORT id<JavaUtilConcurrentConcurrentMap> OrgJodaTimeChronoGJLocaleSymbols_cCache_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJLocaleSymbols, cCache_, id<JavaUtilConcurrentConcurrentMap>)
 J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeChronoGJLocaleSymbols, cCache_, id<JavaUtilConcurrentConcurrentMap>)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJLocaleSymbols)
 
 #endif // _OrgJodaTimeChronoGJLocaleSymbols_H_

@@ -3,6 +3,7 @@
 //  source: /Users/nbransby/Documents/joda-time/src/main/java/org/joda/time/format/PeriodParser.java
 //
 
+#include "J2ObjC_source.h"
 #include "PeriodParser.h"
 #include "ReadWritablePeriod.h"
 #include "java/util/Locale.h"
@@ -16,9 +17,10 @@
   static const J2ObjcMethodInfo methods[] = {
     { "parseIntoWithOrgJodaTimeReadWritablePeriod:withNSString:withInt:withJavaUtilLocale:", "parseInto", "I", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodParser = { "PeriodParser", "org.joda.time.format", NULL, 0x201, 1, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodParser = { 1, "PeriodParser", "org.joda.time.format", NULL, 0x201, 1, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeFormatPeriodParser;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodParser)

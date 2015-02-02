@@ -19,8 +19,8 @@
 @protocol OrgJodaTimeReadablePartial;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
 #include "BaseSingleFieldPeriod.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeHours_serialVersionUID 87525275727380864LL
 
@@ -87,19 +87,6 @@
  @throws IllegalArgumentException if the string format is invalid
  */
 + (OrgJodaTimeHours *)parseHoursWithNSString:(NSString *)periodStr;
-
-/**
- @brief Creates a new instance representing a number of hours.
- You should consider using the factory method #hours(int) instead of the constructor.
- @param hours the number of hours to represent
- */
-- (instancetype)initWithInt:(jint)hours;
-
-/**
- @brief Resolves singletons.
- @return the singleton instance
- */
-- (id)readResolve;
 
 /**
  @brief Gets the duration field type, which is <code>hours</code>.
@@ -242,11 +229,19 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeHours_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeHours)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeHours *OrgJodaTimeHours_hoursWithInt_(jint hours);
+
 FOUNDATION_EXPORT OrgJodaTimeHours *OrgJodaTimeHours_hoursBetweenWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end);
+
 FOUNDATION_EXPORT OrgJodaTimeHours *OrgJodaTimeHours_hoursBetweenWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end);
+
 FOUNDATION_EXPORT OrgJodaTimeHours *OrgJodaTimeHours_hoursInWithOrgJodaTimeReadableInterval_(id<OrgJodaTimeReadableInterval> interval);
+
 FOUNDATION_EXPORT OrgJodaTimeHours *OrgJodaTimeHours_standardHoursInWithOrgJodaTimeReadablePeriod_(id<OrgJodaTimeReadablePeriod> period);
+
 FOUNDATION_EXPORT OrgJodaTimeHours *OrgJodaTimeHours_parseHoursWithNSString_(NSString *periodStr);
 
 FOUNDATION_EXPORT OrgJodaTimeHours *OrgJodaTimeHours_ZERO_;
@@ -286,5 +281,8 @@ FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeHours_PARSER_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeHours, PARSER_, OrgJodaTimeFormatPeriodFormatter *)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeHours, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeHours)
 
 #endif // _OrgJodaTimeHours_H_

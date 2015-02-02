@@ -4,6 +4,7 @@
 //
 
 #include "DurationFieldType.h"
+#include "J2ObjC_source.h"
 #include "MutablePeriod.h"
 #include "Period.h"
 #include "PeriodType.h"
@@ -28,9 +29,10 @@
     { "hash", "hashCode", "I", 0x401, NULL },
     { "description", "toString", "Ljava.lang.String;", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadablePeriod = { "ReadablePeriod", "org.joda.time", NULL, 0x201, 11, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeReadablePeriod = { 1, "ReadablePeriod", "org.joda.time", NULL, 0x201, 11, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeReadablePeriod;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeReadablePeriod)

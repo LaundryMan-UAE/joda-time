@@ -5,6 +5,7 @@
 
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
+#include "J2ObjC_source.h"
 #include "PeriodFormat.h"
 #include "PeriodFormatter.h"
 #include "PeriodFormatterBuilder.h"
@@ -18,6 +19,19 @@ __attribute__((unused)) static OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeForm
 __attribute__((unused)) static OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormat_buildNonRegExFormatterWithJavaUtilResourceBundle_(JavaUtilResourceBundle *b);
 __attribute__((unused)) static IOSObjectArray *OrgJodaTimeFormatPeriodFormat_retrieveVariantsWithJavaUtilResourceBundle_(JavaUtilResourceBundle *b);
 __attribute__((unused)) static jboolean OrgJodaTimeFormatPeriodFormat_containsKeyWithJavaUtilResourceBundle_withNSString_(JavaUtilResourceBundle *bundle, NSString *key);
+
+@interface OrgJodaTimeFormatPeriodFormat () {
+}
+
++ (OrgJodaTimeFormatPeriodFormatter *)buildRegExFormatterWithJavaUtilResourceBundle:(JavaUtilResourceBundle *)b;
+
++ (OrgJodaTimeFormatPeriodFormatter *)buildNonRegExFormatterWithJavaUtilResourceBundle:(JavaUtilResourceBundle *)b;
+
++ (IOSObjectArray *)retrieveVariantsWithJavaUtilResourceBundle:(JavaUtilResourceBundle *)b;
+
++ (jboolean)containsKeyWithJavaUtilResourceBundle:(JavaUtilResourceBundle *)bundle
+                                     withNSString:(NSString *)key;
+@end
 
 BOOL OrgJodaTimeFormatPeriodFormat_initialized = NO;
 
@@ -81,7 +95,7 @@ id<JavaUtilConcurrentConcurrentMap> OrgJodaTimeFormatPeriodFormat_FORMATTERS_;
     { "BUNDLE_NAME_", NULL, 0x1a, "Ljava.lang.String;", &OrgJodaTimeFormatPeriodFormat_BUNDLE_NAME_,  },
     { "FORMATTERS_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentMap;", &OrgJodaTimeFormatPeriodFormat_FORMATTERS_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormat = { "PeriodFormat", "org.joda.time.format", NULL, 0x1, 8, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormat = { 1, "PeriodFormat", "org.joda.time.format", NULL, 0x1, 8, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeFormatPeriodFormat;
 }
 
@@ -192,7 +206,7 @@ OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormat_buildNonRegExFor
 
 IOSObjectArray *OrgJodaTimeFormatPeriodFormat_retrieveVariantsWithJavaUtilResourceBundle_(JavaUtilResourceBundle *b) {
   OrgJodaTimeFormatPeriodFormat_init();
-  return [IOSObjectArray arrayWithObjects:(id[]){ [((JavaUtilResourceBundle *) nil_chk(b)) getStringWithNSString:@"PeriodFormat.space"], [b getStringWithNSString:@"PeriodFormat.comma"], [b getStringWithNSString:@"PeriodFormat.commandand"], [b getStringWithNSString:@"PeriodFormat.commaspaceand"] } count:4 type:[IOSClass classWithClass:[NSString class]]];
+  return [IOSObjectArray arrayWithObjects:(id[]){ [((JavaUtilResourceBundle *) nil_chk(b)) getStringWithNSString:@"PeriodFormat.space"], [b getStringWithNSString:@"PeriodFormat.comma"], [b getStringWithNSString:@"PeriodFormat.commandand"], [b getStringWithNSString:@"PeriodFormat.commaspaceand"] } count:4 type:NSString_class_()];
 }
 
 jboolean OrgJodaTimeFormatPeriodFormat_containsKeyWithJavaUtilResourceBundle_withNSString_(JavaUtilResourceBundle *bundle, NSString *key) {
@@ -204,3 +218,5 @@ jboolean OrgJodaTimeFormatPeriodFormat_containsKeyWithJavaUtilResourceBundle_wit
   }
   return NO;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormat)

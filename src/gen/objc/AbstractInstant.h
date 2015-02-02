@@ -16,7 +16,7 @@
 @class OrgJodaTimeInstant;
 @class OrgJodaTimeMutableDateTime;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "ReadableInstant.h"
 
 /**
@@ -231,6 +231,11 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeBaseAbstractInstant_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeBaseAbstractInstant)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseAbstractInstant)
 
 #endif // _OrgJodaTimeBaseAbstractInstant_H_

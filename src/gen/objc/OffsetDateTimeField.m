@@ -8,9 +8,18 @@
 #include "DecoratedDateTimeField.h"
 #include "DurationField.h"
 #include "FieldUtils.h"
+#include "J2ObjC_source.h"
 #include "OffsetDateTimeField.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
+
+@interface OrgJodaTimeFieldOffsetDateTimeField () {
+ @public
+  jint iOffset_;
+  jint iMin_;
+  jint iMax_;
+}
+@end
 
 @implementation OrgJodaTimeFieldOffsetDateTimeField
 
@@ -172,8 +181,10 @@
     { "iMin_", NULL, 0x12, "I", NULL,  },
     { "iMax_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldOffsetDateTimeField = { "OffsetDateTimeField", "org.joda.time.field", NULL, 0x1, 20, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldOffsetDateTimeField = { 1, "OffsetDateTimeField", "org.joda.time.field", NULL, 0x1, 20, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeFieldOffsetDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldOffsetDateTimeField)

@@ -6,6 +6,7 @@
 #include "Chronology.h"
 #include "DateConverter.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "java/util/Date.h"
 
 BOOL OrgJodaTimeConvertDateConverter_initialized = NO;
@@ -25,7 +26,7 @@ OrgJodaTimeConvertDateConverter * OrgJodaTimeConvertDateConverter_INSTANCE_;
 }
 
 - (IOSClass *)getSupportedType {
-  return [IOSClass classWithClass:[JavaUtilDate class]];
+  return JavaUtilDate_class_();
 }
 
 + (void)initialize {
@@ -44,8 +45,10 @@ OrgJodaTimeConvertDateConverter * OrgJodaTimeConvertDateConverter_INSTANCE_;
   static const J2ObjcFieldInfo fields[] = {
     { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.DateConverter;", &OrgJodaTimeConvertDateConverter_INSTANCE_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertDateConverter = { "DateConverter", "org.joda.time.convert", NULL, 0x10, 3, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertDateConverter = { 1, "DateConverter", "org.joda.time.convert", NULL, 0x10, 3, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeConvertDateConverter;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertDateConverter)

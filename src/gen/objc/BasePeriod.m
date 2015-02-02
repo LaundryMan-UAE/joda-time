@@ -16,6 +16,7 @@
 #include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "ISOChronology.h"
+#include "J2ObjC_source.h"
 #include "MutablePeriod.h"
 #include "PeriodConverter.h"
 #include "PeriodType.h"
@@ -26,6 +27,53 @@
 #include "ReadablePeriod.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/System.h"
+
+__attribute__((unused)) static void OrgJodaTimeBaseBasePeriod_checkAndUpdateWithOrgJodaTimeDurationFieldType_withIntArray_withInt_(OrgJodaTimeBaseBasePeriod *self, OrgJodaTimeDurationFieldType *type, IOSIntArray *values, jint newValue);
+__attribute__((unused)) static void OrgJodaTimeBaseBasePeriod_setPeriodInternalWithOrgJodaTimeReadablePeriod_(OrgJodaTimeBaseBasePeriod *self, id<OrgJodaTimeReadablePeriod> period);
+__attribute__((unused)) static IOSIntArray *OrgJodaTimeBaseBasePeriod_setPeriodInternalWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(OrgJodaTimeBaseBasePeriod *self, jint years, jint months, jint weeks, jint days, jint hours, jint minutes, jint seconds, jint millis);
+
+@interface OrgJodaTimeBaseBasePeriod () {
+ @public
+  /**
+   @brief The type of period
+   */
+  OrgJodaTimePeriodType *iType_;
+  /**
+   @brief The values
+   */
+  IOSIntArray *iValues_;
+}
+
+/**
+ @brief Checks whether a field type is supported, and if so adds the new value to the relevant index in the specified array.
+ @param type the field type
+ @param values the array to update
+ @param newValue the new value to store if successful
+ */
+- (void)checkAndUpdateWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)type
+                                          withIntArray:(IOSIntArray *)values
+                                               withInt:(jint)newValue;
+
+/**
+ @brief Private method called from constructor.
+ */
+- (void)setPeriodInternalWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period;
+
+/**
+ @brief Private method called from constructor.
+ */
+- (IOSIntArray *)setPeriodInternalWithInt:(jint)years
+                                  withInt:(jint)months
+                                  withInt:(jint)weeks
+                                  withInt:(jint)days
+                                  withInt:(jint)hours
+                                  withInt:(jint)minutes
+                                  withInt:(jint)seconds
+                                  withInt:(jint)millis;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeBaseBasePeriod, iType_, OrgJodaTimePeriodType *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeBaseBasePeriod, iValues_, IOSIntArray *)
 
 BOOL OrgJodaTimeBaseBasePeriod_initialized = NO;
 
@@ -45,7 +93,7 @@ id<OrgJodaTimeReadablePeriod> OrgJodaTimeBaseBasePeriod_DUMMY_PERIOD_;
   if (self = [super init]) {
     type = [self checkPeriodTypeWithOrgJodaTimePeriodType:type];
     OrgJodaTimeBaseBasePeriod_set_iType_(self, type);
-    OrgJodaTimeBaseBasePeriod_set_iValues_(self, [self setPeriodInternalWithInt:years withInt:months withInt:weeks withInt:days withInt:hours withInt:minutes withInt:seconds withInt:millis]);
+    OrgJodaTimeBaseBasePeriod_set_iValues_(self, OrgJodaTimeBaseBasePeriod_setPeriodInternalWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(self, years, months, weeks, days, hours, minutes, seconds, millis));
   }
   return self;
 }
@@ -90,7 +138,7 @@ id<OrgJodaTimeReadablePeriod> OrgJodaTimeBaseBasePeriod_DUMMY_PERIOD_;
     if (start == nil || end == nil) {
       @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"ReadablePartial objects must not be null"] autorelease];
     }
-    if ([(id) start isKindOfClass:[OrgJodaTimeBaseBaseLocal class]] && [(id) end isKindOfClass:[OrgJodaTimeBaseBaseLocal class]] && [((id<OrgJodaTimeReadablePartial>) nil_chk(start)) getClass] == [((id<OrgJodaTimeReadablePartial>) nil_chk(end)) getClass]) {
+    if ([start isKindOfClass:[OrgJodaTimeBaseBaseLocal class]] && [end isKindOfClass:[OrgJodaTimeBaseBaseLocal class]] && [((id<OrgJodaTimeReadablePartial>) nil_chk(start)) getClass] == [((id<OrgJodaTimeReadablePartial>) nil_chk(end)) getClass]) {
       type = [self checkPeriodTypeWithOrgJodaTimePeriodType:type];
       jlong startMillis = [((OrgJodaTimeBaseBaseLocal *) check_class_cast(start, [OrgJodaTimeBaseBaseLocal class])) getLocalMillis];
       jlong endMillis = [((OrgJodaTimeBaseBaseLocal *) check_class_cast(end, [OrgJodaTimeBaseBaseLocal class])) getLocalMillis];
@@ -179,7 +227,7 @@ id<OrgJodaTimeReadablePeriod> OrgJodaTimeBaseBasePeriod_DUMMY_PERIOD_;
     type = (type == nil ? [((id<OrgJodaTimeConvertPeriodConverter>) nil_chk(converter)) getPeriodTypeWithId:period] : type);
     type = [self checkPeriodTypeWithOrgJodaTimePeriodType:type];
     OrgJodaTimeBaseBasePeriod_set_iType_(self, type);
-    if ([self conformsToProtocol: @protocol(OrgJodaTimeReadWritablePeriod)]) {
+    if ([OrgJodaTimeReadWritablePeriod_class_() isInstance:self]) {
       OrgJodaTimeBaseBasePeriod_setAndConsume_iValues_(self, [IOSIntArray newArrayWithLength:[self size]]);
       chrono = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chrono);
       [((id<OrgJodaTimeConvertPeriodConverter>) nil_chk(converter)) setIntoWithOrgJodaTimeReadWritablePeriod:(id<OrgJodaTimeReadWritablePeriod>) check_protocol_cast(self, @protocol(OrgJodaTimeReadWritablePeriod)) withId:period withOrgJodaTimeChronology:chrono];
@@ -229,15 +277,7 @@ id<OrgJodaTimeReadablePeriod> OrgJodaTimeBaseBasePeriod_DUMMY_PERIOD_;
 - (void)checkAndUpdateWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)type
                                           withIntArray:(IOSIntArray *)values
                                                withInt:(jint)newValue {
-  jint index = [self indexOfWithOrgJodaTimeDurationFieldType:type];
-  if (index == -1) {
-    if (newValue != 0) {
-      @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:JreStrcat("$$C", @"Period does not support field '", [((OrgJodaTimeDurationFieldType *) nil_chk(type)) getName], '\'')] autorelease];
-    }
-  }
-  else {
-    *IOSIntArray_GetRef(nil_chk(values), index) = newValue;
-  }
+  OrgJodaTimeBaseBasePeriod_checkAndUpdateWithOrgJodaTimeDurationFieldType_withIntArray_withInt_(self, type, values, newValue);
 }
 
 - (void)setPeriodWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period {
@@ -245,18 +285,12 @@ id<OrgJodaTimeReadablePeriod> OrgJodaTimeBaseBasePeriod_DUMMY_PERIOD_;
     [self setValuesWithIntArray:[IOSIntArray arrayWithLength:[self size]]];
   }
   else {
-    [self setPeriodInternalWithOrgJodaTimeReadablePeriod:period];
+    OrgJodaTimeBaseBasePeriod_setPeriodInternalWithOrgJodaTimeReadablePeriod_(self, period);
   }
 }
 
 - (void)setPeriodInternalWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period {
-  IOSIntArray *newValues = [IOSIntArray arrayWithLength:[self size]];
-  for (jint i = 0, isize = [((id<OrgJodaTimeReadablePeriod>) nil_chk(period)) size]; i < isize; i++) {
-    OrgJodaTimeDurationFieldType *type = [period getFieldTypeWithInt:i];
-    jint value = [period getValueWithInt:i];
-    [self checkAndUpdateWithOrgJodaTimeDurationFieldType:type withIntArray:newValues withInt:value];
-  }
-  [self setValuesWithIntArray:newValues];
+  OrgJodaTimeBaseBasePeriod_setPeriodInternalWithOrgJodaTimeReadablePeriod_(self, period);
 }
 
 - (void)setPeriodWithInt:(jint)years
@@ -267,7 +301,7 @@ id<OrgJodaTimeReadablePeriod> OrgJodaTimeBaseBasePeriod_DUMMY_PERIOD_;
                  withInt:(jint)minutes
                  withInt:(jint)seconds
                  withInt:(jint)millis {
-  IOSIntArray *newValues = [self setPeriodInternalWithInt:years withInt:months withInt:weeks withInt:days withInt:hours withInt:minutes withInt:seconds withInt:millis];
+  IOSIntArray *newValues = OrgJodaTimeBaseBasePeriod_setPeriodInternalWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(self, years, months, weeks, days, hours, minutes, seconds, millis);
   [self setValuesWithIntArray:newValues];
 }
 
@@ -279,16 +313,7 @@ id<OrgJodaTimeReadablePeriod> OrgJodaTimeBaseBasePeriod_DUMMY_PERIOD_;
                                   withInt:(jint)minutes
                                   withInt:(jint)seconds
                                   withInt:(jint)millis {
-  IOSIntArray *newValues = [IOSIntArray arrayWithLength:[self size]];
-  [self checkAndUpdateWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_years() withIntArray:newValues withInt:years];
-  [self checkAndUpdateWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_months() withIntArray:newValues withInt:months];
-  [self checkAndUpdateWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_weeks() withIntArray:newValues withInt:weeks];
-  [self checkAndUpdateWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_days() withIntArray:newValues withInt:days];
-  [self checkAndUpdateWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_hours() withIntArray:newValues withInt:hours];
-  [self checkAndUpdateWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_minutes() withIntArray:newValues withInt:minutes];
-  [self checkAndUpdateWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_seconds() withIntArray:newValues withInt:seconds];
-  [self checkAndUpdateWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_millis() withIntArray:newValues withInt:millis];
-  return newValues;
+  return OrgJodaTimeBaseBasePeriod_setPeriodInternalWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(self, years, months, weeks, days, hours, minutes, seconds, millis);
 }
 
 - (void)setFieldWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)field
@@ -340,7 +365,7 @@ withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)field
   for (jint i = 0, isize = [((id<OrgJodaTimeReadablePeriod>) nil_chk(period)) size]; i < isize; i++) {
     OrgJodaTimeDurationFieldType *type = [period getFieldTypeWithInt:i];
     jint value = [period getValueWithInt:i];
-    [self checkAndUpdateWithOrgJodaTimeDurationFieldType:type withIntArray:values withInt:value];
+    OrgJodaTimeBaseBasePeriod_checkAndUpdateWithOrgJodaTimeDurationFieldType_withIntArray_withInt_(self, type, values, value);
   }
   return values;
 }
@@ -379,8 +404,8 @@ withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)field
 }
 
 - (void)dealloc {
-  OrgJodaTimeBaseBasePeriod_set_iType_(self, nil);
-  OrgJodaTimeBaseBasePeriod_set_iValues_(self, nil);
+  RELEASE_(iType_);
+  RELEASE_(iValues_);
   [super dealloc];
 }
 
@@ -436,11 +461,48 @@ withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)field
     { "iType_", NULL, 0x12, "Lorg.joda.time.PeriodType;", NULL,  },
     { "iValues_", NULL, 0x12, "[I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseBasePeriod = { "BasePeriod", "org.joda.time.base", NULL, 0x401, 30, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeBaseBasePeriod = { 1, "BasePeriod", "org.joda.time.base", NULL, 0x401, 30, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeBaseBasePeriod;
 }
 
 @end
+
+void OrgJodaTimeBaseBasePeriod_checkAndUpdateWithOrgJodaTimeDurationFieldType_withIntArray_withInt_(OrgJodaTimeBaseBasePeriod *self, OrgJodaTimeDurationFieldType *type, IOSIntArray *values, jint newValue) {
+  jint index = [self indexOfWithOrgJodaTimeDurationFieldType:type];
+  if (index == -1) {
+    if (newValue != 0) {
+      @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:JreStrcat("$$C", @"Period does not support field '", [((OrgJodaTimeDurationFieldType *) nil_chk(type)) getName], '\'')] autorelease];
+    }
+  }
+  else {
+    *IOSIntArray_GetRef(nil_chk(values), index) = newValue;
+  }
+}
+
+void OrgJodaTimeBaseBasePeriod_setPeriodInternalWithOrgJodaTimeReadablePeriod_(OrgJodaTimeBaseBasePeriod *self, id<OrgJodaTimeReadablePeriod> period) {
+  IOSIntArray *newValues = [IOSIntArray arrayWithLength:[self size]];
+  for (jint i = 0, isize = [((id<OrgJodaTimeReadablePeriod>) nil_chk(period)) size]; i < isize; i++) {
+    OrgJodaTimeDurationFieldType *type = [period getFieldTypeWithInt:i];
+    jint value = [period getValueWithInt:i];
+    OrgJodaTimeBaseBasePeriod_checkAndUpdateWithOrgJodaTimeDurationFieldType_withIntArray_withInt_(self, type, newValues, value);
+  }
+  [self setValuesWithIntArray:newValues];
+}
+
+IOSIntArray *OrgJodaTimeBaseBasePeriod_setPeriodInternalWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(OrgJodaTimeBaseBasePeriod *self, jint years, jint months, jint weeks, jint days, jint hours, jint minutes, jint seconds, jint millis) {
+  IOSIntArray *newValues = [IOSIntArray arrayWithLength:[self size]];
+  OrgJodaTimeBaseBasePeriod_checkAndUpdateWithOrgJodaTimeDurationFieldType_withIntArray_withInt_(self, OrgJodaTimeDurationFieldType_years(), newValues, years);
+  OrgJodaTimeBaseBasePeriod_checkAndUpdateWithOrgJodaTimeDurationFieldType_withIntArray_withInt_(self, OrgJodaTimeDurationFieldType_months(), newValues, months);
+  OrgJodaTimeBaseBasePeriod_checkAndUpdateWithOrgJodaTimeDurationFieldType_withIntArray_withInt_(self, OrgJodaTimeDurationFieldType_weeks(), newValues, weeks);
+  OrgJodaTimeBaseBasePeriod_checkAndUpdateWithOrgJodaTimeDurationFieldType_withIntArray_withInt_(self, OrgJodaTimeDurationFieldType_days(), newValues, days);
+  OrgJodaTimeBaseBasePeriod_checkAndUpdateWithOrgJodaTimeDurationFieldType_withIntArray_withInt_(self, OrgJodaTimeDurationFieldType_hours(), newValues, hours);
+  OrgJodaTimeBaseBasePeriod_checkAndUpdateWithOrgJodaTimeDurationFieldType_withIntArray_withInt_(self, OrgJodaTimeDurationFieldType_minutes(), newValues, minutes);
+  OrgJodaTimeBaseBasePeriod_checkAndUpdateWithOrgJodaTimeDurationFieldType_withIntArray_withInt_(self, OrgJodaTimeDurationFieldType_seconds(), newValues, seconds);
+  OrgJodaTimeBaseBasePeriod_checkAndUpdateWithOrgJodaTimeDurationFieldType_withIntArray_withInt_(self, OrgJodaTimeDurationFieldType_millis(), newValues, millis);
+  return newValues;
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseBasePeriod)
 
 @implementation OrgJodaTimeBaseBasePeriod_$1
 
@@ -462,8 +524,10 @@ withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)field
     { "getPeriodType", NULL, "Lorg.joda.time.PeriodType;", 0x1, NULL },
     { "init", NULL, NULL, 0x0, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseBasePeriod_$1 = { "$1", "org.joda.time.base", "BasePeriod", 0x8000, 3, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeBaseBasePeriod_$1 = { 1, "$1", "org.joda.time.base", "BasePeriod", 0x8000, 3, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeBaseBasePeriod_$1;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseBasePeriod_$1)

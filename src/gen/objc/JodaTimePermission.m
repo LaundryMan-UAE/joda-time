@@ -3,7 +3,12 @@
 //  source: /Users/nbransby/Documents/joda-time/src/main/java/org/joda/time/JodaTimePermission.java
 //
 
+#include "J2ObjC_source.h"
 #include "JodaTimePermission.h"
+
+@interface OrgJodaTimeJodaTimePermission () {
+}
+@end
 
 @implementation OrgJodaTimeJodaTimePermission
 
@@ -18,8 +23,10 @@
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeJodaTimePermission_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeJodaTimePermission = { "JodaTimePermission", "org.joda.time", NULL, 0x1, 1, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeJodaTimePermission = { 1, "JodaTimePermission", "org.joda.time", NULL, 0x1, 1, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeJodaTimePermission;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeJodaTimePermission)

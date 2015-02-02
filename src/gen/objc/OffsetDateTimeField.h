@@ -10,8 +10,8 @@
 @class OrgJodaTimeDateTimeFieldType;
 @class OrgJodaTimeDurationField;
 
-#import "JreEmulation.h"
 #include "DecoratedDateTimeField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeFieldOffsetDateTimeField_serialVersionUID 3145790132623583142LL
 
@@ -22,10 +22,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFieldOffsetDateTimeField : OrgJodaTimeFieldDecoratedDateTimeField {
- @public
-  jint iOffset_;
-  jint iMin_;
-  jint iMax_;
 }
 
 /**
@@ -145,12 +141,15 @@
  */
 - (jint)getOffset;
 
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldOffsetDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldOffsetDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldOffsetDateTimeField)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldOffsetDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldOffsetDateTimeField)
 
 #endif // _OrgJodaTimeFieldOffsetDateTimeField_H_

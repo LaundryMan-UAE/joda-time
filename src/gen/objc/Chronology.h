@@ -13,7 +13,7 @@
 @protocol OrgJodaTimeReadablePartial;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Chronology provides access to the individual date time fields for a chronological calendar system.
@@ -388,6 +388,11 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronology_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronology)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronology)
 
 #endif // _OrgJodaTimeChronology_H_

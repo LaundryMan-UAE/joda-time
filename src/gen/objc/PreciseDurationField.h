@@ -8,8 +8,8 @@
 
 @class OrgJodaTimeDurationFieldType;
 
-#import "JreEmulation.h"
 #include "BaseDurationField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeFieldPreciseDurationField_serialVersionUID -8346152187724495365LL
 
@@ -21,11 +21,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFieldPreciseDurationField : OrgJodaTimeFieldBaseDurationField {
- @public
-  /**
-   @brief The size of the unit
-   */
-  jlong iUnitMillis_;
 }
 
 /**
@@ -98,12 +93,15 @@
  */
 - (NSUInteger)hash;
 
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldPreciseDurationField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldPreciseDurationField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldPreciseDurationField)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldPreciseDurationField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldPreciseDurationField)
 
 #endif // _OrgJodaTimeFieldPreciseDurationField_H_

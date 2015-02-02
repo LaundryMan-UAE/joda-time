@@ -8,9 +8,22 @@
 #include "DateTimeField.h"
 #include "DateTimeFieldType.h"
 #include "DurationField.h"
-#include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
+
+@interface OrgJodaTimeChronoBasicDayOfMonthDateTimeField () {
+ @public
+  OrgJodaTimeChronoBasicChronology *iChronology_;
+}
+
+/**
+ @brief Serialization singleton
+ */
+- (id)readResolve;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoBasicDayOfMonthDateTimeField, iChronology_, OrgJodaTimeChronoBasicChronology *)
 
 @implementation OrgJodaTimeChronoBasicDayOfMonthDateTimeField
 
@@ -86,7 +99,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoBasicDayOfMonthDateTimeField_set_iChronology_(self, nil);
+  RELEASE_(iChronology_);
   [super dealloc];
 }
 
@@ -113,8 +126,10 @@
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoBasicDayOfMonthDateTimeField_serialVersionUID },
     { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicDayOfMonthDateTimeField = { "BasicDayOfMonthDateTimeField", "org.joda.time.chrono", NULL, 0x10, 11, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicDayOfMonthDateTimeField = { 1, "BasicDayOfMonthDateTimeField", "org.joda.time.chrono", NULL, 0x10, 11, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeChronoBasicDayOfMonthDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicDayOfMonthDateTimeField)

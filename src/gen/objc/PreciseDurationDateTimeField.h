@@ -9,8 +9,8 @@
 @class OrgJodaTimeDateTimeFieldType;
 @class OrgJodaTimeDurationField;
 
-#import "JreEmulation.h"
 #include "BaseDateTimeField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeFieldPreciseDurationDateTimeField_serialVersionUID 5004523158306266035LL
 
@@ -26,7 +26,6 @@
    @brief The fractional unit in millis
    */
   jlong iUnitMillis_;
-  OrgJodaTimeDurationField *iUnitField_;
 }
 
 /**
@@ -94,16 +93,15 @@
 - (jint)getMaximumValueForSetWithLong:(jlong)instant
                               withInt:(jint)value;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldPreciseDurationDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldPreciseDurationDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldPreciseDurationDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldPreciseDurationDateTimeField, iUnitField_, OrgJodaTimeDurationField *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldPreciseDurationDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldPreciseDurationDateTimeField)
 
 #endif // _OrgJodaTimeFieldPreciseDurationDateTimeField_H_

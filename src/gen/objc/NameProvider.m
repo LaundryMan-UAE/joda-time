@@ -3,6 +3,7 @@
 //  source: /Users/nbransby/Documents/joda-time/src/main/java/org/joda/time/tz/NameProvider.java
 //
 
+#include "J2ObjC_source.h"
 #include "NameProvider.h"
 #include "java/util/Locale.h"
 
@@ -16,9 +17,10 @@
     { "getShortNameWithJavaUtilLocale:withNSString:withNSString:", "getShortName", "Ljava.lang.String;", 0x401, NULL },
     { "getNameWithJavaUtilLocale:withNSString:withNSString:", "getName", "Ljava.lang.String;", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzNameProvider = { "NameProvider", "org.joda.time.tz", NULL, 0x201, 2, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeTzNameProvider = { 1, "NameProvider", "org.joda.time.tz", NULL, 0x201, 2, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeTzNameProvider;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeTzNameProvider)

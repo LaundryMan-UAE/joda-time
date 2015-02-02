@@ -7,8 +7,19 @@
 #include "DateTimeFieldType.h"
 #include "DecoratedDateTimeField.h"
 #include "DurationField.h"
-#include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "java/lang/IllegalArgumentException.h"
+
+@interface OrgJodaTimeFieldDecoratedDateTimeField () {
+ @public
+  /**
+   @brief The DateTimeField being wrapped
+   */
+  OrgJodaTimeDateTimeField *iField_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldDecoratedDateTimeField, iField_, OrgJodaTimeDateTimeField *)
 
 @implementation OrgJodaTimeFieldDecoratedDateTimeField
 
@@ -64,7 +75,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeFieldDecoratedDateTimeField_set_iField_(self, nil);
+  RELEASE_(iField_);
   [super dealloc];
 }
 
@@ -90,8 +101,10 @@
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeFieldDecoratedDateTimeField_serialVersionUID },
     { "iField_", NULL, 0x12, "Lorg.joda.time.DateTimeField;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldDecoratedDateTimeField = { "DecoratedDateTimeField", "org.joda.time.field", NULL, 0x401, 10, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldDecoratedDateTimeField = { 1, "DecoratedDateTimeField", "org.joda.time.field", NULL, 0x401, 10, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeFieldDecoratedDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldDecoratedDateTimeField)

@@ -14,6 +14,7 @@
 #include "IOSClass.h"
 #include "ISOChronology.h"
 #include "ISOYearOfEraDateTimeField.h"
+#include "J2ObjC_source.h"
 #include "RemainderDateTimeField.h"
 #include "ZonedChronology.h"
 #include "java/io/IOException.h"
@@ -21,6 +22,31 @@
 #include "java/io/ObjectOutputStream.h"
 #include "java/lang/ClassNotFoundException.h"
 #include "java/util/concurrent/ConcurrentHashMap.h"
+
+@interface OrgJodaTimeChronoISOChronology () {
+}
+- (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base;
+
+/**
+ @brief Serialize ISOChronology instances using a small stub.
+ This reduces the serialized size, and deserialized instances come from the cache.
+ */
+- (id)writeReplace;
+@end
+
+@interface OrgJodaTimeChronoISOChronology_Stub () {
+ @public
+  OrgJodaTimeDateTimeZone *iZone_;
+}
+
+- (id)readResolve;
+
+- (void)writeObjectWithJavaIoObjectOutputStream:(JavaIoObjectOutputStream *)outArg;
+
+- (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)inArg;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoISOChronology_Stub, iZone_, OrgJodaTimeDateTimeZone *)
 
 BOOL OrgJodaTimeChronoISOChronology_initialized = NO;
 
@@ -126,7 +152,7 @@ JavaUtilConcurrentConcurrentHashMap * OrgJodaTimeChronoISOChronology_cCache_;
     { "INSTANCE_UTC_", NULL, 0x1a, "Lorg.joda.time.chrono.ISOChronology;", &OrgJodaTimeChronoISOChronology_INSTANCE_UTC_,  },
     { "cCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoISOChronology_cCache_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoISOChronology = { "ISOChronology", "org.joda.time.chrono", NULL, 0x11, 11, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoISOChronology = { 1, "ISOChronology", "org.joda.time.chrono", NULL, 0x11, 11, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeChronoISOChronology;
 }
 
@@ -158,6 +184,8 @@ OrgJodaTimeChronoISOChronology *OrgJodaTimeChronoISOChronology_getInstanceWithOr
   return chrono;
 }
 
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoISOChronology)
+
 @implementation OrgJodaTimeChronoISOChronology_Stub
 
 - (instancetype)initWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
@@ -180,7 +208,7 @@ OrgJodaTimeChronoISOChronology *OrgJodaTimeChronoISOChronology_getInstanceWithOr
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoISOChronology_Stub_set_iZone_(self, nil);
+  RELEASE_(iZone_);
   [super dealloc];
 }
 
@@ -200,8 +228,10 @@ OrgJodaTimeChronoISOChronology *OrgJodaTimeChronoISOChronology_getInstanceWithOr
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoISOChronology_Stub_serialVersionUID },
     { "iZone_", NULL, 0x82, "Lorg.joda.time.DateTimeZone;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoISOChronology_Stub = { "Stub", "org.joda.time.chrono", "ISOChronology", 0x1a, 4, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoISOChronology_Stub = { 1, "Stub", "org.joda.time.chrono", "ISOChronology", 0x1a, 4, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeChronoISOChronology_Stub;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoISOChronology_Stub)

@@ -13,7 +13,7 @@
 @protocol OrgJodaTimeReadableInstant;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "ReadablePeriod.h"
 #include "java/io/Serializable.h"
 #include "java/lang/Comparable.h"
@@ -28,11 +28,6 @@
  @since 1.4
  */
 @interface OrgJodaTimeBaseBaseSingleFieldPeriod : NSObject < OrgJodaTimeReadablePeriod, JavaLangComparable, JavaIoSerializable > {
- @public
-  /**
-   @brief The period in the units of this period.
-   */
-  jint iPeriod_;
 }
 
 /**
@@ -177,17 +172,23 @@
  */
 - (jint)compareToWithId:(OrgJodaTimeBaseBaseSingleFieldPeriod *)other;
 
-- (void)copyAllFieldsTo:(OrgJodaTimeBaseBaseSingleFieldPeriod *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeBaseBaseSingleFieldPeriod_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeBaseBaseSingleFieldPeriod)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT jint OrgJodaTimeBaseBaseSingleFieldPeriod_betweenWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimeDurationFieldType_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end, OrgJodaTimeDurationFieldType *field);
+
 FOUNDATION_EXPORT jint OrgJodaTimeBaseBaseSingleFieldPeriod_betweenWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePeriod_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end, id<OrgJodaTimeReadablePeriod> zeroInstance);
+
 FOUNDATION_EXPORT jint OrgJodaTimeBaseBaseSingleFieldPeriod_standardPeriodInWithOrgJodaTimeReadablePeriod_withLong_(id<OrgJodaTimeReadablePeriod> period, jlong millisPerUnit);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseSingleFieldPeriod, serialVersionUID, jlong)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseSingleFieldPeriod, START_1972, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseBaseSingleFieldPeriod)
 
 #endif // _OrgJodaTimeBaseBaseSingleFieldPeriod_H_

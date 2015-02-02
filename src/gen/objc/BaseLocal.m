@@ -4,6 +4,11 @@
 //
 
 #include "BaseLocal.h"
+#include "J2ObjC_source.h"
+
+@interface OrgJodaTimeBaseBaseLocal () {
+}
+@end
 
 @implementation OrgJodaTimeBaseBaseLocal
 
@@ -25,8 +30,10 @@
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeBaseBaseLocal_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseLocal = { "BaseLocal", "org.joda.time.base", NULL, 0x401, 2, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseLocal = { 1, "BaseLocal", "org.joda.time.base", NULL, 0x401, 2, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeBaseBaseLocal;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseBaseLocal)

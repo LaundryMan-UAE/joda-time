@@ -17,12 +17,22 @@
 #include "DurationField.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
+#include "J2ObjC_source.h"
 #include "LimitChronology.h"
 #include "SkipDateTimeField.h"
 #include "ZonedChronology.h"
 #include "java/lang/ArrayIndexOutOfBoundsException.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/util/concurrent/ConcurrentHashMap.h"
+
+@interface OrgJodaTimeChronoCopticChronology () {
+}
+
+/**
+ @brief Serialization singleton.
+ */
+- (id)readResolve;
+@end
 
 BOOL OrgJodaTimeChronoCopticChronology_initialized = NO;
 
@@ -156,7 +166,7 @@ OrgJodaTimeChronoCopticChronology * OrgJodaTimeChronoCopticChronology_INSTANCE_U
     { "cCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoCopticChronology_cCache_,  },
     { "INSTANCE_UTC_", NULL, 0x1a, "Lorg.joda.time.chrono.CopticChronology;", &OrgJodaTimeChronoCopticChronology_INSTANCE_UTC_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoCopticChronology = { "CopticChronology", "org.joda.time.chrono", NULL, 0x11, 14, methods, 7, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoCopticChronology = { 1, "CopticChronology", "org.joda.time.chrono", NULL, 0x11, 14, methods, 7, fields, 0, NULL};
   return &_OrgJodaTimeChronoCopticChronology;
 }
 
@@ -185,7 +195,7 @@ OrgJodaTimeChronoCopticChronology *OrgJodaTimeChronoCopticChronology_getInstance
   OrgJodaTimeChronoCopticChronology *chrono;
   IOSObjectArray *chronos = [((JavaUtilConcurrentConcurrentHashMap *) nil_chk(OrgJodaTimeChronoCopticChronology_cCache_)) getWithId:zone];
   if (chronos == nil) {
-    chronos = [IOSObjectArray arrayWithLength:7 type:[IOSClass classWithClass:[OrgJodaTimeChronoCopticChronology class]]];
+    chronos = [IOSObjectArray arrayWithLength:7 type:OrgJodaTimeChronoCopticChronology_class_()];
     IOSObjectArray *oldChronos = [OrgJodaTimeChronoCopticChronology_cCache_ putIfAbsentWithId:zone withId:chronos];
     if (oldChronos != nil) {
       chronos = oldChronos;
@@ -216,3 +226,5 @@ OrgJodaTimeChronoCopticChronology *OrgJodaTimeChronoCopticChronology_getInstance
   }
   return chrono;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoCopticChronology)

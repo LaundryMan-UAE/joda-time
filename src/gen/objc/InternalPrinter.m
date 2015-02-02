@@ -7,6 +7,7 @@
 #include "DateTimeZone.h"
 #include "IOSClass.h"
 #include "InternalPrinter.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
 #include "java/io/IOException.h"
 #include "java/lang/Appendable.h"
@@ -23,9 +24,10 @@
     { "printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:", "printTo", "V", 0x401, "Ljava.io.IOException;" },
     { "printToWithJavaLangAppendable:withOrgJodaTimeReadablePartial:withJavaUtilLocale:", "printTo", "V", 0x401, "Ljava.io.IOException;" },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatInternalPrinter = { "InternalPrinter", "org.joda.time.format", NULL, 0x200, 3, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatInternalPrinter = { 1, "InternalPrinter", "org.joda.time.format", NULL, 0x200, 3, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeFormatInternalPrinter;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatInternalPrinter)

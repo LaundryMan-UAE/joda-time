@@ -5,6 +5,7 @@
 
 #include "Chronology.h"
 #include "IntervalConverter.h"
+#include "J2ObjC_source.h"
 #include "ReadWritableInterval.h"
 
 @interface OrgJodaTimeConvertIntervalConverter : NSObject
@@ -17,9 +18,10 @@
     { "isReadableIntervalWithId:withOrgJodaTimeChronology:", "isReadableInterval", "Z", 0x401, NULL },
     { "setIntoWithOrgJodaTimeReadWritableInterval:withId:withOrgJodaTimeChronology:", "setInto", "V", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertIntervalConverter = { "IntervalConverter", "org.joda.time.convert", NULL, 0x201, 2, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertIntervalConverter = { 1, "IntervalConverter", "org.joda.time.convert", NULL, 0x201, 2, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeConvertIntervalConverter;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertIntervalConverter)

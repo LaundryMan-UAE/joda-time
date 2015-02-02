@@ -17,6 +17,7 @@
 #include "Hours.h"
 #include "IOSClass.h"
 #include "ISOPeriodFormat.h"
+#include "J2ObjC_source.h"
 #include "LocalDate.h"
 #include "Minutes.h"
 #include "Period.h"
@@ -30,6 +31,17 @@
 #include "ToString.h"
 #include "Weeks.h"
 #include "java/lang/Integer.h"
+
+@interface OrgJodaTimeWeeks () {
+}
+- (instancetype)initWithInt:(jint)weeks;
+
+/**
+ @brief Resolves singletons.
+ @return the singleton instance
+ */
+- (id)readResolve;
+@end
 
 BOOL OrgJodaTimeWeeks_initialized = NO;
 
@@ -182,11 +194,11 @@ OrgJodaTimeFormatPeriodFormatter * OrgJodaTimeWeeks_PARSER_;
 }
 
 + (IOSObjectArray *)__annotations_parseWeeksWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_description {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -228,7 +240,7 @@ OrgJodaTimeFormatPeriodFormatter * OrgJodaTimeWeeks_PARSER_;
     { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeWeeks_PARSER_,  },
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeWeeks_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeWeeks = { "Weeks", "org.joda.time", NULL, 0x11, 26, methods, 8, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeWeeks = { 1, "Weeks", "org.joda.time", NULL, 0x11, 26, methods, 8, fields, 0, NULL};
   return &_OrgJodaTimeWeeks;
 }
 
@@ -262,7 +274,7 @@ OrgJodaTimeWeeks *OrgJodaTimeWeeks_weeksBetweenWithOrgJodaTimeReadableInstant_wi
 
 OrgJodaTimeWeeks *OrgJodaTimeWeeks_weeksBetweenWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end) {
   OrgJodaTimeWeeks_init();
-  if ([(id) start isKindOfClass:[OrgJodaTimeLocalDate class]] && [(id) end isKindOfClass:[OrgJodaTimeLocalDate class]]) {
+  if ([start isKindOfClass:[OrgJodaTimeLocalDate class]] && [end isKindOfClass:[OrgJodaTimeLocalDate class]]) {
     OrgJodaTimeChronology *chrono = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_([((id<OrgJodaTimeReadablePartial>) nil_chk(start)) getChronology]);
     jint weeks = [((OrgJodaTimeDurationField *) nil_chk([((OrgJodaTimeChronology *) nil_chk(chrono)) weeks])) getDifferenceWithLong:[((OrgJodaTimeLocalDate *) nil_chk(((OrgJodaTimeLocalDate *) check_class_cast(end, [OrgJodaTimeLocalDate class])))) getLocalMillis] withLong:[((OrgJodaTimeLocalDate *) check_class_cast(start, [OrgJodaTimeLocalDate class])) getLocalMillis]];
     return OrgJodaTimeWeeks_weeksWithInt_(weeks);
@@ -294,3 +306,5 @@ OrgJodaTimeWeeks *OrgJodaTimeWeeks_parseWeeksWithNSString_(NSString *periodStr) 
   OrgJodaTimePeriod *p = [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeWeeks_PARSER_)) parsePeriodWithNSString:periodStr];
   return OrgJodaTimeWeeks_weeksWithInt_([((OrgJodaTimePeriod *) nil_chk(p)) getWeeks]);
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeWeeks)

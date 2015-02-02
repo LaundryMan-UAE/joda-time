@@ -14,8 +14,8 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "DateTimeField.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 
 #define OrgJodaTimeFieldUnsupportedDateTimeField_serialVersionUID -1934618396111902255LL
@@ -27,15 +27,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFieldUnsupportedDateTimeField : OrgJodaTimeDateTimeField < JavaIoSerializable > {
- @public
-  /**
-   @brief The field type
-   */
-  OrgJodaTimeDateTimeFieldType *iType_;
-  /**
-   @brief The duration of the datetime field
-   */
-  OrgJodaTimeDurationField *iDurationField_;
 }
 
 /**
@@ -47,14 +38,6 @@
  */
 + (OrgJodaTimeFieldUnsupportedDateTimeField *)getInstanceWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type
                                                              withOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)durationField;
-
-/**
- @brief Constructor.
- @param type the field type
- @param durationField the duration to use
- */
-- (instancetype)initWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type
-                        withOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)durationField;
 
 - (OrgJodaTimeDateTimeFieldType *)getType;
 
@@ -385,23 +368,12 @@
  */
 - (NSString *)description;
 
-/**
- @brief Ensure proper singleton serialization
- */
-- (id)readResolve;
-
-- (JavaLangUnsupportedOperationException *)unsupported;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldUnsupportedDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldUnsupportedDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldUnsupportedDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldUnsupportedDateTimeField, iType_, OrgJodaTimeDateTimeFieldType *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldUnsupportedDateTimeField, iDurationField_, OrgJodaTimeDurationField *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeFieldUnsupportedDateTimeField *OrgJodaTimeFieldUnsupportedDateTimeField_getInstanceWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType *type, OrgJodaTimeDurationField *durationField);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldUnsupportedDateTimeField, serialVersionUID, jlong)
@@ -409,5 +381,8 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldUnsupportedDateTimeField, serialVersi
 FOUNDATION_EXPORT JavaUtilHashMap *OrgJodaTimeFieldUnsupportedDateTimeField_cCache_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldUnsupportedDateTimeField, cCache_, JavaUtilHashMap *)
 J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeFieldUnsupportedDateTimeField, cCache_, JavaUtilHashMap *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldUnsupportedDateTimeField)
 
 #endif // _OrgJodaTimeFieldUnsupportedDateTimeField_H_

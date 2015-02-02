@@ -5,8 +5,19 @@
 
 #include "DateTimeZone.h"
 #include "GJCacheKey.h"
-#include "IOSClass.h"
 #include "Instant.h"
+#include "J2ObjC_source.h"
+
+@interface OrgJodaTimeChronoGJCacheKey () {
+ @public
+  OrgJodaTimeDateTimeZone *zone_;
+  OrgJodaTimeInstant *cutoverInstant_;
+  jint minDaysInFirstWeek_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJCacheKey, zone_, OrgJodaTimeDateTimeZone *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJCacheKey, cutoverInstant_, OrgJodaTimeInstant *)
 
 @implementation OrgJodaTimeChronoGJCacheKey
 
@@ -64,8 +75,8 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoGJCacheKey_set_zone_(self, nil);
-  OrgJodaTimeChronoGJCacheKey_set_cutoverInstant_(self, nil);
+  RELEASE_(zone_);
+  RELEASE_(cutoverInstant_);
   [super dealloc];
 }
 
@@ -87,8 +98,10 @@
     { "cutoverInstant_", NULL, 0x12, "Lorg.joda.time.Instant;", NULL,  },
     { "minDaysInFirstWeek_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoGJCacheKey = { "GJCacheKey", "org.joda.time.chrono", NULL, 0x0, 3, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoGJCacheKey = { 1, "GJCacheKey", "org.joda.time.chrono", NULL, 0x0, 3, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeChronoGJCacheKey;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJCacheKey)

@@ -9,8 +9,8 @@
 @class JavaUtilLocale;
 @class OrgJodaTimeDurationField;
 
-#import "JreEmulation.h"
 #include "BaseDateTimeField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoBasicSingleEraDateTimeField_ERA_VALUE 1
 
@@ -21,11 +21,6 @@
  @since 1.2, refactored from CopticEraDateTimeField
  */
 @interface OrgJodaTimeChronoBasicSingleEraDateTimeField : OrgJodaTimeFieldBaseDateTimeField {
- @public
-  /**
-   @brief Text value of the era.
-   */
-  NSString *iEraText_;
 }
 
 /**
@@ -97,16 +92,15 @@
  */
 - (jint)getMaximumTextLengthWithJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoBasicSingleEraDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoBasicSingleEraDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoBasicSingleEraDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoBasicSingleEraDateTimeField, iEraText_, NSString *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicSingleEraDateTimeField, ERA_VALUE, jint)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicSingleEraDateTimeField)
 
 #endif // _OrgJodaTimeChronoBasicSingleEraDateTimeField_H_

@@ -5,9 +5,19 @@
 
 #include "DateTimeZone.h"
 #include "FixedDateTimeZone.h"
-#include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "java/util/SimpleTimeZone.h"
 #include "java/util/TimeZone.h"
+
+@interface OrgJodaTimeTzFixedDateTimeZone () {
+ @public
+  NSString *iNameKey_;
+  jint iWallOffset_;
+  jint iStandardOffset_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeTzFixedDateTimeZone, iNameKey_, NSString *)
 
 @implementation OrgJodaTimeTzFixedDateTimeZone
 
@@ -75,7 +85,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeTzFixedDateTimeZone_set_iNameKey_(self, nil);
+  RELEASE_(iNameKey_);
   [super dealloc];
 }
 
@@ -106,8 +116,10 @@
     { "iWallOffset_", NULL, 0x12, "I", NULL,  },
     { "iStandardOffset_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzFixedDateTimeZone = { "FixedDateTimeZone", "org.joda.time.tz", NULL, 0x11, 11, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeTzFixedDateTimeZone = { 1, "FixedDateTimeZone", "org.joda.time.tz", NULL, 0x11, 11, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeTzFixedDateTimeZone;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzFixedDateTimeZone)

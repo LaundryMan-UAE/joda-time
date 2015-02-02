@@ -9,6 +9,7 @@
 #include "DateTimeZone.h"
 #include "DurationField.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "java/io/IOException.h"
 #include "java/io/ObjectInputStream.h"
 #include "java/lang/ClassNotFoundException.h"
@@ -16,6 +17,98 @@
 
 __attribute__((unused)) static jboolean OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(OrgJodaTimeDurationField *field);
 __attribute__((unused)) static jboolean OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(OrgJodaTimeDateTimeField *field);
+
+@interface OrgJodaTimeChronoAssembledChronology () {
+ @public
+  OrgJodaTimeChronology *iBase_;
+  id iParam_;
+  OrgJodaTimeDurationField *iMillis_;
+  OrgJodaTimeDurationField *iSeconds_;
+  OrgJodaTimeDurationField *iMinutes_;
+  OrgJodaTimeDurationField *iHours_;
+  OrgJodaTimeDurationField *iHalfdays_;
+  OrgJodaTimeDurationField *iDays_;
+  OrgJodaTimeDurationField *iWeeks_;
+  OrgJodaTimeDurationField *iWeekyears_;
+  OrgJodaTimeDurationField *iMonths_;
+  OrgJodaTimeDurationField *iYears_;
+  OrgJodaTimeDurationField *iCenturies_;
+  OrgJodaTimeDurationField *iEras_;
+  OrgJodaTimeDateTimeField *iMillisOfSecond_;
+  OrgJodaTimeDateTimeField *iMillisOfDay_;
+  OrgJodaTimeDateTimeField *iSecondOfMinute_;
+  OrgJodaTimeDateTimeField *iSecondOfDay_;
+  OrgJodaTimeDateTimeField *iMinuteOfHour_;
+  OrgJodaTimeDateTimeField *iMinuteOfDay_;
+  OrgJodaTimeDateTimeField *iHourOfDay_;
+  OrgJodaTimeDateTimeField *iClockhourOfDay_;
+  OrgJodaTimeDateTimeField *iHourOfHalfday_;
+  OrgJodaTimeDateTimeField *iClockhourOfHalfday_;
+  OrgJodaTimeDateTimeField *iHalfdayOfDay_;
+  OrgJodaTimeDateTimeField *iDayOfWeek_;
+  OrgJodaTimeDateTimeField *iDayOfMonth_;
+  OrgJodaTimeDateTimeField *iDayOfYear_;
+  OrgJodaTimeDateTimeField *iWeekOfWeekyear_;
+  OrgJodaTimeDateTimeField *iWeekyear_;
+  OrgJodaTimeDateTimeField *iWeekyearOfCentury_;
+  OrgJodaTimeDateTimeField *iMonthOfYear_;
+  OrgJodaTimeDateTimeField *iYear_;
+  OrgJodaTimeDateTimeField *iYearOfEra_;
+  OrgJodaTimeDateTimeField *iYearOfCentury_;
+  OrgJodaTimeDateTimeField *iCenturyOfEra_;
+  OrgJodaTimeDateTimeField *iEra_;
+  jint iBaseFlags_;
+}
+
+- (void)setFields;
+
+- (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)inArg;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iBase_, OrgJodaTimeChronology *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iParam_, id)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMillis_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iSeconds_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMinutes_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iHours_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iHalfdays_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iDays_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iWeeks_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iWeekyears_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMonths_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iYears_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iCenturies_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iEras_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMillisOfSecond_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMillisOfDay_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iSecondOfMinute_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iSecondOfDay_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMinuteOfHour_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMinuteOfDay_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iHourOfDay_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iClockhourOfDay_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iHourOfHalfday_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iClockhourOfHalfday_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iHalfdayOfDay_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iDayOfWeek_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iDayOfMonth_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iDayOfYear_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iWeekOfWeekyear_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iWeekyear_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iWeekyearOfCentury_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMonthOfYear_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iYear_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iYearOfEra_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iYearOfCentury_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iCenturyOfEra_, OrgJodaTimeDateTimeField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iEra_, OrgJodaTimeDateTimeField *)
+
+@interface OrgJodaTimeChronoAssembledChronology_Fields ()
+
++ (jboolean)isSupportedWithOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)field;
+
++ (jboolean)isSupportedWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
+@end
 
 @implementation OrgJodaTimeChronoAssembledChronology
 
@@ -290,43 +383,43 @@ __attribute__((unused)) static jboolean OrgJodaTimeChronoAssembledChronology_Fie
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoAssembledChronology_set_iBase_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iParam_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iMillis_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iSeconds_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iMinutes_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iHours_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iHalfdays_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iDays_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iWeeks_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iWeekyears_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iMonths_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iYears_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iCenturies_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iEras_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iMillisOfSecond_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iMillisOfDay_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iSecondOfMinute_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iSecondOfDay_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iMinuteOfHour_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iMinuteOfDay_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iHourOfDay_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iClockhourOfDay_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iHourOfHalfday_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iClockhourOfHalfday_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iHalfdayOfDay_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iDayOfWeek_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iDayOfMonth_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iDayOfYear_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iWeekOfWeekyear_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iWeekyear_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iWeekyearOfCentury_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iMonthOfYear_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iYear_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iYearOfEra_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iYearOfCentury_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iCenturyOfEra_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_set_iEra_(self, nil);
+  RELEASE_(iBase_);
+  RELEASE_(iParam_);
+  RELEASE_(iMillis_);
+  RELEASE_(iSeconds_);
+  RELEASE_(iMinutes_);
+  RELEASE_(iHours_);
+  RELEASE_(iHalfdays_);
+  RELEASE_(iDays_);
+  RELEASE_(iWeeks_);
+  RELEASE_(iWeekyears_);
+  RELEASE_(iMonths_);
+  RELEASE_(iYears_);
+  RELEASE_(iCenturies_);
+  RELEASE_(iEras_);
+  RELEASE_(iMillisOfSecond_);
+  RELEASE_(iMillisOfDay_);
+  RELEASE_(iSecondOfMinute_);
+  RELEASE_(iSecondOfDay_);
+  RELEASE_(iMinuteOfHour_);
+  RELEASE_(iMinuteOfDay_);
+  RELEASE_(iHourOfDay_);
+  RELEASE_(iClockhourOfDay_);
+  RELEASE_(iHourOfHalfday_);
+  RELEASE_(iClockhourOfHalfday_);
+  RELEASE_(iHalfdayOfDay_);
+  RELEASE_(iDayOfWeek_);
+  RELEASE_(iDayOfMonth_);
+  RELEASE_(iDayOfYear_);
+  RELEASE_(iWeekOfWeekyear_);
+  RELEASE_(iWeekyear_);
+  RELEASE_(iWeekyearOfCentury_);
+  RELEASE_(iMonthOfYear_);
+  RELEASE_(iYear_);
+  RELEASE_(iYearOfEra_);
+  RELEASE_(iYearOfCentury_);
+  RELEASE_(iCenturyOfEra_);
+  RELEASE_(iEra_);
   [super dealloc];
 }
 
@@ -461,11 +554,13 @@ __attribute__((unused)) static jboolean OrgJodaTimeChronoAssembledChronology_Fie
     { "iEra_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL,  },
     { "iBaseFlags_", NULL, 0x82, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoAssembledChronology = { "AssembledChronology", "org.joda.time.chrono", NULL, 0x401, 45, methods, 39, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoAssembledChronology = { 1, "AssembledChronology", "org.joda.time.chrono", NULL, 0x401, 45, methods, 39, fields, 0, NULL};
   return &_OrgJodaTimeChronoAssembledChronology;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoAssembledChronology)
 
 @implementation OrgJodaTimeChronoAssembledChronology_Fields
 
@@ -596,41 +691,41 @@ __attribute__((unused)) static jboolean OrgJodaTimeChronoAssembledChronology_Fie
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoAssembledChronology_Fields_set_millis_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_seconds_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_minutes_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_hours_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_halfdays_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_days_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weeks_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyears_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_months_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_years_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_centuries_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_eras_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_millisOfSecond_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_millisOfDay_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_secondOfMinute_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_secondOfDay_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_minuteOfHour_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_minuteOfDay_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_hourOfDay_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_clockhourOfDay_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_hourOfHalfday_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_clockhourOfHalfday_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_halfdayOfDay_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfWeek_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfMonth_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfYear_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekOfWeekyear_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyear_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyearOfCentury_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_monthOfYear_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_year_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_yearOfEra_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_yearOfCentury_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_centuryOfEra_(self, nil);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_era_(self, nil);
+  RELEASE_(millis_);
+  RELEASE_(seconds_);
+  RELEASE_(minutes_);
+  RELEASE_(hours_);
+  RELEASE_(halfdays_);
+  RELEASE_(days_);
+  RELEASE_(weeks_);
+  RELEASE_(weekyears_);
+  RELEASE_(months_);
+  RELEASE_(years_);
+  RELEASE_(centuries_);
+  RELEASE_(eras_);
+  RELEASE_(millisOfSecond_);
+  RELEASE_(millisOfDay_);
+  RELEASE_(secondOfMinute_);
+  RELEASE_(secondOfDay_);
+  RELEASE_(minuteOfHour_);
+  RELEASE_(minuteOfDay_);
+  RELEASE_(hourOfDay_);
+  RELEASE_(clockhourOfDay_);
+  RELEASE_(hourOfHalfday_);
+  RELEASE_(clockhourOfHalfday_);
+  RELEASE_(halfdayOfDay_);
+  RELEASE_(dayOfWeek_);
+  RELEASE_(dayOfMonth_);
+  RELEASE_(dayOfYear_);
+  RELEASE_(weekOfWeekyear_);
+  RELEASE_(weekyear_);
+  RELEASE_(weekyearOfCentury_);
+  RELEASE_(monthOfYear_);
+  RELEASE_(year_);
+  RELEASE_(yearOfEra_);
+  RELEASE_(yearOfCentury_);
+  RELEASE_(centuryOfEra_);
+  RELEASE_(era_);
   [super dealloc];
 }
 
@@ -717,7 +812,7 @@ __attribute__((unused)) static jboolean OrgJodaTimeChronoAssembledChronology_Fie
     { "centuryOfEra_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL,  },
     { "era_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoAssembledChronology_Fields = { "Fields", "org.joda.time.chrono", "AssembledChronology", 0x19, 4, methods, 35, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoAssembledChronology_Fields = { 1, "Fields", "org.joda.time.chrono", "AssembledChronology", 0x19, 4, methods, 35, fields, 0, NULL};
   return &_OrgJodaTimeChronoAssembledChronology_Fields;
 }
 
@@ -732,3 +827,5 @@ jboolean OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeD
   OrgJodaTimeChronoAssembledChronology_Fields_init();
   return field == nil ? NO : [field isSupported];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoAssembledChronology_Fields)

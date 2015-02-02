@@ -8,6 +8,7 @@
 #include "DateTimeZone.h"
 #include "IOSClass.h"
 #include "ISOChronology.h"
+#include "J2ObjC_source.h"
 #include "ReadableInstant.h"
 #include "ReadableInstantConverter.h"
 
@@ -52,7 +53,7 @@ OrgJodaTimeConvertReadableInstantConverter * OrgJodaTimeConvertReadableInstantCo
 }
 
 - (IOSClass *)getSupportedType {
-  return [IOSClass classWithProtocol:@protocol(OrgJodaTimeReadableInstant)];
+  return OrgJodaTimeReadableInstant_class_();
 }
 
 + (void)initialize {
@@ -73,8 +74,10 @@ OrgJodaTimeConvertReadableInstantConverter * OrgJodaTimeConvertReadableInstantCo
   static const J2ObjcFieldInfo fields[] = {
     { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.ReadableInstantConverter;", &OrgJodaTimeConvertReadableInstantConverter_INSTANCE_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertReadableInstantConverter = { "ReadableInstantConverter", "org.joda.time.convert", NULL, 0x0, 5, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertReadableInstantConverter = { 1, "ReadableInstantConverter", "org.joda.time.convert", NULL, 0x0, 5, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeConvertReadableInstantConverter;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertReadableInstantConverter)

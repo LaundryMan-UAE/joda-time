@@ -13,6 +13,7 @@
 #include "IOSObjectArray.h"
 #include "ISOChronology.h"
 #include "Interval.h"
+#include "J2ObjC_source.h"
 #include "JodaTimePermission.h"
 #include "PeriodType.h"
 #include "ReadableDuration.h"
@@ -36,6 +37,38 @@
 
 __attribute__((unused)) static void OrgJodaTimeDateTimeUtils_putWithJavaUtilMap_withNSString_withNSString_(id<JavaUtilMap> map, NSString *name, NSString *id_);
 __attribute__((unused)) static void OrgJodaTimeDateTimeUtils_checkPermission();
+
+@interface OrgJodaTimeDateTimeUtils () {
+}
+
++ (void)putWithJavaUtilMap:(id<JavaUtilMap>)map
+              withNSString:(NSString *)name
+              withNSString:(NSString *)id_;
+
+/**
+ @brief Checks whether the provider may be changed using permission 'CurrentTime.setProvider'.
+ @throws SecurityException if the provider may not be changed
+ */
++ (void)checkPermission;
+@end
+
+@interface OrgJodaTimeDateTimeUtils_FixedMillisProvider () {
+ @public
+  /**
+   @brief The fixed millis value.
+   */
+  jlong iMillis_;
+}
+@end
+
+@interface OrgJodaTimeDateTimeUtils_OffsetMillisProvider () {
+ @public
+  /**
+   @brief The millis offset.
+   */
+  jlong iMillis_;
+}
+@end
 
 BOOL OrgJodaTimeDateTimeUtils_initialized = NO;
 
@@ -199,7 +232,7 @@ id<JavaUtilMap> OrgJodaTimeDateTimeUtils_cZoneNames_;
     { "cMillisProvider_", NULL, 0x4a, "Lorg.joda.time.DateTimeUtils$MillisProvider;", &OrgJodaTimeDateTimeUtils_cMillisProvider_,  },
     { "cZoneNames_", NULL, 0x4a, "Ljava.util.Map;", &OrgJodaTimeDateTimeUtils_cZoneNames_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeUtils = { "DateTimeUtils", "org.joda.time", NULL, 0x1, 24, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeUtils = { 1, "DateTimeUtils", "org.joda.time", NULL, 0x1, 24, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeDateTimeUtils;
 }
 
@@ -368,8 +401,8 @@ jboolean OrgJodaTimeDateTimeUtils_isContiguousWithOrgJodaTimeReadablePartial_(id
 JavaTextDateFormatSymbols *OrgJodaTimeDateTimeUtils_getDateFormatSymbolsWithJavaUtilLocale_(JavaUtilLocale *locale) {
   OrgJodaTimeDateTimeUtils_init();
   @try {
-    JavaLangReflectMethod *method = [[IOSClass classWithClass:[JavaTextDateFormatSymbols class]] getMethod:@"getInstance" parameterTypes:[IOSObjectArray arrayWithObjects:(id[]){ [IOSClass classWithClass:[JavaUtilLocale class]] } count:1 type:[IOSClass classWithClass:[IOSClass class]]]];
-    return (JavaTextDateFormatSymbols *) check_class_cast([((JavaLangReflectMethod *) nil_chk(method)) invokeWithId:nil withNSObjectArray:[IOSObjectArray arrayWithObjects:(id[]){ locale } count:1 type:[IOSClass classWithClass:[NSObject class]]]], [JavaTextDateFormatSymbols class]);
+    JavaLangReflectMethod *method = [JavaTextDateFormatSymbols_class_() getMethod:@"getInstance" parameterTypes:[IOSObjectArray arrayWithObjects:(id[]){ JavaUtilLocale_class_() } count:1 type:IOSClass_class_()]];
+    return (JavaTextDateFormatSymbols *) check_class_cast([((JavaLangReflectMethod *) nil_chk(method)) invokeWithId:nil withNSObjectArray:[IOSObjectArray arrayWithObjects:(id[]){ locale } count:1 type:NSObject_class_()]], [JavaTextDateFormatSymbols class]);
   }
   @catch (JavaLangException *ex) {
     return [[[JavaTextDateFormatSymbols alloc] initWithJavaUtilLocale:locale] autorelease];
@@ -403,6 +436,8 @@ jlong OrgJodaTimeDateTimeUtils_fromJulianDayWithDouble_(jdouble julianDay) {
   return J2ObjCFpToLong((epochDay * 86400000.0));
 }
 
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeUtils)
+
 @interface OrgJodaTimeDateTimeUtils_MillisProvider : NSObject
 @end
 
@@ -412,12 +447,13 @@ jlong OrgJodaTimeDateTimeUtils_fromJulianDayWithDouble_(jdouble julianDay) {
   static const J2ObjcMethodInfo methods[] = {
     { "getMillis", NULL, "J", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeUtils_MillisProvider = { "MillisProvider", "org.joda.time", "DateTimeUtils", 0x209, 1, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeUtils_MillisProvider = { 1, "MillisProvider", "org.joda.time", "DateTimeUtils", 0x209, 1, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeDateTimeUtils_MillisProvider;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeUtils_MillisProvider)
 
 @implementation OrgJodaTimeDateTimeUtils_SystemMillisProvider
 
@@ -434,11 +470,13 @@ jlong OrgJodaTimeDateTimeUtils_fromJulianDayWithDouble_(jdouble julianDay) {
     { "getMillis", NULL, "J", 0x1, NULL },
     { "init", NULL, NULL, 0x0, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeUtils_SystemMillisProvider = { "SystemMillisProvider", "org.joda.time", "DateTimeUtils", 0x8, 2, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeUtils_SystemMillisProvider = { 1, "SystemMillisProvider", "org.joda.time", "DateTimeUtils", 0x8, 2, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeDateTimeUtils_SystemMillisProvider;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeUtils_SystemMillisProvider)
 
 @implementation OrgJodaTimeDateTimeUtils_FixedMillisProvider
 
@@ -466,11 +504,13 @@ jlong OrgJodaTimeDateTimeUtils_fromJulianDayWithDouble_(jdouble julianDay) {
   static const J2ObjcFieldInfo fields[] = {
     { "iMillis_", NULL, 0x12, "J", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeUtils_FixedMillisProvider = { "FixedMillisProvider", "org.joda.time", "DateTimeUtils", 0x8, 2, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeUtils_FixedMillisProvider = { 1, "FixedMillisProvider", "org.joda.time", "DateTimeUtils", 0x8, 2, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeDateTimeUtils_FixedMillisProvider;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeUtils_FixedMillisProvider)
 
 @implementation OrgJodaTimeDateTimeUtils_OffsetMillisProvider
 
@@ -498,8 +538,10 @@ jlong OrgJodaTimeDateTimeUtils_fromJulianDayWithDouble_(jdouble julianDay) {
   static const J2ObjcFieldInfo fields[] = {
     { "iMillis_", NULL, 0x12, "J", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeUtils_OffsetMillisProvider = { "OffsetMillisProvider", "org.joda.time", "DateTimeUtils", 0x8, 2, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeUtils_OffsetMillisProvider = { 1, "OffsetMillisProvider", "org.joda.time", "DateTimeUtils", 0x8, 2, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeDateTimeUtils_OffsetMillisProvider;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeUtils_OffsetMillisProvider)

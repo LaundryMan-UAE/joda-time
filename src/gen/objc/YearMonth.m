@@ -22,6 +22,7 @@
 #include "ISOChronology.h"
 #include "ISODateTimeFormat.h"
 #include "Interval.h"
+#include "J2ObjC_source.h"
 #include "LocalDate.h"
 #include "ReadablePartial.h"
 #include "ReadablePeriod.h"
@@ -33,6 +34,31 @@
 #include "java/util/Calendar.h"
 #include "java/util/Date.h"
 #include "java/util/Locale.h"
+
+@interface OrgJodaTimeYearMonth () {
+}
+
+/**
+ @brief Handle broken serialization from other tools.
+ @return the resolved object, not null
+ */
+- (id)readResolve;
+@end
+
+@interface OrgJodaTimeYearMonth_Property () {
+ @public
+  /**
+   @brief The partial
+   */
+  OrgJodaTimeYearMonth *iBase_;
+  /**
+   @brief The field index
+   */
+  jint iFieldIndex_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeYearMonth_Property, iBase_, OrgJodaTimeYearMonth *)
 
 BOOL OrgJodaTimeYearMonth_initialized = NO;
 
@@ -300,17 +326,17 @@ IOSObjectArray * OrgJodaTimeYearMonth_FIELD_TYPES_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeYearMonth class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeYearMonth_FIELD_TYPES_, nil, [IOSObjectArray newArrayWithObjects:(id[]){ OrgJodaTimeDateTimeFieldType_year(), OrgJodaTimeDateTimeFieldType_monthOfYear() } count:2 type:[IOSClass classWithClass:[OrgJodaTimeDateTimeFieldType class]]]);
+    JreStrongAssignAndConsume(&OrgJodaTimeYearMonth_FIELD_TYPES_, nil, [IOSObjectArray newArrayWithObjects:(id[]){ OrgJodaTimeDateTimeFieldType_year(), OrgJodaTimeDateTimeFieldType_monthOfYear() } count:2 type:OrgJodaTimeDateTimeFieldType_class_()]);
     J2OBJC_SET_INITIALIZED(OrgJodaTimeYearMonth)
   }
 }
 
 + (IOSObjectArray *)__annotations_parseWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_description {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -368,7 +394,7 @@ IOSObjectArray * OrgJodaTimeYearMonth_FIELD_TYPES_;
     { "YEAR_", NULL, 0x19, "I", NULL, .constantValue.asInt = OrgJodaTimeYearMonth_YEAR },
     { "MONTH_OF_YEAR_", NULL, 0x19, "I", NULL, .constantValue.asInt = OrgJodaTimeYearMonth_MONTH_OF_YEAR },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeYearMonth = { "YearMonth", "org.joda.time", NULL, 0x11, 46, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeYearMonth = { 1, "YearMonth", "org.joda.time", NULL, 0x11, 46, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeYearMonth;
 }
 
@@ -421,6 +447,8 @@ OrgJodaTimeYearMonth *OrgJodaTimeYearMonth_fromDateFieldsWithJavaUtilDate_(JavaU
   }
   return [[[OrgJodaTimeYearMonth alloc] initWithInt:[((JavaUtilDate *) nil_chk(date)) getYear] + 1900 withInt:[date getMonth] + 1] autorelease];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeYearMonth)
 
 @implementation OrgJodaTimeYearMonth_Property
 
@@ -479,7 +507,7 @@ OrgJodaTimeYearMonth *OrgJodaTimeYearMonth_fromDateFieldsWithJavaUtilDate_(JavaU
 }
 
 - (void)dealloc {
-  OrgJodaTimeYearMonth_Property_set_iBase_(self, nil);
+  RELEASE_(iBase_);
   [super dealloc];
 }
 
@@ -507,8 +535,10 @@ OrgJodaTimeYearMonth *OrgJodaTimeYearMonth_fromDateFieldsWithJavaUtilDate_(JavaU
     { "iBase_", NULL, 0x12, "Lorg.joda.time.YearMonth;", NULL,  },
     { "iFieldIndex_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeYearMonth_Property = { "Property", "org.joda.time", "YearMonth", 0x9, 10, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeYearMonth_Property = { 1, "Property", "org.joda.time", "YearMonth", 0x9, 10, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeYearMonth_Property;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeYearMonth_Property)

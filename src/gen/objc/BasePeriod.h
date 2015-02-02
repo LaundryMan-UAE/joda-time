@@ -15,8 +15,8 @@
 @protocol OrgJodaTimeReadableInstant;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "AbstractPeriod.h"
+#include "J2ObjC_header.h"
 #include "ReadablePeriod.h"
 #include "java/io/Serializable.h"
 
@@ -30,15 +30,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeBaseBasePeriod : OrgJodaTimeBaseAbstractPeriod < OrgJodaTimeReadablePeriod, JavaIoSerializable > {
- @public
-  /**
-   @brief The type of period
-   */
-  OrgJodaTimePeriodType *iType_;
-  /**
-   @brief The values
-   */
-  IOSIntArray *iValues_;
 }
 
 /**
@@ -203,26 +194,11 @@
 - (OrgJodaTimeDuration *)toDurationToWithOrgJodaTimeReadableInstant:(id<OrgJodaTimeReadableInstant>)endInstant;
 
 /**
- @brief Checks whether a field type is supported, and if so adds the new value to the relevant index in the specified array.
- @param type the field type
- @param values the array to update
- @param newValue the new value to store if successful
- */
-- (void)checkAndUpdateWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)type
-                                          withIntArray:(IOSIntArray *)values
-                                               withInt:(jint)newValue;
-
-/**
  @brief Sets all the fields of this period from another.
  @param period the period to copy from, not null
  @throws IllegalArgumentException if an unsupported field's value is non-zero
  */
 - (void)setPeriodWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period;
-
-/**
- @brief Private method called from constructor.
- */
-- (void)setPeriodInternalWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period;
 
 /**
  @brief Sets the eight standard the fields in one go.
@@ -244,18 +220,6 @@
                  withInt:(jint)minutes
                  withInt:(jint)seconds
                  withInt:(jint)millis;
-
-/**
- @brief Private method called from constructor.
- */
-- (IOSIntArray *)setPeriodInternalWithInt:(jint)years
-                                  withInt:(jint)months
-                                  withInt:(jint)weeks
-                                  withInt:(jint)days
-                                  withInt:(jint)hours
-                                  withInt:(jint)minutes
-                                  withInt:(jint)seconds
-                                  withInt:(jint)millis;
 
 /**
  @brief Sets the value of a field in this period.
@@ -347,22 +311,20 @@ withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)field
  */
 - (void)setValuesWithIntArray:(IOSIntArray *)values;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeBaseBasePeriod *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeBaseBasePeriod_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeBaseBasePeriod)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeBaseBasePeriod, iType_, OrgJodaTimePeriodType *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeBaseBasePeriod, iValues_, IOSIntArray *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBasePeriod, serialVersionUID, jlong)
 
 FOUNDATION_EXPORT id<OrgJodaTimeReadablePeriod> OrgJodaTimeBaseBasePeriod_DUMMY_PERIOD_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBasePeriod, DUMMY_PERIOD_, id<OrgJodaTimeReadablePeriod>)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseBasePeriod)
 
 @interface OrgJodaTimeBaseBasePeriod_$1 : OrgJodaTimeBaseAbstractPeriod {
 }
@@ -375,6 +337,11 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBasePeriod, DUMMY_PERIOD_, id<OrgJodaT
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeBaseBasePeriod_$1_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeBaseBasePeriod_$1)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseBasePeriod_$1)
 
 #endif // _OrgJodaTimeBaseBasePeriod_H_

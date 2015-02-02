@@ -8,7 +8,7 @@
 
 @class OrgJodaTimeDurationFieldType;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/lang/Comparable.h"
 
 /**
@@ -192,6 +192,11 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeDurationField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeDurationField)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDurationField)
 
 #endif // _OrgJodaTimeDurationField_H_

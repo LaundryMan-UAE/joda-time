@@ -6,6 +6,7 @@
 #include "Chronology.h"
 #include "DateTimeZone.h"
 #include "InstantConverter.h"
+#include "J2ObjC_source.h"
 
 @interface OrgJodaTimeConvertInstantConverter : NSObject
 @end
@@ -18,9 +19,10 @@
     { "getChronologyWithId:withOrgJodaTimeChronology:", "getChronology", "Lorg.joda.time.Chronology;", 0x401, NULL },
     { "getInstantMillisWithId:withOrgJodaTimeChronology:", "getInstantMillis", "J", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertInstantConverter = { "InstantConverter", "org.joda.time.convert", NULL, 0x201, 3, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertInstantConverter = { 1, "InstantConverter", "org.joda.time.convert", NULL, 0x201, 3, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeConvertInstantConverter;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertInstantConverter)

@@ -21,8 +21,8 @@
 @protocol OrgJodaTimeReadableInstant;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "BasePeriod.h"
+#include "J2ObjC_header.h"
 #include "ReadablePeriod.h"
 #include "java/io/Serializable.h"
 
@@ -392,14 +392,6 @@
 - (instancetype)initWithId:(id)period
  withOrgJodaTimePeriodType:(OrgJodaTimePeriodType *)type
  withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
-
-/**
- @brief Constructor used when we trust ourselves.
- @param values the values to use, not null, not cloned
- @param type which set of fields this period supports, not null
- */
-- (instancetype)initWithIntArray:(IOSIntArray *)values
-       withOrgJodaTimePeriodType:(OrgJodaTimePeriodType *)type;
 
 /**
  @brief Get this period as an immutable <code>Period</code> object by returning <code>this</code>.
@@ -808,13 +800,6 @@
 - (OrgJodaTimeDuration *)toStandardDuration;
 
 /**
- @brief Check that there are no years or months in the period.
- @param destintionType the destination type, not null
- @throws UnsupportedOperationException if the period contains years or months
- */
-- (void)checkYearsAndMonthsWithNSString:(NSString *)destintionType;
-
-/**
  @brief Normalizes this period using standard rules, assuming a 12 month year, 7 day week, 24 hour day, 60 minute hour and 60 second minute.
  <p> This method allows you to normalize a period. However to achieve this it makes the assumption that all years are 12 months, all weeks are 7 days, all days are 24 hours, all hours are 60 minutes and all minutes are 60 seconds. This is not true when daylight savings time is considered, and may also not be true for some chronologies. However, it is included as it is a useful operation for many applications and business rules. <p> If the period contains years or months, then the months will be normalized to be between 0 and 11. The days field and below will be normalized as necessary, however this will not overflow into the months field. Thus a period of 1 year 15 months will normalize to 2 years 3 months. But a period of 1 month 40 days will remain as 1 month 40 days. <p> The result will always have a <code>PeriodType</code> of standard, thus days will be grouped into weeks.
  @return a normalized period equivalent to this period
@@ -838,21 +823,37 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimePeriod_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimePeriod)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimePeriod *OrgJodaTimePeriod_parseWithNSString_(NSString *str);
+
 FOUNDATION_EXPORT OrgJodaTimePeriod *OrgJodaTimePeriod_parseWithNSString_withOrgJodaTimeFormatPeriodFormatter_(NSString *str, OrgJodaTimeFormatPeriodFormatter *formatter);
+
 FOUNDATION_EXPORT OrgJodaTimePeriod *OrgJodaTimePeriod_yearsWithInt_(jint years);
+
 FOUNDATION_EXPORT OrgJodaTimePeriod *OrgJodaTimePeriod_monthsWithInt_(jint months);
+
 FOUNDATION_EXPORT OrgJodaTimePeriod *OrgJodaTimePeriod_weeksWithInt_(jint weeks);
+
 FOUNDATION_EXPORT OrgJodaTimePeriod *OrgJodaTimePeriod_daysWithInt_(jint days);
+
 FOUNDATION_EXPORT OrgJodaTimePeriod *OrgJodaTimePeriod_hoursWithInt_(jint hours);
+
 FOUNDATION_EXPORT OrgJodaTimePeriod *OrgJodaTimePeriod_minutesWithInt_(jint minutes);
+
 FOUNDATION_EXPORT OrgJodaTimePeriod *OrgJodaTimePeriod_secondsWithInt_(jint seconds);
+
 FOUNDATION_EXPORT OrgJodaTimePeriod *OrgJodaTimePeriod_millisWithInt_(jint millis);
+
 FOUNDATION_EXPORT OrgJodaTimePeriod *OrgJodaTimePeriod_fieldDifferenceWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end);
 
 FOUNDATION_EXPORT OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimePeriod, ZERO_, OrgJodaTimePeriod *)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimePeriod, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimePeriod)
 
 #endif // _OrgJodaTimePeriod_H_

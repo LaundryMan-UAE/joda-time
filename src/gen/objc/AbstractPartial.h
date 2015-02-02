@@ -16,7 +16,7 @@
 @class OrgJodaTimeFormatDateTimeFormatter;
 @protocol OrgJodaTimeReadableInstant;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "ReadablePartial.h"
 #include "java/lang/Comparable.h"
 
@@ -203,6 +203,11 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeBaseAbstractPartial_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeBaseAbstractPartial)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseAbstractPartial)
 
 #endif // _OrgJodaTimeBaseAbstractPartial_H_

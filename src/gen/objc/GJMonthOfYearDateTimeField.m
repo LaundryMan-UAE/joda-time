@@ -6,7 +6,12 @@
 #include "BasicChronology.h"
 #include "GJLocaleSymbols.h"
 #include "GJMonthOfYearDateTimeField.h"
+#include "J2ObjC_source.h"
 #include "java/util/Locale.h"
+
+@interface OrgJodaTimeChronoGJMonthOfYearDateTimeField () {
+}
+@end
 
 @implementation OrgJodaTimeChronoGJMonthOfYearDateTimeField
 
@@ -49,8 +54,10 @@
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoGJMonthOfYearDateTimeField_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoGJMonthOfYearDateTimeField = { "GJMonthOfYearDateTimeField", "org.joda.time.chrono", NULL, 0x10, 6, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoGJMonthOfYearDateTimeField = { 1, "GJMonthOfYearDateTimeField", "org.joda.time.chrono", NULL, 0x10, 6, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeChronoGJMonthOfYearDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJMonthOfYearDateTimeField)

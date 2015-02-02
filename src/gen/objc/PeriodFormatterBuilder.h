@@ -19,7 +19,7 @@
 @protocol OrgJodaTimeReadWritablePeriod;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "PeriodParser.h"
 #include "PeriodPrinter.h"
 #include "java/util/Comparator.h"
@@ -48,22 +48,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder : NSObject {
- @public
-  jint iMinPrintedDigits_;
-  jint iPrintZeroSetting_;
-  jint iMaxParsedDigits_;
-  jboolean iRejectSignedValues_;
-  id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> iPrefix_;
-  id<JavaUtilList> iElementPairs_;
-  /**
-   @brief Set to true if the formatter is not a printer.
-   */
-  jboolean iNotPrinter_;
-  /**
-   @brief Set to true if the formatter is not a parser.
-   */
-  jboolean iNotParser_;
-  IOSObjectArray *iFieldFormatters_;
 }
 
 - (instancetype)init;
@@ -205,14 +189,6 @@
                                                          withNSStringArray:(IOSObjectArray *)prefixes;
 
 /**
- @brief Append a field prefix which applies only to the next appended field.
- If the field is not printed, neither is the prefix.
- @param prefix custom prefix
- @return this PeriodFormatterBuilder
- */
-- (OrgJodaTimeFormatPeriodFormatterBuilder *)appendPrefixWithOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:(id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix>)prefix;
-
-/**
  @brief Instruct the printer to emit an integer years field, if supported.
  <p> The number of printed and parsed digits can be controlled using #minimumPrintedDigits(int) and #maximumParsedDigits(int) .
  @return this PeriodFormatterBuilder
@@ -289,11 +265,6 @@
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendMillis3Digit;
 
-- (void)appendFieldWithInt:(jint)type;
-
-- (void)appendFieldWithInt:(jint)type
-                   withInt:(jint)minPrinted;
-
 /**
  @brief Append a field suffix which applies only to the last appended field.
  If the field is not printed, neither is the suffix.
@@ -325,15 +296,6 @@
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSuffixWithNSStringArray:(IOSObjectArray *)regularExpressions
                                                          withNSStringArray:(IOSObjectArray *)suffixes;
-
-/**
- @brief Append a field suffix which applies only to the last appended field.
- If the field is not printed, neither is the suffix.
- @param suffix custom suffix
- @return this PeriodFormatterBuilder
- @throws IllegalStateException if no field exists to append to
- */
-- (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSuffixWithOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:(id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix>)suffix;
 
 /**
  @brief Append a separator, which is output if fields are printed both before and after the separator.
@@ -386,35 +348,12 @@
                                                             withNSString:(NSString *)finalText
                                                        withNSStringArray:(IOSObjectArray *)variants;
 
-- (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSeparatorWithNSString:(NSString *)text
-                                                            withNSString:(NSString *)finalText
-                                                       withNSStringArray:(IOSObjectArray *)variants
-                                                             withBoolean:(jboolean)useBefore
-                                                             withBoolean:(jboolean)useAfter;
-
-- (void)clearPrefix;
-
-- (OrgJodaTimeFormatPeriodFormatterBuilder *)append0WithOrgJodaTimeFormatPeriodPrinter:(id<OrgJodaTimeFormatPeriodPrinter>)printer
-                                                     withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)parser;
-
-+ (OrgJodaTimeFormatPeriodFormatter *)toFormatterWithJavaUtilList:(id<JavaUtilList>)elementPairs
-                                                      withBoolean:(jboolean)notPrinter
-                                                      withBoolean:(jboolean)notParser;
-
-+ (IOSObjectArray *)createCompositeWithJavaUtilList:(id<JavaUtilList>)elementPairs;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatPeriodFormatterBuilder *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeFormatPeriodFormatterBuilder_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeFormatPeriodFormatterBuilder)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder, iPrefix_, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder, iElementPairs_, id<JavaUtilList>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder, iFieldFormatters_, IOSObjectArray *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatPeriodFormatterBuilder, PRINT_ZERO_RARELY_FIRST, jint)
 
@@ -450,6 +389,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatPeriodFormatterBuilder, MAX_FIELD, j
 
 FOUNDATION_EXPORT id<JavaUtilConcurrentConcurrentMap> OrgJodaTimeFormatPeriodFormatterBuilder_PATTERNS_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatPeriodFormatterBuilder, PATTERNS_, id<JavaUtilConcurrentConcurrentMap>)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder)
 
 /**
  @brief Defines a formatted field's prefix or suffix text.
@@ -491,14 +433,14 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatPeriodFormatterBuilder, PATTERNS_, i
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix)
 
 /**
  @brief An affix that can be ignored.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix : NSObject < OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix > {
- @public
-  IOSObjectArray *iOtherAffixes_;
 }
 
 - (void)finishWithJavaUtilSet:(id<JavaUtilSet>)periodFieldAffixesToIgnore;
@@ -516,22 +458,19 @@ __attribute__((always_inline)) inline void OrgJodaTimeFormatPeriodFormatterBuild
 
 - (instancetype)init;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix, iOtherAffixes_, IOSObjectArray *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix)
 
 /**
  @brief Implements an affix where the text does not vary by the amount.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix : OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix {
- @public
-  NSString *iText_;
 }
 
 - (instancetype)initWithNSString:(NSString *)text;
@@ -552,24 +491,20 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix, iOth
 
 - (IOSObjectArray *)getAffixes;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix, iText_, NSString *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix)
 
 /**
  @brief Implements an affix where the text varies by the amount of the field.
  Only singular (1) and plural (not 1) are supported.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix : OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix {
- @public
-  NSString *iSingularText_;
-  NSString *iPluralText_;
 }
 
 - (instancetype)initWithNSString:(NSString *)singularText
@@ -591,32 +526,24 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix, iText_,
 
 - (IOSObjectArray *)getAffixes;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix, iSingularText_, NSString *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix, iPluralText_, NSString *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix)
 
 /**
  @brief Implements an affix where the text varies by the amount of the field.
  Different amounts are supported based on the provided parameters.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix : OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix {
- @public
-  IOSObjectArray *iSuffixes_;
-  IOSObjectArray *iPatterns_;
-  IOSObjectArray *iSuffixesSortedDescByLength_;
 }
 
 - (instancetype)initWithNSStringArray:(IOSObjectArray *)regExes
                     withNSStringArray:(IOSObjectArray *)texts;
-
-- (jint)selectSuffixIndexWithInt:(jint)value;
 
 - (jint)calculatePrintedLengthWithInt:(jint)value;
 
@@ -634,21 +561,18 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix, iPlural
 
 - (IOSObjectArray *)getAffixes;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix, iSuffixes_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix, iPatterns_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix, iSuffixesSortedDescByLength_, IOSObjectArray *)
+CF_EXTERN_C_BEGIN
 
 FOUNDATION_EXPORT id<JavaUtilComparator> OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_LENGTH_DESC_COMPARATOR_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix, LENGTH_DESC_COMPARATOR_, id<JavaUtilComparator>)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix)
 
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1 : NSObject < JavaUtilComparator > {
 }
@@ -660,16 +584,17 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix, L
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1)
 
 /**
  @brief Builds a composite affix by merging two other affix implementations.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix : OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix {
- @public
-  id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> iLeft_;
-  id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> iRight_;
-  IOSObjectArray *iLeftRightCombinations_;
 }
 
 - (instancetype)initWithOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:(id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix>)left
@@ -691,38 +616,19 @@ __attribute__((always_inline)) inline void OrgJodaTimeFormatPeriodFormatterBuild
 
 - (IOSObjectArray *)getAffixes;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix, iLeft_, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix, iRight_, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix, iLeftRightCombinations_, IOSObjectArray *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix)
 
 /**
  @brief Formats the numeric value of a field, potentially with prefix/suffix.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter : NSObject < OrgJodaTimeFormatPeriodPrinter, OrgJodaTimeFormatPeriodParser > {
- @public
-  jint iMinPrintedDigits_;
-  jint iPrintZeroSetting_;
-  jint iMaxParsedDigits_;
-  jboolean iRejectSignedValues_;
-  /**
-   @brief The index of the field type, 0=year, etc.
-   */
-  jint iFieldType_;
-  /**
-   @brief The array of the latest formatter added for each type.
-   This is shared between all the field formatters in a formatter.
-   */
-  IOSObjectArray *iFieldFormatters_;
-  id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> iPrefix_;
-  id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> iSuffix_;
 }
 
 - (instancetype)initWithInt:(jint)minPrintedDigits
@@ -760,16 +666,6 @@ withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:(id<OrgJodaTimeForm
                                 withJavaUtilLocale:(JavaUtilLocale *)locale;
 
 /**
- @param text text to parse
- @param position position in text
- @param length exact count of characters to parse
- @return parsed int value
- */
-- (jint)parseIntWithNSString:(NSString *)text
-                     withInt:(jint)position
-                     withInt:(jint)length;
-
-/**
  @return Long.MAX_VALUE if nothing to print, otherwise value
  */
 - (jlong)getFieldValueWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period;
@@ -785,24 +681,19 @@ withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:(id<OrgJodaTimeForm
 
 - (jint)getFieldType;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter, iFieldFormatters_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter, iPrefix_, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter, iSuffix_, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix>)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter)
 
 /**
  @brief Handles a simple literal piece of text.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_Literal : NSObject < OrgJodaTimeFormatPeriodPrinter, OrgJodaTimeFormatPeriodParser > {
- @public
-  NSString *iText_;
 }
 
 - (instancetype)initWithNSString:(NSString *)text;
@@ -827,35 +718,24 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter, iSuf
                                            withInt:(jint)position
                                 withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatPeriodFormatterBuilder_Literal *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeFormatPeriodFormatterBuilder_Literal_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeFormatPeriodFormatterBuilder_Literal)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Literal, iText_, NSString *)
+CF_EXTERN_C_BEGIN
 
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatterBuilder_Literal *OrgJodaTimeFormatPeriodFormatterBuilder_Literal_EMPTY_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Literal, EMPTY_, OrgJodaTimeFormatPeriodFormatterBuilder_Literal *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_Literal)
 
 /**
  @brief Handles a separator, that splits the fields into multiple parts.
  For example, the 'T' in the ISO8601 standard.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_Separator : NSObject < OrgJodaTimeFormatPeriodPrinter, OrgJodaTimeFormatPeriodParser > {
- @public
-  NSString *iText_;
-  NSString *iFinalText_;
-  IOSObjectArray *iParsedForms_;
-  jboolean iUseBefore_;
-  jboolean iUseAfter_;
-  id<OrgJodaTimeFormatPeriodPrinter> iBeforePrinter_;
-  id<OrgJodaTimeFormatPeriodPrinter> iAfterPrinter_;
-  id<OrgJodaTimeFormatPeriodParser> iBeforeParser_;
-  id<OrgJodaTimeFormatPeriodParser> iAfterParser_;
 }
 
 - (instancetype)initWithNSString:(NSString *)text
@@ -889,29 +769,19 @@ withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)beforeParse
 - (OrgJodaTimeFormatPeriodFormatterBuilder_Separator *)finishWithOrgJodaTimeFormatPeriodPrinter:(id<OrgJodaTimeFormatPeriodPrinter>)afterPrinter
                                                               withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)afterParser;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatPeriodFormatterBuilder_Separator *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatPeriodFormatterBuilder_Separator_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatPeriodFormatterBuilder_Separator)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iText_, NSString *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iFinalText_, NSString *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iParsedForms_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iBeforePrinter_, id<OrgJodaTimeFormatPeriodPrinter>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iAfterPrinter_, id<OrgJodaTimeFormatPeriodPrinter>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iBeforeParser_, id<OrgJodaTimeFormatPeriodParser>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iAfterParser_, id<OrgJodaTimeFormatPeriodParser>)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator)
 
 /**
  @brief Composite implementation that merges other fields to create a full pattern.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_Composite : NSObject < OrgJodaTimeFormatPeriodPrinter, OrgJodaTimeFormatPeriodParser > {
- @public
-  IOSObjectArray *iPrinters_;
-  IOSObjectArray *iParsers_;
 }
 
 - (instancetype)initWithJavaUtilList:(id<JavaUtilList>)elementPairs;
@@ -936,22 +806,13 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iAfterPar
                                            withInt:(jint)position
                                 withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (void)decomposeWithJavaUtilList:(id<JavaUtilList>)elementPairs
-                 withJavaUtilList:(id<JavaUtilList>)printerList
-                 withJavaUtilList:(id<JavaUtilList>)parserList;
-
-- (void)addArrayToListWithJavaUtilList:(id<JavaUtilList>)list
-                     withNSObjectArray:(IOSObjectArray *)array;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatPeriodFormatterBuilder_Composite *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatPeriodFormatterBuilder_Composite_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatPeriodFormatterBuilder_Composite)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Composite, iPrinters_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Composite, iParsers_, IOSObjectArray *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_Composite)
 
 #endif // _OrgJodaTimeFormatPeriodFormatterBuilder_H_

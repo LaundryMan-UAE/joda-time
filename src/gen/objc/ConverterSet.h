@@ -10,7 +10,7 @@
 @class IOSObjectArray;
 @protocol OrgJodaTimeConvertConverter;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief A set of converters, which allows exact converters to be quickly selected.
@@ -19,9 +19,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeConvertConverterSet : NSObject {
- @public
-  IOSObjectArray *iConverters_;
-  IOSObjectArray *iSelectEntries_;
 }
 
 - (instancetype)initWithOrgJodaTimeConvertConverterArray:(IOSObjectArray *)converters;
@@ -72,22 +69,14 @@
 - (OrgJodaTimeConvertConverterSet *)removeWithInt:(jint)index
              withOrgJodaTimeConvertConverterArray:(IOSObjectArray *)removed;
 
-/**
- @brief Returns the closest matching converter for the given type, but not very efficiently.
- */
-+ (id<OrgJodaTimeConvertConverter>)selectSlowWithOrgJodaTimeConvertConverterSet:(OrgJodaTimeConvertConverterSet *)set
-                                                                   withIOSClass:(IOSClass *)type;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeConvertConverterSet *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeConvertConverterSet_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeConvertConverterSet)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeConvertConverterSet, iConverters_, IOSObjectArray *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeConvertConverterSet, iSelectEntries_, IOSObjectArray *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertConverterSet)
 
 @interface OrgJodaTimeConvertConverterSet_Entry : NSObject {
  @public
@@ -98,15 +87,16 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeConvertConverterSet, iSelectEntries_, IOSObjectAr
 - (instancetype)initWithIOSClass:(IOSClass *)type
  withOrgJodaTimeConvertConverter:(id<OrgJodaTimeConvertConverter>)converter;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeConvertConverterSet_Entry *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeConvertConverterSet_Entry_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeConvertConverterSet_Entry)
 
 J2OBJC_FIELD_SETTER(OrgJodaTimeConvertConverterSet_Entry, iType_, IOSClass *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeConvertConverterSet_Entry, iConverter_, id<OrgJodaTimeConvertConverter>)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertConverterSet_Entry)
 
 #endif // _OrgJodaTimeConvertConverterSet_H_

@@ -10,9 +10,22 @@
 #include "DurationField.h"
 #include "FieldUtils.h"
 #include "GJYearOfEraDateTimeField.h"
-#include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
+
+@interface OrgJodaTimeChronoGJYearOfEraDateTimeField () {
+ @public
+  OrgJodaTimeChronoBasicChronology *iChronology_;
+}
+
+/**
+ @brief Serialization singleton
+ */
+- (id)readResolve;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJYearOfEraDateTimeField, iChronology_, OrgJodaTimeChronoBasicChronology *)
 
 @implementation OrgJodaTimeChronoGJYearOfEraDateTimeField
 
@@ -102,7 +115,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoGJYearOfEraDateTimeField_set_iChronology_(self, nil);
+  RELEASE_(iChronology_);
   [super dealloc];
 }
 
@@ -134,8 +147,10 @@
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoGJYearOfEraDateTimeField_serialVersionUID },
     { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoGJYearOfEraDateTimeField = { "GJYearOfEraDateTimeField", "org.joda.time.chrono", NULL, 0x10, 16, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoGJYearOfEraDateTimeField = { 1, "GJYearOfEraDateTimeField", "org.joda.time.chrono", NULL, 0x10, 16, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeChronoGJYearOfEraDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJYearOfEraDateTimeField)

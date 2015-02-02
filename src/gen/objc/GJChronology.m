@@ -21,6 +21,7 @@
 #include "ISODateTimeFormat.h"
 #include "IllegalFieldValueException.h"
 #include "Instant.h"
+#include "J2ObjC_source.h"
 #include "JulianChronology.h"
 #include "LocalDate.h"
 #include "ReadableInstant.h"
@@ -35,6 +36,70 @@
 
 __attribute__((unused)) static jlong OrgJodaTimeChronoGJChronology_convertByYearWithLong_withOrgJodaTimeChronology_withOrgJodaTimeChronology_(jlong instant, OrgJodaTimeChronology *from, OrgJodaTimeChronology *to);
 __attribute__((unused)) static jlong OrgJodaTimeChronoGJChronology_convertByWeekyearWithLong_withOrgJodaTimeChronology_withOrgJodaTimeChronology_(jlong instant, OrgJodaTimeChronology *from, OrgJodaTimeChronology *to);
+
+@interface OrgJodaTimeChronoGJChronology () {
+ @public
+  OrgJodaTimeChronoJulianChronology *iJulianChronology_;
+  OrgJodaTimeChronoGregorianChronology *iGregorianChronology_;
+  OrgJodaTimeInstant *iCutoverInstant_;
+  jlong iCutoverMillis_;
+  jlong iGapDuration_;
+}
+
+/**
+ @brief Convert a datetime from one chronology to another.
+ */
++ (jlong)convertByYearWithLong:(jlong)instant
+     withOrgJodaTimeChronology:(OrgJodaTimeChronology *)from
+     withOrgJodaTimeChronology:(OrgJodaTimeChronology *)to;
+
+/**
+ @brief Convert a datetime from one chronology to another.
+ */
++ (jlong)convertByWeekyearWithLong:(jlong)instant
+         withOrgJodaTimeChronology:(OrgJodaTimeChronology *)from
+         withOrgJodaTimeChronology:(OrgJodaTimeChronology *)to;
+- (instancetype)initWithOrgJodaTimeChronoJulianChronology:(OrgJodaTimeChronoJulianChronology *)julian
+                 withOrgJodaTimeChronoGregorianChronology:(OrgJodaTimeChronoGregorianChronology *)gregorian
+                                   withOrgJodaTimeInstant:(OrgJodaTimeInstant *)cutoverInstant;
+- (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
+        withOrgJodaTimeChronoJulianChronology:(OrgJodaTimeChronoJulianChronology *)julian
+     withOrgJodaTimeChronoGregorianChronology:(OrgJodaTimeChronoGregorianChronology *)gregorian
+                       withOrgJodaTimeInstant:(OrgJodaTimeInstant *)cutoverInstant;
+
+/**
+ @brief Serialization singleton
+ */
+- (id)readResolve;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology, iJulianChronology_, OrgJodaTimeChronoJulianChronology *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology, iGregorianChronology_, OrgJodaTimeChronoGregorianChronology *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology, iCutoverInstant_, OrgJodaTimeInstant *)
+
+@interface OrgJodaTimeChronoGJChronology_CutoverField () {
+ @public
+  OrgJodaTimeChronoGJChronology *this$0_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology_CutoverField, this$0_, OrgJodaTimeChronoGJChronology *)
+
+@interface OrgJodaTimeChronoGJChronology_ImpreciseCutoverField () {
+ @public
+  OrgJodaTimeChronoGJChronology *this$1_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology_ImpreciseCutoverField, this$1_, OrgJodaTimeChronoGJChronology *)
+
+@interface OrgJodaTimeChronoGJChronology_LinkedDurationField () {
+ @public
+  OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *iField_LinkedDurationField_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJChronology_LinkedDurationField, iField_LinkedDurationField_, OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *)
 
 BOOL OrgJodaTimeChronoGJChronology_initialized = NO;
 
@@ -87,14 +152,14 @@ JavaUtilConcurrentConcurrentHashMap * OrgJodaTimeChronoGJChronology_cCache_;
 - (instancetype)initWithOrgJodaTimeChronoJulianChronology:(OrgJodaTimeChronoJulianChronology *)julian
                  withOrgJodaTimeChronoGregorianChronology:(OrgJodaTimeChronoGregorianChronology *)gregorian
                                    withOrgJodaTimeInstant:(OrgJodaTimeInstant *)cutoverInstant {
-  return [super initWithOrgJodaTimeChronology:nil withId:[IOSObjectArray arrayWithObjects:(id[]){ julian, gregorian, cutoverInstant } count:3 type:[IOSClass classWithClass:[NSObject class]]]];
+  return [super initWithOrgJodaTimeChronology:nil withId:[IOSObjectArray arrayWithObjects:(id[]){ julian, gregorian, cutoverInstant } count:3 type:NSObject_class_()]];
 }
 
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
         withOrgJodaTimeChronoJulianChronology:(OrgJodaTimeChronoJulianChronology *)julian
      withOrgJodaTimeChronoGregorianChronology:(OrgJodaTimeChronoGregorianChronology *)gregorian
                        withOrgJodaTimeInstant:(OrgJodaTimeInstant *)cutoverInstant {
-  return [super initWithOrgJodaTimeChronology:base withId:[IOSObjectArray arrayWithObjects:(id[]){ julian, gregorian, cutoverInstant } count:3 type:[IOSClass classWithClass:[NSObject class]]]];
+  return [super initWithOrgJodaTimeChronology:base withId:[IOSObjectArray arrayWithObjects:(id[]){ julian, gregorian, cutoverInstant } count:3 type:NSObject_class_()]];
 }
 
 - (id)readResolve {
@@ -299,9 +364,9 @@ JavaUtilConcurrentConcurrentHashMap * OrgJodaTimeChronoGJChronology_cCache_;
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoGJChronology_set_iJulianChronology_(self, nil);
-  OrgJodaTimeChronoGJChronology_set_iGregorianChronology_(self, nil);
-  OrgJodaTimeChronoGJChronology_set_iCutoverInstant_(self, nil);
+  RELEASE_(iJulianChronology_);
+  RELEASE_(iGregorianChronology_);
+  RELEASE_(iCutoverInstant_);
   [super dealloc];
 }
 
@@ -361,7 +426,7 @@ JavaUtilConcurrentConcurrentHashMap * OrgJodaTimeChronoGJChronology_cCache_;
     { "iCutoverMillis_", NULL, 0x2, "J", NULL,  },
     { "iGapDuration_", NULL, 0x2, "J", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoGJChronology = { "GJChronology", "org.joda.time.chrono", NULL, 0x11, 26, methods, 8, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoGJChronology = { 1, "GJChronology", "org.joda.time.chrono", NULL, 0x11, 26, methods, 8, fields, 0, NULL};
   return &_OrgJodaTimeChronoGJChronology;
 }
 
@@ -445,6 +510,8 @@ OrgJodaTimeChronoGJChronology *OrgJodaTimeChronoGJChronology_getInstanceWithOrgJ
   }
   return OrgJodaTimeChronoGJChronology_getInstanceWithOrgJodaTimeDateTimeZone_withOrgJodaTimeReadableInstant_withInt_(zone, cutoverInstant, minDaysInFirstWeek);
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJChronology)
 
 @implementation OrgJodaTimeChronoGJChronology_CutoverField
 
@@ -782,11 +849,11 @@ OrgJodaTimeChronoGJChronology *OrgJodaTimeChronoGJChronology_getInstanceWithOrgJ
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoGJChronology_CutoverField_set_this$0_(self, nil);
-  OrgJodaTimeChronoGJChronology_CutoverField_set_iJulianField_(self, nil);
-  OrgJodaTimeChronoGJChronology_CutoverField_set_iGregorianField_(self, nil);
-  OrgJodaTimeChronoGJChronology_CutoverField_set_iDurationField_(self, nil);
-  OrgJodaTimeChronoGJChronology_CutoverField_set_iRangeDurationField_(self, nil);
+  RELEASE_(this$0_);
+  RELEASE_(iJulianField_);
+  RELEASE_(iGregorianField_);
+  RELEASE_(iDurationField_);
+  RELEASE_(iRangeDurationField_);
   [super dealloc];
 }
 
@@ -849,11 +916,13 @@ OrgJodaTimeChronoGJChronology *OrgJodaTimeChronoGJChronology_getInstanceWithOrgJ
     { "iDurationField_", NULL, 0x4, "Lorg.joda.time.DurationField;", NULL,  },
     { "iRangeDurationField_", NULL, 0x4, "Lorg.joda.time.DurationField;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoGJChronology_CutoverField = { "CutoverField", "org.joda.time.chrono", "GJChronology", 0x2, 35, methods, 8, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoGJChronology_CutoverField = { 1, "CutoverField", "org.joda.time.chrono", "GJChronology", 0x2, 35, methods, 8, fields, 0, NULL};
   return &_OrgJodaTimeChronoGJChronology_CutoverField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJChronology_CutoverField)
 
 @implementation OrgJodaTimeChronoGJChronology_ImpreciseCutoverField
 
@@ -1030,7 +1099,7 @@ OrgJodaTimeChronoGJChronology *OrgJodaTimeChronoGJChronology_getInstanceWithOrgJ
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_set_this$1_(self, nil);
+  RELEASE_(this$1_);
   [super dealloc];
 }
 
@@ -1056,11 +1125,13 @@ OrgJodaTimeChronoGJChronology *OrgJodaTimeChronoGJChronology_getInstanceWithOrgJ
     { "this$1_", NULL, 0x1012, "Lorg.joda.time.chrono.GJChronology;", NULL,  },
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoGJChronology_ImpreciseCutoverField = { "ImpreciseCutoverField", "org.joda.time.chrono", "GJChronology", 0x12, 10, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoGJChronology_ImpreciseCutoverField = { 1, "ImpreciseCutoverField", "org.joda.time.chrono", "GJChronology", 0x12, 10, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJChronology_ImpreciseCutoverField)
 
 @implementation OrgJodaTimeChronoGJChronology_LinkedDurationField
 
@@ -1093,7 +1164,7 @@ withOrgJodaTimeChronoGJChronology_ImpreciseCutoverField:(OrgJodaTimeChronoGJChro
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoGJChronology_LinkedDurationField_set_iField_LinkedDurationField_(self, nil);
+  RELEASE_(iField_LinkedDurationField_);
   [super dealloc];
 }
 
@@ -1114,8 +1185,10 @@ withOrgJodaTimeChronoGJChronology_ImpreciseCutoverField:(OrgJodaTimeChronoGJChro
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoGJChronology_LinkedDurationField_serialVersionUID },
     { "iField_LinkedDurationField_", "iField", 0x12, "Lorg.joda.time.chrono.GJChronology$ImpreciseCutoverField;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoGJChronology_LinkedDurationField = { "LinkedDurationField", "org.joda.time.chrono", "GJChronology", 0xa, 5, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoGJChronology_LinkedDurationField = { 1, "LinkedDurationField", "org.joda.time.chrono", "GJChronology", 0xa, 5, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeChronoGJChronology_LinkedDurationField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJChronology_LinkedDurationField)

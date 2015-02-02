@@ -9,7 +9,7 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDurationField;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 
 #define OrgJodaTimeDurationFieldType_CENTURIES 2
@@ -34,11 +34,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeDurationFieldType : NSObject < JavaIoSerializable > {
- @public
-  /**
-   @brief The name of the field type.
-   */
-  NSString *iName_;
 }
 
 /**
@@ -146,27 +141,35 @@
  */
 - (NSString *)description;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeDurationFieldType *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeDurationFieldType_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeDurationFieldType)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeDurationFieldType, iName_, NSString *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_millis();
+
 FOUNDATION_EXPORT OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_seconds();
+
 FOUNDATION_EXPORT OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_minutes();
+
 FOUNDATION_EXPORT OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_hours();
+
 FOUNDATION_EXPORT OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_halfdays();
+
 FOUNDATION_EXPORT OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_days();
+
 FOUNDATION_EXPORT OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_weeks();
+
 FOUNDATION_EXPORT OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_weekyears();
+
 FOUNDATION_EXPORT OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_months();
+
 FOUNDATION_EXPORT OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_years();
+
 FOUNDATION_EXPORT OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_centuries();
+
 FOUNDATION_EXPORT OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_eras();
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDurationFieldType, serialVersionUID, jlong)
@@ -230,15 +233,13 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDurationFieldType, SECONDS_TYPE_, OrgJodaT
 
 FOUNDATION_EXPORT OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_MILLIS_TYPE_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDurationFieldType, MILLIS_TYPE_, OrgJodaTimeDurationFieldType *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDurationFieldType)
 
 #define OrgJodaTimeDurationFieldType_StandardDurationFieldType_serialVersionUID 31156755687123LL
 
 @interface OrgJodaTimeDurationFieldType_StandardDurationFieldType : OrgJodaTimeDurationFieldType {
- @public
-  /**
-   @brief The ordinal of the standard field type, for switch statements
-   */
-  jbyte iOrdinal_;
 }
 
 /**
@@ -258,18 +259,15 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDurationFieldType, MILLIS_TYPE_, OrgJodaTi
 
 - (OrgJodaTimeDurationField *)getFieldWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology;
 
-/**
- @brief Ensure a singleton is returned.
- @return the singleton type
- */
-- (id)readResolve;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeDurationFieldType_StandardDurationFieldType *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeDurationFieldType_StandardDurationFieldType_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeDurationFieldType_StandardDurationFieldType)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDurationFieldType_StandardDurationFieldType, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDurationFieldType_StandardDurationFieldType)
 
 #endif // _OrgJodaTimeDurationFieldType_H_

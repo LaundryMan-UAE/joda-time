@@ -16,10 +16,37 @@
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "IslamicChronology.h"
+#include "J2ObjC_source.h"
 #include "LimitChronology.h"
 #include "ZonedChronology.h"
 #include "java/lang/ArithmeticException.h"
 #include "java/util/concurrent/ConcurrentHashMap.h"
+
+@interface OrgJodaTimeChronoIslamicChronology () {
+ @public
+  /**
+   @brief The leap years to use.
+   */
+  OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *iLeapYears_;
+}
+
+/**
+ @brief Serialization singleton.
+ */
+- (id)readResolve;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoIslamicChronology, iLeapYears_, OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *)
+
+@interface OrgJodaTimeChronoIslamicChronology_LeapYearPatternType () {
+}
+
+/**
+ @brief Ensure a singleton is returned if possible.
+ @return the singleton instance
+ */
+- (id)readResolve;
+@end
 
 BOOL OrgJodaTimeChronoIslamicChronology_initialized = NO;
 
@@ -249,7 +276,7 @@ withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType:(OrgJodaTimeChronoIsl
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoIslamicChronology_set_iLeapYears_(self, nil);
+  RELEASE_(iLeapYears_);
   [super dealloc];
 }
 
@@ -333,7 +360,7 @@ withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType:(OrgJodaTimeChronoIsl
     { "INSTANCE_UTC_", NULL, 0x1a, "Lorg.joda.time.chrono.IslamicChronology;", &OrgJodaTimeChronoIslamicChronology_INSTANCE_UTC_,  },
     { "iLeapYears_", NULL, 0x12, "Lorg.joda.time.chrono.IslamicChronology$LeapYearPatternType;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoIslamicChronology = { "IslamicChronology", "org.joda.time.chrono", NULL, 0x11, 31, methods, 24, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoIslamicChronology = { 1, "IslamicChronology", "org.joda.time.chrono", NULL, 0x11, 31, methods, 24, fields, 0, NULL};
   return &_OrgJodaTimeChronoIslamicChronology;
 }
 
@@ -362,7 +389,7 @@ OrgJodaTimeChronoIslamicChronology *OrgJodaTimeChronoIslamicChronology_getInstan
   OrgJodaTimeChronoIslamicChronology *chrono;
   IOSObjectArray *chronos = [((JavaUtilConcurrentConcurrentHashMap *) nil_chk(OrgJodaTimeChronoIslamicChronology_cCache_)) getWithId:zone];
   if (chronos == nil) {
-    chronos = [IOSObjectArray arrayWithLength:4 type:[IOSClass classWithClass:[OrgJodaTimeChronoIslamicChronology class]]];
+    chronos = [IOSObjectArray arrayWithLength:4 type:OrgJodaTimeChronoIslamicChronology_class_()];
     IOSObjectArray *oldChronos = [OrgJodaTimeChronoIslamicChronology_cCache_ putIfAbsentWithId:zone withId:chronos];
     if (oldChronos != nil) {
       chronos = oldChronos;
@@ -388,6 +415,8 @@ OrgJodaTimeChronoIslamicChronology *OrgJodaTimeChronoIslamicChronology_getInstan
   }
   return chrono;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoIslamicChronology)
 
 @implementation OrgJodaTimeChronoIslamicChronology_LeapYearPatternType
 
@@ -450,8 +479,10 @@ OrgJodaTimeChronoIslamicChronology *OrgJodaTimeChronoIslamicChronology_getInstan
     { "index_", NULL, 0x10, "B", NULL,  },
     { "pattern_", NULL, 0x10, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoIslamicChronology_LeapYearPatternType = { "LeapYearPatternType", "org.joda.time.chrono", "IslamicChronology", 0x9, 5, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoIslamicChronology_LeapYearPatternType = { 1, "LeapYearPatternType", "org.joda.time.chrono", "IslamicChronology", 0x9, 5, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeChronoIslamicChronology_LeapYearPatternType;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoIslamicChronology_LeapYearPatternType)

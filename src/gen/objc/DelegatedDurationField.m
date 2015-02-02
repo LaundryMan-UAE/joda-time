@@ -6,8 +6,24 @@
 #include "DelegatedDurationField.h"
 #include "DurationField.h"
 #include "DurationFieldType.h"
-#include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "java/lang/IllegalArgumentException.h"
+
+@interface OrgJodaTimeFieldDelegatedDurationField () {
+ @public
+  /**
+   @brief The DurationField being wrapped
+   */
+  OrgJodaTimeDurationField *iField_;
+  /**
+   @brief The field type
+   */
+  OrgJodaTimeDurationFieldType *iType_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldDelegatedDurationField, iField_, OrgJodaTimeDurationField *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldDelegatedDurationField, iType_, OrgJodaTimeDurationFieldType *)
 
 @implementation OrgJodaTimeFieldDelegatedDurationField
 
@@ -133,8 +149,8 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeFieldDelegatedDurationField_set_iField_(self, nil);
-  OrgJodaTimeFieldDelegatedDurationField_set_iType_(self, nil);
+  RELEASE_(iField_);
+  RELEASE_(iType_);
   [super dealloc];
 }
 
@@ -176,8 +192,10 @@
     { "iField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL,  },
     { "iType_", NULL, 0x12, "Lorg.joda.time.DurationFieldType;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldDelegatedDurationField = { "DelegatedDurationField", "org.joda.time.field", NULL, 0x1, 24, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldDelegatedDurationField = { 1, "DelegatedDurationField", "org.joda.time.field", NULL, 0x1, 24, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeFieldDelegatedDurationField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldDelegatedDurationField)

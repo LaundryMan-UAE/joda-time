@@ -9,7 +9,7 @@
 @class OrgJodaTimeDurationFieldType;
 @protocol OrgJodaTimeReadableInterval;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "ReadablePeriod.h"
 
 /**
@@ -247,6 +247,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeReadWritablePeriod_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeReadWritablePeriod)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadWritablePeriod)
 
 #endif // _OrgJodaTimeReadWritablePeriod_H_

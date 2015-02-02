@@ -13,12 +13,29 @@
 #include "DateTimeUtils.h"
 #include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
+#include "J2ObjC_source.h"
 #include "PartialConverter.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/System.h"
 #include "java/util/Locale.h"
 
 #pragma clang diagnostic ignored "-Wprotocol"
+
+@interface OrgJodaTimeBaseBasePartial () {
+ @public
+  /**
+   @brief The chronology in use
+   */
+  OrgJodaTimeChronology *iChronology_;
+  /**
+   @brief The values of each field in this partial
+   */
+  IOSIntArray *iValues_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeBaseBasePartial, iChronology_, OrgJodaTimeChronology *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeBaseBasePartial, iValues_, IOSIntArray *)
 
 @implementation OrgJodaTimeBaseBasePartial
 
@@ -143,8 +160,8 @@ withOrgJodaTimeFormatDateTimeFormatter:(OrgJodaTimeFormatDateTimeFormatter *)par
 }
 
 - (void)dealloc {
-  OrgJodaTimeBaseBasePartial_set_iChronology_(self, nil);
-  OrgJodaTimeBaseBasePartial_set_iValues_(self, nil);
+  RELEASE_(iChronology_);
+  RELEASE_(iValues_);
   [super dealloc];
 }
 
@@ -178,8 +195,10 @@ withOrgJodaTimeFormatDateTimeFormatter:(OrgJodaTimeFormatDateTimeFormatter *)par
     { "iChronology_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL,  },
     { "iValues_", NULL, 0x12, "[I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseBasePartial = { "BasePartial", "org.joda.time.base", NULL, 0x401, 16, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeBaseBasePartial = { 1, "BasePartial", "org.joda.time.base", NULL, 0x401, 16, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeBaseBasePartial;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseBasePartial)

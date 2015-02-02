@@ -9,7 +9,7 @@
 @class OrgJodaTimeDateTimeField;
 @class OrgJodaTimeDateTimeFieldType;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief General utilities that don't fit elsewhere.
@@ -19,11 +19,6 @@
  */
 @interface OrgJodaTimeFieldFieldUtils : NSObject {
 }
-
-/**
- @brief Restricted constructor.
- */
-- (instancetype)init;
 
 /**
  @brief Negates the input throwing an exception if it can't negate it.
@@ -199,22 +194,43 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldFieldUtils_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldFieldUtils)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT jint OrgJodaTimeFieldFieldUtils_safeNegateWithInt_(jint value);
+
 FOUNDATION_EXPORT jint OrgJodaTimeFieldFieldUtils_safeAddWithInt_withInt_(jint val1, jint val2);
+
 FOUNDATION_EXPORT jlong OrgJodaTimeFieldFieldUtils_safeAddWithLong_withLong_(jlong val1, jlong val2);
+
 FOUNDATION_EXPORT jlong OrgJodaTimeFieldFieldUtils_safeSubtractWithLong_withLong_(jlong val1, jlong val2);
+
 FOUNDATION_EXPORT jint OrgJodaTimeFieldFieldUtils_safeMultiplyWithInt_withInt_(jint val1, jint val2);
+
 FOUNDATION_EXPORT jlong OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withInt_(jlong val1, jint val2);
+
 FOUNDATION_EXPORT jlong OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withLong_(jlong val1, jlong val2);
+
 FOUNDATION_EXPORT jlong OrgJodaTimeFieldFieldUtils_safeDivideWithLong_withLong_(jlong dividend, jlong divisor);
+
 FOUNDATION_EXPORT jint OrgJodaTimeFieldFieldUtils_safeToIntWithLong_(jlong value);
+
 FOUNDATION_EXPORT jint OrgJodaTimeFieldFieldUtils_safeMultiplyToIntWithLong_withLong_(jlong val1, jlong val2);
+
 FOUNDATION_EXPORT void OrgJodaTimeFieldFieldUtils_verifyValueBoundsWithOrgJodaTimeDateTimeField_withInt_withInt_withInt_(OrgJodaTimeDateTimeField *field, jint value, jint lowerBound, jint upperBound);
+
 FOUNDATION_EXPORT void OrgJodaTimeFieldFieldUtils_verifyValueBoundsWithOrgJodaTimeDateTimeFieldType_withInt_withInt_withInt_(OrgJodaTimeDateTimeFieldType *fieldType, jint value, jint lowerBound, jint upperBound);
+
 FOUNDATION_EXPORT void OrgJodaTimeFieldFieldUtils_verifyValueBoundsWithNSString_withInt_withInt_withInt_(NSString *fieldName, jint value, jint lowerBound, jint upperBound);
+
 FOUNDATION_EXPORT jint OrgJodaTimeFieldFieldUtils_getWrappedValueWithInt_withInt_withInt_withInt_(jint currentValue, jint wrapValue, jint minValue, jint maxValue);
+
 FOUNDATION_EXPORT jint OrgJodaTimeFieldFieldUtils_getWrappedValueWithInt_withInt_withInt_(jint value, jint minValue, jint maxValue);
+
 FOUNDATION_EXPORT jboolean OrgJodaTimeFieldFieldUtils_equalsWithId_withId_(id object1, id object2);
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldFieldUtils)
 
 #endif // _OrgJodaTimeFieldFieldUtils_H_

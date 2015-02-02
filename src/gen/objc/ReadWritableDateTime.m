@@ -3,6 +3,7 @@
 //  source: /Users/nbransby/Documents/joda-time/src/main/java/org/joda/time/ReadWritableDateTime.java
 //
 
+#include "J2ObjC_source.h"
 #include "ReadWritableDateTime.h"
 
 @interface OrgJodaTimeReadWritableDateTime : NSObject
@@ -39,9 +40,10 @@
     { "setTimeWithInt:withInt:withInt:withInt:", "setTime", "V", 0x401, NULL },
     { "setDateTimeWithInt:withInt:withInt:withInt:withInt:withInt:withInt:", "setDateTime", "V", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadWritableDateTime = { "ReadWritableDateTime", "org.joda.time", NULL, 0x201, 26, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeReadWritableDateTime = { 1, "ReadWritableDateTime", "org.joda.time", NULL, 0x201, 26, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeReadWritableDateTime;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeReadWritableDateTime)

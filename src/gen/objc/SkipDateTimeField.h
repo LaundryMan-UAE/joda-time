@@ -9,8 +9,8 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeField;
 
-#import "JreEmulation.h"
 #include "DelegatedDateTimeField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeFieldSkipDateTimeField_serialVersionUID -8869148464118507846LL
 
@@ -22,19 +22,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFieldSkipDateTimeField : OrgJodaTimeFieldDelegatedDateTimeField {
- @public
-  /**
-   @brief The chronology to wrap.
-   */
-  OrgJodaTimeChronology *iChronology_;
-  /**
-   @brief The value to skip.
-   */
-  jint iSkip_;
-  /**
-   @brief The calculated minimum value.
-   */
-  jint iMinValue_;
 }
 
 /**
@@ -62,18 +49,15 @@
 
 - (jint)getMinimumValue;
 
-- (id)readResolve;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldSkipDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldSkipDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldSkipDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldSkipDateTimeField, iChronology_, OrgJodaTimeChronology *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldSkipDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldSkipDateTimeField)
 
 #endif // _OrgJodaTimeFieldSkipDateTimeField_H_

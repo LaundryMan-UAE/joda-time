@@ -10,8 +10,8 @@
 @class OrgJodaTimeChronoBasicChronology;
 @class OrgJodaTimeDurationField;
 
-#import "JreEmulation.h"
 #include "BaseDateTimeField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoGJEraDateTimeField_serialVersionUID 4240986525305515528LL
 
@@ -22,8 +22,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeChronoGJEraDateTimeField : OrgJodaTimeFieldBaseDateTimeField {
- @public
-  OrgJodaTimeChronoBasicChronology *iChronology_;
 }
 
 /**
@@ -76,21 +74,15 @@
 
 - (jint)getMaximumTextLengthWithJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
- @brief Serialization singleton
- */
-- (id)readResolve;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoGJEraDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoGJEraDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoGJEraDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJEraDateTimeField, iChronology_, OrgJodaTimeChronoBasicChronology *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJEraDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJEraDateTimeField)
 
 #endif // _OrgJodaTimeChronoGJEraDateTimeField_H_

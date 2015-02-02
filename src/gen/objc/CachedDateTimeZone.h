@@ -9,8 +9,8 @@
 @class IOSObjectArray;
 @class OrgJodaTimeTzCachedDateTimeZone_Info;
 
-#import "JreEmulation.h"
 #include "DateTimeZone.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeTzCachedDateTimeZone_serialVersionUID 5472298452022250685LL
 
@@ -21,17 +21,12 @@
  @since 1.0
  */
 @interface OrgJodaTimeTzCachedDateTimeZone : OrgJodaTimeDateTimeZone {
- @public
-  OrgJodaTimeDateTimeZone *iZone_;
-  IOSObjectArray *iInfoCache_;
 }
 
 /**
  @brief Returns a new CachedDateTimeZone unless given zone is already cached.
  */
 + (OrgJodaTimeTzCachedDateTimeZone *)forZoneWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
-
-- (instancetype)initWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
 /**
  @brief Returns the DateTimeZone being wrapped.
@@ -54,36 +49,28 @@
 
 - (jboolean)isEqual:(id)obj;
 
-- (OrgJodaTimeTzCachedDateTimeZone_Info *)getInfoWithLong:(jlong)millis;
-
-- (OrgJodaTimeTzCachedDateTimeZone_Info *)createInfoWithLong:(jlong)millis;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeTzCachedDateTimeZone *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeTzCachedDateTimeZone_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeTzCachedDateTimeZone)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeTzCachedDateTimeZone, iZone_, OrgJodaTimeDateTimeZone *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeTzCachedDateTimeZone, iInfoCache_, IOSObjectArray *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeTzCachedDateTimeZone *OrgJodaTimeTzCachedDateTimeZone_forZoneWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTzCachedDateTimeZone, serialVersionUID, jlong)
 
 FOUNDATION_EXPORT jint OrgJodaTimeTzCachedDateTimeZone_cInfoCacheMask_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTzCachedDateTimeZone, cInfoCacheMask_, jint)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzCachedDateTimeZone)
 
 @interface OrgJodaTimeTzCachedDateTimeZone_Info : NSObject {
  @public
   jlong iPeriodStart_;
   OrgJodaTimeDateTimeZone *iZoneRef_;
   OrgJodaTimeTzCachedDateTimeZone_Info *iNextInfo_;
-  NSString *iNameKey_;
-  jint iOffset_;
-  jint iStandardOffset_;
 }
 
 - (instancetype)initWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone
@@ -95,16 +82,16 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTzCachedDateTimeZone, cInfoCacheMask_, jin
 
 - (jint)getStandardOffsetWithLong:(jlong)millis;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeTzCachedDateTimeZone_Info *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeTzCachedDateTimeZone_Info_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeTzCachedDateTimeZone_Info)
 
 J2OBJC_FIELD_SETTER(OrgJodaTimeTzCachedDateTimeZone_Info, iZoneRef_, OrgJodaTimeDateTimeZone *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeTzCachedDateTimeZone_Info, iNextInfo_, OrgJodaTimeTzCachedDateTimeZone_Info *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeTzCachedDateTimeZone_Info, iNameKey_, NSString *)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzCachedDateTimeZone_Info)
 
 #endif // _OrgJodaTimeTzCachedDateTimeZone_H_

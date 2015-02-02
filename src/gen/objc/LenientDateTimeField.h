@@ -9,8 +9,8 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeField;
 
-#import "JreEmulation.h"
 #include "DelegatedDateTimeField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeFieldLenientDateTimeField_serialVersionUID 8714085824173290599LL
 
@@ -21,8 +21,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFieldLenientDateTimeField : OrgJodaTimeFieldDelegatedDateTimeField {
- @public
-  OrgJodaTimeChronology *iBase_;
 }
 
 /**
@@ -43,17 +41,17 @@
 - (jlong)setWithLong:(jlong)instant
              withInt:(jint)value;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldLenientDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldLenientDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldLenientDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldLenientDateTimeField, iBase_, OrgJodaTimeChronology *)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeField *OrgJodaTimeFieldLenientDateTimeField_getInstanceWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronology_(OrgJodaTimeDateTimeField *field, OrgJodaTimeChronology *base);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldLenientDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldLenientDateTimeField)
 
 #endif // _OrgJodaTimeFieldLenientDateTimeField_H_

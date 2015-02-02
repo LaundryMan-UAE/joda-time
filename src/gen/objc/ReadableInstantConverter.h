@@ -10,9 +10,9 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeZone;
 
-#import "JreEmulation.h"
 #include "AbstractConverter.h"
 #include "InstantConverter.h"
+#include "J2ObjC_header.h"
 #include "PartialConverter.h"
 
 /**
@@ -70,7 +70,12 @@
 FOUNDATION_EXPORT BOOL OrgJodaTimeConvertReadableInstantConverter_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeConvertReadableInstantConverter)
 
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeConvertReadableInstantConverter *OrgJodaTimeConvertReadableInstantConverter_INSTANCE_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeConvertReadableInstantConverter, INSTANCE_, OrgJodaTimeConvertReadableInstantConverter *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertReadableInstantConverter)
 
 #endif // _OrgJodaTimeConvertReadableInstantConverter_H_

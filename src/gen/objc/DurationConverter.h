@@ -6,8 +6,8 @@
 #ifndef _OrgJodaTimeConvertDurationConverter_H_
 #define _OrgJodaTimeConvertDurationConverter_H_
 
-#import "JreEmulation.h"
 #include "Converter.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief DurationConverter defines how an object is converted to a millisecond duration.
@@ -26,6 +26,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeConvertDurationConverter_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeConvertDurationConverter)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertDurationConverter)
 
 #endif // _OrgJodaTimeConvertDurationConverter_H_

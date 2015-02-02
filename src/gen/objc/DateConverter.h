@@ -9,9 +9,9 @@
 @class IOSClass;
 @class OrgJodaTimeChronology;
 
-#import "JreEmulation.h"
 #include "AbstractConverter.h"
 #include "InstantConverter.h"
+#include "J2ObjC_header.h"
 #include "PartialConverter.h"
 
 /**
@@ -50,7 +50,12 @@
 FOUNDATION_EXPORT BOOL OrgJodaTimeConvertDateConverter_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeConvertDateConverter)
 
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeConvertDateConverter *OrgJodaTimeConvertDateConverter_INSTANCE_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeConvertDateConverter, INSTANCE_, OrgJodaTimeConvertDateConverter *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertDateConverter)
 
 #endif // _OrgJodaTimeConvertDateConverter_H_

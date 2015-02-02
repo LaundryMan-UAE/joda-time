@@ -19,8 +19,8 @@
 @protocol OrgJodaTimeReadablePartial;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
 #include "BaseSingleFieldPeriod.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeDays_serialVersionUID 87525275727380865LL
 
@@ -89,19 +89,6 @@
  @throws IllegalArgumentException if the string format is invalid
  */
 + (OrgJodaTimeDays *)parseDaysWithNSString:(NSString *)periodStr;
-
-/**
- @brief Creates a new instance representing a number of days.
- You should consider using the factory method #days(int) instead of the constructor.
- @param days the number of days to represent
- */
-- (instancetype)initWithInt:(jint)days;
-
-/**
- @brief Resolves singletons.
- @return the singleton instance
- */
-- (id)readResolve;
 
 /**
  @brief Gets the duration field type, which is <code>days</code>.
@@ -245,11 +232,19 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeDays_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeDays)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeDays *OrgJodaTimeDays_daysWithInt_(jint days);
+
 FOUNDATION_EXPORT OrgJodaTimeDays *OrgJodaTimeDays_daysBetweenWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end);
+
 FOUNDATION_EXPORT OrgJodaTimeDays *OrgJodaTimeDays_daysBetweenWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end);
+
 FOUNDATION_EXPORT OrgJodaTimeDays *OrgJodaTimeDays_daysInWithOrgJodaTimeReadableInterval_(id<OrgJodaTimeReadableInterval> interval);
+
 FOUNDATION_EXPORT OrgJodaTimeDays *OrgJodaTimeDays_standardDaysInWithOrgJodaTimeReadablePeriod_(id<OrgJodaTimeReadablePeriod> period);
+
 FOUNDATION_EXPORT OrgJodaTimeDays *OrgJodaTimeDays_parseDaysWithNSString_(NSString *periodStr);
 
 FOUNDATION_EXPORT OrgJodaTimeDays *OrgJodaTimeDays_ZERO_;
@@ -286,5 +281,8 @@ FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeDays_PARSER_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDays, PARSER_, OrgJodaTimeFormatPeriodFormatter *)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDays, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDays)
 
 #endif // _OrgJodaTimeDays_H_

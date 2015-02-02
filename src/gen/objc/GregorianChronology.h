@@ -11,8 +11,8 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeZone;
 
-#import "JreEmulation.h"
 #include "BasicGJChronology.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoGregorianChronology_DAYS_0000_TO_1970 719527
 #define OrgJodaTimeChronoGregorianChronology_MAX_YEAR 292278993
@@ -62,18 +62,6 @@
                                                                          withInt:(jint)minDaysInFirstWeek;
 
 /**
- @brief Restricted constructor
- */
-- (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
-                                       withId:(id)param
-                                      withInt:(jint)minDaysInFirstWeek;
-
-/**
- @brief Serialization singleton
- */
-- (id)readResolve;
-
-/**
  @brief Gets the Chronology in the UTC time zone.
  @return the chronology in UTC
  */
@@ -108,9 +96,15 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeChronoGregorianChronology_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeChronoGregorianChronology)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeChronoGregorianChronology *OrgJodaTimeChronoGregorianChronology_getInstanceUTC();
+
 FOUNDATION_EXPORT OrgJodaTimeChronoGregorianChronology *OrgJodaTimeChronoGregorianChronology_getInstance();
+
 FOUNDATION_EXPORT OrgJodaTimeChronoGregorianChronology *OrgJodaTimeChronoGregorianChronology_getInstanceWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
+
 FOUNDATION_EXPORT OrgJodaTimeChronoGregorianChronology *OrgJodaTimeChronoGregorianChronology_getInstanceWithOrgJodaTimeDateTimeZone_withInt_(OrgJodaTimeDateTimeZone *zone, jint minDaysInFirstWeek);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGregorianChronology, serialVersionUID, jlong)
@@ -130,5 +124,8 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGregorianChronology, INSTANCE_UTC_, 
 
 FOUNDATION_EXPORT JavaUtilConcurrentConcurrentHashMap *OrgJodaTimeChronoGregorianChronology_cCache_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGregorianChronology, cCache_, JavaUtilConcurrentConcurrentHashMap *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGregorianChronology)
 
 #endif // _OrgJodaTimeChronoGregorianChronology_H_

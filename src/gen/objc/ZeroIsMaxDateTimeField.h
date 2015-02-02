@@ -12,8 +12,8 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "DecoratedDateTimeField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeFieldZeroIsMaxDateTimeField_serialVersionUID 961749798233026866LL
 
@@ -130,8 +130,13 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldZeroIsMaxDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldZeroIsMaxDateTimeField)
+
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldZeroIsMaxDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldZeroIsMaxDateTimeField)
 
 #endif // _OrgJodaTimeFieldZeroIsMaxDateTimeField_H_

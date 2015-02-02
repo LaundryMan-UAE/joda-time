@@ -9,16 +9,12 @@
 @class OrgJodaTimeDateTimeZone;
 @class OrgJodaTimeInstant;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief For internal usage in GJChronology only.
  */
 @interface OrgJodaTimeChronoGJCacheKey : NSObject {
- @public
-  OrgJodaTimeDateTimeZone *zone_;
-  OrgJodaTimeInstant *cutoverInstant_;
-  jint minDaysInFirstWeek_;
 }
 
 - (instancetype)initWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone
@@ -29,15 +25,13 @@
 
 - (jboolean)isEqual:(id)obj;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoGJCacheKey *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoGJCacheKey_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoGJCacheKey)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJCacheKey, zone_, OrgJodaTimeDateTimeZone *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJCacheKey, cutoverInstant_, OrgJodaTimeInstant *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJCacheKey)
 
 #endif // _OrgJodaTimeChronoGJCacheKey_H_

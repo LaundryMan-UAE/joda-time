@@ -8,7 +8,34 @@
 #include "DurationField.h"
 #include "DurationFieldType.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "java/lang/InternalError.h"
+
+@interface OrgJodaTimeDurationFieldType () {
+ @public
+  /**
+   @brief The name of the field type.
+   */
+  NSString *iName_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeDurationFieldType, iName_, NSString *)
+
+@interface OrgJodaTimeDurationFieldType_StandardDurationFieldType () {
+ @public
+  /**
+   @brief The ordinal of the standard field type, for switch statements
+   */
+  jbyte iOrdinal_;
+}
+
+/**
+ @brief Ensure a singleton is returned.
+ @return the singleton type
+ */
+- (id)readResolve;
+@end
 
 BOOL OrgJodaTimeDurationFieldType_initialized = NO;
 
@@ -101,7 +128,7 @@ OrgJodaTimeDurationFieldType * OrgJodaTimeDurationFieldType_MILLIS_TYPE_;
 }
 
 - (void)dealloc {
-  OrgJodaTimeDurationFieldType_set_iName_(self, nil);
+  RELEASE_(iName_);
   [super dealloc];
 }
 
@@ -176,7 +203,7 @@ OrgJodaTimeDurationFieldType * OrgJodaTimeDurationFieldType_MILLIS_TYPE_;
     { "MILLIS_TYPE_", NULL, 0x18, "Lorg.joda.time.DurationFieldType;", &OrgJodaTimeDurationFieldType_MILLIS_TYPE_,  },
     { "iName_", NULL, 0x12, "Ljava.lang.String;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDurationFieldType = { "DurationFieldType", "org.joda.time", NULL, 0x401, 17, methods, 26, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDurationFieldType = { 1, "DurationFieldType", "org.joda.time", NULL, 0x401, 17, methods, 26, fields, 0, NULL};
   return &_OrgJodaTimeDurationFieldType;
 }
 
@@ -241,6 +268,8 @@ OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_eras() {
   OrgJodaTimeDurationFieldType_init();
   return OrgJodaTimeDurationFieldType_ERAS_TYPE_;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDurationFieldType)
 
 @implementation OrgJodaTimeDurationFieldType_StandardDurationFieldType
 
@@ -346,8 +375,10 @@ OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_eras() {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeDurationFieldType_StandardDurationFieldType_serialVersionUID },
     { "iOrdinal_", NULL, 0x12, "B", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDurationFieldType_StandardDurationFieldType = { "StandardDurationFieldType", "org.joda.time", "DurationFieldType", 0xa, 5, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDurationFieldType_StandardDurationFieldType = { 1, "StandardDurationFieldType", "org.joda.time", "DurationFieldType", 0xa, 5, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeDurationFieldType_StandardDurationFieldType;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDurationFieldType_StandardDurationFieldType)

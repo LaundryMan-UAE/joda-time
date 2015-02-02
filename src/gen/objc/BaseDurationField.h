@@ -8,8 +8,8 @@
 
 @class OrgJodaTimeDurationFieldType;
 
-#import "JreEmulation.h"
 #include "DurationField.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 
 #define OrgJodaTimeFieldBaseDurationField_serialVersionUID -2554245107589433218LL
@@ -21,11 +21,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFieldBaseDurationField : OrgJodaTimeDurationField < JavaIoSerializable > {
- @public
-  /**
-   @brief A desriptive name for the field.
-   */
-  OrgJodaTimeDurationFieldType *iType_;
 }
 
 - (instancetype)initWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)type;
@@ -88,16 +83,15 @@
  */
 - (NSString *)description;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldBaseDurationField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldBaseDurationField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldBaseDurationField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldBaseDurationField, iType_, OrgJodaTimeDurationFieldType *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldBaseDurationField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldBaseDurationField)
 
 #endif // _OrgJodaTimeFieldBaseDurationField_H_

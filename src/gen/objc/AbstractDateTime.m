@@ -12,6 +12,7 @@
 #include "DateTimeFormatter.h"
 #include "DateTimeZone.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "ReadableInstant.h"
 #include "ToString.h"
 #include "java/lang/IllegalArgumentException.h"
@@ -145,7 +146,7 @@
 }
 
 + (IOSObjectArray *)__annotations_description {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -176,8 +177,10 @@
     { "toStringWithNSString:", "toString", "Ljava.lang.String;", 0x1, NULL },
     { "toStringWithNSString:withJavaUtilLocale:", "toString", "Ljava.lang.String;", 0x1, "Ljava.lang.IllegalArgumentException;" },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractDateTime = { "AbstractDateTime", "org.joda.time.base", NULL, 0x401, 25, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractDateTime = { 1, "AbstractDateTime", "org.joda.time.base", NULL, 0x401, 25, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeBaseAbstractDateTime;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseAbstractDateTime)

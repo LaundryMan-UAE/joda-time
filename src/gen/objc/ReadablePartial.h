@@ -12,7 +12,7 @@
 @class OrgJodaTimeDateTimeFieldType;
 @protocol OrgJodaTimeReadableInstant;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/lang/Comparable.h"
 
 /**
@@ -107,6 +107,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeReadablePartial_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeReadablePartial)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadablePartial)
 
 #endif // _OrgJodaTimeReadablePartial_H_

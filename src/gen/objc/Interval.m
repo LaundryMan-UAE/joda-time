@@ -11,11 +11,16 @@
 #include "IOSClass.h"
 #include "ISOChronology.h"
 #include "Interval.h"
+#include "J2ObjC_source.h"
 #include "ReadableDuration.h"
 #include "ReadableInstant.h"
 #include "ReadableInterval.h"
 #include "ReadablePeriod.h"
 #include "java/lang/Math.h"
+
+@interface OrgJodaTimeInterval () {
+}
+@end
 
 @implementation OrgJodaTimeInterval
 
@@ -218,7 +223,7 @@
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeInterval_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeInterval = { "Interval", "org.joda.time", NULL, 0x11, 24, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeInterval = { 1, "Interval", "org.joda.time", NULL, 0x11, 24, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeInterval;
 }
 
@@ -228,3 +233,5 @@ OrgJodaTimeInterval *OrgJodaTimeInterval_parseWithNSString_(NSString *str) {
   OrgJodaTimeInterval_init();
   return [[[OrgJodaTimeInterval alloc] initWithId:str] autorelease];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeInterval)

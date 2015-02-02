@@ -12,7 +12,18 @@
 #include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "ISOYearOfEraDateTimeField.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
+
+@interface OrgJodaTimeChronoISOYearOfEraDateTimeField () {
+}
+- (instancetype)init;
+
+/**
+ @brief Serialization singleton
+ */
+- (id)readResolve;
+@end
 
 BOOL OrgJodaTimeChronoISOYearOfEraDateTimeField_initialized = NO;
 
@@ -128,8 +139,10 @@ OrgJodaTimeDateTimeField * OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE_;
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoISOYearOfEraDateTimeField_serialVersionUID },
     { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoISOYearOfEraDateTimeField = { "ISOYearOfEraDateTimeField", "org.joda.time.chrono", NULL, 0x0, 16, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoISOYearOfEraDateTimeField = { 1, "ISOYearOfEraDateTimeField", "org.joda.time.chrono", NULL, 0x0, 16, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeChronoISOYearOfEraDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoISOYearOfEraDateTimeField)

@@ -17,7 +17,7 @@
 @protocol OrgJodaTimeReadWritablePeriod;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Controls the printing and parsing of a time period to and from a string.
@@ -27,23 +27,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFormatPeriodFormatter : NSObject {
- @public
-  /**
-   @brief The internal printer used to output the datetime.
-   */
-  id<OrgJodaTimeFormatPeriodPrinter> iPrinter_;
-  /**
-   @brief The internal parser used to output the datetime.
-   */
-  id<OrgJodaTimeFormatPeriodParser> iParser_;
-  /**
-   @brief The locale to use for printing and parsing.
-   */
-  JavaUtilLocale *iLocale_;
-  /**
-   @brief The period type used in parsing.
-   */
-  OrgJodaTimePeriodType *iParseType_;
 }
 
 /**
@@ -53,18 +36,6 @@
  */
 - (instancetype)initWithOrgJodaTimeFormatPeriodPrinter:(id<OrgJodaTimeFormatPeriodPrinter>)printer
                      withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)parser;
-
-/**
- @brief Constructor.
- @param printer the internal printer, null if cannot print
- @param parser the internal parser, null if cannot parse
- @param locale the locale to use
- @param type the parse period type
- */
-- (instancetype)initWithOrgJodaTimeFormatPeriodPrinter:(id<OrgJodaTimeFormatPeriodPrinter>)printer
-                     withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)parser
-                                    withJavaUtilLocale:(JavaUtilLocale *)locale
-                             withOrgJodaTimePeriodType:(OrgJodaTimePeriodType *)type;
 
 /**
  @brief Is this formatter capable of printing.
@@ -142,18 +113,6 @@
 - (NSString *)printWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period;
 
 /**
- @brief Checks whether printing is supported.
- @throws UnsupportedOperationException if printing is not supported
- */
-- (void)checkPrinter;
-
-/**
- @brief Checks whether the period is non-null.
- @throws IllegalArgumentException if the period is null
- */
-- (void)checkPeriodWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period;
-
-/**
  @brief Parses a period from the given text, at the given position, saving the result into the fields of the given ReadWritablePeriod.
  If the parse succeeds, the return value is the new text position. Note that the parse may succeed without fully reading the text. <p> The parse type of the formatter is not used by this method. <p> If it fails, the return value is negative, but the period may still be modified. To determine the position where the parse failed, apply the one's complement operator (~) on the return value.
  @param period a period that will be modified
@@ -182,23 +141,13 @@
  */
 - (OrgJodaTimeMutablePeriod *)parseMutablePeriodWithNSString:(NSString *)text;
 
-/**
- @brief Checks whether parsing is supported.
- @throws UnsupportedOperationException if parsing is not supported
- */
-- (void)checkParser;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFormatPeriodFormatter *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatPeriodFormatter_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatPeriodFormatter)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatter, iPrinter_, id<OrgJodaTimeFormatPeriodPrinter>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatter, iParser_, id<OrgJodaTimeFormatPeriodParser>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatter, iLocale_, JavaUtilLocale *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatter, iParseType_, OrgJodaTimePeriodType *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatter)
 
 #endif // _OrgJodaTimeFormatPeriodFormatter_H_

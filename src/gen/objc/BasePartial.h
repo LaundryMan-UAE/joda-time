@@ -11,8 +11,8 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeFormatDateTimeFormatter;
 
-#import "JreEmulation.h"
 #include "AbstractPartial.h"
+#include "J2ObjC_header.h"
 #include "ReadablePartial.h"
 #include "java/io/Serializable.h"
 
@@ -25,15 +25,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeBaseBasePartial : OrgJodaTimeBaseAbstractPartial < OrgJodaTimeReadablePartial, JavaIoSerializable > {
- @public
-  /**
-   @brief The chronology in use
-   */
-  OrgJodaTimeChronology *iChronology_;
-  /**
-   @brief The values of each field in this partial
-   */
-  IOSIntArray *iValues_;
 }
 
 /**
@@ -169,17 +160,15 @@ withOrgJodaTimeFormatDateTimeFormatter:(OrgJodaTimeFormatDateTimeFormatter *)par
 - (NSString *)toStringWithNSString:(NSString *)pattern
                 withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeBaseBasePartial *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeBaseBasePartial_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeBaseBasePartial)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeBaseBasePartial, iChronology_, OrgJodaTimeChronology *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeBaseBasePartial, iValues_, IOSIntArray *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBasePartial, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseBasePartial)
 
 #endif // _OrgJodaTimeBaseBasePartial_H_

@@ -14,7 +14,7 @@
 @class OrgJodaTimePeriodType;
 @protocol OrgJodaTimeReadableInstant;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "ReadableInterval.h"
 
 /**
@@ -230,6 +230,11 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeBaseAbstractInterval_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeBaseAbstractInterval)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseAbstractInterval)
 
 #endif // _OrgJodaTimeBaseAbstractInterval_H_

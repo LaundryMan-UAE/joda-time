@@ -12,8 +12,8 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "DateTimeField.h"
+#include "J2ObjC_header.h"
 #include "java/io/Serializable.h"
 
 #define OrgJodaTimeFieldDelegatedDateTimeField_serialVersionUID -4730164440214502503LL
@@ -25,19 +25,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFieldDelegatedDateTimeField : OrgJodaTimeDateTimeField < JavaIoSerializable > {
- @public
-  /**
-   @brief The DateTimeField being wrapped.
-   */
-  OrgJodaTimeDateTimeField *iField_;
-  /**
-   @brief The range duration.
-   */
-  OrgJodaTimeDurationField *iRangeDurationField_;
-  /**
-   @brief The override field type.
-   */
-  OrgJodaTimeDateTimeFieldType *iType_;
 }
 
 /**
@@ -207,18 +194,15 @@
 
 - (NSString *)description;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldDelegatedDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldDelegatedDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldDelegatedDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldDelegatedDateTimeField, iField_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldDelegatedDateTimeField, iRangeDurationField_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldDelegatedDateTimeField, iType_, OrgJodaTimeDateTimeFieldType *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldDelegatedDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldDelegatedDateTimeField)
 
 #endif // _OrgJodaTimeFieldDelegatedDateTimeField_H_

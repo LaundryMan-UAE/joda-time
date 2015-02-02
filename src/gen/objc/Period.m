@@ -20,6 +20,7 @@
 #include "IOSPrimitiveArray.h"
 #include "ISOChronology.h"
 #include "ISOPeriodFormat.h"
+#include "J2ObjC_source.h"
 #include "Minutes.h"
 #include "Period.h"
 #include "PeriodFormatter.h"
@@ -32,6 +33,21 @@
 #include "Weeks.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/UnsupportedOperationException.h"
+
+__attribute__((unused)) static void OrgJodaTimePeriod_checkYearsAndMonthsWithNSString_(OrgJodaTimePeriod *self, NSString *destintionType);
+
+@interface OrgJodaTimePeriod () {
+}
+- (instancetype)initWithIntArray:(IOSIntArray *)values
+       withOrgJodaTimePeriodType:(OrgJodaTimePeriodType *)type;
+
+/**
+ @brief Check that there are no years or months in the period.
+ @param destintionType the destination type, not null
+ @throws UnsupportedOperationException if the period contains years or months
+ */
+- (void)checkYearsAndMonthsWithNSString:(NSString *)destintionType;
+@end
 
 BOOL OrgJodaTimePeriod_initialized = NO;
 
@@ -508,7 +524,7 @@ OrgJodaTimePeriod * OrgJodaTimePeriod_ZERO_;
 }
 
 - (OrgJodaTimeWeeks *)toStandardWeeks {
-  [self checkYearsAndMonthsWithNSString:@"Weeks"];
+  OrgJodaTimePeriod_checkYearsAndMonthsWithNSString_(self, @"Weeks");
   jlong millis = [self getMillis];
   millis += ((jlong) [self getSeconds]) * OrgJodaTimeDateTimeConstants_MILLIS_PER_SECOND;
   millis += ((jlong) [self getMinutes]) * OrgJodaTimeDateTimeConstants_MILLIS_PER_MINUTE;
@@ -519,7 +535,7 @@ OrgJodaTimePeriod * OrgJodaTimePeriod_ZERO_;
 }
 
 - (OrgJodaTimeDays *)toStandardDays {
-  [self checkYearsAndMonthsWithNSString:@"Days"];
+  OrgJodaTimePeriod_checkYearsAndMonthsWithNSString_(self, @"Days");
   jlong millis = [self getMillis];
   millis += ((jlong) [self getSeconds]) * OrgJodaTimeDateTimeConstants_MILLIS_PER_SECOND;
   millis += ((jlong) [self getMinutes]) * OrgJodaTimeDateTimeConstants_MILLIS_PER_MINUTE;
@@ -531,7 +547,7 @@ OrgJodaTimePeriod * OrgJodaTimePeriod_ZERO_;
 }
 
 - (OrgJodaTimeHours *)toStandardHours {
-  [self checkYearsAndMonthsWithNSString:@"Hours"];
+  OrgJodaTimePeriod_checkYearsAndMonthsWithNSString_(self, @"Hours");
   jlong millis = [self getMillis];
   millis += ((jlong) [self getSeconds]) * OrgJodaTimeDateTimeConstants_MILLIS_PER_SECOND;
   millis += ((jlong) [self getMinutes]) * OrgJodaTimeDateTimeConstants_MILLIS_PER_MINUTE;
@@ -543,7 +559,7 @@ OrgJodaTimePeriod * OrgJodaTimePeriod_ZERO_;
 }
 
 - (OrgJodaTimeMinutes *)toStandardMinutes {
-  [self checkYearsAndMonthsWithNSString:@"Minutes"];
+  OrgJodaTimePeriod_checkYearsAndMonthsWithNSString_(self, @"Minutes");
   jlong millis = [self getMillis];
   millis += ((jlong) [self getSeconds]) * OrgJodaTimeDateTimeConstants_MILLIS_PER_SECOND;
   jlong minutes = millis / OrgJodaTimeDateTimeConstants_MILLIS_PER_MINUTE;
@@ -555,7 +571,7 @@ OrgJodaTimePeriod * OrgJodaTimePeriod_ZERO_;
 }
 
 - (OrgJodaTimeSeconds *)toStandardSeconds {
-  [self checkYearsAndMonthsWithNSString:@"Seconds"];
+  OrgJodaTimePeriod_checkYearsAndMonthsWithNSString_(self, @"Seconds");
   jlong seconds = [self getMillis] / OrgJodaTimeDateTimeConstants_MILLIS_PER_SECOND;
   seconds = OrgJodaTimeFieldFieldUtils_safeAddWithLong_withLong_(seconds, [self getSeconds]);
   seconds = OrgJodaTimeFieldFieldUtils_safeAddWithLong_withLong_(seconds, ((jlong) [self getMinutes]) * ((jlong) OrgJodaTimeDateTimeConstants_SECONDS_PER_MINUTE));
@@ -566,7 +582,7 @@ OrgJodaTimePeriod * OrgJodaTimePeriod_ZERO_;
 }
 
 - (OrgJodaTimeDuration *)toStandardDuration {
-  [self checkYearsAndMonthsWithNSString:@"Duration"];
+  OrgJodaTimePeriod_checkYearsAndMonthsWithNSString_(self, @"Duration");
   jlong millis = [self getMillis];
   millis += (((jlong) [self getSeconds]) * ((jlong) OrgJodaTimeDateTimeConstants_MILLIS_PER_SECOND));
   millis += (((jlong) [self getMinutes]) * ((jlong) OrgJodaTimeDateTimeConstants_MILLIS_PER_MINUTE));
@@ -577,12 +593,7 @@ OrgJodaTimePeriod * OrgJodaTimePeriod_ZERO_;
 }
 
 - (void)checkYearsAndMonthsWithNSString:(NSString *)destintionType {
-  if ([self getMonths] != 0) {
-    @throw [[[JavaLangUnsupportedOperationException alloc] initWithNSString:JreStrcat("$$$", @"Cannot convert to ", destintionType, @" as this period contains months and months vary in length")] autorelease];
-  }
-  if ([self getYears] != 0) {
-    @throw [[[JavaLangUnsupportedOperationException alloc] initWithNSString:JreStrcat("$$$", @"Cannot convert to ", destintionType, @" as this period contains years and years vary in length")] autorelease];
-  }
+  OrgJodaTimePeriod_checkYearsAndMonthsWithNSString_(self, destintionType);
 }
 
 - (OrgJodaTimePeriod *)normalizedStandard {
@@ -627,7 +638,7 @@ OrgJodaTimePeriod * OrgJodaTimePeriod_ZERO_;
 }
 
 + (IOSObjectArray *)__annotations_parseWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -723,7 +734,7 @@ OrgJodaTimePeriod * OrgJodaTimePeriod_ZERO_;
     { "ZERO_", NULL, 0x19, "Lorg.joda.time.Period;", &OrgJodaTimePeriod_ZERO_,  },
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimePeriod_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimePeriod = { "Period", "org.joda.time", NULL, 0x11, 86, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimePeriod = { 1, "Period", "org.joda.time", NULL, 0x11, 86, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimePeriod;
 }
 
@@ -787,7 +798,7 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_fieldDifferenceWithOrgJodaTimeReadableParti
   if ([((id<OrgJodaTimeReadablePartial>) nil_chk(start)) size] != [((id<OrgJodaTimeReadablePartial>) nil_chk(end)) size]) {
     @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"ReadablePartial objects must have the same set of fields"] autorelease];
   }
-  IOSObjectArray *types = [IOSObjectArray arrayWithLength:[start size] type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]];
+  IOSObjectArray *types = [IOSObjectArray arrayWithLength:[start size] type:OrgJodaTimeDurationFieldType_class_()];
   IOSIntArray *values = [IOSIntArray arrayWithLength:[start size]];
   for (jint i = 0, isize = [start size]; i < isize; i++) {
     if ([start getFieldTypeWithInt:i] != [end getFieldTypeWithInt:i]) {
@@ -801,3 +812,14 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_fieldDifferenceWithOrgJodaTimeReadableParti
   }
   return [[[OrgJodaTimePeriod alloc] initWithIntArray:values withOrgJodaTimePeriodType:OrgJodaTimePeriodType_forFieldsWithOrgJodaTimeDurationFieldTypeArray_(types)] autorelease];
 }
+
+void OrgJodaTimePeriod_checkYearsAndMonthsWithNSString_(OrgJodaTimePeriod *self, NSString *destintionType) {
+  if ([self getMonths] != 0) {
+    @throw [[[JavaLangUnsupportedOperationException alloc] initWithNSString:JreStrcat("$$$", @"Cannot convert to ", destintionType, @" as this period contains months and months vary in length")] autorelease];
+  }
+  if ([self getYears] != 0) {
+    @throw [[[JavaLangUnsupportedOperationException alloc] initWithNSString:JreStrcat("$$$", @"Cannot convert to ", destintionType, @" as this period contains years and years vary in length")] autorelease];
+  }
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimePeriod)

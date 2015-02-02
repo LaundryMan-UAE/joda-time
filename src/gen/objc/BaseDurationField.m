@@ -7,8 +7,21 @@
 #include "DurationField.h"
 #include "DurationFieldType.h"
 #include "FieldUtils.h"
-#include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "java/lang/IllegalArgumentException.h"
+
+__attribute__((unused)) static NSString *OrgJodaTimeFieldBaseDurationField_getName(OrgJodaTimeFieldBaseDurationField *self);
+
+@interface OrgJodaTimeFieldBaseDurationField () {
+ @public
+  /**
+   @brief A desriptive name for the field.
+   */
+  OrgJodaTimeDurationFieldType *iType_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldBaseDurationField, iType_, OrgJodaTimeDurationFieldType *)
 
 @implementation OrgJodaTimeFieldBaseDurationField
 
@@ -27,7 +40,7 @@
 }
 
 - (NSString *)getName {
-  return [((OrgJodaTimeDurationFieldType *) nil_chk(iType_)) getName];
+  return OrgJodaTimeFieldBaseDurationField_getName(self);
 }
 
 - (jboolean)isSupported {
@@ -76,11 +89,11 @@
 }
 
 - (NSString *)description {
-  return JreStrcat("$$C", @"DurationField[", [self getName], ']');
+  return JreStrcat("$$C", @"DurationField[", OrgJodaTimeFieldBaseDurationField_getName(self), ']');
 }
 
 - (void)dealloc {
-  OrgJodaTimeFieldBaseDurationField_set_iType_(self, nil);
+  RELEASE_(iType_);
   [super dealloc];
 }
 
@@ -108,8 +121,14 @@
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeFieldBaseDurationField_serialVersionUID },
     { "iType_", NULL, 0x12, "Lorg.joda.time.DurationFieldType;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldBaseDurationField = { "BaseDurationField", "org.joda.time.field", NULL, 0x401, 12, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldBaseDurationField = { 1, "BaseDurationField", "org.joda.time.field", NULL, 0x401, 12, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeFieldBaseDurationField;
 }
 
 @end
+
+NSString *OrgJodaTimeFieldBaseDurationField_getName(OrgJodaTimeFieldBaseDurationField *self) {
+  return [((OrgJodaTimeDurationFieldType *) nil_chk(self->iType_)) getName];
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldBaseDurationField)

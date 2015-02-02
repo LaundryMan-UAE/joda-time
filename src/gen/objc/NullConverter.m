@@ -6,6 +6,7 @@
 #include "Chronology.h"
 #include "DateTimeUtils.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "NullConverter.h"
 #include "Period.h"
 #include "ReadWritableInterval.h"
@@ -61,8 +62,10 @@ OrgJodaTimeConvertNullConverter * OrgJodaTimeConvertNullConverter_INSTANCE_;
   static const J2ObjcFieldInfo fields[] = {
     { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.NullConverter;", &OrgJodaTimeConvertNullConverter_INSTANCE_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertNullConverter = { "NullConverter", "org.joda.time.convert", NULL, 0x0, 5, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertNullConverter = { 1, "NullConverter", "org.joda.time.convert", NULL, 0x0, 5, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeConvertNullConverter;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertNullConverter)

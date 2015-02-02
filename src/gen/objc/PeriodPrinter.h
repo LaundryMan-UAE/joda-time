@@ -11,7 +11,7 @@
 @class JavaUtilLocale;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Internal interface for printing textual representations of time periods.
@@ -64,6 +64,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatPeriodPrinter_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatPeriodPrinter)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodPrinter)
 
 #endif // _OrgJodaTimeFormatPeriodPrinter_H_

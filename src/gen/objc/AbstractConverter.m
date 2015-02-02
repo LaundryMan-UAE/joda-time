@@ -12,6 +12,7 @@
 #include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "ISOChronology.h"
+#include "J2ObjC_source.h"
 #include "PeriodType.h"
 #include "ReadablePartial.h"
 
@@ -77,8 +78,10 @@
     { "isReadableIntervalWithId:withOrgJodaTimeChronology:", "isReadableInterval", "Z", 0x1, NULL },
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertAbstractConverter = { "AbstractConverter", "org.joda.time.convert", NULL, 0x401, 9, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertAbstractConverter = { 1, "AbstractConverter", "org.joda.time.convert", NULL, 0x401, 9, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeConvertAbstractConverter;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertAbstractConverter)

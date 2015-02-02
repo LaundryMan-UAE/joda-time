@@ -12,6 +12,7 @@
 #include "FieldUtils.h"
 #include "ISODateTimeFormat.h"
 #include "Interval.h"
+#include "J2ObjC_source.h"
 #include "MutableInterval.h"
 #include "Period.h"
 #include "PeriodType.h"
@@ -171,7 +172,7 @@
   if (self == readableInterval) {
     return YES;
   }
-  if ([readableInterval conformsToProtocol: @protocol(OrgJodaTimeReadableInterval)] == NO) {
+  if ([OrgJodaTimeReadableInterval_class_() isInstance:readableInterval] == NO) {
     return NO;
   }
   id<OrgJodaTimeReadableInterval> other = (id<OrgJodaTimeReadableInterval>) check_protocol_cast(readableInterval, @protocol(OrgJodaTimeReadableInterval));
@@ -228,8 +229,10 @@
     { "hash", "hashCode", "I", 0x1, NULL },
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractInterval = { "AbstractInterval", "org.joda.time.base", NULL, 0x401, 27, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractInterval = { 1, "AbstractInterval", "org.joda.time.base", NULL, 0x401, 27, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeBaseAbstractInterval;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseAbstractInterval)

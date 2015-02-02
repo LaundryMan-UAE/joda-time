@@ -11,7 +11,7 @@
 @class OrgJodaTimePeriod;
 @class OrgJodaTimePeriodType;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Defines a time period specified in terms of individual duration fields such as years and days.
@@ -103,6 +103,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeReadablePeriod_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeReadablePeriod)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadablePeriod)
 
 #endif // _OrgJodaTimeReadablePeriod_H_

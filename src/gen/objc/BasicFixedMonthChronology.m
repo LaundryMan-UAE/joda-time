@@ -7,6 +7,11 @@
 #include "BasicFixedMonthChronology.h"
 #include "Chronology.h"
 #include "DateTimeConstants.h"
+#include "J2ObjC_source.h"
+
+@interface OrgJodaTimeChronoBasicFixedMonthChronology () {
+}
+@end
 
 @implementation OrgJodaTimeChronoBasicFixedMonthChronology
 
@@ -120,8 +125,10 @@
     { "MILLIS_PER_YEAR_", NULL, 0x18, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoBasicFixedMonthChronology_MILLIS_PER_YEAR },
     { "MILLIS_PER_MONTH_", NULL, 0x18, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoBasicFixedMonthChronology_MILLIS_PER_MONTH },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicFixedMonthChronology = { "BasicFixedMonthChronology", "org.joda.time.chrono", NULL, 0x400, 15, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicFixedMonthChronology = { 1, "BasicFixedMonthChronology", "org.joda.time.chrono", NULL, 0x400, 15, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeChronoBasicFixedMonthChronology;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicFixedMonthChronology)

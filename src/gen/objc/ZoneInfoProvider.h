@@ -15,7 +15,7 @@
 @protocol JavaUtilMap;
 @protocol JavaUtilSet;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "Provider.h"
 
 /**
@@ -25,23 +25,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeTzZoneInfoProvider : NSObject < OrgJodaTimeTzProvider > {
- @public
-  /**
-   @brief The directory where the files are held.
-   */
-  JavaIoFile *iFileDir_;
-  /**
-   @brief The resource path.
-   */
-  NSString *iResourcePath_;
-  /**
-   @brief The class loader to use.
-   */
-  JavaLangClassLoader *iLoader_;
-  /**
-   @brief Maps ids to strings or SoftReferences to DateTimeZones.
-   */
-  id<JavaUtilMap> iZoneInfoMap_;
 }
 
 /**
@@ -66,13 +49,6 @@
          withJavaLangClassLoader:(JavaLangClassLoader *)loader;
 
 /**
- @param favorSystemLoader when true, use the system class loader if loader null. When false, use the current class loader if loader is null.
- */
-- (instancetype)initWithNSString:(NSString *)resourcePath
-         withJavaLangClassLoader:(JavaLangClassLoader *)loader
-                     withBoolean:(jboolean)favorSystemLoader;
-
-/**
  @brief If an error is thrown while loading zone data, the exception is logged to system error and null is returned for this and all future requests.
  @param id the id to load
  @return the loaded zone
@@ -91,47 +67,13 @@
  */
 - (void)uncaughtExceptionWithJavaLangException:(JavaLangException *)ex;
 
-/**
- @brief Opens a resource from file or classpath.
- @param name the name to open
- @return the input stream
- @throws IOException if an error occurs
- */
-- (JavaIoInputStream *)openResourceWithNSString:(NSString *)name;
-
-/**
- @brief Loads the time zone data for one id.
- @param id the id to load
- @return the zone
- */
-- (OrgJodaTimeDateTimeZone *)loadZoneDataWithNSString:(NSString *)id_;
-
-/**
- @brief Loads the zone info map.
- @param in the input stream
- @return the map
- */
-+ (id<JavaUtilMap>)loadZoneInfoMapWithJavaIoInputStream:(JavaIoInputStream *)inArg;
-
-/**
- @brief Reads the zone info map from file.
- @param din the input stream
- @param zimap gets filled with string id to string id mappings
- */
-+ (void)readZoneInfoMapWithJavaIoDataInputStream:(JavaIoDataInputStream *)din
-                                 withJavaUtilMap:(id<JavaUtilMap>)zimap;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeTzZoneInfoProvider *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeTzZoneInfoProvider_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeTzZoneInfoProvider)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoProvider, iFileDir_, JavaIoFile *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoProvider, iResourcePath_, NSString *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoProvider, iLoader_, JavaLangClassLoader *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoProvider, iZoneInfoMap_, id<JavaUtilMap>)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzZoneInfoProvider)
 
 #endif // _OrgJodaTimeTzZoneInfoProvider_H_

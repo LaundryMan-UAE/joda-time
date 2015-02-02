@@ -8,6 +8,7 @@
 #include "DateTimeZone.h"
 #include "DurationField.h"
 #include "IOSPrimitiveArray.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
 #include "ReadablePeriod.h"
 
@@ -386,8 +387,10 @@
     { "description", "toString", "Ljava.lang.String;", 0x401, NULL },
     { "init", NULL, NULL, 0x1, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronology = { "Chronology", "org.joda.time", NULL, 0x401, 50, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronology = { 1, "Chronology", "org.joda.time", NULL, 0x401, 50, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeChronology;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronology)

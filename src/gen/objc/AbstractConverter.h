@@ -13,8 +13,8 @@
 @class OrgJodaTimePeriodType;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "Converter.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief AbstractConverter simplifies the process of implementing a converter.
@@ -113,6 +113,11 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeConvertAbstractConverter_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeConvertAbstractConverter)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertAbstractConverter)
 
 #endif // _OrgJodaTimeConvertAbstractConverter_H_

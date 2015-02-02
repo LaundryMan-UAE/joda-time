@@ -12,12 +12,27 @@
 #include "DateTimeUtils.h"
 #include "DurationField.h"
 #include "FieldUtils.h"
-#include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "ImpreciseDateTimeField.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Math.h"
+
+@interface OrgJodaTimeChronoBasicMonthOfYearDateTimeField () {
+ @public
+  OrgJodaTimeChronoBasicChronology *iChronology_;
+  jint iMax_;
+  jint iLeapMonth_;
+}
+
+/**
+ @brief Serialization singleton
+ */
+- (id)readResolve;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeChronoBasicMonthOfYearDateTimeField, iChronology_, OrgJodaTimeChronoBasicChronology *)
 
 @implementation OrgJodaTimeChronoBasicMonthOfYearDateTimeField
 
@@ -225,7 +240,7 @@
 }
 
 - (void)dealloc {
-  OrgJodaTimeChronoBasicMonthOfYearDateTimeField_set_iChronology_(self, nil);
+  RELEASE_(iChronology_);
   [super dealloc];
 }
 
@@ -264,8 +279,10 @@
     { "iMax_", NULL, 0x12, "I", NULL,  },
     { "iLeapMonth_", NULL, 0x12, "I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicMonthOfYearDateTimeField = { "BasicMonthOfYearDateTimeField", "org.joda.time.chrono", NULL, 0x0, 18, methods, 5, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicMonthOfYearDateTimeField = { 1, "BasicMonthOfYearDateTimeField", "org.joda.time.chrono", NULL, 0x0, 18, methods, 5, fields, 0, NULL};
   return &_OrgJodaTimeChronoBasicMonthOfYearDateTimeField;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicMonthOfYearDateTimeField)

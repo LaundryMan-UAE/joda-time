@@ -5,9 +5,14 @@
 
 #include "DateTimeZone.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "UTCDateTimeZone.h"
 #include "java/util/SimpleTimeZone.h"
 #include "java/util/TimeZone.h"
+
+@interface OrgJodaTimeUTCDateTimeZone () {
+}
+@end
 
 BOOL OrgJodaTimeUTCDateTimeZone_initialized = NO;
 
@@ -84,8 +89,10 @@ OrgJodaTimeDateTimeZone * OrgJodaTimeUTCDateTimeZone_INSTANCE_;
     { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.DateTimeZone;", &OrgJodaTimeUTCDateTimeZone_INSTANCE_,  },
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeUTCDateTimeZone_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeUTCDateTimeZone = { "UTCDateTimeZone", "org.joda.time", NULL, 0x10, 11, methods, 2, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeUTCDateTimeZone = { 1, "UTCDateTimeZone", "org.joda.time", NULL, 0x10, 11, methods, 2, fields, 0, NULL};
   return &_OrgJodaTimeUTCDateTimeZone;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeUTCDateTimeZone)

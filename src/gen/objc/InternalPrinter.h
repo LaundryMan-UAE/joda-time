@@ -12,7 +12,7 @@
 @protocol JavaLangAppendable;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Internal interface for creating textual representations of datetimes.
@@ -57,6 +57,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatInternalPrinter_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatInternalPrinter)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatInternalPrinter)
 
 #endif // _OrgJodaTimeFormatInternalPrinter_H_

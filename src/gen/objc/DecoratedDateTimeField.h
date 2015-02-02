@@ -10,8 +10,8 @@
 @class OrgJodaTimeDateTimeFieldType;
 @class OrgJodaTimeDurationField;
 
-#import "JreEmulation.h"
 #include "BaseDateTimeField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeFieldDecoratedDateTimeField_serialVersionUID 203115783733757597LL
 
@@ -22,11 +22,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFieldDecoratedDateTimeField : OrgJodaTimeFieldBaseDateTimeField {
- @public
-  /**
-   @brief The DateTimeField being wrapped
-   */
-  OrgJodaTimeDateTimeField *iField_;
 }
 
 /**
@@ -60,16 +55,15 @@
 
 - (jlong)roundFloorWithLong:(jlong)instant;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldDecoratedDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldDecoratedDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldDecoratedDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldDecoratedDateTimeField, iField_, OrgJodaTimeDateTimeField *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldDecoratedDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldDecoratedDateTimeField)
 
 #endif // _OrgJodaTimeFieldDecoratedDateTimeField_H_

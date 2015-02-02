@@ -5,8 +5,13 @@
 
 #include "IOSClass.h"
 #include "ISOPeriodFormat.h"
+#include "J2ObjC_source.h"
 #include "PeriodFormatter.h"
 #include "PeriodFormatterBuilder.h"
+
+@interface OrgJodaTimeFormatISOPeriodFormat () {
+}
+@end
 
 @implementation OrgJodaTimeFormatISOPeriodFormat
 
@@ -56,7 +61,7 @@ OrgJodaTimeFormatPeriodFormatter * OrgJodaTimeFormatISOPeriodFormat_cAlternateEx
     { "cAlternateWithWeeks_", NULL, 0xa, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeFormatISOPeriodFormat_cAlternateWithWeeks_,  },
     { "cAlternateExtendedWihWeeks_", NULL, 0xa, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeFormatISOPeriodFormat_cAlternateExtendedWihWeeks_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatISOPeriodFormat = { "ISOPeriodFormat", "org.joda.time.format", NULL, 0x1, 6, methods, 5, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatISOPeriodFormat = { 1, "ISOPeriodFormat", "org.joda.time.format", NULL, 0x1, 6, methods, 5, fields, 0, NULL};
   return &_OrgJodaTimeFormatISOPeriodFormat;
 }
 
@@ -101,3 +106,5 @@ OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_alternateExte
   }
   return OrgJodaTimeFormatISOPeriodFormat_cAlternateExtendedWihWeeks_;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatISOPeriodFormat)

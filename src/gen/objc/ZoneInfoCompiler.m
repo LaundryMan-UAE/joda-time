@@ -13,6 +13,7 @@
 #include "IOSObjectArray.h"
 #include "ISOChronology.h"
 #include "ISODateTimeFormat.h"
+#include "J2ObjC_source.h"
 #include "LenientChronology.h"
 #include "LocalDate.h"
 #include "MutableDateTime.h"
@@ -51,7 +52,49 @@
 #include "java/util/TreeMap.h"
 
 __attribute__((unused)) static void OrgJodaTimeTzZoneInfoCompiler_printUsage();
+__attribute__((unused)) static NSString *OrgJodaTimeTzZoneInfoCompiler_Rule_formatNameWithNSString_(OrgJodaTimeTzZoneInfoCompiler_Rule *self, NSString *nameFormat);
 __attribute__((unused)) static void OrgJodaTimeTzZoneInfoCompiler_Zone_addToBuilderWithOrgJodaTimeTzZoneInfoCompiler_Zone_withOrgJodaTimeTzDateTimeZoneBuilder_withJavaUtilMap_(OrgJodaTimeTzZoneInfoCompiler_Zone *zone, OrgJodaTimeTzDateTimeZoneBuilder *builder, id<JavaUtilMap> ruleSets);
+
+@interface OrgJodaTimeTzZoneInfoCompiler () {
+ @public
+  id<JavaUtilMap> iRuleSets_;
+  id<JavaUtilList> iZones_;
+  id<JavaUtilList> iLinks_;
+}
+
++ (void)printUsage;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler, iRuleSets_, id<JavaUtilMap>)
+J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler, iZones_, id<JavaUtilList>)
+J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler, iLinks_, id<JavaUtilList>)
+
+@interface OrgJodaTimeTzZoneInfoCompiler_Rule ()
+
+- (NSString *)formatNameWithNSString:(NSString *)nameFormat;
+@end
+
+@interface OrgJodaTimeTzZoneInfoCompiler_RuleSet () {
+ @public
+  id<JavaUtilList> iRules_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_RuleSet, iRules_, id<JavaUtilList>)
+
+@interface OrgJodaTimeTzZoneInfoCompiler_Zone () {
+ @public
+  OrgJodaTimeTzZoneInfoCompiler_Zone *iNext_;
+}
+- (instancetype)initWithNSString:(NSString *)name
+     withJavaUtilStringTokenizer:(JavaUtilStringTokenizer *)st;
+
++ (void)addToBuilderWithOrgJodaTimeTzZoneInfoCompiler_Zone:(OrgJodaTimeTzZoneInfoCompiler_Zone *)zone
+                      withOrgJodaTimeTzDateTimeZoneBuilder:(OrgJodaTimeTzDateTimeZoneBuilder *)builder
+                                           withJavaUtilMap:(id<JavaUtilMap>)ruleSets;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_Zone, iNext_, OrgJodaTimeTzZoneInfoCompiler_Zone *)
 
 BOOL OrgJodaTimeTzZoneInfoCompiler_initialized = NO;
 
@@ -269,9 +312,9 @@ JavaLangThreadLocal * OrgJodaTimeTzZoneInfoCompiler_cVerbose_;
 }
 
 - (void)dealloc {
-  OrgJodaTimeTzZoneInfoCompiler_set_iRuleSets_(self, nil);
-  OrgJodaTimeTzZoneInfoCompiler_set_iZones_(self, nil);
-  OrgJodaTimeTzZoneInfoCompiler_set_iLinks_(self, nil);
+  RELEASE_(iRuleSets_);
+  RELEASE_(iZones_);
+  RELEASE_(iLinks_);
   [super dealloc];
 }
 
@@ -316,7 +359,7 @@ JavaLangThreadLocal * OrgJodaTimeTzZoneInfoCompiler_cVerbose_;
     { "iZones_", NULL, 0x2, "Ljava.util.List;", NULL,  },
     { "iLinks_", NULL, 0x2, "Ljava.util.List;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzZoneInfoCompiler = { "ZoneInfoCompiler", "org.joda.time.tz", NULL, 0x1, 16, methods, 6, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeTzZoneInfoCompiler = { 1, "ZoneInfoCompiler", "org.joda.time.tz", NULL, 0x1, 16, methods, 6, fields, 0, NULL};
   return &_OrgJodaTimeTzZoneInfoCompiler;
 }
 
@@ -365,7 +408,7 @@ void OrgJodaTimeTzZoneInfoCompiler_mainWithNSStringArray_(IOSObjectArray *args) 
     OrgJodaTimeTzZoneInfoCompiler_printUsage();
     return;
   }
-  IOSObjectArray *sources = [IOSObjectArray arrayWithLength:args->size_ - i type:[IOSClass classWithClass:[JavaIoFile class]]];
+  IOSObjectArray *sources = [IOSObjectArray arrayWithLength:args->size_ - i type:JavaIoFile_class_()];
   for (jint j = 0; i < args->size_; i++, j++) {
     IOSObjectArray_Set(sources, j, inputDir == nil ? [[[JavaIoFile alloc] initWithNSString:IOSObjectArray_Get(args, i)] autorelease] : [[[JavaIoFile alloc] initWithJavaIoFile:inputDir withNSString:IOSObjectArray_Get(args, i)] autorelease]);
   }
@@ -555,6 +598,8 @@ jboolean OrgJodaTimeTzZoneInfoCompiler_testWithNSString_withOrgJodaTimeDateTimeZ
   return YES;
 }
 
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzZoneInfoCompiler)
+
 @implementation OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear
 
 - (instancetype)init {
@@ -683,11 +728,13 @@ jboolean OrgJodaTimeTzZoneInfoCompiler_testWithNSString_withOrgJodaTimeDateTimeZ
     { "iMillisOfDay_", NULL, 0x11, "I", NULL,  },
     { "iZoneChar_", NULL, 0x11, "C", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear = { "DateTimeOfYear", "org.joda.time.tz", "ZoneInfoCompiler", 0x8, 5, methods, 6, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear = { 1, "DateTimeOfYear", "org.joda.time.tz", "ZoneInfoCompiler", 0x8, 5, methods, 6, fields, 0, NULL};
   return &_OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear)
 
 @implementation OrgJodaTimeTzZoneInfoCompiler_Rule
 
@@ -709,34 +756,12 @@ jboolean OrgJodaTimeTzZoneInfoCompiler_testWithNSString_withOrgJodaTimeDateTimeZ
 
 - (void)addRecurringWithOrgJodaTimeTzDateTimeZoneBuilder:(OrgJodaTimeTzDateTimeZoneBuilder *)builder
                                             withNSString:(NSString *)nameFormat {
-  NSString *nameKey = [self formatNameWithNSString:nameFormat];
+  NSString *nameKey = OrgJodaTimeTzZoneInfoCompiler_Rule_formatNameWithNSString_(self, nameFormat);
   [((OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *) nil_chk(iDateTimeOfYear_)) addRecurringWithOrgJodaTimeTzDateTimeZoneBuilder:builder withNSString:nameKey withInt:iSaveMillis_ withInt:iFromYear_ withInt:iToYear_];
 }
 
 - (NSString *)formatNameWithNSString:(NSString *)nameFormat {
-  jint index = [((NSString *) nil_chk(nameFormat)) indexOf:'/'];
-  if (index > 0) {
-    if (iSaveMillis_ == 0) {
-      return [((NSString *) nil_chk([nameFormat substring:0 endIndex:index])) intern];
-    }
-    else {
-      return [((NSString *) nil_chk([nameFormat substring:index + 1])) intern];
-    }
-  }
-  index = [nameFormat indexOfString:@"%s"];
-  if (index < 0) {
-    return nameFormat;
-  }
-  NSString *left = [nameFormat substring:0 endIndex:index];
-  NSString *right = [nameFormat substring:index + 2];
-  NSString *name;
-  if (iLetterS_ == nil) {
-    name = [((NSString *) nil_chk(left)) concat:right];
-  }
-  else {
-    name = JreStrcat("$$$", left, iLetterS_, right);
-  }
-  return [((NSString *) nil_chk(name)) intern];
+  return OrgJodaTimeTzZoneInfoCompiler_Rule_formatNameWithNSString_(self, nameFormat);
 }
 
 - (NSString *)description {
@@ -744,10 +769,10 @@ jboolean OrgJodaTimeTzZoneInfoCompiler_testWithNSString_withOrgJodaTimeDateTimeZ
 }
 
 - (void)dealloc {
-  OrgJodaTimeTzZoneInfoCompiler_Rule_set_iName_(self, nil);
-  OrgJodaTimeTzZoneInfoCompiler_Rule_set_iType_(self, nil);
-  OrgJodaTimeTzZoneInfoCompiler_Rule_set_iDateTimeOfYear_(self, nil);
-  OrgJodaTimeTzZoneInfoCompiler_Rule_set_iLetterS_(self, nil);
+  RELEASE_(iName_);
+  RELEASE_(iType_);
+  RELEASE_(iDateTimeOfYear_);
+  RELEASE_(iLetterS_);
   [super dealloc];
 }
 
@@ -778,11 +803,39 @@ jboolean OrgJodaTimeTzZoneInfoCompiler_testWithNSString_withOrgJodaTimeDateTimeZ
     { "iSaveMillis_", NULL, 0x11, "I", NULL,  },
     { "iLetterS_", NULL, 0x11, "Ljava.lang.String;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzZoneInfoCompiler_Rule = { "Rule", "org.joda.time.tz", "ZoneInfoCompiler", 0xa, 4, methods, 7, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeTzZoneInfoCompiler_Rule = { 1, "Rule", "org.joda.time.tz", "ZoneInfoCompiler", 0xa, 4, methods, 7, fields, 0, NULL};
   return &_OrgJodaTimeTzZoneInfoCompiler_Rule;
 }
 
 @end
+
+NSString *OrgJodaTimeTzZoneInfoCompiler_Rule_formatNameWithNSString_(OrgJodaTimeTzZoneInfoCompiler_Rule *self, NSString *nameFormat) {
+  jint index = [((NSString *) nil_chk(nameFormat)) indexOf:'/'];
+  if (index > 0) {
+    if (self->iSaveMillis_ == 0) {
+      return [((NSString *) nil_chk([nameFormat substring:0 endIndex:index])) intern];
+    }
+    else {
+      return [((NSString *) nil_chk([nameFormat substring:index + 1])) intern];
+    }
+  }
+  index = [nameFormat indexOfString:@"%s"];
+  if (index < 0) {
+    return nameFormat;
+  }
+  NSString *left = [nameFormat substring:0 endIndex:index];
+  NSString *right = [nameFormat substring:index + 2];
+  NSString *name;
+  if (self->iLetterS_ == nil) {
+    name = [((NSString *) nil_chk(left)) concat:right];
+  }
+  else {
+    name = JreStrcat("$$$", left, self->iLetterS_, right);
+  }
+  return [((NSString *) nil_chk(name)) intern];
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzZoneInfoCompiler_Rule)
 
 @implementation OrgJodaTimeTzZoneInfoCompiler_RuleSet
 
@@ -810,7 +863,7 @@ jboolean OrgJodaTimeTzZoneInfoCompiler_testWithNSString_withOrgJodaTimeDateTimeZ
 }
 
 - (void)dealloc {
-  OrgJodaTimeTzZoneInfoCompiler_RuleSet_set_iRules_(self, nil);
+  RELEASE_(iRules_);
   [super dealloc];
 }
 
@@ -828,11 +881,13 @@ jboolean OrgJodaTimeTzZoneInfoCompiler_testWithNSString_withOrgJodaTimeDateTimeZ
   static const J2ObjcFieldInfo fields[] = {
     { "iRules_", NULL, 0x2, "Ljava.util.List;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzZoneInfoCompiler_RuleSet = { "RuleSet", "org.joda.time.tz", "ZoneInfoCompiler", 0xa, 3, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeTzZoneInfoCompiler_RuleSet = { 1, "RuleSet", "org.joda.time.tz", "ZoneInfoCompiler", 0xa, 3, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeTzZoneInfoCompiler_RuleSet;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzZoneInfoCompiler_RuleSet)
 
 @implementation OrgJodaTimeTzZoneInfoCompiler_Zone
 
@@ -895,11 +950,11 @@ jboolean OrgJodaTimeTzZoneInfoCompiler_testWithNSString_withOrgJodaTimeDateTimeZ
 }
 
 - (void)dealloc {
-  OrgJodaTimeTzZoneInfoCompiler_Zone_set_iName_(self, nil);
-  OrgJodaTimeTzZoneInfoCompiler_Zone_set_iRules_(self, nil);
-  OrgJodaTimeTzZoneInfoCompiler_Zone_set_iFormat_(self, nil);
-  OrgJodaTimeTzZoneInfoCompiler_Zone_set_iUntilDateTimeOfYear_(self, nil);
-  OrgJodaTimeTzZoneInfoCompiler_Zone_set_iNext_(self, nil);
+  RELEASE_(iName_);
+  RELEASE_(iRules_);
+  RELEASE_(iFormat_);
+  RELEASE_(iUntilDateTimeOfYear_);
+  RELEASE_(iNext_);
   [super dealloc];
 }
 
@@ -932,7 +987,7 @@ jboolean OrgJodaTimeTzZoneInfoCompiler_testWithNSString_withOrgJodaTimeDateTimeZ
     { "iUntilDateTimeOfYear_", NULL, 0x11, "Lorg.joda.time.tz.ZoneInfoCompiler$DateTimeOfYear;", NULL,  },
     { "iNext_", NULL, 0x2, "Lorg.joda.time.tz.ZoneInfoCompiler$Zone;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzZoneInfoCompiler_Zone = { "Zone", "org.joda.time.tz", "ZoneInfoCompiler", 0xa, 6, methods, 7, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeTzZoneInfoCompiler_Zone = { 1, "Zone", "org.joda.time.tz", "ZoneInfoCompiler", 0xa, 6, methods, 7, fields, 0, NULL};
   return &_OrgJodaTimeTzZoneInfoCompiler_Zone;
 }
 
@@ -965,6 +1020,8 @@ void OrgJodaTimeTzZoneInfoCompiler_Zone_addToBuilderWithOrgJodaTimeTzZoneInfoCom
   }
 }
 
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzZoneInfoCompiler_Zone)
+
 @implementation OrgJodaTimeTzZoneInfoCompiler_$1
 
 - (JavaLangBoolean *)initialValue {
@@ -981,8 +1038,10 @@ void OrgJodaTimeTzZoneInfoCompiler_Zone_addToBuilderWithOrgJodaTimeTzZoneInfoCom
     { "init", NULL, NULL, 0x0, NULL },
   };
   static const char *superclass_type_args[] = {"Ljava.lang.Boolean;"};
-  static const J2ObjcClassInfo _OrgJodaTimeTzZoneInfoCompiler_$1 = { "$1", "org.joda.time.tz", "ZoneInfoCompiler", 0x8000, 2, methods, 0, NULL, 1, superclass_type_args};
+  static const J2ObjcClassInfo _OrgJodaTimeTzZoneInfoCompiler_$1 = { 1, "$1", "org.joda.time.tz", "ZoneInfoCompiler", 0x8000, 2, methods, 0, NULL, 1, superclass_type_args};
   return &_OrgJodaTimeTzZoneInfoCompiler_$1;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzZoneInfoCompiler_$1)

@@ -4,6 +4,7 @@
 //
 
 #include "Chronology.h"
+#include "J2ObjC_source.h"
 #include "ReadWritableInterval.h"
 #include "ReadableDuration.h"
 #include "ReadableInstant.h"
@@ -30,9 +31,10 @@
     { "setPeriodAfterStartWithOrgJodaTimeReadablePeriod:", "setPeriodAfterStart", "V", 0x401, NULL },
     { "setPeriodBeforeEndWithOrgJodaTimeReadablePeriod:", "setPeriodBeforeEnd", "V", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadWritableInterval = { "ReadWritableInterval", "org.joda.time", NULL, 0x201, 12, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeReadWritableInterval = { 1, "ReadWritableInterval", "org.joda.time", NULL, 0x201, 12, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeReadWritableInterval;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeReadWritableInterval)

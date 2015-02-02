@@ -12,8 +12,8 @@
 @class OrgJodaTimeDateTimeField;
 @class OrgJodaTimeDateTimeZone;
 
-#import "JreEmulation.h"
 #include "AssembledChronology.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoBuddhistChronology_BE 1
 #define OrgJodaTimeChronoBuddhistChronology_BUDDHIST_OFFSET 543
@@ -47,18 +47,6 @@
  @param zone the time zone to use, null is default
  */
 + (OrgJodaTimeChronoBuddhistChronology *)getInstanceWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
-
-/**
- @brief Restricted constructor.
- @param param if non-null, then don't change the field set
- */
-- (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
-                                       withId:(id)param;
-
-/**
- @brief Serialization singleton
- */
-- (id)readResolve;
 
 /**
  @brief Gets the Chronology in the UTC time zone.
@@ -100,8 +88,13 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeChronoBuddhistChronology_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeChronoBuddhistChronology)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeChronoBuddhistChronology *OrgJodaTimeChronoBuddhistChronology_getInstanceUTC();
+
 FOUNDATION_EXPORT OrgJodaTimeChronoBuddhistChronology *OrgJodaTimeChronoBuddhistChronology_getInstance();
+
 FOUNDATION_EXPORT OrgJodaTimeChronoBuddhistChronology *OrgJodaTimeChronoBuddhistChronology_getInstanceWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBuddhistChronology, serialVersionUID, jlong)
@@ -118,5 +111,8 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBuddhistChronology, cCache_, JavaUti
 
 FOUNDATION_EXPORT OrgJodaTimeChronoBuddhistChronology *OrgJodaTimeChronoBuddhistChronology_INSTANCE_UTC_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBuddhistChronology, INSTANCE_UTC_, OrgJodaTimeChronoBuddhistChronology *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBuddhistChronology)
 
 #endif // _OrgJodaTimeChronoBuddhistChronology_H_

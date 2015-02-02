@@ -12,12 +12,17 @@
 #include "FieldUtils.h"
 #include "IOSClass.h"
 #include "Interval.h"
+#include "J2ObjC_source.h"
 #include "ReadableInstant.h"
 #include "ReadablePartial.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
 #include "java/lang/UnsupportedOperationException.h"
 #include "java/util/Locale.h"
+
+@interface OrgJodaTimeFieldAbstractReadableInstantFieldProperty () {
+}
+@end
 
 @implementation OrgJodaTimeFieldAbstractReadableInstantFieldProperty
 
@@ -234,8 +239,10 @@
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeFieldAbstractReadableInstantFieldProperty_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldAbstractReadableInstantFieldProperty = { "AbstractReadableInstantFieldProperty", "org.joda.time.field", NULL, 0x401, 32, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldAbstractReadableInstantFieldProperty = { 1, "AbstractReadableInstantFieldProperty", "org.joda.time.field", NULL, 0x401, 32, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeFieldAbstractReadableInstantFieldProperty;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldAbstractReadableInstantFieldProperty)

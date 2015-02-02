@@ -8,8 +8,8 @@
 
 @class OrgJodaTimeDateTimeField;
 
-#import "JreEmulation.h"
 #include "DelegatedDateTimeField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeFieldStrictDateTimeField_serialVersionUID 3154803964207950910LL
 
@@ -41,9 +41,15 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldStrictDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldStrictDateTimeField)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeField *OrgJodaTimeFieldStrictDateTimeField_getInstanceWithOrgJodaTimeDateTimeField_(OrgJodaTimeDateTimeField *field);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldStrictDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldStrictDateTimeField)
 
 #endif // _OrgJodaTimeFieldStrictDateTimeField_H_

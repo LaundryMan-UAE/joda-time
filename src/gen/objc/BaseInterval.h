@@ -11,8 +11,8 @@
 @protocol OrgJodaTimeReadableInstant;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
 #include "AbstractInterval.h"
+#include "J2ObjC_header.h"
 #include "ReadableInterval.h"
 #include "java/io/Serializable.h"
 
@@ -27,19 +27,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeBaseBaseInterval : OrgJodaTimeBaseAbstractInterval < OrgJodaTimeReadableInterval, JavaIoSerializable > {
- @public
-  /**
-   @brief The chronology of the interval
-   */
-  OrgJodaTimeChronology *iChronology_;
-  /**
-   @brief The start of the interval
-   */
-  jlong iStartMillis_;
-  /**
-   @brief The end of the interval
-   */
-  jlong iEndMillis_;
 }
 
 /**
@@ -142,16 +129,15 @@
                    withLong:(jlong)endInstant
   withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeBaseBaseInterval *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeBaseBaseInterval_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeBaseBaseInterval)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeBaseBaseInterval, iChronology_, OrgJodaTimeChronology *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseInterval, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseBaseInterval)
 
 #endif // _OrgJodaTimeBaseBaseInterval_H_

@@ -12,8 +12,8 @@
 @protocol OrgJodaTimeReadableInterval;
 @protocol OrgJodaTimeReadablePeriod;
 
-#import "JreEmulation.h"
 #include "BaseInterval.h"
+#include "J2ObjC_header.h"
 #include "ReadWritableInterval.h"
 #include "java/io/Serializable.h"
 
@@ -251,13 +251,17 @@
  */
 - (id)clone;
 
-- (id)copyWithZone:(NSZone *)zone;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeMutableInterval_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeMutableInterval)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeMutableInterval *OrgJodaTimeMutableInterval_parseWithNSString_(NSString *str);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMutableInterval, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeMutableInterval)
 
 #endif // _OrgJodaTimeMutableInterval_H_

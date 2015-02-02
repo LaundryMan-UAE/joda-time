@@ -22,6 +22,7 @@
 #include "ISOChronology.h"
 #include "ISODateTimeFormat.h"
 #include "IllegalInstantException.h"
+#include "J2ObjC_source.h"
 #include "LocalDate.h"
 #include "LocalDateTime.h"
 #include "LocalTime.h"
@@ -39,6 +40,36 @@
 #include "java/lang/NullPointerException.h"
 #include "java/lang/RuntimeException.h"
 #include "java/util/Locale.h"
+
+@interface OrgJodaTimeDateTime () {
+}
+@end
+
+@interface OrgJodaTimeDateTime_Property () {
+ @public
+  /**
+   @brief The instant this property is working against
+   */
+  OrgJodaTimeDateTime *iInstant_;
+  /**
+   @brief The field this property is working against
+   */
+  OrgJodaTimeDateTimeField *iField_;
+}
+
+/**
+ @brief Writes the property in a safe serialization format.
+ */
+- (void)writeObjectWithJavaIoObjectOutputStream:(JavaIoObjectOutputStream *)oos;
+
+/**
+ @brief Reads the property from a safe serialization format.
+ */
+- (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)oos;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeDateTime_Property, iInstant_, OrgJodaTimeDateTime *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeDateTime_Property, iField_, OrgJodaTimeDateTimeField *)
 
 @implementation OrgJodaTimeDateTime
 
@@ -656,19 +687,19 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
 }
 
 + (IOSObjectArray *)__annotations_parseWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_toDateMidnight {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_toYearMonthDay {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (IOSObjectArray *)__annotations_toTimeOfDay {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:[IOSClass classWithProtocol:@protocol(JavaLangAnnotationAnnotation)]];
+  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -782,7 +813,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeDateTime_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTime = { "DateTime", "org.joda.time", NULL, 0x11, 105, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTime = { 1, "DateTime", "org.joda.time", NULL, 0x11, 105, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeDateTime;
 }
 
@@ -818,6 +849,8 @@ OrgJodaTimeDateTime *OrgJodaTimeDateTime_parseWithNSString_withOrgJodaTimeFormat
   OrgJodaTimeDateTime_init();
   return [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(formatter)) parseDateTimeWithNSString:str];
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTime)
 
 @implementation OrgJodaTimeDateTime_Property
 
@@ -929,8 +962,8 @@ OrgJodaTimeDateTime *OrgJodaTimeDateTime_parseWithNSString_withOrgJodaTimeFormat
 }
 
 - (void)dealloc {
-  OrgJodaTimeDateTime_Property_set_iInstant_(self, nil);
-  OrgJodaTimeDateTime_Property_set_iField_(self, nil);
+  RELEASE_(iInstant_);
+  RELEASE_(iField_);
   [super dealloc];
 }
 
@@ -968,8 +1001,10 @@ OrgJodaTimeDateTime *OrgJodaTimeDateTime_parseWithNSString_withOrgJodaTimeFormat
     { "iInstant_", NULL, 0x2, "Lorg.joda.time.DateTime;", NULL,  },
     { "iField_", NULL, 0x2, "Lorg.joda.time.DateTimeField;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTime_Property = { "Property", "org.joda.time", "DateTime", 0x19, 20, methods, 3, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTime_Property = { 1, "Property", "org.joda.time", "DateTime", 0x19, 20, methods, 3, fields, 0, NULL};
   return &_OrgJodaTimeDateTime_Property;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTime_Property)

@@ -19,7 +19,7 @@
 @protocol OrgJodaTimeReadableInterval;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief DateTimeUtils provide public utility methods for the date-time library.
@@ -29,10 +29,6 @@
  */
 @interface OrgJodaTimeDateTimeUtils : NSObject {
 }
-
-+ (void)putWithJavaUtilMap:(id<JavaUtilMap>)map
-              withNSString:(NSString *)name
-              withNSString:(NSString *)id_;
 
 /**
  @brief Restrictive constructor
@@ -77,12 +73,6 @@
  @since 2.0
  */
 + (void)setCurrentMillisProviderWithOrgJodaTimeDateTimeUtils_MillisProvider:(id<OrgJodaTimeDateTimeUtils_MillisProvider>)millisProvider;
-
-/**
- @brief Checks whether the provider may be changed using permission 'CurrentTime.setProvider'.
- @throws SecurityException if the provider may not be changed
- */
-+ (void)checkPermission;
 
 /**
  @brief Gets the millisecond instant from the specified instant object handling null.
@@ -225,26 +215,49 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeDateTimeUtils_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeDateTimeUtils)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT jlong OrgJodaTimeDateTimeUtils_currentTimeMillis();
+
 FOUNDATION_EXPORT void OrgJodaTimeDateTimeUtils_setCurrentMillisSystem();
+
 FOUNDATION_EXPORT void OrgJodaTimeDateTimeUtils_setCurrentMillisFixedWithLong_(jlong fixedMillis);
+
 FOUNDATION_EXPORT void OrgJodaTimeDateTimeUtils_setCurrentMillisOffsetWithLong_(jlong offsetMillis);
+
 FOUNDATION_EXPORT void OrgJodaTimeDateTimeUtils_setCurrentMillisProviderWithOrgJodaTimeDateTimeUtils_MillisProvider_(id<OrgJodaTimeDateTimeUtils_MillisProvider> millisProvider);
+
 FOUNDATION_EXPORT jlong OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> instant);
+
 FOUNDATION_EXPORT OrgJodaTimeChronology *OrgJodaTimeDateTimeUtils_getInstantChronologyWithOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> instant);
+
 FOUNDATION_EXPORT OrgJodaTimeChronology *OrgJodaTimeDateTimeUtils_getIntervalChronologyWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end);
+
 FOUNDATION_EXPORT OrgJodaTimeChronology *OrgJodaTimeDateTimeUtils_getIntervalChronologyWithOrgJodaTimeReadableInterval_(id<OrgJodaTimeReadableInterval> interval);
+
 FOUNDATION_EXPORT id<OrgJodaTimeReadableInterval> OrgJodaTimeDateTimeUtils_getReadableIntervalWithOrgJodaTimeReadableInterval_(id<OrgJodaTimeReadableInterval> interval);
+
 FOUNDATION_EXPORT OrgJodaTimeChronology *OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chrono);
+
 FOUNDATION_EXPORT OrgJodaTimeDateTimeZone *OrgJodaTimeDateTimeUtils_getZoneWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
+
 FOUNDATION_EXPORT OrgJodaTimePeriodType *OrgJodaTimeDateTimeUtils_getPeriodTypeWithOrgJodaTimePeriodType_(OrgJodaTimePeriodType *type);
+
 FOUNDATION_EXPORT jlong OrgJodaTimeDateTimeUtils_getDurationMillisWithOrgJodaTimeReadableDuration_(id<OrgJodaTimeReadableDuration> duration);
+
 FOUNDATION_EXPORT jboolean OrgJodaTimeDateTimeUtils_isContiguousWithOrgJodaTimeReadablePartial_(id<OrgJodaTimeReadablePartial> partial);
+
 FOUNDATION_EXPORT JavaTextDateFormatSymbols *OrgJodaTimeDateTimeUtils_getDateFormatSymbolsWithJavaUtilLocale_(JavaUtilLocale *locale);
+
 FOUNDATION_EXPORT id<JavaUtilMap> OrgJodaTimeDateTimeUtils_getDefaultTimeZoneNames();
+
 FOUNDATION_EXPORT void OrgJodaTimeDateTimeUtils_setDefaultTimeZoneNamesWithJavaUtilMap_(id<JavaUtilMap> names);
+
 FOUNDATION_EXPORT jdouble OrgJodaTimeDateTimeUtils_toJulianDayWithLong_(jlong epochMillis);
+
 FOUNDATION_EXPORT jlong OrgJodaTimeDateTimeUtils_toJulianDayNumberWithLong_(jlong epochMillis);
+
 FOUNDATION_EXPORT jlong OrgJodaTimeDateTimeUtils_fromJulianDayWithDouble_(jdouble julianDay);
 
 FOUNDATION_EXPORT OrgJodaTimeDateTimeUtils_SystemMillisProvider *OrgJodaTimeDateTimeUtils_SYSTEM_MILLIS_PROVIDER_;
@@ -257,6 +270,9 @@ J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeDateTimeUtils, cMillisProvider_, id<OrgJod
 FOUNDATION_EXPORT id<JavaUtilMap> OrgJodaTimeDateTimeUtils_cZoneNames_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeUtils, cZoneNames_, id<JavaUtilMap>)
 J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeDateTimeUtils, cZoneNames_, id<JavaUtilMap>)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeUtils)
 
 /**
  @brief A millisecond provider, allowing control of the system clock.
@@ -274,7 +290,9 @@ J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeDateTimeUtils, cZoneNames_, id<JavaUtilMap
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeDateTimeUtils_MillisProvider_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeDateTimeUtils_MillisProvider)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeUtils_MillisProvider)
 
 /**
  @brief System millis provider.
@@ -292,17 +310,17 @@ __attribute__((always_inline)) inline void OrgJodaTimeDateTimeUtils_MillisProvid
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeDateTimeUtils_SystemMillisProvider_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeDateTimeUtils_SystemMillisProvider)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeUtils_SystemMillisProvider)
 
 /**
  @brief Fixed millisecond provider.
  */
 @interface OrgJodaTimeDateTimeUtils_FixedMillisProvider : NSObject < OrgJodaTimeDateTimeUtils_MillisProvider > {
- @public
-  /**
-   @brief The fixed millis value.
-   */
-  jlong iMillis_;
 }
 
 /**
@@ -317,21 +335,19 @@ __attribute__((always_inline)) inline void OrgJodaTimeDateTimeUtils_SystemMillis
  */
 - (jlong)getMillis;
 
-- (void)copyAllFieldsTo:(OrgJodaTimeDateTimeUtils_FixedMillisProvider *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeDateTimeUtils_FixedMillisProvider_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeDateTimeUtils_FixedMillisProvider)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeUtils_FixedMillisProvider)
 
 /**
  @brief Offset from system millis provider.
  */
 @interface OrgJodaTimeDateTimeUtils_OffsetMillisProvider : NSObject < OrgJodaTimeDateTimeUtils_MillisProvider > {
- @public
-  /**
-   @brief The millis offset.
-   */
-  jlong iMillis_;
 }
 
 /**
@@ -346,10 +362,13 @@ __attribute__((always_inline)) inline void OrgJodaTimeDateTimeUtils_FixedMillisP
  */
 - (jlong)getMillis;
 
-- (void)copyAllFieldsTo:(OrgJodaTimeDateTimeUtils_OffsetMillisProvider *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeDateTimeUtils_OffsetMillisProvider_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeDateTimeUtils_OffsetMillisProvider)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeUtils_OffsetMillisProvider)
 
 #endif // _OrgJodaTimeDateTimeUtils_H_

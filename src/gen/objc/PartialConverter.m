@@ -7,6 +7,7 @@
 #include "DateTimeFormatter.h"
 #include "DateTimeZone.h"
 #include "IOSPrimitiveArray.h"
+#include "J2ObjC_source.h"
 #include "PartialConverter.h"
 #include "ReadablePartial.h"
 
@@ -22,9 +23,10 @@
     { "getPartialValuesWithOrgJodaTimeReadablePartial:withId:withOrgJodaTimeChronology:", "getPartialValues", "[I", 0x401, NULL },
     { "getPartialValuesWithOrgJodaTimeReadablePartial:withId:withOrgJodaTimeChronology:withOrgJodaTimeFormatDateTimeFormatter:", "getPartialValues", "[I", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertPartialConverter = { "PartialConverter", "org.joda.time.convert", NULL, 0x201, 4, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeConvertPartialConverter = { 1, "PartialConverter", "org.joda.time.convert", NULL, 0x201, 4, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeConvertPartialConverter;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertPartialConverter)

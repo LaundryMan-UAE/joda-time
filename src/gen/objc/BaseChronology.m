@@ -14,12 +14,17 @@
 #include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "IllegalFieldValueException.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
 #include "ReadablePeriod.h"
 #include "UnsupportedDateTimeField.h"
 #include "UnsupportedDurationField.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
+
+@interface OrgJodaTimeChronoBaseChronology () {
+}
+@end
 
 @implementation OrgJodaTimeChronoBaseChronology
 
@@ -387,8 +392,10 @@
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID_", NULL, 0x1a, "J", NULL, .constantValue.asLong = OrgJodaTimeChronoBaseChronology_serialVersionUID },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBaseChronology = { "BaseChronology", "org.joda.time.chrono", NULL, 0x401, 50, methods, 1, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBaseChronology = { 1, "BaseChronology", "org.joda.time.chrono", NULL, 0x401, 50, methods, 1, fields, 0, NULL};
   return &_OrgJodaTimeChronoBaseChronology;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBaseChronology)

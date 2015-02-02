@@ -13,8 +13,8 @@
 @class OrgJodaTimeDateTimeZone;
 @class OrgJodaTimeDurationField;
 
-#import "JreEmulation.h"
 #include "BaseChronology.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoAssembledChronology_serialVersionUID -6728465968995518215LL
 
@@ -25,45 +25,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeChronoAssembledChronology : OrgJodaTimeChronoBaseChronology {
- @public
-  OrgJodaTimeChronology *iBase_;
-  id iParam_;
-  OrgJodaTimeDurationField *iMillis_;
-  OrgJodaTimeDurationField *iSeconds_;
-  OrgJodaTimeDurationField *iMinutes_;
-  OrgJodaTimeDurationField *iHours_;
-  OrgJodaTimeDurationField *iHalfdays_;
-  OrgJodaTimeDurationField *iDays_;
-  OrgJodaTimeDurationField *iWeeks_;
-  OrgJodaTimeDurationField *iWeekyears_;
-  OrgJodaTimeDurationField *iMonths_;
-  OrgJodaTimeDurationField *iYears_;
-  OrgJodaTimeDurationField *iCenturies_;
-  OrgJodaTimeDurationField *iEras_;
-  OrgJodaTimeDateTimeField *iMillisOfSecond_;
-  OrgJodaTimeDateTimeField *iMillisOfDay_;
-  OrgJodaTimeDateTimeField *iSecondOfMinute_;
-  OrgJodaTimeDateTimeField *iSecondOfDay_;
-  OrgJodaTimeDateTimeField *iMinuteOfHour_;
-  OrgJodaTimeDateTimeField *iMinuteOfDay_;
-  OrgJodaTimeDateTimeField *iHourOfDay_;
-  OrgJodaTimeDateTimeField *iClockhourOfDay_;
-  OrgJodaTimeDateTimeField *iHourOfHalfday_;
-  OrgJodaTimeDateTimeField *iClockhourOfHalfday_;
-  OrgJodaTimeDateTimeField *iHalfdayOfDay_;
-  OrgJodaTimeDateTimeField *iDayOfWeek_;
-  OrgJodaTimeDateTimeField *iDayOfMonth_;
-  OrgJodaTimeDateTimeField *iDayOfYear_;
-  OrgJodaTimeDateTimeField *iWeekOfWeekyear_;
-  OrgJodaTimeDateTimeField *iWeekyear_;
-  OrgJodaTimeDateTimeField *iWeekyearOfCentury_;
-  OrgJodaTimeDateTimeField *iMonthOfYear_;
-  OrgJodaTimeDateTimeField *iYear_;
-  OrgJodaTimeDateTimeField *iYearOfEra_;
-  OrgJodaTimeDateTimeField *iYearOfCentury_;
-  OrgJodaTimeDateTimeField *iCenturyOfEra_;
-  OrgJodaTimeDateTimeField *iEra_;
-  jint iBaseFlags_;
 }
 
 /**
@@ -183,57 +144,16 @@
  */
 - (id)getParam;
 
-- (void)setFields;
-
-- (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)inArg;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoAssembledChronology *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoAssembledChronology_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoAssembledChronology)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iBase_, OrgJodaTimeChronology *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iParam_, id)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMillis_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iSeconds_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMinutes_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iHours_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iHalfdays_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iDays_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iWeeks_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iWeekyears_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMonths_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iYears_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iCenturies_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iEras_, OrgJodaTimeDurationField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMillisOfSecond_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMillisOfDay_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iSecondOfMinute_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iSecondOfDay_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMinuteOfHour_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMinuteOfDay_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iHourOfDay_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iClockhourOfDay_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iHourOfHalfday_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iClockhourOfHalfday_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iHalfdayOfDay_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iDayOfWeek_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iDayOfMonth_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iDayOfYear_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iWeekOfWeekyear_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iWeekyear_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iWeekyearOfCentury_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iMonthOfYear_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iYear_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iYearOfEra_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iYearOfCentury_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iCenturyOfEra_, OrgJodaTimeDateTimeField *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology, iEra_, OrgJodaTimeDateTimeField *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoAssembledChronology, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoAssembledChronology)
 
 /**
  @brief A container of fields used for assembling a chronology.
@@ -284,17 +204,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoAssembledChronology, serialVersionUI
  */
 - (void)copyFieldsFromWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono OBJC_METHOD_FAMILY_NONE;
 
-+ (jboolean)isSupportedWithOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)field;
-
-+ (jboolean)isSupportedWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoAssembledChronology_Fields *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoAssembledChronology_Fields_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoAssembledChronology_Fields)
 
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology_Fields, millis_, OrgJodaTimeDurationField *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology_Fields, seconds_, OrgJodaTimeDurationField *)
@@ -331,5 +243,10 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology_Fields, yearOfEra_, Org
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology_Fields, yearOfCentury_, OrgJodaTimeDateTimeField *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology_Fields, centuryOfEra_, OrgJodaTimeDateTimeField *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoAssembledChronology_Fields, era_, OrgJodaTimeDateTimeField *)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoAssembledChronology_Fields)
 
 #endif // _OrgJodaTimeChronoAssembledChronology_H_

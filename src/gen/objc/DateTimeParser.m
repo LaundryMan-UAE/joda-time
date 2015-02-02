@@ -5,6 +5,7 @@
 
 #include "DateTimeParser.h"
 #include "DateTimeParserBucket.h"
+#include "J2ObjC_source.h"
 
 @interface OrgJodaTimeFormatDateTimeParser : NSObject
 @end
@@ -16,9 +17,10 @@
     { "estimateParsedLength", NULL, "I", 0x401, NULL },
     { "parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withNSString:withInt:", "parseInto", "I", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeParser = { "DateTimeParser", "org.joda.time.format", NULL, 0x201, 2, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeParser = { 1, "DateTimeParser", "org.joda.time.format", NULL, 0x201, 2, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeFormatDateTimeParser;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeParser)

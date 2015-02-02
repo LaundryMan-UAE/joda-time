@@ -8,6 +8,7 @@
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
+#include "J2ObjC_source.h"
 #include "PeriodType.h"
 #include "ReadablePeriod.h"
 #include "java/lang/IllegalArgumentException.h"
@@ -17,6 +18,38 @@
 #include "java/util/HashMap.h"
 #include "java/util/List.h"
 #include "java/util/Map.h"
+
+__attribute__((unused)) static OrgJodaTimePeriodType *OrgJodaTimePeriodType_withFieldRemovedWithInt_withNSString_(OrgJodaTimePeriodType *self, jint indicesIndex, NSString *name);
+
+@interface OrgJodaTimePeriodType () {
+ @public
+  /**
+   @brief The name of the type
+   */
+  NSString *iName_;
+  /**
+   @brief The array of types
+   */
+  IOSObjectArray *iTypes_;
+  /**
+   @brief The array of indices
+   */
+  IOSIntArray *iIndices_;
+}
+
+/**
+ @brief Removes the field specified by indices index.
+ @param indicesIndex the index to remove
+ @param name the name addition
+ @return the new type
+ */
+- (OrgJodaTimePeriodType *)withFieldRemovedWithInt:(jint)indicesIndex
+                                      withNSString:(NSString *)name;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimePeriodType, iName_, NSString *)
+J2OBJC_FIELD_SETTER(OrgJodaTimePeriodType, iTypes_, IOSObjectArray *)
+J2OBJC_FIELD_SETTER(OrgJodaTimePeriodType, iIndices_, IOSIntArray *)
 
 BOOL OrgJodaTimePeriodType_initialized = NO;
 
@@ -195,65 +228,40 @@ withOrgJodaTimeDurationFieldTypeArray:(IOSObjectArray *)types
 }
 
 - (OrgJodaTimePeriodType *)withYearsRemoved {
-  return [self withFieldRemovedWithInt:0 withNSString:@"NoYears"];
+  return OrgJodaTimePeriodType_withFieldRemovedWithInt_withNSString_(self, 0, @"NoYears");
 }
 
 - (OrgJodaTimePeriodType *)withMonthsRemoved {
-  return [self withFieldRemovedWithInt:1 withNSString:@"NoMonths"];
+  return OrgJodaTimePeriodType_withFieldRemovedWithInt_withNSString_(self, 1, @"NoMonths");
 }
 
 - (OrgJodaTimePeriodType *)withWeeksRemoved {
-  return [self withFieldRemovedWithInt:2 withNSString:@"NoWeeks"];
+  return OrgJodaTimePeriodType_withFieldRemovedWithInt_withNSString_(self, 2, @"NoWeeks");
 }
 
 - (OrgJodaTimePeriodType *)withDaysRemoved {
-  return [self withFieldRemovedWithInt:3 withNSString:@"NoDays"];
+  return OrgJodaTimePeriodType_withFieldRemovedWithInt_withNSString_(self, 3, @"NoDays");
 }
 
 - (OrgJodaTimePeriodType *)withHoursRemoved {
-  return [self withFieldRemovedWithInt:4 withNSString:@"NoHours"];
+  return OrgJodaTimePeriodType_withFieldRemovedWithInt_withNSString_(self, 4, @"NoHours");
 }
 
 - (OrgJodaTimePeriodType *)withMinutesRemoved {
-  return [self withFieldRemovedWithInt:5 withNSString:@"NoMinutes"];
+  return OrgJodaTimePeriodType_withFieldRemovedWithInt_withNSString_(self, 5, @"NoMinutes");
 }
 
 - (OrgJodaTimePeriodType *)withSecondsRemoved {
-  return [self withFieldRemovedWithInt:6 withNSString:@"NoSeconds"];
+  return OrgJodaTimePeriodType_withFieldRemovedWithInt_withNSString_(self, 6, @"NoSeconds");
 }
 
 - (OrgJodaTimePeriodType *)withMillisRemoved {
-  return [self withFieldRemovedWithInt:7 withNSString:@"NoMillis"];
+  return OrgJodaTimePeriodType_withFieldRemovedWithInt_withNSString_(self, 7, @"NoMillis");
 }
 
 - (OrgJodaTimePeriodType *)withFieldRemovedWithInt:(jint)indicesIndex
                                       withNSString:(NSString *)name {
-  jint fieldIndex = IOSIntArray_Get(nil_chk(iIndices_), indicesIndex);
-  if (fieldIndex == -1) {
-    return self;
-  }
-  IOSObjectArray *types = [IOSObjectArray arrayWithLength:[self size] - 1 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]];
-  for (jint i = 0; i < ((IOSObjectArray *) nil_chk(iTypes_))->size_; i++) {
-    if (i < fieldIndex) {
-      IOSObjectArray_Set(types, i, IOSObjectArray_Get(iTypes_, i));
-    }
-    else if (i > fieldIndex) {
-      IOSObjectArray_Set(types, i - 1, IOSObjectArray_Get(iTypes_, i));
-    }
-  }
-  IOSIntArray *indices = [IOSIntArray arrayWithLength:8];
-  for (jint i = 0; i < indices->size_; i++) {
-    if (i < indicesIndex) {
-      *IOSIntArray_GetRef(indices, i) = IOSIntArray_Get(iIndices_, i);
-    }
-    else if (i > indicesIndex) {
-      *IOSIntArray_GetRef(indices, i) = (IOSIntArray_Get(iIndices_, i) == -1 ? -1 : IOSIntArray_Get(iIndices_, i) - 1);
-    }
-    else {
-      *IOSIntArray_GetRef(indices, i) = -1;
-    }
-  }
-  return [[[OrgJodaTimePeriodType alloc] initWithNSString:JreStrcat("$$", [self getName], name) withOrgJodaTimeDurationFieldTypeArray:types withIntArray:indices] autorelease];
+  return OrgJodaTimePeriodType_withFieldRemovedWithInt_withNSString_(self, indicesIndex, name);
 }
 
 - (jboolean)isEqual:(id)obj {
@@ -276,9 +284,9 @@ withOrgJodaTimeDurationFieldTypeArray:(IOSObjectArray *)types
 }
 
 - (void)dealloc {
-  OrgJodaTimePeriodType_set_iName_(self, nil);
-  OrgJodaTimePeriodType_set_iTypes_(self, nil);
-  OrgJodaTimePeriodType_set_iIndices_(self, nil);
+  RELEASE_(iName_);
+  RELEASE_(iTypes_);
+  RELEASE_(iIndices_);
   [super dealloc];
 }
 
@@ -370,7 +378,7 @@ withOrgJodaTimeDurationFieldTypeArray:(IOSObjectArray *)types
     { "iTypes_", NULL, 0x12, "[Lorg.joda.time.DurationFieldType;", NULL,  },
     { "iIndices_", NULL, 0x12, "[I", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimePeriodType = { "PeriodType", "org.joda.time", NULL, 0x1, 39, methods, 30, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimePeriodType = { 1, "PeriodType", "org.joda.time", NULL, 0x1, 39, methods, 30, fields, 0, NULL};
   return &_OrgJodaTimePeriodType;
 }
 
@@ -380,7 +388,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_standard() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cStandard_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Standard" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_months(), OrgJodaTimeDurationFieldType_weeks(), OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_millis() } count:8 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, 1, 2, 3, 4, 5, 6, 7 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Standard" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_months(), OrgJodaTimeDurationFieldType_weeks(), OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_millis() } count:8 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, 1, 2, 3, 4, 5, 6, 7 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cStandard_, nil, type);
   }
   return type;
@@ -390,7 +398,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_yearMonthDayTime() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cYMDTime_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"YearMonthDayTime" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_months(), OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_millis() } count:7 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, 1, -1, 2, 3, 4, 5, 6 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"YearMonthDayTime" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_months(), OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_millis() } count:7 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, 1, -1, 2, 3, 4, 5, 6 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cYMDTime_, nil, type);
   }
   return type;
@@ -400,7 +408,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_yearMonthDay() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cYMD_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"YearMonthDay" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_months(), OrgJodaTimeDurationFieldType_days() } count:3 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, 1, -1, 2, -1, -1, -1, -1 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"YearMonthDay" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_months(), OrgJodaTimeDurationFieldType_days() } count:3 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, 1, -1, 2, -1, -1, -1, -1 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cYMD_, nil, type);
   }
   return type;
@@ -410,7 +418,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_yearWeekDayTime() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cYWDTime_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"YearWeekDayTime" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_weeks(), OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_millis() } count:7 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, -1, 1, 2, 3, 4, 5, 6 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"YearWeekDayTime" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_weeks(), OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_millis() } count:7 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, -1, 1, 2, 3, 4, 5, 6 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cYWDTime_, nil, type);
   }
   return type;
@@ -420,7 +428,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_yearWeekDay() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cYWD_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"YearWeekDay" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_weeks(), OrgJodaTimeDurationFieldType_days() } count:3 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, -1, 1, 2, -1, -1, -1, -1 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"YearWeekDay" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_weeks(), OrgJodaTimeDurationFieldType_days() } count:3 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, -1, 1, 2, -1, -1, -1, -1 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cYWD_, nil, type);
   }
   return type;
@@ -430,7 +438,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_yearDayTime() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cYDTime_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"YearDayTime" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_millis() } count:6 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, -1, -1, 1, 2, 3, 4, 5 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"YearDayTime" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_millis() } count:6 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, -1, -1, 1, 2, 3, 4, 5 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cYDTime_, nil, type);
   }
   return type;
@@ -440,7 +448,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_yearDay() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cYD_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"YearDay" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_days() } count:2 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, -1, -1, 1, -1, -1, -1, -1 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"YearDay" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_days() } count:2 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, -1, -1, 1, -1, -1, -1, -1 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cYD_, nil, type);
   }
   return type;
@@ -450,7 +458,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_dayTime() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cDTime_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"DayTime" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_millis() } count:5 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, -1, 0, 1, 2, 3, 4 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"DayTime" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_millis() } count:5 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, -1, 0, 1, 2, 3, 4 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cDTime_, nil, type);
   }
   return type;
@@ -460,7 +468,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_time() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cTime_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Time" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_millis() } count:4 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, -1, -1, 0, 1, 2, 3 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Time" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_millis() } count:4 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, -1, -1, 0, 1, 2, 3 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cTime_, nil, type);
   }
   return type;
@@ -470,7 +478,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_years() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cYears_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Years" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years() } count:1 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, -1, -1, -1, -1, -1, -1, -1 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Years" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_years() } count:1 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ 0, -1, -1, -1, -1, -1, -1, -1 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cYears_, nil, type);
   }
   return type;
@@ -480,7 +488,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_months() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cMonths_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Months" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_months() } count:1 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, 0, -1, -1, -1, -1, -1, -1 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Months" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_months() } count:1 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, 0, -1, -1, -1, -1, -1, -1 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cMonths_, nil, type);
   }
   return type;
@@ -490,7 +498,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_weeks() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cWeeks_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Weeks" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_weeks() } count:1 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, 0, -1, -1, -1, -1, -1 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Weeks" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_weeks() } count:1 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, 0, -1, -1, -1, -1, -1 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cWeeks_, nil, type);
   }
   return type;
@@ -500,7 +508,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_days() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cDays_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Days" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_days() } count:1 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, -1, 0, -1, -1, -1, -1 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Days" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_days() } count:1 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, -1, 0, -1, -1, -1, -1 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cDays_, nil, type);
   }
   return type;
@@ -510,7 +518,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_hours() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cHours_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Hours" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_hours() } count:1 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, -1, -1, 0, -1, -1, -1 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Hours" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_hours() } count:1 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, -1, -1, 0, -1, -1, -1 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cHours_, nil, type);
   }
   return type;
@@ -520,7 +528,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_minutes() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cMinutes_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Minutes" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_minutes() } count:1 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, -1, -1, -1, 0, -1, -1 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Minutes" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_minutes() } count:1 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, -1, -1, -1, 0, -1, -1 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cMinutes_, nil, type);
   }
   return type;
@@ -530,7 +538,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_seconds() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cSeconds_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Seconds" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_seconds() } count:1 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, -1, -1, -1, -1, 0, -1 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Seconds" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_seconds() } count:1 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, -1, -1, -1, -1, 0, -1 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cSeconds_, nil, type);
   }
   return type;
@@ -540,7 +548,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_millis() {
   OrgJodaTimePeriodType_init();
   OrgJodaTimePeriodType *type = OrgJodaTimePeriodType_cMillis_;
   if (type == nil) {
-    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Millis" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_millis() } count:1 type:[IOSClass classWithClass:[OrgJodaTimeDurationFieldType class]]] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, -1, -1, -1, -1, -1, 0 } count:8]] autorelease];
+    type = [[[OrgJodaTimePeriodType alloc] initWithNSString:@"Millis" withOrgJodaTimeDurationFieldTypeArray:[IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeDurationFieldType_millis() } count:1 type:OrgJodaTimeDurationFieldType_class_()] withIntArray:[IOSIntArray arrayWithInts:(jint[]){ -1, -1, -1, -1, -1, -1, -1, 0 } count:8]] autorelease];
     JreStrongAssign(&OrgJodaTimePeriodType_cMillis_, nil, type);
   }
   return type;
@@ -548,7 +556,7 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_millis() {
 
 OrgJodaTimePeriodType *OrgJodaTimePeriodType_forFieldsWithOrgJodaTimeDurationFieldTypeArray_(IOSObjectArray *types) {
   OrgJodaTimePeriodType_init();
-  @synchronized([IOSClass classWithClass:[OrgJodaTimePeriodType class]]) {
+  @synchronized(OrgJodaTimePeriodType_class_()) {
     if (types == nil || types->size_ == 0) {
       @throw [[[JavaLangIllegalArgumentException alloc] initWithNSString:@"Types array must not be null or empty"] autorelease];
     }
@@ -625,3 +633,34 @@ OrgJodaTimePeriodType *OrgJodaTimePeriodType_forFieldsWithOrgJodaTimeDurationFie
     return type;
   }
 }
+
+OrgJodaTimePeriodType *OrgJodaTimePeriodType_withFieldRemovedWithInt_withNSString_(OrgJodaTimePeriodType *self, jint indicesIndex, NSString *name) {
+  jint fieldIndex = IOSIntArray_Get(nil_chk(self->iIndices_), indicesIndex);
+  if (fieldIndex == -1) {
+    return self;
+  }
+  IOSObjectArray *types = [IOSObjectArray arrayWithLength:[self size] - 1 type:OrgJodaTimeDurationFieldType_class_()];
+  for (jint i = 0; i < ((IOSObjectArray *) nil_chk(self->iTypes_))->size_; i++) {
+    if (i < fieldIndex) {
+      IOSObjectArray_Set(types, i, IOSObjectArray_Get(self->iTypes_, i));
+    }
+    else if (i > fieldIndex) {
+      IOSObjectArray_Set(types, i - 1, IOSObjectArray_Get(self->iTypes_, i));
+    }
+  }
+  IOSIntArray *indices = [IOSIntArray arrayWithLength:8];
+  for (jint i = 0; i < indices->size_; i++) {
+    if (i < indicesIndex) {
+      *IOSIntArray_GetRef(indices, i) = IOSIntArray_Get(self->iIndices_, i);
+    }
+    else if (i > indicesIndex) {
+      *IOSIntArray_GetRef(indices, i) = (IOSIntArray_Get(self->iIndices_, i) == -1 ? -1 : IOSIntArray_Get(self->iIndices_, i) - 1);
+    }
+    else {
+      *IOSIntArray_GetRef(indices, i) = -1;
+    }
+  }
+  return [[[OrgJodaTimePeriodType alloc] initWithNSString:JreStrcat("$$", [self getName], name) withOrgJodaTimeDurationFieldTypeArray:types withIntArray:indices] autorelease];
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimePeriodType)

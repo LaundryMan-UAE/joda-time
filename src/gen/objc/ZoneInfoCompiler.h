@@ -19,7 +19,7 @@
 @protocol JavaUtilList;
 @protocol JavaUtilMap;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "java/lang/ThreadLocal.h"
 
 /**
@@ -29,10 +29,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeTzZoneInfoCompiler : NSObject {
- @public
-  id<JavaUtilMap> iRuleSets_;
-  id<JavaUtilList> iZones_;
-  id<JavaUtilList> iLinks_;
 }
 
 /**
@@ -46,8 +42,6 @@
  <pre> Usage: java org.joda.time.tz.ZoneInfoCompiler &lt;options&gt; &lt;source files&gt; where possible options include: -src &lt;directory&gt;    Specify where to read source files -dst &lt;directory&gt;    Specify where to write generated files -verbose            Output verbosely (default false) </pre>
  */
 + (void)mainWithNSStringArray:(IOSObjectArray *)args;
-
-+ (void)printUsage;
 
 + (OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *)getStartOfYear;
 
@@ -90,29 +84,35 @@
 
 - (void)parseDataFileWithJavaIoBufferedReader:(JavaIoBufferedReader *)inArg;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeTzZoneInfoCompiler *)other;
-
 @end
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeTzZoneInfoCompiler_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeTzZoneInfoCompiler)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler, iRuleSets_, id<JavaUtilMap>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler, iZones_, id<JavaUtilList>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler, iLinks_, id<JavaUtilList>)
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT jboolean OrgJodaTimeTzZoneInfoCompiler_verbose();
+
 FOUNDATION_EXPORT void OrgJodaTimeTzZoneInfoCompiler_mainWithNSStringArray_(IOSObjectArray *args);
+
 FOUNDATION_EXPORT OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *OrgJodaTimeTzZoneInfoCompiler_getStartOfYear();
+
 FOUNDATION_EXPORT OrgJodaTimeChronology *OrgJodaTimeTzZoneInfoCompiler_getLenientISOChronology();
+
 FOUNDATION_EXPORT void OrgJodaTimeTzZoneInfoCompiler_writeZoneInfoMapWithJavaIoDataOutputStream_withJavaUtilMap_(JavaIoDataOutputStream *dout, id<JavaUtilMap> zimap);
+
 FOUNDATION_EXPORT jint OrgJodaTimeTzZoneInfoCompiler_parseYearWithNSString_withInt_(NSString *str, jint def);
+
 FOUNDATION_EXPORT jint OrgJodaTimeTzZoneInfoCompiler_parseMonthWithNSString_(NSString *str);
+
 FOUNDATION_EXPORT jint OrgJodaTimeTzZoneInfoCompiler_parseDayOfWeekWithNSString_(NSString *str);
+
 FOUNDATION_EXPORT NSString *OrgJodaTimeTzZoneInfoCompiler_parseOptionalWithNSString_(NSString *str);
+
 FOUNDATION_EXPORT jint OrgJodaTimeTzZoneInfoCompiler_parseTimeWithNSString_(NSString *str);
+
 FOUNDATION_EXPORT jchar OrgJodaTimeTzZoneInfoCompiler_parseZoneCharWithChar_(jchar c);
+
 FOUNDATION_EXPORT jboolean OrgJodaTimeTzZoneInfoCompiler_testWithNSString_withOrgJodaTimeDateTimeZone_(NSString *id_, OrgJodaTimeDateTimeZone *tz);
 
 FOUNDATION_EXPORT OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *OrgJodaTimeTzZoneInfoCompiler_cStartOfYear_;
@@ -126,6 +126,9 @@ J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler, cLenientISO_, OrgJodaT
 FOUNDATION_EXPORT JavaLangThreadLocal *OrgJodaTimeTzZoneInfoCompiler_cVerbose_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTzZoneInfoCompiler, cVerbose_, JavaLangThreadLocal *)
 J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler, cVerbose_, JavaLangThreadLocal *)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzZoneInfoCompiler)
 
 @interface OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear : NSObject {
  @public
@@ -158,11 +161,14 @@ J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler, cVerbose_, JavaLangThr
 
 - (NSString *)description;
 
-- (void)copyAllFieldsTo:(OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear)
 
 @interface OrgJodaTimeTzZoneInfoCompiler_Rule : NSObject {
  @public
@@ -183,26 +189,23 @@ __attribute__((always_inline)) inline void OrgJodaTimeTzZoneInfoCompiler_DateTim
 - (void)addRecurringWithOrgJodaTimeTzDateTimeZoneBuilder:(OrgJodaTimeTzDateTimeZoneBuilder *)builder
                                             withNSString:(NSString *)nameFormat;
 
-- (NSString *)formatNameWithNSString:(NSString *)nameFormat;
-
 - (NSString *)description;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeTzZoneInfoCompiler_Rule *)other;
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeTzZoneInfoCompiler_Rule_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeTzZoneInfoCompiler_Rule)
 
 J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_Rule, iName_, NSString *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_Rule, iType_, NSString *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_Rule, iDateTimeOfYear_, OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_Rule, iLetterS_, NSString *)
 
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzZoneInfoCompiler_Rule)
+
 @interface OrgJodaTimeTzZoneInfoCompiler_RuleSet : NSObject {
- @public
-  id<JavaUtilList> iRules_;
 }
 
 - (instancetype)initWithOrgJodaTimeTzZoneInfoCompiler_Rule:(OrgJodaTimeTzZoneInfoCompiler_Rule *)rule;
@@ -215,15 +218,14 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_Rule, iLetterS_, NSString *)
 - (void)addRecurringWithOrgJodaTimeTzDateTimeZoneBuilder:(OrgJodaTimeTzDateTimeZoneBuilder *)builder
                                             withNSString:(NSString *)nameFormat;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeTzZoneInfoCompiler_RuleSet *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeTzZoneInfoCompiler_RuleSet_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeTzZoneInfoCompiler_RuleSet)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_RuleSet, iRules_, id<JavaUtilList>)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzZoneInfoCompiler_RuleSet)
 
 @interface OrgJodaTimeTzZoneInfoCompiler_Zone : NSObject {
  @public
@@ -233,13 +235,9 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_RuleSet, iRules_, id<JavaUtilL
   NSString *iFormat_;
   jint iUntilYear_;
   OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *iUntilDateTimeOfYear_;
-  OrgJodaTimeTzZoneInfoCompiler_Zone *iNext_;
 }
 
 - (instancetype)initWithJavaUtilStringTokenizer:(JavaUtilStringTokenizer *)st;
-
-- (instancetype)initWithNSString:(NSString *)name
-     withJavaUtilStringTokenizer:(JavaUtilStringTokenizer *)st;
 
 - (void)chainWithJavaUtilStringTokenizer:(JavaUtilStringTokenizer *)st;
 
@@ -249,25 +247,21 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_RuleSet, iRules_, id<JavaUtilL
 - (void)addToBuilderWithOrgJodaTimeTzDateTimeZoneBuilder:(OrgJodaTimeTzDateTimeZoneBuilder *)builder
                                          withJavaUtilMap:(id<JavaUtilMap>)ruleSets;
 
-+ (void)addToBuilderWithOrgJodaTimeTzZoneInfoCompiler_Zone:(OrgJodaTimeTzZoneInfoCompiler_Zone *)zone
-                      withOrgJodaTimeTzDateTimeZoneBuilder:(OrgJodaTimeTzDateTimeZoneBuilder *)builder
-                                           withJavaUtilMap:(id<JavaUtilMap>)ruleSets;
-
 - (NSString *)description;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeTzZoneInfoCompiler_Zone *)other;
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeTzZoneInfoCompiler_Zone_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeTzZoneInfoCompiler_Zone)
 
 J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_Zone, iName_, NSString *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_Zone, iRules_, NSString *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_Zone, iFormat_, NSString *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_Zone, iUntilDateTimeOfYear_, OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *)
-J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_Zone, iNext_, OrgJodaTimeTzZoneInfoCompiler_Zone *)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzZoneInfoCompiler_Zone)
 
 @interface OrgJodaTimeTzZoneInfoCompiler_$1 : JavaLangThreadLocal {
 }
@@ -278,6 +272,11 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_Zone, iNext_, OrgJodaTimeTzZon
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeTzZoneInfoCompiler_$1_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeTzZoneInfoCompiler_$1)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzZoneInfoCompiler_$1)
 
 #endif // _OrgJodaTimeTzZoneInfoCompiler_H_

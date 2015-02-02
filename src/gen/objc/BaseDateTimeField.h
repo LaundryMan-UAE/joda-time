@@ -12,8 +12,8 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "DateTimeField.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief BaseDateTimeField provides the common behaviour for DateTimeField implementations.
@@ -22,11 +22,6 @@
  @since 1.0
  */
 @interface OrgJodaTimeFieldBaseDateTimeField : OrgJodaTimeDateTimeField {
- @public
-  /**
-   @brief The field type.
-   */
-  OrgJodaTimeDateTimeFieldType *iType_;
 }
 
 /**
@@ -489,14 +484,13 @@
  */
 - (NSString *)description;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeFieldBaseDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFieldBaseDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFieldBaseDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFieldBaseDateTimeField, iType_, OrgJodaTimeDateTimeFieldType *)
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldBaseDateTimeField)
 
 #endif // _OrgJodaTimeFieldBaseDateTimeField_H_

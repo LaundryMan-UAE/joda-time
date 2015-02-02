@@ -9,7 +9,45 @@
 #include "DateTimeUtils.h"
 #include "DurationFieldType.h"
 #include "IOSClass.h"
+#include "J2ObjC_source.h"
 #include "java/lang/InternalError.h"
+
+@interface OrgJodaTimeDateTimeFieldType () {
+ @public
+  /**
+   @brief The name of the field.
+   */
+  NSString *iName_;
+}
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeDateTimeFieldType, iName_, NSString *)
+
+@interface OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType () {
+ @public
+  /**
+   @brief The ordinal of the standard field type, for switch statements
+   */
+  jbyte iOrdinal_;
+  /**
+   @brief The unit duration of the field.
+   */
+  OrgJodaTimeDurationFieldType *iUnitType_;
+  /**
+   @brief The range duration of the field.
+   */
+  OrgJodaTimeDurationFieldType *iRangeType_;
+}
+
+/**
+ @brief Ensure a singleton is returned.
+ @return the singleton type
+ */
+- (id)readResolve;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType, iUnitType_, OrgJodaTimeDurationFieldType *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType, iRangeType_, OrgJodaTimeDurationFieldType *)
 
 BOOL OrgJodaTimeDateTimeFieldType_initialized = NO;
 
@@ -169,7 +207,7 @@ OrgJodaTimeDateTimeFieldType * OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND_TYP
 }
 
 - (void)dealloc {
-  OrgJodaTimeDateTimeFieldType_set_iName_(self, nil);
+  RELEASE_(iName_);
   [super dealloc];
 }
 
@@ -290,7 +328,7 @@ OrgJodaTimeDateTimeFieldType * OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND_TYP
     { "MILLIS_OF_SECOND_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND_TYPE_,  },
     { "iName_", NULL, 0x12, "Ljava.lang.String;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeFieldType = { "DateTimeFieldType", "org.joda.time", NULL, 0x401, 30, methods, 48, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeFieldType = { 1, "DateTimeFieldType", "org.joda.time", NULL, 0x401, 30, methods, 48, fields, 0, NULL};
   return &_OrgJodaTimeDateTimeFieldType;
 }
 
@@ -410,6 +448,8 @@ OrgJodaTimeDateTimeFieldType *OrgJodaTimeDateTimeFieldType_era() {
   OrgJodaTimeDateTimeFieldType_init();
   return OrgJodaTimeDateTimeFieldType_ERA_TYPE_;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeFieldType)
 
 @implementation OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType
 
@@ -555,8 +595,8 @@ withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)rangeType {
 }
 
 - (void)dealloc {
-  OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_set_iUnitType_(self, nil);
-  OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_set_iRangeType_(self, nil);
+  RELEASE_(iUnitType_);
+  RELEASE_(iRangeType_);
   [super dealloc];
 }
 
@@ -583,8 +623,10 @@ withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)rangeType {
     { "iUnitType_", NULL, 0x92, "Lorg.joda.time.DurationFieldType;", NULL,  },
     { "iRangeType_", NULL, 0x92, "Lorg.joda.time.DurationFieldType;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType = { "StandardDateTimeFieldType", "org.joda.time", "DateTimeFieldType", 0xa, 7, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType = { 1, "StandardDateTimeFieldType", "org.joda.time", "DateTimeFieldType", 0xa, 7, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType;
 }
 
 @end
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType)

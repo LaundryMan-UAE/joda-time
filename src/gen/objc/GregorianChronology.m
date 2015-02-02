@@ -11,10 +11,23 @@
 #include "GregorianChronology.h"
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
+#include "J2ObjC_source.h"
 #include "ZonedChronology.h"
 #include "java/lang/ArrayIndexOutOfBoundsException.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/util/concurrent/ConcurrentHashMap.h"
+
+@interface OrgJodaTimeChronoGregorianChronology () {
+}
+- (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
+                                       withId:(id)param
+                                      withInt:(jint)minDaysInFirstWeek;
+
+/**
+ @brief Serialization singleton
+ */
+- (id)readResolve;
+@end
 
 BOOL OrgJodaTimeChronoGregorianChronology_initialized = NO;
 
@@ -155,7 +168,7 @@ JavaUtilConcurrentConcurrentHashMap * OrgJodaTimeChronoGregorianChronology_cCach
     { "INSTANCE_UTC_", NULL, 0x1a, "Lorg.joda.time.chrono.GregorianChronology;", &OrgJodaTimeChronoGregorianChronology_INSTANCE_UTC_,  },
     { "cCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoGregorianChronology_cCache_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoGregorianChronology = { "GregorianChronology", "org.joda.time.chrono", NULL, 0x11, 17, methods, 8, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoGregorianChronology = { 1, "GregorianChronology", "org.joda.time.chrono", NULL, 0x11, 17, methods, 8, fields, 0, NULL};
   return &_OrgJodaTimeChronoGregorianChronology;
 }
 
@@ -184,7 +197,7 @@ OrgJodaTimeChronoGregorianChronology *OrgJodaTimeChronoGregorianChronology_getIn
   OrgJodaTimeChronoGregorianChronology *chrono;
   IOSObjectArray *chronos = [((JavaUtilConcurrentConcurrentHashMap *) nil_chk(OrgJodaTimeChronoGregorianChronology_cCache_)) getWithId:zone];
   if (chronos == nil) {
-    chronos = [IOSObjectArray arrayWithLength:7 type:[IOSClass classWithClass:[OrgJodaTimeChronoGregorianChronology class]]];
+    chronos = [IOSObjectArray arrayWithLength:7 type:OrgJodaTimeChronoGregorianChronology_class_()];
     IOSObjectArray *oldChronos = [OrgJodaTimeChronoGregorianChronology_cCache_ putIfAbsentWithId:zone withId:chronos];
     if (oldChronos != nil) {
       chronos = oldChronos;
@@ -213,3 +226,5 @@ OrgJodaTimeChronoGregorianChronology *OrgJodaTimeChronoGregorianChronology_getIn
   }
   return chrono;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGregorianChronology)

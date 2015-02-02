@@ -9,7 +9,7 @@
 @class OrgJodaTimeDuration;
 @class OrgJodaTimePeriod;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 #include "ReadableDuration.h"
 
 /**
@@ -93,6 +93,11 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeBaseAbstractDuration_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeBaseAbstractDuration)
+
+CF_EXTERN_C_BEGIN
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseAbstractDuration)
 
 #endif // _OrgJodaTimeBaseAbstractDuration_H_

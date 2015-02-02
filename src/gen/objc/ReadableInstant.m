@@ -7,6 +7,7 @@
 #include "DateTimeFieldType.h"
 #include "DateTimeZone.h"
 #include "Instant.h"
+#include "J2ObjC_source.h"
 #include "ReadableInstant.h"
 
 @interface OrgJodaTimeReadableInstant : NSObject
@@ -29,9 +30,10 @@
     { "hash", "hashCode", "I", 0x401, NULL },
     { "description", "toString", "Ljava.lang.String;", 0x401, NULL },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadableInstant = { "ReadableInstant", "org.joda.time", NULL, 0x201, 12, methods, 0, NULL, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeReadableInstant = { 1, "ReadableInstant", "org.joda.time", NULL, 0x201, 12, methods, 0, NULL, 0, NULL};
   return &_OrgJodaTimeReadableInstant;
 }
 
 @end
 
+J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeReadableInstant)

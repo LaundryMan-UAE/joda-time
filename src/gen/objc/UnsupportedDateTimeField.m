@@ -7,12 +7,40 @@
 #include "DurationField.h"
 #include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
+#include "J2ObjC_source.h"
 #include "ReadablePartial.h"
 #include "UnsupportedDateTimeField.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/UnsupportedOperationException.h"
 #include "java/util/HashMap.h"
 #include "java/util/Locale.h"
+
+__attribute__((unused)) static JavaLangUnsupportedOperationException *OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(OrgJodaTimeFieldUnsupportedDateTimeField *self);
+
+@interface OrgJodaTimeFieldUnsupportedDateTimeField () {
+ @public
+  /**
+   @brief The field type
+   */
+  OrgJodaTimeDateTimeFieldType *iType_;
+  /**
+   @brief The duration of the datetime field
+   */
+  OrgJodaTimeDurationField *iDurationField_;
+}
+- (instancetype)initWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type
+                        withOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)durationField;
+
+/**
+ @brief Ensure proper singleton serialization
+ */
+- (id)readResolve;
+
+- (JavaLangUnsupportedOperationException *)unsupported;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldUnsupportedDateTimeField, iType_, OrgJodaTimeDateTimeFieldType *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeFieldUnsupportedDateTimeField, iDurationField_, OrgJodaTimeDurationField *)
 
 @implementation OrgJodaTimeFieldUnsupportedDateTimeField
 
@@ -52,57 +80,57 @@ JavaUtilHashMap * OrgJodaTimeFieldUnsupportedDateTimeField_cCache_;
 }
 
 - (jint)getWithLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (NSString *)getAsTextWithLong:(jlong)instant
              withJavaUtilLocale:(JavaUtilLocale *)locale {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (NSString *)getAsTextWithLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (NSString *)getAsTextWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                                               withInt:(jint)fieldValue
                                    withJavaUtilLocale:(JavaUtilLocale *)locale {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (NSString *)getAsTextWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                                    withJavaUtilLocale:(JavaUtilLocale *)locale {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (NSString *)getAsTextWithInt:(jint)fieldValue
             withJavaUtilLocale:(JavaUtilLocale *)locale {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (NSString *)getAsShortTextWithLong:(jlong)instant
                   withJavaUtilLocale:(JavaUtilLocale *)locale {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (NSString *)getAsShortTextWithLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (NSString *)getAsShortTextWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                                                    withInt:(jint)fieldValue
                                         withJavaUtilLocale:(JavaUtilLocale *)locale {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (NSString *)getAsShortTextWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                                         withJavaUtilLocale:(JavaUtilLocale *)locale {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (NSString *)getAsShortTextWithInt:(jint)fieldValue
                  withJavaUtilLocale:(JavaUtilLocale *)locale {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jlong)addWithLong:(jlong)instant
@@ -119,26 +147,26 @@ JavaUtilHashMap * OrgJodaTimeFieldUnsupportedDateTimeField_cCache_;
                                            withInt:(jint)fieldIndex
                                       withIntArray:(IOSIntArray *)values
                                            withInt:(jint)valueToAdd {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (IOSIntArray *)addWrapPartialWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)instant
                                                       withInt:(jint)fieldIndex
                                                  withIntArray:(IOSIntArray *)values
                                                       withInt:(jint)valueToAdd {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jlong)addWrapFieldWithLong:(jlong)instant
                       withInt:(jint)value {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (IOSIntArray *)addWrapFieldWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)instant
                                                     withInt:(jint)fieldIndex
                                                withIntArray:(IOSIntArray *)values
                                                     withInt:(jint)valueToAdd {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jint)getDifferenceWithLong:(jlong)minuendInstant
@@ -153,25 +181,25 @@ JavaUtilHashMap * OrgJodaTimeFieldUnsupportedDateTimeField_cCache_;
 
 - (jlong)setWithLong:(jlong)instant
              withInt:(jint)value {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (IOSIntArray *)setWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)instant
                                            withInt:(jint)fieldIndex
                                       withIntArray:(IOSIntArray *)values
                                            withInt:(jint)newValue {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jlong)setWithLong:(jlong)instant
         withNSString:(NSString *)text
   withJavaUtilLocale:(JavaUtilLocale *)locale {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jlong)setWithLong:(jlong)instant
         withNSString:(NSString *)text {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (IOSIntArray *)setWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)instant
@@ -179,7 +207,7 @@ JavaUtilHashMap * OrgJodaTimeFieldUnsupportedDateTimeField_cCache_;
                                       withIntArray:(IOSIntArray *)values
                                       withNSString:(NSString *)text
                                 withJavaUtilLocale:(JavaUtilLocale *)locale {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (OrgJodaTimeDurationField *)getDurationField {
@@ -191,11 +219,11 @@ JavaUtilHashMap * OrgJodaTimeFieldUnsupportedDateTimeField_cCache_;
 }
 
 - (jboolean)isLeapWithLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jint)getLeapAmountWithLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (OrgJodaTimeDurationField *)getLeapDurationField {
@@ -203,69 +231,69 @@ JavaUtilHashMap * OrgJodaTimeFieldUnsupportedDateTimeField_cCache_;
 }
 
 - (jint)getMinimumValue {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jint)getMinimumValueWithLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jint)getMinimumValueWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jint)getMinimumValueWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)instant
                                          withIntArray:(IOSIntArray *)values {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jint)getMaximumValue {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jint)getMaximumValueWithLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jint)getMaximumValueWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jint)getMaximumValueWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)instant
                                          withIntArray:(IOSIntArray *)values {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jint)getMaximumTextLengthWithJavaUtilLocale:(JavaUtilLocale *)locale {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jint)getMaximumShortTextLengthWithJavaUtilLocale:(JavaUtilLocale *)locale {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jlong)roundFloorWithLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jlong)roundCeilingWithLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jlong)roundHalfFloorWithLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jlong)roundHalfCeilingWithLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jlong)roundHalfEvenWithLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (jlong)remainderWithLong:(jlong)instant {
-  @throw [self unsupported];
+  @throw OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (NSString *)description {
@@ -277,12 +305,12 @@ JavaUtilHashMap * OrgJodaTimeFieldUnsupportedDateTimeField_cCache_;
 }
 
 - (JavaLangUnsupportedOperationException *)unsupported {
-  return [[[JavaLangUnsupportedOperationException alloc] initWithNSString:JreStrcat("@$", iType_, @" field is unsupported")] autorelease];
+  return OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(self);
 }
 
 - (void)dealloc {
-  OrgJodaTimeFieldUnsupportedDateTimeField_set_iType_(self, nil);
-  OrgJodaTimeFieldUnsupportedDateTimeField_set_iDurationField_(self, nil);
+  RELEASE_(iType_);
+  RELEASE_(iDurationField_);
   [super dealloc];
 }
 
@@ -355,7 +383,7 @@ JavaUtilHashMap * OrgJodaTimeFieldUnsupportedDateTimeField_cCache_;
     { "iType_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL,  },
     { "iDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldUnsupportedDateTimeField = { "UnsupportedDateTimeField", "org.joda.time.field", NULL, 0x11, 54, methods, 4, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeFieldUnsupportedDateTimeField = { 1, "UnsupportedDateTimeField", "org.joda.time.field", NULL, 0x11, 54, methods, 4, fields, 0, NULL};
   return &_OrgJodaTimeFieldUnsupportedDateTimeField;
 }
 
@@ -363,7 +391,7 @@ JavaUtilHashMap * OrgJodaTimeFieldUnsupportedDateTimeField_cCache_;
 
 OrgJodaTimeFieldUnsupportedDateTimeField *OrgJodaTimeFieldUnsupportedDateTimeField_getInstanceWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType *type, OrgJodaTimeDurationField *durationField) {
   OrgJodaTimeFieldUnsupportedDateTimeField_init();
-  @synchronized([IOSClass classWithClass:[OrgJodaTimeFieldUnsupportedDateTimeField class]]) {
+  @synchronized(OrgJodaTimeFieldUnsupportedDateTimeField_class_()) {
     OrgJodaTimeFieldUnsupportedDateTimeField *field;
     if (OrgJodaTimeFieldUnsupportedDateTimeField_cCache_ == nil) {
       JreStrongAssignAndConsume(&OrgJodaTimeFieldUnsupportedDateTimeField_cCache_, nil, [[JavaUtilHashMap alloc] initWithInt:7]);
@@ -382,3 +410,9 @@ OrgJodaTimeFieldUnsupportedDateTimeField *OrgJodaTimeFieldUnsupportedDateTimeFie
     return field;
   }
 }
+
+JavaLangUnsupportedOperationException *OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(OrgJodaTimeFieldUnsupportedDateTimeField *self) {
+  return [[[JavaLangUnsupportedOperationException alloc] initWithNSString:JreStrcat("@$", self->iType_, @" field is unsupported")] autorelease];
+}
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldUnsupportedDateTimeField)

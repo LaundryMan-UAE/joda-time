@@ -13,6 +13,7 @@
 #include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "IllegalFieldValueException.h"
+#include "J2ObjC_source.h"
 #include "JulianChronology.h"
 #include "SkipDateTimeField.h"
 #include "ZonedChronology.h"
@@ -20,6 +21,15 @@
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
 #include "java/util/concurrent/ConcurrentHashMap.h"
+
+@interface OrgJodaTimeChronoJulianChronology () {
+}
+
+/**
+ @brief Serialization singleton
+ */
+- (id)readResolve;
+@end
 
 BOOL OrgJodaTimeChronoJulianChronology_initialized = NO;
 
@@ -175,7 +185,7 @@ JavaUtilConcurrentConcurrentHashMap * OrgJodaTimeChronoJulianChronology_cCache_;
     { "INSTANCE_UTC_", NULL, 0x1a, "Lorg.joda.time.chrono.JulianChronology;", &OrgJodaTimeChronoJulianChronology_INSTANCE_UTC_,  },
     { "cCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoJulianChronology_cCache_,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoJulianChronology = { "JulianChronology", "org.joda.time.chrono", NULL, 0x11, 19, methods, 7, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeChronoJulianChronology = { 1, "JulianChronology", "org.joda.time.chrono", NULL, 0x11, 19, methods, 7, fields, 0, NULL};
   return &_OrgJodaTimeChronoJulianChronology;
 }
 
@@ -215,7 +225,7 @@ OrgJodaTimeChronoJulianChronology *OrgJodaTimeChronoJulianChronology_getInstance
   OrgJodaTimeChronoJulianChronology *chrono;
   IOSObjectArray *chronos = [((JavaUtilConcurrentConcurrentHashMap *) nil_chk(OrgJodaTimeChronoJulianChronology_cCache_)) getWithId:zone];
   if (chronos == nil) {
-    chronos = [IOSObjectArray arrayWithLength:7 type:[IOSClass classWithClass:[OrgJodaTimeChronoJulianChronology class]]];
+    chronos = [IOSObjectArray arrayWithLength:7 type:OrgJodaTimeChronoJulianChronology_class_()];
     IOSObjectArray *oldChronos = [OrgJodaTimeChronoJulianChronology_cCache_ putIfAbsentWithId:zone withId:chronos];
     if (oldChronos != nil) {
       chronos = oldChronos;
@@ -244,3 +254,5 @@ OrgJodaTimeChronoJulianChronology *OrgJodaTimeChronoJulianChronology_getInstance
   }
   return chrono;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoJulianChronology)

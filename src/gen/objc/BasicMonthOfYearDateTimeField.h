@@ -11,8 +11,8 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "ImpreciseDateTimeField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoBasicMonthOfYearDateTimeField_MIN 1
 #define OrgJodaTimeChronoBasicMonthOfYearDateTimeField_serialVersionUID -8258715387168736LL
@@ -25,10 +25,6 @@
  @since 1.2, refactored from GJMonthOfYearDateTimeField
  */
 @interface OrgJodaTimeChronoBasicMonthOfYearDateTimeField : OrgJodaTimeFieldImpreciseDateTimeField {
- @public
-  OrgJodaTimeChronoBasicChronology *iChronology_;
-  jint iMax_;
-  jint iLeapMonth_;
 }
 
 /**
@@ -104,23 +100,17 @@
 
 - (jlong)remainderWithLong:(jlong)instant;
 
-/**
- @brief Serialization singleton
- */
-- (id)readResolve;
-
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoBasicMonthOfYearDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoBasicMonthOfYearDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoBasicMonthOfYearDateTimeField)
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeChronoBasicMonthOfYearDateTimeField, iChronology_, OrgJodaTimeChronoBasicChronology *)
+CF_EXTERN_C_BEGIN
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicMonthOfYearDateTimeField, serialVersionUID, jlong)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicMonthOfYearDateTimeField, MIN, jint)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicMonthOfYearDateTimeField)
 
 #endif // _OrgJodaTimeChronoBasicMonthOfYearDateTimeField_H_

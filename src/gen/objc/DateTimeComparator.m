@@ -10,6 +10,29 @@
 #include "DateTimeFieldType.h"
 #include "IOSClass.h"
 #include "InstantConverter.h"
+#include "J2ObjC_source.h"
+
+@interface OrgJodaTimeDateTimeComparator () {
+ @public
+  /**
+   @brief The lower limit of fields to compare, null if no limit
+   */
+  OrgJodaTimeDateTimeFieldType *iLowerLimit_;
+  /**
+   @brief The upper limit of fields to compare, null if no limit
+   */
+  OrgJodaTimeDateTimeFieldType *iUpperLimit_;
+}
+
+/**
+ @brief Support serialization singletons.
+ @return the resolved singleton instance
+ */
+- (id)readResolve;
+@end
+
+J2OBJC_FIELD_SETTER(OrgJodaTimeDateTimeComparator, iLowerLimit_, OrgJodaTimeDateTimeFieldType *)
+J2OBJC_FIELD_SETTER(OrgJodaTimeDateTimeComparator, iUpperLimit_, OrgJodaTimeDateTimeFieldType *)
 
 BOOL OrgJodaTimeDateTimeComparator_initialized = NO;
 
@@ -110,8 +133,8 @@ OrgJodaTimeDateTimeComparator * OrgJodaTimeDateTimeComparator_TIME_INSTANCE_;
 }
 
 - (void)dealloc {
-  OrgJodaTimeDateTimeComparator_set_iLowerLimit_(self, nil);
-  OrgJodaTimeDateTimeComparator_set_iUpperLimit_(self, nil);
+  RELEASE_(iLowerLimit_);
+  RELEASE_(iUpperLimit_);
   [super dealloc];
 }
 
@@ -154,7 +177,7 @@ OrgJodaTimeDateTimeComparator * OrgJodaTimeDateTimeComparator_TIME_INSTANCE_;
     { "iLowerLimit_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL,  },
     { "iUpperLimit_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL,  },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeComparator = { "DateTimeComparator", "org.joda.time", NULL, 0x1, 13, methods, 6, fields, 0, NULL};
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeComparator = { 1, "DateTimeComparator", "org.joda.time", NULL, 0x1, 13, methods, 6, fields, 0, NULL};
   return &_OrgJodaTimeDateTimeComparator;
 }
 
@@ -193,3 +216,5 @@ OrgJodaTimeDateTimeComparator *OrgJodaTimeDateTimeComparator_getTimeOnlyInstance
   OrgJodaTimeDateTimeComparator_init();
   return OrgJodaTimeDateTimeComparator_TIME_INSTANCE_;
 }
+
+J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeComparator)

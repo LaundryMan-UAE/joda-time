@@ -9,7 +9,7 @@
 @class JavaUtilLocale;
 @protocol OrgJodaTimeReadWritablePeriod;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Internal interface for parsing textual representations of time periods.
@@ -37,6 +37,8 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeFormatPeriodParser_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatPeriodParser)
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodParser)
 
 #endif // _OrgJodaTimeFormatPeriodParser_H_

@@ -11,7 +11,7 @@
 @protocol JavaLangAppendable;
 @protocol JavaLangCharSequence;
 
-#import "JreEmulation.h"
+#include "J2ObjC_header.h"
 
 /**
  @brief Utility methods used by formatters.
@@ -21,11 +21,6 @@
  */
 @interface OrgJodaTimeFormatFormatUtils : NSObject {
 }
-
-/**
- @brief Restricted constructor.
- */
-- (instancetype)init;
 
 /**
  @brief Converts an integer to a string, prepended with a variable amount of '0' pad characters, and appends it to the given buffer.
@@ -165,23 +160,43 @@
 
 FOUNDATION_EXPORT BOOL OrgJodaTimeFormatFormatUtils_initialized;
 J2OBJC_STATIC_INIT(OrgJodaTimeFormatFormatUtils)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT void OrgJodaTimeFormatFormatUtils_appendPaddedIntegerWithJavaLangStringBuffer_withInt_withInt_(JavaLangStringBuffer *buf, jint value, jint size);
+
 FOUNDATION_EXPORT void OrgJodaTimeFormatFormatUtils_appendPaddedIntegerWithJavaLangAppendable_withInt_withInt_(id<JavaLangAppendable> appenadble, jint value, jint size);
+
 FOUNDATION_EXPORT void OrgJodaTimeFormatFormatUtils_appendPaddedIntegerWithJavaLangStringBuffer_withLong_withInt_(JavaLangStringBuffer *buf, jlong value, jint size);
+
 FOUNDATION_EXPORT void OrgJodaTimeFormatFormatUtils_appendPaddedIntegerWithJavaLangAppendable_withLong_withInt_(id<JavaLangAppendable> appendable, jlong value, jint size);
+
 FOUNDATION_EXPORT void OrgJodaTimeFormatFormatUtils_writePaddedIntegerWithJavaIoWriter_withInt_withInt_(JavaIoWriter *outArg, jint value, jint size);
+
 FOUNDATION_EXPORT void OrgJodaTimeFormatFormatUtils_writePaddedIntegerWithJavaIoWriter_withLong_withInt_(JavaIoWriter *outArg, jlong value, jint size);
+
 FOUNDATION_EXPORT void OrgJodaTimeFormatFormatUtils_appendUnpaddedIntegerWithJavaLangStringBuffer_withInt_(JavaLangStringBuffer *buf, jint value);
+
 FOUNDATION_EXPORT void OrgJodaTimeFormatFormatUtils_appendUnpaddedIntegerWithJavaLangAppendable_withInt_(id<JavaLangAppendable> appendable, jint value);
+
 FOUNDATION_EXPORT void OrgJodaTimeFormatFormatUtils_appendUnpaddedIntegerWithJavaLangStringBuffer_withLong_(JavaLangStringBuffer *buf, jlong value);
+
 FOUNDATION_EXPORT void OrgJodaTimeFormatFormatUtils_appendUnpaddedIntegerWithJavaLangAppendable_withLong_(id<JavaLangAppendable> appendable, jlong value);
+
 FOUNDATION_EXPORT void OrgJodaTimeFormatFormatUtils_writeUnpaddedIntegerWithJavaIoWriter_withInt_(JavaIoWriter *outArg, jint value);
+
 FOUNDATION_EXPORT void OrgJodaTimeFormatFormatUtils_writeUnpaddedIntegerWithJavaIoWriter_withLong_(JavaIoWriter *outArg, jlong value);
+
 FOUNDATION_EXPORT jint OrgJodaTimeFormatFormatUtils_calculateDigitCountWithLong_(jlong value);
+
 FOUNDATION_EXPORT jint OrgJodaTimeFormatFormatUtils_parseTwoDigitsWithJavaLangCharSequence_withInt_(id<JavaLangCharSequence> text, jint position);
+
 FOUNDATION_EXPORT NSString *OrgJodaTimeFormatFormatUtils_createErrorMessageWithNSString_withInt_(NSString *text, jint errorPos);
 
 FOUNDATION_EXPORT jdouble OrgJodaTimeFormatFormatUtils_LOG_10_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFormatFormatUtils, LOG_10_, jdouble)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatFormatUtils)
 
 #endif // _OrgJodaTimeFormatFormatUtils_H_

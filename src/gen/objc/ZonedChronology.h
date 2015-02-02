@@ -16,10 +16,10 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-#import "JreEmulation.h"
 #include "AssembledChronology.h"
 #include "BaseDateTimeField.h"
 #include "BaseDurationField.h"
+#include "J2ObjC_header.h"
 
 #define OrgJodaTimeChronoZonedChronology_serialVersionUID -1079258847191166848LL
 
@@ -43,14 +43,6 @@
                                                withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
 + (jboolean)useTimeArithmeticWithOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)field;
-
-/**
- @brief Restricted constructor
- @param base base chronology to wrap
- @param zone the time zone
- */
-- (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
-                  withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
 - (OrgJodaTimeDateTimeZone *)getZone;
 
@@ -77,19 +69,7 @@
                            withInt:(jint)secondOfMinute
                            withInt:(jint)millisOfSecond;
 
-/**
- @param localInstant the instant from 1970-01-01T00:00:00 local time
- @return the instant from 1970-01-01T00:00:00Z
- */
-- (jlong)localToUTCWithLong:(jlong)localInstant;
-
 - (void)assembleWithOrgJodaTimeChronoAssembledChronology_Fields:(OrgJodaTimeChronoAssembledChronology_Fields *)fields;
-
-- (OrgJodaTimeDurationField *)convertFieldWithOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)field
-                                                   withJavaUtilHashMap:(JavaUtilHashMap *)converted;
-
-- (OrgJodaTimeDateTimeField *)convertFieldWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
-                                                   withJavaUtilHashMap:(JavaUtilHashMap *)converted;
 
 /**
  @brief A zoned chronology is only equal to a zoned chronology with the same base chronology and zone.
@@ -114,11 +94,18 @@
 
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoZonedChronology_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoZonedChronology)
+
+CF_EXTERN_C_BEGIN
+
 FOUNDATION_EXPORT OrgJodaTimeChronoZonedChronology *OrgJodaTimeChronoZonedChronology_getInstanceWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_(OrgJodaTimeChronology *base, OrgJodaTimeDateTimeZone *zone);
+
 FOUNDATION_EXPORT jboolean OrgJodaTimeChronoZonedChronology_useTimeArithmeticWithOrgJodaTimeDurationField_(OrgJodaTimeDurationField *field);
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoZonedChronology, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoZonedChronology)
 
 #define OrgJodaTimeChronoZonedChronology_ZonedDurationField_serialVersionUID -485345310999208286LL
 
@@ -160,28 +147,23 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoZonedChronology, serialVersionUID, j
 - (jlong)getDifferenceAsLongWithLong:(jlong)minuendInstant
                             withLong:(jlong)subtrahendInstant;
 
-- (jint)getOffsetToAddWithLong:(jlong)instant;
-
-- (jint)getOffsetFromLocalToSubtractWithLong:(jlong)instant;
-
-- (jlong)addOffsetWithLong:(jlong)instant;
-
 - (jboolean)isEqual:(id)obj;
 
 - (NSUInteger)hash;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoZonedChronology_ZonedDurationField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoZonedChronology_ZonedDurationField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoZonedChronology_ZonedDurationField)
 
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoZonedChronology_ZonedDurationField, iField_, OrgJodaTimeDurationField *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoZonedChronology_ZonedDurationField, iZone_, OrgJodaTimeDateTimeZone *)
 
+CF_EXTERN_C_BEGIN
+
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoZonedChronology_ZonedDurationField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoZonedChronology_ZonedDurationField)
 
 #define OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_serialVersionUID -3968986277775529794LL
 
@@ -281,19 +263,13 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoZonedChronology_ZonedDurationField, 
 
 - (jint)getMaximumShortTextLengthWithJavaUtilLocale:(JavaUtilLocale *)locale;
 
-- (jint)getOffsetToAddWithLong:(jlong)instant;
-
 - (jboolean)isEqual:(id)obj;
 
 - (NSUInteger)hash;
 
-- (void)dealloc;
-
-- (void)copyAllFieldsTo:(OrgJodaTimeChronoZonedChronology_ZonedDateTimeField *)other;
-
 @end
 
-__attribute__((always_inline)) inline void OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_init() {}
+J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoZonedChronology_ZonedDateTimeField)
 
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoZonedChronology_ZonedDateTimeField, iField_, OrgJodaTimeDateTimeField *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoZonedChronology_ZonedDateTimeField, iZone_, OrgJodaTimeDateTimeZone *)
@@ -301,6 +277,11 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeChronoZonedChronology_ZonedDateTimeField, iDurati
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoZonedChronology_ZonedDateTimeField, iRangeDurationField_, OrgJodaTimeDurationField *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeChronoZonedChronology_ZonedDateTimeField, iLeapDurationField_, OrgJodaTimeDurationField *)
 
+CF_EXTERN_C_BEGIN
+
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoZonedChronology_ZonedDateTimeField, serialVersionUID, jlong)
+CF_EXTERN_C_END
+
+J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoZonedChronology_ZonedDateTimeField)
 
 #endif // _OrgJodaTimeChronoZonedChronology_H_
