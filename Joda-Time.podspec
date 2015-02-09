@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.homepage         = "http://www.joda.org/joda-time/"
   s.license          = { :type => 'Apache License, Version 2.0', :file => 'LICENSE.txt' }
 
-  s.dependency 'J2ObjC/lib/jre_emul', '~> 0.9'
+  s.dependency 'J2ObjC/lib/jre', '~> 0.9'
   s.dependency 'J2ObjC/lib/jsr305', '~> 0.9'
 
   s.ios.deployment_target = '7.0'
