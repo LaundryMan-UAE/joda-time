@@ -20,10 +20,10 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.7'
   s.requires_arc = false
 
-  s.source_files = 'src/gen/objc/*.{h,m}'
+  s.source_files = 'src/gen/objc/**/*.{h,m}'
   s.exclude_files = 'src/main/java/*.java'
   s.resources = "src/tz-data/*"
-  s.public_header_files = 'src/gen/objc/*.h'
+  s.public_header_files = 'src/gen/objc/**/*.h'
   s.header_mappings_dir = 'src/gen/objc'
 
   s.xcconfig = { 'HEADER_SEARCH_PATHS' => "\"${PODS_ROOT}/J2ObjC/dist/include\"" }
