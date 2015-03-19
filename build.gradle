@@ -27,49 +27,7 @@ task translateJava(type:Exec) {
     executable "${J2OBJC_HOME}/j2objc"
     args '--doc-comments'
     args '-d', file('src/gen/objc').path
-    args '-sourcepath', (sourceSets.main.allJava.srcDirs).join(' ')
+    args '-sourcepath', sourceSets.main.allJava.srcDirs.join(' ')
     args '-classpath', sourceSets.main.runtimeClasspath.collect { it.absolutePath }.join(':')
     args inputs.files
-}
-
-//task translateTestJava(type:Exec, dependsOn: translateJava) {
-//    inputs.files sourceSets.main.allJava
-//
-//    executable "${J2OBJC_HOME}/j2objc"
-//    args '--prefixes', file('src/main/resources/prefixes.properties').path
-//    args '-use-arc', '--no-package-directories'
-//    args '-d', buildDir
-//    args '-sourcepath', (sourceSets.main.allJava.srcDirs + sourceSets.test.allJava.srcDirs + configurations.runtime.allDependencies.dependencyProject.sourceSets.main.allJava.srcDirs.flatten() + configurations.runtime.allDependencies.dependencyProject.sourceSets.test.allJava.srcDirs.flatten()).join(':')
-//    args '-classpath', "${J2OBJC_HOME}/lib/junit-4.10.jar"
-//    args inputs.files
-//}
-//
-//task compileTestObjC(type:Exec, dependsOn: translateTestJava) {
-//    inputs.files fileTree(dir: buildDir, includes: ['**/*.h','**/*.m']).plus(fileTree(dir: file('src/main/objc'), includes: ['**/*.h','**/*.m']))
-//    outputs.files file("$buildDir/testrunner")
-//    executable "${J2OBJC_HOME}/j2objcc"
-//    workingDir buildDir
-//    args "-I$buildDir", "-I${file('src/gen/objc').path}"
-//    args "-ObjC", "-ljunit"
-//    args "-o", "testrunner"
-//    fileTree(dir: buildDir, include: '**/*.m').files.each { i ->
-//        args i.path
-//    }
-//    fileTree(dir: file('src/gen/objc'), include: '**/*.m').files.each { i ->
-//        args i.path
-//    }
-//}
-//
-//task testObjC(type:Exec, dependsOn: compileTestObjC) {
-//    inputs.files file("$buildDir/testrunner")
-//    executable file("$buildDir/testrunner")
-//    args 'org.junit.runner.JUnitCore'
-//    args sourceSets.test.allJava.files.findAll { f -> f.name.endsWith('Test.java')}*.path*.replace("${sourceSets.test.java.srcDirs.iterator().next().path}/", '')*.replace('.java', '')*.replace('/', '.')
-//    configurations.runtime.allDependencies.dependencyProject.sourceSets.test.allJava.each { i ->
-//        args i.files.findAll { f -> f.name.endsWith('Test.java')}*.path*.replace("${i.srcDirs.iterator().next().path}/", '')*.replace('.java', '')*.replace('/', '.')
-//    }
-//}
-
-task debug << {
-    println ();
 }

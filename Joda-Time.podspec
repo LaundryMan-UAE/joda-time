@@ -1,14 +1,13 @@
 Pod::Spec.new do |s|
   s.name             = "Joda-Time"
   s.version          = '2.5'
-  s.author           = { "Andrew Ebling" => "andrew@laundrapp.com" }
-  s.source           = { :git => "https://github.com/hambroperks/joda-time.git" }
+  s.author           = { "Michael Voong" => "michael@laundrapp.com" }
+  s.source           = { :git => "https://github.com/hambroperks/joda-time.git", :tag => "v2.5-j2objc" }
   s.summary          = "Joda-Time is the widely used replacement for the Java date and time classes. Converted to Objective-C using J2ObjC."
   s.homepage         = "http://www.joda.org/joda-time/"
   s.license          = { :type => 'Apache License, Version 2.0', :file => 'LICENSE.txt' }
 
   s.ios.deployment_target = '7.0'
-  s.osx.deployment_target = '10.7'
   s.requires_arc = false
 
   s.dependency 'Joda-Convert', '~> 1.7'
