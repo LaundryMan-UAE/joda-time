@@ -16,3 +16,4 @@
 *TempTest*
 /src/main/resources/org/joda/time/tz/data/
 .DS_Store
+.gradle

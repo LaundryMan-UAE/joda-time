@@ -12,6 +12,11 @@ dependencies {
     compile 'org.joda:joda-convert:1.7'
 }
 
+task copyZoneInfo(type:Copy) {
+    from 'src/tz-data/ZoneInfoMap'
+    into 'src/gen/objc/org/joda/time/tz/data'
+}
+
 task cycleFinder(type:Exec) {
     inputs.files sourceSets.main.allJava
     executable "${J2OBJC_HOME}/cycle_finder"
@@ -20,7 +25,11 @@ task cycleFinder(type:Exec) {
     args inputs.files
 }
 
-task translateJava(type:Exec) {
+task translateJava(dependsOn: ['translateJavaInternal', 'copyZoneInfo']) {
+
+}
+
+task translateJavaInternal(type:Exec) {
     inputs.files sourceSets.main.allJava
 
     // the classpath is built from the runtime dependencies for the sourcesets ...
