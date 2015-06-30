@@ -489,7 +489,7 @@ public abstract class DateTimeZone implements Serializable {
         if (provider == null) {
             try {
 //                provider = new ZoneInfoProvider("org/joda/time/tz/data");
-                provider = new ZoneInfoProvider("Resources");
+                provider = new ZoneInfoProvider("");
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

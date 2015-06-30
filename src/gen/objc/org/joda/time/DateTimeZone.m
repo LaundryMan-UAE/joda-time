@@ -914,7 +914,7 @@ id<OrgJodaTimeTzProvider> OrgJodaTimeDateTimeZone_getDefaultProvider() {
   }
   if (provider == nil) {
     @try {
-      provider = [new_OrgJodaTimeTzZoneInfoProvider_initWithNSString_(@"Resources") autorelease];
+      provider = [new_OrgJodaTimeTzZoneInfoProvider_initWithNSString_(@"") autorelease];
     }
     @catch (JavaLangException *ex) {
       [((JavaLangException *) nil_chk(ex)) printStackTrace];
