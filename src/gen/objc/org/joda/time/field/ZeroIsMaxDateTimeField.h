@@ -15,9 +15,13 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
- @brief Wraps another field such that zero values are replaced with one more than it's maximum.
- This is particularly useful for implementing an clockhourOfDay field, where the midnight value of 0 is replaced with 24. <p> ZeroIsMaxDateTimeField is thread-safe and immutable.
+/*!
+ @brief Wraps another field such that zero values are replaced with one more than
+ it's maximum.
+ This is particularly useful for implementing an clockhourOfDay
+ field, where the midnight value of 0 is replaced with 24.
+ <p>
+ ZeroIsMaxDateTimeField is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -25,10 +29,10 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Constructor.
- @param field the base field
- @param type the field type this field will actually use
+ @param field  the base field
+ @param type  the field type this field will actually use
  @throws IllegalArgumentException if wrapped field's minimum value is not zero
  */
 - (instancetype)initWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
@@ -60,50 +64,54 @@
 
 - (OrgJodaTimeDurationField *)getLeapDurationField;
 
-/**
- @brief Get the maximum value for the field, which is one more than the wrapped field's maximum value.
+/*!
+ @brief Get the maximum value for the field, which is one more than the wrapped
+ field's maximum value.
  @return the maximum value
  */
 - (jint)getMaximumValue;
 
-/**
- @brief Get the maximum value for the field, which is one more than the wrapped field's maximum value.
+/*!
+ @brief Get the maximum value for the field, which is one more than the wrapped
+ field's maximum value.
  @return the maximum value
  */
 - (jint)getMaximumValueWithLong:(jlong)instant;
 
-/**
- @brief Get the maximum value for the field, which is one more than the wrapped field's maximum value.
+/*!
+ @brief Get the maximum value for the field, which is one more than the wrapped
+ field's maximum value.
  @return the maximum value
  */
 - (jint)getMaximumValueWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)instant;
 
-/**
- @brief Get the maximum value for the field, which is one more than the wrapped field's maximum value.
+/*!
+ @brief Get the maximum value for the field, which is one more than the wrapped
+ field's maximum value.
  @return the maximum value
  */
 - (jint)getMaximumValueWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)instant
                                          withIntArray:(IOSIntArray *)values;
 
-/**
+/*!
  @brief Always returns 1.
  @return the minimum value of 1
  */
 - (jint)getMinimumValue;
 
-/**
+/*!
  @brief Always returns 1.
  @return the minimum value of 1
  */
 - (jint)getMinimumValueWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Always returns 1.
  @return the minimum value of 1
  */
 - (jint)getMinimumValueWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)instant;
 
-/**
+/*!
  @brief Always returns 1.
  @return the minimum value of 1
  */

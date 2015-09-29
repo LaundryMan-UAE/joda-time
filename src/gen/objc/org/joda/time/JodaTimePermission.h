@@ -9,9 +9,28 @@
 #include "J2ObjC_header.h"
 #include "java/security/BasicPermission.h"
 
-/**
- @brief JodaTimePermission is used for securing global method calls in the Joda-Time library.
- Since this class extends BasicPermission, asterisks may be used to denote wildcard permissions. The following permissions are supported: <pre> DateTimeZone .setDefault                 Allows a default DateTimeZone to be set .setProvider                Allows the DateTimeZone instance provider to be set .setNameProvider            Allows the DateTimeZone name provider to be set ConverterManager .alterInstantConverters     Allows an instant converter to be added or removed .alterPartialConverters     Allows a partial converter to be added or removed .alterDurationConverters    Allows a duration converter to be added or removed .alterPeriodConverters      Allows a period converter to be added or removed .alterIntervalConverters    Allows an interval converter to be added or removed CurrentTime.setProvider       Allows the current time provider to be set </pre> <p> JodaTimePermission is thread-safe and immutable.
+/*!
+ @brief JodaTimePermission is used for securing global method calls in the Joda-Time
+ library.
+ Since this class extends BasicPermission, asterisks may be used to
+ denote wildcard permissions. The following permissions are supported:
+ @code
+
+  DateTimeZone
+   .setDefault                 Allows a default DateTimeZone to be set
+   .setProvider                Allows the DateTimeZone instance provider to be set
+   .setNameProvider            Allows the DateTimeZone name provider to be set
+  ConverterManager
+   .alterInstantConverters     Allows an instant converter to be added or removed
+   .alterPartialConverters     Allows a partial converter to be added or removed
+   .alterDurationConverters    Allows a duration converter to be added or removed
+   .alterPeriodConverters      Allows a period converter to be added or removed
+   .alterIntervalConverters    Allows an interval converter to be added or removed
+  CurrentTime.setProvider       Allows the current time provider to be set
+  
+@endcode
+ <p>
+ JodaTimePermission is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -19,9 +38,9 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Constructs a new permission object.
- @param name the permission name
+ @param name  the permission name
  */
 - (instancetype)initWithNSString:(NSString *)name;
 

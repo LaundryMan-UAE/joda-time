@@ -31,7 +31,7 @@
 
 @interface OrgJodaTimeChronoCopticChronology ()
 
-/**
+/*!
  @brief Serialization singleton.
  */
 - (id)readResolve;
@@ -85,7 +85,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoCopticChronology)
   OrgJodaTimeChronology *base = [self getBase];
   jint minDays = [self getMinimumDaysInFirstWeek];
   minDays = (minDays == 0 ? 4 : minDays);
-  return base == nil ? OrgJodaTimeChronoCopticChronology_getInstanceWithOrgJodaTimeDateTimeZone_withInt_(OrgJodaTimeDateTimeZone_get_UTC_(), minDays) : OrgJodaTimeChronoCopticChronology_getInstanceWithOrgJodaTimeDateTimeZone_withInt_([base getZone], minDays);
+  return base == nil ? OrgJodaTimeChronoCopticChronology_getInstanceWithOrgJodaTimeDateTimeZone_withInt_(JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_), minDays) : OrgJodaTimeChronoCopticChronology_getInstanceWithOrgJodaTimeDateTimeZone_withInt_([base getZone], minDays);
 }
 
 - (OrgJodaTimeChronology *)withUTC {
@@ -110,10 +110,10 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoCopticChronology)
   jint relativeYear = year - 1687;
   jint leapYears;
   if (relativeYear <= 0) {
-    leapYears = RShift32((relativeYear + 3), 2);
+    leapYears = JreRShift32((relativeYear + 3), 2);
   }
   else {
-    leapYears = RShift32(relativeYear, 2);
+    leapYears = JreRShift32(relativeYear, 2);
     if (![self isLeapYearWithInt:year]) {
       leapYears++;
     }
@@ -137,20 +137,20 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoCopticChronology)
 - (void)assembleWithOrgJodaTimeChronoAssembledChronology_Fields:(OrgJodaTimeChronoAssembledChronology_Fields *)fields {
   if ([self getBase] == nil) {
     [super assembleWithOrgJodaTimeChronoAssembledChronology_Fields:fields];
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_year_(nil_chk(fields), new_OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(self, fields->year_));
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_weekyear_(fields, new_OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(self, fields->weekyear_));
-    OrgJodaTimeChronoAssembledChronology_Fields_set_era_(fields, OrgJodaTimeChronoCopticChronology_ERA_FIELD_);
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_monthOfYear_(fields, new_OrgJodaTimeChronoBasicMonthOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withInt_(self, 13));
-    OrgJodaTimeChronoAssembledChronology_Fields_set_months_(fields, [fields->monthOfYear_ getDurationField]);
+    JreStrongAssignAndConsume(&((OrgJodaTimeChronoAssembledChronology_Fields *) nil_chk(fields))->year_, new_OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(self, fields->year_));
+    JreStrongAssignAndConsume(&fields->weekyear_, new_OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(self, fields->weekyear_));
+    JreStrongAssign(&fields->era_, OrgJodaTimeChronoCopticChronology_ERA_FIELD_);
+    JreStrongAssignAndConsume(&fields->monthOfYear_, new_OrgJodaTimeChronoBasicMonthOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withInt_(self, 13));
+    JreStrongAssign(&fields->months_, [fields->monthOfYear_ getDurationField]);
   }
 }
 
 + (void)initialize {
   if (self == [OrgJodaTimeChronoCopticChronology class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeChronoCopticChronology_ERA_FIELD_, nil, new_OrgJodaTimeChronoBasicSingleEraDateTimeField_initWithNSString_(@"AM"));
-    JreStrongAssignAndConsume(&OrgJodaTimeChronoCopticChronology_cCache_, nil, new_JavaUtilConcurrentConcurrentHashMap_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeChronoCopticChronology_ERA_FIELD_, new_OrgJodaTimeChronoBasicSingleEraDateTimeField_initWithNSString_(@"AM"));
+    JreStrongAssignAndConsume(&OrgJodaTimeChronoCopticChronology_cCache_, new_JavaUtilConcurrentConcurrentHashMap_init());
     {
-      JreStrongAssign(&OrgJodaTimeChronoCopticChronology_INSTANCE_UTC_, nil, OrgJodaTimeChronoCopticChronology_getInstanceWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone_get_UTC_()));
+      JreStrongAssign(&OrgJodaTimeChronoCopticChronology_INSTANCE_UTC_, OrgJodaTimeChronoCopticChronology_getInstanceWithOrgJodaTimeDateTimeZone_(JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_)));
     }
     J2OBJC_SET_INITIALIZED(OrgJodaTimeChronoCopticChronology)
   }
@@ -176,11 +176,11 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoCopticChronology)
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoCopticChronology_serialVersionUID },
     { "AM", "AM", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoCopticChronology_AM },
-    { "ERA_FIELD_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoCopticChronology_ERA_FIELD_, NULL,  },
+    { "ERA_FIELD_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoCopticChronology_ERA_FIELD_, NULL, .constantValue.asLong = 0 },
     { "MIN_YEAR", "MIN_YEAR", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoCopticChronology_MIN_YEAR },
     { "MAX_YEAR", "MAX_YEAR", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoCopticChronology_MAX_YEAR },
-    { "cCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoCopticChronology_cCache_, "Ljava/util/concurrent/ConcurrentHashMap<Lorg/joda/time/DateTimeZone;L[Lorg/joda/time/chrono/CopticChronology;;>;",  },
-    { "INSTANCE_UTC_", NULL, 0x1a, "Lorg.joda.time.chrono.CopticChronology;", &OrgJodaTimeChronoCopticChronology_INSTANCE_UTC_, NULL,  },
+    { "cCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoCopticChronology_cCache_, "Ljava/util/concurrent/ConcurrentHashMap<Lorg/joda/time/DateTimeZone;L[Lorg/joda/time/chrono/CopticChronology;;>;", .constantValue.asLong = 0 },
+    { "INSTANCE_UTC_", NULL, 0x1a, "Lorg.joda.time.chrono.CopticChronology;", &OrgJodaTimeChronoCopticChronology_INSTANCE_UTC_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoCopticChronology = { 2, "CopticChronology", "org.joda.time.chrono", NULL, 0x11, 14, methods, 7, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoCopticChronology;
@@ -227,13 +227,13 @@ OrgJodaTimeChronoCopticChronology *OrgJodaTimeChronoCopticChronology_getInstance
     @synchronized(chronos) {
       chrono = IOSObjectArray_Get(nil_chk(chronos), minDaysInFirstWeek - 1);
       if (chrono == nil) {
-        if (zone == OrgJodaTimeDateTimeZone_get_UTC_()) {
+        if (zone == JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_)) {
           chrono = [new_OrgJodaTimeChronoCopticChronology_initWithOrgJodaTimeChronology_withId_withInt_(nil, nil, minDaysInFirstWeek) autorelease];
           OrgJodaTimeDateTime *lowerLimit = [new_OrgJodaTimeDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(1, 1, 1, 0, 0, 0, 0, chrono) autorelease];
           chrono = [new_OrgJodaTimeChronoCopticChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronoLimitChronology_getInstanceWithOrgJodaTimeChronology_withOrgJodaTimeReadableDateTime_withOrgJodaTimeReadableDateTime_(chrono, lowerLimit, nil), nil, minDaysInFirstWeek) autorelease];
         }
         else {
-          chrono = OrgJodaTimeChronoCopticChronology_getInstanceWithOrgJodaTimeDateTimeZone_withInt_(OrgJodaTimeDateTimeZone_get_UTC_(), minDaysInFirstWeek);
+          chrono = OrgJodaTimeChronoCopticChronology_getInstanceWithOrgJodaTimeDateTimeZone_withInt_(JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_), minDaysInFirstWeek);
           chrono = [new_OrgJodaTimeChronoCopticChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronoZonedChronology_getInstanceWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_(chrono, zone), nil, minDaysInFirstWeek) autorelease];
         }
         IOSObjectArray_Set(chronos, minDaysInFirstWeek - 1, chrono);

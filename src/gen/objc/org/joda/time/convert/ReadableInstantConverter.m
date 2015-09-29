@@ -19,14 +19,16 @@ OrgJodaTimeConvertReadableInstantConverter *OrgJodaTimeConvertReadableInstantCon
 
 @implementation OrgJodaTimeConvertReadableInstantConverter
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeConvertReadableInstantConverter_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgJodaTimeChronology *)getChronologyWithId:(id)object
                    withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
-  OrgJodaTimeChronology *chrono = [((id<OrgJodaTimeReadableInstant>) nil_chk(((id<OrgJodaTimeReadableInstant>) check_protocol_cast(object, @protocol(OrgJodaTimeReadableInstant))))) getChronology];
+  OrgJodaTimeChronology *chrono = [((id<OrgJodaTimeReadableInstant>) nil_chk(((id<OrgJodaTimeReadableInstant>) check_protocol_cast(object, OrgJodaTimeReadableInstant_class_())))) getChronology];
   if (chrono == nil) {
     return OrgJodaTimeChronoISOChronology_getInstanceWithOrgJodaTimeDateTimeZone_(zone);
   }
@@ -43,7 +45,7 @@ OrgJodaTimeConvertReadableInstantConverter *OrgJodaTimeConvertReadableInstantCon
 - (OrgJodaTimeChronology *)getChronologyWithId:(id)object
                      withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
   if (chrono == nil) {
-    chrono = [((id<OrgJodaTimeReadableInstant>) nil_chk(((id<OrgJodaTimeReadableInstant>) check_protocol_cast(object, @protocol(OrgJodaTimeReadableInstant))))) getChronology];
+    chrono = [((id<OrgJodaTimeReadableInstant>) nil_chk(((id<OrgJodaTimeReadableInstant>) check_protocol_cast(object, OrgJodaTimeReadableInstant_class_())))) getChronology];
     chrono = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chrono);
   }
   return chrono;
@@ -51,7 +53,7 @@ OrgJodaTimeConvertReadableInstantConverter *OrgJodaTimeConvertReadableInstantCon
 
 - (jlong)getInstantMillisWithId:(id)object
       withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
-  return [((id<OrgJodaTimeReadableInstant>) nil_chk(((id<OrgJodaTimeReadableInstant>) check_protocol_cast(object, @protocol(OrgJodaTimeReadableInstant))))) getMillis];
+  return [((id<OrgJodaTimeReadableInstant>) nil_chk(((id<OrgJodaTimeReadableInstant>) check_protocol_cast(object, OrgJodaTimeReadableInstant_class_())))) getMillis];
 }
 
 - (IOSClass *)getSupportedType {
@@ -60,7 +62,7 @@ OrgJodaTimeConvertReadableInstantConverter *OrgJodaTimeConvertReadableInstantCon
 
 + (void)initialize {
   if (self == [OrgJodaTimeConvertReadableInstantConverter class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeConvertReadableInstantConverter_INSTANCE_, nil, new_OrgJodaTimeConvertReadableInstantConverter_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeConvertReadableInstantConverter_INSTANCE_, new_OrgJodaTimeConvertReadableInstantConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertReadableInstantConverter)
   }
 }
@@ -74,7 +76,7 @@ OrgJodaTimeConvertReadableInstantConverter *OrgJodaTimeConvertReadableInstantCon
     { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.ReadableInstantConverter;", &OrgJodaTimeConvertReadableInstantConverter_INSTANCE_, NULL,  },
+    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.ReadableInstantConverter;", &OrgJodaTimeConvertReadableInstantConverter_INSTANCE_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeConvertReadableInstantConverter = { 2, "ReadableInstantConverter", "org.joda.time.convert", NULL, 0x0, 5, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeConvertReadableInstantConverter;

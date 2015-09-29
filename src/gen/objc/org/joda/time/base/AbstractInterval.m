@@ -3,6 +3,7 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/joda-time/src/main/java/org/joda/time/base/AbstractInterval.java
 //
 
+#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/StringBuffer.h"
@@ -25,10 +26,12 @@
 
 @implementation OrgJodaTimeBaseAbstractInterval
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeBaseAbstractInterval_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)checkIntervalWithLong:(jlong)start
                      withLong:(jlong)end {
@@ -154,7 +157,7 @@
 - (OrgJodaTimeDuration *)toDuration {
   jlong durMillis = [self toDurationMillis];
   if (durMillis == 0) {
-    return OrgJodaTimeDuration_get_ZERO_();
+    return JreLoadStatic(OrgJodaTimeDuration, ZERO_);
   }
   else {
     return [new_OrgJodaTimeDuration_initWithLong_(durMillis) autorelease];
@@ -171,12 +174,12 @@
 
 - (jboolean)isEqual:(id)readableInterval {
   if (self == readableInterval) {
-    return YES;
+    return true;
   }
-  if ([OrgJodaTimeReadableInterval_class_() isInstance:readableInterval] == NO) {
-    return NO;
+  if ([OrgJodaTimeReadableInterval_class_() isInstance:readableInterval] == false) {
+    return false;
   }
-  id<OrgJodaTimeReadableInterval> other = (id<OrgJodaTimeReadableInterval>) check_protocol_cast(readableInterval, @protocol(OrgJodaTimeReadableInterval));
+  id<OrgJodaTimeReadableInterval> other = (id<OrgJodaTimeReadableInterval>) check_protocol_cast(readableInterval, OrgJodaTimeReadableInterval_class_());
   return [self getStartMillis] == [((id<OrgJodaTimeReadableInterval>) nil_chk(other)) getStartMillis] && [self getEndMillis] == [other getEndMillis] && OrgJodaTimeFieldFieldUtils_equalsWithId_withId_([self getChronology], [other getChronology]);
 }
 
@@ -184,8 +187,8 @@
   jlong start = [self getStartMillis];
   jlong end = [self getEndMillis];
   jint result = 97;
-  result = 31 * result + ((jint) (start ^ (URShift64(start, 32))));
-  result = 31 * result + ((jint) (end ^ (URShift64(end, 32))));
+  result = 31 * result + ((jint) (start ^ (JreURShift64(start, 32))));
+  result = 31 * result + ((jint) (end ^ (JreURShift64(end, 32))));
   result = 31 * result + ((jint) [((OrgJodaTimeChronology *) nil_chk([self getChronology])) hash]);
   return result;
 }

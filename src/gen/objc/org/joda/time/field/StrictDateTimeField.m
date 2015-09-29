@@ -26,7 +26,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldStrictDateTimeField, serialVersionUID
 }
 
 - (jboolean)isLenient {
-  return NO;
+  return false;
 }
 
 - (jlong)setWithLong:(jlong)instant

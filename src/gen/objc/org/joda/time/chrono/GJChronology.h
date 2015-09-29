@@ -14,9 +14,39 @@
 @class OrgJodaTimeInstant;
 @protocol OrgJodaTimeReadableInstant;
 
-/**
- @brief Implements the Gregorian/Julian calendar system which is the calendar system used in most of the world.
- Wherever possible, it is recommended to use the ISOChronology instead. <p> The Gregorian calendar replaced the Julian calendar, and the point in time when this chronology switches can be controlled using the second parameter of the getInstance method. By default this cutover is set to the date the Gregorian calendar was first instituted, October 15, 1582. <p> Before this date, this chronology uses the proleptic Julian calendar (proleptic means extending indefinitely). The Julian calendar has leap years every four years, whereas the Gregorian has special rules for 100 and 400 years. A meaningful result will thus be obtained for all input values. However before 8 CE, Julian leap years were irregular, and before 45 BCE there was no Julian calendar. <p> This chronology differs from java.util.GregorianCalendar GregorianCalendar in that years in BCE are returned correctly. Thus year 1 BCE is returned as -1 instead of 1. The yearOfEra field produces results compatible with GregorianCalendar. <p> The Julian calendar does not have a year zero, and so year -1 is followed by year 1. If the Gregorian cutover date is specified at or before year -1 (Julian), year zero is defined. In other words, the proleptic Gregorian chronology used by this class has a year zero. <p> To create a pure proleptic Julian chronology, use JulianChronology , and to create a pure proleptic Gregorian chronology, use GregorianChronology . <p> GJChronology is thread-safe and immutable.
+/*!
+ @brief Implements the Gregorian/Julian calendar system which is the calendar system
+ used in most of the world.
+ Wherever possible, it is recommended to use the
+ <code>ISOChronology</code> instead.
+ <p>
+ The Gregorian calendar replaced the Julian calendar, and the point in time
+ when this chronology switches can be controlled using the second parameter
+ of the getInstance method. By default this cutover is set to the date the
+ Gregorian calendar was first instituted, October 15, 1582.
+ <p>
+ Before this date, this chronology uses the proleptic Julian calendar
+ (proleptic means extending indefinitely). The Julian calendar has leap years
+ every four years, whereas the Gregorian has special rules for 100 and 400
+ years. A meaningful result will thus be obtained for all input values.
+ However before 8 CE, Julian leap years were irregular, and before 45 BCE
+ there was no Julian calendar.
+ <p>
+ This chronology differs from
+ <code>GregorianCalendar</code> in that years
+ in BCE are returned correctly. Thus year 1 BCE is returned as -1 instead of 1.
+ The yearOfEra field produces results compatible with GregorianCalendar.
+ <p>
+ The Julian calendar does not have a year zero, and so year -1 is followed by
+ year 1. If the Gregorian cutover date is specified at or before year -1
+ (Julian), year zero is defined. In other words, the proleptic Gregorian
+ chronology used by this class has a year zero.
+ <p>
+ To create a pure proleptic Julian chronology, use <code>JulianChronology</code>,
+ and to create a pure proleptic Gregorian chronology, use
+ <code>GregorianChronology</code>.
+ <p>
+ GJChronology is thread-safe and immutable.
  @author Brian S O'Neill
  @author Stephen Colebourne
  @since 1.0
@@ -25,9 +55,9 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Checks if this chronology instance equals another.
- @param obj the object to compare to
+ @param obj  the object to compare to
  @return true if equal
  @since 1.6
  */
@@ -46,63 +76,89 @@
                           withInt:(jint)secondOfMinute
                           withInt:(jint)millisOfSecond;
 
-/**
+/*!
  @brief Gets the cutover instant between Gregorian and Julian chronologies.
  @return the cutover instant
  */
 - (OrgJodaTimeInstant *)getGregorianCutover;
 
-/**
- @brief Factory method returns instances of the default GJ cutover chronology.
- This uses a cutover date of October 15, 1582 (Gregorian) 00:00:00 UTC. For this value, October 4, 1582 (Julian) is followed by October 15, 1582 (Gregorian). <p>The first day of the week is designated to be org.joda.time.DateTimeConstants#MONDAY Monday , and the minimum days in the first week of the year is 4. <p>The returned chronology is in the default time zone.
+/*!
+ @brief Factory method returns instances of the default GJ cutover
+ chronology.
+ This uses a cutover date of October 15, 1582 (Gregorian)
+ 00:00:00 UTC. For this value, October 4, 1582 (Julian) is followed by
+ October 15, 1582 (Gregorian).
+ <p>The first day of the week is designated to be
+ <code>Monday</code>,
+ and the minimum days in the first week of the year is 4.
+ <p>The returned chronology is in the default time zone.
  */
 + (OrgJodaTimeChronoGJChronology *)getInstance;
 
-/**
+/*!
  @brief Factory method returns instances of the GJ cutover chronology.
- This uses a cutover date of October 15, 1582 (Gregorian) 00:00:00 UTC. For this value, October 4, 1582 (Julian) is followed by October 15, 1582 (Gregorian). <p>The first day of the week is designated to be org.joda.time.DateTimeConstants#MONDAY Monday , and the minimum days in the first week of the year is 4.
- @param zone the time zone to use, null is default
+ This uses
+ a cutover date of October 15, 1582 (Gregorian) 00:00:00 UTC. For this
+ value, October 4, 1582 (Julian) is followed by October 15, 1582
+ (Gregorian).
+ <p>The first day of the week is designated to be
+ <code>Monday</code>,
+ and the minimum days in the first week of the year is 4.
+ @param zone  the time zone to use, null is default
  */
 + (OrgJodaTimeChronoGJChronology *)getInstanceWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
-/**
+/*!
  @brief Factory method returns instances of the GJ cutover chronology.
- Any cutover date may be specified.
- @param zone the time zone to use, null is default
- @param gregorianCutover the cutover to use
- @param minDaysInFirstWeek minimum number of days in first week of the year; default is 4
+ Any
+ cutover date may be specified.
+ @param zone  the time zone to use, null is default
+ @param gregorianCutover  the cutover to use
+ @param minDaysInFirstWeek  minimum number of days in first week of the year; default is 4
  */
 + (OrgJodaTimeChronoGJChronology *)getInstanceWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone
                                                                  withLong:(jlong)gregorianCutover
                                                                   withInt:(jint)minDaysInFirstWeek;
 
-/**
+/*!
  @brief Factory method returns instances of the GJ cutover chronology.
- Any cutover date may be specified. <p>The first day of the week is designated to be org.joda.time.DateTimeConstants#MONDAY Monday , and the minimum days in the first week of the year is 4.
- @param zone the time zone to use, null is default
- @param gregorianCutover the cutover to use, null means default
+ Any
+ cutover date may be specified.
+ <p>The first day of the week is designated to be
+ <code>Monday</code>,
+ and the minimum days in the first week of the year is 4.
+ @param zone  the time zone to use, null is default
+ @param gregorianCutover  the cutover to use, null means default
  */
 + (OrgJodaTimeChronoGJChronology *)getInstanceWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone
                                            withOrgJodaTimeReadableInstant:(id<OrgJodaTimeReadableInstant>)gregorianCutover;
 
-/**
+/*!
  @brief Factory method returns instances of the GJ cutover chronology.
- Any cutover date may be specified.
- @param zone the time zone to use, null is default
- @param gregorianCutover the cutover to use, null means default
- @param minDaysInFirstWeek minimum number of days in first week of the year; default is 4
+ Any
+ cutover date may be specified.
+ @param zone  the time zone to use, null is default
+ @param gregorianCutover  the cutover to use, null means default
+ @param minDaysInFirstWeek  minimum number of days in first week of the year; default is 4
  */
 + (OrgJodaTimeChronoGJChronology *)getInstanceWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone
                                            withOrgJodaTimeReadableInstant:(id<OrgJodaTimeReadableInstant>)gregorianCutover
                                                                   withInt:(jint)minDaysInFirstWeek;
 
-/**
- @brief Factory method returns instances of the default GJ cutover chronology.
- This uses a cutover date of October 15, 1582 (Gregorian) 00:00:00 UTC. For this value, October 4, 1582 (Julian) is followed by October 15, 1582 (Gregorian). <p>The first day of the week is designated to be org.joda.time.DateTimeConstants#MONDAY Monday , and the minimum days in the first week of the year is 4. <p>The time zone of the returned instance is UTC.
+/*!
+ @brief Factory method returns instances of the default GJ cutover
+ chronology.
+ This uses a cutover date of October 15, 1582 (Gregorian)
+ 00:00:00 UTC. For this value, October 4, 1582 (Julian) is followed by
+ October 15, 1582 (Gregorian).
+ <p>The first day of the week is designated to be
+ <code>Monday</code>,
+ and the minimum days in the first week of the year is 4.
+ <p>The time zone of the returned instance is UTC.
  */
 + (OrgJodaTimeChronoGJChronology *)getInstanceUTC;
 
-/**
+/*!
  @brief Gets the minimum days needed for a week to be the first week in a year.
  @return the minimum days
  */
@@ -110,28 +166,28 @@
 
 - (OrgJodaTimeDateTimeZone *)getZone;
 
-/**
+/*!
  @brief A suitable hash code for the chronology.
  @return the hash code
  @since 1.6
  */
 - (NSUInteger)hash;
 
-/**
+/*!
  @brief Gets a debugging toString.
  @return a debugging string
  */
 - (NSString *)description;
 
-/**
+/*!
  @brief Gets the Chronology in the UTC time zone.
  @return the chronology in UTC
  */
 - (OrgJodaTimeChronology *)withUTC;
 
-/**
+/*!
  @brief Gets the Chronology in a specific time zone.
- @param zone the zone to get the chronology in, null is default
+ @param zone  the zone to get the chronology in, null is default
  @return the chronology
  */
 - (OrgJodaTimeChronology *)withZoneWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;

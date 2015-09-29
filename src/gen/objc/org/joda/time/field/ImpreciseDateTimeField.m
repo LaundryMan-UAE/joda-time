@@ -180,8 +180,8 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDuration
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldImpreciseDateTimeField_serialVersionUID },
-    { "iUnitMillis_", NULL, 0x10, "J", NULL, NULL,  },
-    { "iDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL,  },
+    { "iUnitMillis_", NULL, 0x10, "J", NULL, NULL, .constantValue.asLong = 0 },
+    { "iDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lorg.joda.time.field.ImpreciseDateTimeField$LinkedDurationField;"};
   static const J2ObjcClassInfo _OrgJodaTimeFieldImpreciseDateTimeField = { 2, "ImpreciseDateTimeField", "org.joda.time.field", NULL, 0x401, 11, methods, 3, fields, 0, NULL, 1, inner_classes, NULL, NULL };
@@ -193,7 +193,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDuration
 void OrgJodaTimeFieldImpreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withLong_(OrgJodaTimeFieldImpreciseDateTimeField *self, OrgJodaTimeDateTimeFieldType *type, jlong unitMillis) {
   OrgJodaTimeFieldBaseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_(self, type);
   self->iUnitMillis_ = unitMillis;
-  OrgJodaTimeFieldImpreciseDateTimeField_setAndConsume_iDurationField_(self, new_OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_initWithOrgJodaTimeFieldImpreciseDateTimeField_withOrgJodaTimeDurationFieldType_(self, [((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getDurationType]));
+  JreStrongAssignAndConsume(&self->iDurationField_, new_OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_initWithOrgJodaTimeFieldImpreciseDateTimeField_withOrgJodaTimeDurationFieldType_(self, [((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getDurationType]));
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldImpreciseDateTimeField)
@@ -207,7 +207,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldImpreciseDateTimeField)
 }
 
 - (jboolean)isPrecise {
-  return NO;
+  return false;
 }
 
 - (jlong)getUnitMillis {
@@ -274,7 +274,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldImpreciseDateTimeField)
     { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", NULL, 0x1012, "Lorg.joda.time.field.ImpreciseDateTimeField;", NULL, NULL,  },
+    { "this$0_", NULL, 0x1012, "Lorg.joda.time.field.ImpreciseDateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_serialVersionUID },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField = { 2, "LinkedDurationField", "org.joda.time.field", "ImpreciseDateTimeField", 0x12, 11, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
@@ -284,7 +284,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldImpreciseDateTimeField)
 @end
 
 void OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_initWithOrgJodaTimeFieldImpreciseDateTimeField_withOrgJodaTimeDurationFieldType_(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField *self, OrgJodaTimeFieldImpreciseDateTimeField *outer$, OrgJodaTimeDurationFieldType *type) {
-  OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_set_this$0_(self, outer$);
+  JreStrongAssign(&self->this$0_, outer$);
   OrgJodaTimeFieldBaseDurationField_initWithOrgJodaTimeDurationFieldType_(self, type);
 }
 

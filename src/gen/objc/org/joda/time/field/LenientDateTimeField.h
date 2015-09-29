@@ -12,9 +12,12 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeField;
 
-/**
+/*!
  @brief Converts a strict DateTimeField into a lenient one.
- By being lenient, the set method accepts out of bounds values, performing an addition instead. <p> LenientDateTimeField is thread-safe and immutable.
+ By being lenient, the
+ set method accepts out of bounds values, performing an addition instead.
+ <p>
+ LenientDateTimeField is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -22,17 +25,20 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Returns a lenient version of the given field.
- If it is already lenient, then it is returned as-is. Otherwise, a new LenientDateTimeField is returned.
+ If it is already lenient,
+ then it is returned as-is. Otherwise, a new LenientDateTimeField is
+ returned.
  */
 + (OrgJodaTimeDateTimeField *)getInstanceWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
                                             withOrgJodaTimeChronology:(OrgJodaTimeChronology *)base;
 
 - (jboolean)isLenient;
 
-/**
- @brief Set values which may be out of bounds by adding the difference between the new value and the current value.
+/*!
+ @brief Set values which may be out of bounds by adding the difference between
+ the new value and the current value.
  */
 - (jlong)setWithLong:(jlong)instant
              withInt:(jint)value;

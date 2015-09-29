@@ -35,19 +35,19 @@
 
 @interface OrgJodaTimePartial () {
  @public
-  /**
+  /*!
    @brief The chronology in use.
    */
   OrgJodaTimeChronology *iChronology_;
-  /**
+  /*!
    @brief The set of field types.
    */
   IOSObjectArray *iTypes_;
-  /**
+  /*!
    @brief The values of each field in this partial.
    */
   IOSIntArray *iValues_;
-  /**
+  /*!
    @brief The formatter to use, [0] may miss some fields, [1] doesn't miss any fields.
    */
   IOSObjectArray *iFormatter_;
@@ -66,11 +66,11 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimePartial, serialVersionUID, jlong)
 
 @interface OrgJodaTimePartial_Property () {
  @public
-  /**
+  /*!
    @brief The partial
    */
   OrgJodaTimePartial *iPartial_;
-  /**
+  /*!
    @brief The field index
    */
   jint iFieldIndex_;
@@ -84,10 +84,12 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimePartial_Property, serialVersionUID, jlong)
 
 @implementation OrgJodaTimePartial
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimePartial_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
   OrgJodaTimePartial_initWithOrgJodaTimeChronology_(self, chrono);
@@ -317,10 +319,10 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimePartial_Property, serialVersionUID, jlong)
   for (jint i = 0; i < ((IOSObjectArray *) nil_chk(iTypes_))->size_; i++) {
     jint value = [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeDateTimeFieldType *) nil_chk(IOSObjectArray_Get(iTypes_, i))) getFieldWithOrgJodaTimeChronology:chrono])) getWithLong:millis];
     if (value != IOSIntArray_Get(nil_chk(iValues_), i)) {
-      return NO;
+      return false;
     }
   }
-  return YES;
+  return true;
 }
 
 - (jboolean)isMatchWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial {
@@ -330,10 +332,10 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimePartial_Property, serialVersionUID, jlong)
   for (jint i = 0; i < ((IOSObjectArray *) nil_chk(iTypes_))->size_; i++) {
     jint value = [((id<OrgJodaTimeReadablePartial>) nil_chk(partial)) getWithOrgJodaTimeDateTimeFieldType:IOSObjectArray_Get(iTypes_, i)];
     if (value != IOSIntArray_Get(nil_chk(iValues_), i)) {
-      return NO;
+      return false;
     }
   }
-  return YES;
+  return true;
 }
 
 - (OrgJodaTimeFormatDateTimeFormatter *)getFormatter {
@@ -345,14 +347,14 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimePartial_Property, serialVersionUID, jlong)
     f = [IOSObjectArray arrayWithLength:2 type:OrgJodaTimeFormatDateTimeFormatter_class_()];
     @try {
       id<JavaUtilList> list = [new_JavaUtilArrayList_initWithJavaUtilCollection_(JavaUtilArrays_asListWithNSObjectArray_(iTypes_)) autorelease];
-      IOSObjectArray_Set(f, 0, OrgJodaTimeFormatISODateTimeFormat_forFieldsWithJavaUtilCollection_withBoolean_withBoolean_(list, YES, NO));
+      IOSObjectArray_Set(f, 0, OrgJodaTimeFormatISODateTimeFormat_forFieldsWithJavaUtilCollection_withBoolean_withBoolean_(list, true, false));
       if ([list size] == 0) {
         IOSObjectArray_Set(f, 1, IOSObjectArray_Get(f, 0));
       }
     }
     @catch (JavaLangIllegalArgumentException *ex) {
     }
-    OrgJodaTimePartial_set_iFormatter_(self, f);
+    JreStrongAssign(&iFormatter_, f);
   }
   return IOSObjectArray_Get(nil_chk(f), 0);
 }
@@ -450,10 +452,10 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimePartial_Property, serialVersionUID, jlong)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimePartial_serialVersionUID },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL,  },
-    { "iTypes_", NULL, 0x12, "[Lorg.joda.time.DateTimeFieldType;", NULL, NULL,  },
-    { "iValues_", NULL, 0x12, "[I", NULL, NULL,  },
-    { "iFormatter_", NULL, 0x82, "[Lorg.joda.time.format.DateTimeFormatter;", NULL, NULL,  },
+    { "iChronology_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iTypes_", NULL, 0x12, "[Lorg.joda.time.DateTimeFieldType;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iValues_", NULL, 0x12, "[I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iFormatter_", NULL, 0x82, "[Lorg.joda.time.format.DateTimeFormatter;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lorg.joda.time.Partial$Property;"};
   static const J2ObjcClassInfo _OrgJodaTimePartial = { 2, "Partial", "org.joda.time", NULL, 0x11, 33, methods, 5, fields, 0, NULL, 1, inner_classes, NULL, NULL };
@@ -474,9 +476,9 @@ OrgJodaTimePartial *new_OrgJodaTimePartial_init() {
 
 void OrgJodaTimePartial_initWithOrgJodaTimeChronology_(OrgJodaTimePartial *self, OrgJodaTimeChronology *chrono) {
   OrgJodaTimeBaseAbstractPartial_init(self);
-  OrgJodaTimePartial_set_iChronology_(self, [((OrgJodaTimeChronology *) nil_chk(OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chrono))) withUTC]);
-  OrgJodaTimePartial_setAndConsume_iTypes_(self, [IOSObjectArray newArrayWithLength:0 type:OrgJodaTimeDateTimeFieldType_class_()]);
-  OrgJodaTimePartial_setAndConsume_iValues_(self, [IOSIntArray newArrayWithLength:0]);
+  JreStrongAssign(&self->iChronology_, [((OrgJodaTimeChronology *) nil_chk(OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chrono))) withUTC]);
+  JreStrongAssignAndConsume(&self->iTypes_, [IOSObjectArray newArrayWithLength:0 type:OrgJodaTimeDateTimeFieldType_class_()]);
+  JreStrongAssignAndConsume(&self->iValues_, [IOSIntArray newArrayWithLength:0]);
 }
 
 OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chrono) {
@@ -498,12 +500,12 @@ OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldType_
 void OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldType_withInt_withOrgJodaTimeChronology_(OrgJodaTimePartial *self, OrgJodaTimeDateTimeFieldType *type, jint value, OrgJodaTimeChronology *chronology) {
   OrgJodaTimeBaseAbstractPartial_init(self);
   chronology = [((OrgJodaTimeChronology *) nil_chk(OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chronology))) withUTC];
-  OrgJodaTimePartial_set_iChronology_(self, chronology);
+  JreStrongAssign(&self->iChronology_, chronology);
   if (type == nil) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The field type must not be null") autorelease];
   }
-  OrgJodaTimePartial_setAndConsume_iTypes_(self, [IOSObjectArray newArrayWithObjects:(id[]){ type } count:1 type:OrgJodaTimeDateTimeFieldType_class_()]);
-  OrgJodaTimePartial_setAndConsume_iValues_(self, [IOSIntArray newArrayWithInts:(jint[]){ value } count:1]);
+  JreStrongAssignAndConsume(&self->iTypes_, [IOSObjectArray newArrayWithObjects:(id[]){ type } count:1 type:OrgJodaTimeDateTimeFieldType_class_()]);
+  JreStrongAssignAndConsume(&self->iValues_, [IOSIntArray newArrayWithInts:(jint[]){ value } count:1]);
   [((OrgJodaTimeChronology *) nil_chk(chronology)) validateWithOrgJodaTimeReadablePartial:self withIntArray:self->iValues_];
 }
 
@@ -526,7 +528,7 @@ OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeA
 void OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeArray_withIntArray_withOrgJodaTimeChronology_(OrgJodaTimePartial *self, IOSObjectArray *types, IOSIntArray *values, OrgJodaTimeChronology *chronology) {
   OrgJodaTimeBaseAbstractPartial_init(self);
   chronology = [((OrgJodaTimeChronology *) nil_chk(OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chronology))) withUTC];
-  OrgJodaTimePartial_set_iChronology_(self, chronology);
+  JreStrongAssign(&self->iChronology_, chronology);
   if (types == nil) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Types array must not be null") autorelease];
   }
@@ -537,8 +539,8 @@ void OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeArray_withIntArray_w
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Values array must be the same length as the types array") autorelease];
   }
   if (types->size_ == 0) {
-    OrgJodaTimePartial_set_iTypes_(self, types);
-    OrgJodaTimePartial_set_iValues_(self, values);
+    JreStrongAssign(&self->iTypes_, types);
+    JreStrongAssign(&self->iValues_, values);
     return;
   }
   for (jint i = 0; i < types->size_; i++) {
@@ -551,7 +553,7 @@ void OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeArray_withIntArray_w
     OrgJodaTimeDateTimeFieldType *loopType = IOSObjectArray_Get(types, i);
     OrgJodaTimeDurationField *loopUnitField = [((OrgJodaTimeDurationFieldType *) nil_chk([((OrgJodaTimeDateTimeFieldType *) nil_chk(loopType)) getDurationType])) getFieldWithOrgJodaTimeChronology:self->iChronology_];
     if (i > 0) {
-      if ([((OrgJodaTimeDurationField *) nil_chk(loopUnitField)) isSupported] == NO) {
+      if ([((OrgJodaTimeDurationField *) nil_chk(loopUnitField)) isSupported] == false) {
         if ([((OrgJodaTimeDurationField *) nil_chk(lastUnitField)) isSupported]) {
           @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$$$", @"Types array must be in order largest-smallest: ", [((OrgJodaTimeDateTimeFieldType *) nil_chk(IOSObjectArray_Get(types, i - 1))) getName], @" < ", [loopType getName])) autorelease];
         }
@@ -587,7 +589,7 @@ void OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeArray_withIntArray_w
           }
         }
         else {
-          if ([lastUnitField isSupported] && [lastUnitField getType] != OrgJodaTimeDurationFieldType_get_YEARS_TYPE_()) {
+          if ([lastUnitField isSupported] && [lastUnitField getType] != JreLoadStatic(OrgJodaTimeDurationFieldType, YEARS_TYPE_)) {
             @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$$$", @"Types array must be in order largest-smallest, for year-based fields, years is defined as being largest: ", [((OrgJodaTimeDateTimeFieldType *) nil_chk(IOSObjectArray_Get(types, i - 1))) getName], @" < ", [loopType getName])) autorelease];
           }
         }
@@ -595,9 +597,9 @@ void OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeArray_withIntArray_w
     }
     lastUnitField = loopUnitField;
   }
-  OrgJodaTimePartial_set_iTypes_(self, (IOSObjectArray *) check_class_cast([types clone], [IOSObjectArray class]));
+  JreStrongAssign(&self->iTypes_, (IOSObjectArray *) check_class_cast([types clone], [IOSObjectArray class]));
   [((OrgJodaTimeChronology *) nil_chk(chronology)) validateWithOrgJodaTimeReadablePartial:self withIntArray:values];
-  OrgJodaTimePartial_set_iValues_(self, (IOSIntArray *) check_class_cast([values clone], [IOSIntArray class]));
+  JreStrongAssign(&self->iValues_, (IOSIntArray *) check_class_cast([values clone], [IOSIntArray class]));
 }
 
 OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeArray_withIntArray_withOrgJodaTimeChronology_(IOSObjectArray *types, IOSIntArray *values, OrgJodaTimeChronology *chronology) {
@@ -611,9 +613,9 @@ void OrgJodaTimePartial_initWithOrgJodaTimeReadablePartial_(OrgJodaTimePartial *
   if (partial == nil) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The partial must not be null") autorelease];
   }
-  OrgJodaTimePartial_set_iChronology_(self, [((OrgJodaTimeChronology *) nil_chk(OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_([((id<OrgJodaTimeReadablePartial>) nil_chk(partial)) getChronology]))) withUTC]);
-  OrgJodaTimePartial_setAndConsume_iTypes_(self, [IOSObjectArray newArrayWithLength:[partial size] type:OrgJodaTimeDateTimeFieldType_class_()]);
-  OrgJodaTimePartial_setAndConsume_iValues_(self, [IOSIntArray newArrayWithLength:[partial size]]);
+  JreStrongAssign(&self->iChronology_, [((OrgJodaTimeChronology *) nil_chk(OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_([((id<OrgJodaTimeReadablePartial>) nil_chk(partial)) getChronology]))) withUTC]);
+  JreStrongAssignAndConsume(&self->iTypes_, [IOSObjectArray newArrayWithLength:[partial size] type:OrgJodaTimeDateTimeFieldType_class_()]);
+  JreStrongAssignAndConsume(&self->iValues_, [IOSIntArray newArrayWithLength:[partial size]]);
   for (jint i = 0; i < [partial size]; i++) {
     IOSObjectArray_Set(self->iTypes_, i, [partial getFieldTypeWithInt:i]);
     *IOSIntArray_GetRef(self->iValues_, i) = [partial getValueWithInt:i];
@@ -628,9 +630,9 @@ OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimeReadablePartial_(i
 
 void OrgJodaTimePartial_initWithOrgJodaTimePartial_withIntArray_(OrgJodaTimePartial *self, OrgJodaTimePartial *partial, IOSIntArray *values) {
   OrgJodaTimeBaseAbstractPartial_init(self);
-  OrgJodaTimePartial_set_iChronology_(self, ((OrgJodaTimePartial *) nil_chk(partial))->iChronology_);
-  OrgJodaTimePartial_set_iTypes_(self, partial->iTypes_);
-  OrgJodaTimePartial_set_iValues_(self, values);
+  JreStrongAssign(&self->iChronology_, ((OrgJodaTimePartial *) nil_chk(partial))->iChronology_);
+  JreStrongAssign(&self->iTypes_, partial->iTypes_);
+  JreStrongAssign(&self->iValues_, values);
 }
 
 OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimePartial_withIntArray_(OrgJodaTimePartial *partial, IOSIntArray *values) {
@@ -641,9 +643,9 @@ OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimePartial_withIntArr
 
 void OrgJodaTimePartial_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeFieldTypeArray_withIntArray_(OrgJodaTimePartial *self, OrgJodaTimeChronology *chronology, IOSObjectArray *types, IOSIntArray *values) {
   OrgJodaTimeBaseAbstractPartial_init(self);
-  OrgJodaTimePartial_set_iChronology_(self, chronology);
-  OrgJodaTimePartial_set_iTypes_(self, types);
-  OrgJodaTimePartial_set_iValues_(self, values);
+  JreStrongAssign(&self->iChronology_, chronology);
+  JreStrongAssign(&self->iTypes_, types);
+  JreStrongAssign(&self->iValues_, values);
 }
 
 OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeFieldTypeArray_withIntArray_(OrgJodaTimeChronology *chronology, IOSObjectArray *types, IOSIntArray *values) {
@@ -737,8 +739,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimePartial)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimePartial_Property_serialVersionUID },
-    { "iPartial_", NULL, 0x12, "Lorg.joda.time.Partial;", NULL, NULL,  },
-    { "iFieldIndex_", NULL, 0x12, "I", NULL, NULL,  },
+    { "iPartial_", NULL, 0x12, "Lorg.joda.time.Partial;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iFieldIndex_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimePartial_Property = { 2, "Property", "org.joda.time", "Partial", 0x9, 12, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimePartial_Property;
@@ -748,7 +750,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimePartial)
 
 void OrgJodaTimePartial_Property_initWithOrgJodaTimePartial_withInt_(OrgJodaTimePartial_Property *self, OrgJodaTimePartial *partial, jint fieldIndex) {
   OrgJodaTimeFieldAbstractPartialFieldProperty_init(self);
-  OrgJodaTimePartial_Property_set_iPartial_(self, partial);
+  JreStrongAssign(&self->iPartial_, partial);
   self->iFieldIndex_ = fieldIndex;
 }
 

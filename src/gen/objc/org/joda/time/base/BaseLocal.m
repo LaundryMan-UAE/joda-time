@@ -13,10 +13,12 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseLocal, serialVersionUID, jlong)
 
 @implementation OrgJodaTimeBaseBaseLocal
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeBaseBaseLocal_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (jlong)getLocalMillis {
   // can't call an abstract method

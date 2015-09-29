@@ -3,7 +3,6 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/joda-time/src/main/java/org/joda/time/field/MillisDurationField.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "org/joda/time/DurationField.h"
 #include "org/joda/time/DurationFieldType.h"
@@ -14,12 +13,12 @@
 
 @interface OrgJodaTimeFieldMillisDurationField ()
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)init;
 
-/**
+/*!
  @brief Deserialize to the singleton.
  */
 - (id)readResolve;
@@ -40,10 +39,12 @@ OrgJodaTimeDurationField *OrgJodaTimeFieldMillisDurationField_INSTANCE_;
 
 @implementation OrgJodaTimeFieldMillisDurationField
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeFieldMillisDurationField_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgJodaTimeDurationFieldType *)getType {
   return OrgJodaTimeDurationFieldType_millis();
@@ -54,11 +55,11 @@ OrgJodaTimeDurationField *OrgJodaTimeFieldMillisDurationField_INSTANCE_;
 }
 
 - (jboolean)isSupported {
-  return YES;
+  return true;
 }
 
 - (jboolean)isPrecise {
-  return YES;
+  return true;
 }
 
 - (jlong)getUnitMillis {
@@ -140,7 +141,7 @@ OrgJodaTimeDurationField *OrgJodaTimeFieldMillisDurationField_INSTANCE_;
   if ([obj isKindOfClass:[OrgJodaTimeFieldMillisDurationField class]]) {
     return OrgJodaTimeFieldMillisDurationField_getUnitMillis(self) == OrgJodaTimeFieldMillisDurationField_getUnitMillis(nil_chk(((OrgJodaTimeFieldMillisDurationField *) check_class_cast(obj, [OrgJodaTimeFieldMillisDurationField class]))));
   }
-  return NO;
+  return false;
 }
 
 - (NSUInteger)hash {
@@ -157,7 +158,7 @@ OrgJodaTimeDurationField *OrgJodaTimeFieldMillisDurationField_INSTANCE_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeFieldMillisDurationField class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeFieldMillisDurationField_INSTANCE_, nil, new_OrgJodaTimeFieldMillisDurationField_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeFieldMillisDurationField_INSTANCE_, new_OrgJodaTimeFieldMillisDurationField_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeFieldMillisDurationField)
   }
 }
@@ -190,7 +191,7 @@ OrgJodaTimeDurationField *OrgJodaTimeFieldMillisDurationField_INSTANCE_;
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldMillisDurationField_serialVersionUID },
-    { "INSTANCE_", NULL, 0x19, "Lorg.joda.time.DurationField;", &OrgJodaTimeFieldMillisDurationField_INSTANCE_, NULL,  },
+    { "INSTANCE_", NULL, 0x19, "Lorg.joda.time.DurationField;", &OrgJodaTimeFieldMillisDurationField_INSTANCE_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldMillisDurationField = { 2, "MillisDurationField", "org.joda.time.field", NULL, 0x11, 23, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldMillisDurationField;

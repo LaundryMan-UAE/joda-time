@@ -14,9 +14,21 @@
 
 #define OrgJodaTimeChronoBuddhistChronology_BE 1
 
-/**
+/*!
  @brief A chronology that matches the BuddhistCalendar class supplied by Sun.
- <p> The chronology is identical to the Gregorian/Julian, except that the year is offset by +543 and the era is named 'BE' for Buddhist Era. <p> This class was intended by Sun to model the calendar used in Thailand. However, the actual rules for Thailand are much more involved than this class covers. (This class is accurate after 1941-01-01 ISO). <p> This chronlogy is being retained for those who want a same effect replacement for the Sun class. It is hoped that community support will enable a more accurate chronology for Thailand, to be developed. <p> BuddhistChronology is thread-safe and immutable.
+ <p>
+ The chronology is identical to the Gregorian/Julian, except that the
+ year is offset by +543 and the era is named 'BE' for Buddhist Era.
+ <p>
+ This class was intended by Sun to model the calendar used in Thailand.
+ However, the actual rules for Thailand are much more involved than
+ this class covers. (This class is accurate after 1941-01-01 ISO).
+ <p>
+ This chronlogy is being retained for those who want a same effect
+ replacement for the Sun class. It is hoped that community support will
+ enable a more accurate chronology for Thailand, to be developed.
+ <p>
+ BuddhistChronology is thread-safe and immutable.
  @author Stephen Colebourne
  @author Brian S O'Neill
  @since 1.0
@@ -25,55 +37,63 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Checks if this chronology instance equals another.
- @param obj the object to compare to
+ @param obj  the object to compare to
  @return true if equal
  @since 1.6
  */
 - (jboolean)isEqual:(id)obj;
 
-/**
- @brief Standard instance of a Buddhist Chronology, that matches Sun's BuddhistCalendar class.
- This means that it follows the GregorianJulian calendar rules with a cutover date.
+/*!
+ @brief Standard instance of a Buddhist Chronology, that matches
+ Sun's BuddhistCalendar class.
+ This means that it follows the
+ GregorianJulian calendar rules with a cutover date.
  */
 + (OrgJodaTimeChronoBuddhistChronology *)getInstance;
 
-/**
- @brief Standard instance of a Buddhist Chronology, that matches Sun's BuddhistCalendar class.
- This means that it follows the GregorianJulian calendar rules with a cutover date.
- @param zone the time zone to use, null is default
+/*!
+ @brief Standard instance of a Buddhist Chronology, that matches
+ Sun's BuddhistCalendar class.
+ This means that it follows the
+ GregorianJulian calendar rules with a cutover date.
+ @param zone  the time zone to use, null is default
  */
 + (OrgJodaTimeChronoBuddhistChronology *)getInstanceWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
-/**
- @brief Standard instance of a Buddhist Chronology, that matches Sun's BuddhistCalendar class.
- This means that it follows the GregorianJulian calendar rules with a cutover date. <p> The time zone of the returned instance is UTC.
+/*!
+ @brief Standard instance of a Buddhist Chronology, that matches
+ Sun's BuddhistCalendar class.
+ This means that it follows the
+ GregorianJulian calendar rules with a cutover date.
+ <p>
+ The time zone of the returned instance is UTC.
  */
 + (OrgJodaTimeChronoBuddhistChronology *)getInstanceUTC;
 
-/**
+/*!
  @brief A suitable hash code for the chronology.
  @return the hash code
  @since 1.6
  */
 - (NSUInteger)hash;
 
-/**
+/*!
  @brief Gets a debugging toString.
  @return a debugging string
  */
 - (NSString *)description;
 
-/**
+/*!
  @brief Gets the Chronology in the UTC time zone.
  @return the chronology in UTC
  */
 - (OrgJodaTimeChronology *)withUTC;
 
-/**
+/*!
  @brief Gets the Chronology in a specific time zone.
- @param zone the zone to get the chronology in, null is default
+ @param zone  the zone to get the chronology in, null is default
  @return the chronology
  */
 - (OrgJodaTimeChronology *)withZoneWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;

@@ -12,7 +12,7 @@
 @class OrgJodaTimeChronoBasicChronology;
 @class OrgJodaTimeDurationField;
 
-/**
+/*!
  @brief A year field suitable for many calendars.
  @author Guy Allard
  @author Stephen Colebourne
@@ -21,7 +21,7 @@
  */
 @interface OrgJodaTimeChronoBasicYearDateTimeField : OrgJodaTimeFieldImpreciseDateTimeField {
  @public
-  /**
+  /*!
    @brief The underlying basic chronology.
    */
   OrgJodaTimeChronoBasicChronology *iChronology_;
@@ -68,9 +68,9 @@
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Restricted constructor.
- @param chronology the chronology this field belogs to
+ @param chronology  the chronology this field belogs to
  */
 - (instancetype)initWithOrgJodaTimeChronoBasicChronology:(OrgJodaTimeChronoBasicChronology *)chronology;
 

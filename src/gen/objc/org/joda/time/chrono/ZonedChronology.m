@@ -31,7 +31,7 @@
 
 @interface OrgJodaTimeChronoZonedChronology ()
 
-/**
+/*!
  @brief Restricted constructor
  @param base base chronology to wrap
  @param zone the time zone
@@ -39,8 +39,8 @@
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
                   withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
-/**
- @param localInstant the instant from 1970-01-01T00:00:00 local time
+/*!
+ @param localInstant  the instant from 1970-01-01T00:00:00 local time
  @return the instant from 1970-01-01T00:00:00Z
  */
 - (jlong)localToUTCWithLong:(jlong)localInstant;
@@ -129,7 +129,7 @@ __attribute__((unused)) static jint OrgJodaTimeChronoZonedChronology_ZonedDateTi
   if (zone == [self getParam]) {
     return self;
   }
-  if (zone == OrgJodaTimeDateTimeZone_get_UTC_()) {
+  if (zone == JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_)) {
     return [self getBase];
   }
   return [new_OrgJodaTimeChronoZonedChronology_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_([self getBase], zone) autorelease];
@@ -166,41 +166,41 @@ __attribute__((unused)) static jint OrgJodaTimeChronoZonedChronology_ZonedDateTi
 
 - (void)assembleWithOrgJodaTimeChronoAssembledChronology_Fields:(OrgJodaTimeChronoAssembledChronology_Fields *)fields {
   JavaUtilHashMap *converted = [new_JavaUtilHashMap_init() autorelease];
-  OrgJodaTimeChronoAssembledChronology_Fields_set_eras_(nil_chk(fields), OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->eras_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_centuries_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->centuries_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_years_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->years_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_months_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->months_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyears_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->weekyears_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weeks_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->weeks_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_days_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->days_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_halfdays_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->halfdays_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_hours_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->hours_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_minutes_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->minutes_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_seconds_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->seconds_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_millis_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->millis_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_year_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->year_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_yearOfEra_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->yearOfEra_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_yearOfCentury_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->yearOfCentury_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_centuryOfEra_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->centuryOfEra_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_era_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->era_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfWeek_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->dayOfWeek_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfMonth_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->dayOfMonth_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfYear_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->dayOfYear_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_monthOfYear_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->monthOfYear_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekOfWeekyear_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->weekOfWeekyear_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyear_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->weekyear_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyearOfCentury_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->weekyearOfCentury_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_millisOfSecond_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->millisOfSecond_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_millisOfDay_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->millisOfDay_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_secondOfMinute_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->secondOfMinute_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_secondOfDay_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->secondOfDay_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_minuteOfHour_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->minuteOfHour_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_minuteOfDay_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->minuteOfDay_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_hourOfDay_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->hourOfDay_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_hourOfHalfday_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->hourOfHalfday_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_clockhourOfDay_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->clockhourOfDay_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_clockhourOfHalfday_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->clockhourOfHalfday_, converted));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_halfdayOfDay_(fields, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->halfdayOfDay_, converted));
+  JreStrongAssign(&((OrgJodaTimeChronoAssembledChronology_Fields *) nil_chk(fields))->eras_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->eras_, converted));
+  JreStrongAssign(&fields->centuries_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->centuries_, converted));
+  JreStrongAssign(&fields->years_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->years_, converted));
+  JreStrongAssign(&fields->months_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->months_, converted));
+  JreStrongAssign(&fields->weekyears_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->weekyears_, converted));
+  JreStrongAssign(&fields->weeks_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->weeks_, converted));
+  JreStrongAssign(&fields->days_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->days_, converted));
+  JreStrongAssign(&fields->halfdays_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->halfdays_, converted));
+  JreStrongAssign(&fields->hours_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->hours_, converted));
+  JreStrongAssign(&fields->minutes_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->minutes_, converted));
+  JreStrongAssign(&fields->seconds_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->seconds_, converted));
+  JreStrongAssign(&fields->millis_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->millis_, converted));
+  JreStrongAssign(&fields->year_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->year_, converted));
+  JreStrongAssign(&fields->yearOfEra_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->yearOfEra_, converted));
+  JreStrongAssign(&fields->yearOfCentury_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->yearOfCentury_, converted));
+  JreStrongAssign(&fields->centuryOfEra_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->centuryOfEra_, converted));
+  JreStrongAssign(&fields->era_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->era_, converted));
+  JreStrongAssign(&fields->dayOfWeek_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->dayOfWeek_, converted));
+  JreStrongAssign(&fields->dayOfMonth_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->dayOfMonth_, converted));
+  JreStrongAssign(&fields->dayOfYear_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->dayOfYear_, converted));
+  JreStrongAssign(&fields->monthOfYear_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->monthOfYear_, converted));
+  JreStrongAssign(&fields->weekOfWeekyear_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->weekOfWeekyear_, converted));
+  JreStrongAssign(&fields->weekyear_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->weekyear_, converted));
+  JreStrongAssign(&fields->weekyearOfCentury_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->weekyearOfCentury_, converted));
+  JreStrongAssign(&fields->millisOfSecond_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->millisOfSecond_, converted));
+  JreStrongAssign(&fields->millisOfDay_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->millisOfDay_, converted));
+  JreStrongAssign(&fields->secondOfMinute_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->secondOfMinute_, converted));
+  JreStrongAssign(&fields->secondOfDay_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->secondOfDay_, converted));
+  JreStrongAssign(&fields->minuteOfHour_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->minuteOfHour_, converted));
+  JreStrongAssign(&fields->minuteOfDay_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->minuteOfDay_, converted));
+  JreStrongAssign(&fields->hourOfDay_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->hourOfDay_, converted));
+  JreStrongAssign(&fields->hourOfHalfday_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->hourOfHalfday_, converted));
+  JreStrongAssign(&fields->clockhourOfDay_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->clockhourOfDay_, converted));
+  JreStrongAssign(&fields->clockhourOfHalfday_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->clockhourOfHalfday_, converted));
+  JreStrongAssign(&fields->halfdayOfDay_, OrgJodaTimeChronoZonedChronology_convertFieldWithOrgJodaTimeDateTimeField_withJavaUtilHashMap_(self, fields->halfdayOfDay_, converted));
 }
 
 - (OrgJodaTimeDurationField *)convertFieldWithOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)field
@@ -215,10 +215,10 @@ __attribute__((unused)) static jint OrgJodaTimeChronoZonedChronology_ZonedDateTi
 
 - (jboolean)isEqual:(id)obj {
   if (self == obj) {
-    return YES;
+    return true;
   }
-  if ([obj isKindOfClass:[OrgJodaTimeChronoZonedChronology class]] == NO) {
-    return NO;
+  if ([obj isKindOfClass:[OrgJodaTimeChronoZonedChronology class]] == false) {
+    return false;
   }
   OrgJodaTimeChronoZonedChronology *chrono = (OrgJodaTimeChronoZonedChronology *) check_class_cast(obj, [OrgJodaTimeChronoZonedChronology class]);
   return [((OrgJodaTimeChronology *) nil_chk([self getBase])) isEqual:[((OrgJodaTimeChronoZonedChronology *) nil_chk(chrono)) getBase]] && [((OrgJodaTimeDateTimeZone *) nil_chk([self getZone])) isEqual:[chrono getZone]];
@@ -404,13 +404,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology)
 
 - (jboolean)isEqual:(id)obj {
   if (self == obj) {
-    return YES;
+    return true;
   }
   else if ([obj isKindOfClass:[OrgJodaTimeChronoZonedChronology_ZonedDurationField class]]) {
     OrgJodaTimeChronoZonedChronology_ZonedDurationField *other = (OrgJodaTimeChronoZonedChronology_ZonedDurationField *) check_class_cast(obj, [OrgJodaTimeChronoZonedChronology_ZonedDurationField class]);
     return [((OrgJodaTimeDurationField *) nil_chk(iField_)) isEqual:((OrgJodaTimeChronoZonedChronology_ZonedDurationField *) nil_chk(other))->iField_] && [((OrgJodaTimeDateTimeZone *) nil_chk(iZone_)) isEqual:other->iZone_];
   }
-  return NO;
+  return false;
 }
 
 - (NSUInteger)hash {
@@ -418,7 +418,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology)
 }
 
 - (void)dealloc {
-  if (iField_ != self) RELEASE_(iField_);
+  RELEASE_(iField_);
   RELEASE_(iZone_);
   [super dealloc];
 }
@@ -444,9 +444,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoZonedChronology_ZonedDurationField_serialVersionUID },
-    { "iField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iTimeField_", NULL, 0x10, "Z", NULL, NULL,  },
-    { "iZone_", NULL, 0x10, "Lorg.joda.time.DateTimeZone;", NULL, NULL,  },
+    { "iField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iTimeField_", NULL, 0x10, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "iZone_", NULL, 0x10, "Lorg.joda.time.DateTimeZone;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoZonedChronology_ZonedDurationField = { 2, "ZonedDurationField", "org.joda.time.chrono", "ZonedChronology", 0x8, 16, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoZonedChronology_ZonedDurationField;
@@ -459,9 +459,9 @@ void OrgJodaTimeChronoZonedChronology_ZonedDurationField_initWithOrgJodaTimeDura
   if (![field isSupported]) {
     @throw [new_JavaLangIllegalArgumentException_init() autorelease];
   }
-  OrgJodaTimeChronoZonedChronology_ZonedDurationField_set_iField_(self, field);
+  JreStrongAssign(&self->iField_, field);
   self->iTimeField_ = OrgJodaTimeChronoZonedChronology_useTimeArithmeticWithOrgJodaTimeDurationField_(field);
-  OrgJodaTimeChronoZonedChronology_ZonedDurationField_set_iZone_(self, zone);
+  JreStrongAssign(&self->iZone_, zone);
 }
 
 OrgJodaTimeChronoZonedChronology_ZonedDurationField *new_OrgJodaTimeChronoZonedChronology_ZonedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDateTimeZone_(OrgJodaTimeDurationField *field, OrgJodaTimeDateTimeZone *zone) {
@@ -546,7 +546,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology_ZonedDurationF
   else {
     jlong localInstant = [((OrgJodaTimeDateTimeZone *) nil_chk(iZone_)) convertUTCToLocalWithLong:instant];
     localInstant = [((OrgJodaTimeDateTimeField *) nil_chk(iField_)) addWithLong:localInstant withInt:value];
-    return [iZone_ convertLocalToUTCWithLong:localInstant withBoolean:NO withLong:instant];
+    return [iZone_ convertLocalToUTCWithLong:localInstant withBoolean:false withLong:instant];
   }
 }
 
@@ -560,7 +560,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology_ZonedDurationF
   else {
     jlong localInstant = [((OrgJodaTimeDateTimeZone *) nil_chk(iZone_)) convertUTCToLocalWithLong:instant];
     localInstant = [((OrgJodaTimeDateTimeField *) nil_chk(iField_)) addWithLong:localInstant withLong:value];
-    return [iZone_ convertLocalToUTCWithLong:localInstant withBoolean:NO withLong:instant];
+    return [iZone_ convertLocalToUTCWithLong:localInstant withBoolean:false withLong:instant];
   }
 }
 
@@ -574,7 +574,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology_ZonedDurationF
   else {
     jlong localInstant = [((OrgJodaTimeDateTimeZone *) nil_chk(iZone_)) convertUTCToLocalWithLong:instant];
     localInstant = [((OrgJodaTimeDateTimeField *) nil_chk(iField_)) addWrapFieldWithLong:localInstant withInt:value];
-    return [iZone_ convertLocalToUTCWithLong:localInstant withBoolean:NO withLong:instant];
+    return [iZone_ convertLocalToUTCWithLong:localInstant withBoolean:false withLong:instant];
   }
 }
 
@@ -582,7 +582,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology_ZonedDurationF
              withInt:(jint)value {
   jlong localInstant = [((OrgJodaTimeDateTimeZone *) nil_chk(iZone_)) convertUTCToLocalWithLong:instant];
   localInstant = [((OrgJodaTimeDateTimeField *) nil_chk(iField_)) setWithLong:localInstant withInt:value];
-  jlong result = [iZone_ convertLocalToUTCWithLong:localInstant withBoolean:NO withLong:instant];
+  jlong result = [iZone_ convertLocalToUTCWithLong:localInstant withBoolean:false withLong:instant];
   if ([self getWithLong:result] != value) {
     OrgJodaTimeIllegalInstantException *cause = [new_OrgJodaTimeIllegalInstantException_initWithLong_withNSString_(localInstant, [iZone_ getID]) autorelease];
     OrgJodaTimeIllegalFieldValueException *ex = [new_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSString_([iField_ getType], JavaLangInteger_valueOfWithInt_(value), [cause getMessage]) autorelease];
@@ -597,7 +597,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology_ZonedDurationF
   withJavaUtilLocale:(JavaUtilLocale *)locale {
   jlong localInstant = [((OrgJodaTimeDateTimeZone *) nil_chk(iZone_)) convertUTCToLocalWithLong:instant];
   localInstant = [((OrgJodaTimeDateTimeField *) nil_chk(iField_)) setWithLong:localInstant withNSString:text withJavaUtilLocale:locale];
-  return [iZone_ convertLocalToUTCWithLong:localInstant withBoolean:NO withLong:instant];
+  return [iZone_ convertLocalToUTCWithLong:localInstant withBoolean:false withLong:instant];
 }
 
 - (jint)getDifferenceWithLong:(jlong)minuendInstant
@@ -643,7 +643,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology_ZonedDurationF
   else {
     jlong localInstant = [((OrgJodaTimeDateTimeZone *) nil_chk(iZone_)) convertUTCToLocalWithLong:instant];
     localInstant = [((OrgJodaTimeDateTimeField *) nil_chk(iField_)) roundFloorWithLong:localInstant];
-    return [iZone_ convertLocalToUTCWithLong:localInstant withBoolean:NO withLong:instant];
+    return [iZone_ convertLocalToUTCWithLong:localInstant withBoolean:false withLong:instant];
   }
 }
 
@@ -656,7 +656,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology_ZonedDurationF
   else {
     jlong localInstant = [((OrgJodaTimeDateTimeZone *) nil_chk(iZone_)) convertUTCToLocalWithLong:instant];
     localInstant = [((OrgJodaTimeDateTimeField *) nil_chk(iField_)) roundCeilingWithLong:localInstant];
-    return [iZone_ convertLocalToUTCWithLong:localInstant withBoolean:NO withLong:instant];
+    return [iZone_ convertLocalToUTCWithLong:localInstant withBoolean:false withLong:instant];
   }
 }
 
@@ -715,13 +715,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology_ZonedDurationF
 
 - (jboolean)isEqual:(id)obj {
   if (self == obj) {
-    return YES;
+    return true;
   }
   else if ([obj isKindOfClass:[OrgJodaTimeChronoZonedChronology_ZonedDateTimeField class]]) {
     OrgJodaTimeChronoZonedChronology_ZonedDateTimeField *other = (OrgJodaTimeChronoZonedChronology_ZonedDateTimeField *) check_class_cast(obj, [OrgJodaTimeChronoZonedChronology_ZonedDateTimeField class]);
     return [((OrgJodaTimeDateTimeField *) nil_chk(iField_)) isEqual:((OrgJodaTimeChronoZonedChronology_ZonedDateTimeField *) nil_chk(other))->iField_] && [((OrgJodaTimeDateTimeZone *) nil_chk(iZone_)) isEqual:other->iZone_] && [((OrgJodaTimeDurationField *) nil_chk(iDurationField_)) isEqual:other->iDurationField_] && [((OrgJodaTimeDurationField *) nil_chk(iRangeDurationField_)) isEqual:other->iRangeDurationField_];
   }
-  return NO;
+  return false;
 }
 
 - (NSUInteger)hash {
@@ -729,7 +729,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology_ZonedDurationF
 }
 
 - (void)dealloc {
-  if (iField_ != self) RELEASE_(iField_);
+  RELEASE_(iField_);
   RELEASE_(iZone_);
   RELEASE_(iDurationField_);
   RELEASE_(iRangeDurationField_);
@@ -777,12 +777,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology_ZonedDurationF
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_serialVersionUID },
-    { "iField_", NULL, 0x10, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iZone_", NULL, 0x10, "Lorg.joda.time.DateTimeZone;", NULL, NULL,  },
-    { "iDurationField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iTimeField_", NULL, 0x10, "Z", NULL, NULL,  },
-    { "iRangeDurationField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iLeapDurationField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL,  },
+    { "iField_", NULL, 0x10, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iZone_", NULL, 0x10, "Lorg.joda.time.DateTimeZone;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iDurationField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iTimeField_", NULL, 0x10, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "iRangeDurationField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iLeapDurationField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoZonedChronology_ZonedDateTimeField = { 2, "ZonedDateTimeField", "org.joda.time.chrono", "ZonedChronology", 0x18, 35, methods, 7, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoZonedChronology_ZonedDateTimeField;
@@ -795,12 +795,12 @@ void OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_initWithOrgJodaTimeDate
   if (![field isSupported]) {
     @throw [new_JavaLangIllegalArgumentException_init() autorelease];
   }
-  OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_set_iField_(self, field);
-  OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_set_iZone_(self, zone);
-  OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_set_iDurationField_(self, durationField);
+  JreStrongAssign(&self->iField_, field);
+  JreStrongAssign(&self->iZone_, zone);
+  JreStrongAssign(&self->iDurationField_, durationField);
   self->iTimeField_ = OrgJodaTimeChronoZonedChronology_useTimeArithmeticWithOrgJodaTimeDurationField_(durationField);
-  OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_set_iRangeDurationField_(self, rangeDurationField);
-  OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_set_iLeapDurationField_(self, leapDurationField);
+  JreStrongAssign(&self->iRangeDurationField_, rangeDurationField);
+  JreStrongAssign(&self->iLeapDurationField_, leapDurationField);
 }
 
 OrgJodaTimeChronoZonedChronology_ZonedDateTimeField *new_OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeZone_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeZone *zone, OrgJodaTimeDurationField *durationField, OrgJodaTimeDurationField *rangeDurationField, OrgJodaTimeDurationField *leapDurationField) {

@@ -3,7 +3,6 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/joda-time/src/main/java/org/joda/time/field/UnsupportedDurationField.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "java/lang/UnsupportedOperationException.h"
 #include "java/util/HashMap.h"
@@ -15,19 +14,19 @@
 
 @interface OrgJodaTimeFieldUnsupportedDurationField () {
  @public
-  /**
+  /*!
    @brief The name of the field
    */
   OrgJodaTimeDurationFieldType *iType_;
 }
 
-/**
+/*!
  @brief Constructor.
- @param type the type to use
+ @param type  the type to use
  */
 - (instancetype)initWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)type;
 
-/**
+/*!
  @brief Ensure proper singleton serialization
  */
 - (id)readResolve;
@@ -70,11 +69,11 @@ __attribute__((unused)) static JavaLangUnsupportedOperationException *OrgJodaTim
 }
 
 - (jboolean)isSupported {
-  return NO;
+  return false;
 }
 
 - (jboolean)isPrecise {
-  return YES;
+  return true;
 }
 
 - (jint)getValueWithLong:(jlong)duration {
@@ -144,7 +143,7 @@ __attribute__((unused)) static JavaLangUnsupportedOperationException *OrgJodaTim
 
 - (jboolean)isEqual:(id)obj {
   if (self == obj) {
-    return YES;
+    return true;
   }
   else if ([obj isKindOfClass:[OrgJodaTimeFieldUnsupportedDurationField class]]) {
     OrgJodaTimeFieldUnsupportedDurationField *other = (OrgJodaTimeFieldUnsupportedDurationField *) check_class_cast(obj, [OrgJodaTimeFieldUnsupportedDurationField class]);
@@ -153,7 +152,7 @@ __attribute__((unused)) static JavaLangUnsupportedOperationException *OrgJodaTim
     }
     return ([((NSString *) nil_chk([other getName])) isEqual:[self getName]]);
   }
-  return NO;
+  return false;
 }
 
 - (NSUInteger)hash {
@@ -207,8 +206,8 @@ __attribute__((unused)) static JavaLangUnsupportedOperationException *OrgJodaTim
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldUnsupportedDurationField_serialVersionUID },
-    { "cCache_", NULL, 0xa, "Ljava.util.HashMap;", &OrgJodaTimeFieldUnsupportedDurationField_cCache_, "Ljava/util/HashMap<Lorg/joda/time/DurationFieldType;Lorg/joda/time/field/UnsupportedDurationField;>;",  },
-    { "iType_", NULL, 0x12, "Lorg.joda.time.DurationFieldType;", NULL, NULL,  },
+    { "cCache_", NULL, 0xa, "Ljava.util.HashMap;", &OrgJodaTimeFieldUnsupportedDurationField_cCache_, "Ljava/util/HashMap<Lorg/joda/time/DurationFieldType;Lorg/joda/time/field/UnsupportedDurationField;>;", .constantValue.asLong = 0 },
+    { "iType_", NULL, 0x12, "Lorg.joda.time.DurationFieldType;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldUnsupportedDurationField = { 2, "UnsupportedDurationField", "org.joda.time.field", NULL, 0x11, 25, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldUnsupportedDurationField;
@@ -221,7 +220,7 @@ OrgJodaTimeFieldUnsupportedDurationField *OrgJodaTimeFieldUnsupportedDurationFie
   @synchronized(OrgJodaTimeFieldUnsupportedDurationField_class_()) {
     OrgJodaTimeFieldUnsupportedDurationField *field;
     if (OrgJodaTimeFieldUnsupportedDurationField_cCache_ == nil) {
-      JreStrongAssignAndConsume(&OrgJodaTimeFieldUnsupportedDurationField_cCache_, nil, new_JavaUtilHashMap_initWithInt_(7));
+      JreStrongAssignAndConsume(&OrgJodaTimeFieldUnsupportedDurationField_cCache_, new_JavaUtilHashMap_initWithInt_(7));
       field = nil;
     }
     else {
@@ -237,7 +236,7 @@ OrgJodaTimeFieldUnsupportedDurationField *OrgJodaTimeFieldUnsupportedDurationFie
 
 void OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldType_(OrgJodaTimeFieldUnsupportedDurationField *self, OrgJodaTimeDurationFieldType *type) {
   OrgJodaTimeDurationField_init(self);
-  OrgJodaTimeFieldUnsupportedDurationField_set_iType_(self, type);
+  JreStrongAssign(&self->iType_, type);
 }
 
 OrgJodaTimeFieldUnsupportedDurationField *new_OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationFieldType *type) {

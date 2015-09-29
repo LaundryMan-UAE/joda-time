@@ -21,9 +21,19 @@
 @protocol OrgJodaTimeReadablePartial;
 @protocol OrgJodaTimeReadablePeriod;
 
-/**
+/*!
  @brief An immutable time period representing a number of days.
- <p> <code>Days</code> is an immutable period that can only store days. It does not store years, months or hours for example. As such it is a type-safe way of representing a number of days in an application. <p> The number of days is set in the constructor, and may be queried using <code>getDays()</code>. Basic mathematical operations are provided - <code>plus()</code>, <code>minus()</code>, <code>multipliedBy()</code> and <code>dividedBy()</code>. <p> <code>Days</code> is thread-safe and immutable.
+ <p>
+ <code>Days</code> is an immutable period that can only store days.
+ It does not store years, months or hours for example. As such it is a
+ type-safe way of representing a number of days in an application.
+ <p>
+ The number of days is set in the constructor, and may be queried using
+ <code>getDays()</code>. Basic mathematical operations are provided -
+ <code>plus()</code>, <code>minus()</code>, <code>multipliedBy()</code> and
+ <code>dividedBy()</code>.
+ <p>
+ <code>Days</code> is thread-safe and immutable.
  @author Stephen Colebourne
  @since 1.4
  */
@@ -31,197 +41,261 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Obtains an instance of <code>Days</code> that may be cached.
- <code>Days</code> is immutable, so instances can be cached and shared. This factory method provides access to shared instances.
- @param days the number of days to obtain an instance for
+ <code>Days</code> is immutable, so instances can be cached and shared.
+ This factory method provides access to shared instances.
+ @param days  the number of days to obtain an instance for
  @return the instance of Days
  */
 + (OrgJodaTimeDays *)daysWithInt:(jint)days;
 
-/**
- @brief Creates a <code>Days</code> representing the number of whole days between the two specified datetimes.
- This method corectly handles any daylight savings time changes that may occur during the interval.
- @param start the start instant, must not be null
- @param end the end instant, must not be null
+/*!
+ @brief Creates a <code>Days</code> representing the number of whole days
+ between the two specified datetimes.
+ This method corectly handles
+ any daylight savings time changes that may occur during the interval.
+ @param start  the start instant, must not be null
+ @param end  the end instant, must not be null
  @return the period in days
  @throws IllegalArgumentException if the instants are null or invalid
  */
 + (OrgJodaTimeDays *)daysBetweenWithOrgJodaTimeReadableInstant:(id<OrgJodaTimeReadableInstant>)start
                                 withOrgJodaTimeReadableInstant:(id<OrgJodaTimeReadableInstant>)end;
 
-/**
- @brief Creates a <code>Days</code> representing the number of whole days between the two specified partial datetimes.
- <p> The two partials must contain the same fields, for example you can specify two <code>LocalDate</code> objects.
- @param start the start partial date, must not be null
- @param end the end partial date, must not be null
+/*!
+ @brief Creates a <code>Days</code> representing the number of whole days
+ between the two specified partial datetimes.
+ <p>
+ The two partials must contain the same fields, for example you can specify
+ two <code>LocalDate</code> objects.
+ @param start  the start partial date, must not be null
+ @param end  the end partial date, must not be null
  @return the period in days
  @throws IllegalArgumentException if the partials are null or invalid
  */
 + (OrgJodaTimeDays *)daysBetweenWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)start
                                 withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)end;
 
-/**
- @brief Creates a <code>Days</code> representing the number of whole days in the specified interval.
- This method corectly handles any daylight savings time changes that may occur during the interval.
- @param interval the interval to extract days from, null returns zero
+/*!
+ @brief Creates a <code>Days</code> representing the number of whole days
+ in the specified interval.
+ This method corectly handles any daylight
+ savings time changes that may occur during the interval.
+ @param interval  the interval to extract days from, null returns zero
  @return the period in days
  @throws IllegalArgumentException if the partials are null or invalid
  */
 + (OrgJodaTimeDays *)daysInWithOrgJodaTimeReadableInterval:(id<OrgJodaTimeReadableInterval>)interval;
 
-/**
+/*!
  @brief Returns a new instance with the days divided by the specified divisor.
- The calculation uses integer division, thus 3 divided by 2 is 1. <p> This instance is immutable and unaffected by this method call.
- @param divisor the amount to divide by, may be negative
+ The calculation uses integer division, thus 3 divided by 2 is 1.
+ <p>
+ This instance is immutable and unaffected by this method call.
+ @param divisor  the amount to divide by, may be negative
  @return the new period divided by the specified divisor
  @throws ArithmeticException if the divisor is zero
  */
 - (OrgJodaTimeDays *)dividedByWithInt:(jint)divisor;
 
-/**
+/*!
  @brief Gets the number of days that this period represents.
  @return the number of days in the period
  */
 - (jint)getDays;
 
-/**
+/*!
  @brief Gets the duration field type, which is <code>days</code>.
  @return the period type
  */
 - (OrgJodaTimeDurationFieldType *)getFieldType;
 
-/**
+/*!
  @brief Gets the period type, which is <code>days</code>.
  @return the period type
  */
 - (OrgJodaTimePeriodType *)getPeriodType;
 
-/**
+/*!
  @brief Is this days instance greater than the specified number of days.
- @param other the other period, null means zero
+ @param other  the other period, null means zero
  @return true if this days instance is greater than the specified one
  */
 - (jboolean)isGreaterThanWithOrgJodaTimeDays:(OrgJodaTimeDays *)other;
 
-/**
+/*!
  @brief Is this days instance less than the specified number of days.
- @param other the other period, null means zero
+ @param other  the other period, null means zero
  @return true if this days instance is less than the specified one
  */
 - (jboolean)isLessThanWithOrgJodaTimeDays:(OrgJodaTimeDays *)other;
 
-/**
+/*!
  @brief Returns a new instance with the specified number of days taken away.
- <p> This instance is immutable and unaffected by this method call.
- @param days the amount of days to take away, may be negative, null means zero
+ <p>
+ This instance is immutable and unaffected by this method call.
+ @param days  the amount of days to take away, may be negative, null means zero
  @return the new period minus the specified number of days
  @throws ArithmeticException if the result overflows an int
  */
 - (OrgJodaTimeDays *)minusWithOrgJodaTimeDays:(OrgJodaTimeDays *)days;
 
-/**
+/*!
  @brief Returns a new instance with the specified number of days taken away.
- <p> This instance is immutable and unaffected by this method call.
- @param days the amount of days to take away, may be negative
+ <p>
+ This instance is immutable and unaffected by this method call.
+ @param days  the amount of days to take away, may be negative
  @return the new period minus the specified number of days
  @throws ArithmeticException if the result overflows an int
  */
 - (OrgJodaTimeDays *)minusWithInt:(jint)days;
 
-/**
+/*!
  @brief Returns a new instance with the days multiplied by the specified scalar.
- <p> This instance is immutable and unaffected by this method call.
- @param scalar the amount to multiply by, may be negative
+ <p>
+ This instance is immutable and unaffected by this method call.
+ @param scalar  the amount to multiply by, may be negative
  @return the new period multiplied by the specified scalar
  @throws ArithmeticException if the result overflows an int
  */
 - (OrgJodaTimeDays *)multipliedByWithInt:(jint)scalar;
 
-/**
+/*!
  @brief Returns a new instance with the days value negated.
  @return the new period with a negated value
  @throws ArithmeticException if the result overflows an int
  */
 - (OrgJodaTimeDays *)negated;
 
-/**
+/*!
  @brief Creates a new <code>Days</code> by parsing a string in the ISO8601 format 'PnD'.
- <p> The parse will accept the full ISO syntax of PnYnMnWnDTnHnMnS however only the days component may be non-zero. If any other component is non-zero, an exception will be thrown.
- @param periodStr the period string, null returns zero
+ <p>
+ The parse will accept the full ISO syntax of PnYnMnWnDTnHnMnS however only the
+ days component may be non-zero. If any other component is non-zero, an exception
+ will be thrown.
+ @param periodStr  the period string, null returns zero
  @return the period in days
  @throws IllegalArgumentException if the string format is invalid
  */
 + (OrgJodaTimeDays *)parseDaysWithNSString:(NSString *)periodStr;
 
-/**
+/*!
  @brief Returns a new instance with the specified number of days added.
- <p> This instance is immutable and unaffected by this method call.
- @param days the amount of days to add, may be negative, null means zero
+ <p>
+ This instance is immutable and unaffected by this method call.
+ @param days  the amount of days to add, may be negative, null means zero
  @return the new period plus the specified number of days
  @throws ArithmeticException if the result overflows an int
  */
 - (OrgJodaTimeDays *)plusWithOrgJodaTimeDays:(OrgJodaTimeDays *)days;
 
-/**
+/*!
  @brief Returns a new instance with the specified number of days added.
- <p> This instance is immutable and unaffected by this method call.
- @param days the amount of days to add, may be negative
+ <p>
+ This instance is immutable and unaffected by this method call.
+ @param days  the amount of days to add, may be negative
  @return the new period plus the specified number of days
  @throws ArithmeticException if the result overflows an int
  */
 - (OrgJodaTimeDays *)plusWithInt:(jint)days;
 
-/**
- @brief Creates a new <code>Days</code> representing the number of complete standard length days in the specified period.
- <p> This factory method converts all fields from the period to hours using standardised durations for each field. Only those fields which have a precise duration in the ISO UTC chronology can be converted. <ul> <li>One week consists of 7 days. <li>One day consists of 24 hours. <li>One hour consists of 60 minutes. <li>One minute consists of 60 seconds. <li>One second consists of 1000 milliseconds. </ul> Months and Years are imprecise and periods containing these values cannot be converted.
- @param period the period to get the number of hours from, null returns zero
+/*!
+ @brief Creates a new <code>Days</code> representing the number of complete
+ standard length days in the specified period.
+ <p>
+ This factory method converts all fields from the period to hours using standardised
+ durations for each field. Only those fields which have a precise duration in
+ the ISO UTC chronology can be converted.
+ <ul>
+ <li>One week consists of 7 days.
+ <li>One day consists of 24 hours.
+ <li>One hour consists of 60 minutes.
+ <li>One minute consists of 60 seconds.
+ <li>One second consists of 1000 milliseconds.
+ </ul>
+ Months and Years are imprecise and periods containing these values cannot be converted.
+ @param period  the period to get the number of hours from, null returns zero
  @return the period in days
  @throws IllegalArgumentException if the period contains imprecise duration values
  */
 + (OrgJodaTimeDays *)standardDaysInWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period;
 
-/**
- @brief Converts this period in days to a duration in milliseconds assuming a 24 hour day, 60 minute hour and 60 second minute.
- <p> This method allows you to convert from a period to a duration. However to achieve this it makes the assumption that all days are 24 hours long, all hours are 60 minutes and all minutes are 60 seconds. This is not true when daylight savings time is considered, and may also not be true for some unusual chronologies. However, it is included as it is a useful operation for many applications and business rules.
+/*!
+ @brief Converts this period in days to a duration in milliseconds assuming a
+ 24 hour day, 60 minute hour and 60 second minute.
+ <p>
+ This method allows you to convert from a period to a duration.
+ However to achieve this it makes the assumption that all days are 24 hours
+ long, all hours are 60 minutes and all minutes are 60 seconds.
+ This is not true when daylight savings time is considered, and may also
+ not be true for some unusual chronologies. However, it is included as it
+ is a useful operation for many applications and business rules.
  @return a duration equivalent to this number of days
  */
 - (OrgJodaTimeDuration *)toStandardDuration;
 
-/**
- @brief Converts this period in days to a period in hours assuming a 24 hour day.
- <p> This method allows you to convert between different types of period. However to achieve this it makes the assumption that all days are 24 hours long. This is not true when daylight savings is considered and may also not be true for some unusual chronologies. However, it is included as it is a useful operation for many applications and business rules.
+/*!
+ @brief Converts this period in days to a period in hours assuming a
+ 24 hour day.
+ <p>
+ This method allows you to convert between different types of period.
+ However to achieve this it makes the assumption that all days are 24 hours long.
+ This is not true when daylight savings is considered and may also not
+ be true for some unusual chronologies. However, it is included
+ as it is a useful operation for many applications and business rules.
  @return a period representing the number of hours for this number of days
  @throws ArithmeticException if the number of hours is too large to be represented
  */
 - (OrgJodaTimeHours *)toStandardHours;
 
-/**
- @brief Converts this period in days to a period in minutes assuming a 24 hour day and 60 minute hour.
- <p> This method allows you to convert between different types of period. However to achieve this it makes the assumption that all days are 24 hours long and all hours are 60 minutes long. This is not true when daylight savings is considered and may also not be true for some unusual chronologies. However, it is included as it is a useful operation for many applications and business rules.
+/*!
+ @brief Converts this period in days to a period in minutes assuming a
+ 24 hour day and 60 minute hour.
+ <p>
+ This method allows you to convert between different types of period.
+ However to achieve this it makes the assumption that all days are 24 hours
+ long and all hours are 60 minutes long.
+ This is not true when daylight savings is considered and may also not
+ be true for some unusual chronologies. However, it is included
+ as it is a useful operation for many applications and business rules.
  @return a period representing the number of minutes for this number of days
  @throws ArithmeticException if the number of minutes is too large to be represented
  */
 - (OrgJodaTimeMinutes *)toStandardMinutes;
 
-/**
- @brief Converts this period in days to a period in seconds assuming a 24 hour day, 60 minute hour and 60 second minute.
- <p> This method allows you to convert between different types of period. However to achieve this it makes the assumption that all days are 24 hours long, all hours are 60 minutes long and all minutes are 60 seconds long. This is not true when daylight savings is considered and may also not be true for some unusual chronologies. However, it is included as it is a useful operation for many applications and business rules.
+/*!
+ @brief Converts this period in days to a period in seconds assuming a
+ 24 hour day, 60 minute hour and 60 second minute.
+ <p>
+ This method allows you to convert between different types of period.
+ However to achieve this it makes the assumption that all days are 24 hours
+ long, all hours are 60 minutes long and all minutes are 60 seconds long.
+ This is not true when daylight savings is considered and may also not
+ be true for some unusual chronologies. However, it is included
+ as it is a useful operation for many applications and business rules.
  @return a period representing the number of seconds for this number of days
  @throws ArithmeticException if the number of seconds is too large to be represented
  */
 - (OrgJodaTimeSeconds *)toStandardSeconds;
 
-/**
- @brief Converts this period in days to a period in weeks assuming a 7 day week.
- <p> This method allows you to convert between different types of period. However to achieve this it makes the assumption that all weeks are 7 days long. This may not be true for some unusual chronologies. However, it is included as it is a useful operation for many applications and business rules.
+/*!
+ @brief Converts this period in days to a period in weeks assuming a
+ 7 day week.
+ <p>
+ This method allows you to convert between different types of period.
+ However to achieve this it makes the assumption that all weeks are
+ 7 days long.
+ This may not be true for some unusual chronologies. However, it is included
+ as it is a useful operation for many applications and business rules.
  @return a period representing the number of weeks for this number of days
  */
 - (OrgJodaTimeWeeks *)toStandardWeeks;
 
-/**
+/*!
  @brief Gets this instance as a String in the ISO8601 duration format.
- <p> For example, "P4D" represents 4 days.
+ <p>
+ For example, "P4D" represents 4 days.
  @return the value as an ISO8601 string
  */
 - (NSString *)description;

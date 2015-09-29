@@ -104,18 +104,18 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldScaledDurationField, serialVersionUID
 
 - (jboolean)isEqual:(id)obj {
   if (self == obj) {
-    return YES;
+    return true;
   }
   else if ([obj isKindOfClass:[OrgJodaTimeFieldScaledDurationField class]]) {
     OrgJodaTimeFieldScaledDurationField *other = (OrgJodaTimeFieldScaledDurationField *) check_class_cast(obj, [OrgJodaTimeFieldScaledDurationField class]);
     return ([((OrgJodaTimeDurationField *) nil_chk([self getWrappedField])) isEqual:[((OrgJodaTimeFieldScaledDurationField *) nil_chk(other)) getWrappedField]]) && ([self getType] == [other getType]) && (iScalar_ == other->iScalar_);
   }
-  return NO;
+  return false;
 }
 
 - (NSUInteger)hash {
   jlong scalar = iScalar_;
-  jint hash_ = (jint) (scalar ^ (URShift64(scalar, 32)));
+  jint hash_ = (jint) (scalar ^ (JreURShift64(scalar, 32)));
   hash_ += ((jint) [((OrgJodaTimeDurationFieldType *) nil_chk([self getType])) hash]);
   hash_ += ((jint) [((OrgJodaTimeDurationField *) nil_chk([self getWrappedField])) hash]);
   return hash_;
@@ -143,7 +143,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldScaledDurationField, serialVersionUID
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldScaledDurationField_serialVersionUID },
-    { "iScalar_", NULL, 0x12, "I", NULL, NULL,  },
+    { "iScalar_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldScaledDurationField = { 2, "ScaledDurationField", "org.joda.time.field", NULL, 0x1, 17, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldScaledDurationField;

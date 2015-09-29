@@ -14,7 +14,7 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
+/*!
  @brief Provides time calculations for the day of the year component of time.
  @author Guy Allard
  @author Stephen Colebourne
@@ -25,9 +25,9 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Get the day of the year component of the specified time instant.
- @param instant the time instant in millis to query.
+ @param instant  the time instant in millis to query.
  @return the day of the year extracted from the input.
  */
 - (jint)getWithLong:(jlong)instant;
@@ -54,7 +54,7 @@
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Restricted constructor
  */
 - (instancetype)initWithOrgJodaTimeChronoBasicChronology:(OrgJodaTimeChronoBasicChronology *)chronology

@@ -12,7 +12,7 @@
 @class OrgJodaTimeDateTimeFieldType;
 @class OrgJodaTimeDurationFieldType;
 
-/**
+/*!
  @brief Exception thrown when attempting to set a field outside its supported range.
  @author Brian S O'Neill
  @since 1.1
@@ -21,114 +21,114 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Constructor.
- @param fieldType type of field being set
- @param value illegal value being set
- @param lowerBound lower legal field value, or null if not applicable
- @param upperBound upper legal field value, or null if not applicable
+ @param fieldType  type of field being set
+ @param value  illegal value being set
+ @param lowerBound  lower legal field value, or null if not applicable
+ @param upperBound  upper legal field value, or null if not applicable
  */
 - (instancetype)initWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType
                                         withNSNumber:(NSNumber *)value
                                         withNSNumber:(NSNumber *)lowerBound
                                         withNSNumber:(NSNumber *)upperBound;
 
-/**
+/*!
  @brief Constructor.
- @param fieldType type of field being set
- @param value illegal value being set
- @param explain an explanation
+ @param fieldType  type of field being set
+ @param value  illegal value being set
+ @param explain  an explanation
  @since 1.5
  */
 - (instancetype)initWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType
                                         withNSNumber:(NSNumber *)value
                                         withNSString:(NSString *)explain;
 
-/**
+/*!
  @brief Constructor.
- @param fieldType type of field being set
- @param value illegal value being set
+ @param fieldType  type of field being set
+ @param value  illegal value being set
  */
 - (instancetype)initWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType
                                         withNSString:(NSString *)value;
 
-/**
+/*!
  @brief Constructor.
- @param fieldType type of field being set
- @param value illegal value being set
- @param lowerBound lower legal field value, or null if not applicable
- @param upperBound upper legal field value, or null if not applicable
+ @param fieldType  type of field being set
+ @param value  illegal value being set
+ @param lowerBound  lower legal field value, or null if not applicable
+ @param upperBound  upper legal field value, or null if not applicable
  */
 - (instancetype)initWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)fieldType
                                         withNSNumber:(NSNumber *)value
                                         withNSNumber:(NSNumber *)lowerBound
                                         withNSNumber:(NSNumber *)upperBound;
 
-/**
+/*!
  @brief Constructor.
- @param fieldType type of field being set
- @param value illegal value being set
+ @param fieldType  type of field being set
+ @param value  illegal value being set
  */
 - (instancetype)initWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)fieldType
                                         withNSString:(NSString *)value;
 
-/**
+/*!
  @brief Constructor.
- @param fieldName name of field being set
- @param value illegal value being set
- @param lowerBound lower legal field value, or null if not applicable
- @param upperBound upper legal field value, or null if not applicable
+ @param fieldName  name of field being set
+ @param value  illegal value being set
+ @param lowerBound  lower legal field value, or null if not applicable
+ @param upperBound  upper legal field value, or null if not applicable
  */
 - (instancetype)initWithNSString:(NSString *)fieldName
                     withNSNumber:(NSNumber *)value
                     withNSNumber:(NSNumber *)lowerBound
                     withNSNumber:(NSNumber *)upperBound;
 
-/**
+/*!
  @brief Constructor.
- @param fieldName name of field being set
- @param value illegal value being set
+ @param fieldName  name of field being set
+ @param value  illegal value being set
  */
 - (instancetype)initWithNSString:(NSString *)fieldName
                     withNSString:(NSString *)value;
 
-/**
+/*!
  @brief Returns the DateTimeFieldType whose value was invalid, or null if not applicable.
  @return the datetime field type
  */
 - (OrgJodaTimeDateTimeFieldType *)getDateTimeFieldType;
 
-/**
+/*!
  @brief Returns the DurationFieldType whose value was invalid, or null if not applicable.
  @return the duration field type
  */
 - (OrgJodaTimeDurationFieldType *)getDurationFieldType;
 
-/**
+/*!
  @brief Returns the name of the field whose value was invalid.
  @return the field name
  */
 - (NSString *)getFieldName;
 
-/**
+/*!
  @brief Returns the illegal integer value assigned to the field, or null if not applicable.
  @return the value
  */
 - (NSNumber *)getIllegalNumberValue;
 
-/**
+/*!
  @brief Returns the illegal string value assigned to the field, or null if not applicable.
  @return the value
  */
 - (NSString *)getIllegalStringValue;
 
-/**
+/*!
  @brief Returns the illegal value assigned to the field as a non-null string.
  @return the value
  */
 - (NSString *)getIllegalValueAsString;
 
-/**
+/*!
  @brief Returns the lower bound of the legal value range, or null if not applicable.
  @return the lower bound
  */
@@ -136,13 +136,13 @@
 
 - (NSString *)getMessage;
 
-/**
+/*!
  @brief Returns the upper bound of the legal value range, or null if not applicable.
  @return the upper bound
  */
 - (NSNumber *)getUpperBound;
 
-/**
+/*!
  @brief Provide additional detail by prepending a message to the existing message.
  A colon is separator is automatically inserted between the messages.
  @since 1.3

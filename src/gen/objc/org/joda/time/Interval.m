@@ -95,7 +95,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeInterval, serialVersionUID, jlong)
 
 - (OrgJodaTimeInterval *)overlapWithOrgJodaTimeReadableInterval:(id<OrgJodaTimeReadableInterval>)interval {
   interval = OrgJodaTimeDateTimeUtils_getReadableIntervalWithOrgJodaTimeReadableInterval_(interval);
-  if ([self overlapsWithOrgJodaTimeReadableInterval:interval] == NO) {
+  if ([self overlapsWithOrgJodaTimeReadableInterval:interval] == false) {
     return nil;
   }
   jlong start = JavaLangMath_maxWithLong_withLong_([self getStartMillis], [((id<OrgJodaTimeReadableInterval>) nil_chk(interval)) getStartMillis]);

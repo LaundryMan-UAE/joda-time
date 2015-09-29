@@ -33,7 +33,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldPreciseDurationDateTimeField, serialV
 }
 
 - (jboolean)isLenient {
-  return NO;
+  return false;
 }
 
 - (jlong)setWithLong:(jlong)instant
@@ -108,8 +108,8 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldPreciseDurationDateTimeField, serialV
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldPreciseDurationDateTimeField_serialVersionUID },
-    { "iUnitMillis_", NULL, 0x10, "J", NULL, NULL,  },
-    { "iUnitField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL,  },
+    { "iUnitMillis_", NULL, 0x10, "J", NULL, NULL, .constantValue.asLong = 0 },
+    { "iUnitField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldPreciseDurationDateTimeField = { 2, "PreciseDurationDateTimeField", "org.joda.time.field", NULL, 0x401, 10, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldPreciseDurationDateTimeField;
@@ -126,7 +126,7 @@ void OrgJodaTimeFieldPreciseDurationDateTimeField_initWithOrgJodaTimeDateTimeFie
   if (self->iUnitMillis_ < 1) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The unit milliseconds must be at least 1") autorelease];
   }
-  OrgJodaTimeFieldPreciseDurationDateTimeField_set_iUnitField_(self, unit);
+  JreStrongAssign(&self->iUnitField_, unit);
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldPreciseDurationDateTimeField)

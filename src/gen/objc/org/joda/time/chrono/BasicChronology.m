@@ -179,7 +179,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBasicChronology)
   if ((base = [self getBase]) != nil) {
     return [((OrgJodaTimeChronology *) nil_chk(base)) getZone];
   }
-  return OrgJodaTimeDateTimeZone_get_UTC_();
+  return JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_);
 }
 
 - (jlong)getDateTimeMillisWithInt:(jint)year
@@ -218,13 +218,13 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBasicChronology)
 
 - (jboolean)isEqual:(id)obj {
   if (self == obj) {
-    return YES;
+    return true;
   }
   if (obj != nil && [self getClass] == [obj getClass]) {
     OrgJodaTimeChronoBasicChronology *chrono = (OrgJodaTimeChronoBasicChronology *) check_class_cast(obj, [OrgJodaTimeChronoBasicChronology class]);
     return [self getMinimumDaysInFirstWeek] == [chrono getMinimumDaysInFirstWeek] && [((OrgJodaTimeDateTimeZone *) nil_chk([self getZone])) isEqual:[chrono getZone]];
   }
-  return NO;
+  return false;
 }
 
 - (NSUInteger)hash {
@@ -253,43 +253,43 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBasicChronology)
 }
 
 - (void)assembleWithOrgJodaTimeChronoAssembledChronology_Fields:(OrgJodaTimeChronoAssembledChronology_Fields *)fields {
-  OrgJodaTimeChronoAssembledChronology_Fields_set_millis_(nil_chk(fields), OrgJodaTimeChronoBasicChronology_cMillisField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_seconds_(fields, OrgJodaTimeChronoBasicChronology_cSecondsField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_minutes_(fields, OrgJodaTimeChronoBasicChronology_cMinutesField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_hours_(fields, OrgJodaTimeChronoBasicChronology_cHoursField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_halfdays_(fields, OrgJodaTimeChronoBasicChronology_cHalfdaysField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_days_(fields, OrgJodaTimeChronoBasicChronology_cDaysField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weeks_(fields, OrgJodaTimeChronoBasicChronology_cWeeksField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_millisOfSecond_(fields, OrgJodaTimeChronoBasicChronology_cMillisOfSecondField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_millisOfDay_(fields, OrgJodaTimeChronoBasicChronology_cMillisOfDayField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_secondOfMinute_(fields, OrgJodaTimeChronoBasicChronology_cSecondOfMinuteField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_secondOfDay_(fields, OrgJodaTimeChronoBasicChronology_cSecondOfDayField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_minuteOfHour_(fields, OrgJodaTimeChronoBasicChronology_cMinuteOfHourField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_minuteOfDay_(fields, OrgJodaTimeChronoBasicChronology_cMinuteOfDayField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_hourOfDay_(fields, OrgJodaTimeChronoBasicChronology_cHourOfDayField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_hourOfHalfday_(fields, OrgJodaTimeChronoBasicChronology_cHourOfHalfdayField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_clockhourOfDay_(fields, OrgJodaTimeChronoBasicChronology_cClockhourOfDayField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_clockhourOfHalfday_(fields, OrgJodaTimeChronoBasicChronology_cClockhourOfHalfdayField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_halfdayOfDay_(fields, OrgJodaTimeChronoBasicChronology_cHalfdayOfDayField_);
-  OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_year_(fields, new_OrgJodaTimeChronoBasicYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self));
-  OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_yearOfEra_(fields, new_OrgJodaTimeChronoGJYearOfEraDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronoBasicChronology_(fields->year_, self));
+  JreStrongAssign(&((OrgJodaTimeChronoAssembledChronology_Fields *) nil_chk(fields))->millis_, OrgJodaTimeChronoBasicChronology_cMillisField_);
+  JreStrongAssign(&fields->seconds_, OrgJodaTimeChronoBasicChronology_cSecondsField_);
+  JreStrongAssign(&fields->minutes_, OrgJodaTimeChronoBasicChronology_cMinutesField_);
+  JreStrongAssign(&fields->hours_, OrgJodaTimeChronoBasicChronology_cHoursField_);
+  JreStrongAssign(&fields->halfdays_, OrgJodaTimeChronoBasicChronology_cHalfdaysField_);
+  JreStrongAssign(&fields->days_, OrgJodaTimeChronoBasicChronology_cDaysField_);
+  JreStrongAssign(&fields->weeks_, OrgJodaTimeChronoBasicChronology_cWeeksField_);
+  JreStrongAssign(&fields->millisOfSecond_, OrgJodaTimeChronoBasicChronology_cMillisOfSecondField_);
+  JreStrongAssign(&fields->millisOfDay_, OrgJodaTimeChronoBasicChronology_cMillisOfDayField_);
+  JreStrongAssign(&fields->secondOfMinute_, OrgJodaTimeChronoBasicChronology_cSecondOfMinuteField_);
+  JreStrongAssign(&fields->secondOfDay_, OrgJodaTimeChronoBasicChronology_cSecondOfDayField_);
+  JreStrongAssign(&fields->minuteOfHour_, OrgJodaTimeChronoBasicChronology_cMinuteOfHourField_);
+  JreStrongAssign(&fields->minuteOfDay_, OrgJodaTimeChronoBasicChronology_cMinuteOfDayField_);
+  JreStrongAssign(&fields->hourOfDay_, OrgJodaTimeChronoBasicChronology_cHourOfDayField_);
+  JreStrongAssign(&fields->hourOfHalfday_, OrgJodaTimeChronoBasicChronology_cHourOfHalfdayField_);
+  JreStrongAssign(&fields->clockhourOfDay_, OrgJodaTimeChronoBasicChronology_cClockhourOfDayField_);
+  JreStrongAssign(&fields->clockhourOfHalfday_, OrgJodaTimeChronoBasicChronology_cClockhourOfHalfdayField_);
+  JreStrongAssign(&fields->halfdayOfDay_, OrgJodaTimeChronoBasicChronology_cHalfdayOfDayField_);
+  JreStrongAssignAndConsume(&fields->year_, new_OrgJodaTimeChronoBasicYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self));
+  JreStrongAssignAndConsume(&fields->yearOfEra_, new_OrgJodaTimeChronoGJYearOfEraDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronoBasicChronology_(fields->year_, self));
   OrgJodaTimeDateTimeField *field = [new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withInt_(fields->yearOfEra_, 99) autorelease];
-  OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_centuryOfEra_(fields, new_OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(field, OrgJodaTimeDateTimeFieldType_centuryOfEra(), 100));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_centuries_(fields, [fields->centuryOfEra_ getDurationField]);
+  JreStrongAssignAndConsume(&fields->centuryOfEra_, new_OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(field, OrgJodaTimeDateTimeFieldType_centuryOfEra(), 100));
+  JreStrongAssign(&fields->centuries_, [fields->centuryOfEra_ getDurationField]);
   field = [new_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_((OrgJodaTimeFieldDividedDateTimeField *) check_class_cast(fields->centuryOfEra_, [OrgJodaTimeFieldDividedDateTimeField class])) autorelease];
-  OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_yearOfCentury_(fields, new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(field, OrgJodaTimeDateTimeFieldType_yearOfCentury(), 1));
-  OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_era_(fields, new_OrgJodaTimeChronoGJEraDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self));
-  OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_dayOfWeek_(fields, new_OrgJodaTimeChronoGJDayOfWeekDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(self, fields->days_));
-  OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_dayOfMonth_(fields, new_OrgJodaTimeChronoBasicDayOfMonthDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(self, fields->days_));
-  OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_dayOfYear_(fields, new_OrgJodaTimeChronoBasicDayOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(self, fields->days_));
-  OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_monthOfYear_(fields, new_OrgJodaTimeChronoGJMonthOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self));
-  OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_weekyear_(fields, new_OrgJodaTimeChronoBasicWeekyearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self));
-  OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_weekOfWeekyear_(fields, new_OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(self, fields->weeks_));
+  JreStrongAssignAndConsume(&fields->yearOfCentury_, new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(field, OrgJodaTimeDateTimeFieldType_yearOfCentury(), 1));
+  JreStrongAssignAndConsume(&fields->era_, new_OrgJodaTimeChronoGJEraDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self));
+  JreStrongAssignAndConsume(&fields->dayOfWeek_, new_OrgJodaTimeChronoGJDayOfWeekDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(self, fields->days_));
+  JreStrongAssignAndConsume(&fields->dayOfMonth_, new_OrgJodaTimeChronoBasicDayOfMonthDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(self, fields->days_));
+  JreStrongAssignAndConsume(&fields->dayOfYear_, new_OrgJodaTimeChronoBasicDayOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(self, fields->days_));
+  JreStrongAssignAndConsume(&fields->monthOfYear_, new_OrgJodaTimeChronoGJMonthOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self));
+  JreStrongAssignAndConsume(&fields->weekyear_, new_OrgJodaTimeChronoBasicWeekyearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self));
+  JreStrongAssignAndConsume(&fields->weekOfWeekyear_, new_OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(self, fields->weeks_));
   field = [new_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_withInt_(fields->weekyear_, fields->centuries_, OrgJodaTimeDateTimeFieldType_weekyearOfCentury(), 100) autorelease];
-  OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_weekyearOfCentury_(fields, new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(field, OrgJodaTimeDateTimeFieldType_weekyearOfCentury(), 1));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_years_(fields, [fields->year_ getDurationField]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_months_(fields, [fields->monthOfYear_ getDurationField]);
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyears_(fields, [fields->weekyear_ getDurationField]);
+  JreStrongAssignAndConsume(&fields->weekyearOfCentury_, new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(field, OrgJodaTimeDateTimeFieldType_weekyearOfCentury(), 1));
+  JreStrongAssign(&fields->years_, [fields->year_ getDurationField]);
+  JreStrongAssign(&fields->months_, [fields->monthOfYear_ getDurationField]);
+  JreStrongAssign(&fields->weekyears_, [fields->weekyear_ getDurationField]);
 }
 
 - (jint)getDaysInYearMax {
@@ -338,7 +338,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBasicChronology)
 
 - (jint)getYearWithLong:(jlong)instant {
   jlong unitMillis = [self getAverageMillisPerYearDividedByTwo];
-  jlong i2 = (RShift64(instant, 1)) + [self getApproxMillisAtEpochDividedByTwo];
+  jlong i2 = (JreRShift64(instant, 1)) + [self getApproxMillisAtEpochDividedByTwo];
   if (i2 < 0) {
     i2 = i2 - unitMillis + 1;
   }
@@ -497,7 +497,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBasicChronology)
 }
 
 - (jboolean)isLeapDayWithLong:(jlong)instant {
-  return NO;
+  return false;
 }
 
 - (jint)getDaysInYearMonthWithInt:(jint)year
@@ -589,24 +589,24 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBasicChronology)
 + (void)initialize {
   if (self == [OrgJodaTimeChronoBasicChronology class]) {
     {
-      JreStrongAssign(&OrgJodaTimeChronoBasicChronology_cMillisField_, nil, OrgJodaTimeFieldMillisDurationField_get_INSTANCE_());
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cSecondsField_, nil, new_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDateTimeConstants_MILLIS_PER_SECOND));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cMinutesField_, nil, new_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDateTimeConstants_MILLIS_PER_MINUTE));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cHoursField_, nil, new_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDateTimeConstants_MILLIS_PER_HOUR));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cHalfdaysField_, nil, new_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType_halfdays(), OrgJodaTimeDateTimeConstants_MILLIS_PER_DAY / 2));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cDaysField_, nil, new_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDateTimeConstants_MILLIS_PER_DAY));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cWeeksField_, nil, new_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType_weeks(), OrgJodaTimeDateTimeConstants_MILLIS_PER_WEEK));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cMillisOfSecondField_, nil, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_millisOfSecond(), OrgJodaTimeChronoBasicChronology_cMillisField_, OrgJodaTimeChronoBasicChronology_cSecondsField_));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cMillisOfDayField_, nil, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_millisOfDay(), OrgJodaTimeChronoBasicChronology_cMillisField_, OrgJodaTimeChronoBasicChronology_cDaysField_));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cSecondOfMinuteField_, nil, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_secondOfMinute(), OrgJodaTimeChronoBasicChronology_cSecondsField_, OrgJodaTimeChronoBasicChronology_cMinutesField_));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cSecondOfDayField_, nil, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_secondOfDay(), OrgJodaTimeChronoBasicChronology_cSecondsField_, OrgJodaTimeChronoBasicChronology_cDaysField_));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cMinuteOfHourField_, nil, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_minuteOfHour(), OrgJodaTimeChronoBasicChronology_cMinutesField_, OrgJodaTimeChronoBasicChronology_cHoursField_));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cMinuteOfDayField_, nil, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_minuteOfDay(), OrgJodaTimeChronoBasicChronology_cMinutesField_, OrgJodaTimeChronoBasicChronology_cDaysField_));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cHourOfDayField_, nil, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_hourOfDay(), OrgJodaTimeChronoBasicChronology_cHoursField_, OrgJodaTimeChronoBasicChronology_cDaysField_));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cHourOfHalfdayField_, nil, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_hourOfHalfday(), OrgJodaTimeChronoBasicChronology_cHoursField_, OrgJodaTimeChronoBasicChronology_cHalfdaysField_));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cClockhourOfDayField_, nil, new_OrgJodaTimeFieldZeroIsMaxDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeChronoBasicChronology_cHourOfDayField_, OrgJodaTimeDateTimeFieldType_clockhourOfDay()));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cClockhourOfHalfdayField_, nil, new_OrgJodaTimeFieldZeroIsMaxDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeChronoBasicChronology_cHourOfHalfdayField_, OrgJodaTimeDateTimeFieldType_clockhourOfHalfday()));
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cHalfdayOfDayField_, nil, new_OrgJodaTimeChronoBasicChronology_HalfdayField_init());
+      JreStrongAssign(&OrgJodaTimeChronoBasicChronology_cMillisField_, JreLoadStatic(OrgJodaTimeFieldMillisDurationField, INSTANCE_));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cSecondsField_, new_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDateTimeConstants_MILLIS_PER_SECOND));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cMinutesField_, new_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDateTimeConstants_MILLIS_PER_MINUTE));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cHoursField_, new_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDateTimeConstants_MILLIS_PER_HOUR));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cHalfdaysField_, new_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType_halfdays(), OrgJodaTimeDateTimeConstants_MILLIS_PER_DAY / 2));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cDaysField_, new_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDateTimeConstants_MILLIS_PER_DAY));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cWeeksField_, new_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType_weeks(), OrgJodaTimeDateTimeConstants_MILLIS_PER_WEEK));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cMillisOfSecondField_, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_millisOfSecond(), OrgJodaTimeChronoBasicChronology_cMillisField_, OrgJodaTimeChronoBasicChronology_cSecondsField_));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cMillisOfDayField_, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_millisOfDay(), OrgJodaTimeChronoBasicChronology_cMillisField_, OrgJodaTimeChronoBasicChronology_cDaysField_));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cSecondOfMinuteField_, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_secondOfMinute(), OrgJodaTimeChronoBasicChronology_cSecondsField_, OrgJodaTimeChronoBasicChronology_cMinutesField_));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cSecondOfDayField_, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_secondOfDay(), OrgJodaTimeChronoBasicChronology_cSecondsField_, OrgJodaTimeChronoBasicChronology_cDaysField_));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cMinuteOfHourField_, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_minuteOfHour(), OrgJodaTimeChronoBasicChronology_cMinutesField_, OrgJodaTimeChronoBasicChronology_cHoursField_));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cMinuteOfDayField_, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_minuteOfDay(), OrgJodaTimeChronoBasicChronology_cMinutesField_, OrgJodaTimeChronoBasicChronology_cDaysField_));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cHourOfDayField_, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_hourOfDay(), OrgJodaTimeChronoBasicChronology_cHoursField_, OrgJodaTimeChronoBasicChronology_cDaysField_));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cHourOfHalfdayField_, new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType_hourOfHalfday(), OrgJodaTimeChronoBasicChronology_cHoursField_, OrgJodaTimeChronoBasicChronology_cHalfdaysField_));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cClockhourOfDayField_, new_OrgJodaTimeFieldZeroIsMaxDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeChronoBasicChronology_cHourOfDayField_, OrgJodaTimeDateTimeFieldType_clockhourOfDay()));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cClockhourOfHalfdayField_, new_OrgJodaTimeFieldZeroIsMaxDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeChronoBasicChronology_cHourOfHalfdayField_, OrgJodaTimeDateTimeFieldType_clockhourOfHalfday()));
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicChronology_cHalfdayOfDayField_, new_OrgJodaTimeChronoBasicChronology_HalfdayField_init());
     }
     J2OBJC_SET_INITIALIZED(OrgJodaTimeChronoBasicChronology)
   }
@@ -667,28 +667,28 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBasicChronology)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoBasicChronology_serialVersionUID },
-    { "cMillisField_", NULL, 0x1a, "Lorg.joda.time.DurationField;", &OrgJodaTimeChronoBasicChronology_cMillisField_, NULL,  },
-    { "cSecondsField_", NULL, 0x1a, "Lorg.joda.time.DurationField;", &OrgJodaTimeChronoBasicChronology_cSecondsField_, NULL,  },
-    { "cMinutesField_", NULL, 0x1a, "Lorg.joda.time.DurationField;", &OrgJodaTimeChronoBasicChronology_cMinutesField_, NULL,  },
-    { "cHoursField_", NULL, 0x1a, "Lorg.joda.time.DurationField;", &OrgJodaTimeChronoBasicChronology_cHoursField_, NULL,  },
-    { "cHalfdaysField_", NULL, 0x1a, "Lorg.joda.time.DurationField;", &OrgJodaTimeChronoBasicChronology_cHalfdaysField_, NULL,  },
-    { "cDaysField_", NULL, 0x1a, "Lorg.joda.time.DurationField;", &OrgJodaTimeChronoBasicChronology_cDaysField_, NULL,  },
-    { "cWeeksField_", NULL, 0x1a, "Lorg.joda.time.DurationField;", &OrgJodaTimeChronoBasicChronology_cWeeksField_, NULL,  },
-    { "cMillisOfSecondField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cMillisOfSecondField_, NULL,  },
-    { "cMillisOfDayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cMillisOfDayField_, NULL,  },
-    { "cSecondOfMinuteField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cSecondOfMinuteField_, NULL,  },
-    { "cSecondOfDayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cSecondOfDayField_, NULL,  },
-    { "cMinuteOfHourField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cMinuteOfHourField_, NULL,  },
-    { "cMinuteOfDayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cMinuteOfDayField_, NULL,  },
-    { "cHourOfDayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cHourOfDayField_, NULL,  },
-    { "cHourOfHalfdayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cHourOfHalfdayField_, NULL,  },
-    { "cClockhourOfDayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cClockhourOfDayField_, NULL,  },
-    { "cClockhourOfHalfdayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cClockhourOfHalfdayField_, NULL,  },
-    { "cHalfdayOfDayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cHalfdayOfDayField_, NULL,  },
+    { "cMillisField_", NULL, 0x1a, "Lorg.joda.time.DurationField;", &OrgJodaTimeChronoBasicChronology_cMillisField_, NULL, .constantValue.asLong = 0 },
+    { "cSecondsField_", NULL, 0x1a, "Lorg.joda.time.DurationField;", &OrgJodaTimeChronoBasicChronology_cSecondsField_, NULL, .constantValue.asLong = 0 },
+    { "cMinutesField_", NULL, 0x1a, "Lorg.joda.time.DurationField;", &OrgJodaTimeChronoBasicChronology_cMinutesField_, NULL, .constantValue.asLong = 0 },
+    { "cHoursField_", NULL, 0x1a, "Lorg.joda.time.DurationField;", &OrgJodaTimeChronoBasicChronology_cHoursField_, NULL, .constantValue.asLong = 0 },
+    { "cHalfdaysField_", NULL, 0x1a, "Lorg.joda.time.DurationField;", &OrgJodaTimeChronoBasicChronology_cHalfdaysField_, NULL, .constantValue.asLong = 0 },
+    { "cDaysField_", NULL, 0x1a, "Lorg.joda.time.DurationField;", &OrgJodaTimeChronoBasicChronology_cDaysField_, NULL, .constantValue.asLong = 0 },
+    { "cWeeksField_", NULL, 0x1a, "Lorg.joda.time.DurationField;", &OrgJodaTimeChronoBasicChronology_cWeeksField_, NULL, .constantValue.asLong = 0 },
+    { "cMillisOfSecondField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cMillisOfSecondField_, NULL, .constantValue.asLong = 0 },
+    { "cMillisOfDayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cMillisOfDayField_, NULL, .constantValue.asLong = 0 },
+    { "cSecondOfMinuteField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cSecondOfMinuteField_, NULL, .constantValue.asLong = 0 },
+    { "cSecondOfDayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cSecondOfDayField_, NULL, .constantValue.asLong = 0 },
+    { "cMinuteOfHourField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cMinuteOfHourField_, NULL, .constantValue.asLong = 0 },
+    { "cMinuteOfDayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cMinuteOfDayField_, NULL, .constantValue.asLong = 0 },
+    { "cHourOfDayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cHourOfDayField_, NULL, .constantValue.asLong = 0 },
+    { "cHourOfHalfdayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cHourOfHalfdayField_, NULL, .constantValue.asLong = 0 },
+    { "cClockhourOfDayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cClockhourOfDayField_, NULL, .constantValue.asLong = 0 },
+    { "cClockhourOfHalfdayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cClockhourOfHalfdayField_, NULL, .constantValue.asLong = 0 },
+    { "cHalfdayOfDayField_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBasicChronology_cHalfdayOfDayField_, NULL, .constantValue.asLong = 0 },
     { "CACHE_SIZE", "CACHE_SIZE", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoBasicChronology_CACHE_SIZE },
     { "CACHE_MASK", "CACHE_MASK", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoBasicChronology_CACHE_MASK },
-    { "iYearInfoCache_", NULL, 0x92, "[Lorg.joda.time.chrono.BasicChronology$YearInfo;", NULL, NULL,  },
-    { "iMinDaysInFirstWeek_", NULL, 0x12, "I", NULL, NULL,  },
+    { "iYearInfoCache_", NULL, 0x92, "[Lorg.joda.time.chrono.BasicChronology$YearInfo;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMinDaysInFirstWeek_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lorg.joda.time.chrono.BasicChronology$HalfdayField;", "Lorg.joda.time.chrono.BasicChronology$YearInfo;"};
   static const J2ObjcClassInfo _OrgJodaTimeChronoBasicChronology = { 2, "BasicChronology", "org.joda.time.chrono", NULL, 0x400, 50, methods, 23, fields, 0, NULL, 2, inner_classes, NULL, NULL };
@@ -699,7 +699,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBasicChronology)
 
 void OrgJodaTimeChronoBasicChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronoBasicChronology *self, OrgJodaTimeChronology *base, id param, jint minDaysInFirstWeek) {
   OrgJodaTimeChronoAssembledChronology_initWithOrgJodaTimeChronology_withId_(self, base, param);
-  OrgJodaTimeChronoBasicChronology_setAndConsume_iYearInfoCache_(self, [IOSObjectArray newArrayWithLength:OrgJodaTimeChronoBasicChronology_CACHE_SIZE type:OrgJodaTimeChronoBasicChronology_YearInfo_class_()]);
+  JreStrongAssignAndConsume(&self->iYearInfoCache_, [IOSObjectArray newArrayWithLength:OrgJodaTimeChronoBasicChronology_CACHE_SIZE type:OrgJodaTimeChronoBasicChronology_YearInfo_class_()]);
   if (minDaysInFirstWeek < 1 || minDaysInFirstWeek > 7) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Invalid min days in first week: ", minDaysInFirstWeek)) autorelease];
   }
@@ -719,10 +719,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicChronology)
 
 @implementation OrgJodaTimeChronoBasicChronology_HalfdayField
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeChronoBasicChronology_HalfdayField_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (NSString *)getAsTextWithInt:(jint)fieldValue
             withJavaUtilLocale:(JavaUtilLocale *)locale {
@@ -756,7 +758,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicChronology)
 @end
 
 void OrgJodaTimeChronoBasicChronology_HalfdayField_init(OrgJodaTimeChronoBasicChronology_HalfdayField *self) {
-  OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(self, OrgJodaTimeDateTimeFieldType_halfdayOfDay(), OrgJodaTimeChronoBasicChronology_get_cHalfdaysField_(), OrgJodaTimeChronoBasicChronology_get_cDaysField_());
+  OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(self, OrgJodaTimeDateTimeFieldType_halfdayOfDay(), JreLoadStatic(OrgJodaTimeChronoBasicChronology, cHalfdaysField_), JreLoadStatic(OrgJodaTimeChronoBasicChronology, cDaysField_));
 }
 
 OrgJodaTimeChronoBasicChronology_HalfdayField *new_OrgJodaTimeChronoBasicChronology_HalfdayField_init() {
@@ -780,8 +782,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicChronology_HalfdayField)
     { "initWithInt:withLong:", "YearInfo", NULL, 0x0, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "iYear_", NULL, 0x11, "I", NULL, NULL,  },
-    { "iFirstDayMillis_", NULL, 0x11, "J", NULL, NULL,  },
+    { "iYear_", NULL, 0x11, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iFirstDayMillis_", NULL, 0x11, "J", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoBasicChronology_YearInfo = { 2, "YearInfo", "org.joda.time.chrono", "BasicChronology", 0xa, 1, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoBasicChronology_YearInfo;

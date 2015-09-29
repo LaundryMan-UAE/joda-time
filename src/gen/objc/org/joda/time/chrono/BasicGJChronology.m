@@ -3,7 +3,6 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/joda-time/src/main/java/org/joda/time/chrono/BasicGJChronology.java
 //
 
-#include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "org/joda/time/Chronology.h"
@@ -49,7 +48,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBasicGJChronology)
 
 - (jint)getMonthOfYearWithLong:(jlong)millis
                        withInt:(jint)year {
-  jint i = (jint) (RShift64((millis - [self getYearMillisWithInt:year]), 10));
+  jint i = (jint) (JreRShift64((millis - [self getYearMillisWithInt:year]), 10));
   return ([self isLeapYearWithInt:year]) ? ((i < 182 * 84375) ? ((i < 91 * 84375) ? ((i < 31 * 84375) ? 1 : (i < 60 * 84375) ? 2 : 3) : ((i < 121 * 84375) ? 4 : (i < 152 * 84375) ? 5 : 6)) : ((i < 274 * 84375) ? ((i < 213 * 84375) ? 7 : (i < 244 * 84375) ? 8 : 9) : ((i < 305 * 84375) ? 10 : (i < 335 * 84375) ? 11 : 12))) : ((i < 181 * 84375) ? ((i < 90 * 84375) ? ((i < 31 * 84375) ? 1 : (i < 59 * 84375) ? 2 : 3) : ((i < 120 * 84375) ? 4 : (i < 151 * 84375) ? 5 : 6)) : ((i < 273 * 84375) ? ((i < 212 * 84375) ? 7 : (i < 243 * 84375) ? 8 : 9) : ((i < 304 * 84375) ? 10 : (i < 334 * 84375) ? 11 : 12)));
 }
 
@@ -129,11 +128,11 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBasicGJChronology)
 
 + (void)initialize {
   if (self == [OrgJodaTimeChronoBasicGJChronology class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicGJChronology_MIN_DAYS_PER_MONTH_ARRAY_, nil, [IOSIntArray newArrayWithInts:(jint[]){ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } count:12]);
-    JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicGJChronology_MAX_DAYS_PER_MONTH_ARRAY_, nil, [IOSIntArray newArrayWithInts:(jint[]){ 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } count:12]);
+    JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicGJChronology_MIN_DAYS_PER_MONTH_ARRAY_, [IOSIntArray newArrayWithInts:(jint[]){ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } count:12]);
+    JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicGJChronology_MAX_DAYS_PER_MONTH_ARRAY_, [IOSIntArray newArrayWithInts:(jint[]){ 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 } count:12]);
     {
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicGJChronology_MIN_TOTAL_MILLIS_BY_MONTH_ARRAY_, nil, [IOSLongArray newArrayWithLength:12]);
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicGJChronology_MAX_TOTAL_MILLIS_BY_MONTH_ARRAY_, nil, [IOSLongArray newArrayWithLength:12]);
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicGJChronology_MIN_TOTAL_MILLIS_BY_MONTH_ARRAY_, [IOSLongArray newArrayWithLength:12]);
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoBasicGJChronology_MAX_TOTAL_MILLIS_BY_MONTH_ARRAY_, [IOSLongArray newArrayWithLength:12]);
       jlong minSum = 0;
       jlong maxSum = 0;
       for (jint i = 0; i < 11; i++) {
@@ -163,10 +162,10 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBasicGJChronology)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoBasicGJChronology_serialVersionUID },
-    { "MIN_DAYS_PER_MONTH_ARRAY_", NULL, 0x1a, "[I", &OrgJodaTimeChronoBasicGJChronology_MIN_DAYS_PER_MONTH_ARRAY_, NULL,  },
-    { "MAX_DAYS_PER_MONTH_ARRAY_", NULL, 0x1a, "[I", &OrgJodaTimeChronoBasicGJChronology_MAX_DAYS_PER_MONTH_ARRAY_, NULL,  },
-    { "MIN_TOTAL_MILLIS_BY_MONTH_ARRAY_", NULL, 0x1a, "[J", &OrgJodaTimeChronoBasicGJChronology_MIN_TOTAL_MILLIS_BY_MONTH_ARRAY_, NULL,  },
-    { "MAX_TOTAL_MILLIS_BY_MONTH_ARRAY_", NULL, 0x1a, "[J", &OrgJodaTimeChronoBasicGJChronology_MAX_TOTAL_MILLIS_BY_MONTH_ARRAY_, NULL,  },
+    { "MIN_DAYS_PER_MONTH_ARRAY_", NULL, 0x1a, "[I", &OrgJodaTimeChronoBasicGJChronology_MIN_DAYS_PER_MONTH_ARRAY_, NULL, .constantValue.asLong = 0 },
+    { "MAX_DAYS_PER_MONTH_ARRAY_", NULL, 0x1a, "[I", &OrgJodaTimeChronoBasicGJChronology_MAX_DAYS_PER_MONTH_ARRAY_, NULL, .constantValue.asLong = 0 },
+    { "MIN_TOTAL_MILLIS_BY_MONTH_ARRAY_", NULL, 0x1a, "[J", &OrgJodaTimeChronoBasicGJChronology_MIN_TOTAL_MILLIS_BY_MONTH_ARRAY_, NULL, .constantValue.asLong = 0 },
+    { "MAX_TOTAL_MILLIS_BY_MONTH_ARRAY_", NULL, 0x1a, "[J", &OrgJodaTimeChronoBasicGJChronology_MAX_TOTAL_MILLIS_BY_MONTH_ARRAY_, NULL, .constantValue.asLong = 0 },
     { "FEB_29", "FEB_29", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoBasicGJChronology_FEB_29 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoBasicGJChronology = { 2, "BasicGJChronology", "org.joda.time.chrono", NULL, 0x400, 9, methods, 6, fields, 0, NULL, 0, NULL, NULL, NULL };

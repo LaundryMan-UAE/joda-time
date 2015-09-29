@@ -14,9 +14,13 @@
 @class OrgJodaTimeDurationField;
 @class OrgJodaTimeFieldRemainderDateTimeField;
 
-/**
- @brief Divides a DateTimeField such that the retrieved values are reduced by a fixed divisor.
- The field's unit duration is scaled accordingly, but the range duration is unchanged. <p> DividedDateTimeField is thread-safe and immutable.
+/*!
+ @brief Divides a DateTimeField such that the retrieved values are reduced by a
+ fixed divisor.
+ The field's unit duration is scaled accordingly, but the
+ range duration is unchanged.
+ <p>
+ DividedDateTimeField is thread-safe and immutable.
  @author Stephen Colebourne
  @author Brian S O'Neill
  @since 1.0
@@ -30,23 +34,23 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Constructor.
- @param field the field to wrap, like "year()".
- @param type the field type this field will actually use
- @param divisor divisor, such as 100 years in a century
+ @param field  the field to wrap, like "year()".
+ @param type  the field type this field will actually use
+ @param divisor  divisor, such as 100 years in a century
  @throws IllegalArgumentException if divisor is less than two
  */
 - (instancetype)initWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
                 withOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type
                                          withInt:(jint)divisor;
 
-/**
+/*!
  @brief Constructor.
- @param field the field to wrap, like "year()".
- @param rangeField the range field, null to derive
- @param type the field type this field will actually use
- @param divisor divisor, such as 100 years in a century
+ @param field  the field to wrap, like "year()".
+ @param rangeField  the range field, null to derive
+ @param type  the field type this field will actually use
+ @param divisor  divisor, such as 100 years in a century
  @throws IllegalArgumentException if divisor is less than two
  */
 - (instancetype)initWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
@@ -54,56 +58,61 @@
                 withOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type
                                          withInt:(jint)divisor;
 
-/**
- @brief Construct a DividedDateTimeField that compliments the given RemainderDateTimeField.
- @param remainderField complimentary remainder field, like "yearOfCentury()".
- @param type the field type this field will actually use
+/*!
+ @brief Construct a DividedDateTimeField that compliments the given
+ RemainderDateTimeField.
+ @param remainderField  complimentary remainder field, like "yearOfCentury()".
+ @param type  the field type this field will actually use
  */
 - (instancetype)initWithOrgJodaTimeFieldRemainderDateTimeField:(OrgJodaTimeFieldRemainderDateTimeField *)remainderField
                               withOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type;
 
-/**
- @brief Construct a DividedDateTimeField that compliments the given RemainderDateTimeField.
- @param remainderField complimentary remainder field, like "yearOfCentury()".
- @param rangeField the range field, null to derive
- @param type the field type this field will actually use
+/*!
+ @brief Construct a DividedDateTimeField that compliments the given
+ RemainderDateTimeField.
+ @param remainderField  complimentary remainder field, like "yearOfCentury()".
+ @param rangeField  the range field, null to derive
+ @param type  the field type this field will actually use
  */
 - (instancetype)initWithOrgJodaTimeFieldRemainderDateTimeField:(OrgJodaTimeFieldRemainderDateTimeField *)remainderField
                                   withOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)rangeField
                               withOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type;
 
-/**
- @brief Add the specified amount of scaled units to the specified time instant.
+/*!
+ @brief Add the specified amount of scaled units to the specified time
+ instant.
  The amount added may be negative.
- @param instant the time instant in millis to update.
- @param amount the amount of scaled units to add (can be negative).
+ @param instant  the time instant in millis to update.
+ @param amount  the amount of scaled units to add (can be negative).
  @return the updated time instant.
  */
 - (jlong)addWithLong:(jlong)instant
              withInt:(jint)amount;
 
-/**
- @brief Add the specified amount of scaled units to the specified time instant.
+/*!
+ @brief Add the specified amount of scaled units to the specified time
+ instant.
  The amount added may be negative.
- @param instant the time instant in millis to update.
- @param amount the amount of scaled units to add (can be negative).
+ @param instant  the time instant in millis to update.
+ @param amount  the amount of scaled units to add (can be negative).
  @return the updated time instant.
  */
 - (jlong)addWithLong:(jlong)instant
             withLong:(jlong)amount;
 
-/**
- @brief Add to the scaled component of the specified time instant, wrapping around within that component if necessary.
- @param instant the time instant in millis to update.
- @param amount the amount of scaled units to add (can be negative).
+/*!
+ @brief Add to the scaled component of the specified time instant,
+ wrapping around within that component if necessary.
+ @param instant  the time instant in millis to update.
+ @param amount  the amount of scaled units to add (can be negative).
  @return the updated time instant.
  */
 - (jlong)addWrapFieldWithLong:(jlong)instant
                       withInt:(jint)amount;
 
-/**
+/*!
  @brief Get the amount of scaled units from the specified time instant.
- @param instant the time instant in millis to query.
+ @param instant  the time instant in millis to query.
  @return the amount of scaled units extracted from the input.
  */
 - (jint)getWithLong:(jlong)instant;
@@ -114,24 +123,24 @@
 - (jlong)getDifferenceAsLongWithLong:(jlong)minuendInstant
                             withLong:(jlong)subtrahendInstant;
 
-/**
+/*!
  @brief Returns the divisor applied, in the field's units.
  @return the divisor
  */
 - (jint)getDivisor;
 
-/**
+/*!
  @brief Returns a scaled version of the wrapped field's unit duration field.
  */
 - (OrgJodaTimeDurationField *)getDurationField;
 
-/**
+/*!
  @brief Get the maximum value for the field.
  @return the maximum value
  */
 - (jint)getMaximumValue;
 
-/**
+/*!
  @brief Get the minimum value for the field.
  @return the minimum value
  */
@@ -143,10 +152,10 @@
 
 - (jlong)roundFloorWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Set the specified amount of scaled units to the specified time instant.
- @param instant the time instant in millis to update.
- @param value value of scaled units to set.
+ @param instant  the time instant in millis to update.
+ @param value  value of scaled units to set.
  @return the updated time instant.
  @throws IllegalArgumentException if value is too large or too small.
  */

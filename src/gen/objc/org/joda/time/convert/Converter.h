@@ -10,15 +10,16 @@
 
 @class IOSClass;
 
-/**
+/*!
  @brief Basic converter interface for specifying what object type can be converted.
  @author Brian S O'Neill
  @since 1.0
  */
 @protocol OrgJodaTimeConvertConverter < NSObject, JavaObject >
 
-/**
- @brief Returns the object type that this converter supports, which may specified by a class, superclass, abstract class, interface, or null.
+/*!
+ @brief Returns the object type that this converter supports, which may
+ specified by a class, superclass, abstract class, interface, or null.
  @return the object type that this converter supports
  */
 - (IOSClass *)getSupportedType;

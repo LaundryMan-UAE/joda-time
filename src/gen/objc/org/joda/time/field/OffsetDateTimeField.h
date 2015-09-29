@@ -13,9 +13,10 @@
 @class OrgJodaTimeDateTimeFieldType;
 @class OrgJodaTimeDurationField;
 
-/**
+/*!
  @brief Generic offset adjusting datetime field.
- <p> OffsetDateTimeField is thread-safe and immutable.
+ <p>
+ OffsetDateTimeField is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -23,24 +24,24 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Constructor.
- @param field the field to wrap, like "year()".
- @param type the field type this field actually uses
- @param offset offset to add to field values
+ @param field  the field to wrap, like "year()".
+ @param type  the field type this field actually uses
+ @param offset  offset to add to field values
  @throws IllegalArgumentException if offset is zero
  */
 - (instancetype)initWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
                 withOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type
                                          withInt:(jint)offset;
 
-/**
+/*!
  @brief Constructor.
- @param field the field to wrap, like "year()".
- @param type the field type this field actually uses
- @param offset offset to add to field values
- @param minValue minimum allowed value
- @param maxValue maximum allowed value
+ @param field  the field to wrap, like "year()".
+ @param type  the field type this field actually uses
+ @param offset  offset to add to field values
+ @param minValue  minimum allowed value
+ @param maxValue  maximum allowed value
  @throws IllegalArgumentException if offset is zero
  */
 - (instancetype)initWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
@@ -49,47 +50,50 @@
                                          withInt:(jint)minValue
                                          withInt:(jint)maxValue;
 
-/**
+/*!
  @brief Constructor.
- @param field the field to wrap, like "year()".
- @param offset offset to add to field values
+ @param field  the field to wrap, like "year()".
+ @param offset  offset to add to field values
  @throws IllegalArgumentException if offset is zero
  */
 - (instancetype)initWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
                                          withInt:(jint)offset;
 
-/**
- @brief Add the specified amount of offset units to the specified time instant.
+/*!
+ @brief Add the specified amount of offset units to the specified time
+ instant.
  The amount added may be negative.
- @param instant the time instant in millis to update.
- @param amount the amount of units to add (can be negative).
+ @param instant  the time instant in millis to update.
+ @param amount  the amount of units to add (can be negative).
  @return the updated time instant.
  */
 - (jlong)addWithLong:(jlong)instant
              withInt:(jint)amount;
 
-/**
- @brief Add the specified amount of offset units to the specified time instant.
+/*!
+ @brief Add the specified amount of offset units to the specified time
+ instant.
  The amount added may be negative.
- @param instant the time instant in millis to update.
- @param amount the amount of units to add (can be negative).
+ @param instant  the time instant in millis to update.
+ @param amount  the amount of units to add (can be negative).
  @return the updated time instant.
  */
 - (jlong)addWithLong:(jlong)instant
             withLong:(jlong)amount;
 
-/**
- @brief Add to the offset component of the specified time instant, wrapping around within that component if necessary.
- @param instant the time instant in millis to update.
- @param amount the amount of units to add (can be negative).
+/*!
+ @brief Add to the offset component of the specified time instant,
+ wrapping around within that component if necessary.
+ @param instant  the time instant in millis to update.
+ @param amount  the amount of units to add (can be negative).
  @return the updated time instant.
  */
 - (jlong)addWrapFieldWithLong:(jlong)instant
                       withInt:(jint)amount;
 
-/**
+/*!
  @brief Get the amount of offset units from the specified time instant.
- @param instant the time instant in millis to query.
+ @param instant  the time instant in millis to query.
  @return the amount of units extracted from the input.
  */
 - (jint)getWithLong:(jlong)instant;
@@ -98,19 +102,19 @@
 
 - (OrgJodaTimeDurationField *)getLeapDurationField;
 
-/**
+/*!
  @brief Get the maximum value for the field.
  @return the maximum value
  */
 - (jint)getMaximumValue;
 
-/**
+/*!
  @brief Get the minimum value for the field.
  @return the minimum value
  */
 - (jint)getMinimumValue;
 
-/**
+/*!
  @brief Returns the offset added to the field values.
  @return the offset
  */
@@ -130,10 +134,10 @@
 
 - (jlong)roundHalfFloorWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Set the specified amount of offset units to the specified time instant.
- @param instant the time instant in millis to update.
- @param value value of units to set.
+ @param instant  the time instant in millis to update.
+ @param value  value of units to set.
  @return the updated time instant.
  @throws IllegalArgumentException if value is too large or too small.
  */

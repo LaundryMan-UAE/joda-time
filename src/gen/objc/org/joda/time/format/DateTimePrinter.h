@@ -15,30 +15,39 @@
 @class OrgJodaTimeDateTimeZone;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
+/*!
  @brief Internal interface for creating textual representations of datetimes.
- <p> Application users will rarely use this class directly. Instead, you will use one of the factory classes to create a DateTimeFormatter . <p> The factory classes are:<br /> - DateTimeFormatterBuilder <br /> - DateTimeFormat <br /> - ISODateTimeFormat <br />
+ <p>
+ Application users will rarely use this class directly. Instead, you
+ will use one of the factory classes to create a <code>DateTimeFormatter</code>.
+ <p>
+ The factory classes are:<br />
+ - <code>DateTimeFormatterBuilder</code><br />
+ - <code>DateTimeFormat</code><br />
+ - <code>ISODateTimeFormat</code><br />
  @author Brian S O'Neill
  @author Stephen Colebourne
  @since 1.0
  */
 @protocol OrgJodaTimeFormatDateTimePrinter < NSObject, JavaObject >
 
-/**
+/*!
  @brief Returns the expected maximum number of characters produced.
  The actual amount should rarely exceed this estimate.
  @return the estimated length
  */
 - (jint)estimatePrintedLength;
 
-/**
- @brief Prints an instant from milliseconds since 1970-01-01T00:00:00Z, using the given Chronology.
- @param buf formatted instant is appended to this buffer, not null
- @param instant millis since 1970-01-01T00:00:00Z
- @param chrono the chronology to use, not null
- @param displayOffset if a time zone offset is printed, force it to use this millisecond value
- @param displayZone the time zone to use, null means local time
- @param locale the locale to use, null means default locale
+/*!
+ @brief Prints an instant from milliseconds since 1970-01-01T00:00:00Z,
+ using the given Chronology.
+ @param buf  formatted instant is appended to this buffer, not null
+ @param instant  millis since 1970-01-01T00:00:00Z
+ @param chrono  the chronology to use, not null
+ @param displayOffset  if a time zone offset is printed, force it to use
+ this millisecond value
+ @param displayZone  the time zone to use, null means local time
+ @param locale  the locale to use, null means default locale
  */
 - (void)printToWithJavaLangStringBuffer:(JavaLangStringBuffer *)buf
                                withLong:(jlong)instant
@@ -47,14 +56,16 @@
             withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
                      withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
- @brief Prints an instant from milliseconds since 1970-01-01T00:00:00Z, using the given Chronology.
- @param out formatted instant is written out, not null
- @param instant millis since 1970-01-01T00:00:00Z
- @param chrono the chronology to use, not null
- @param displayOffset if a time zone offset is printed, force it to use this millisecond value
- @param displayZone the time zone to use, null means local time
- @param locale the locale to use, null means default locale
+/*!
+ @brief Prints an instant from milliseconds since 1970-01-01T00:00:00Z,
+ using the given Chronology.
+ @param outArg  formatted instant is written out, not null
+ @param instant  millis since 1970-01-01T00:00:00Z
+ @param chrono  the chronology to use, not null
+ @param displayOffset  if a time zone offset is printed, force it to use
+ this millisecond value
+ @param displayZone  the time zone to use, null means local time
+ @param locale  the locale to use, null means default locale
  */
 - (void)printToWithJavaIoWriter:(JavaIoWriter *)outArg
                        withLong:(jlong)instant
@@ -63,21 +74,21 @@
     withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
              withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Prints a ReadablePartial.
- @param buf formatted partial is appended to this buffer, not null
- @param partial partial to format, not null
- @param locale the locale to use, null means default locale
+ @param buf  formatted partial is appended to this buffer, not null
+ @param partial  partial to format, not null
+ @param locale  the locale to use, null means default locale
  */
 - (void)printToWithJavaLangStringBuffer:(JavaLangStringBuffer *)buf
          withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                      withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Prints a ReadablePartial.
- @param out formatted partial is written out, not null
- @param partial partial to format, not null
- @param locale the locale to use, null means default locale
+ @param outArg  formatted partial is written out, not null
+ @param partial  partial to format, not null
+ @param locale  the locale to use, null means default locale
  */
 - (void)printToWithJavaIoWriter:(JavaIoWriter *)outArg
  withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial

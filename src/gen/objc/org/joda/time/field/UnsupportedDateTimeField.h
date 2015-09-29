@@ -16,9 +16,10 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
+/*!
  @brief A placeholder implementation to use when a datetime field is not supported.
- <p> UnsupportedDateTimeField is thread-safe and immutable.
+ <p>
+ UnsupportedDateTimeField is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -26,21 +27,21 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Delegates to the duration field.
  @throws UnsupportedOperationException if the duration is unsupported
  */
 - (jlong)addWithLong:(jlong)instant
              withInt:(jint)value;
 
-/**
+/*!
  @brief Delegates to the duration field.
  @throws UnsupportedOperationException if the duration is unsupported
  */
 - (jlong)addWithLong:(jlong)instant
             withLong:(jlong)value;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
@@ -49,14 +50,14 @@
                                       withIntArray:(IOSIntArray *)values
                                            withInt:(jint)valueToAdd;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jlong)addWrapFieldWithLong:(jlong)instant
                       withInt:(jint)value;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
@@ -65,7 +66,7 @@
                                                withIntArray:(IOSIntArray *)values
                                                     withInt:(jint)valueToAdd;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
@@ -74,33 +75,33 @@
                                                  withIntArray:(IOSIntArray *)values
                                                       withInt:(jint)valueToAdd;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jint)getWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (NSString *)getAsShortTextWithInt:(jint)fieldValue
                  withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (NSString *)getAsShortTextWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (NSString *)getAsShortTextWithLong:(jlong)instant
                   withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
@@ -108,34 +109,34 @@
                                                    withInt:(jint)fieldValue
                                         withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (NSString *)getAsShortTextWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                                         withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (NSString *)getAsTextWithInt:(jint)fieldValue
             withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (NSString *)getAsTextWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (NSString *)getAsTextWithLong:(jlong)instant
              withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
@@ -143,111 +144,113 @@
                                               withInt:(jint)fieldValue
                                    withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (NSString *)getAsTextWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                                    withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Delegates to the duration field.
  @throws UnsupportedOperationException if the duration is unsupported
  */
 - (jint)getDifferenceWithLong:(jlong)minuendInstant
                      withLong:(jlong)subtrahendInstant;
 
-/**
+/*!
  @brief Delegates to the duration field.
  @throws UnsupportedOperationException if the duration is unsupported
  */
 - (jlong)getDifferenceAsLongWithLong:(jlong)minuendInstant
                             withLong:(jlong)subtrahendInstant;
 
-/**
- @brief Even though this DateTimeField is unsupported, the duration field might be supported.
+/*!
+ @brief Even though this DateTimeField is unsupported, the duration field might
+ be supported.
  @return a possibly supported DurationField
  */
 - (OrgJodaTimeDurationField *)getDurationField;
 
-/**
+/*!
  @brief Gets an instance of UnsupportedDateTimeField for a specific named field.
- Names should be of standard format, such as 'monthOfYear' or 'hourOfDay'. The returned instance is cached.
- @param type the type to obtain
+ Names should be of standard format, such as 'monthOfYear' or 'hourOfDay'.
+ The returned instance is cached.
+ @param type  the type to obtain
  @return the instance
  @throws IllegalArgumentException if durationField is null
  */
 + (OrgJodaTimeFieldUnsupportedDateTimeField *)getInstanceWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type
                                                              withOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)durationField;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jint)getLeapAmountWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Always returns null.
  @return null always
  */
 - (OrgJodaTimeDurationField *)getLeapDurationField;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jint)getMaximumShortTextLengthWithJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jint)getMaximumTextLengthWithJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jint)getMaximumValue;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jint)getMaximumValueWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jint)getMaximumValueWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)instant;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jint)getMaximumValueWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)instant
                                          withIntArray:(IOSIntArray *)values;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jint)getMinimumValue;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jint)getMinimumValueWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jint)getMinimumValueWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)instant;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
@@ -256,7 +259,7 @@
 
 - (NSString *)getName;
 
-/**
+/*!
  @brief Always returns null.
  @return null always
  */
@@ -264,75 +267,75 @@
 
 - (OrgJodaTimeDateTimeFieldType *)getType;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jboolean)isLeapWithLong:(jlong)instant;
 
-/**
+/*!
  @brief This field is not lenient.
  @return false always
  */
 - (jboolean)isLenient;
 
-/**
+/*!
  @brief This field is not supported.
  @return false always
  */
 - (jboolean)isSupported;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jlong)remainderWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jlong)roundCeilingWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jlong)roundFloorWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jlong)roundHalfCeilingWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jlong)roundHalfEvenWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jlong)roundHalfFloorWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jlong)setWithLong:(jlong)instant
              withInt:(jint)value;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
 - (jlong)setWithLong:(jlong)instant
         withNSString:(NSString *)text;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
@@ -340,7 +343,7 @@
         withNSString:(NSString *)text
   withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
@@ -349,7 +352,7 @@
                                       withIntArray:(IOSIntArray *)values
                                            withInt:(jint)newValue;
 
-/**
+/*!
  @brief Always throws UnsupportedOperationException
  @throws UnsupportedOperationException
  */
@@ -359,7 +362,7 @@
                                       withNSString:(NSString *)text
                                 withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Get a suitable debug string.
  @return debug string
  */

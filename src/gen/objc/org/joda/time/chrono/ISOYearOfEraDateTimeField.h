@@ -14,9 +14,11 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
- @brief This field is not publicy exposed by ISOChronology, but rather it is used to build the yearOfCentury and centuryOfEra fields.
- It merely drops the sign of the year.
+/*!
+ @brief This field is not publicy exposed by ISOChronology, but rather it is used to
+ build the yearOfCentury and centuryOfEra fields.
+ It merely drops the sign of
+ the year.
  @author Brian S O'Neill
  @since 1.0
  */

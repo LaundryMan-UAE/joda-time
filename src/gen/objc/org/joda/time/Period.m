@@ -38,17 +38,17 @@
 
 @interface OrgJodaTimePeriod ()
 
-/**
+/*!
  @brief Constructor used when we trust ourselves.
- @param values the values to use, not null, not cloned
- @param type which set of fields this period supports, not null
+ @param values  the values to use, not null, not cloned
+ @param type  which set of fields this period supports, not null
  */
 - (instancetype)initWithIntArray:(IOSIntArray *)values
        withOrgJodaTimePeriodType:(OrgJodaTimePeriodType *)type;
 
-/**
+/*!
  @brief Check that there are no years or months in the period.
- @param destintionType the destination type, not null
+ @param destintionType  the destination type, not null
  @throws UnsupportedOperationException if the period contains years or months
  */
 - (void)checkYearsAndMonthsWithNSString:(NSString *)destintionType;
@@ -115,10 +115,12 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
   return OrgJodaTimePeriod_fieldDifferenceWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(start, end);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimePeriod_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (instancetype)initWithInt:(jint)hours
                     withInt:(jint)minutes
@@ -292,35 +294,35 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
 }
 
 - (jint)getYears {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_YEAR_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, YEAR_INDEX_)];
 }
 
 - (jint)getMonths {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MONTH_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MONTH_INDEX_)];
 }
 
 - (jint)getWeeks {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_WEEK_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, WEEK_INDEX_)];
 }
 
 - (jint)getDays {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_DAY_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, DAY_INDEX_)];
 }
 
 - (jint)getHours {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_HOUR_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, HOUR_INDEX_)];
 }
 
 - (jint)getMinutes {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MINUTE_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MINUTE_INDEX_)];
 }
 
 - (jint)getSeconds {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_SECOND_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, SECOND_INDEX_)];
 }
 
 - (jint)getMillis {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MILLI_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MILLI_INDEX_)];
 }
 
 - (OrgJodaTimePeriod *)withPeriodTypeWithOrgJodaTimePeriodType:(OrgJodaTimePeriodType *)type {
@@ -365,49 +367,49 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
 
 - (OrgJodaTimePeriod *)withYearsWithInt:(jint)years {
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_YEAR_INDEX_() withIntArray:values withInt:years];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, YEAR_INDEX_) withIntArray:values withInt:years];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
 - (OrgJodaTimePeriod *)withMonthsWithInt:(jint)months {
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MONTH_INDEX_() withIntArray:values withInt:months];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MONTH_INDEX_) withIntArray:values withInt:months];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
 - (OrgJodaTimePeriod *)withWeeksWithInt:(jint)weeks {
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_WEEK_INDEX_() withIntArray:values withInt:weeks];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, WEEK_INDEX_) withIntArray:values withInt:weeks];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
 - (OrgJodaTimePeriod *)withDaysWithInt:(jint)days {
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_DAY_INDEX_() withIntArray:values withInt:days];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, DAY_INDEX_) withIntArray:values withInt:days];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
 - (OrgJodaTimePeriod *)withHoursWithInt:(jint)hours {
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_HOUR_INDEX_() withIntArray:values withInt:hours];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, HOUR_INDEX_) withIntArray:values withInt:hours];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
 - (OrgJodaTimePeriod *)withMinutesWithInt:(jint)minutes {
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MINUTE_INDEX_() withIntArray:values withInt:minutes];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MINUTE_INDEX_) withIntArray:values withInt:minutes];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
 - (OrgJodaTimePeriod *)withSecondsWithInt:(jint)seconds {
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_SECOND_INDEX_() withIntArray:values withInt:seconds];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, SECOND_INDEX_) withIntArray:values withInt:seconds];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
 - (OrgJodaTimePeriod *)withMillisWithInt:(jint)millis {
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MILLI_INDEX_() withIntArray:values withInt:millis];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MILLI_INDEX_) withIntArray:values withInt:millis];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
@@ -416,14 +418,14 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
     return self;
   }
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_YEAR_INDEX_() withIntArray:values withInt:[((id<OrgJodaTimeReadablePeriod>) nil_chk(period)) getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_YEARS_TYPE_()]];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MONTH_INDEX_() withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_MONTHS_TYPE_()]];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_WEEK_INDEX_() withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_WEEKS_TYPE_()]];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_DAY_INDEX_() withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_DAYS_TYPE_()]];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_HOUR_INDEX_() withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_HOURS_TYPE_()]];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MINUTE_INDEX_() withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_MINUTES_TYPE_()]];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_SECOND_INDEX_() withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_SECONDS_TYPE_()]];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MILLI_INDEX_() withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_MILLIS_TYPE_()]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, YEAR_INDEX_) withIntArray:values withInt:[((id<OrgJodaTimeReadablePeriod>) nil_chk(period)) getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, YEARS_TYPE_)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MONTH_INDEX_) withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, MONTHS_TYPE_)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, WEEK_INDEX_) withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, WEEKS_TYPE_)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, DAY_INDEX_) withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, DAYS_TYPE_)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, HOUR_INDEX_) withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, HOURS_TYPE_)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MINUTE_INDEX_) withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, MINUTES_TYPE_)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, SECOND_INDEX_) withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, SECONDS_TYPE_)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MILLI_INDEX_) withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, MILLIS_TYPE_)]];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
@@ -432,7 +434,7 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
     return self;
   }
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_YEAR_INDEX_() withIntArray:values withInt:years];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, YEAR_INDEX_) withIntArray:values withInt:years];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
@@ -441,7 +443,7 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
     return self;
   }
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MONTH_INDEX_() withIntArray:values withInt:months];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MONTH_INDEX_) withIntArray:values withInt:months];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
@@ -450,7 +452,7 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
     return self;
   }
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_WEEK_INDEX_() withIntArray:values withInt:weeks];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, WEEK_INDEX_) withIntArray:values withInt:weeks];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
@@ -459,7 +461,7 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
     return self;
   }
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_DAY_INDEX_() withIntArray:values withInt:days];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, DAY_INDEX_) withIntArray:values withInt:days];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
@@ -468,7 +470,7 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
     return self;
   }
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_HOUR_INDEX_() withIntArray:values withInt:hours];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, HOUR_INDEX_) withIntArray:values withInt:hours];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
@@ -477,7 +479,7 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
     return self;
   }
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MINUTE_INDEX_() withIntArray:values withInt:minutes];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MINUTE_INDEX_) withIntArray:values withInt:minutes];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
@@ -486,7 +488,7 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
     return self;
   }
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_SECOND_INDEX_() withIntArray:values withInt:seconds];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, SECOND_INDEX_) withIntArray:values withInt:seconds];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
@@ -495,7 +497,7 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
     return self;
   }
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MILLI_INDEX_() withIntArray:values withInt:millis];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MILLI_INDEX_) withIntArray:values withInt:millis];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
@@ -504,14 +506,14 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
     return self;
   }
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_YEAR_INDEX_() withIntArray:values withInt:-[((id<OrgJodaTimeReadablePeriod>) nil_chk(period)) getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_YEARS_TYPE_()]];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MONTH_INDEX_() withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_MONTHS_TYPE_()]];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_WEEK_INDEX_() withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_WEEKS_TYPE_()]];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_DAY_INDEX_() withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_DAYS_TYPE_()]];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_HOUR_INDEX_() withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_HOURS_TYPE_()]];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MINUTE_INDEX_() withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_MINUTES_TYPE_()]];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_SECOND_INDEX_() withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_SECONDS_TYPE_()]];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MILLI_INDEX_() withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_MILLIS_TYPE_()]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, YEAR_INDEX_) withIntArray:values withInt:-[((id<OrgJodaTimeReadablePeriod>) nil_chk(period)) getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, YEARS_TYPE_)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MONTH_INDEX_) withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, MONTHS_TYPE_)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, WEEK_INDEX_) withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, WEEKS_TYPE_)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, DAY_INDEX_) withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, DAYS_TYPE_)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, HOUR_INDEX_) withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, HOURS_TYPE_)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MINUTE_INDEX_) withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, MINUTES_TYPE_)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, SECOND_INDEX_) withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, SECONDS_TYPE_)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MILLI_INDEX_) withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, MILLIS_TYPE_)]];
   return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
 }
 
@@ -652,12 +654,12 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
   jint months = [self getMonths];
   if (years != 0 || months != 0) {
     jlong totalMonths = years * 12LL + months;
-    if ([((OrgJodaTimePeriodType *) nil_chk(type)) isSupportedWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_YEARS_TYPE_()]) {
+    if ([((OrgJodaTimePeriodType *) nil_chk(type)) isSupportedWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, YEARS_TYPE_)]) {
       jint normalizedYears = OrgJodaTimeFieldFieldUtils_safeToIntWithLong_(totalMonths / 12);
       result = [result withYearsWithInt:normalizedYears];
       totalMonths = totalMonths - (normalizedYears * 12);
     }
-    if ([type isSupportedWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_get_MONTHS_TYPE_()]) {
+    if ([type isSupportedWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, MONTHS_TYPE_)]) {
       jint normalizedMonths = OrgJodaTimeFieldFieldUtils_safeToIntWithLong_(totalMonths);
       result = [((OrgJodaTimePeriod *) nil_chk(result)) withMonthsWithInt:normalizedMonths];
       totalMonths = totalMonths - normalizedMonths;
@@ -671,7 +673,7 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
 
 + (void)initialize {
   if (self == [OrgJodaTimePeriod class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimePeriod_ZERO_, nil, new_OrgJodaTimePeriod_init());
+    JreStrongAssignAndConsume(&OrgJodaTimePeriod_ZERO_, new_OrgJodaTimePeriod_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimePeriod)
   }
 }
@@ -770,7 +772,7 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_ZERO_;
     { "normalizedStandardWithOrgJodaTimePeriodType:", "normalizedStandard", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Period;", &OrgJodaTimePeriod_ZERO_, NULL,  },
+    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Period;", &OrgJodaTimePeriod_ZERO_, NULL, .constantValue.asLong = 0 },
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimePeriod_serialVersionUID },
   };
   static const J2ObjcClassInfo _OrgJodaTimePeriod = { 2, "Period", "org.joda.time", NULL, 0x11, 86, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };

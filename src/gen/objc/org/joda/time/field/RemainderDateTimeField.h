@@ -14,9 +14,13 @@
 @class OrgJodaTimeDurationField;
 @class OrgJodaTimeFieldDividedDateTimeField;
 
-/**
- @brief Counterpart remainder datetime field to DividedDateTimeField .
- The field's unit duration is unchanged, but the range duration is scaled accordingly. <p> RemainderDateTimeField is thread-safe and immutable.
+/*!
+ @brief Counterpart remainder datetime field to <code>DividedDateTimeField</code>.
+ The
+ field's unit duration is unchanged, but the range duration is scaled
+ accordingly.
+ <p>
+ RemainderDateTimeField is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -29,23 +33,23 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Constructor.
- @param field the field to wrap, like "year()".
- @param type the field type this field actually uses
- @param divisor divisor, such as 100 years in a century
+ @param field  the field to wrap, like "year()".
+ @param type  the field type this field actually uses
+ @param divisor  divisor, such as 100 years in a century
  @throws IllegalArgumentException if divisor is less than two
  */
 - (instancetype)initWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
                 withOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type
                                          withInt:(jint)divisor;
 
-/**
+/*!
  @brief Constructor.
- @param field the field to wrap, like "year()".
- @param rangeField the range field
- @param type the field type this field actually uses
- @param divisor divisor, such as 100 years in a century
+ @param field  the field to wrap, like "year()".
+ @param rangeField  the range field
+ @param type  the field type this field actually uses
+ @param divisor  divisor, such as 100 years in a century
  @throws IllegalArgumentException if divisor is less than two
  */
 - (instancetype)initWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
@@ -53,49 +57,54 @@
                 withOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type
                                          withInt:(jint)divisor;
 
-/**
- @brief Construct a RemainderDateTimeField that compliments the given DividedDateTimeField.
- @param dividedField complimentary divided field, like "century()".
+/*!
+ @brief Construct a RemainderDateTimeField that compliments the given
+ DividedDateTimeField.
+ @param dividedField  complimentary divided field, like "century()".
  */
 - (instancetype)initWithOrgJodaTimeFieldDividedDateTimeField:(OrgJodaTimeFieldDividedDateTimeField *)dividedField;
 
-/**
- @brief Construct a RemainderDateTimeField that compliments the given DividedDateTimeField.
- @param dividedField complimentary divided field, like "century()".
- @param type the field type this field actually uses
+/*!
+ @brief Construct a RemainderDateTimeField that compliments the given
+ DividedDateTimeField.
+ @param dividedField  complimentary divided field, like "century()".
+ @param type  the field type this field actually uses
  */
 - (instancetype)initWithOrgJodaTimeFieldDividedDateTimeField:(OrgJodaTimeFieldDividedDateTimeField *)dividedField
                             withOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type;
 
-/**
- @brief Construct a RemainderDateTimeField that compliments the given DividedDateTimeField.
+/*!
+ @brief Construct a RemainderDateTimeField that compliments the given
+ DividedDateTimeField.
  This constructor allows the duration field to be set.
- @param dividedField complimentary divided field, like "century()".
- @param durationField the duration field
- @param type the field type this field actually uses
+ @param dividedField  complimentary divided field, like "century()".
+ @param durationField  the duration field
+ @param type  the field type this field actually uses
  */
 - (instancetype)initWithOrgJodaTimeFieldDividedDateTimeField:(OrgJodaTimeFieldDividedDateTimeField *)dividedField
                                 withOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)durationField
                             withOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type;
 
-/**
- @brief Add the specified amount to the specified time instant, wrapping around within the remainder range if necessary.
- The amount added may be negative.
- @param instant the time instant in millis to update.
- @param amount the amount to add (can be negative).
+/*!
+ @brief Add the specified amount to the specified time instant, wrapping around
+ within the remainder range if necessary.
+ The amount added may be
+ negative.
+ @param instant  the time instant in millis to update.
+ @param amount  the amount to add (can be negative).
  @return the updated time instant.
  */
 - (jlong)addWrapFieldWithLong:(jlong)instant
                       withInt:(jint)amount;
 
-/**
+/*!
  @brief Get the remainder from the specified time instant.
- @param instant the time instant in millis to query.
+ @param instant  the time instant in millis to query.
  @return the remainder extracted from the input.
  */
 - (jint)getWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Returns the divisor applied, in the field's units.
  @return the divisor
  */
@@ -103,19 +112,20 @@
 
 - (OrgJodaTimeDurationField *)getDurationField;
 
-/**
- @brief Get the maximum value for the field, which is always one less than the divisor.
+/*!
+ @brief Get the maximum value for the field, which is always one less than the
+ divisor.
  @return the maximum value
  */
 - (jint)getMaximumValue;
 
-/**
+/*!
  @brief Get the minimum value for the field, which is always zero.
  @return the minimum value of zero.
  */
 - (jint)getMinimumValue;
 
-/**
+/*!
  @brief Returns a scaled version of the wrapped field's unit duration field.
  */
 - (OrgJodaTimeDurationField *)getRangeDurationField;
@@ -132,10 +142,10 @@
 
 - (jlong)roundHalfFloorWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Set the specified amount of remainder units to the specified time instant.
- @param instant the time instant in millis to update.
- @param value value of remainder units to set.
+ @param instant  the time instant in millis to update.
+ @param value  value of remainder units to set.
  @return the updated time instant.
  @throws IllegalArgumentException if value is too large or too small.
  */

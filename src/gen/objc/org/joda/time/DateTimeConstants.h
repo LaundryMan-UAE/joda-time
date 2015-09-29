@@ -49,9 +49,13 @@
 #define OrgJodaTimeDateTimeConstants_SECONDS_PER_WEEK 604800
 #define OrgJodaTimeDateTimeConstants_MILLIS_PER_WEEK 604800000
 
-/**
- @brief DateTimeConstants is a non-instantiable class of constants used in the date time system.
- These are the ISO8601 constants, but should be used by all chronologies. <p> DateTimeConstants is thread-safe and immutable.
+/*!
+ @brief DateTimeConstants is a non-instantiable class of constants used in
+ the date time system.
+ These are the ISO8601 constants, but should be
+ used by all chronologies.
+ <p>
+ DateTimeConstants is thread-safe and immutable.
  @author Stephen Colebourne
  @author Brian S O'Neill
  @since 1.0
@@ -60,7 +64,7 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Restrictive constructor
  */
 - (instancetype)init;

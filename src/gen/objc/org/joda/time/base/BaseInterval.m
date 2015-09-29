@@ -3,6 +3,7 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/joda-time/src/main/java/org/joda/time/base/BaseInterval.java
 //
 
+#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "org/joda/time/Chronology.h"
 #include "org/joda/time/DateTimeUtils.h"
@@ -23,23 +24,23 @@
 
 @interface OrgJodaTimeBaseBaseInterval () {
  @public
-  /**
+  /*!
    @brief The chronology of the interval
    */
-  OrgJodaTimeChronology *iChronology_;
-  /**
+  volatile_id iChronology_;
+  /*!
    @brief The start of the interval
    */
-  jlong iStartMillis_;
-  /**
+  volatile_jlong iStartMillis_;
+  /*!
    @brief The end of the interval
    */
-  jlong iEndMillis_;
+  volatile_jlong iEndMillis_;
 }
 
 @end
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeBaseBaseInterval, iChronology_, OrgJodaTimeChronology *)
+J2OBJC_VOLATILE_FIELD_SETTER(OrgJodaTimeBaseBaseInterval, iChronology_, OrgJodaTimeChronology *)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseInterval, serialVersionUID, jlong)
 
@@ -89,29 +90,34 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseInterval, serialVersionUID, jlong)
 }
 
 - (OrgJodaTimeChronology *)getChronology {
-  return iChronology_;
+  return JreLoadVolatileId(&iChronology_);
 }
 
 - (jlong)getStartMillis {
-  return iStartMillis_;
+  return JreLoadVolatileLong(&iStartMillis_);
 }
 
 - (jlong)getEndMillis {
-  return iEndMillis_;
+  return JreLoadVolatileLong(&iEndMillis_);
 }
 
 - (void)setIntervalWithLong:(jlong)startInstant
                    withLong:(jlong)endInstant
   withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
   [self checkIntervalWithLong:startInstant withLong:endInstant];
-  iStartMillis_ = startInstant;
-  iEndMillis_ = endInstant;
-  OrgJodaTimeBaseBaseInterval_set_iChronology_(self, OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chrono));
+  JreAssignVolatileLong(&iStartMillis_, startInstant);
+  JreAssignVolatileLong(&iEndMillis_, endInstant);
+  JreVolatileStrongAssign(&iChronology_, OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chrono));
 }
 
 - (void)dealloc {
-  RELEASE_(iChronology_);
+  JreReleaseVolatile(&iChronology_);
   [super dealloc];
+}
+
+- (void)__javaClone {
+  [super __javaClone];
+  JreRetainVolatile(&iChronology_);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -130,9 +136,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseInterval, serialVersionUID, jlong)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeBaseBaseInterval_serialVersionUID },
-    { "iChronology_", NULL, 0x42, "Lorg.joda.time.Chronology;", NULL, NULL,  },
-    { "iStartMillis_", NULL, 0x42, "J", NULL, NULL,  },
-    { "iEndMillis_", NULL, 0x42, "J", NULL, NULL,  },
+    { "iChronology_", NULL, 0x42, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iStartMillis_", NULL, 0x42, "J", NULL, NULL, .constantValue.asLong = 0 },
+    { "iEndMillis_", NULL, 0x42, "J", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeBaseBaseInterval = { 2, "BaseInterval", "org.joda.time.base", NULL, 0x401, 11, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeBaseBaseInterval;
@@ -142,92 +148,92 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseInterval, serialVersionUID, jlong)
 
 void OrgJodaTimeBaseBaseInterval_initWithLong_withLong_withOrgJodaTimeChronology_(OrgJodaTimeBaseBaseInterval *self, jlong startInstant, jlong endInstant, OrgJodaTimeChronology *chrono) {
   OrgJodaTimeBaseAbstractInterval_init(self);
-  OrgJodaTimeBaseBaseInterval_set_iChronology_(self, OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chrono));
+  JreVolatileStrongAssign(&self->iChronology_, OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chrono));
   [self checkIntervalWithLong:startInstant withLong:endInstant];
-  self->iStartMillis_ = startInstant;
-  self->iEndMillis_ = endInstant;
+  JreAssignVolatileLong(&self->iStartMillis_, startInstant);
+  JreAssignVolatileLong(&self->iEndMillis_, endInstant);
 }
 
 void OrgJodaTimeBaseBaseInterval_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(OrgJodaTimeBaseBaseInterval *self, id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end) {
   OrgJodaTimeBaseAbstractInterval_init(self);
   if (start == nil && end == nil) {
-    self->iStartMillis_ = self->iEndMillis_ = OrgJodaTimeDateTimeUtils_currentTimeMillis();
-    OrgJodaTimeBaseBaseInterval_set_iChronology_(self, OrgJodaTimeChronoISOChronology_getInstance());
+    JreAssignVolatileLong(&self->iStartMillis_, JreAssignVolatileLong(&self->iEndMillis_, OrgJodaTimeDateTimeUtils_currentTimeMillis()));
+    JreVolatileStrongAssign(&self->iChronology_, OrgJodaTimeChronoISOChronology_getInstance());
   }
   else {
-    OrgJodaTimeBaseBaseInterval_set_iChronology_(self, OrgJodaTimeDateTimeUtils_getInstantChronologyWithOrgJodaTimeReadableInstant_(start));
-    self->iStartMillis_ = OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(start);
-    self->iEndMillis_ = OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(end);
-    [self checkIntervalWithLong:self->iStartMillis_ withLong:self->iEndMillis_];
+    JreVolatileStrongAssign(&self->iChronology_, OrgJodaTimeDateTimeUtils_getInstantChronologyWithOrgJodaTimeReadableInstant_(start));
+    JreAssignVolatileLong(&self->iStartMillis_, OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(start));
+    JreAssignVolatileLong(&self->iEndMillis_, OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(end));
+    [self checkIntervalWithLong:JreLoadVolatileLong(&self->iStartMillis_) withLong:JreLoadVolatileLong(&self->iEndMillis_)];
   }
 }
 
 void OrgJodaTimeBaseBaseInterval_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_(OrgJodaTimeBaseBaseInterval *self, id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableDuration> duration) {
   OrgJodaTimeBaseAbstractInterval_init(self);
-  OrgJodaTimeBaseBaseInterval_set_iChronology_(self, OrgJodaTimeDateTimeUtils_getInstantChronologyWithOrgJodaTimeReadableInstant_(start));
-  self->iStartMillis_ = OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(start);
+  JreVolatileStrongAssign(&self->iChronology_, OrgJodaTimeDateTimeUtils_getInstantChronologyWithOrgJodaTimeReadableInstant_(start));
+  JreAssignVolatileLong(&self->iStartMillis_, OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(start));
   jlong durationMillis = OrgJodaTimeDateTimeUtils_getDurationMillisWithOrgJodaTimeReadableDuration_(duration);
-  self->iEndMillis_ = OrgJodaTimeFieldFieldUtils_safeAddWithLong_withLong_(self->iStartMillis_, durationMillis);
-  [self checkIntervalWithLong:self->iStartMillis_ withLong:self->iEndMillis_];
+  JreAssignVolatileLong(&self->iEndMillis_, OrgJodaTimeFieldFieldUtils_safeAddWithLong_withLong_(JreLoadVolatileLong(&self->iStartMillis_), durationMillis));
+  [self checkIntervalWithLong:JreLoadVolatileLong(&self->iStartMillis_) withLong:JreLoadVolatileLong(&self->iEndMillis_)];
 }
 
 void OrgJodaTimeBaseBaseInterval_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(OrgJodaTimeBaseBaseInterval *self, id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> end) {
   OrgJodaTimeBaseAbstractInterval_init(self);
-  OrgJodaTimeBaseBaseInterval_set_iChronology_(self, OrgJodaTimeDateTimeUtils_getInstantChronologyWithOrgJodaTimeReadableInstant_(end));
-  self->iEndMillis_ = OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(end);
+  JreVolatileStrongAssign(&self->iChronology_, OrgJodaTimeDateTimeUtils_getInstantChronologyWithOrgJodaTimeReadableInstant_(end));
+  JreAssignVolatileLong(&self->iEndMillis_, OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(end));
   jlong durationMillis = OrgJodaTimeDateTimeUtils_getDurationMillisWithOrgJodaTimeReadableDuration_(duration);
-  self->iStartMillis_ = OrgJodaTimeFieldFieldUtils_safeAddWithLong_withLong_(self->iEndMillis_, -durationMillis);
-  [self checkIntervalWithLong:self->iStartMillis_ withLong:self->iEndMillis_];
+  JreAssignVolatileLong(&self->iStartMillis_, OrgJodaTimeFieldFieldUtils_safeAddWithLong_withLong_(JreLoadVolatileLong(&self->iEndMillis_), -durationMillis));
+  [self checkIntervalWithLong:JreLoadVolatileLong(&self->iStartMillis_) withLong:JreLoadVolatileLong(&self->iEndMillis_)];
 }
 
 void OrgJodaTimeBaseBaseInterval_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadablePeriod_(OrgJodaTimeBaseBaseInterval *self, id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadablePeriod> period) {
   OrgJodaTimeBaseAbstractInterval_init(self);
   OrgJodaTimeChronology *chrono = OrgJodaTimeDateTimeUtils_getInstantChronologyWithOrgJodaTimeReadableInstant_(start);
-  OrgJodaTimeBaseBaseInterval_set_iChronology_(self, chrono);
-  self->iStartMillis_ = OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(start);
+  JreVolatileStrongAssign(&self->iChronology_, chrono);
+  JreAssignVolatileLong(&self->iStartMillis_, OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(start));
   if (period == nil) {
-    self->iEndMillis_ = self->iStartMillis_;
+    JreAssignVolatileLong(&self->iEndMillis_, JreLoadVolatileLong(&self->iStartMillis_));
   }
   else {
-    self->iEndMillis_ = [((OrgJodaTimeChronology *) nil_chk(chrono)) addWithOrgJodaTimeReadablePeriod:period withLong:self->iStartMillis_ withInt:1];
+    JreAssignVolatileLong(&self->iEndMillis_, [((OrgJodaTimeChronology *) nil_chk(chrono)) addWithOrgJodaTimeReadablePeriod:period withLong:JreLoadVolatileLong(&self->iStartMillis_) withInt:1]);
   }
-  [self checkIntervalWithLong:self->iStartMillis_ withLong:self->iEndMillis_];
+  [self checkIntervalWithLong:JreLoadVolatileLong(&self->iStartMillis_) withLong:JreLoadVolatileLong(&self->iEndMillis_)];
 }
 
 void OrgJodaTimeBaseBaseInterval_initWithOrgJodaTimeReadablePeriod_withOrgJodaTimeReadableInstant_(OrgJodaTimeBaseBaseInterval *self, id<OrgJodaTimeReadablePeriod> period, id<OrgJodaTimeReadableInstant> end) {
   OrgJodaTimeBaseAbstractInterval_init(self);
   OrgJodaTimeChronology *chrono = OrgJodaTimeDateTimeUtils_getInstantChronologyWithOrgJodaTimeReadableInstant_(end);
-  OrgJodaTimeBaseBaseInterval_set_iChronology_(self, chrono);
-  self->iEndMillis_ = OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(end);
+  JreVolatileStrongAssign(&self->iChronology_, chrono);
+  JreAssignVolatileLong(&self->iEndMillis_, OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(end));
   if (period == nil) {
-    self->iStartMillis_ = self->iEndMillis_;
+    JreAssignVolatileLong(&self->iStartMillis_, JreLoadVolatileLong(&self->iEndMillis_));
   }
   else {
-    self->iStartMillis_ = [((OrgJodaTimeChronology *) nil_chk(chrono)) addWithOrgJodaTimeReadablePeriod:period withLong:self->iEndMillis_ withInt:-1];
+    JreAssignVolatileLong(&self->iStartMillis_, [((OrgJodaTimeChronology *) nil_chk(chrono)) addWithOrgJodaTimeReadablePeriod:period withLong:JreLoadVolatileLong(&self->iEndMillis_) withInt:-1]);
   }
-  [self checkIntervalWithLong:self->iStartMillis_ withLong:self->iEndMillis_];
+  [self checkIntervalWithLong:JreLoadVolatileLong(&self->iStartMillis_) withLong:JreLoadVolatileLong(&self->iEndMillis_)];
 }
 
 void OrgJodaTimeBaseBaseInterval_initWithId_withOrgJodaTimeChronology_(OrgJodaTimeBaseBaseInterval *self, id interval, OrgJodaTimeChronology *chrono) {
   OrgJodaTimeBaseAbstractInterval_init(self);
   id<OrgJodaTimeConvertIntervalConverter> converter = [((OrgJodaTimeConvertConverterManager *) nil_chk(OrgJodaTimeConvertConverterManager_getInstance())) getIntervalConverterWithId:interval];
   if ([((id<OrgJodaTimeConvertIntervalConverter>) nil_chk(converter)) isReadableIntervalWithId:interval withOrgJodaTimeChronology:chrono]) {
-    id<OrgJodaTimeReadableInterval> input = (id<OrgJodaTimeReadableInterval>) check_protocol_cast(interval, @protocol(OrgJodaTimeReadableInterval));
-    OrgJodaTimeBaseBaseInterval_set_iChronology_(self, (chrono != nil ? chrono : [((id<OrgJodaTimeReadableInterval>) nil_chk(input)) getChronology]));
-    self->iStartMillis_ = [((id<OrgJodaTimeReadableInterval>) nil_chk(input)) getStartMillis];
-    self->iEndMillis_ = [input getEndMillis];
+    id<OrgJodaTimeReadableInterval> input = (id<OrgJodaTimeReadableInterval>) check_protocol_cast(interval, OrgJodaTimeReadableInterval_class_());
+    JreVolatileStrongAssign(&self->iChronology_, (chrono != nil ? chrono : [((id<OrgJodaTimeReadableInterval>) nil_chk(input)) getChronology]));
+    JreAssignVolatileLong(&self->iStartMillis_, [((id<OrgJodaTimeReadableInterval>) nil_chk(input)) getStartMillis]);
+    JreAssignVolatileLong(&self->iEndMillis_, [input getEndMillis]);
   }
   else if ([OrgJodaTimeReadWritableInterval_class_() isInstance:self]) {
-    [converter setIntoWithOrgJodaTimeReadWritableInterval:(id<OrgJodaTimeReadWritableInterval>) check_protocol_cast(self, @protocol(OrgJodaTimeReadWritableInterval)) withId:interval withOrgJodaTimeChronology:chrono];
+    [converter setIntoWithOrgJodaTimeReadWritableInterval:(id<OrgJodaTimeReadWritableInterval>) check_protocol_cast(self, OrgJodaTimeReadWritableInterval_class_()) withId:interval withOrgJodaTimeChronology:chrono];
   }
   else {
     OrgJodaTimeMutableInterval *mi = [new_OrgJodaTimeMutableInterval_init() autorelease];
     [converter setIntoWithOrgJodaTimeReadWritableInterval:mi withId:interval withOrgJodaTimeChronology:chrono];
-    OrgJodaTimeBaseBaseInterval_set_iChronology_(self, [mi getChronology]);
-    self->iStartMillis_ = [mi getStartMillis];
-    self->iEndMillis_ = [mi getEndMillis];
+    JreVolatileStrongAssign(&self->iChronology_, [mi getChronology]);
+    JreAssignVolatileLong(&self->iStartMillis_, [mi getStartMillis]);
+    JreAssignVolatileLong(&self->iEndMillis_, [mi getEndMillis]);
   }
-  [self checkIntervalWithLong:self->iStartMillis_ withLong:self->iEndMillis_];
+  [self checkIntervalWithLong:JreLoadVolatileLong(&self->iStartMillis_) withLong:JreLoadVolatileLong(&self->iEndMillis_)];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseBaseInterval)

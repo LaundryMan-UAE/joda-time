@@ -14,7 +14,7 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
+/*!
  @brief Provides time calculations for the week of a week based year component of time.
  @author Guy Allard
  @author Stephen Colebourne
@@ -25,9 +25,9 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Get the week of a week based year component of the specified time instant.
- @param instant the time instant in millis to query.
+ @param instant  the time instant in millis to query.
  @return the week of the year extracted from the input.
  */
 - (jint)getWithLong:(jlong)instant;
@@ -58,7 +58,7 @@
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Restricted constructor
  */
 - (instancetype)initWithOrgJodaTimeChronoBasicChronology:(OrgJodaTimeChronoBasicChronology *)chronology

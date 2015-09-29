@@ -9,7 +9,7 @@
 #include "J2ObjC_header.h"
 #include "org/joda/time/convert/Converter.h"
 
-/**
+/*!
  @brief DurationConverter defines how an object is converted to a millisecond duration.
  @author Stephen Colebourne
  @author Brian S O'Neill
@@ -17,9 +17,9 @@
  */
 @protocol OrgJodaTimeConvertDurationConverter < OrgJodaTimeConvertConverter, NSObject, JavaObject >
 
-/**
+/*!
  @brief Extracts the millis from an object of this convertor's type.
- @param object the object to convert, must not be null
+ @param object  the object to convert, must not be null
  @return the millisecond duration
  @throws ClassCastException if the object is invalid
  */

@@ -25,7 +25,7 @@
   OrgJodaTimeChronoBasicChronology *iChronology_;
 }
 
-/**
+/*!
  @brief Serialization singleton
  */
 - (id)readResolve;
@@ -44,7 +44,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJEraDateTimeField, serialVersionUID
 }
 
 - (jboolean)isLenient {
-  return NO;
+  return false;
 }
 
 - (jint)getWithLong:(jlong)instant {
@@ -161,7 +161,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJEraDateTimeField, serialVersionUID
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoGJEraDateTimeField_serialVersionUID },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL, NULL,  },
+    { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoGJEraDateTimeField = { 2, "GJEraDateTimeField", "org.joda.time.chrono", NULL, 0x10, 17, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoGJEraDateTimeField;
@@ -171,7 +171,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJEraDateTimeField, serialVersionUID
 
 void OrgJodaTimeChronoGJEraDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(OrgJodaTimeChronoGJEraDateTimeField *self, OrgJodaTimeChronoBasicChronology *chronology) {
   OrgJodaTimeFieldBaseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_(self, OrgJodaTimeDateTimeFieldType_era());
-  OrgJodaTimeChronoGJEraDateTimeField_set_iChronology_(self, chronology);
+  JreStrongAssign(&self->iChronology_, chronology);
 }
 
 OrgJodaTimeChronoGJEraDateTimeField *new_OrgJodaTimeChronoGJEraDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(OrgJodaTimeChronoBasicChronology *chronology) {

@@ -17,10 +17,12 @@
 
 @implementation OrgJodaTimeBaseAbstractDuration
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeBaseAbstractDuration_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgJodaTimeDuration *)toDuration {
   return [new_OrgJodaTimeDuration_initWithLong_([self getMillis]) autorelease];
@@ -31,7 +33,7 @@
 }
 
 - (jint)compareToWithId:(id<OrgJodaTimeReadableDuration>)other {
-  check_protocol_cast(other, @protocol(OrgJodaTimeReadableDuration));
+  check_protocol_cast(other, OrgJodaTimeReadableDuration_class_());
   jlong thisMillis = [self getMillis];
   jlong otherMillis = [((id<OrgJodaTimeReadableDuration>) nil_chk(other)) getMillis];
   if (thisMillis < otherMillis) {
@@ -45,39 +47,39 @@
 
 - (jboolean)isEqualWithOrgJodaTimeReadableDuration:(id<OrgJodaTimeReadableDuration>)duration {
   if (duration == nil) {
-    duration = OrgJodaTimeDuration_get_ZERO_();
+    duration = JreLoadStatic(OrgJodaTimeDuration, ZERO_);
   }
   return [self compareToWithId:duration] == 0;
 }
 
 - (jboolean)isLongerThanWithOrgJodaTimeReadableDuration:(id<OrgJodaTimeReadableDuration>)duration {
   if (duration == nil) {
-    duration = OrgJodaTimeDuration_get_ZERO_();
+    duration = JreLoadStatic(OrgJodaTimeDuration, ZERO_);
   }
   return [self compareToWithId:duration] > 0;
 }
 
 - (jboolean)isShorterThanWithOrgJodaTimeReadableDuration:(id<OrgJodaTimeReadableDuration>)duration {
   if (duration == nil) {
-    duration = OrgJodaTimeDuration_get_ZERO_();
+    duration = JreLoadStatic(OrgJodaTimeDuration, ZERO_);
   }
   return [self compareToWithId:duration] < 0;
 }
 
 - (jboolean)isEqual:(id)duration {
   if (self == duration) {
-    return YES;
+    return true;
   }
-  if ([OrgJodaTimeReadableDuration_class_() isInstance:duration] == NO) {
-    return NO;
+  if ([OrgJodaTimeReadableDuration_class_() isInstance:duration] == false) {
+    return false;
   }
-  id<OrgJodaTimeReadableDuration> other = (id<OrgJodaTimeReadableDuration>) check_protocol_cast(duration, @protocol(OrgJodaTimeReadableDuration));
+  id<OrgJodaTimeReadableDuration> other = (id<OrgJodaTimeReadableDuration>) check_protocol_cast(duration, OrgJodaTimeReadableDuration_class_());
   return [self getMillis] == [((id<OrgJodaTimeReadableDuration>) nil_chk(other)) getMillis];
 }
 
 - (NSUInteger)hash {
   jlong len = [self getMillis];
-  return (jint) (len ^ (URShift64(len, 32)));
+  return (jint) (len ^ (JreURShift64(len, 32)));
 }
 
 - (NSString *)description {

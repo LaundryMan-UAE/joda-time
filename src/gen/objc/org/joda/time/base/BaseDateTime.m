@@ -18,28 +18,30 @@
 
 @interface OrgJodaTimeBaseBaseDateTime () {
  @public
-  /**
+  /*!
    @brief The millis from 1970-01-01T00:00:00Z
    */
-  jlong iMillis_;
-  /**
+  volatile_jlong iMillis_;
+  /*!
    @brief The chronology to use
    */
-  OrgJodaTimeChronology *iChronology_;
+  volatile_id iChronology_;
 }
 
 @end
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeBaseBaseDateTime, iChronology_, OrgJodaTimeChronology *)
+J2OBJC_VOLATILE_FIELD_SETTER(OrgJodaTimeBaseBaseDateTime, iChronology_, OrgJodaTimeChronology *)
 
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseDateTime, serialVersionUID, jlong)
 
 @implementation OrgJodaTimeBaseBaseDateTime
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeBaseBaseDateTime_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (instancetype)initWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   OrgJodaTimeBaseBaseDateTime_initWithOrgJodaTimeDateTimeZone_(self, zone);
@@ -125,24 +127,29 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
 }
 
 - (jlong)getMillis {
-  return iMillis_;
+  return JreLoadVolatileLong(&iMillis_);
 }
 
 - (OrgJodaTimeChronology *)getChronology {
-  return iChronology_;
+  return JreLoadVolatileId(&iChronology_);
 }
 
 - (void)setMillisWithLong:(jlong)instant {
-  iMillis_ = [self checkInstantWithLong:instant withOrgJodaTimeChronology:iChronology_];
+  JreAssignVolatileLong(&iMillis_, [self checkInstantWithLong:instant withOrgJodaTimeChronology:JreLoadVolatileId(&iChronology_)]);
 }
 
 - (void)setChronologyWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology {
-  OrgJodaTimeBaseBaseDateTime_set_iChronology_(self, [self checkChronologyWithOrgJodaTimeChronology:chronology]);
+  JreVolatileStrongAssign(&iChronology_, [self checkChronologyWithOrgJodaTimeChronology:chronology]);
 }
 
 - (void)dealloc {
-  RELEASE_(iChronology_);
+  JreReleaseVolatile(&iChronology_);
   [super dealloc];
+}
+
+- (void)__javaClone {
+  [super __javaClone];
+  JreRetainVolatile(&iChronology_);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -167,8 +174,8 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeBaseBaseDateTime_serialVersionUID },
-    { "iMillis_", NULL, 0x42, "J", NULL, NULL,  },
-    { "iChronology_", NULL, 0x42, "Lorg.joda.time.Chronology;", NULL, NULL,  },
+    { "iMillis_", NULL, 0x42, "J", NULL, NULL, .constantValue.asLong = 0 },
+    { "iChronology_", NULL, 0x42, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeBaseBaseDateTime = { 2, "BaseDateTime", "org.joda.time.base", NULL, 0x401, 17, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeBaseBaseDateTime;
@@ -198,10 +205,10 @@ void OrgJodaTimeBaseBaseDateTime_initWithLong_withOrgJodaTimeDateTimeZone_(OrgJo
 
 void OrgJodaTimeBaseBaseDateTime_initWithLong_withOrgJodaTimeChronology_(OrgJodaTimeBaseBaseDateTime *self, jlong instant, OrgJodaTimeChronology *chronology) {
   OrgJodaTimeBaseAbstractDateTime_init(self);
-  OrgJodaTimeBaseBaseDateTime_set_iChronology_(self, [self checkChronologyWithOrgJodaTimeChronology:chronology]);
-  self->iMillis_ = [self checkInstantWithLong:instant withOrgJodaTimeChronology:self->iChronology_];
-  if ([((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeChronology *) nil_chk(self->iChronology_)) year])) isSupported]) {
-    [((OrgJodaTimeDateTimeField *) nil_chk([self->iChronology_ year])) setWithLong:self->iMillis_ withInt:[((OrgJodaTimeDateTimeField *) nil_chk([self->iChronology_ year])) getWithLong:self->iMillis_]];
+  JreVolatileStrongAssign(&self->iChronology_, [self checkChronologyWithOrgJodaTimeChronology:chronology]);
+  JreAssignVolatileLong(&self->iMillis_, [self checkInstantWithLong:instant withOrgJodaTimeChronology:JreLoadVolatileId(&self->iChronology_)]);
+  if ([((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeChronology *) nil_chk(JreLoadVolatileId(&self->iChronology_))) year])) isSupported]) {
+    [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeChronology *) JreLoadVolatileId(&self->iChronology_)) year])) setWithLong:JreLoadVolatileLong(&self->iMillis_) withInt:[((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeChronology *) JreLoadVolatileId(&self->iChronology_)) year])) getWithLong:JreLoadVolatileLong(&self->iMillis_)]];
   }
 }
 
@@ -209,15 +216,15 @@ void OrgJodaTimeBaseBaseDateTime_initWithId_withOrgJodaTimeDateTimeZone_(OrgJoda
   OrgJodaTimeBaseAbstractDateTime_init(self);
   id<OrgJodaTimeConvertInstantConverter> converter = [((OrgJodaTimeConvertConverterManager *) nil_chk(OrgJodaTimeConvertConverterManager_getInstance())) getInstantConverterWithId:instant];
   OrgJodaTimeChronology *chrono = [self checkChronologyWithOrgJodaTimeChronology:[((id<OrgJodaTimeConvertInstantConverter>) nil_chk(converter)) getChronologyWithId:instant withOrgJodaTimeDateTimeZone:zone]];
-  OrgJodaTimeBaseBaseDateTime_set_iChronology_(self, chrono);
-  self->iMillis_ = [self checkInstantWithLong:[converter getInstantMillisWithId:instant withOrgJodaTimeChronology:chrono] withOrgJodaTimeChronology:chrono];
+  JreVolatileStrongAssign(&self->iChronology_, chrono);
+  JreAssignVolatileLong(&self->iMillis_, [self checkInstantWithLong:[converter getInstantMillisWithId:instant withOrgJodaTimeChronology:chrono] withOrgJodaTimeChronology:chrono]);
 }
 
 void OrgJodaTimeBaseBaseDateTime_initWithId_withOrgJodaTimeChronology_(OrgJodaTimeBaseBaseDateTime *self, id instant, OrgJodaTimeChronology *chronology) {
   OrgJodaTimeBaseAbstractDateTime_init(self);
   id<OrgJodaTimeConvertInstantConverter> converter = [((OrgJodaTimeConvertConverterManager *) nil_chk(OrgJodaTimeConvertConverterManager_getInstance())) getInstantConverterWithId:instant];
-  OrgJodaTimeBaseBaseDateTime_set_iChronology_(self, [self checkChronologyWithOrgJodaTimeChronology:[((id<OrgJodaTimeConvertInstantConverter>) nil_chk(converter)) getChronologyWithId:instant withOrgJodaTimeChronology:chronology]]);
-  self->iMillis_ = [self checkInstantWithLong:[converter getInstantMillisWithId:instant withOrgJodaTimeChronology:chronology] withOrgJodaTimeChronology:self->iChronology_];
+  JreVolatileStrongAssign(&self->iChronology_, [self checkChronologyWithOrgJodaTimeChronology:[((id<OrgJodaTimeConvertInstantConverter>) nil_chk(converter)) getChronologyWithId:instant withOrgJodaTimeChronology:chronology]]);
+  JreAssignVolatileLong(&self->iMillis_, [self checkInstantWithLong:[converter getInstantMillisWithId:instant withOrgJodaTimeChronology:chronology] withOrgJodaTimeChronology:JreLoadVolatileId(&self->iChronology_)]);
 }
 
 void OrgJodaTimeBaseBaseDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_(OrgJodaTimeBaseBaseDateTime *self, jint year, jint monthOfYear, jint dayOfMonth, jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond) {
@@ -230,9 +237,9 @@ void OrgJodaTimeBaseBaseDateTime_initWithInt_withInt_withInt_withInt_withInt_wit
 
 void OrgJodaTimeBaseBaseDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(OrgJodaTimeBaseBaseDateTime *self, jint year, jint monthOfYear, jint dayOfMonth, jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond, OrgJodaTimeChronology *chronology) {
   OrgJodaTimeBaseAbstractDateTime_init(self);
-  OrgJodaTimeBaseBaseDateTime_set_iChronology_(self, [self checkChronologyWithOrgJodaTimeChronology:chronology]);
-  jlong instant = [((OrgJodaTimeChronology *) nil_chk(self->iChronology_)) getDateTimeMillisWithInt:year withInt:monthOfYear withInt:dayOfMonth withInt:hourOfDay withInt:minuteOfHour withInt:secondOfMinute withInt:millisOfSecond];
-  self->iMillis_ = [self checkInstantWithLong:instant withOrgJodaTimeChronology:self->iChronology_];
+  JreVolatileStrongAssign(&self->iChronology_, [self checkChronologyWithOrgJodaTimeChronology:chronology]);
+  jlong instant = [((OrgJodaTimeChronology *) nil_chk(JreLoadVolatileId(&self->iChronology_))) getDateTimeMillisWithInt:year withInt:monthOfYear withInt:dayOfMonth withInt:hourOfDay withInt:minuteOfHour withInt:secondOfMinute withInt:millisOfSecond];
+  JreAssignVolatileLong(&self->iMillis_, [self checkInstantWithLong:instant withOrgJodaTimeChronology:JreLoadVolatileId(&self->iChronology_)]);
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseBaseDateTime)

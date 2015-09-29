@@ -12,9 +12,12 @@
 
 @class OrgJodaTimeDurationFieldType;
 
-/**
- @brief <code>DelegatedDurationField</code> delegates each method call to the duration field it wraps.
- <p> DelegatedDurationField is thread-safe and immutable, and its subclasses must be as well.
+/*!
+ @brief <code>DelegatedDurationField</code> delegates each method call to the
+ duration field it wraps.
+ <p>
+ DelegatedDurationField is thread-safe and immutable, and its subclasses must
+ be as well.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -64,7 +67,7 @@
 - (jlong)getValueAsLongWithLong:(jlong)duration
                        withLong:(jlong)instant;
 
-/**
+/*!
  @brief Gets the wrapped duration field.
  @return the wrapped DurationField
  */
@@ -74,7 +77,7 @@
 
 - (jboolean)isPrecise;
 
-/**
+/*!
  @brief Returns true if this field is supported.
  */
 - (jboolean)isSupported;
@@ -83,16 +86,16 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Constructor.
- @param field the base field
+ @param field  the base field
  */
 - (instancetype)initWithOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)field;
 
-/**
+/*!
  @brief Constructor.
- @param field the base field
- @param type the field type to use
+ @param field  the base field
+ @param type  the field type to use
  */
 - (instancetype)initWithOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)field
                 withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)type;

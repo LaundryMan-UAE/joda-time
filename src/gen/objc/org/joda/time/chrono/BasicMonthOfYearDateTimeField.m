@@ -29,7 +29,7 @@
   jint iLeapMonth_;
 }
 
-/**
+/*!
  @brief Serialization singleton
  */
 - (id)readResolve;
@@ -51,7 +51,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicMonthOfYearDateTimeField, MIN, 
 }
 
 - (jboolean)isLenient {
-  return NO;
+  return false;
 }
 
 - (jint)getWithLong:(jlong)instant {
@@ -210,7 +210,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicMonthOfYearDateTimeField, MIN, 
   if ([iChronology_ isLeapYearWithInt:thisYear]) {
     return [iChronology_ getMonthOfYearWithLong:instant withInt:thisYear] == iLeapMonth_;
   }
-  return NO;
+  return false;
 }
 
 - (jint)getLeapAmountWithLong:(jlong)instant {
@@ -272,9 +272,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicMonthOfYearDateTimeField, MIN, 
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoBasicMonthOfYearDateTimeField_serialVersionUID },
     { "MIN", "MIN", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoBasicMonthOfYearDateTimeField_MIN },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL, NULL,  },
-    { "iMax_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iLeapMonth_", NULL, 0x12, "I", NULL, NULL,  },
+    { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMax_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iLeapMonth_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoBasicMonthOfYearDateTimeField = { 2, "BasicMonthOfYearDateTimeField", "org.joda.time.chrono", NULL, 0x0, 18, methods, 5, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoBasicMonthOfYearDateTimeField;
@@ -284,7 +284,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicMonthOfYearDateTimeField, MIN, 
 
 void OrgJodaTimeChronoBasicMonthOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withInt_(OrgJodaTimeChronoBasicMonthOfYearDateTimeField *self, OrgJodaTimeChronoBasicChronology *chronology, jint leapMonth) {
   OrgJodaTimeFieldImpreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withLong_(self, OrgJodaTimeDateTimeFieldType_monthOfYear(), [((OrgJodaTimeChronoBasicChronology *) nil_chk(chronology)) getAverageMillisPerMonth]);
-  OrgJodaTimeChronoBasicMonthOfYearDateTimeField_set_iChronology_(self, chronology);
+  JreStrongAssign(&self->iChronology_, chronology);
   self->iMax_ = [self->iChronology_ getMaxMonth];
   self->iLeapMonth_ = leapMonth;
 }

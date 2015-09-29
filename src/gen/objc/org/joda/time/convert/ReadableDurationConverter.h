@@ -15,7 +15,7 @@
 @class OrgJodaTimeChronology;
 @protocol OrgJodaTimeReadWritablePeriod;
 
-/**
+/*!
  @brief ReadableDurationConverter extracts milliseconds and chronology from a ReadableDuration.
  @author Stephen Colebourne
  @author Brian S O'Neill
@@ -25,9 +25,9 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Extracts the millis from an object of this convertor's type.
- @param object the object to convert, must not be null
+ @param object  the object to convert, must not be null
  @return the millisecond value
  @throws NullPointerException if the object is null
  @throws ClassCastException if the object is an invalid type
@@ -35,17 +35,18 @@
  */
 - (jlong)getDurationMillisWithId:(id)object;
 
-/**
+/*!
  @brief Returns ReadableDuration.class.
  @return ReadableDuration.class
  */
 - (IOSClass *)getSupportedType;
 
-/**
- @brief Extracts duration values from an object of this converter's type, and sets them into the given ReadWritableDuration.
- @param writablePeriod period to get modified
- @param object the object to convert, must not be null
- @param chrono the chronology to use, must not be null
+/*!
+ @brief Extracts duration values from an object of this converter's type, and
+ sets them into the given ReadWritableDuration.
+ @param writablePeriod  period to get modified
+ @param object  the object to convert, must not be null
+ @param chrono  the chronology to use, must not be null
  @throws NullPointerException if the duration or object is null
  @throws ClassCastException if the object is an invalid type
  @throws IllegalArgumentException if the object is invalid
@@ -56,7 +57,7 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)init;

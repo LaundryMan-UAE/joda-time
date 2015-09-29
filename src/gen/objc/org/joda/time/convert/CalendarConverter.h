@@ -15,9 +15,10 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeZone;
 
-/**
+/*!
  @brief CalendarConverter converts a java util Calendar to an instant or partial.
- The Calendar is converted to milliseconds and the chronology that best matches the calendar.
+ The Calendar is converted to milliseconds and the chronology that best
+ matches the calendar.
  @author Stephen Colebourne
  @since 1.0
  */
@@ -25,11 +26,15 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Gets the chronology.
- <p> If a chronology is specified then it is used. Otherwise, it is the GJChronology if a GregorianCalendar is used, BuddhistChronology if a BuddhistCalendar is used or ISOChronology otherwise. The time zone is extracted from the calendar if possible, default used if not.
- @param object the Calendar to convert, must not be null
- @param chrono the chronology to use, null means use Calendar
+ <p>
+ If a chronology is specified then it is used.
+ Otherwise, it is the GJChronology if a GregorianCalendar is used,
+ BuddhistChronology if a BuddhistCalendar is used or ISOChronology otherwise.
+ The time zone is extracted from the calendar if possible, default used if not.
+ @param object  the Calendar to convert, must not be null
+ @param chrono  the chronology to use, null means use Calendar
  @return the chronology, never null
  @throws NullPointerException if the object is null
  @throws ClassCastException if the object is an invalid type
@@ -37,11 +42,12 @@
 - (OrgJodaTimeChronology *)getChronologyWithId:(id)object
                      withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
 
-/**
- @brief Gets the chronology, which is the GJChronology if a GregorianCalendar is used, BuddhistChronology if a BuddhistCalendar is used or ISOChronology otherwise.
+/*!
+ @brief Gets the chronology, which is the GJChronology if a GregorianCalendar is used,
+ BuddhistChronology if a BuddhistCalendar is used or ISOChronology otherwise.
  The time zone specified is used in preference to that on the calendar.
- @param object the Calendar to convert, must not be null
- @param zone the specified zone to use, null means default zone
+ @param object  the Calendar to convert, must not be null
+ @param zone  the specified zone to use, null means default zone
  @return the chronology, never null
  @throws NullPointerException if the object is null
  @throws ClassCastException if the object is an invalid type
@@ -49,10 +55,10 @@
 - (OrgJodaTimeChronology *)getChronologyWithId:(id)object
                    withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
-/**
+/*!
  @brief Gets the millis, which is the Calendar millis value.
- @param object the Calendar to convert, must not be null
- @param chrono the chronology result from getChronology, non-null
+ @param object  the Calendar to convert, must not be null
+ @param chrono  the chronology result from getChronology, non-null
  @return the millisecond value
  @throws NullPointerException if the object is null
  @throws ClassCastException if the object is an invalid type
@@ -60,7 +66,7 @@
 - (jlong)getInstantMillisWithId:(id)object
       withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
 
-/**
+/*!
  @brief Returns Calendar.class.
  @return Calendar.class
  */
@@ -68,7 +74,7 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)init;

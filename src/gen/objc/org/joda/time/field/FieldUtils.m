@@ -15,7 +15,7 @@
 
 @interface OrgJodaTimeFieldFieldUtils ()
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)init;
@@ -28,10 +28,12 @@ __attribute__((unused)) static OrgJodaTimeFieldFieldUtils *new_OrgJodaTimeFieldF
 
 @implementation OrgJodaTimeFieldFieldUtils
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeFieldFieldUtils_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (jint)safeNegateWithInt:(jint)value {
   return OrgJodaTimeFieldFieldUtils_safeNegateWithInt_(value);
@@ -306,10 +308,10 @@ jint OrgJodaTimeFieldFieldUtils_getWrappedValueWithInt_withInt_withInt_(jint val
 jboolean OrgJodaTimeFieldFieldUtils_equalsWithId_withId_(id object1, id object2) {
   OrgJodaTimeFieldFieldUtils_initialize();
   if (object1 == object2) {
-    return YES;
+    return true;
   }
   if (object1 == nil || object2 == nil) {
-    return NO;
+    return false;
   }
   return [nil_chk(object1) isEqual:object2];
 }

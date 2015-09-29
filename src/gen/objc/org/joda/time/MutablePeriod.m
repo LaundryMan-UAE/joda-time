@@ -40,10 +40,12 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMutablePeriod, serialVersionUID, jlong)
   return OrgJodaTimeMutablePeriod_parseWithNSString_withOrgJodaTimeFormatPeriodFormatter_(str, formatter);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeMutablePeriod_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (instancetype)initWithOrgJodaTimePeriodType:(OrgJodaTimePeriodType *)type {
   OrgJodaTimeMutablePeriod_initWithOrgJodaTimePeriodType_(self, type);
@@ -328,35 +330,35 @@ withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
 }
 
 - (jint)getYears {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_YEAR_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, YEAR_INDEX_)];
 }
 
 - (jint)getMonths {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MONTH_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MONTH_INDEX_)];
 }
 
 - (jint)getWeeks {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_WEEK_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, WEEK_INDEX_)];
 }
 
 - (jint)getDays {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_DAY_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, DAY_INDEX_)];
 }
 
 - (jint)getHours {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_HOUR_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, HOUR_INDEX_)];
 }
 
 - (jint)getMinutes {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MINUTE_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MINUTE_INDEX_)];
 }
 
 - (jint)getSeconds {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_SECOND_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, SECOND_INDEX_)];
 }
 
 - (jint)getMillis {
-  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:OrgJodaTimePeriodType_get_MILLI_INDEX_()];
+  return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) getIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MILLI_INDEX_)];
 }
 
 - (void)setYearsWithInt:(jint)years {

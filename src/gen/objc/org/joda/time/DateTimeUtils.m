@@ -41,7 +41,7 @@
               withNSString:(NSString *)name
               withNSString:(NSString *)id_;
 
-/**
+/*!
  @brief Checks whether the provider may be changed using permission 'CurrentTime.setProvider'.
  @throws SecurityException if the provider may not be changed
  */
@@ -52,13 +52,13 @@
 static OrgJodaTimeDateTimeUtils_SystemMillisProvider *OrgJodaTimeDateTimeUtils_SYSTEM_MILLIS_PROVIDER_;
 J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeUtils, SYSTEM_MILLIS_PROVIDER_, OrgJodaTimeDateTimeUtils_SystemMillisProvider *)
 
-static id<OrgJodaTimeDateTimeUtils_MillisProvider> OrgJodaTimeDateTimeUtils_cMillisProvider_;
-J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeUtils, cMillisProvider_, id<OrgJodaTimeDateTimeUtils_MillisProvider>)
-J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeDateTimeUtils, cMillisProvider_, id<OrgJodaTimeDateTimeUtils_MillisProvider>)
+static volatile_id OrgJodaTimeDateTimeUtils_cMillisProvider_;
+J2OBJC_STATIC_VOLATILE_OBJ_FIELD_GETTER(OrgJodaTimeDateTimeUtils, cMillisProvider_, id<OrgJodaTimeDateTimeUtils_MillisProvider>)
+J2OBJC_STATIC_VOLATILE_OBJ_FIELD_SETTER(OrgJodaTimeDateTimeUtils, cMillisProvider_, id<OrgJodaTimeDateTimeUtils_MillisProvider>)
 
-static id<JavaUtilMap> OrgJodaTimeDateTimeUtils_cZoneNames_;
-J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeUtils, cZoneNames_, id<JavaUtilMap>)
-J2OBJC_STATIC_FIELD_SETTER(OrgJodaTimeDateTimeUtils, cZoneNames_, id<JavaUtilMap>)
+static volatile_id OrgJodaTimeDateTimeUtils_cZoneNames_;
+J2OBJC_STATIC_VOLATILE_OBJ_FIELD_GETTER(OrgJodaTimeDateTimeUtils, cZoneNames_, id<JavaUtilMap>)
+J2OBJC_STATIC_VOLATILE_OBJ_FIELD_SETTER(OrgJodaTimeDateTimeUtils, cZoneNames_, id<JavaUtilMap>)
 
 __attribute__((unused)) static void OrgJodaTimeDateTimeUtils_putWithJavaUtilMap_withNSString_withNSString_(id<JavaUtilMap> map, NSString *name, NSString *id_);
 
@@ -70,7 +70,7 @@ __attribute__((unused)) static void OrgJodaTimeDateTimeUtils_checkPermission();
 
 @interface OrgJodaTimeDateTimeUtils_FixedMillisProvider () {
  @public
-  /**
+  /*!
    @brief The fixed millis value.
    */
   jlong iMillis_;
@@ -80,7 +80,7 @@ __attribute__((unused)) static void OrgJodaTimeDateTimeUtils_checkPermission();
 
 @interface OrgJodaTimeDateTimeUtils_OffsetMillisProvider () {
  @public
-  /**
+  /*!
    @brief The millis offset.
    */
   jlong iMillis_;
@@ -98,10 +98,12 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeUtils)
   OrgJodaTimeDateTimeUtils_putWithJavaUtilMap_withNSString_withNSString_(map, name, id_);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeDateTimeUtils_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (jlong)currentTimeMillis {
   return OrgJodaTimeDateTimeUtils_currentTimeMillis();
@@ -194,13 +196,13 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeUtils)
 
 + (void)initialize {
   if (self == [OrgJodaTimeDateTimeUtils class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeUtils_SYSTEM_MILLIS_PROVIDER_, nil, new_OrgJodaTimeDateTimeUtils_SystemMillisProvider_init());
-    JreStrongAssign(&OrgJodaTimeDateTimeUtils_cMillisProvider_, nil, OrgJodaTimeDateTimeUtils_SYSTEM_MILLIS_PROVIDER_);
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeUtils_SYSTEM_MILLIS_PROVIDER_, new_OrgJodaTimeDateTimeUtils_SystemMillisProvider_init());
+    JreVolatileStrongAssign(&OrgJodaTimeDateTimeUtils_cMillisProvider_, OrgJodaTimeDateTimeUtils_SYSTEM_MILLIS_PROVIDER_);
     {
       id<JavaUtilMap> map = [new_JavaUtilLinkedHashMap_init() autorelease];
-      [map putWithId:@"UT" withId:OrgJodaTimeDateTimeZone_get_UTC_()];
-      [map putWithId:@"UTC" withId:OrgJodaTimeDateTimeZone_get_UTC_()];
-      [map putWithId:@"GMT" withId:OrgJodaTimeDateTimeZone_get_UTC_()];
+      [map putWithId:@"UT" withId:JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_)];
+      [map putWithId:@"UTC" withId:JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_)];
+      [map putWithId:@"GMT" withId:JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_)];
       OrgJodaTimeDateTimeUtils_putWithJavaUtilMap_withNSString_withNSString_(map, @"EST", @"America/New_York");
       OrgJodaTimeDateTimeUtils_putWithJavaUtilMap_withNSString_withNSString_(map, @"EDT", @"America/New_York");
       OrgJodaTimeDateTimeUtils_putWithJavaUtilMap_withNSString_withNSString_(map, @"CST", @"America/Chicago");
@@ -209,7 +211,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeUtils)
       OrgJodaTimeDateTimeUtils_putWithJavaUtilMap_withNSString_withNSString_(map, @"MDT", @"America/Denver");
       OrgJodaTimeDateTimeUtils_putWithJavaUtilMap_withNSString_withNSString_(map, @"PST", @"America/Los_Angeles");
       OrgJodaTimeDateTimeUtils_putWithJavaUtilMap_withNSString_withNSString_(map, @"PDT", @"America/Los_Angeles");
-      JreStrongAssign(&OrgJodaTimeDateTimeUtils_cZoneNames_, nil, JavaUtilCollections_unmodifiableMapWithJavaUtilMap_(map));
+      JreVolatileStrongAssign(&OrgJodaTimeDateTimeUtils_cZoneNames_, JavaUtilCollections_unmodifiableMapWithJavaUtilMap_(map));
     }
     J2OBJC_SET_INITIALIZED(OrgJodaTimeDateTimeUtils)
   }
@@ -243,9 +245,9 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeUtils)
     { "fromJulianDayWithDouble:", "fromJulianDay", "J", 0x19, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "SYSTEM_MILLIS_PROVIDER_", NULL, 0x1a, "Lorg.joda.time.DateTimeUtils$SystemMillisProvider;", &OrgJodaTimeDateTimeUtils_SYSTEM_MILLIS_PROVIDER_, NULL,  },
-    { "cMillisProvider_", NULL, 0x4a, "Lorg.joda.time.DateTimeUtils$MillisProvider;", &OrgJodaTimeDateTimeUtils_cMillisProvider_, NULL,  },
-    { "cZoneNames_", NULL, 0x4a, "Ljava.util.Map;", &OrgJodaTimeDateTimeUtils_cZoneNames_, "Ljava/util/Map<Ljava/lang/String;Lorg/joda/time/DateTimeZone;>;",  },
+    { "SYSTEM_MILLIS_PROVIDER_", NULL, 0x1a, "Lorg.joda.time.DateTimeUtils$SystemMillisProvider;", &OrgJodaTimeDateTimeUtils_SYSTEM_MILLIS_PROVIDER_, NULL, .constantValue.asLong = 0 },
+    { "cMillisProvider_", NULL, 0x4a, "Lorg.joda.time.DateTimeUtils$MillisProvider;", &OrgJodaTimeDateTimeUtils_cMillisProvider_, NULL, .constantValue.asLong = 0 },
+    { "cZoneNames_", NULL, 0x4a, "Ljava.util.Map;", &OrgJodaTimeDateTimeUtils_cZoneNames_, "Ljava/util/Map<Ljava/lang/String;Lorg/joda/time/DateTimeZone;>;", .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lorg.joda.time.DateTimeUtils$MillisProvider;", "Lorg.joda.time.DateTimeUtils$SystemMillisProvider;", "Lorg.joda.time.DateTimeUtils$FixedMillisProvider;", "Lorg.joda.time.DateTimeUtils$OffsetMillisProvider;"};
   static const J2ObjcClassInfo _OrgJodaTimeDateTimeUtils = { 2, "DateTimeUtils", "org.joda.time", NULL, 0x1, 24, methods, 3, fields, 0, NULL, 4, inner_classes, NULL, NULL };
@@ -275,29 +277,29 @@ OrgJodaTimeDateTimeUtils *new_OrgJodaTimeDateTimeUtils_init() {
 
 jlong OrgJodaTimeDateTimeUtils_currentTimeMillis() {
   OrgJodaTimeDateTimeUtils_initialize();
-  return [((id<OrgJodaTimeDateTimeUtils_MillisProvider>) nil_chk(OrgJodaTimeDateTimeUtils_cMillisProvider_)) getMillis];
+  return [((id<OrgJodaTimeDateTimeUtils_MillisProvider>) nil_chk(JreLoadVolatileId(&OrgJodaTimeDateTimeUtils_cMillisProvider_))) getMillis];
 }
 
 void OrgJodaTimeDateTimeUtils_setCurrentMillisSystem() {
   OrgJodaTimeDateTimeUtils_initialize();
   OrgJodaTimeDateTimeUtils_checkPermission();
-  JreStrongAssign(&OrgJodaTimeDateTimeUtils_cMillisProvider_, nil, OrgJodaTimeDateTimeUtils_SYSTEM_MILLIS_PROVIDER_);
+  JreVolatileStrongAssign(&OrgJodaTimeDateTimeUtils_cMillisProvider_, OrgJodaTimeDateTimeUtils_SYSTEM_MILLIS_PROVIDER_);
 }
 
 void OrgJodaTimeDateTimeUtils_setCurrentMillisFixedWithLong_(jlong fixedMillis) {
   OrgJodaTimeDateTimeUtils_initialize();
   OrgJodaTimeDateTimeUtils_checkPermission();
-  JreStrongAssignAndConsume(&OrgJodaTimeDateTimeUtils_cMillisProvider_, nil, new_OrgJodaTimeDateTimeUtils_FixedMillisProvider_initWithLong_(fixedMillis));
+  JreVolatileStrongAssignAndConsume(&OrgJodaTimeDateTimeUtils_cMillisProvider_, new_OrgJodaTimeDateTimeUtils_FixedMillisProvider_initWithLong_(fixedMillis));
 }
 
 void OrgJodaTimeDateTimeUtils_setCurrentMillisOffsetWithLong_(jlong offsetMillis) {
   OrgJodaTimeDateTimeUtils_initialize();
   OrgJodaTimeDateTimeUtils_checkPermission();
   if (offsetMillis == 0) {
-    JreStrongAssign(&OrgJodaTimeDateTimeUtils_cMillisProvider_, nil, OrgJodaTimeDateTimeUtils_SYSTEM_MILLIS_PROVIDER_);
+    JreVolatileStrongAssign(&OrgJodaTimeDateTimeUtils_cMillisProvider_, OrgJodaTimeDateTimeUtils_SYSTEM_MILLIS_PROVIDER_);
   }
   else {
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeUtils_cMillisProvider_, nil, new_OrgJodaTimeDateTimeUtils_OffsetMillisProvider_initWithLong_(offsetMillis));
+    JreVolatileStrongAssignAndConsume(&OrgJodaTimeDateTimeUtils_cMillisProvider_, new_OrgJodaTimeDateTimeUtils_OffsetMillisProvider_initWithLong_(offsetMillis));
   }
 }
 
@@ -307,7 +309,7 @@ void OrgJodaTimeDateTimeUtils_setCurrentMillisProviderWithOrgJodaTimeDateTimeUti
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The MillisProvider must not be null") autorelease];
   }
   OrgJodaTimeDateTimeUtils_checkPermission();
-  JreStrongAssign(&OrgJodaTimeDateTimeUtils_cMillisProvider_, nil, millisProvider);
+  JreVolatileStrongAssign(&OrgJodaTimeDateTimeUtils_cMillisProvider_, millisProvider);
 }
 
 void OrgJodaTimeDateTimeUtils_checkPermission() {
@@ -416,12 +418,12 @@ jboolean OrgJodaTimeDateTimeUtils_isContiguousWithOrgJodaTimeReadablePartial_(id
     OrgJodaTimeDateTimeField *loopField = [partial getFieldWithInt:i];
     if (i > 0) {
       if ([((OrgJodaTimeDateTimeField *) nil_chk(loopField)) getRangeDurationField] == nil || [((OrgJodaTimeDurationField *) nil_chk([loopField getRangeDurationField])) getType] != lastType) {
-        return NO;
+        return false;
       }
     }
     lastType = [((OrgJodaTimeDurationField *) nil_chk([((OrgJodaTimeDateTimeField *) nil_chk(loopField)) getDurationField])) getType];
   }
-  return YES;
+  return true;
 }
 
 JavaTextDateFormatSymbols *OrgJodaTimeDateTimeUtils_getDateFormatSymbolsWithJavaUtilLocale_(JavaUtilLocale *locale) {
@@ -437,12 +439,12 @@ JavaTextDateFormatSymbols *OrgJodaTimeDateTimeUtils_getDateFormatSymbolsWithJava
 
 id<JavaUtilMap> OrgJodaTimeDateTimeUtils_getDefaultTimeZoneNames() {
   OrgJodaTimeDateTimeUtils_initialize();
-  return OrgJodaTimeDateTimeUtils_cZoneNames_;
+  return JreLoadVolatileId(&OrgJodaTimeDateTimeUtils_cZoneNames_);
 }
 
 void OrgJodaTimeDateTimeUtils_setDefaultTimeZoneNamesWithJavaUtilMap_(id<JavaUtilMap> names) {
   OrgJodaTimeDateTimeUtils_initialize();
-  JreStrongAssign(&OrgJodaTimeDateTimeUtils_cZoneNames_, nil, JavaUtilCollections_unmodifiableMapWithJavaUtilMap_([new_JavaUtilHashMap_initWithJavaUtilMap_(names) autorelease]));
+  JreVolatileStrongAssign(&OrgJodaTimeDateTimeUtils_cZoneNames_, JavaUtilCollections_unmodifiableMapWithJavaUtilMap_([new_JavaUtilHashMap_initWithJavaUtilMap_(names) autorelease]));
 }
 
 jdouble OrgJodaTimeDateTimeUtils_toJulianDayWithLong_(jlong epochMillis) {
@@ -453,13 +455,13 @@ jdouble OrgJodaTimeDateTimeUtils_toJulianDayWithLong_(jlong epochMillis) {
 
 jlong OrgJodaTimeDateTimeUtils_toJulianDayNumberWithLong_(jlong epochMillis) {
   OrgJodaTimeDateTimeUtils_initialize();
-  return J2ObjCFpToLong(JavaLangMath_floorWithDouble_(OrgJodaTimeDateTimeUtils_toJulianDayWithLong_(epochMillis) + 0.5));
+  return JreFpToLong(JavaLangMath_floorWithDouble_(OrgJodaTimeDateTimeUtils_toJulianDayWithLong_(epochMillis) + 0.5));
 }
 
 jlong OrgJodaTimeDateTimeUtils_fromJulianDayWithDouble_(jdouble julianDay) {
   OrgJodaTimeDateTimeUtils_initialize();
   jdouble epochDay = julianDay - 2440587.5;
-  return J2ObjCFpToLong((epochDay * 86400000.0));
+  return JreFpToLong((epochDay * 86400000.0));
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeUtils)
@@ -484,10 +486,12 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeUtils_MillisProvider)
   return JavaLangSystem_currentTimeMillis();
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeDateTimeUtils_SystemMillisProvider_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcMethodInfo methods[] = {
@@ -529,7 +533,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeUtils_SystemMillisProvider)
     { "getMillis", NULL, "J", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "iMillis_", NULL, 0x12, "J", NULL, NULL,  },
+    { "iMillis_", NULL, 0x12, "J", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeDateTimeUtils_FixedMillisProvider = { 2, "FixedMillisProvider", "org.joda.time", "DateTimeUtils", 0x8, 2, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeDateTimeUtils_FixedMillisProvider;
@@ -567,7 +571,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeUtils_FixedMillisProvider)
     { "getMillis", NULL, "J", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "iMillis_", NULL, 0x12, "J", NULL, NULL,  },
+    { "iMillis_", NULL, 0x12, "J", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeDateTimeUtils_OffsetMillisProvider = { 2, "OffsetMillisProvider", "org.joda.time", "DateTimeUtils", 0x8, 2, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeDateTimeUtils_OffsetMillisProvider;

@@ -15,9 +15,15 @@
 #define OrgJodaTimeChronoBasicFixedMonthChronology_MILLIS_PER_YEAR 31557600000LL
 #define OrgJodaTimeChronoBasicFixedMonthChronology_MILLIS_PER_MONTH 2592000000LL
 
-/**
+/*!
  @brief Abstract implementation of a calendar system based around fixed length months.
- <p> As the month length is fixed various calculations can be optimised. This implementation assumes any additional days after twelve months fall into a thirteenth month. <p> BasicFixedMonthChronology is thread-safe and immutable, and all subclasses must be as well.
+ <p>
+ As the month length is fixed various calculations can be optimised.
+ This implementation assumes any additional days after twelve
+ months fall into a thirteenth month.
+ <p>
+ BasicFixedMonthChronology is thread-safe and immutable, and all
+ subclasses must be as well.
  @author Brian S O'Neill
  @author Stephen Colebourne
  @since 1.2, refactored from CopticChronology
@@ -26,11 +32,11 @@
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Restricted constructor.
- @param base the base chronology
- @param param the init parameter
- @param minDaysInFirstWeek the minimum days in the first week
+ @param base  the base chronology
+ @param param  the init parameter
+ @param minDaysInFirstWeek  the minimum days in the first week
  */
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
                                        withId:(id)param

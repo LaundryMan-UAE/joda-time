@@ -15,7 +15,7 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
+/*!
  @brief Provides time calculations for the year of era component of time.
  @author Brian S O'Neill
  @since 1.0
@@ -58,19 +58,19 @@
 
 - (jlong)roundFloorWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Set the year component of the specified time instant.
- @param instant the time instant in millis to update.
- @param year the year (0,292278994) to update the time to.
+ @param instant  the time instant in millis to update.
+ @param year  the year (0,292278994) to update the time to.
  @return the updated time instant.
- @throws IllegalArgumentException if year is invalid.
+ @throws IllegalArgumentException  if year is invalid.
  */
 - (jlong)setWithLong:(jlong)instant
              withInt:(jint)year;
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)initWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)yearField

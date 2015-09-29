@@ -36,14 +36,15 @@
 
 @interface OrgJodaTimeSeconds ()
 
-/**
+/*!
  @brief Creates a new instance representing a number of seconds.
- You should consider using the factory method #seconds(int) instead of the constructor.
- @param seconds the number of seconds to represent
+ You should consider using the factory method <code>seconds(int)</code>
+ instead of the constructor.
+ @param seconds  the number of seconds to represent
  */
 - (instancetype)initWithInt:(jint)seconds;
 
-/**
+/*!
  @brief Resolves singletons.
  @return the singleton instance
  */
@@ -199,13 +200,13 @@ OrgJodaTimeSeconds *OrgJodaTimeSeconds_MIN_VALUE_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeSeconds class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeSeconds_ZERO_, nil, new_OrgJodaTimeSeconds_initWithInt_(0));
-    JreStrongAssignAndConsume(&OrgJodaTimeSeconds_ONE_, nil, new_OrgJodaTimeSeconds_initWithInt_(1));
-    JreStrongAssignAndConsume(&OrgJodaTimeSeconds_TWO_, nil, new_OrgJodaTimeSeconds_initWithInt_(2));
-    JreStrongAssignAndConsume(&OrgJodaTimeSeconds_THREE_, nil, new_OrgJodaTimeSeconds_initWithInt_(3));
-    JreStrongAssignAndConsume(&OrgJodaTimeSeconds_MAX_VALUE_, nil, new_OrgJodaTimeSeconds_initWithInt_(JavaLangInteger_MAX_VALUE));
-    JreStrongAssignAndConsume(&OrgJodaTimeSeconds_MIN_VALUE_, nil, new_OrgJodaTimeSeconds_initWithInt_(JavaLangInteger_MIN_VALUE));
-    JreStrongAssign(&OrgJodaTimeSeconds_PARSER_, nil, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_seconds()]);
+    JreStrongAssignAndConsume(&OrgJodaTimeSeconds_ZERO_, new_OrgJodaTimeSeconds_initWithInt_(0));
+    JreStrongAssignAndConsume(&OrgJodaTimeSeconds_ONE_, new_OrgJodaTimeSeconds_initWithInt_(1));
+    JreStrongAssignAndConsume(&OrgJodaTimeSeconds_TWO_, new_OrgJodaTimeSeconds_initWithInt_(2));
+    JreStrongAssignAndConsume(&OrgJodaTimeSeconds_THREE_, new_OrgJodaTimeSeconds_initWithInt_(3));
+    JreStrongAssignAndConsume(&OrgJodaTimeSeconds_MAX_VALUE_, new_OrgJodaTimeSeconds_initWithInt_(JavaLangInteger_MAX_VALUE));
+    JreStrongAssignAndConsume(&OrgJodaTimeSeconds_MIN_VALUE_, new_OrgJodaTimeSeconds_initWithInt_(JavaLangInteger_MIN_VALUE));
+    JreStrongAssign(&OrgJodaTimeSeconds_PARSER_, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_seconds()]);
     J2OBJC_SET_INITIALIZED(OrgJodaTimeSeconds)
   }
 }
@@ -248,13 +249,13 @@ OrgJodaTimeSeconds *OrgJodaTimeSeconds_MIN_VALUE_;
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Seconds;", &OrgJodaTimeSeconds_ZERO_, NULL,  },
-    { "ONE_", NULL, 0x19, "Lorg.joda.time.Seconds;", &OrgJodaTimeSeconds_ONE_, NULL,  },
-    { "TWO_", NULL, 0x19, "Lorg.joda.time.Seconds;", &OrgJodaTimeSeconds_TWO_, NULL,  },
-    { "THREE_", NULL, 0x19, "Lorg.joda.time.Seconds;", &OrgJodaTimeSeconds_THREE_, NULL,  },
-    { "MAX_VALUE_", NULL, 0x19, "Lorg.joda.time.Seconds;", &OrgJodaTimeSeconds_MAX_VALUE_, NULL,  },
-    { "MIN_VALUE_", NULL, 0x19, "Lorg.joda.time.Seconds;", &OrgJodaTimeSeconds_MIN_VALUE_, NULL,  },
-    { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeSeconds_PARSER_, NULL,  },
+    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Seconds;", &OrgJodaTimeSeconds_ZERO_, NULL, .constantValue.asLong = 0 },
+    { "ONE_", NULL, 0x19, "Lorg.joda.time.Seconds;", &OrgJodaTimeSeconds_ONE_, NULL, .constantValue.asLong = 0 },
+    { "TWO_", NULL, 0x19, "Lorg.joda.time.Seconds;", &OrgJodaTimeSeconds_TWO_, NULL, .constantValue.asLong = 0 },
+    { "THREE_", NULL, 0x19, "Lorg.joda.time.Seconds;", &OrgJodaTimeSeconds_THREE_, NULL, .constantValue.asLong = 0 },
+    { "MAX_VALUE_", NULL, 0x19, "Lorg.joda.time.Seconds;", &OrgJodaTimeSeconds_MAX_VALUE_, NULL, .constantValue.asLong = 0 },
+    { "MIN_VALUE_", NULL, 0x19, "Lorg.joda.time.Seconds;", &OrgJodaTimeSeconds_MIN_VALUE_, NULL, .constantValue.asLong = 0 },
+    { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeSeconds_PARSER_, NULL, .constantValue.asLong = 0 },
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeSeconds_serialVersionUID },
   };
   static const J2ObjcClassInfo _OrgJodaTimeSeconds = { 2, "Seconds", "org.joda.time", NULL, 0x11, 26, methods, 8, fields, 0, NULL, 0, NULL, NULL, NULL };

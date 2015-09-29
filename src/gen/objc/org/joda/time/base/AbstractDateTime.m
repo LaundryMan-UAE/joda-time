@@ -26,10 +26,12 @@
 
 @implementation OrgJodaTimeBaseAbstractDateTime
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeBaseAbstractDateTime_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type {
   if (type == nil) {

@@ -14,7 +14,7 @@
 
 @interface OrgJodaTimeFieldBaseDurationField () {
  @public
-  /**
+  /*!
    @brief A desriptive name for the field.
    */
   OrgJodaTimeDurationFieldType *iType_;
@@ -44,7 +44,7 @@ __attribute__((unused)) static NSString *OrgJodaTimeFieldBaseDurationField_getNa
 }
 
 - (jboolean)isSupported {
-  return YES;
+  return true;
 }
 
 - (jint)getValueWithLong:(jlong)duration {
@@ -114,7 +114,7 @@ __attribute__((unused)) static NSString *OrgJodaTimeFieldBaseDurationField_getNa
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldBaseDurationField_serialVersionUID },
-    { "iType_", NULL, 0x12, "Lorg.joda.time.DurationFieldType;", NULL, NULL,  },
+    { "iType_", NULL, 0x12, "Lorg.joda.time.DurationFieldType;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldBaseDurationField = { 2, "BaseDurationField", "org.joda.time.field", NULL, 0x401, 12, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldBaseDurationField;
@@ -127,7 +127,7 @@ void OrgJodaTimeFieldBaseDurationField_initWithOrgJodaTimeDurationFieldType_(Org
   if (type == nil) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The type must not be null") autorelease];
   }
-  OrgJodaTimeFieldBaseDurationField_set_iType_(self, type);
+  JreStrongAssign(&self->iType_, type);
 }
 
 NSString *OrgJodaTimeFieldBaseDurationField_getName(OrgJodaTimeFieldBaseDurationField *self) {

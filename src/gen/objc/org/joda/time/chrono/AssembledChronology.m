@@ -332,44 +332,44 @@ __attribute__((unused)) static jboolean OrgJodaTimeChronoAssembledChronology_Fie
   [self assembleWithOrgJodaTimeChronoAssembledChronology_Fields:fields];
   {
     OrgJodaTimeDurationField *f;
-    OrgJodaTimeChronoAssembledChronology_set_iMillis_(self, (f = fields->millis_) != nil ? f : [super millis]);
-    OrgJodaTimeChronoAssembledChronology_set_iSeconds_(self, (f = fields->seconds_) != nil ? f : [super seconds]);
-    OrgJodaTimeChronoAssembledChronology_set_iMinutes_(self, (f = fields->minutes_) != nil ? f : [super minutes]);
-    OrgJodaTimeChronoAssembledChronology_set_iHours_(self, (f = fields->hours_) != nil ? f : [super hours]);
-    OrgJodaTimeChronoAssembledChronology_set_iHalfdays_(self, (f = fields->halfdays_) != nil ? f : [super halfdays]);
-    OrgJodaTimeChronoAssembledChronology_set_iDays_(self, (f = fields->days_) != nil ? f : [super days]);
-    OrgJodaTimeChronoAssembledChronology_set_iWeeks_(self, (f = fields->weeks_) != nil ? f : [super weeks]);
-    OrgJodaTimeChronoAssembledChronology_set_iWeekyears_(self, (f = fields->weekyears_) != nil ? f : [super weekyears]);
-    OrgJodaTimeChronoAssembledChronology_set_iMonths_(self, (f = fields->months_) != nil ? f : [super months]);
-    OrgJodaTimeChronoAssembledChronology_set_iYears_(self, (f = fields->years_) != nil ? f : [super years]);
-    OrgJodaTimeChronoAssembledChronology_set_iCenturies_(self, (f = fields->centuries_) != nil ? f : [super centuries]);
-    OrgJodaTimeChronoAssembledChronology_set_iEras_(self, (f = fields->eras_) != nil ? f : [super eras]);
+    JreStrongAssign(&iMillis_, (f = fields->millis_) != nil ? f : [super millis]);
+    JreStrongAssign(&iSeconds_, (f = fields->seconds_) != nil ? f : [super seconds]);
+    JreStrongAssign(&iMinutes_, (f = fields->minutes_) != nil ? f : [super minutes]);
+    JreStrongAssign(&iHours_, (f = fields->hours_) != nil ? f : [super hours]);
+    JreStrongAssign(&iHalfdays_, (f = fields->halfdays_) != nil ? f : [super halfdays]);
+    JreStrongAssign(&iDays_, (f = fields->days_) != nil ? f : [super days]);
+    JreStrongAssign(&iWeeks_, (f = fields->weeks_) != nil ? f : [super weeks]);
+    JreStrongAssign(&iWeekyears_, (f = fields->weekyears_) != nil ? f : [super weekyears]);
+    JreStrongAssign(&iMonths_, (f = fields->months_) != nil ? f : [super months]);
+    JreStrongAssign(&iYears_, (f = fields->years_) != nil ? f : [super years]);
+    JreStrongAssign(&iCenturies_, (f = fields->centuries_) != nil ? f : [super centuries]);
+    JreStrongAssign(&iEras_, (f = fields->eras_) != nil ? f : [super eras]);
   }
   {
     OrgJodaTimeDateTimeField *f;
-    OrgJodaTimeChronoAssembledChronology_set_iMillisOfSecond_(self, (f = fields->millisOfSecond_) != nil ? f : [super millisOfSecond]);
-    OrgJodaTimeChronoAssembledChronology_set_iMillisOfDay_(self, (f = fields->millisOfDay_) != nil ? f : [super millisOfDay]);
-    OrgJodaTimeChronoAssembledChronology_set_iSecondOfMinute_(self, (f = fields->secondOfMinute_) != nil ? f : [super secondOfMinute]);
-    OrgJodaTimeChronoAssembledChronology_set_iSecondOfDay_(self, (f = fields->secondOfDay_) != nil ? f : [super secondOfDay]);
-    OrgJodaTimeChronoAssembledChronology_set_iMinuteOfHour_(self, (f = fields->minuteOfHour_) != nil ? f : [super minuteOfHour]);
-    OrgJodaTimeChronoAssembledChronology_set_iMinuteOfDay_(self, (f = fields->minuteOfDay_) != nil ? f : [super minuteOfDay]);
-    OrgJodaTimeChronoAssembledChronology_set_iHourOfDay_(self, (f = fields->hourOfDay_) != nil ? f : [super hourOfDay]);
-    OrgJodaTimeChronoAssembledChronology_set_iClockhourOfDay_(self, (f = fields->clockhourOfDay_) != nil ? f : [super clockhourOfDay]);
-    OrgJodaTimeChronoAssembledChronology_set_iHourOfHalfday_(self, (f = fields->hourOfHalfday_) != nil ? f : [super hourOfHalfday]);
-    OrgJodaTimeChronoAssembledChronology_set_iClockhourOfHalfday_(self, (f = fields->clockhourOfHalfday_) != nil ? f : [super clockhourOfHalfday]);
-    OrgJodaTimeChronoAssembledChronology_set_iHalfdayOfDay_(self, (f = fields->halfdayOfDay_) != nil ? f : [super halfdayOfDay]);
-    OrgJodaTimeChronoAssembledChronology_set_iDayOfWeek_(self, (f = fields->dayOfWeek_) != nil ? f : [super dayOfWeek]);
-    OrgJodaTimeChronoAssembledChronology_set_iDayOfMonth_(self, (f = fields->dayOfMonth_) != nil ? f : [super dayOfMonth]);
-    OrgJodaTimeChronoAssembledChronology_set_iDayOfYear_(self, (f = fields->dayOfYear_) != nil ? f : [super dayOfYear]);
-    OrgJodaTimeChronoAssembledChronology_set_iWeekOfWeekyear_(self, (f = fields->weekOfWeekyear_) != nil ? f : [super weekOfWeekyear]);
-    OrgJodaTimeChronoAssembledChronology_set_iWeekyear_(self, (f = fields->weekyear_) != nil ? f : [super weekyear]);
-    OrgJodaTimeChronoAssembledChronology_set_iWeekyearOfCentury_(self, (f = fields->weekyearOfCentury_) != nil ? f : [super weekyearOfCentury]);
-    OrgJodaTimeChronoAssembledChronology_set_iMonthOfYear_(self, (f = fields->monthOfYear_) != nil ? f : [super monthOfYear]);
-    OrgJodaTimeChronoAssembledChronology_set_iYear_(self, (f = fields->year_) != nil ? f : [super year]);
-    OrgJodaTimeChronoAssembledChronology_set_iYearOfEra_(self, (f = fields->yearOfEra_) != nil ? f : [super yearOfEra]);
-    OrgJodaTimeChronoAssembledChronology_set_iYearOfCentury_(self, (f = fields->yearOfCentury_) != nil ? f : [super yearOfCentury]);
-    OrgJodaTimeChronoAssembledChronology_set_iCenturyOfEra_(self, (f = fields->centuryOfEra_) != nil ? f : [super centuryOfEra]);
-    OrgJodaTimeChronoAssembledChronology_set_iEra_(self, (f = fields->era_) != nil ? f : [super era]);
+    JreStrongAssign(&iMillisOfSecond_, (f = fields->millisOfSecond_) != nil ? f : [super millisOfSecond]);
+    JreStrongAssign(&iMillisOfDay_, (f = fields->millisOfDay_) != nil ? f : [super millisOfDay]);
+    JreStrongAssign(&iSecondOfMinute_, (f = fields->secondOfMinute_) != nil ? f : [super secondOfMinute]);
+    JreStrongAssign(&iSecondOfDay_, (f = fields->secondOfDay_) != nil ? f : [super secondOfDay]);
+    JreStrongAssign(&iMinuteOfHour_, (f = fields->minuteOfHour_) != nil ? f : [super minuteOfHour]);
+    JreStrongAssign(&iMinuteOfDay_, (f = fields->minuteOfDay_) != nil ? f : [super minuteOfDay]);
+    JreStrongAssign(&iHourOfDay_, (f = fields->hourOfDay_) != nil ? f : [super hourOfDay]);
+    JreStrongAssign(&iClockhourOfDay_, (f = fields->clockhourOfDay_) != nil ? f : [super clockhourOfDay]);
+    JreStrongAssign(&iHourOfHalfday_, (f = fields->hourOfHalfday_) != nil ? f : [super hourOfHalfday]);
+    JreStrongAssign(&iClockhourOfHalfday_, (f = fields->clockhourOfHalfday_) != nil ? f : [super clockhourOfHalfday]);
+    JreStrongAssign(&iHalfdayOfDay_, (f = fields->halfdayOfDay_) != nil ? f : [super halfdayOfDay]);
+    JreStrongAssign(&iDayOfWeek_, (f = fields->dayOfWeek_) != nil ? f : [super dayOfWeek]);
+    JreStrongAssign(&iDayOfMonth_, (f = fields->dayOfMonth_) != nil ? f : [super dayOfMonth]);
+    JreStrongAssign(&iDayOfYear_, (f = fields->dayOfYear_) != nil ? f : [super dayOfYear]);
+    JreStrongAssign(&iWeekOfWeekyear_, (f = fields->weekOfWeekyear_) != nil ? f : [super weekOfWeekyear]);
+    JreStrongAssign(&iWeekyear_, (f = fields->weekyear_) != nil ? f : [super weekyear]);
+    JreStrongAssign(&iWeekyearOfCentury_, (f = fields->weekyearOfCentury_) != nil ? f : [super weekyearOfCentury]);
+    JreStrongAssign(&iMonthOfYear_, (f = fields->monthOfYear_) != nil ? f : [super monthOfYear]);
+    JreStrongAssign(&iYear_, (f = fields->year_) != nil ? f : [super year]);
+    JreStrongAssign(&iYearOfEra_, (f = fields->yearOfEra_) != nil ? f : [super yearOfEra]);
+    JreStrongAssign(&iYearOfCentury_, (f = fields->yearOfCentury_) != nil ? f : [super yearOfCentury]);
+    JreStrongAssign(&iCenturyOfEra_, (f = fields->centuryOfEra_) != nil ? f : [super centuryOfEra]);
+    JreStrongAssign(&iEra_, (f = fields->era_) != nil ? f : [super era]);
   }
   jint flags;
   if (iBase_ == nil) {
@@ -387,8 +387,8 @@ __attribute__((unused)) static jboolean OrgJodaTimeChronoAssembledChronology_Fie
 }
 
 - (void)dealloc {
-  if (iBase_ != self) RELEASE_(iBase_);
-  if (iParam_ != self) RELEASE_(iParam_);
+  RELEASE_(iBase_);
+  RELEASE_(iParam_);
   RELEASE_(iMillis_);
   RELEASE_(iSeconds_);
   RELEASE_(iMinutes_);
@@ -477,44 +477,44 @@ __attribute__((unused)) static jboolean OrgJodaTimeChronoAssembledChronology_Fie
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoAssembledChronology_serialVersionUID },
-    { "iBase_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL,  },
-    { "iParam_", NULL, 0x12, "Ljava.lang.Object;", NULL, NULL,  },
-    { "iMillis_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iSeconds_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iMinutes_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iHours_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iHalfdays_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iDays_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iWeeks_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iWeekyears_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iMonths_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iYears_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iCenturies_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iEras_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iMillisOfSecond_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iMillisOfDay_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iSecondOfMinute_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iSecondOfDay_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iMinuteOfHour_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iMinuteOfDay_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iHourOfDay_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iClockhourOfDay_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iHourOfHalfday_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iClockhourOfHalfday_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iHalfdayOfDay_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iDayOfWeek_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iDayOfMonth_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iDayOfYear_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iWeekOfWeekyear_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iWeekyear_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iWeekyearOfCentury_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iMonthOfYear_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iYear_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iYearOfEra_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iYearOfCentury_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iCenturyOfEra_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iEra_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iBaseFlags_", NULL, 0x82, "I", NULL, NULL,  },
+    { "iBase_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iParam_", NULL, 0x12, "Ljava.lang.Object;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMillis_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iSeconds_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMinutes_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iHours_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iHalfdays_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iDays_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iWeeks_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iWeekyears_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMonths_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iYears_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iCenturies_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iEras_", NULL, 0x82, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMillisOfSecond_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMillisOfDay_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iSecondOfMinute_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iSecondOfDay_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMinuteOfHour_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMinuteOfDay_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iHourOfDay_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iClockhourOfDay_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iHourOfHalfday_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iClockhourOfHalfday_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iHalfdayOfDay_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iDayOfWeek_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iDayOfMonth_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iDayOfYear_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iWeekOfWeekyear_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iWeekyear_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iWeekyearOfCentury_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMonthOfYear_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iYear_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iYearOfEra_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iYearOfCentury_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iCenturyOfEra_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iEra_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iBaseFlags_", NULL, 0x82, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lorg.joda.time.chrono.AssembledChronology$Fields;"};
   static const J2ObjcClassInfo _OrgJodaTimeChronoAssembledChronology = { 2, "AssembledChronology", "org.joda.time.chrono", NULL, 0x401, 45, methods, 39, fields, 0, NULL, 1, inner_classes, NULL, NULL };
@@ -525,8 +525,8 @@ __attribute__((unused)) static jboolean OrgJodaTimeChronoAssembledChronology_Fie
 
 void OrgJodaTimeChronoAssembledChronology_initWithOrgJodaTimeChronology_withId_(OrgJodaTimeChronoAssembledChronology *self, OrgJodaTimeChronology *base, id param) {
   OrgJodaTimeChronoBaseChronology_init(self);
-  OrgJodaTimeChronoAssembledChronology_set_iBase_(self, base);
-  OrgJodaTimeChronoAssembledChronology_set_iParam_(self, param);
+  JreStrongAssign(&self->iBase_, base);
+  JreStrongAssign(&self->iParam_, param);
   [self setFields];
 }
 
@@ -534,121 +534,123 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoAssembledChronology)
 
 @implementation OrgJodaTimeChronoAssembledChronology_Fields
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeChronoAssembledChronology_Fields_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)copyFieldsFromWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
   {
     OrgJodaTimeDurationField *f;
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(f = [((OrgJodaTimeChronology *) nil_chk(chrono)) millis])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_millis_(self, f);
+      JreStrongAssign(&millis_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(f = [chrono seconds])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_seconds_(self, f);
+      JreStrongAssign(&seconds_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(f = [chrono minutes])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_minutes_(self, f);
+      JreStrongAssign(&minutes_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(f = [chrono hours])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_hours_(self, f);
+      JreStrongAssign(&hours_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(f = [chrono halfdays])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_halfdays_(self, f);
+      JreStrongAssign(&halfdays_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(f = [chrono days])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_days_(self, f);
+      JreStrongAssign(&days_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(f = [chrono weeks])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_weeks_(self, f);
+      JreStrongAssign(&weeks_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(f = [chrono weekyears])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_weekyears_(self, f);
+      JreStrongAssign(&weekyears_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(f = [chrono months])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_months_(self, f);
+      JreStrongAssign(&months_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(f = [chrono years])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_years_(self, f);
+      JreStrongAssign(&years_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(f = [chrono centuries])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_centuries_(self, f);
+      JreStrongAssign(&centuries_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(f = [chrono eras])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_eras_(self, f);
+      JreStrongAssign(&eras_, f);
     }
   }
   {
     OrgJodaTimeDateTimeField *f;
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono millisOfSecond])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_millisOfSecond_(self, f);
+      JreStrongAssign(&millisOfSecond_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono millisOfDay])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_millisOfDay_(self, f);
+      JreStrongAssign(&millisOfDay_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono secondOfMinute])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_secondOfMinute_(self, f);
+      JreStrongAssign(&secondOfMinute_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono secondOfDay])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_secondOfDay_(self, f);
+      JreStrongAssign(&secondOfDay_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono minuteOfHour])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_minuteOfHour_(self, f);
+      JreStrongAssign(&minuteOfHour_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono minuteOfDay])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_minuteOfDay_(self, f);
+      JreStrongAssign(&minuteOfDay_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono hourOfDay])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_hourOfDay_(self, f);
+      JreStrongAssign(&hourOfDay_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono clockhourOfDay])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_clockhourOfDay_(self, f);
+      JreStrongAssign(&clockhourOfDay_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono hourOfHalfday])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_hourOfHalfday_(self, f);
+      JreStrongAssign(&hourOfHalfday_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono clockhourOfHalfday])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_clockhourOfHalfday_(self, f);
+      JreStrongAssign(&clockhourOfHalfday_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono halfdayOfDay])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_halfdayOfDay_(self, f);
+      JreStrongAssign(&halfdayOfDay_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono dayOfWeek])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfWeek_(self, f);
+      JreStrongAssign(&dayOfWeek_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono dayOfMonth])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfMonth_(self, f);
+      JreStrongAssign(&dayOfMonth_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono dayOfYear])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfYear_(self, f);
+      JreStrongAssign(&dayOfYear_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono weekOfWeekyear])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_weekOfWeekyear_(self, f);
+      JreStrongAssign(&weekOfWeekyear_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono weekyear])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_weekyear_(self, f);
+      JreStrongAssign(&weekyear_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono weekyearOfCentury])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_weekyearOfCentury_(self, f);
+      JreStrongAssign(&weekyearOfCentury_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono monthOfYear])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_monthOfYear_(self, f);
+      JreStrongAssign(&monthOfYear_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono year])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_year_(self, f);
+      JreStrongAssign(&year_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono yearOfEra])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_yearOfEra_(self, f);
+      JreStrongAssign(&yearOfEra_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono yearOfCentury])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_yearOfCentury_(self, f);
+      JreStrongAssign(&yearOfCentury_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono centuryOfEra])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_centuryOfEra_(self, f);
+      JreStrongAssign(&centuryOfEra_, f);
     }
     if (OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(f = [chrono era])) {
-      OrgJodaTimeChronoAssembledChronology_Fields_set_era_(self, f);
+      JreStrongAssign(&era_, f);
     }
   }
 }
@@ -708,41 +710,41 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoAssembledChronology)
     { "isSupportedWithOrgJodaTimeDateTimeField:", "isSupported", "Z", 0xa, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "millis_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "seconds_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "minutes_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "hours_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "halfdays_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "days_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "weeks_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "weekyears_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "months_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "years_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "centuries_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "eras_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "millisOfSecond_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "millisOfDay_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "secondOfMinute_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "secondOfDay_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "minuteOfHour_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "minuteOfDay_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "hourOfDay_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "clockhourOfDay_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "hourOfHalfday_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "clockhourOfHalfday_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "halfdayOfDay_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "dayOfWeek_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "dayOfMonth_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "dayOfYear_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "weekOfWeekyear_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "weekyear_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "weekyearOfCentury_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "monthOfYear_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "year_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "yearOfEra_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "yearOfCentury_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "centuryOfEra_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "era_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
+    { "millis_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "seconds_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "minutes_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "hours_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "halfdays_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "days_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "weeks_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "weekyears_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "months_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "years_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "centuries_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "eras_", NULL, 0x1, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "millisOfSecond_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "millisOfDay_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "secondOfMinute_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "secondOfDay_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "minuteOfHour_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "minuteOfDay_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "hourOfDay_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "clockhourOfDay_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "hourOfHalfday_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "clockhourOfHalfday_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "halfdayOfDay_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "dayOfWeek_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "dayOfMonth_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "dayOfYear_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "weekOfWeekyear_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "weekyear_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "weekyearOfCentury_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "monthOfYear_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "year_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "yearOfEra_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "yearOfCentury_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "centuryOfEra_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "era_", NULL, 0x1, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoAssembledChronology_Fields = { 2, "Fields", "org.joda.time.chrono", "AssembledChronology", 0x19, 4, methods, 35, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoAssembledChronology_Fields;
@@ -762,12 +764,12 @@ OrgJodaTimeChronoAssembledChronology_Fields *new_OrgJodaTimeChronoAssembledChron
 
 jboolean OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(OrgJodaTimeDurationField *field) {
   OrgJodaTimeChronoAssembledChronology_Fields_initialize();
-  return field == nil ? NO : [field isSupported];
+  return field == nil ? false : [field isSupported];
 }
 
 jboolean OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDateTimeField_(OrgJodaTimeDateTimeField *field) {
   OrgJodaTimeChronoAssembledChronology_Fields_initialize();
-  return field == nil ? NO : [field isSupported];
+  return field == nil ? false : [field isSupported];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoAssembledChronology_Fields)

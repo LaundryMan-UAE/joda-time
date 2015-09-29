@@ -12,9 +12,14 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeField;
 
-/**
- @brief Wraps another field such that a certain value is added back into the sequence of numbers.
- <p> This reverses the effect of SkipDateTimeField. This isn't very elegant. <p> SkipUndoDateTimeField is thread-safe and immutable.
+/*!
+ @brief Wraps another field such that a certain value is added back into
+ the sequence of numbers.
+ <p>
+ This reverses the effect of SkipDateTimeField. This isn't very
+ elegant.
+ <p>
+ SkipUndoDateTimeField is thread-safe and immutable.
  @author Brian S O'Neill
  @author Stephen Colebourne
  @since 1.0
@@ -23,19 +28,19 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Constructor that reinserts zero.
- @param chronology the chronoogy to use
- @param field the field to skip zero on
+ @param chronology  the chronoogy to use
+ @param field  the field to skip zero on
  */
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology
                  withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
 
-/**
+/*!
  @brief Constructor.
- @param chronology the chronoogy to use
- @param field the field to skip zero on
- @param skip the value to skip
+ @param chronology  the chronoogy to use
+ @param field  the field to skip zero on
+ @param skip  the value to skip
  */
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology
                  withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field

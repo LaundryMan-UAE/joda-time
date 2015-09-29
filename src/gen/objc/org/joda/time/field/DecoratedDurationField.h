@@ -12,9 +12,19 @@
 @class OrgJodaTimeDurationField;
 @class OrgJodaTimeDurationFieldType;
 
-/**
- @brief <code>DecoratedDurationField</code> extends BaseDurationField , implementing only the minimum required set of methods.
- These implemented methods delegate to a wrapped field. <p> This design allows new DurationField types to be defined that piggyback on top of another, inheriting all the safe method implementations from BaseDurationField. Should any method require pure delegation to the wrapped field, simply override and use the provided getWrappedField method. <p> DecoratedDurationField is thread-safe and immutable, and its subclasses must be as well.
+/*!
+ @brief <code>DecoratedDurationField</code> extends <code>BaseDurationField</code>,
+ implementing only the minimum required set of methods.
+ These implemented
+ methods delegate to a wrapped field.
+ <p>
+ This design allows new DurationField types to be defined that piggyback on
+ top of another, inheriting all the safe method implementations from
+ BaseDurationField. Should any method require pure delegation to the
+ wrapped field, simply override and use the provided getWrappedField method.
+ <p>
+ DecoratedDurationField is thread-safe and immutable, and its subclasses must
+ be as well.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -22,10 +32,10 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Constructor.
- @param field the base field
- @param type the type to actually use
+ @param field  the base field
+ @param type  the type to actually use
  */
 - (instancetype)initWithOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)field
                 withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)type;
@@ -50,7 +60,7 @@
 - (jlong)getValueAsLongWithLong:(jlong)duration
                        withLong:(jlong)instant;
 
-/**
+/*!
  @brief Gets the wrapped duration field.
  @return the wrapped DurationField
  */

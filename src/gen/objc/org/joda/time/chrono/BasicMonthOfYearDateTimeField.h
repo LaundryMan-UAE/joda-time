@@ -14,7 +14,7 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
+/*!
  @brief Provides time calculations for the month of the year component of time.
  @author Guy Allard
  @author Stephen Colebourne
@@ -25,11 +25,16 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Add the specified month to the specified time instant.
- The amount added may be negative.<p> If the new month has less total days than the specified day of the month, this value is coerced to the nearest sane value. e.g.<p> 07-31 - (1 month) = 06-30<p> 03-31 - (1 month) = 02-28 or 02-29 depending<p>
- @param instant the time instant in millis to update.
- @param months the months to add (can be negative).
+ The amount added may be negative.<p>
+ If the new month has less total days than the specified
+ day of the month, this value is coerced to the nearest
+ sane value. e.g.<p>
+ 07-31 - (1 month) = 06-30<p>
+ 03-31 - (1 month) = 02-28 or 02-29 depending<p>
+ @param instant  the time instant in millis to update.
+ @param months  the months to add (can be negative).
  @return the updated time instant.
  */
 - (jlong)addWithLong:(jlong)instant
@@ -43,18 +48,19 @@
                                       withIntArray:(IOSIntArray *)values
                                            withInt:(jint)valueToAdd;
 
-/**
- @brief Add to the Month component of the specified time instant wrapping around within that component if necessary.
- @param instant the time instant in millis to update.
- @param months the months to add (can be negative).
+/*!
+ @brief Add to the Month component of the specified time instant
+ wrapping around within that component if necessary.
+ @param instant  the time instant in millis to update.
+ @param months  the months to add (can be negative).
  @return the updated time instant.
  */
 - (jlong)addWrapFieldWithLong:(jlong)instant
                       withInt:(jint)months;
 
-/**
+/*!
  @brief Get the Month component of the specified time instant.
- @param instant the time instant in millis to query.
+ @param instant  the time instant in millis to query.
  @return the month extracted from the input.
  */
 - (jint)getWithLong:(jlong)instant;
@@ -80,20 +86,25 @@
 
 - (jlong)roundFloorWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Set the Month component of the specified time instant.
- <p> If the new month has less total days than the specified day of the month, this value is coerced to the nearest sane value. e.g.<p> 07-31 to month 6 = 06-30<p> 03-31 to month 2 = 02-28 or 02-29 depending<p>
- @param instant the time instant in millis to update.
- @param month the month (1,12) to update the time to.
+ <p>
+ If the new month has less total days than the specified
+ day of the month, this value is coerced to the nearest
+ sane value. e.g.<p>
+ 07-31 to month 6 = 06-30<p>
+ 03-31 to month 2 = 02-28 or 02-29 depending<p>
+ @param instant  the time instant in millis to update.
+ @param month  the month (1,12) to update the time to.
  @return the updated time instant.
- @throws IllegalArgumentException if month is invalid
+ @throws IllegalArgumentException  if month is invalid
  */
 - (jlong)setWithLong:(jlong)instant
              withInt:(jint)month;
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Restricted constructor.
  @param leapMonth the month of year that leaps
  */

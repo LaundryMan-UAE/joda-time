@@ -3,7 +3,6 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/joda-time/src/main/java/org/joda/time/format/PeriodFormat.java
 //
 
-#include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "java/util/Enumeration.h"
@@ -46,10 +45,12 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormat)
 
 @implementation OrgJodaTimeFormatPeriodFormat
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeFormatPeriodFormat_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (OrgJodaTimeFormatPeriodFormatter *)getDefault {
   return OrgJodaTimeFormatPeriodFormat_getDefault();
@@ -82,7 +83,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormat)
 
 + (void)initialize {
   if (self == [OrgJodaTimeFormatPeriodFormat class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeFormatPeriodFormat_FORMATTERS_, nil, new_JavaUtilConcurrentConcurrentHashMap_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeFormatPeriodFormat_FORMATTERS_, new_JavaUtilConcurrentConcurrentHashMap_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeFormatPeriodFormat)
   }
 }
@@ -99,8 +100,8 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormat)
     { "containsKeyWithJavaUtilResourceBundle:withNSString:", "containsKey", "Z", 0xa, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "BUNDLE_NAME_", NULL, 0x1a, "Ljava.lang.String;", &OrgJodaTimeFormatPeriodFormat_BUNDLE_NAME_, NULL,  },
-    { "FORMATTERS_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentMap;", &OrgJodaTimeFormatPeriodFormat_FORMATTERS_, "Ljava/util/concurrent/ConcurrentMap<Ljava/util/Locale;Lorg/joda/time/format/PeriodFormatter;>;",  },
+    { "BUNDLE_NAME_", NULL, 0x1a, "Ljava.lang.String;", &OrgJodaTimeFormatPeriodFormat_BUNDLE_NAME_, NULL, .constantValue.asLong = 0 },
+    { "FORMATTERS_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentMap;", &OrgJodaTimeFormatPeriodFormat_FORMATTERS_, "Ljava/util/concurrent/ConcurrentMap<Ljava/util/Locale;Lorg/joda/time/format/PeriodFormatter;>;", .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormat = { 2, "PeriodFormat", "org.joda.time.format", NULL, 0x1, 8, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatPeriodFormat;
@@ -120,7 +121,7 @@ OrgJodaTimeFormatPeriodFormat *new_OrgJodaTimeFormatPeriodFormat_init() {
 
 OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormat_getDefault() {
   OrgJodaTimeFormatPeriodFormat_initialize();
-  return OrgJodaTimeFormatPeriodFormat_wordBasedWithJavaUtilLocale_(JavaUtilLocale_get_ENGLISH_());
+  return OrgJodaTimeFormatPeriodFormat_wordBasedWithJavaUtilLocale_(JreLoadStatic(JavaUtilLocale, ENGLISH_));
 }
 
 OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormat_wordBased() {
@@ -230,10 +231,10 @@ jboolean OrgJodaTimeFormatPeriodFormat_containsKeyWithJavaUtilResourceBundle_wit
   OrgJodaTimeFormatPeriodFormat_initialize();
   for (id<JavaUtilEnumeration> en = [((JavaUtilResourceBundle *) nil_chk(bundle)) getKeys]; [((id<JavaUtilEnumeration>) nil_chk(en)) hasMoreElements]; ) {
     if ([((NSString *) nil_chk([en nextElement])) isEqual:key]) {
-      return YES;
+      return true;
     }
   }
-  return NO;
+  return false;
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormat)

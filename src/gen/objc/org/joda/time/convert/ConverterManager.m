@@ -39,31 +39,31 @@
   OrgJodaTimeConvertConverterSet *iIntervalConverters_;
 }
 
-/**
+/*!
  @brief Checks whether the user has permission 'ConverterManager.alterInstantConverters'.
  @throws SecurityException if the user does not have the permission
  */
 - (void)checkAlterInstantConverters;
 
-/**
+/*!
  @brief Checks whether the user has permission 'ConverterManager.alterPartialConverters'.
  @throws SecurityException if the user does not have the permission
  */
 - (void)checkAlterPartialConverters;
 
-/**
+/*!
  @brief Checks whether the user has permission 'ConverterManager.alterDurationConverters'.
  @throws SecurityException if the user does not have the permission
  */
 - (void)checkAlterDurationConverters;
 
-/**
+/*!
  @brief Checks whether the user has permission 'ConverterManager.alterPeriodConverters'.
  @throws SecurityException if the user does not have the permission
  */
 - (void)checkAlterPeriodConverters;
 
-/**
+/*!
  @brief Checks whether the user has permission 'ConverterManager.alterIntervalConverters'.
  @throws SecurityException if the user does not have the permission
  */
@@ -97,13 +97,15 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
   return OrgJodaTimeConvertConverterManager_getInstance();
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeConvertConverterManager_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (id<OrgJodaTimeConvertInstantConverter>)getInstantConverterWithId:(id)object {
-  id<OrgJodaTimeConvertInstantConverter> converter = (id<OrgJodaTimeConvertInstantConverter>) check_protocol_cast([((OrgJodaTimeConvertConverterSet *) nil_chk(iInstantConverters_)) selectWithIOSClass:object == nil ? nil : [object getClass]], @protocol(OrgJodaTimeConvertInstantConverter));
+  id<OrgJodaTimeConvertInstantConverter> converter = (id<OrgJodaTimeConvertInstantConverter>) check_protocol_cast([((OrgJodaTimeConvertConverterSet *) nil_chk(iInstantConverters_)) selectWithIOSClass:object == nil ? nil : [object getClass]], OrgJodaTimeConvertInstantConverter_class_());
   if (converter != nil) {
     return converter;
   }
@@ -123,7 +125,7 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
     return nil;
   }
   IOSObjectArray *removed = [IOSObjectArray arrayWithLength:1 type:OrgJodaTimeConvertInstantConverter_class_()];
-  OrgJodaTimeConvertConverterManager_set_iInstantConverters_(self, [((OrgJodaTimeConvertConverterSet *) nil_chk(iInstantConverters_)) addWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
+  JreStrongAssign(&iInstantConverters_, [((OrgJodaTimeConvertConverterSet *) nil_chk(iInstantConverters_)) addWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
   return IOSObjectArray_Get(removed, 0);
 }
 
@@ -133,7 +135,7 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
     return nil;
   }
   IOSObjectArray *removed = [IOSObjectArray arrayWithLength:1 type:OrgJodaTimeConvertInstantConverter_class_()];
-  OrgJodaTimeConvertConverterManager_set_iInstantConverters_(self, [((OrgJodaTimeConvertConverterSet *) nil_chk(iInstantConverters_)) removeWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
+  JreStrongAssign(&iInstantConverters_, [((OrgJodaTimeConvertConverterSet *) nil_chk(iInstantConverters_)) removeWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
   return IOSObjectArray_Get(removed, 0);
 }
 
@@ -142,7 +144,7 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
 }
 
 - (id<OrgJodaTimeConvertPartialConverter>)getPartialConverterWithId:(id)object {
-  id<OrgJodaTimeConvertPartialConverter> converter = (id<OrgJodaTimeConvertPartialConverter>) check_protocol_cast([((OrgJodaTimeConvertConverterSet *) nil_chk(iPartialConverters_)) selectWithIOSClass:object == nil ? nil : [object getClass]], @protocol(OrgJodaTimeConvertPartialConverter));
+  id<OrgJodaTimeConvertPartialConverter> converter = (id<OrgJodaTimeConvertPartialConverter>) check_protocol_cast([((OrgJodaTimeConvertConverterSet *) nil_chk(iPartialConverters_)) selectWithIOSClass:object == nil ? nil : [object getClass]], OrgJodaTimeConvertPartialConverter_class_());
   if (converter != nil) {
     return converter;
   }
@@ -162,7 +164,7 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
     return nil;
   }
   IOSObjectArray *removed = [IOSObjectArray arrayWithLength:1 type:OrgJodaTimeConvertPartialConverter_class_()];
-  OrgJodaTimeConvertConverterManager_set_iPartialConverters_(self, [((OrgJodaTimeConvertConverterSet *) nil_chk(iPartialConverters_)) addWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
+  JreStrongAssign(&iPartialConverters_, [((OrgJodaTimeConvertConverterSet *) nil_chk(iPartialConverters_)) addWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
   return IOSObjectArray_Get(removed, 0);
 }
 
@@ -172,7 +174,7 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
     return nil;
   }
   IOSObjectArray *removed = [IOSObjectArray arrayWithLength:1 type:OrgJodaTimeConvertPartialConverter_class_()];
-  OrgJodaTimeConvertConverterManager_set_iPartialConverters_(self, [((OrgJodaTimeConvertConverterSet *) nil_chk(iPartialConverters_)) removeWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
+  JreStrongAssign(&iPartialConverters_, [((OrgJodaTimeConvertConverterSet *) nil_chk(iPartialConverters_)) removeWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
   return IOSObjectArray_Get(removed, 0);
 }
 
@@ -181,7 +183,7 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
 }
 
 - (id<OrgJodaTimeConvertDurationConverter>)getDurationConverterWithId:(id)object {
-  id<OrgJodaTimeConvertDurationConverter> converter = (id<OrgJodaTimeConvertDurationConverter>) check_protocol_cast([((OrgJodaTimeConvertConverterSet *) nil_chk(iDurationConverters_)) selectWithIOSClass:object == nil ? nil : [object getClass]], @protocol(OrgJodaTimeConvertDurationConverter));
+  id<OrgJodaTimeConvertDurationConverter> converter = (id<OrgJodaTimeConvertDurationConverter>) check_protocol_cast([((OrgJodaTimeConvertConverterSet *) nil_chk(iDurationConverters_)) selectWithIOSClass:object == nil ? nil : [object getClass]], OrgJodaTimeConvertDurationConverter_class_());
   if (converter != nil) {
     return converter;
   }
@@ -201,7 +203,7 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
     return nil;
   }
   IOSObjectArray *removed = [IOSObjectArray arrayWithLength:1 type:OrgJodaTimeConvertDurationConverter_class_()];
-  OrgJodaTimeConvertConverterManager_set_iDurationConverters_(self, [((OrgJodaTimeConvertConverterSet *) nil_chk(iDurationConverters_)) addWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
+  JreStrongAssign(&iDurationConverters_, [((OrgJodaTimeConvertConverterSet *) nil_chk(iDurationConverters_)) addWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
   return IOSObjectArray_Get(removed, 0);
 }
 
@@ -211,7 +213,7 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
     return nil;
   }
   IOSObjectArray *removed = [IOSObjectArray arrayWithLength:1 type:OrgJodaTimeConvertDurationConverter_class_()];
-  OrgJodaTimeConvertConverterManager_set_iDurationConverters_(self, [((OrgJodaTimeConvertConverterSet *) nil_chk(iDurationConverters_)) removeWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
+  JreStrongAssign(&iDurationConverters_, [((OrgJodaTimeConvertConverterSet *) nil_chk(iDurationConverters_)) removeWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
   return IOSObjectArray_Get(removed, 0);
 }
 
@@ -220,7 +222,7 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
 }
 
 - (id<OrgJodaTimeConvertPeriodConverter>)getPeriodConverterWithId:(id)object {
-  id<OrgJodaTimeConvertPeriodConverter> converter = (id<OrgJodaTimeConvertPeriodConverter>) check_protocol_cast([((OrgJodaTimeConvertConverterSet *) nil_chk(iPeriodConverters_)) selectWithIOSClass:object == nil ? nil : [object getClass]], @protocol(OrgJodaTimeConvertPeriodConverter));
+  id<OrgJodaTimeConvertPeriodConverter> converter = (id<OrgJodaTimeConvertPeriodConverter>) check_protocol_cast([((OrgJodaTimeConvertConverterSet *) nil_chk(iPeriodConverters_)) selectWithIOSClass:object == nil ? nil : [object getClass]], OrgJodaTimeConvertPeriodConverter_class_());
   if (converter != nil) {
     return converter;
   }
@@ -240,7 +242,7 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
     return nil;
   }
   IOSObjectArray *removed = [IOSObjectArray arrayWithLength:1 type:OrgJodaTimeConvertPeriodConverter_class_()];
-  OrgJodaTimeConvertConverterManager_set_iPeriodConverters_(self, [((OrgJodaTimeConvertConverterSet *) nil_chk(iPeriodConverters_)) addWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
+  JreStrongAssign(&iPeriodConverters_, [((OrgJodaTimeConvertConverterSet *) nil_chk(iPeriodConverters_)) addWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
   return IOSObjectArray_Get(removed, 0);
 }
 
@@ -250,7 +252,7 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
     return nil;
   }
   IOSObjectArray *removed = [IOSObjectArray arrayWithLength:1 type:OrgJodaTimeConvertPeriodConverter_class_()];
-  OrgJodaTimeConvertConverterManager_set_iPeriodConverters_(self, [((OrgJodaTimeConvertConverterSet *) nil_chk(iPeriodConverters_)) removeWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
+  JreStrongAssign(&iPeriodConverters_, [((OrgJodaTimeConvertConverterSet *) nil_chk(iPeriodConverters_)) removeWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
   return IOSObjectArray_Get(removed, 0);
 }
 
@@ -259,7 +261,7 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
 }
 
 - (id<OrgJodaTimeConvertIntervalConverter>)getIntervalConverterWithId:(id)object {
-  id<OrgJodaTimeConvertIntervalConverter> converter = (id<OrgJodaTimeConvertIntervalConverter>) check_protocol_cast([((OrgJodaTimeConvertConverterSet *) nil_chk(iIntervalConverters_)) selectWithIOSClass:object == nil ? nil : [object getClass]], @protocol(OrgJodaTimeConvertIntervalConverter));
+  id<OrgJodaTimeConvertIntervalConverter> converter = (id<OrgJodaTimeConvertIntervalConverter>) check_protocol_cast([((OrgJodaTimeConvertConverterSet *) nil_chk(iIntervalConverters_)) selectWithIOSClass:object == nil ? nil : [object getClass]], OrgJodaTimeConvertIntervalConverter_class_());
   if (converter != nil) {
     return converter;
   }
@@ -279,7 +281,7 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
     return nil;
   }
   IOSObjectArray *removed = [IOSObjectArray arrayWithLength:1 type:OrgJodaTimeConvertIntervalConverter_class_()];
-  OrgJodaTimeConvertConverterManager_set_iIntervalConverters_(self, [((OrgJodaTimeConvertConverterSet *) nil_chk(iIntervalConverters_)) addWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
+  JreStrongAssign(&iIntervalConverters_, [((OrgJodaTimeConvertConverterSet *) nil_chk(iIntervalConverters_)) addWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
   return IOSObjectArray_Get(removed, 0);
 }
 
@@ -289,7 +291,7 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
     return nil;
   }
   IOSObjectArray *removed = [IOSObjectArray arrayWithLength:1 type:OrgJodaTimeConvertIntervalConverter_class_()];
-  OrgJodaTimeConvertConverterManager_set_iIntervalConverters_(self, [((OrgJodaTimeConvertConverterSet *) nil_chk(iIntervalConverters_)) removeWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
+  JreStrongAssign(&iIntervalConverters_, [((OrgJodaTimeConvertConverterSet *) nil_chk(iIntervalConverters_)) removeWithOrgJodaTimeConvertConverter:converter withOrgJodaTimeConvertConverterArray:removed]);
   return IOSObjectArray_Get(removed, 0);
 }
 
@@ -342,12 +344,12 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE_", NULL, 0xa, "Lorg.joda.time.convert.ConverterManager;", &OrgJodaTimeConvertConverterManager_INSTANCE_, NULL,  },
-    { "iInstantConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL,  },
-    { "iPartialConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL,  },
-    { "iDurationConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL,  },
-    { "iPeriodConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL,  },
-    { "iIntervalConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL,  },
+    { "INSTANCE_", NULL, 0xa, "Lorg.joda.time.convert.ConverterManager;", &OrgJodaTimeConvertConverterManager_INSTANCE_, NULL, .constantValue.asLong = 0 },
+    { "iInstantConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iPartialConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iDurationConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iPeriodConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iIntervalConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeConvertConverterManager = { 2, "ConverterManager", "org.joda.time.convert", NULL, 0x11, 28, methods, 6, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeConvertConverterManager;
@@ -358,18 +360,18 @@ __attribute__((unused)) static void OrgJodaTimeConvertConverterManager_checkAlte
 OrgJodaTimeConvertConverterManager *OrgJodaTimeConvertConverterManager_getInstance() {
   OrgJodaTimeConvertConverterManager_initialize();
   if (OrgJodaTimeConvertConverterManager_INSTANCE_ == nil) {
-    JreStrongAssignAndConsume(&OrgJodaTimeConvertConverterManager_INSTANCE_, nil, new_OrgJodaTimeConvertConverterManager_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeConvertConverterManager_INSTANCE_, new_OrgJodaTimeConvertConverterManager_init());
   }
   return OrgJodaTimeConvertConverterManager_INSTANCE_;
 }
 
 void OrgJodaTimeConvertConverterManager_init(OrgJodaTimeConvertConverterManager *self) {
   NSObject_init(self);
-  OrgJodaTimeConvertConverterManager_setAndConsume_iInstantConverters_(self, new_OrgJodaTimeConvertConverterSet_initWithOrgJodaTimeConvertConverterArray_([IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeConvertReadableInstantConverter_get_INSTANCE_(), OrgJodaTimeConvertStringConverter_get_INSTANCE_(), OrgJodaTimeConvertCalendarConverter_get_INSTANCE_(), OrgJodaTimeConvertDateConverter_get_INSTANCE_(), OrgJodaTimeConvertLongConverter_get_INSTANCE_(), OrgJodaTimeConvertNullConverter_get_INSTANCE_() } count:6 type:OrgJodaTimeConvertConverter_class_()]));
-  OrgJodaTimeConvertConverterManager_setAndConsume_iPartialConverters_(self, new_OrgJodaTimeConvertConverterSet_initWithOrgJodaTimeConvertConverterArray_([IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeConvertReadablePartialConverter_get_INSTANCE_(), OrgJodaTimeConvertReadableInstantConverter_get_INSTANCE_(), OrgJodaTimeConvertStringConverter_get_INSTANCE_(), OrgJodaTimeConvertCalendarConverter_get_INSTANCE_(), OrgJodaTimeConvertDateConverter_get_INSTANCE_(), OrgJodaTimeConvertLongConverter_get_INSTANCE_(), OrgJodaTimeConvertNullConverter_get_INSTANCE_() } count:7 type:OrgJodaTimeConvertConverter_class_()]));
-  OrgJodaTimeConvertConverterManager_setAndConsume_iDurationConverters_(self, new_OrgJodaTimeConvertConverterSet_initWithOrgJodaTimeConvertConverterArray_([IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeConvertReadableDurationConverter_get_INSTANCE_(), OrgJodaTimeConvertReadableIntervalConverter_get_INSTANCE_(), OrgJodaTimeConvertStringConverter_get_INSTANCE_(), OrgJodaTimeConvertLongConverter_get_INSTANCE_(), OrgJodaTimeConvertNullConverter_get_INSTANCE_() } count:5 type:OrgJodaTimeConvertConverter_class_()]));
-  OrgJodaTimeConvertConverterManager_setAndConsume_iPeriodConverters_(self, new_OrgJodaTimeConvertConverterSet_initWithOrgJodaTimeConvertConverterArray_([IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeConvertReadableDurationConverter_get_INSTANCE_(), OrgJodaTimeConvertReadablePeriodConverter_get_INSTANCE_(), OrgJodaTimeConvertReadableIntervalConverter_get_INSTANCE_(), OrgJodaTimeConvertStringConverter_get_INSTANCE_(), OrgJodaTimeConvertNullConverter_get_INSTANCE_() } count:5 type:OrgJodaTimeConvertConverter_class_()]));
-  OrgJodaTimeConvertConverterManager_setAndConsume_iIntervalConverters_(self, new_OrgJodaTimeConvertConverterSet_initWithOrgJodaTimeConvertConverterArray_([IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeConvertReadableIntervalConverter_get_INSTANCE_(), OrgJodaTimeConvertStringConverter_get_INSTANCE_(), OrgJodaTimeConvertNullConverter_get_INSTANCE_() } count:3 type:OrgJodaTimeConvertConverter_class_()]));
+  JreStrongAssignAndConsume(&self->iInstantConverters_, new_OrgJodaTimeConvertConverterSet_initWithOrgJodaTimeConvertConverterArray_([IOSObjectArray arrayWithObjects:(id[]){ JreLoadStatic(OrgJodaTimeConvertReadableInstantConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertStringConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertCalendarConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertDateConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertLongConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertNullConverter, INSTANCE_) } count:6 type:OrgJodaTimeConvertConverter_class_()]));
+  JreStrongAssignAndConsume(&self->iPartialConverters_, new_OrgJodaTimeConvertConverterSet_initWithOrgJodaTimeConvertConverterArray_([IOSObjectArray arrayWithObjects:(id[]){ JreLoadStatic(OrgJodaTimeConvertReadablePartialConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertReadableInstantConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertStringConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertCalendarConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertDateConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertLongConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertNullConverter, INSTANCE_) } count:7 type:OrgJodaTimeConvertConverter_class_()]));
+  JreStrongAssignAndConsume(&self->iDurationConverters_, new_OrgJodaTimeConvertConverterSet_initWithOrgJodaTimeConvertConverterArray_([IOSObjectArray arrayWithObjects:(id[]){ JreLoadStatic(OrgJodaTimeConvertReadableDurationConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertReadableIntervalConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertStringConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertLongConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertNullConverter, INSTANCE_) } count:5 type:OrgJodaTimeConvertConverter_class_()]));
+  JreStrongAssignAndConsume(&self->iPeriodConverters_, new_OrgJodaTimeConvertConverterSet_initWithOrgJodaTimeConvertConverterArray_([IOSObjectArray arrayWithObjects:(id[]){ JreLoadStatic(OrgJodaTimeConvertReadableDurationConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertReadablePeriodConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertReadableIntervalConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertStringConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertNullConverter, INSTANCE_) } count:5 type:OrgJodaTimeConvertConverter_class_()]));
+  JreStrongAssignAndConsume(&self->iIntervalConverters_, new_OrgJodaTimeConvertConverterSet_initWithOrgJodaTimeConvertConverterArray_([IOSObjectArray arrayWithObjects:(id[]){ JreLoadStatic(OrgJodaTimeConvertReadableIntervalConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertStringConverter, INSTANCE_), JreLoadStatic(OrgJodaTimeConvertNullConverter, INSTANCE_) } count:3 type:OrgJodaTimeConvertConverter_class_()]));
 }
 
 OrgJodaTimeConvertConverterManager *new_OrgJodaTimeConvertConverterManager_init() {

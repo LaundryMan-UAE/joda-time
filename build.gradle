@@ -19,7 +19,7 @@ task copyZoneInfo(type:Copy) {
 
 task cycleFinder(type:Exec) {
     inputs.files sourceSets.main.allJava
-    executable "${J2OBJC_HOME}/cycle_finder"
+    executable "${J2OBJC_HOME_LATEST}/cycle_finder"
     args '-sourcepath', (sourceSets.main.allJava.srcDirs)
     args '-classpath', sourceSets.main.runtimeClasspath.collect { it.absolutePath }.join(':')
     args inputs.files
@@ -33,7 +33,7 @@ task translateJavaInternal(type:Exec) {
     inputs.files sourceSets.main.allJava
 
     // the classpath is built from the runtime dependencies for the sourcesets ...
-    executable "${J2OBJC_HOME}/j2objc"
+    executable "${J2OBJC_HOME_LATEST}/j2objc"
     args '--doc-comments'
     args '-d', file('src/gen/objc').path
     args '-sourcepath', sourceSets.main.allJava.srcDirs.join(' ')

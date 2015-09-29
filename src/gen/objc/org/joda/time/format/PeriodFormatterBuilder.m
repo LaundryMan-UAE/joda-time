@@ -66,20 +66,21 @@
   jboolean iRejectSignedValues_;
   id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> iPrefix_;
   id<JavaUtilList> iElementPairs_;
-  /**
+  /*!
    @brief Set to true if the formatter is not a printer.
    */
   jboolean iNotPrinter_;
-  /**
+  /*!
    @brief Set to true if the formatter is not a parser.
    */
   jboolean iNotParser_;
   IOSObjectArray *iFieldFormatters_;
 }
 
-/**
+/*!
  @brief Append a field prefix which applies only to the next appended field.
- If the field is not printed, neither is the prefix.
+ If
+ the field is not printed, neither is the prefix.
  @param prefix custom prefix
  @return this PeriodFormatterBuilder
  */
@@ -90,9 +91,10 @@
 - (void)appendFieldWithInt:(jint)type
                    withInt:(jint)minPrinted;
 
-/**
+/*!
  @brief Append a field suffix which applies only to the last appended field.
- If the field is not printed, neither is the suffix.
+ If
+ the field is not printed, neither is the suffix.
  @param suffix custom suffix
  @return this PeriodFormatterBuilder
  @throws IllegalStateException if no field exists to append to
@@ -181,12 +183,12 @@ __attribute__((unused)) static IOSObjectArray *OrgJodaTimeFormatPeriodFormatterB
 
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix () {
  @public
-  IOSObjectArray *iOtherAffixes_;
+  volatile_id iOtherAffixes_;
 }
 
 @end
 
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix, iOtherAffixes_, IOSObjectArray *)
+J2OBJC_VOLATILE_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix, iOtherAffixes_, IOSObjectArray *)
 
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix () {
  @public
@@ -264,11 +266,11 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix, iLef
   jint iPrintZeroSetting_;
   jint iMaxParsedDigits_;
   jboolean iRejectSignedValues_;
-  /**
+  /*!
    @brief The index of the field type, 0=year, etc.
    */
   jint iFieldType_;
-  /**
+  /*!
    @brief The array of the latest formatter added for each type.
    This is shared between all the field formatters in a formatter.
    */
@@ -277,7 +279,7 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix, iLef
   id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> iSuffix_;
 }
 
-/**
+/*!
  @param text text to parse
  @param position position in text
  @param length exact count of characters to parse
@@ -312,9 +314,9 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Literal, iText_, NSS
   jboolean iUseBefore_;
   jboolean iUseAfter_;
   id<OrgJodaTimeFormatPeriodPrinter> iBeforePrinter_;
-  id<OrgJodaTimeFormatPeriodPrinter> iAfterPrinter_;
+  volatile_id iAfterPrinter_;
   id<OrgJodaTimeFormatPeriodParser> iBeforeParser_;
-  id<OrgJodaTimeFormatPeriodParser> iAfterParser_;
+  volatile_id iAfterParser_;
 }
 
 @end
@@ -323,9 +325,9 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iText_, N
 J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iFinalText_, NSString *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iParsedForms_, IOSObjectArray *)
 J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iBeforePrinter_, id<OrgJodaTimeFormatPeriodPrinter>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iAfterPrinter_, id<OrgJodaTimeFormatPeriodPrinter>)
+J2OBJC_VOLATILE_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iAfterPrinter_, id<OrgJodaTimeFormatPeriodPrinter>)
 J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iBeforeParser_, id<OrgJodaTimeFormatPeriodParser>)
-J2OBJC_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iAfterParser_, id<OrgJodaTimeFormatPeriodParser>)
+J2OBJC_VOLATILE_FIELD_SETTER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator, iAfterParser_, id<OrgJodaTimeFormatPeriodParser>)
 
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_Composite () {
  @public
@@ -353,10 +355,12 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormatterBuilder)
 
 @implementation OrgJodaTimeFormatPeriodFormatterBuilder
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeFormatPeriodFormatterBuilder_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgJodaTimeFormatPeriodFormatter *)toFormatter {
   OrgJodaTimeFormatPeriodFormatter *formatter = OrgJodaTimeFormatPeriodFormatterBuilder_toFormatterWithJavaUtilList_withBoolean_withBoolean_(iElementPairs_, iNotPrinter_, iNotParser_);
@@ -371,7 +375,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormatterBuilder)
       }
     }
   }
-  OrgJodaTimeFormatPeriodFormatterBuilder_set_iFieldFormatters_(self, (IOSObjectArray *) check_class_cast([((IOSObjectArray *) nil_chk(iFieldFormatters_)) clone], [IOSObjectArray class]));
+  JreStrongAssign(&iFieldFormatters_, (IOSObjectArray *) check_class_cast([((IOSObjectArray *) nil_chk(iFieldFormatters_)) clone], [IOSObjectArray class]));
   return formatter;
 }
 
@@ -393,17 +397,17 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormatterBuilder)
   iMinPrintedDigits_ = 1;
   iPrintZeroSetting_ = OrgJodaTimeFormatPeriodFormatterBuilder_PRINT_ZERO_RARELY_LAST;
   iMaxParsedDigits_ = 10;
-  iRejectSignedValues_ = NO;
-  OrgJodaTimeFormatPeriodFormatterBuilder_set_iPrefix_(self, nil);
+  iRejectSignedValues_ = false;
+  JreStrongAssign(&iPrefix_, nil);
   if (iElementPairs_ == nil) {
-    OrgJodaTimeFormatPeriodFormatterBuilder_setAndConsume_iElementPairs_(self, new_JavaUtilArrayList_init());
+    JreStrongAssignAndConsume(&iElementPairs_, new_JavaUtilArrayList_init());
   }
   else {
     [iElementPairs_ clear];
   }
-  iNotPrinter_ = NO;
-  iNotParser_ = NO;
-  OrgJodaTimeFormatPeriodFormatterBuilder_setAndConsume_iFieldFormatters_(self, [IOSObjectArray newArrayWithLength:10 type:OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_class_()]);
+  iNotPrinter_ = false;
+  iNotParser_ = false;
+  JreStrongAssignAndConsume(&iFieldFormatters_, [IOSObjectArray newArrayWithLength:10 type:OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_class_()]);
 }
 
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendWithOrgJodaTimeFormatPeriodFormatter:(OrgJodaTimeFormatPeriodFormatter *)formatter {
@@ -594,26 +598,26 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormatterBuilder)
 }
 
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSeparatorWithNSString:(NSString *)text {
-  return OrgJodaTimeFormatPeriodFormatterBuilder_appendSeparatorWithNSString_withNSString_withNSStringArray_withBoolean_withBoolean_(self, text, text, nil, YES, YES);
+  return OrgJodaTimeFormatPeriodFormatterBuilder_appendSeparatorWithNSString_withNSString_withNSStringArray_withBoolean_withBoolean_(self, text, text, nil, true, true);
 }
 
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSeparatorIfFieldsAfterWithNSString:(NSString *)text {
-  return OrgJodaTimeFormatPeriodFormatterBuilder_appendSeparatorWithNSString_withNSString_withNSStringArray_withBoolean_withBoolean_(self, text, text, nil, NO, YES);
+  return OrgJodaTimeFormatPeriodFormatterBuilder_appendSeparatorWithNSString_withNSString_withNSStringArray_withBoolean_withBoolean_(self, text, text, nil, false, true);
 }
 
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSeparatorIfFieldsBeforeWithNSString:(NSString *)text {
-  return OrgJodaTimeFormatPeriodFormatterBuilder_appendSeparatorWithNSString_withNSString_withNSStringArray_withBoolean_withBoolean_(self, text, text, nil, YES, NO);
+  return OrgJodaTimeFormatPeriodFormatterBuilder_appendSeparatorWithNSString_withNSString_withNSStringArray_withBoolean_withBoolean_(self, text, text, nil, true, false);
 }
 
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSeparatorWithNSString:(NSString *)text
                                                             withNSString:(NSString *)finalText {
-  return OrgJodaTimeFormatPeriodFormatterBuilder_appendSeparatorWithNSString_withNSString_withNSStringArray_withBoolean_withBoolean_(self, text, finalText, nil, YES, YES);
+  return OrgJodaTimeFormatPeriodFormatterBuilder_appendSeparatorWithNSString_withNSString_withNSStringArray_withBoolean_withBoolean_(self, text, finalText, nil, true, true);
 }
 
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSeparatorWithNSString:(NSString *)text
                                                             withNSString:(NSString *)finalText
                                                        withNSStringArray:(IOSObjectArray *)variants {
-  return OrgJodaTimeFormatPeriodFormatterBuilder_appendSeparatorWithNSString_withNSString_withNSStringArray_withBoolean_withBoolean_(self, text, finalText, variants, YES, YES);
+  return OrgJodaTimeFormatPeriodFormatterBuilder_appendSeparatorWithNSString_withNSString_withNSStringArray_withBoolean_withBoolean_(self, text, finalText, variants, true, true);
 }
 
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSeparatorWithNSString:(NSString *)text
@@ -652,7 +656,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormatterBuilder)
 
 + (void)initialize {
   if (self == [OrgJodaTimeFormatPeriodFormatterBuilder class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeFormatPeriodFormatterBuilder_PATTERNS_, nil, new_JavaUtilConcurrentConcurrentHashMap_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeFormatPeriodFormatterBuilder_PATTERNS_, new_JavaUtilConcurrentConcurrentHashMap_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeFormatPeriodFormatterBuilder)
   }
 }
@@ -724,16 +728,16 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormatterBuilder)
     { "SECONDS_MILLIS", "SECONDS_MILLIS", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeFormatPeriodFormatterBuilder_SECONDS_MILLIS },
     { "SECONDS_OPTIONAL_MILLIS", "SECONDS_OPTIONAL_MILLIS", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeFormatPeriodFormatterBuilder_SECONDS_OPTIONAL_MILLIS },
     { "MAX_FIELD", "MAX_FIELD", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeFormatPeriodFormatterBuilder_MAX_FIELD },
-    { "PATTERNS_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentMap;", &OrgJodaTimeFormatPeriodFormatterBuilder_PATTERNS_, "Ljava/util/concurrent/ConcurrentMap<Ljava/lang/String;Ljava/util/regex/Pattern;>;",  },
-    { "iMinPrintedDigits_", NULL, 0x2, "I", NULL, NULL,  },
-    { "iPrintZeroSetting_", NULL, 0x2, "I", NULL, NULL,  },
-    { "iMaxParsedDigits_", NULL, 0x2, "I", NULL, NULL,  },
-    { "iRejectSignedValues_", NULL, 0x2, "Z", NULL, NULL,  },
-    { "iPrefix_", NULL, 0x2, "Lorg.joda.time.format.PeriodFormatterBuilder$PeriodFieldAffix;", NULL, NULL,  },
-    { "iElementPairs_", NULL, 0x2, "Ljava.util.List;", NULL, "Ljava/util/List<Ljava/lang/Object;>;",  },
-    { "iNotPrinter_", NULL, 0x2, "Z", NULL, NULL,  },
-    { "iNotParser_", NULL, 0x2, "Z", NULL, NULL,  },
-    { "iFieldFormatters_", NULL, 0x2, "[Lorg.joda.time.format.PeriodFormatterBuilder$FieldFormatter;", NULL, NULL,  },
+    { "PATTERNS_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentMap;", &OrgJodaTimeFormatPeriodFormatterBuilder_PATTERNS_, "Ljava/util/concurrent/ConcurrentMap<Ljava/lang/String;Ljava/util/regex/Pattern;>;", .constantValue.asLong = 0 },
+    { "iMinPrintedDigits_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iPrintZeroSetting_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMaxParsedDigits_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iRejectSignedValues_", NULL, 0x2, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "iPrefix_", NULL, 0x2, "Lorg.joda.time.format.PeriodFormatterBuilder$PeriodFieldAffix;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iElementPairs_", NULL, 0x2, "Ljava.util.List;", NULL, "Ljava/util/List<Ljava/lang/Object;>;", .constantValue.asLong = 0 },
+    { "iNotPrinter_", NULL, 0x2, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "iNotParser_", NULL, 0x2, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "iFieldFormatters_", NULL, 0x2, "[Lorg.joda.time.format.PeriodFormatterBuilder$FieldFormatter;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lorg.joda.time.format.PeriodFormatterBuilder$PeriodFieldAffix;", "Lorg.joda.time.format.PeriodFormatterBuilder$IgnorableAffix;", "Lorg.joda.time.format.PeriodFormatterBuilder$SimpleAffix;", "Lorg.joda.time.format.PeriodFormatterBuilder$PluralAffix;", "Lorg.joda.time.format.PeriodFormatterBuilder$RegExAffix;", "Lorg.joda.time.format.PeriodFormatterBuilder$CompositeAffix;", "Lorg.joda.time.format.PeriodFormatterBuilder$FieldFormatter;", "Lorg.joda.time.format.PeriodFormatterBuilder$Literal;", "Lorg.joda.time.format.PeriodFormatterBuilder$Separator;", "Lorg.joda.time.format.PeriodFormatterBuilder$Composite;"};
   static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormatterBuilder = { 2, "PeriodFormatterBuilder", "org.joda.time.format", NULL, 0x1, 47, methods, 26, fields, 0, NULL, 10, inner_classes, NULL, NULL };
@@ -760,7 +764,7 @@ OrgJodaTimeFormatPeriodFormatterBuilder *OrgJodaTimeFormatPeriodFormatterBuilder
   if (self->iPrefix_ != nil) {
     prefix = [new_OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_initWithOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(self->iPrefix_, prefix) autorelease];
   }
-  OrgJodaTimeFormatPeriodFormatterBuilder_set_iPrefix_(self, prefix);
+  JreStrongAssign(&self->iPrefix_, prefix);
   return self;
 }
 
@@ -772,7 +776,7 @@ void OrgJodaTimeFormatPeriodFormatterBuilder_appendFieldWithInt_withInt_(OrgJoda
   OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *field = [new_OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_initWithInt_withInt_withInt_withBoolean_withInt_withOrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatterArray_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(minPrinted, self->iPrintZeroSetting_, self->iMaxParsedDigits_, self->iRejectSignedValues_, type, self->iFieldFormatters_, self->iPrefix_, nil) autorelease];
   OrgJodaTimeFormatPeriodFormatterBuilder_append0WithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_(self, field, field);
   IOSObjectArray_Set(nil_chk(self->iFieldFormatters_), type, field);
-  OrgJodaTimeFormatPeriodFormatterBuilder_set_iPrefix_(self, nil);
+  JreStrongAssign(&self->iPrefix_, nil);
 }
 
 OrgJodaTimeFormatPeriodFormatterBuilder *OrgJodaTimeFormatPeriodFormatterBuilder_appendSuffixWithOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(OrgJodaTimeFormatPeriodFormatterBuilder *self, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> suffix) {
@@ -804,8 +808,8 @@ OrgJodaTimeFormatPeriodFormatterBuilder *OrgJodaTimeFormatPeriodFormatterBuilder
   OrgJodaTimeFormatPeriodFormatterBuilder_clearPrefix(self);
   id<JavaUtilList> pairs = self->iElementPairs_;
   if ([((id<JavaUtilList>) nil_chk(pairs)) size] == 0) {
-    if (useAfter && useBefore == NO) {
-      OrgJodaTimeFormatPeriodFormatterBuilder_Separator *separator = [new_OrgJodaTimeFormatPeriodFormatterBuilder_Separator_initWithNSString_withNSString_withNSStringArray_withOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withBoolean_withBoolean_(text, finalText, variants, OrgJodaTimeFormatPeriodFormatterBuilder_Literal_get_EMPTY_(), OrgJodaTimeFormatPeriodFormatterBuilder_Literal_get_EMPTY_(), useBefore, useAfter) autorelease];
+    if (useAfter && useBefore == false) {
+      OrgJodaTimeFormatPeriodFormatterBuilder_Separator *separator = [new_OrgJodaTimeFormatPeriodFormatterBuilder_Separator_initWithNSString_withNSString_withNSStringArray_withOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withBoolean_withBoolean_(text, finalText, variants, JreLoadStatic(OrgJodaTimeFormatPeriodFormatterBuilder_Literal, EMPTY_), JreLoadStatic(OrgJodaTimeFormatPeriodFormatterBuilder_Literal, EMPTY_), useBefore, useAfter) autorelease];
       OrgJodaTimeFormatPeriodFormatterBuilder_append0WithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_(self, separator, separator);
     }
     return self;
@@ -826,7 +830,7 @@ OrgJodaTimeFormatPeriodFormatterBuilder *OrgJodaTimeFormatPeriodFormatterBuilder
   else {
     IOSObjectArray *comp = OrgJodaTimeFormatPeriodFormatterBuilder_createCompositeWithJavaUtilList_(pairs);
     [((id<JavaUtilList>) nil_chk(pairs)) clear];
-    OrgJodaTimeFormatPeriodFormatterBuilder_Separator *separator = [new_OrgJodaTimeFormatPeriodFormatterBuilder_Separator_initWithNSString_withNSString_withNSStringArray_withOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withBoolean_withBoolean_(text, finalText, variants, (id<OrgJodaTimeFormatPeriodPrinter>) check_protocol_cast(IOSObjectArray_Get(nil_chk(comp), 0), @protocol(OrgJodaTimeFormatPeriodPrinter)), (id<OrgJodaTimeFormatPeriodParser>) check_protocol_cast(IOSObjectArray_Get(comp, 1), @protocol(OrgJodaTimeFormatPeriodParser)), useBefore, useAfter) autorelease];
+    OrgJodaTimeFormatPeriodFormatterBuilder_Separator *separator = [new_OrgJodaTimeFormatPeriodFormatterBuilder_Separator_initWithNSString_withNSString_withNSStringArray_withOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withBoolean_withBoolean_(text, finalText, variants, (id<OrgJodaTimeFormatPeriodPrinter>) check_protocol_cast(IOSObjectArray_Get(nil_chk(comp), 0), OrgJodaTimeFormatPeriodPrinter_class_()), (id<OrgJodaTimeFormatPeriodParser>) check_protocol_cast(IOSObjectArray_Get(comp, 1), OrgJodaTimeFormatPeriodParser_class_()), useBefore, useAfter) autorelease];
     [pairs addWithId:separator];
     [pairs addWithId:separator];
   }
@@ -837,7 +841,7 @@ void OrgJodaTimeFormatPeriodFormatterBuilder_clearPrefix(OrgJodaTimeFormatPeriod
   if (self->iPrefix_ != nil) {
     @throw [new_JavaLangIllegalStateException_initWithNSString_(@"Prefix not followed by field") autorelease];
   }
-  OrgJodaTimeFormatPeriodFormatterBuilder_set_iPrefix_(self, nil);
+  JreStrongAssign(&self->iPrefix_, nil);
 }
 
 OrgJodaTimeFormatPeriodFormatterBuilder *OrgJodaTimeFormatPeriodFormatterBuilder_append0WithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_(OrgJodaTimeFormatPeriodFormatterBuilder *self, id<OrgJodaTimeFormatPeriodPrinter> printer, id<OrgJodaTimeFormatPeriodParser> parser) {
@@ -856,7 +860,7 @@ OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormatterBuilder_toForm
   jint size = [((id<JavaUtilList>) nil_chk(elementPairs)) size];
   if (size >= 2 && [[elementPairs getWithInt:0] isKindOfClass:[OrgJodaTimeFormatPeriodFormatterBuilder_Separator class]]) {
     OrgJodaTimeFormatPeriodFormatterBuilder_Separator *sep = (OrgJodaTimeFormatPeriodFormatterBuilder_Separator *) check_class_cast([elementPairs getWithInt:0], [OrgJodaTimeFormatPeriodFormatterBuilder_Separator class]);
-    if (((OrgJodaTimeFormatPeriodFormatterBuilder_Separator *) nil_chk(sep))->iAfterParser_ == nil && sep->iAfterPrinter_ == nil) {
+    if (JreLoadVolatileId(&((OrgJodaTimeFormatPeriodFormatterBuilder_Separator *) nil_chk(sep))->iAfterParser_) == nil && JreLoadVolatileId(&sep->iAfterPrinter_) == nil) {
       OrgJodaTimeFormatPeriodFormatter *f = OrgJodaTimeFormatPeriodFormatterBuilder_toFormatterWithJavaUtilList_withBoolean_withBoolean_([elementPairs subListWithInt:2 withInt:size], notPrinter, notParser);
       sep = [sep finishWithOrgJodaTimeFormatPeriodPrinter:[((OrgJodaTimeFormatPeriodFormatter *) nil_chk(f)) getPrinter] withOrgJodaTimeFormatPeriodParser:[f getParser]];
       return [new_OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_(sep, sep) autorelease];
@@ -864,13 +868,13 @@ OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormatterBuilder_toForm
   }
   IOSObjectArray *comp = OrgJodaTimeFormatPeriodFormatterBuilder_createCompositeWithJavaUtilList_(elementPairs);
   if (notPrinter) {
-    return [new_OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_(nil, (id<OrgJodaTimeFormatPeriodParser>) check_protocol_cast(IOSObjectArray_Get(nil_chk(comp), 1), @protocol(OrgJodaTimeFormatPeriodParser))) autorelease];
+    return [new_OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_(nil, (id<OrgJodaTimeFormatPeriodParser>) check_protocol_cast(IOSObjectArray_Get(nil_chk(comp), 1), OrgJodaTimeFormatPeriodParser_class_())) autorelease];
   }
   else if (notParser) {
-    return [new_OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_((id<OrgJodaTimeFormatPeriodPrinter>) check_protocol_cast(IOSObjectArray_Get(nil_chk(comp), 0), @protocol(OrgJodaTimeFormatPeriodPrinter)), nil) autorelease];
+    return [new_OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_((id<OrgJodaTimeFormatPeriodPrinter>) check_protocol_cast(IOSObjectArray_Get(nil_chk(comp), 0), OrgJodaTimeFormatPeriodPrinter_class_()), nil) autorelease];
   }
   else {
-    return [new_OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_((id<OrgJodaTimeFormatPeriodPrinter>) check_protocol_cast(IOSObjectArray_Get(nil_chk(comp), 0), @protocol(OrgJodaTimeFormatPeriodPrinter)), (id<OrgJodaTimeFormatPeriodParser>) check_protocol_cast(IOSObjectArray_Get(comp, 1), @protocol(OrgJodaTimeFormatPeriodParser))) autorelease];
+    return [new_OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_((id<OrgJodaTimeFormatPeriodPrinter>) check_protocol_cast(IOSObjectArray_Get(nil_chk(comp), 0), OrgJodaTimeFormatPeriodPrinter_class_()), (id<OrgJodaTimeFormatPeriodParser>) check_protocol_cast(IOSObjectArray_Get(comp, 1), OrgJodaTimeFormatPeriodParser_class_())) autorelease];
   }
 }
 
@@ -880,7 +884,7 @@ IOSObjectArray *OrgJodaTimeFormatPeriodFormatterBuilder_createCompositeWithJavaU
     OrgJodaTimeFormatPeriodFormatterBuilder_Composite *comp;
     switch ([((id<JavaUtilList>) nil_chk(elementPairs)) size]) {
       case 0:
-      return [IOSObjectArray arrayWithObjects:(id[]){ OrgJodaTimeFormatPeriodFormatterBuilder_Literal_get_EMPTY_(), OrgJodaTimeFormatPeriodFormatterBuilder_Literal_get_EMPTY_() } count:2 type:NSObject_class_()];
+      return [IOSObjectArray arrayWithObjects:(id[]){ JreLoadStatic(OrgJodaTimeFormatPeriodFormatterBuilder_Literal, EMPTY_), JreLoadStatic(OrgJodaTimeFormatPeriodFormatterBuilder_Literal, EMPTY_) } count:2 type:NSObject_class_()];
       case 1:
       return [IOSObjectArray arrayWithObjects:(id[]){ [elementPairs getWithInt:0], [elementPairs getWithInt:1] } count:2 type:NSObject_class_()];
       default:
@@ -915,7 +919,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_Per
 @implementation OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix
 
 - (void)finishWithJavaUtilSet:(id<JavaUtilSet>)periodFieldAffixesToIgnore {
-  if (iOtherAffixes_ == nil) {
+  if (JreLoadVolatileId(&iOtherAffixes_) == nil) {
     jint shortestAffixLength = JavaLangInteger_MAX_VALUE;
     {
       IOSObjectArray *a__ = [self getAffixes];
@@ -944,38 +948,45 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_Per
         }
       }
     }
-    OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_set_iOtherAffixes_(self, [affixesToIgnore toArrayWithNSObjectArray:[IOSObjectArray arrayWithLength:[affixesToIgnore size] type:NSString_class_()]]);
+    JreVolatileStrongAssign(&iOtherAffixes_, [affixesToIgnore toArrayWithNSObjectArray:[IOSObjectArray arrayWithLength:[affixesToIgnore size] type:NSString_class_()]]);
   }
 }
 
 - (jboolean)matchesOtherAffixWithInt:(jint)textLength
                         withNSString:(NSString *)periodStr
                              withInt:(jint)position {
-  if (iOtherAffixes_ != nil) {
+  if (JreLoadVolatileId(&iOtherAffixes_) != nil) {
     {
-      IOSObjectArray *a__ = iOtherAffixes_;
+      IOSObjectArray *a__ = JreLoadVolatileId(&iOtherAffixes_);
       NSString * const *b__ = a__->buffer_;
       NSString * const *e__ = b__ + a__->size_;
       while (b__ < e__) {
         NSString *affixToIgnore = *b__++;
         jint textToIgnoreLength = ((jint) [((NSString *) nil_chk(affixToIgnore)) length]);
-        if (textLength < textToIgnoreLength && [((NSString *) nil_chk(periodStr)) regionMatches:YES thisOffset:position aString:affixToIgnore otherOffset:0 count:textToIgnoreLength]) {
-          return YES;
+        if (textLength < textToIgnoreLength && [((NSString *) nil_chk(periodStr)) regionMatches:true thisOffset:position aString:affixToIgnore otherOffset:0 count:textToIgnoreLength]) {
+          return true;
         }
       }
     }
   }
-  return NO;
+  return false;
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)dealloc {
-  RELEASE_(iOtherAffixes_);
+  JreReleaseVolatile(&iOtherAffixes_);
   [super dealloc];
+}
+
+- (void)__javaClone {
+  [super __javaClone];
+  JreRetainVolatile(&iOtherAffixes_);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -985,7 +996,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_Per
     { "init", NULL, NULL, 0x0, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "iOtherAffixes_", NULL, 0x42, "[Ljava.lang.String;", NULL, NULL,  },
+    { "iOtherAffixes_", NULL, 0x42, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix = { 2, "IgnorableAffix", "org.joda.time.format", "PeriodFormatterBuilder", 0x408, 3, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix;
@@ -1024,7 +1035,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_Ignorab
                   withInt:(jint)position {
   NSString *text = iText_;
   jint textLength = ((jint) [((NSString *) nil_chk(text)) length]);
-  if ([((NSString *) nil_chk(periodStr)) regionMatches:YES thisOffset:position aString:text otherOffset:0 count:textLength]) {
+  if ([((NSString *) nil_chk(periodStr)) regionMatches:true thisOffset:position aString:text otherOffset:0 count:textLength]) {
     if (![self matchesOtherAffixWithInt:textLength withNSString:periodStr withInt:position]) {
       return position + textLength;
     }
@@ -1038,7 +1049,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_Ignorab
   jint textLength = ((jint) [((NSString *) nil_chk(text)) length]);
   jint sourceLength = ((jint) [((NSString *) nil_chk(periodStr)) length]);
   for (jint pos = position; pos < sourceLength; pos++) {
-    if ([periodStr regionMatches:YES thisOffset:pos aString:text otherOffset:0 count:textLength]) {
+    if ([periodStr regionMatches:true thisOffset:pos aString:text otherOffset:0 count:textLength]) {
       if (![self matchesOtherAffixWithInt:textLength withNSString:periodStr withInt:pos]) {
         return pos;
       }
@@ -1087,7 +1098,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_Ignorab
     { "getAffixes", NULL, "[Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "iText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL,  },
+    { "iText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix = { 2, "SimpleAffix", "org.joda.time.format", "PeriodFormatterBuilder", 0x8, 7, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix;
@@ -1097,7 +1108,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_Ignorab
 
 void OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix_initWithNSString_(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix *self, NSString *text) {
   OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_init(self);
-  OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix_set_iText_(self, text);
+  JreStrongAssign(&self->iText_, text);
 }
 
 OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix *new_OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix_initWithNSString_(NSString *text) {
@@ -1139,12 +1150,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleA
     text1 = text2;
     text2 = temp;
   }
-  if ([((NSString *) nil_chk(periodStr)) regionMatches:YES thisOffset:position aString:text1 otherOffset:0 count:((jint) [text1 length])]) {
+  if ([((NSString *) nil_chk(periodStr)) regionMatches:true thisOffset:position aString:text1 otherOffset:0 count:((jint) [text1 length])]) {
     if (![self matchesOtherAffixWithInt:((jint) [text1 length]) withNSString:periodStr withInt:position]) {
       return position + ((jint) [text1 length]);
     }
   }
-  if ([periodStr regionMatches:YES thisOffset:position aString:text2 otherOffset:0 count:((jint) [text2 length])]) {
+  if ([periodStr regionMatches:true thisOffset:position aString:text2 otherOffset:0 count:((jint) [text2 length])]) {
     if (![self matchesOtherAffixWithInt:((jint) [text2 length]) withNSString:periodStr withInt:position]) {
       return position + ((jint) [text2 length]);
     }
@@ -1165,12 +1176,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleA
   jint textLength2 = ((jint) [text2 length]);
   jint sourceLength = ((jint) [((NSString *) nil_chk(periodStr)) length]);
   for (jint pos = position; pos < sourceLength; pos++) {
-    if ([periodStr regionMatches:YES thisOffset:pos aString:text1 otherOffset:0 count:textLength1]) {
+    if ([periodStr regionMatches:true thisOffset:pos aString:text1 otherOffset:0 count:textLength1]) {
       if (![self matchesOtherAffixWithInt:((jint) [text1 length]) withNSString:periodStr withInt:pos]) {
         return pos;
       }
     }
-    if ([periodStr regionMatches:YES thisOffset:pos aString:text2 otherOffset:0 count:textLength2]) {
+    if ([periodStr regionMatches:true thisOffset:pos aString:text2 otherOffset:0 count:textLength2]) {
       if (![self matchesOtherAffixWithInt:((jint) [text2 length]) withNSString:periodStr withInt:pos]) {
         return pos;
       }
@@ -1200,8 +1211,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleA
     { "getAffixes", NULL, "[Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "iSingularText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL,  },
-    { "iPluralText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL,  },
+    { "iSingularText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iPluralText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix = { 2, "PluralAffix", "org.joda.time.format", "PeriodFormatterBuilder", 0x8, 7, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix;
@@ -1211,8 +1222,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleA
 
 void OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_initWithNSString_withNSString_(OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix *self, NSString *singularText, NSString *pluralText) {
   OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_init(self);
-  OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_set_iSingularText_(self, singularText);
-  OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_set_iPluralText_(self, pluralText);
+  JreStrongAssign(&self->iSingularText_, singularText);
+  JreStrongAssign(&self->iPluralText_, pluralText);
 }
 
 OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix *new_OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_initWithNSString_withNSString_(NSString *singularText, NSString *pluralText) {
@@ -1259,7 +1270,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix)
     NSString * const *e__ = b__ + a__->size_;
     while (b__ < e__) {
       NSString *text = *b__++;
-      if ([((NSString *) nil_chk(periodStr)) regionMatches:YES thisOffset:position aString:text otherOffset:0 count:((jint) [((NSString *) nil_chk(text)) length])]) {
+      if ([((NSString *) nil_chk(periodStr)) regionMatches:true thisOffset:position aString:text otherOffset:0 count:((jint) [((NSString *) nil_chk(text)) length])]) {
         if (![self matchesOtherAffixWithInt:((jint) [text length]) withNSString:periodStr withInt:position]) {
           return position + ((jint) [text length]);
         }
@@ -1279,7 +1290,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix)
       NSString * const *e__ = b__ + a__->size_;
       while (b__ < e__) {
         NSString *text = *b__++;
-        if ([periodStr regionMatches:YES thisOffset:pos aString:text otherOffset:0 count:((jint) [((NSString *) nil_chk(text)) length])]) {
+        if ([periodStr regionMatches:true thisOffset:pos aString:text otherOffset:0 count:((jint) [((NSString *) nil_chk(text)) length])]) {
           if (![self matchesOtherAffixWithInt:((jint) [text length]) withNSString:periodStr withInt:pos]) {
             return pos;
           }
@@ -1303,7 +1314,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix)
 
 + (void)initialize {
   if (self == [OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_LENGTH_DESC_COMPARATOR_, nil, new_OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_LENGTH_DESC_COMPARATOR_, new_OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix)
   }
 }
@@ -1320,10 +1331,10 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix)
     { "getAffixes", NULL, "[Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "LENGTH_DESC_COMPARATOR_", NULL, 0x1a, "Ljava.util.Comparator;", &OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_LENGTH_DESC_COMPARATOR_, "Ljava/util/Comparator<Ljava/lang/String;>;",  },
-    { "iSuffixes_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL,  },
-    { "iPatterns_", NULL, 0x12, "[Ljava.util.regex.Pattern;", NULL, NULL,  },
-    { "iSuffixesSortedDescByLength_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL,  },
+    { "LENGTH_DESC_COMPARATOR_", NULL, 0x1a, "Ljava.util.Comparator;", &OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_LENGTH_DESC_COMPARATOR_, "Ljava/util/Comparator<Ljava/lang/String;>;", .constantValue.asLong = 0 },
+    { "iSuffixes_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iPatterns_", NULL, 0x12, "[Ljava.util.regex.Pattern;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iSuffixesSortedDescByLength_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix = { 2, "RegExAffix", "org.joda.time.format", "PeriodFormatterBuilder", 0x8, 8, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix;
@@ -1333,17 +1344,17 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix)
 
 void OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_initWithNSStringArray_withNSStringArray_(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix *self, IOSObjectArray *regExes, IOSObjectArray *texts) {
   OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_init(self);
-  OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_set_iSuffixes_(self, [((IOSObjectArray *) nil_chk(texts)) clone]);
-  OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_setAndConsume_iPatterns_(self, [IOSObjectArray newArrayWithLength:((IOSObjectArray *) nil_chk(regExes))->size_ type:JavaUtilRegexPattern_class_()]);
+  JreStrongAssign(&self->iSuffixes_, [((IOSObjectArray *) nil_chk(texts)) clone]);
+  JreStrongAssignAndConsume(&self->iPatterns_, [IOSObjectArray newArrayWithLength:((IOSObjectArray *) nil_chk(regExes))->size_ type:JavaUtilRegexPattern_class_()]);
   for (jint i = 0; i < regExes->size_; i++) {
-    JavaUtilRegexPattern *pattern = [((id<JavaUtilConcurrentConcurrentMap>) nil_chk(OrgJodaTimeFormatPeriodFormatterBuilder_get_PATTERNS_())) getWithId:IOSObjectArray_Get(regExes, i)];
+    JavaUtilRegexPattern *pattern = [((id<JavaUtilConcurrentConcurrentMap>) nil_chk(JreLoadStatic(OrgJodaTimeFormatPeriodFormatterBuilder, PATTERNS_))) getWithId:IOSObjectArray_Get(regExes, i)];
     if (pattern == nil) {
       pattern = JavaUtilRegexPattern_compileWithNSString_(IOSObjectArray_Get(regExes, i));
-      [OrgJodaTimeFormatPeriodFormatterBuilder_get_PATTERNS_() putIfAbsentWithId:IOSObjectArray_Get(regExes, i) withId:pattern];
+      [JreLoadStatic(OrgJodaTimeFormatPeriodFormatterBuilder, PATTERNS_) putIfAbsentWithId:IOSObjectArray_Get(regExes, i) withId:pattern];
     }
     IOSObjectArray_Set(self->iPatterns_, i, pattern);
   }
-  OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_set_iSuffixesSortedDescByLength_(self, [((IOSObjectArray *) nil_chk(self->iSuffixes_)) clone]);
+  JreStrongAssign(&self->iSuffixesSortedDescByLength_, [((IOSObjectArray *) nil_chk(self->iSuffixes_)) clone]);
   JavaUtilArrays_sortWithNSObjectArray_withJavaUtilComparator_(self->iSuffixesSortedDescByLength_, OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_LENGTH_DESC_COMPARATOR_);
 }
 
@@ -1372,10 +1383,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAf
   return ((jint) [((NSString *) nil_chk(o2)) length]) - ((jint) [((NSString *) nil_chk(o1)) length]);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcMethodInfo methods[] = {
@@ -1458,8 +1471,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAf
 }
 
 - (void)dealloc {
-  if (iLeft_ != self) RELEASE_(iLeft_);
-  if (iRight_ != self) RELEASE_(iRight_);
+  RELEASE_(iLeft_);
+  RELEASE_(iRight_);
   RELEASE_(iLeftRightCombinations_);
   [super dealloc];
 }
@@ -1475,9 +1488,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAf
     { "getAffixes", NULL, "[Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "iLeft_", NULL, 0x12, "Lorg.joda.time.format.PeriodFormatterBuilder$PeriodFieldAffix;", NULL, NULL,  },
-    { "iRight_", NULL, 0x12, "Lorg.joda.time.format.PeriodFormatterBuilder$PeriodFieldAffix;", NULL, NULL,  },
-    { "iLeftRightCombinations_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL,  },
+    { "iLeft_", NULL, 0x12, "Lorg.joda.time.format.PeriodFormatterBuilder$PeriodFieldAffix;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iRight_", NULL, 0x12, "Lorg.joda.time.format.PeriodFormatterBuilder$PeriodFieldAffix;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iLeftRightCombinations_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix = { 2, "CompositeAffix", "org.joda.time.format", "PeriodFormatterBuilder", 0x8, 7, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix;
@@ -1487,8 +1500,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAf
 
 void OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_initWithOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix *self, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> left, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> right) {
   OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_init(self);
-  OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_set_iLeft_(self, left);
-  OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_set_iRight_(self, right);
+  JreStrongAssign(&self->iLeft_, left);
+  JreStrongAssign(&self->iRight_, right);
   id<JavaUtilSet> result = [new_JavaUtilHashSet_init() autorelease];
   {
     IOSObjectArray *a__ = [((id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix>) nil_chk(self->iLeft_)) getAffixes];
@@ -1507,7 +1520,7 @@ void OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_initWithOrgJodaTimeF
       }
     }
   }
-  OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_set_iLeftRightCombinations_(self, [result toArrayWithNSObjectArray:[IOSObjectArray arrayWithLength:[result size] type:NSString_class_()]]);
+  JreStrongAssign(&self->iLeftRightCombinations_, [result toArrayWithNSObjectArray:[IOSObjectArray arrayWithLength:[result size] type:NSString_class_()]]);
 }
 
 OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix *new_OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_initWithOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> left, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> right) {
@@ -1679,7 +1692,7 @@ withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:(id<OrgJodaTimeForm
   if (iPrefix_ != nil) {
     position = [iPrefix_ parseWithNSString:text withInt:position];
     if (position >= 0) {
-      mustParse = YES;
+      mustParse = true;
     }
     else {
       if (!mustParse) {
@@ -1692,7 +1705,7 @@ withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:(id<OrgJodaTimeForm
   if (iSuffix_ != nil && !mustParse) {
     suffixPos = [iSuffix_ scanWithNSString:text withInt:position];
     if (suffixPos >= 0) {
-      mustParse = YES;
+      mustParse = true;
     }
     else {
       if (!mustParse) {
@@ -1713,7 +1726,7 @@ withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:(id<OrgJodaTimeForm
   }
   jint length = 0;
   jint fractPos = -1;
-  jboolean hasDigits = NO;
+  jboolean hasDigits = false;
   while (length < limit) {
     jchar c = [text charAtWithInt:position + length];
     if (length == 0 && (c == '-' || c == '+') && !iRejectSignedValues_) {
@@ -1731,7 +1744,7 @@ withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:(id<OrgJodaTimeForm
       continue;
     }
     if (c >= '0' && c <= '9') {
-      hasDigits = YES;
+      hasDigits = true;
     }
     else {
       if ((c == '.' || c == ',') && (iFieldType_ == OrgJodaTimeFormatPeriodFormatterBuilder_SECONDS_MILLIS || iFieldType_ == OrgJodaTimeFormatPeriodFormatterBuilder_SECONDS_OPTIONAL_MILLIS)) {
@@ -1808,7 +1821,7 @@ withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:(id<OrgJodaTimeForm
   else {
     type = [((id<OrgJodaTimeReadablePeriod>) nil_chk(period)) getPeriodType];
   }
-  if (type != nil && [self isSupportedWithOrgJodaTimePeriodType:type withInt:iFieldType_] == NO) {
+  if (type != nil && [self isSupportedWithOrgJodaTimePeriodType:type withInt:iFieldType_] == false) {
     return JavaLangLong_MAX_VALUE;
   }
   jlong value;
@@ -1888,17 +1901,17 @@ withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:(id<OrgJodaTimeForm
 - (jboolean)isZeroWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period {
   for (jint i = 0, isize = [((id<OrgJodaTimeReadablePeriod>) nil_chk(period)) size]; i < isize; i++) {
     if ([period getValueWithInt:i] != 0) {
-      return NO;
+      return false;
     }
   }
-  return YES;
+  return true;
 }
 
 - (jboolean)isSupportedWithOrgJodaTimePeriodType:(OrgJodaTimePeriodType *)type
                                          withInt:(jint)field {
   switch (field) {
     default:
-    return NO;
+    return false;
     case OrgJodaTimeFormatPeriodFormatterBuilder_YEARS:
     return [((OrgJodaTimePeriodType *) nil_chk(type)) isSupportedWithOrgJodaTimeDurationFieldType:OrgJodaTimeDurationFieldType_years()];
     case OrgJodaTimeFormatPeriodFormatterBuilder_MONTHS:
@@ -1983,14 +1996,14 @@ withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:(id<OrgJodaTimeForm
     { "getFieldType", NULL, "I", 0x0, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "iMinPrintedDigits_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iPrintZeroSetting_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iMaxParsedDigits_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iRejectSignedValues_", NULL, 0x12, "Z", NULL, NULL,  },
-    { "iFieldType_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iFieldFormatters_", NULL, 0x12, "[Lorg.joda.time.format.PeriodFormatterBuilder$FieldFormatter;", NULL, NULL,  },
-    { "iPrefix_", NULL, 0x12, "Lorg.joda.time.format.PeriodFormatterBuilder$PeriodFieldAffix;", NULL, NULL,  },
-    { "iSuffix_", NULL, 0x12, "Lorg.joda.time.format.PeriodFormatterBuilder$PeriodFieldAffix;", NULL, NULL,  },
+    { "iMinPrintedDigits_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iPrintZeroSetting_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMaxParsedDigits_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iRejectSignedValues_", NULL, 0x12, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "iFieldType_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iFieldFormatters_", NULL, 0x12, "[Lorg.joda.time.format.PeriodFormatterBuilder$FieldFormatter;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iPrefix_", NULL, 0x12, "Lorg.joda.time.format.PeriodFormatterBuilder$PeriodFieldAffix;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iSuffix_", NULL, 0x12, "Lorg.joda.time.format.PeriodFormatterBuilder$PeriodFieldAffix;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter = { 2, "FieldFormatter", "org.joda.time.format", "PeriodFormatterBuilder", 0x8, 14, methods, 8, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter;
@@ -2005,9 +2018,9 @@ void OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_initWithInt_withInt_
   self->iMaxParsedDigits_ = maxParsedDigits;
   self->iRejectSignedValues_ = rejectSignedValues;
   self->iFieldType_ = fieldType;
-  OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_set_iFieldFormatters_(self, fieldFormatters);
-  OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_set_iPrefix_(self, prefix);
-  OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_set_iSuffix_(self, suffix);
+  JreStrongAssign(&self->iFieldFormatters_, fieldFormatters);
+  JreStrongAssign(&self->iPrefix_, prefix);
+  JreStrongAssign(&self->iSuffix_, suffix);
 }
 
 OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *new_OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_initWithInt_withInt_withInt_withBoolean_withInt_withOrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatterArray_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(jint minPrintedDigits, jint printZeroSetting, jint maxParsedDigits, jboolean rejectSignedValues, jint fieldType, IOSObjectArray *fieldFormatters, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> prefix, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> suffix) {
@@ -2023,12 +2036,12 @@ void OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_initWithOrgJodaTimeF
   self->iMaxParsedDigits_ = field->iMaxParsedDigits_;
   self->iRejectSignedValues_ = field->iRejectSignedValues_;
   self->iFieldType_ = field->iFieldType_;
-  OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_set_iFieldFormatters_(self, field->iFieldFormatters_);
-  OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_set_iPrefix_(self, field->iPrefix_);
+  JreStrongAssign(&self->iFieldFormatters_, field->iFieldFormatters_);
+  JreStrongAssign(&self->iPrefix_, field->iPrefix_);
   if (field->iSuffix_ != nil) {
     suffix = [new_OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_initWithOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(field->iSuffix_, suffix) autorelease];
   }
-  OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_set_iSuffix_(self, suffix);
+  JreStrongAssign(&self->iSuffix_, suffix);
 }
 
 OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *new_OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_initWithOrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *field, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> suffix) {
@@ -2051,15 +2064,15 @@ jint OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_parseIntWithNSString
     if (--length < 0) {
       return 0;
     }
-    negative = YES;
+    negative = true;
     value = [text charAtWithInt:position++];
   }
   else {
-    negative = NO;
+    negative = false;
   }
   value -= '0';
   while (length-- > 0) {
-    value = ((LShift32(value, 3)) + (LShift32(value, 1))) + [text charAtWithInt:position++] - '0';
+    value = ((JreLShift32(value, 3)) + (JreLShift32(value, 1))) + [text charAtWithInt:position++] - '0';
   }
   return negative ? -value : value;
 }
@@ -2104,7 +2117,7 @@ OrgJodaTimeFormatPeriodFormatterBuilder_Literal *OrgJodaTimeFormatPeriodFormatte
                                       withNSString:(NSString *)periodStr
                                            withInt:(jint)position
                                 withJavaUtilLocale:(JavaUtilLocale *)locale {
-  if ([((NSString *) nil_chk(periodStr)) regionMatches:YES thisOffset:position aString:iText_ otherOffset:0 count:((jint) [((NSString *) nil_chk(iText_)) length])]) {
+  if ([((NSString *) nil_chk(periodStr)) regionMatches:true thisOffset:position aString:iText_ otherOffset:0 count:((jint) [((NSString *) nil_chk(iText_)) length])]) {
     return position + ((jint) [iText_ length]);
   }
   return ~position;
@@ -2117,7 +2130,7 @@ OrgJodaTimeFormatPeriodFormatterBuilder_Literal *OrgJodaTimeFormatPeriodFormatte
 
 + (void)initialize {
   if (self == [OrgJodaTimeFormatPeriodFormatterBuilder_Literal class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeFormatPeriodFormatterBuilder_Literal_EMPTY_, nil, new_OrgJodaTimeFormatPeriodFormatterBuilder_Literal_initWithNSString_(@""));
+    JreStrongAssignAndConsume(&OrgJodaTimeFormatPeriodFormatterBuilder_Literal_EMPTY_, new_OrgJodaTimeFormatPeriodFormatterBuilder_Literal_initWithNSString_(@""));
     J2OBJC_SET_INITIALIZED(OrgJodaTimeFormatPeriodFormatterBuilder_Literal)
   }
 }
@@ -2132,8 +2145,8 @@ OrgJodaTimeFormatPeriodFormatterBuilder_Literal *OrgJodaTimeFormatPeriodFormatte
     { "parseIntoWithOrgJodaTimeReadWritablePeriod:withNSString:withInt:withJavaUtilLocale:", "parseInto", "I", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "EMPTY_", NULL, 0x18, "Lorg.joda.time.format.PeriodFormatterBuilder$Literal;", &OrgJodaTimeFormatPeriodFormatterBuilder_Literal_EMPTY_, NULL,  },
-    { "iText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL,  },
+    { "EMPTY_", NULL, 0x18, "Lorg.joda.time.format.PeriodFormatterBuilder$Literal;", &OrgJodaTimeFormatPeriodFormatterBuilder_Literal_EMPTY_, NULL, .constantValue.asLong = 0 },
+    { "iText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormatterBuilder_Literal = { 2, "Literal", "org.joda.time.format", "PeriodFormatterBuilder", 0x8, 6, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatPeriodFormatterBuilder_Literal;
@@ -2143,7 +2156,7 @@ OrgJodaTimeFormatPeriodFormatterBuilder_Literal *OrgJodaTimeFormatPeriodFormatte
 
 void OrgJodaTimeFormatPeriodFormatterBuilder_Literal_initWithNSString_(OrgJodaTimeFormatPeriodFormatterBuilder_Literal *self, NSString *text) {
   NSObject_init(self);
-  OrgJodaTimeFormatPeriodFormatterBuilder_Literal_set_iText_(self, text);
+  JreStrongAssign(&self->iText_, text);
 }
 
 OrgJodaTimeFormatPeriodFormatterBuilder_Literal *new_OrgJodaTimeFormatPeriodFormatterBuilder_Literal_initWithNSString_(NSString *text) {
@@ -2172,7 +2185,7 @@ withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)beforeParse
                                      withJavaUtilLocale:(JavaUtilLocale *)locale {
   jint sum = [((id<OrgJodaTimeFormatPeriodPrinter>) nil_chk(iBeforePrinter_)) countFieldsToPrintWithOrgJodaTimeReadablePeriod:period withInt:stopAt withJavaUtilLocale:locale];
   if (sum < stopAt) {
-    sum += [((id<OrgJodaTimeFormatPeriodPrinter>) nil_chk(iAfterPrinter_)) countFieldsToPrintWithOrgJodaTimeReadablePeriod:period withInt:stopAt withJavaUtilLocale:locale];
+    sum += [((id<OrgJodaTimeFormatPeriodPrinter>) nil_chk(JreLoadVolatileId(&iAfterPrinter_))) countFieldsToPrintWithOrgJodaTimeReadablePeriod:period withInt:stopAt withJavaUtilLocale:locale];
   }
   return sum;
 }
@@ -2180,7 +2193,7 @@ withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)beforeParse
 - (jint)calculatePrintedLengthWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period
                                          withJavaUtilLocale:(JavaUtilLocale *)locale {
   id<OrgJodaTimeFormatPeriodPrinter> before = iBeforePrinter_;
-  id<OrgJodaTimeFormatPeriodPrinter> after = iAfterPrinter_;
+  id<OrgJodaTimeFormatPeriodPrinter> after = JreLoadVolatileId(&iAfterPrinter_);
   jint sum = [((id<OrgJodaTimeFormatPeriodPrinter>) nil_chk(before)) calculatePrintedLengthWithOrgJodaTimeReadablePeriod:period withJavaUtilLocale:locale] + [((id<OrgJodaTimeFormatPeriodPrinter>) nil_chk(after)) calculatePrintedLengthWithOrgJodaTimeReadablePeriod:period withJavaUtilLocale:locale];
   if (iUseBefore_) {
     if ([before countFieldsToPrintWithOrgJodaTimeReadablePeriod:period withInt:1 withJavaUtilLocale:locale] > 0) {
@@ -2205,7 +2218,7 @@ withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)beforeParse
           withOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period
                      withJavaUtilLocale:(JavaUtilLocale *)locale {
   id<OrgJodaTimeFormatPeriodPrinter> before = iBeforePrinter_;
-  id<OrgJodaTimeFormatPeriodPrinter> after = iAfterPrinter_;
+  id<OrgJodaTimeFormatPeriodPrinter> after = JreLoadVolatileId(&iAfterPrinter_);
   [((id<OrgJodaTimeFormatPeriodPrinter>) nil_chk(before)) printToWithJavaLangStringBuffer:buf withOrgJodaTimeReadablePeriod:period withJavaUtilLocale:locale];
   if (iUseBefore_) {
     if ([before countFieldsToPrintWithOrgJodaTimeReadablePeriod:period withInt:1 withJavaUtilLocale:locale] > 0) {
@@ -2230,7 +2243,7 @@ withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)beforeParse
   withOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period
              withJavaUtilLocale:(JavaUtilLocale *)locale {
   id<OrgJodaTimeFormatPeriodPrinter> before = iBeforePrinter_;
-  id<OrgJodaTimeFormatPeriodPrinter> after = iAfterPrinter_;
+  id<OrgJodaTimeFormatPeriodPrinter> after = JreLoadVolatileId(&iAfterPrinter_);
   [((id<OrgJodaTimeFormatPeriodPrinter>) nil_chk(before)) printToWithJavaIoWriter:outArg withOrgJodaTimeReadablePeriod:period withJavaUtilLocale:locale];
   if (iUseBefore_) {
     if ([before countFieldsToPrintWithOrgJodaTimeReadablePeriod:period withInt:1 withJavaUtilLocale:locale] > 0) {
@@ -2260,23 +2273,23 @@ withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)beforeParse
   if (position < 0) {
     return position;
   }
-  jboolean found = NO;
+  jboolean found = false;
   jint parsedFormLength = -1;
   if (position > oldPos) {
     IOSObjectArray *parsedForms = iParsedForms_;
     jint length = ((IOSObjectArray *) nil_chk(parsedForms))->size_;
     for (jint i = 0; i < length; i++) {
       NSString *parsedForm = IOSObjectArray_Get(parsedForms, i);
-      if ((parsedForm == nil || ((jint) [parsedForm length]) == 0) || [((NSString *) nil_chk(periodStr)) regionMatches:YES thisOffset:position aString:parsedForm otherOffset:0 count:((jint) [parsedForm length])]) {
+      if ((parsedForm == nil || ((jint) [parsedForm length]) == 0) || [((NSString *) nil_chk(periodStr)) regionMatches:true thisOffset:position aString:parsedForm otherOffset:0 count:((jint) [parsedForm length])]) {
         parsedFormLength = (parsedForm == nil ? 0 : ((jint) [parsedForm length]));
         position += parsedFormLength;
-        found = YES;
+        found = true;
         break;
       }
     }
   }
   oldPos = position;
-  position = [((id<OrgJodaTimeFormatPeriodParser>) nil_chk(iAfterParser_)) parseIntoWithOrgJodaTimeReadWritablePeriod:period withNSString:periodStr withInt:position withJavaUtilLocale:locale];
+  position = [((id<OrgJodaTimeFormatPeriodParser>) nil_chk(JreLoadVolatileId(&iAfterParser_))) parseIntoWithOrgJodaTimeReadWritablePeriod:period withNSString:periodStr withInt:position withJavaUtilLocale:locale];
   if (position < 0) {
     return position;
   }
@@ -2291,8 +2304,8 @@ withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)beforeParse
 
 - (OrgJodaTimeFormatPeriodFormatterBuilder_Separator *)finishWithOrgJodaTimeFormatPeriodPrinter:(id<OrgJodaTimeFormatPeriodPrinter>)afterPrinter
                                                               withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)afterParser {
-  OrgJodaTimeFormatPeriodFormatterBuilder_Separator_set_iAfterPrinter_(self, afterPrinter);
-  OrgJodaTimeFormatPeriodFormatterBuilder_Separator_set_iAfterParser_(self, afterParser);
+  JreVolatileStrongAssign(&iAfterPrinter_, afterPrinter);
+  JreVolatileStrongAssign(&iAfterParser_, afterParser);
   return self;
 }
 
@@ -2300,11 +2313,17 @@ withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)beforeParse
   RELEASE_(iText_);
   RELEASE_(iFinalText_);
   RELEASE_(iParsedForms_);
-  if (iBeforePrinter_ != self) RELEASE_(iBeforePrinter_);
-  if (iAfterPrinter_ != self) RELEASE_(iAfterPrinter_);
-  if (iBeforeParser_ != self) RELEASE_(iBeforeParser_);
-  if (iAfterParser_ != self) RELEASE_(iAfterParser_);
+  RELEASE_(iBeforePrinter_);
+  JreReleaseVolatile(&iAfterPrinter_);
+  RELEASE_(iBeforeParser_);
+  JreReleaseVolatile(&iAfterParser_);
   [super dealloc];
+}
+
+- (void)__javaClone {
+  [super __javaClone];
+  JreRetainVolatile(&iAfterPrinter_);
+  JreRetainVolatile(&iAfterParser_);
 }
 
 + (const J2ObjcClassInfo *)__metadata {
@@ -2318,15 +2337,15 @@ withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)beforeParse
     { "finishWithOrgJodaTimeFormatPeriodPrinter:withOrgJodaTimeFormatPeriodParser:", "finish", "Lorg.joda.time.format.PeriodFormatterBuilder$Separator;", 0x0, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "iText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL,  },
-    { "iFinalText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL,  },
-    { "iParsedForms_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL,  },
-    { "iUseBefore_", NULL, 0x12, "Z", NULL, NULL,  },
-    { "iUseAfter_", NULL, 0x12, "Z", NULL, NULL,  },
-    { "iBeforePrinter_", NULL, 0x12, "Lorg.joda.time.format.PeriodPrinter;", NULL, NULL,  },
-    { "iAfterPrinter_", NULL, 0x42, "Lorg.joda.time.format.PeriodPrinter;", NULL, NULL,  },
-    { "iBeforeParser_", NULL, 0x12, "Lorg.joda.time.format.PeriodParser;", NULL, NULL,  },
-    { "iAfterParser_", NULL, 0x42, "Lorg.joda.time.format.PeriodParser;", NULL, NULL,  },
+    { "iText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iFinalText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iParsedForms_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iUseBefore_", NULL, 0x12, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "iUseAfter_", NULL, 0x12, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "iBeforePrinter_", NULL, 0x12, "Lorg.joda.time.format.PeriodPrinter;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iAfterPrinter_", NULL, 0x42, "Lorg.joda.time.format.PeriodPrinter;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iBeforeParser_", NULL, 0x12, "Lorg.joda.time.format.PeriodParser;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iAfterParser_", NULL, 0x42, "Lorg.joda.time.format.PeriodParser;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormatterBuilder_Separator = { 2, "Separator", "org.joda.time.format", "PeriodFormatterBuilder", 0x8, 7, methods, 9, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatPeriodFormatterBuilder_Separator;
@@ -2336,13 +2355,13 @@ withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)beforeParse
 
 void OrgJodaTimeFormatPeriodFormatterBuilder_Separator_initWithNSString_withNSString_withNSStringArray_withOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withBoolean_withBoolean_(OrgJodaTimeFormatPeriodFormatterBuilder_Separator *self, NSString *text, NSString *finalText, IOSObjectArray *variants, id<OrgJodaTimeFormatPeriodPrinter> beforePrinter, id<OrgJodaTimeFormatPeriodParser> beforeParser, jboolean useBefore, jboolean useAfter) {
   NSObject_init(self);
-  OrgJodaTimeFormatPeriodFormatterBuilder_Separator_set_iText_(self, text);
-  OrgJodaTimeFormatPeriodFormatterBuilder_Separator_set_iFinalText_(self, finalText);
+  JreStrongAssign(&self->iText_, text);
+  JreStrongAssign(&self->iFinalText_, finalText);
   if ((finalText == nil || [((NSString *) nil_chk(text)) isEqual:finalText]) && (variants == nil || variants->size_ == 0)) {
-    OrgJodaTimeFormatPeriodFormatterBuilder_Separator_setAndConsume_iParsedForms_(self, [IOSObjectArray newArrayWithObjects:(id[]){ text } count:1 type:NSString_class_()]);
+    JreStrongAssignAndConsume(&self->iParsedForms_, [IOSObjectArray newArrayWithObjects:(id[]){ text } count:1 type:NSString_class_()]);
   }
   else {
-    JavaUtilTreeSet *parsedSet = [new_JavaUtilTreeSet_initWithJavaUtilComparator_(NSString_get_CASE_INSENSITIVE_ORDER_()) autorelease];
+    JavaUtilTreeSet *parsedSet = [new_JavaUtilTreeSet_initWithJavaUtilComparator_(JreLoadStatic(NSString, CASE_INSENSITIVE_ORDER_)) autorelease];
     [parsedSet addWithId:text];
     [parsedSet addWithId:finalText];
     if (variants != nil) {
@@ -2352,10 +2371,10 @@ void OrgJodaTimeFormatPeriodFormatterBuilder_Separator_initWithNSString_withNSSt
     }
     JavaUtilArrayList *parsedList = [new_JavaUtilArrayList_initWithJavaUtilCollection_(parsedSet) autorelease];
     JavaUtilCollections_reverseWithJavaUtilList_(parsedList);
-    OrgJodaTimeFormatPeriodFormatterBuilder_Separator_set_iParsedForms_(self, [parsedList toArrayWithNSObjectArray:[IOSObjectArray arrayWithLength:[parsedList size] type:NSString_class_()]]);
+    JreStrongAssign(&self->iParsedForms_, [parsedList toArrayWithNSObjectArray:[IOSObjectArray arrayWithLength:[parsedList size] type:NSString_class_()]]);
   }
-  OrgJodaTimeFormatPeriodFormatterBuilder_Separator_set_iBeforePrinter_(self, beforePrinter);
-  OrgJodaTimeFormatPeriodFormatterBuilder_Separator_set_iBeforeParser_(self, beforeParser);
+  JreStrongAssign(&self->iBeforePrinter_, beforePrinter);
+  JreStrongAssign(&self->iBeforeParser_, beforeParser);
   self->iUseBefore_ = useBefore;
   self->iUseAfter_ = useAfter;
 }
@@ -2460,8 +2479,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_Separat
     { "addArrayToListWithJavaUtilList:withNSObjectArray:", "addArrayToList", "V", 0x2, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "iPrinters_", NULL, 0x12, "[Lorg.joda.time.format.PeriodPrinter;", NULL, NULL,  },
-    { "iParsers_", NULL, 0x12, "[Lorg.joda.time.format.PeriodParser;", NULL, NULL,  },
+    { "iPrinters_", NULL, 0x12, "[Lorg.joda.time.format.PeriodPrinter;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iParsers_", NULL, 0x12, "[Lorg.joda.time.format.PeriodParser;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormatterBuilder_Composite = { 2, "Composite", "org.joda.time.format", "PeriodFormatterBuilder", 0x8, 8, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatPeriodFormatterBuilder_Composite;
@@ -2475,16 +2494,16 @@ void OrgJodaTimeFormatPeriodFormatterBuilder_Composite_initWithJavaUtilList_(Org
   id<JavaUtilList> parserList = [new_JavaUtilArrayList_init() autorelease];
   OrgJodaTimeFormatPeriodFormatterBuilder_Composite_decomposeWithJavaUtilList_withJavaUtilList_withJavaUtilList_(self, elementPairs, printerList, parserList);
   if ([printerList size] <= 0) {
-    OrgJodaTimeFormatPeriodFormatterBuilder_Composite_set_iPrinters_(self, nil);
+    JreStrongAssign(&self->iPrinters_, nil);
   }
   else {
-    OrgJodaTimeFormatPeriodFormatterBuilder_Composite_set_iPrinters_(self, [printerList toArrayWithNSObjectArray:[IOSObjectArray arrayWithLength:[printerList size] type:OrgJodaTimeFormatPeriodPrinter_class_()]]);
+    JreStrongAssign(&self->iPrinters_, [printerList toArrayWithNSObjectArray:[IOSObjectArray arrayWithLength:[printerList size] type:OrgJodaTimeFormatPeriodPrinter_class_()]]);
   }
   if ([parserList size] <= 0) {
-    OrgJodaTimeFormatPeriodFormatterBuilder_Composite_set_iParsers_(self, nil);
+    JreStrongAssign(&self->iParsers_, nil);
   }
   else {
-    OrgJodaTimeFormatPeriodFormatterBuilder_Composite_set_iParsers_(self, [parserList toArrayWithNSObjectArray:[IOSObjectArray arrayWithLength:[parserList size] type:OrgJodaTimeFormatPeriodParser_class_()]]);
+    JreStrongAssign(&self->iParsers_, [parserList toArrayWithNSObjectArray:[IOSObjectArray arrayWithLength:[parserList size] type:OrgJodaTimeFormatPeriodParser_class_()]]);
   }
 }
 

@@ -3,6 +3,7 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/joda-time/src/main/java/org/joda/time/format/InternalParserDateTimeParser.java
 //
 
+#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "java/lang/CharSequence.h"
 #include "org/joda/time/format/DateTimeParser.h"
@@ -55,17 +56,17 @@ __attribute__((unused)) static OrgJodaTimeFormatInternalParserDateTimeParser *ne
 
 - (jboolean)isEqual:(id)obj {
   if (obj == self) {
-    return YES;
+    return true;
   }
   if ([obj isKindOfClass:[OrgJodaTimeFormatInternalParserDateTimeParser class]]) {
     OrgJodaTimeFormatInternalParserDateTimeParser *other = (OrgJodaTimeFormatInternalParserDateTimeParser *) check_class_cast(obj, [OrgJodaTimeFormatInternalParserDateTimeParser class]);
     return [((id<OrgJodaTimeFormatInternalParser>) nil_chk(underlying_)) isEqual:((OrgJodaTimeFormatInternalParserDateTimeParser *) nil_chk(other))->underlying_];
   }
-  return NO;
+  return false;
 }
 
 - (void)dealloc {
-  if (underlying_ != self) RELEASE_(underlying_);
+  RELEASE_(underlying_);
   [super dealloc];
 }
 
@@ -79,7 +80,7 @@ __attribute__((unused)) static OrgJodaTimeFormatInternalParserDateTimeParser *ne
     { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "underlying_", NULL, 0x12, "Lorg.joda.time.format.InternalParser;", NULL, NULL,  },
+    { "underlying_", NULL, 0x12, "Lorg.joda.time.format.InternalParser;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatInternalParserDateTimeParser = { 2, "InternalParserDateTimeParser", "org.joda.time.format", NULL, 0x0, 6, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatInternalParserDateTimeParser;
@@ -93,7 +94,7 @@ id<OrgJodaTimeFormatDateTimeParser> OrgJodaTimeFormatInternalParserDateTimeParse
     return [((OrgJodaTimeFormatDateTimeParserInternalParser *) nil_chk(((OrgJodaTimeFormatDateTimeParserInternalParser *) check_class_cast(underlying, [OrgJodaTimeFormatDateTimeParserInternalParser class])))) getUnderlying];
   }
   if ([OrgJodaTimeFormatDateTimeParser_class_() isInstance:underlying]) {
-    return (id<OrgJodaTimeFormatDateTimeParser>) check_protocol_cast(underlying, @protocol(OrgJodaTimeFormatDateTimeParser));
+    return (id<OrgJodaTimeFormatDateTimeParser>) check_protocol_cast(underlying, OrgJodaTimeFormatDateTimeParser_class_());
   }
   if (underlying == nil) {
     return nil;
@@ -103,7 +104,7 @@ id<OrgJodaTimeFormatDateTimeParser> OrgJodaTimeFormatInternalParserDateTimeParse
 
 void OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(OrgJodaTimeFormatInternalParserDateTimeParser *self, id<OrgJodaTimeFormatInternalParser> underlying) {
   NSObject_init(self);
-  OrgJodaTimeFormatInternalParserDateTimeParser_set_underlying_(self, underlying);
+  JreStrongAssign(&self->underlying_, underlying);
 }
 
 OrgJodaTimeFormatInternalParserDateTimeParser *new_OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(id<OrgJodaTimeFormatInternalParser> underlying) {

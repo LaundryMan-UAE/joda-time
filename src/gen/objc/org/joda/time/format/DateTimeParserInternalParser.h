@@ -13,7 +13,7 @@
 @protocol JavaLangCharSequence;
 @protocol OrgJodaTimeFormatDateTimeParser;
 
-/**
+/*!
  @brief Adapter between old and new parser interface.
  @author Stephen Colebourne
  @since 2.4

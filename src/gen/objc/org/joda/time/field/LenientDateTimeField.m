@@ -40,7 +40,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldLenientDateTimeField, serialVersionUI
 }
 
 - (jboolean)isLenient {
-  return YES;
+  return true;
 }
 
 - (jlong)setWithLong:(jlong)instant
@@ -48,7 +48,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldLenientDateTimeField, serialVersionUI
   jlong localInstant = [((OrgJodaTimeDateTimeZone *) nil_chk([((OrgJodaTimeChronology *) nil_chk(iBase_)) getZone])) convertUTCToLocalWithLong:instant];
   jlong difference = OrgJodaTimeFieldFieldUtils_safeSubtractWithLong_withLong_(value, [self getWithLong:instant]);
   localInstant = [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeDateTimeFieldType *) nil_chk([self getType])) getFieldWithOrgJodaTimeChronology:[iBase_ withUTC]])) addWithLong:localInstant withLong:difference];
-  return [((OrgJodaTimeDateTimeZone *) nil_chk([iBase_ getZone])) convertLocalToUTCWithLong:localInstant withBoolean:NO withLong:instant];
+  return [((OrgJodaTimeDateTimeZone *) nil_chk([iBase_ getZone])) convertLocalToUTCWithLong:localInstant withBoolean:false withLong:instant];
 }
 
 - (void)dealloc {
@@ -65,7 +65,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldLenientDateTimeField, serialVersionUI
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldLenientDateTimeField_serialVersionUID },
-    { "iBase_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL,  },
+    { "iBase_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldLenientDateTimeField = { 2, "LenientDateTimeField", "org.joda.time.field", NULL, 0x1, 4, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldLenientDateTimeField;
@@ -89,7 +89,7 @@ OrgJodaTimeDateTimeField *OrgJodaTimeFieldLenientDateTimeField_getInstanceWithOr
 
 void OrgJodaTimeFieldLenientDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronology_(OrgJodaTimeFieldLenientDateTimeField *self, OrgJodaTimeDateTimeField *field, OrgJodaTimeChronology *base) {
   OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_(self, field);
-  OrgJodaTimeFieldLenientDateTimeField_set_iBase_(self, base);
+  JreStrongAssign(&self->iBase_, base);
 }
 
 OrgJodaTimeFieldLenientDateTimeField *new_OrgJodaTimeFieldLenientDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronology_(OrgJodaTimeDateTimeField *field, OrgJodaTimeChronology *base) {

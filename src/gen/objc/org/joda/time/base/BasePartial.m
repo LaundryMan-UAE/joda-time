@@ -25,11 +25,11 @@
 
 @interface OrgJodaTimeBaseBasePartial () {
  @public
-  /**
+  /*!
    @brief The chronology in use
    */
   OrgJodaTimeChronology *iChronology_;
-  /**
+  /*!
    @brief The values of each field in this partial
    */
   IOSIntArray *iValues_;
@@ -44,10 +44,12 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBasePartial, serialVersionUID, jlong)
 
 @implementation OrgJodaTimeBaseBasePartial
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeBaseBasePartial_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology {
   OrgJodaTimeBaseBasePartial_initWithOrgJodaTimeChronology_(self, chronology);
@@ -162,8 +164,8 @@ withOrgJodaTimeFormatDateTimeFormatter:(OrgJodaTimeFormatDateTimeFormatter *)par
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeBaseBasePartial_serialVersionUID },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL,  },
-    { "iValues_", NULL, 0x12, "[I", NULL, NULL,  },
+    { "iChronology_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iValues_", NULL, 0x12, "[I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeBaseBasePartial = { 2, "BasePartial", "org.joda.time.base", NULL, 0x401, 16, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeBaseBasePartial;
@@ -186,8 +188,8 @@ void OrgJodaTimeBaseBasePartial_initWithLong_(OrgJodaTimeBaseBasePartial *self, 
 void OrgJodaTimeBaseBasePartial_initWithLong_withOrgJodaTimeChronology_(OrgJodaTimeBaseBasePartial *self, jlong instant, OrgJodaTimeChronology *chronology) {
   OrgJodaTimeBaseAbstractPartial_init(self);
   chronology = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chronology);
-  OrgJodaTimeBaseBasePartial_set_iChronology_(self, [((OrgJodaTimeChronology *) nil_chk(chronology)) withUTC]);
-  OrgJodaTimeBaseBasePartial_set_iValues_(self, [chronology getWithOrgJodaTimeReadablePartial:self withLong:instant]);
+  JreStrongAssign(&self->iChronology_, [((OrgJodaTimeChronology *) nil_chk(chronology)) withUTC]);
+  JreStrongAssign(&self->iValues_, [chronology getWithOrgJodaTimeReadablePartial:self withLong:instant]);
 }
 
 void OrgJodaTimeBaseBasePartial_initWithId_withOrgJodaTimeChronology_(OrgJodaTimeBaseBasePartial *self, id instant, OrgJodaTimeChronology *chronology) {
@@ -195,8 +197,8 @@ void OrgJodaTimeBaseBasePartial_initWithId_withOrgJodaTimeChronology_(OrgJodaTim
   id<OrgJodaTimeConvertPartialConverter> converter = [((OrgJodaTimeConvertConverterManager *) nil_chk(OrgJodaTimeConvertConverterManager_getInstance())) getPartialConverterWithId:instant];
   chronology = [((id<OrgJodaTimeConvertPartialConverter>) nil_chk(converter)) getChronologyWithId:instant withOrgJodaTimeChronology:chronology];
   chronology = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chronology);
-  OrgJodaTimeBaseBasePartial_set_iChronology_(self, [((OrgJodaTimeChronology *) nil_chk(chronology)) withUTC]);
-  OrgJodaTimeBaseBasePartial_set_iValues_(self, [converter getPartialValuesWithOrgJodaTimeReadablePartial:self withId:instant withOrgJodaTimeChronology:chronology]);
+  JreStrongAssign(&self->iChronology_, [((OrgJodaTimeChronology *) nil_chk(chronology)) withUTC]);
+  JreStrongAssign(&self->iValues_, [converter getPartialValuesWithOrgJodaTimeReadablePartial:self withId:instant withOrgJodaTimeChronology:chronology]);
 }
 
 void OrgJodaTimeBaseBasePartial_initWithId_withOrgJodaTimeChronology_withOrgJodaTimeFormatDateTimeFormatter_(OrgJodaTimeBaseBasePartial *self, id instant, OrgJodaTimeChronology *chronology, OrgJodaTimeFormatDateTimeFormatter *parser) {
@@ -204,28 +206,28 @@ void OrgJodaTimeBaseBasePartial_initWithId_withOrgJodaTimeChronology_withOrgJoda
   id<OrgJodaTimeConvertPartialConverter> converter = [((OrgJodaTimeConvertConverterManager *) nil_chk(OrgJodaTimeConvertConverterManager_getInstance())) getPartialConverterWithId:instant];
   chronology = [((id<OrgJodaTimeConvertPartialConverter>) nil_chk(converter)) getChronologyWithId:instant withOrgJodaTimeChronology:chronology];
   chronology = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chronology);
-  OrgJodaTimeBaseBasePartial_set_iChronology_(self, [((OrgJodaTimeChronology *) nil_chk(chronology)) withUTC]);
-  OrgJodaTimeBaseBasePartial_set_iValues_(self, [converter getPartialValuesWithOrgJodaTimeReadablePartial:self withId:instant withOrgJodaTimeChronology:chronology withOrgJodaTimeFormatDateTimeFormatter:parser]);
+  JreStrongAssign(&self->iChronology_, [((OrgJodaTimeChronology *) nil_chk(chronology)) withUTC]);
+  JreStrongAssign(&self->iValues_, [converter getPartialValuesWithOrgJodaTimeReadablePartial:self withId:instant withOrgJodaTimeChronology:chronology withOrgJodaTimeFormatDateTimeFormatter:parser]);
 }
 
 void OrgJodaTimeBaseBasePartial_initWithIntArray_withOrgJodaTimeChronology_(OrgJodaTimeBaseBasePartial *self, IOSIntArray *values, OrgJodaTimeChronology *chronology) {
   OrgJodaTimeBaseAbstractPartial_init(self);
   chronology = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chronology);
-  OrgJodaTimeBaseBasePartial_set_iChronology_(self, [((OrgJodaTimeChronology *) nil_chk(chronology)) withUTC]);
+  JreStrongAssign(&self->iChronology_, [((OrgJodaTimeChronology *) nil_chk(chronology)) withUTC]);
   [chronology validateWithOrgJodaTimeReadablePartial:self withIntArray:values];
-  OrgJodaTimeBaseBasePartial_set_iValues_(self, values);
+  JreStrongAssign(&self->iValues_, values);
 }
 
 void OrgJodaTimeBaseBasePartial_initWithOrgJodaTimeBaseBasePartial_withIntArray_(OrgJodaTimeBaseBasePartial *self, OrgJodaTimeBaseBasePartial *base, IOSIntArray *values) {
   OrgJodaTimeBaseAbstractPartial_init(self);
-  OrgJodaTimeBaseBasePartial_set_iChronology_(self, ((OrgJodaTimeBaseBasePartial *) nil_chk(base))->iChronology_);
-  OrgJodaTimeBaseBasePartial_set_iValues_(self, values);
+  JreStrongAssign(&self->iChronology_, ((OrgJodaTimeBaseBasePartial *) nil_chk(base))->iChronology_);
+  JreStrongAssign(&self->iValues_, values);
 }
 
 void OrgJodaTimeBaseBasePartial_initWithOrgJodaTimeBaseBasePartial_withOrgJodaTimeChronology_(OrgJodaTimeBaseBasePartial *self, OrgJodaTimeBaseBasePartial *base, OrgJodaTimeChronology *chrono) {
   OrgJodaTimeBaseAbstractPartial_init(self);
-  OrgJodaTimeBaseBasePartial_set_iChronology_(self, [((OrgJodaTimeChronology *) nil_chk(chrono)) withUTC]);
-  OrgJodaTimeBaseBasePartial_set_iValues_(self, ((OrgJodaTimeBaseBasePartial *) nil_chk(base))->iValues_);
+  JreStrongAssign(&self->iChronology_, [((OrgJodaTimeChronology *) nil_chk(chrono)) withUTC]);
+  JreStrongAssign(&self->iValues_, ((OrgJodaTimeBaseBasePartial *) nil_chk(base))->iValues_);
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseBasePartial)

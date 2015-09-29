@@ -13,7 +13,7 @@
 
 @interface OrgJodaTimeFieldPreciseDurationField () {
  @public
-  /**
+  /*!
    @brief The size of the unit
    */
   jlong iUnitMillis_;
@@ -32,7 +32,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldPreciseDurationField, serialVersionUI
 }
 
 - (jboolean)isPrecise {
-  return YES;
+  return true;
 }
 
 - (jlong)getUnitMillis {
@@ -74,18 +74,18 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldPreciseDurationField, serialVersionUI
 
 - (jboolean)isEqual:(id)obj {
   if (self == obj) {
-    return YES;
+    return true;
   }
   else if ([obj isKindOfClass:[OrgJodaTimeFieldPreciseDurationField class]]) {
     OrgJodaTimeFieldPreciseDurationField *other = (OrgJodaTimeFieldPreciseDurationField *) check_class_cast(obj, [OrgJodaTimeFieldPreciseDurationField class]);
     return ([self getType] == [((OrgJodaTimeFieldPreciseDurationField *) nil_chk(other)) getType]) && (iUnitMillis_ == other->iUnitMillis_);
   }
-  return NO;
+  return false;
 }
 
 - (NSUInteger)hash {
   jlong millis = iUnitMillis_;
-  jint hash_ = (jint) (millis ^ (URShift64(millis, 32)));
+  jint hash_ = (jint) (millis ^ (JreURShift64(millis, 32)));
   hash_ += ((jint) [((OrgJodaTimeDurationFieldType *) nil_chk([self getType])) hash]);
   return hash_;
 }
@@ -106,7 +106,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldPreciseDurationField, serialVersionUI
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldPreciseDurationField_serialVersionUID },
-    { "iUnitMillis_", NULL, 0x12, "J", NULL, NULL,  },
+    { "iUnitMillis_", NULL, 0x12, "J", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldPreciseDurationField = { 2, "PreciseDurationField", "org.joda.time.field", NULL, 0x1, 11, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldPreciseDurationField;

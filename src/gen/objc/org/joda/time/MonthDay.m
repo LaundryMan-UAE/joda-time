@@ -42,7 +42,7 @@
 
 @interface OrgJodaTimeMonthDay ()
 
-/**
+/*!
  @brief Handle broken serialization from other tools.
  @return the resolved object, not null
  */
@@ -62,11 +62,11 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMonthDay, PARSER_, OrgJodaTimeFormatDateTi
 
 @interface OrgJodaTimeMonthDay_Property () {
  @public
-  /**
+  /*!
    @brief The partial
    */
   OrgJodaTimeMonthDay *iBase_;
-  /**
+  /*!
    @brief The field index
    */
   jint iFieldIndex_;
@@ -111,10 +111,12 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeMonthDay)
   return OrgJodaTimeMonthDay_fromDateFieldsWithJavaUtilDate_(date);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeMonthDay_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (instancetype)initWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   OrgJodaTimeMonthDay_initWithOrgJodaTimeDateTimeZone_(self, zone);
@@ -174,7 +176,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeMonthDay)
 }
 
 - (id)readResolve {
-  if ([((OrgJodaTimeDateTimeZone *) nil_chk(OrgJodaTimeDateTimeZone_get_UTC_())) isEqual:[((OrgJodaTimeChronology *) nil_chk([self getChronology])) getZone]] == NO) {
+  if ([((OrgJodaTimeDateTimeZone *) nil_chk(JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_))) isEqual:[((OrgJodaTimeChronology *) nil_chk([self getChronology])) getZone]] == false) {
     return [new_OrgJodaTimeMonthDay_initWithOrgJodaTimeMonthDay_withOrgJodaTimeChronology_(self, [((OrgJodaTimeChronology *) nil_chk([self getChronology])) withUTC]) autorelease];
   }
   return self;
@@ -319,7 +321,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeMonthDay)
   id<JavaUtilList> fields = [new_JavaUtilArrayList_init() autorelease];
   [fields addWithId:OrgJodaTimeDateTimeFieldType_monthOfYear()];
   [fields addWithId:OrgJodaTimeDateTimeFieldType_dayOfMonth()];
-  return [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_forFieldsWithJavaUtilCollection_withBoolean_withBoolean_(fields, YES, YES))) printWithOrgJodaTimeReadablePartial:self];
+  return [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_forFieldsWithJavaUtilCollection_withBoolean_withBoolean_(fields, true, true))) printWithOrgJodaTimeReadablePartial:self];
 }
 
 - (NSString *)toStringWithNSString:(NSString *)pattern {
@@ -339,8 +341,8 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeMonthDay)
 
 + (void)initialize {
   if (self == [OrgJodaTimeMonthDay class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeMonthDay_FIELD_TYPES_, nil, [IOSObjectArray newArrayWithObjects:(id[]){ OrgJodaTimeDateTimeFieldType_monthOfYear(), OrgJodaTimeDateTimeFieldType_dayOfMonth() } count:2 type:OrgJodaTimeDateTimeFieldType_class_()]);
-    JreStrongAssign(&OrgJodaTimeMonthDay_PARSER_, nil, [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_localDateParser())) getParser]])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatDateTimeFormat_forPatternWithNSString_(@"--MM-dd"))) getParser]])) toFormatter]);
+    JreStrongAssignAndConsume(&OrgJodaTimeMonthDay_FIELD_TYPES_, [IOSObjectArray newArrayWithObjects:(id[]){ OrgJodaTimeDateTimeFieldType_monthOfYear(), OrgJodaTimeDateTimeFieldType_dayOfMonth() } count:2 type:OrgJodaTimeDateTimeFieldType_class_()]);
+    JreStrongAssign(&OrgJodaTimeMonthDay_PARSER_, [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_localDateParser())) getParser]])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatDateTimeFormat_forPatternWithNSString_(@"--MM-dd"))) getParser]])) toFormatter]);
     J2OBJC_SET_INITIALIZED(OrgJodaTimeMonthDay)
   }
 }
@@ -402,8 +404,8 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeMonthDay)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeMonthDay_serialVersionUID },
-    { "FIELD_TYPES_", NULL, 0x1a, "[Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeMonthDay_FIELD_TYPES_, NULL,  },
-    { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeMonthDay_PARSER_, NULL,  },
+    { "FIELD_TYPES_", NULL, 0x1a, "[Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeMonthDay_FIELD_TYPES_, NULL, .constantValue.asLong = 0 },
+    { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeMonthDay_PARSER_, NULL, .constantValue.asLong = 0 },
     { "MONTH_OF_YEAR", "MONTH_OF_YEAR", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeMonthDay_MONTH_OF_YEAR },
     { "DAY_OF_MONTH", "DAY_OF_MONTH", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeMonthDay_DAY_OF_MONTH },
   };
@@ -647,8 +649,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeMonthDay)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeMonthDay_Property_serialVersionUID },
-    { "iBase_", NULL, 0x12, "Lorg.joda.time.MonthDay;", NULL, NULL,  },
-    { "iFieldIndex_", NULL, 0x12, "I", NULL, NULL,  },
+    { "iBase_", NULL, 0x12, "Lorg.joda.time.MonthDay;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iFieldIndex_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeMonthDay_Property = { 2, "Property", "org.joda.time", "MonthDay", 0x9, 10, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeMonthDay_Property;
@@ -658,7 +660,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeMonthDay)
 
 void OrgJodaTimeMonthDay_Property_initWithOrgJodaTimeMonthDay_withInt_(OrgJodaTimeMonthDay_Property *self, OrgJodaTimeMonthDay *partial, jint fieldIndex) {
   OrgJodaTimeFieldAbstractPartialFieldProperty_init(self);
-  OrgJodaTimeMonthDay_Property_set_iBase_(self, partial);
+  JreStrongAssign(&self->iBase_, partial);
   self->iFieldIndex_ = fieldIndex;
 }
 

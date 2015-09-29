@@ -33,10 +33,12 @@ __attribute__((unused)) static JavaUtilHashMap *OrgJodaTimeTzDefaultNameProvider
 
 @implementation OrgJodaTimeTzDefaultNameProvider
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeTzDefaultNameProvider_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (NSString *)getShortNameWithJavaUtilLocale:(JavaUtilLocale *)locale
                                 withNSString:(NSString *)id_
@@ -76,7 +78,7 @@ __attribute__((unused)) static JavaUtilHashMap *OrgJodaTimeTzDefaultNameProvider
     { "createCache", NULL, "Ljava.util.HashMap;", 0x2, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "iByLocaleCache_", NULL, 0x2, "Ljava.util.HashMap;", NULL, "Ljava/util/HashMap<Ljava/util/Locale;Ljava/util/Map<Ljava/lang/String;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;>;>;",  },
+    { "iByLocaleCache_", NULL, 0x2, "Ljava.util.HashMap;", NULL, "Ljava/util/HashMap<Ljava/util/Locale;Ljava/util/Map<Ljava/lang/String;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;>;>;", .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeTzDefaultNameProvider = { 2, "DefaultNameProvider", "org.joda.time.tz", NULL, 0x1, 5, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeTzDefaultNameProvider;
@@ -86,7 +88,7 @@ __attribute__((unused)) static JavaUtilHashMap *OrgJodaTimeTzDefaultNameProvider
 
 void OrgJodaTimeTzDefaultNameProvider_init(OrgJodaTimeTzDefaultNameProvider *self) {
   NSObject_init(self);
-  OrgJodaTimeTzDefaultNameProvider_set_iByLocaleCache_(self, OrgJodaTimeTzDefaultNameProvider_createCache(self));
+  JreStrongAssign(&self->iByLocaleCache_, OrgJodaTimeTzDefaultNameProvider_createCache(self));
 }
 
 OrgJodaTimeTzDefaultNameProvider *new_OrgJodaTimeTzDefaultNameProvider_init() {
@@ -107,7 +109,7 @@ IOSObjectArray *OrgJodaTimeTzDefaultNameProvider_getNameSetWithJavaUtilLocale_wi
     id<JavaUtilMap> byNameKeyCache = [((id<JavaUtilMap>) nil_chk(byIdCache)) getWithId:id_];
     if (byNameKeyCache == nil) {
       [byIdCache putWithId:id_ withId:byNameKeyCache = OrgJodaTimeTzDefaultNameProvider_createCache(self)];
-      IOSObjectArray *zoneStringsEn = [((JavaTextDateFormatSymbols *) nil_chk(OrgJodaTimeDateTimeUtils_getDateFormatSymbolsWithJavaUtilLocale_(JavaUtilLocale_get_ENGLISH_()))) getZoneStrings];
+      IOSObjectArray *zoneStringsEn = [((JavaTextDateFormatSymbols *) nil_chk(OrgJodaTimeDateTimeUtils_getDateFormatSymbolsWithJavaUtilLocale_(JreLoadStatic(JavaUtilLocale, ENGLISH_)))) getZoneStrings];
       IOSObjectArray *setEn = nil;
       {
         IOSObjectArray *a__ = zoneStringsEn;

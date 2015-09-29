@@ -26,10 +26,12 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldAbstractReadableInstantFieldProperty,
 
 @implementation OrgJodaTimeFieldAbstractReadableInstantFieldProperty
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeFieldAbstractReadableInstantFieldProperty_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgJodaTimeDateTimeField *)getField {
   // can't call an abstract method
@@ -185,10 +187,10 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldAbstractReadableInstantFieldProperty,
 
 - (jboolean)isEqual:(id)object {
   if (self == object) {
-    return YES;
+    return true;
   }
-  if ([object isKindOfClass:[OrgJodaTimeFieldAbstractReadableInstantFieldProperty class]] == NO) {
-    return NO;
+  if ([object isKindOfClass:[OrgJodaTimeFieldAbstractReadableInstantFieldProperty class]] == false) {
+    return false;
   }
   OrgJodaTimeFieldAbstractReadableInstantFieldProperty *other = (OrgJodaTimeFieldAbstractReadableInstantFieldProperty *) check_class_cast(object, [OrgJodaTimeFieldAbstractReadableInstantFieldProperty class]);
   return [self get] == [((OrgJodaTimeFieldAbstractReadableInstantFieldProperty *) nil_chk(other)) get] && [((OrgJodaTimeDateTimeFieldType *) nil_chk([self getFieldType])) isEqual:[other getFieldType]] && OrgJodaTimeFieldFieldUtils_equalsWithId_withId_([self getChronology], [other getChronology]);

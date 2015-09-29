@@ -27,9 +27,41 @@
 @protocol OrgJodaTimeReadablePartial;
 @protocol OrgJodaTimeReadablePeriod;
 
-/**
+/*!
  @brief DateMidnight defines a date where the time component is fixed at midnight.
- The class uses a time zone, thus midnight is local unless a UTC time zone is used. <p> It is important to emphasise that this class represents the time of midnight on any given day. Note that midnight is defined as 00:00, which is at the very start of a day. <p> This class does not represent a day, but the millisecond instant at midnight. If you need a class that represents the whole day, then an Interval or a LocalDate may be more suitable. <p> This class uses a Chronology internally. The Chronology determines how the millisecond instant value is converted into the date time fields. The default Chronology is <code>ISOChronology</code> which is the agreed international standard and compatable with the modern Gregorian calendar. <p>Each individual field can be queried in two ways: <ul> <li><code>getDayOfMonth()</code> <li><code>dayOfMonth().get()</code> </ul> The second technique also provides access to other useful methods on the field: <ul> <li>numeric value <li>text value <li>short text value <li>maximum/minimum values <li>add/subtract <li>set <li>rounding </ul> <p> DateMidnight is thread-safe and immutable, provided that the Chronology is as well. All standard Chronology classes supplied are thread-safe and immutable.
+ The class uses a time zone, thus midnight is local unless a UTC time zone is used.
+ <p>
+ It is important to emphasise that this class represents the time of midnight on
+ any given day.
+ Note that midnight is defined as 00:00, which is at the very start of a day.
+ <p>
+ This class does not represent a day, but the millisecond instant at midnight.
+ If you need a class that represents the whole day, then an <code>Interval</code> or
+ a <code>LocalDate</code> may be more suitable.
+ <p>
+ This class uses a Chronology internally. The Chronology determines how the
+ millisecond instant value is converted into the date time fields.
+ The default Chronology is <code>ISOChronology</code> which is the agreed
+ international standard and compatable with the modern Gregorian calendar.
+ <p>Each individual field can be queried in two ways:
+ <ul>
+ <li><code>getDayOfMonth()</code>
+ <li><code>dayOfMonth().get()</code>
+ </ul>
+ The second technique also provides access to other useful methods on the
+ field:
+ <ul>
+ <li>numeric value
+ <li>text value
+ <li>short text value
+ <li>maximum/minimum values
+ <li>add/subtract
+ <li>set
+ <li>rounding
+ </ul>
+ <p>
+ DateMidnight is thread-safe and immutable, provided that the Chronology is as well.
+ All standard Chronology classes supplied are thread-safe and immutable.
  @author Stephen Colebourne
  @since 1.0
  */
@@ -37,457 +69,670 @@
 
 #pragma mark Public
 
-/**
- @brief Constructs an instance set to the current system millisecond time using <code>ISOChronology</code> in the default time zone.
+/*!
+ @brief Constructs an instance set to the current system millisecond time
+ using <code>ISOChronology</code> in the default time zone.
  The constructed object will have a local time of midnight.
  */
 - (instancetype)init;
 
-/**
- @brief Constructs an instance set to the current system millisecond time using the specified chronology.
- The constructed object will have a local time of midnight. <p> If the chronology is null, <code>ISOChronology</code> in the default time zone is used.
- @param chronology the chronology, null means ISOChronology in default zone
+/*!
+ @brief Constructs an instance set to the current system millisecond time
+ using the specified chronology.
+ The constructed object will have a local time of midnight.
+ <p>
+ If the chronology is null, <code>ISOChronology</code>
+ in the default time zone is used.
+ @param chronology  the chronology, null means ISOChronology in default zone
  */
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology;
 
-/**
- @brief Constructs an instance set to the current system millisecond time using <code>ISOChronology</code> in the specified time zone.
- The constructed object will have a local time of midnight. <p> If the specified time zone is null, the default zone is used.
- @param zone the time zone, null means default zone
+/*!
+ @brief Constructs an instance set to the current system millisecond time
+ using <code>ISOChronology</code> in the specified time zone.
+ The constructed object will have a local time of midnight.
+ <p>
+ If the specified time zone is null, the default zone is used.
+ @param zone  the time zone, null means default zone
  */
 - (instancetype)initWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
-/**
- @brief Constructs an instance from datetime field values using <code>ISOChronology</code> in the default time zone.
+/*!
+ @brief Constructs an instance from datetime field values
+ using <code>ISOChronology</code> in the default time zone.
  The constructed object will have a local time of midnight.
- @param year the year
- @param monthOfYear the month of the year, from 1 to 12
- @param dayOfMonth the day of the month, from 1 to 31
+ @param year  the year
+ @param monthOfYear  the month of the year, from 1 to 12
+ @param dayOfMonth  the day of the month, from 1 to 31
  */
 - (instancetype)initWithInt:(jint)year
                     withInt:(jint)monthOfYear
                     withInt:(jint)dayOfMonth;
 
-/**
- @brief Constructs an instance from datetime field values using the specified chronology.
- The constructed object will have a local time of midnight. <p> If the chronology is null, <code>ISOChronology</code> in the default time zone is used.
- @param year the year, valid values defined by the chronology
- @param monthOfYear the month of the year, valid values defined by the chronology
- @param dayOfMonth the day of the month, valid values defined by the chronology
- @param chronology the chronology, null means ISOChronology in default zone
+/*!
+ @brief Constructs an instance from datetime field values
+ using the specified chronology.
+ The constructed object will have a local time of midnight.
+ <p>
+ If the chronology is null, <code>ISOChronology</code>
+ in the default time zone is used.
+ @param year  the year, valid values defined by the chronology
+ @param monthOfYear  the month of the year, valid values defined by the chronology
+ @param dayOfMonth  the day of the month, valid values defined by the chronology
+ @param chronology  the chronology, null means ISOChronology in default zone
  */
 - (instancetype)initWithInt:(jint)year
                     withInt:(jint)monthOfYear
                     withInt:(jint)dayOfMonth
   withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology;
 
-/**
- @brief Constructs an instance from datetime field values using <code>ISOChronology</code> in the specified time zone.
- The constructed object will have a local time of midnight. <p> If the specified time zone is null, the default zone is used.
- @param year the year
- @param monthOfYear the month of the year, from 1 to 12
- @param dayOfMonth the day of the month, from 1 to 31
- @param zone the time zone, null means default time zone
+/*!
+ @brief Constructs an instance from datetime field values
+ using <code>ISOChronology</code> in the specified time zone.
+ The constructed object will have a local time of midnight.
+ <p>
+ If the specified time zone is null, the default zone is used.
+ @param year  the year
+ @param monthOfYear  the month of the year, from 1 to 12
+ @param dayOfMonth  the day of the month, from 1 to 31
+ @param zone  the time zone, null means default time zone
  */
 - (instancetype)initWithInt:(jint)year
                     withInt:(jint)monthOfYear
                     withInt:(jint)dayOfMonth
 withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
-/**
- @brief Constructs an instance set to the milliseconds from 1970-01-01T00:00:00Z using <code>ISOChronology</code> in the default time zone.
+/*!
+ @brief Constructs an instance set to the milliseconds from 1970-01-01T00:00:00Z
+ using <code>ISOChronology</code> in the default time zone.
  The constructed object will have a local time of midnight.
- @param instant the milliseconds from 1970-01-01T00:00:00Z
+ @param instant  the milliseconds from 1970-01-01T00:00:00Z
  */
 - (instancetype)initWithLong:(jlong)instant;
 
-/**
- @brief Constructs an instance set to the milliseconds from 1970-01-01T00:00:00Z using the specified chronology.
- The constructed object will have a local time of midnight. <p> If the chronology is null, <code>ISOChronology</code> in the default time zone is used.
- @param instant the milliseconds from 1970-01-01T00:00:00Z
- @param chronology the chronology, null means ISOChronology in default zone
+/*!
+ @brief Constructs an instance set to the milliseconds from 1970-01-01T00:00:00Z
+ using the specified chronology.
+ The constructed object will have a local time of midnight.
+ <p>
+ If the chronology is null, <code>ISOChronology</code>
+ in the default time zone is used.
+ @param instant  the milliseconds from 1970-01-01T00:00:00Z
+ @param chronology  the chronology, null means ISOChronology in default zone
  */
 - (instancetype)initWithLong:(jlong)instant
    withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology;
 
-/**
- @brief Constructs an instance set to the milliseconds from 1970-01-01T00:00:00Z using <code>ISOChronology</code> in the specified time zone.
- The constructed object will have a local time of midnight. <p> If the specified time zone is null, the default zone is used.
- @param instant the milliseconds from 1970-01-01T00:00:00Z
- @param zone the time zone, null means default zone
+/*!
+ @brief Constructs an instance set to the milliseconds from 1970-01-01T00:00:00Z
+ using <code>ISOChronology</code> in the specified time zone.
+ The constructed object will have a local time of midnight.
+ <p>
+ If the specified time zone is null, the default zone is used.
+ @param instant  the milliseconds from 1970-01-01T00:00:00Z
+ @param zone  the time zone, null means default zone
  */
 - (instancetype)initWithLong:(jlong)instant
  withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
-/**
+/*!
  @brief Constructs an instance from an Object that represents a datetime.
- The constructed object will have a local time of midnight. <p> If the object implies a chronology (such as GregorianCalendar does), then that chronology will be used. Otherwise, ISO default is used. Thus if a GregorianCalendar is passed in, the chronology used will be GJ, but if a Date is passed in the chronology will be ISO. <p> The recognised object types are defined in org.joda.time.convert.ConverterManager ConverterManager and include ReadableInstant, String, Calendar and Date. The String formats are described by ISODateTimeFormat#dateTimeParser() .
- @param instant the datetime object, null means now
+ The constructed object will have a local time of midnight.
+ <p>
+ If the object implies a chronology (such as GregorianCalendar does),
+ then that chronology will be used. Otherwise, ISO default is used.
+ Thus if a GregorianCalendar is passed in, the chronology used will
+ be GJ, but if a Date is passed in the chronology will be ISO.
+ <p>
+ The recognised object types are defined in
+ <code>ConverterManager</code> and
+ include ReadableInstant, String, Calendar and Date.
+ The String formats are described by <code>ISODateTimeFormat.dateTimeParser()</code>.
+ @param instant  the datetime object, null means now
  @throws IllegalArgumentException if the instant is invalid
  */
 - (instancetype)initWithId:(id)instant;
 
-/**
- @brief Constructs an instance from an Object that represents a datetime, using the specified chronology.
- The constructed object will have a local time of midnight. <p> If the chronology is null, ISO in the default time zone is used. Any chronology implied by the object (such as GregorianCalendar does) is ignored. <p> The recognised object types are defined in org.joda.time.convert.ConverterManager ConverterManager and include ReadableInstant, String, Calendar and Date. The String formats are described by ISODateTimeFormat#dateTimeParser() .
- @param instant the datetime object, null means now
- @param chronology the chronology, null means ISOChronology in default zone
+/*!
+ @brief Constructs an instance from an Object that represents a datetime,
+ using the specified chronology.
+ The constructed object will have a local time of midnight.
+ <p>
+ If the chronology is null, ISO in the default time zone is used.
+ Any chronology implied by the object (such as GregorianCalendar does)
+ is ignored.
+ <p>
+ The recognised object types are defined in
+ <code>ConverterManager</code> and
+ include ReadableInstant, String, Calendar and Date.
+ The String formats are described by <code>ISODateTimeFormat.dateTimeParser()</code>.
+ @param instant  the datetime object, null means now
+ @param chronology  the chronology, null means ISOChronology in default zone
  @throws IllegalArgumentException if the instant is invalid
  */
 - (instancetype)initWithId:(id)instant
  withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology;
 
-/**
- @brief Constructs an instance from an Object that represents a datetime, forcing the time zone to that specified.
- The constructed object will have a local time of midnight. <p> If the object implies a chronology (such as GregorianCalendar does), then that chronology will be used, but with the time zone adjusted. Otherwise, ISO is used in the specified time zone. If the specified time zone is null, the default zone is used. Thus if a GregorianCalendar is passed in, the chronology used will be GJ, but if a Date is passed in the chronology will be ISO. <p> The recognised object types are defined in org.joda.time.convert.ConverterManager ConverterManager and include ReadableInstant, String, Calendar and Date. The String formats are described by ISODateTimeFormat#dateTimeParser() .
- @param instant the datetime object, null means now
- @param zone the time zone, null means default time zone
+/*!
+ @brief Constructs an instance from an Object that represents a datetime,
+ forcing the time zone to that specified.
+ The constructed object will have a local time of midnight.
+ <p>
+ If the object implies a chronology (such as GregorianCalendar does),
+ then that chronology will be used, but with the time zone adjusted.
+ Otherwise, ISO is used in the specified time zone.
+ If the specified time zone is null, the default zone is used.
+ Thus if a GregorianCalendar is passed in, the chronology used will
+ be GJ, but if a Date is passed in the chronology will be ISO.
+ <p>
+ The recognised object types are defined in
+ <code>ConverterManager</code> and
+ include ReadableInstant, String, Calendar and Date.
+ The String formats are described by <code>ISODateTimeFormat.dateTimeParser()</code>.
+ @param instant  the datetime object, null means now
+ @param zone  the time zone, null means default time zone
  @throws IllegalArgumentException if the instant is invalid
  */
 - (instancetype)initWithId:(id)instant
 withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
-/**
+/*!
  @brief Get the century of era property which provides access to advanced functionality.
  @return the year of era property
  */
 - (OrgJodaTimeDateMidnight_Property *)centuryOfEra;
 
-/**
+/*!
  @brief Get the day of month property which provides access to advanced functionality.
  @return the day of month property
  */
 - (OrgJodaTimeDateMidnight_Property *)dayOfMonth;
 
-/**
+/*!
  @brief Get the day of week property which provides access to advanced functionality.
  @return the day of week property
  */
 - (OrgJodaTimeDateMidnight_Property *)dayOfWeek;
 
-/**
+/*!
  @brief Get the day of year property which provides access to advanced functionality.
  @return the day of year property
  */
 - (OrgJodaTimeDateMidnight_Property *)dayOfYear;
 
-/**
+/*!
  @brief Get the era property which provides access to advanced functionality.
  @return the era property
  */
 - (OrgJodaTimeDateMidnight_Property *)era;
 
-/**
+/*!
  @brief Returns a copy of this date with the specified duration taken away.
- <p> If the amount is zero or null, then <code>this</code> is returned.
- @param duration the duration, in millis, to reduce this instant by
+ <p>
+ If the amount is zero or null, then <code>this</code> is returned.
+ @param duration  the duration, in millis, to reduce this instant by
  @return a copy of this datetime with the duration taken away
  @throws ArithmeticException if the new datetime exceeds the capacity of a long
  */
 - (OrgJodaTimeDateMidnight *)minusWithLong:(jlong)duration;
 
-/**
+/*!
  @brief Returns a copy of this date with the specified duration taken away.
- <p> If the amount is zero or null, then <code>this</code> is returned.
- @param duration the duration to reduce this instant by
+ <p>
+ If the amount is zero or null, then <code>this</code> is returned.
+ @param duration  the duration to reduce this instant by
  @return a copy of this datetime with the duration taken away
  @throws ArithmeticException if the new datetime exceeds the capacity of a long
  */
 - (OrgJodaTimeDateMidnight *)minusWithOrgJodaTimeReadableDuration:(id<OrgJodaTimeReadableDuration>)duration;
 
-/**
+/*!
  @brief Returns a copy of this date with the specified period taken away.
- <p> If the amount is zero or null, then <code>this</code> is returned. <p> This method is typically used to subtract complex period instances. Subtracting one field is best achieved using methods like #minusYears(int) .
- @param period the period to reduce this instant by
+ <p>
+ If the amount is zero or null, then <code>this</code> is returned.
+ <p>
+ This method is typically used to subtract complex period instances.
+ Subtracting one field is best achieved using methods
+ like <code>minusYears(int)</code>.
+ @param period  the period to reduce this instant by
  @return a copy of this datetime with the period taken away
  @throws ArithmeticException if the new datetime exceeds the capacity of a long
  */
 - (OrgJodaTimeDateMidnight *)minusWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period;
 
-/**
+/*!
  @brief Returns a copy of this date minus the specified number of days.
- <p> This datetime instance is immutable and unaffected by this method call. <p> The following three lines are identical in effect: <pre> DateMidnight subtracted = dt.minusDays(6); DateMidnight subtracted = dt.minus(Period.days(6)); DateMidnight subtracted = dt.withFieldAdded(DurationFieldType.days(), -6); </pre>
- @param days the amount of days to subtract, may be negative
+ <p>
+ This datetime instance is immutable and unaffected by this method call.
+ <p>
+ The following three lines are identical in effect:
+ @code
+
+  DateMidnight subtracted = dt.minusDays(6);
+  DateMidnight subtracted = dt.minus(Period.days(6));
+  DateMidnight subtracted = dt.withFieldAdded(DurationFieldType.days(), -6);
+  
+@endcode
+ @param days  the amount of days to subtract, may be negative
  @return the new datetime minus the increased days
  @since 1.1
  */
 - (OrgJodaTimeDateMidnight *)minusDaysWithInt:(jint)days;
 
-/**
+/*!
  @brief Returns a copy of this date minus the specified number of months.
- <p> This datetime instance is immutable and unaffected by this method call. <p> The following three lines are identical in effect: <pre> DateMidnight subtracted = dt.minusMonths(6); DateMidnight subtracted = dt.minus(Period.months(6)); DateMidnight subtracted = dt.withFieldAdded(DurationFieldType.months(), -6); </pre>
- @param months the amount of months to subtract, may be negative
+ <p>
+ This datetime instance is immutable and unaffected by this method call.
+ <p>
+ The following three lines are identical in effect:
+ @code
+
+  DateMidnight subtracted = dt.minusMonths(6);
+  DateMidnight subtracted = dt.minus(Period.months(6));
+  DateMidnight subtracted = dt.withFieldAdded(DurationFieldType.months(), -6);
+  
+@endcode
+ @param months  the amount of months to subtract, may be negative
  @return the new datetime minus the increased months
  @since 1.1
  */
 - (OrgJodaTimeDateMidnight *)minusMonthsWithInt:(jint)months;
 
-/**
+/*!
  @brief Returns a copy of this date minus the specified number of weeks.
- <p> This datetime instance is immutable and unaffected by this method call. <p> The following three lines are identical in effect: <pre> DateMidnight subtracted = dt.minusWeeks(6); DateMidnight subtracted = dt.minus(Period.weeks(6)); DateMidnight subtracted = dt.withFieldAdded(DurationFieldType.weeks(), -6); </pre>
- @param weeks the amount of weeks to subtract, may be negative
+ <p>
+ This datetime instance is immutable and unaffected by this method call.
+ <p>
+ The following three lines are identical in effect:
+ @code
+
+  DateMidnight subtracted = dt.minusWeeks(6);
+  DateMidnight subtracted = dt.minus(Period.weeks(6));
+  DateMidnight subtracted = dt.withFieldAdded(DurationFieldType.weeks(), -6);
+  
+@endcode
+ @param weeks  the amount of weeks to subtract, may be negative
  @return the new datetime minus the increased weeks
  @since 1.1
  */
 - (OrgJodaTimeDateMidnight *)minusWeeksWithInt:(jint)weeks;
 
-/**
+/*!
  @brief Returns a copy of this date minus the specified number of years.
- <p> This datetime instance is immutable and unaffected by this method call. <p> The following three lines are identical in effect: <pre> DateTime subtracted = dt.minusYears(6); DateTime subtracted = dt.minus(Period.years(6)); DateTime subtracted = dt.withFieldAdded(DurationFieldType.years(), -6); </pre>
- @param years the amount of years to subtract, may be negative
+ <p>
+ This datetime instance is immutable and unaffected by this method call.
+ <p>
+ The following three lines are identical in effect:
+ @code
+
+  DateTime subtracted = dt.minusYears(6);
+  DateTime subtracted = dt.minus(Period.years(6));
+  DateTime subtracted = dt.withFieldAdded(DurationFieldType.years(), -6);
+  
+@endcode
+ @param years  the amount of years to subtract, may be negative
  @return the new datetime minus the increased years
  @since 1.1
  */
 - (OrgJodaTimeDateMidnight *)minusYearsWithInt:(jint)years;
 
-/**
+/*!
  @brief Get the month of year property which provides access to advanced functionality.
  @return the month of year property
  */
 - (OrgJodaTimeDateMidnight_Property *)monthOfYear;
 
-/**
- @brief Obtains a <code>DateMidnight</code> set to the current system millisecond time using <code>ISOChronology</code> in the default time zone.
+/*!
+ @brief Obtains a <code>DateMidnight</code> set to the current system millisecond time
+ using <code>ISOChronology</code> in the default time zone.
  The constructed object will have a local time of midnight.
  @return the current date, not null
  @since 2.0
  */
 + (OrgJodaTimeDateMidnight *)now;
 
-/**
- @brief Obtains a <code>DateMidnight</code> set to the current system millisecond time using the specified chronology.
+/*!
+ @brief Obtains a <code>DateMidnight</code> set to the current system millisecond time
+ using the specified chronology.
  The constructed object will have a local time of midnight.
- @param chronology the chronology, not null
+ @param chronology  the chronology, not null
  @return the current date, not null
  @since 2.0
  */
 + (OrgJodaTimeDateMidnight *)nowWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology;
 
-/**
- @brief Obtains a <code>DateMidnight</code> set to the current system millisecond time using <code>ISOChronology</code> in the specified time zone.
+/*!
+ @brief Obtains a <code>DateMidnight</code> set to the current system millisecond time
+ using <code>ISOChronology</code> in the specified time zone.
  The constructed object will have a local time of midnight.
- @param zone the time zone, not null
+ @param zone  the time zone, not null
  @return the current date, not null
  @since 2.0
  */
 + (OrgJodaTimeDateMidnight *)nowWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
-/**
+/*!
  @brief Parses a <code>DateMidnight</code> from the specified string.
- <p> This uses ISODateTimeFormat#dateTimeParser() .
- @param str the string to parse, not null
+ <p>
+ This uses <code>ISODateTimeFormat.dateTimeParser()</code>.
+ @param str  the string to parse, not null
  @since 2.0
  */
 + (OrgJodaTimeDateMidnight *)parseWithNSString:(NSString *)str;
 
-/**
+/*!
  @brief Parses a <code>DateMidnight</code> from the specified string using a formatter.
- @param str the string to parse, not null
- @param formatter the formatter to use, not null
+ @param str  the string to parse, not null
+ @param formatter  the formatter to use, not null
  @since 2.0
  */
 + (OrgJodaTimeDateMidnight *)parseWithNSString:(NSString *)str
         withOrgJodaTimeFormatDateTimeFormatter:(OrgJodaTimeFormatDateTimeFormatter *)formatter;
 
-/**
+/*!
  @brief Returns a copy of this date with the specified duration added.
- <p> If the amount is zero, then <code>this</code> is returned.
- @param duration the duration, in millis, to add to this one
+ <p>
+ If the amount is zero, then <code>this</code> is returned.
+ @param duration  the duration, in millis, to add to this one
  @return a copy of this datetime with the duration added
  @throws ArithmeticException if the new datetime exceeds the capacity of a long
  */
 - (OrgJodaTimeDateMidnight *)plusWithLong:(jlong)duration;
 
-/**
+/*!
  @brief Returns a copy of this date with the specified duration added.
- <p> If the amount is zero or null, then <code>this</code> is returned.
- @param duration the duration to add to this one, null means zero
+ <p>
+ If the amount is zero or null, then <code>this</code> is returned.
+ @param duration  the duration to add to this one, null means zero
  @return a copy of this datetime with the duration added
  @throws ArithmeticException if the new datetime exceeds the capacity of a long
  */
 - (OrgJodaTimeDateMidnight *)plusWithOrgJodaTimeReadableDuration:(id<OrgJodaTimeReadableDuration>)duration;
 
-/**
+/*!
  @brief Returns a copy of this date with the specified period added.
- <p> If the amount is zero or null, then <code>this</code> is returned. <p> This method is typically used to add complex period instances. Adding one field is best achieved using methods like #plusYears(int) .
- @param period the duration to add to this one, null means zero
+ <p>
+ If the amount is zero or null, then <code>this</code> is returned.
+ <p>
+ This method is typically used to add complex period instances.
+ Adding one field is best achieved using methods
+ like <code>plusYears(int)</code>.
+ @param period  the duration to add to this one, null means zero
  @return a copy of this datetime with the period added
  @throws ArithmeticException if the new datetime exceeds the capacity of a long
  */
 - (OrgJodaTimeDateMidnight *)plusWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period;
 
-/**
+/*!
  @brief Returns a copy of this date plus the specified number of days.
- <p> This datetime instance is immutable and unaffected by this method call. <p> The following three lines are identical in effect: <pre> DateMidnight added = dt.plusDays(6); DateMidnight added = dt.plus(Period.days(6)); DateMidnight added = dt.withFieldAdded(DurationFieldType.days(), 6); </pre>
- @param days the amount of days to add, may be negative
+ <p>
+ This datetime instance is immutable and unaffected by this method call.
+ <p>
+ The following three lines are identical in effect:
+ @code
+
+  DateMidnight added = dt.plusDays(6);
+  DateMidnight added = dt.plus(Period.days(6));
+  DateMidnight added = dt.withFieldAdded(DurationFieldType.days(), 6);
+  
+@endcode
+ @param days  the amount of days to add, may be negative
  @return the new datetime plus the increased days
  @since 1.1
  */
 - (OrgJodaTimeDateMidnight *)plusDaysWithInt:(jint)days;
 
-/**
+/*!
  @brief Returns a copy of this date plus the specified number of months.
- <p> This datetime instance is immutable and unaffected by this method call. <p> The following three lines are identical in effect: <pre> DateMidnight added = dt.plusMonths(6); DateMidnight added = dt.plus(Period.months(6)); DateMidnight added = dt.withFieldAdded(DurationFieldType.months(), 6); </pre>
- @param months the amount of months to add, may be negative
+ <p>
+ This datetime instance is immutable and unaffected by this method call.
+ <p>
+ The following three lines are identical in effect:
+ @code
+
+  DateMidnight added = dt.plusMonths(6);
+  DateMidnight added = dt.plus(Period.months(6));
+  DateMidnight added = dt.withFieldAdded(DurationFieldType.months(), 6);
+  
+@endcode
+ @param months  the amount of months to add, may be negative
  @return the new datetime plus the increased months
  @since 1.1
  */
 - (OrgJodaTimeDateMidnight *)plusMonthsWithInt:(jint)months;
 
-/**
+/*!
  @brief Returns a copy of this date plus the specified number of weeks.
- <p> This datetime instance is immutable and unaffected by this method call. <p> The following three lines are identical in effect: <pre> DateMidnight added = dt.plusWeeks(6); DateMidnight added = dt.plus(Period.weeks(6)); DateMidnight added = dt.withFieldAdded(DurationFieldType.weeks(), 6); </pre>
- @param weeks the amount of weeks to add, may be negative
+ <p>
+ This datetime instance is immutable and unaffected by this method call.
+ <p>
+ The following three lines are identical in effect:
+ @code
+
+  DateMidnight added = dt.plusWeeks(6);
+  DateMidnight added = dt.plus(Period.weeks(6));
+  DateMidnight added = dt.withFieldAdded(DurationFieldType.weeks(), 6);
+  
+@endcode
+ @param weeks  the amount of weeks to add, may be negative
  @return the new datetime plus the increased weeks
  @since 1.1
  */
 - (OrgJodaTimeDateMidnight *)plusWeeksWithInt:(jint)weeks;
 
-/**
+/*!
  @brief Returns a copy of this date plus the specified number of years.
- <p> This datetime instance is immutable and unaffected by this method call. <p> The following three lines are identical in effect: <pre> DateMidnight added = dt.plusYears(6); DateMidnight added = dt.plus(Period.years(6)); DateMidnight added = dt.withFieldAdded(DurationFieldType.years(), 6); </pre>
- @param years the amount of years to add, may be negative
+ <p>
+ This datetime instance is immutable and unaffected by this method call.
+ <p>
+ The following three lines are identical in effect:
+ @code
+
+  DateMidnight added = dt.plusYears(6);
+  DateMidnight added = dt.plus(Period.years(6));
+  DateMidnight added = dt.withFieldAdded(DurationFieldType.years(), 6);
+  
+@endcode
+ @param years  the amount of years to add, may be negative
  @return the new datetime plus the increased years
  @since 1.1
  */
 - (OrgJodaTimeDateMidnight *)plusYearsWithInt:(jint)years;
 
-/**
+/*!
  @brief Gets the property object for the specified type, which contains many useful methods.
- @param type the field type to get the chronology for
+ @param type  the field type to get the chronology for
  @return the property object
  @throws IllegalArgumentException if the field is null or unsupported
  */
 - (OrgJodaTimeDateMidnight_Property *)propertyWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type;
 
-/**
- @brief Converts this object to an <code>Interval</code> encompassing the whole of this day.
- <p> The interval starts at midnight 00:00 and ends at 00:00 the following day, (which is not included in the interval, as intervals are half-open).
+/*!
+ @brief Converts this object to an <code>Interval</code> encompassing
+ the whole of this day.
+ <p>
+ The interval starts at midnight 00:00 and ends at 00:00 the following day,
+ (which is not included in the interval, as intervals are half-open).
  @return an interval over the day
  */
 - (OrgJodaTimeInterval *)toInterval;
 
-/**
- @brief Converts this object to a <code>LocalDate</code> with the same date and chronology.
+/*!
+ @brief Converts this object to a <code>LocalDate</code> with the
+ same date and chronology.
  @return a LocalDate with the same date and chronology
  @since 1.3
  */
 - (OrgJodaTimeLocalDate *)toLocalDate;
 
-/**
- @brief Converts this object to a <code>YearMonthDay</code> using the same date and chronology.
+/*!
+ @brief Converts this object to a <code>YearMonthDay</code> using the
+ same date and chronology.
  @return a YearMonthDay using the same millis and chronology
  */
 - (OrgJodaTimeYearMonthDay *)toYearMonthDay;
 
-/**
+/*!
  @brief Get the week of a week based year property which provides access to advanced functionality.
  @return the week of a week based year property
  */
 - (OrgJodaTimeDateMidnight_Property *)weekOfWeekyear;
 
-/**
+/*!
  @brief Get the year of a week based year property which provides access to advanced functionality.
  @return the year of a week based year property
  */
 - (OrgJodaTimeDateMidnight_Property *)weekyear;
 
-/**
+/*!
  @brief Returns a copy of this date with the century of era field updated.
- <p> DateMidnight is immutable, so there are no set methods. Instead, this method returns a new instance with the value of century of era changed.
- @param centuryOfEra the centurey of era to set
+ <p>
+ DateMidnight is immutable, so there are no set methods.
+ Instead, this method returns a new instance with the value of
+ century of era changed.
+ @param centuryOfEra  the centurey of era to set
  @return a copy of this object with the field set
  @throws IllegalArgumentException if the value is invalid
  @since 1.3
  */
 - (OrgJodaTimeDateMidnight *)withCenturyOfEraWithInt:(jint)centuryOfEra;
 
-/**
- @brief Returns a copy of this date with a different chronology, potentially changing the day in unexpected ways.
- <p> This method creates a new DateMidnight using the midnight millisecond value and the new chronology. If the same or similar chronology is specified, but with a different time zone, the day may change. This occurs because the new DateMidnight rounds down the millisecond value to get to midnight, and the time zone change may result in a rounding down to a different day. <p> For example, changing time zone from London (+00:00) to Paris (+01:00) will retain the same day, but changing from Paris to London will change the day. (When its midnight in London its the same day in Paris, but when its midnight in Paris its still the previous day in London) <p> To avoid these unusual effects, use #withZoneRetainFields(DateTimeZone) to change time zones.
- @param newChronology the new chronology
+/*!
+ @brief Returns a copy of this date with a different chronology, potentially
+ changing the day in unexpected ways.
+ <p>
+ This method creates a new DateMidnight using the midnight millisecond value
+ and the new chronology. If the same or similar chronology is specified, but
+ with a different time zone, the day may change. This occurs because the new
+ DateMidnight rounds down the millisecond value to get to midnight, and the
+ time zone change may result in a rounding down to a different day.
+ <p>
+ For example, changing time zone from London (+00:00) to Paris (+01:00) will
+ retain the same day, but changing from Paris to London will change the day.
+ (When its midnight in London its the same day in Paris, but when its midnight
+ in Paris its still the previous day in London)
+ <p>
+ To avoid these unusual effects, use <code>withZoneRetainFields(DateTimeZone)</code>
+ to change time zones.
+ @param newChronology  the new chronology
  @return a copy of this instant with a different chronology
  */
 - (OrgJodaTimeDateMidnight *)withChronologyWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)newChronology;
 
-/**
+/*!
  @brief Returns a copy of this date with the day of month field updated.
- <p> DateMidnight is immutable, so there are no set methods. Instead, this method returns a new instance with the value of day of month changed.
- @param dayOfMonth the day of month to set
+ <p>
+ DateMidnight is immutable, so there are no set methods.
+ Instead, this method returns a new instance with the value of
+ day of month changed.
+ @param dayOfMonth  the day of month to set
  @return a copy of this object with the field set
  @throws IllegalArgumentException if the value is invalid
  @since 1.3
  */
 - (OrgJodaTimeDateMidnight *)withDayOfMonthWithInt:(jint)dayOfMonth;
 
-/**
+/*!
  @brief Returns a copy of this date with the day of week field updated.
- <p> DateMidnight is immutable, so there are no set methods. Instead, this method returns a new instance with the value of day of week changed.
- @param dayOfWeek the day of week to set
+ <p>
+ DateMidnight is immutable, so there are no set methods.
+ Instead, this method returns a new instance with the value of
+ day of week changed.
+ @param dayOfWeek  the day of week to set
  @return a copy of this object with the field set
  @throws IllegalArgumentException if the value is invalid
  @since 1.3
  */
 - (OrgJodaTimeDateMidnight *)withDayOfWeekWithInt:(jint)dayOfWeek;
 
-/**
+/*!
  @brief Returns a copy of this date with the day of year field updated.
- <p> DateMidnight is immutable, so there are no set methods. Instead, this method returns a new instance with the value of day of year changed.
- @param dayOfYear the day of year to set
+ <p>
+ DateMidnight is immutable, so there are no set methods.
+ Instead, this method returns a new instance with the value of
+ day of year changed.
+ @param dayOfYear  the day of year to set
  @return a copy of this object with the field set
  @throws IllegalArgumentException if the value is invalid
  @since 1.3
  */
 - (OrgJodaTimeDateMidnight *)withDayOfYearWithInt:(jint)dayOfYear;
 
-/**
+/*!
  @brief Returns a copy of this date with the specified duration added.
- <p> If the addition is zero, then <code>this</code> is returned.
- @param durationToAdd the duration to add to this one
- @param scalar the amount of times to add, such as -1 to subtract once
+ <p>
+ If the addition is zero, then <code>this</code> is returned.
+ @param durationToAdd  the duration to add to this one
+ @param scalar  the amount of times to add, such as -1 to subtract once
  @return a copy of this datetime with the duration added
  @throws ArithmeticException if the new datetime exceeds the capacity of a long
  */
 - (OrgJodaTimeDateMidnight *)withDurationAddedWithLong:(jlong)durationToAdd
                                                withInt:(jint)scalar;
 
-/**
+/*!
  @brief Returns a copy of this date with the specified duration added.
- <p> If the addition is zero, then <code>this</code> is returned.
- @param durationToAdd the duration to add to this one, null means zero
- @param scalar the amount of times to add, such as -1 to subtract once
+ <p>
+ If the addition is zero, then <code>this</code> is returned.
+ @param durationToAdd  the duration to add to this one, null means zero
+ @param scalar  the amount of times to add, such as -1 to subtract once
  @return a copy of this datetime with the duration added
  @throws ArithmeticException if the new datetime exceeds the capacity of a long
  */
 - (OrgJodaTimeDateMidnight *)withDurationAddedWithOrgJodaTimeReadableDuration:(id<OrgJodaTimeReadableDuration>)durationToAdd
                                                                       withInt:(jint)scalar;
 
-/**
+/*!
  @brief Returns a copy of this date with the era field updated.
- <p> DateMidnight is immutable, so there are no set methods. Instead, this method returns a new instance with the value of era changed.
- @param era the era to set
+ <p>
+ DateMidnight is immutable, so there are no set methods.
+ Instead, this method returns a new instance with the value of
+ era changed.
+ @param era  the era to set
  @return a copy of this object with the field set
  @throws IllegalArgumentException if the value is invalid
  @since 1.3
  */
 - (OrgJodaTimeDateMidnight *)withEraWithInt:(jint)era;
 
-/**
+/*!
  @brief Returns a copy of this date with the specified field set to a new value.
- <p> For example, if the field type is <code>dayOfMonth</code> then the day of month field would be changed in the returned instance. If the field type is null, then <code>this</code> is returned. <p> These three lines are equivalent: <pre> DateTime updated = dt.withField(DateTimeFieldType.dayOfMonth(), 6); DateTime updated = dt.dayOfMonth().setCopy(6); DateTime updated = dt.property(DateTimeFieldType.dayOfMonth()).setCopy(6); </pre>
- @param fieldType the field type to set, not null
- @param value the value to set
+ <p>
+ For example, if the field type is <code>dayOfMonth</code> then the day of month
+ field would be changed in the returned instance.
+ If the field type is null, then <code>this</code> is returned.
+ <p>
+ These three lines are equivalent:
+ @code
+
+  DateTime updated = dt.withField(DateTimeFieldType.dayOfMonth(), 6);
+  DateTime updated = dt.dayOfMonth().setCopy(6);
+  DateTime updated = dt.property(DateTimeFieldType.dayOfMonth()).setCopy(6);
+  
+@endcode
+ @param fieldType  the field type to set, not null
+ @param value  the value to set
  @return a copy of this datetime with the field set
  @throws IllegalArgumentException if the value is null or invalid
  */
 - (OrgJodaTimeDateMidnight *)withFieldWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType
                                                                withInt:(jint)value;
 
-/**
+/*!
  @brief Returns a copy of this date with the value of the specified field increased.
- <p> If the addition is zero or the field is null, then <code>this</code> is returned. <p> These three lines are equivalent: <pre> DateMidnight added = dt.withFieldAdded(DateTimeFieldType.year(), 6); DateMidnight added = dt.plusYears(6); DateMidnight added = dt.year().addToCopy(6); </pre>
- @param fieldType the field type to add to, not null
- @param amount the amount to add
+ <p>
+ If the addition is zero or the field is null, then <code>this</code> is returned.
+ <p>
+ These three lines are equivalent:
+ @code
+
+  DateMidnight added = dt.withFieldAdded(DateTimeFieldType.year(), 6);
+  DateMidnight added = dt.plusYears(6);
+  DateMidnight added = dt.year().addToCopy(6);
+  
+@endcode
+ @param fieldType  the field type to add to, not null
+ @param amount  the amount to add
  @return a copy of this datetime with the field updated
  @throws IllegalArgumentException if the value is null or invalid
  @throws ArithmeticException if the new datetime exceeds the capacity of a long
@@ -495,114 +740,158 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 - (OrgJodaTimeDateMidnight *)withFieldAddedWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)fieldType
                                                                     withInt:(jint)amount;
 
-/**
- @brief Returns a copy of this date with the partial set of fields replacing those from this instance.
- <p> For example, if the partial is a <code>LocalDate</code> then the date fields would be changed in the returned instance. If the partial is null, then <code>this</code> is returned.
- @param partial the partial set of fields to apply to this datetime, null ignored
+/*!
+ @brief Returns a copy of this date with the partial set of fields replacing those
+ from this instance.
+ <p>
+ For example, if the partial is a <code>LocalDate</code> then the date fields
+ would be changed in the returned instance.
+ If the partial is null, then <code>this</code> is returned.
+ @param partial  the partial set of fields to apply to this datetime, null ignored
  @return a copy of this datetime with a different set of fields
  @throws IllegalArgumentException if any value is invalid
  */
 - (OrgJodaTimeDateMidnight *)withFieldsWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial;
 
-/**
+/*!
  @brief Returns a copy of this date with a different millisecond instant.
- The returned object will have a local time of midnight. <p> Only the millis will change, the chronology and time zone are kept. The returned object will be either be a new instance or <code>this</code>.
- @param newMillis the new millis, from 1970-01-01T00:00:00Z
+ The returned object will have a local time of midnight.
+ <p>
+ Only the millis will change, the chronology and time zone are kept.
+ The returned object will be either be a new instance or <code>this</code>.
+ @param newMillis  the new millis, from 1970-01-01T00:00:00Z
  @return a copy of this instant with different millis
  */
 - (OrgJodaTimeDateMidnight *)withMillisWithLong:(jlong)newMillis;
 
-/**
+/*!
  @brief Returns a copy of this date with the month of year field updated.
- <p> DateMidnight is immutable, so there are no set methods. Instead, this method returns a new instance with the value of month of year changed.
- @param monthOfYear the month of year to set
+ <p>
+ DateMidnight is immutable, so there are no set methods.
+ Instead, this method returns a new instance with the value of
+ month of year changed.
+ @param monthOfYear  the month of year to set
  @return a copy of this object with the field set
  @throws IllegalArgumentException if the value is invalid
  @since 1.3
  */
 - (OrgJodaTimeDateMidnight *)withMonthOfYearWithInt:(jint)monthOfYear;
 
-/**
+/*!
  @brief Returns a copy of this date with the specified period added.
- <p> If the addition is zero, then <code>this</code> is returned. <p> This method is typically used to add multiple copies of complex period instances. Adding one field is best achieved using methods like #withFieldAdded(DurationFieldType,int) or #plusYears(int) .
- @param period the period to add to this one, null means zero
- @param scalar the amount of times to add, such as -1 to subtract once
+ <p>
+ If the addition is zero, then <code>this</code> is returned.
+ <p>
+ This method is typically used to add multiple copies of complex
+ period instances. Adding one field is best achieved using methods
+ like <code>withFieldAdded(DurationFieldType,int)</code>
+ or <code>plusYears(int)</code>.
+ @param period  the period to add to this one, null means zero
+ @param scalar  the amount of times to add, such as -1 to subtract once
  @return a copy of this datetime with the period added
  @throws ArithmeticException if the new datetime exceeds the capacity of a long
  */
 - (OrgJodaTimeDateMidnight *)withPeriodAddedWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period
                                                                   withInt:(jint)scalar;
 
-/**
+/*!
  @brief Returns a copy of this date with the week of weekyear field updated.
- <p> This field is associated with the "weekyear" via #withWeekyear(int) . In the standard ISO8601 week algorithm, the first week of the year is that in which at least 4 days are in the year. As a result of this definition, day 1 of the first week may be in the previous year. <p> DateMidnight is immutable, so there are no set methods. Instead, this method returns a new instance with the value of week of weekyear changed.
- @param weekOfWeekyear the week of weekyear to set
+ <p>
+ This field is associated with the "weekyear" via <code>withWeekyear(int)</code>.
+ In the standard ISO8601 week algorithm, the first week of the year
+ is that in which at least 4 days are in the year. As a result of this
+ definition, day 1 of the first week may be in the previous year.
+ <p>
+ DateMidnight is immutable, so there are no set methods.
+ Instead, this method returns a new instance with the value of
+ week of weekyear changed.
+ @param weekOfWeekyear  the week of weekyear to set
  @return a copy of this object with the field set
  @throws IllegalArgumentException if the value is invalid
  @since 1.3
  */
 - (OrgJodaTimeDateMidnight *)withWeekOfWeekyearWithInt:(jint)weekOfWeekyear;
 
-/**
+/*!
  @brief Returns a copy of this date with the weekyear field updated.
- <p> The weekyear is the year that matches with the weekOfWeekyear field. In the standard ISO8601 week algorithm, the first week of the year is that in which at least 4 days are in the year. As a result of this definition, day 1 of the first week may be in the previous year. The weekyear allows you to query the effective year for that day. <p> DateMidnight is immutable, so there are no set methods. Instead, this method returns a new instance with the value of weekyear changed.
- @param weekyear the weekyear to set
+ <p>
+ The weekyear is the year that matches with the weekOfWeekyear field.
+ In the standard ISO8601 week algorithm, the first week of the year
+ is that in which at least 4 days are in the year. As a result of this
+ definition, day 1 of the first week may be in the previous year.
+ The weekyear allows you to query the effective year for that day.
+ <p>
+ DateMidnight is immutable, so there are no set methods.
+ Instead, this method returns a new instance with the value of
+ weekyear changed.
+ @param weekyear  the weekyear to set
  @return a copy of this object with the field set
  @throws IllegalArgumentException if the value is invalid
  @since 1.3
  */
 - (OrgJodaTimeDateMidnight *)withWeekyearWithInt:(jint)weekyear;
 
-/**
+/*!
  @brief Returns a copy of this date with the year field updated.
- <p> DateMidnight is immutable, so there are no set methods. Instead, this method returns a new instance with the value of year changed.
- @param year the year to set
+ <p>
+ DateMidnight is immutable, so there are no set methods.
+ Instead, this method returns a new instance with the value of
+ year changed.
+ @param year  the year to set
  @return a copy of this object with the field set
  @throws IllegalArgumentException if the value is invalid
  @since 1.3
  */
 - (OrgJodaTimeDateMidnight *)withYearWithInt:(jint)year;
 
-/**
+/*!
  @brief Returns a copy of this date with the year of century field updated.
- <p> DateMidnight is immutable, so there are no set methods. Instead, this method returns a new instance with the value of year of century changed.
- @param yearOfCentury the year of century to set
+ <p>
+ DateMidnight is immutable, so there are no set methods.
+ Instead, this method returns a new instance with the value of
+ year of century changed.
+ @param yearOfCentury  the year of century to set
  @return a copy of this object with the field set
  @throws IllegalArgumentException if the value is invalid
  @since 1.3
  */
 - (OrgJodaTimeDateMidnight *)withYearOfCenturyWithInt:(jint)yearOfCentury;
 
-/**
+/*!
  @brief Returns a copy of this date with the year of era field updated.
- <p> DateMidnight is immutable, so there are no set methods. Instead, this method returns a new instance with the value of year of era changed.
- @param yearOfEra the year of era to set
+ <p>
+ DateMidnight is immutable, so there are no set methods.
+ Instead, this method returns a new instance with the value of
+ year of era changed.
+ @param yearOfEra  the year of era to set
  @return a copy of this object with the field set
  @throws IllegalArgumentException if the value is invalid
  @since 1.3
  */
 - (OrgJodaTimeDateMidnight *)withYearOfEraWithInt:(jint)yearOfEra;
 
-/**
- @brief Returns a copy of this date with a different time zone, preserving the day The returned object will have a local time of midnight in the new zone on the same day as the original instant.
- @param newZone the new time zone, null means default
+/*!
+ @brief Returns a copy of this date with a different time zone, preserving the day
+ The returned object will have a local time of midnight in the new zone on
+ the same day as the original instant.
+ @param newZone  the new time zone, null means default
  @return a copy of this instant with a different time zone
  */
 - (OrgJodaTimeDateMidnight *)withZoneRetainFieldsWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)newZone;
 
-/**
+/*!
  @brief Get the year property which provides access to advanced functionality.
  @return the year property
  */
 - (OrgJodaTimeDateMidnight_Property *)year;
 
-/**
+/*!
  @brief Get the year of century property which provides access to advanced functionality.
  @return the year of era property
  */
 - (OrgJodaTimeDateMidnight_Property *)yearOfCentury;
 
-/**
+/*!
  @brief Get the year of era property which provides access to advanced functionality.
  @return the year of era property
  */
@@ -610,10 +899,10 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Rounds the specified instant to midnight.
- @param instant the milliseconds from 1970-01-01T00:00:00Z to round
- @param chronology the chronology to use, not null
+ @param instant  the milliseconds from 1970-01-01T00:00:00Z to round
+ @param chronology  the chronology to use, not null
  @return the updated instant, rounded to midnight
  */
 - (jlong)checkInstantWithLong:(jlong)instant
@@ -683,9 +972,33 @@ FOUNDATION_EXPORT OrgJodaTimeDateMidnight *new_OrgJodaTimeDateMidnight_initWithI
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateMidnight)
 
-/**
- @brief DateMidnight.Property binds a DateMidnight to a DateTimeField allowing powerful datetime functionality to be easily accessed.
- <p> The simplest use of this class is as an alternative get method, here used to get the year '1972' (as an int) and the month 'December' (as a String). <pre> DateMidnight dt = new DateMidnight(1972, 12, 3); int year = dt.year().get(); String monthStr = dt.monthOfYear().getAsText(); </pre> <p> Methods are also provided that allow date modification. These return new instances of DateMidnight - they do not modify the original. The example below yields two independent immutable date objects 20 years apart. <pre> DateMidnight dt = new DateMidnight(1972, 12, 3); DateMidnight dt20 = dt.year().addToCopy(20); </pre> Serious modification of dates (ie. more than just changing one or two fields) should use the org.joda.time.MutableDateTime MutableDateTime class. <p> DateMidnight.Property itself is thread-safe and immutable.
+/*!
+ @brief DateMidnight.Property binds a DateMidnight to a DateTimeField allowing powerful
+ datetime functionality to be easily accessed.
+ <p>
+ The simplest use of this class is as an alternative get method, here used to
+ get the year '1972' (as an int) and the month 'December' (as a String).
+ @code
+
+  DateMidnight dt = new DateMidnight(1972, 12, 3);
+  int year = dt.year().get();
+  String monthStr = dt.monthOfYear().getAsText();
+  
+@endcode
+ <p>
+ Methods are also provided that allow date modification. These return new instances
+ of DateMidnight - they do not modify the original. The example below yields two
+ independent immutable date objects 20 years apart.
+ @code
+
+  DateMidnight dt = new DateMidnight(1972, 12, 3);
+  DateMidnight dt20 = dt.year().addToCopy(20);
+  
+@endcode
+ Serious modification of dates (ie. more than just changing one or two fields)
+ should use the <code>MutableDateTime</code> class.
+ <p>
+ DateMidnight.Property itself is thread-safe and immutable.
  @author Stephen Colebourne
  @author Brian S O'Neill
  @since 1.0
@@ -694,116 +1007,156 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateMidnight)
 
 #pragma mark Public
 
-/**
+/*!
  @brief Adds to this field in a copy of this DateMidnight.
- <p> The DateMidnight attached to this property is unchanged by this call. This operation is faster than converting a DateMidnight to a MutableDateTime and back again when setting one field. When setting multiple fields, it is generally quicker to make the conversion to MutableDateTime.
- @param value the value to add to the field in the copy
+ <p>
+ The DateMidnight attached to this property is unchanged by this call.
+ This operation is faster than converting a DateMidnight to a MutableDateTime
+ and back again when setting one field. When setting multiple fields,
+ it is generally quicker to make the conversion to MutableDateTime.
+ @param value  the value to add to the field in the copy
  @return a copy of the DateMidnight with the field value changed
  @throws IllegalArgumentException if the value isn't valid
  */
 - (OrgJodaTimeDateMidnight *)addToCopyWithInt:(jint)value;
 
-/**
+/*!
  @brief Adds to this field in a copy of this DateMidnight.
- <p> The DateMidnight attached to this property is unchanged by this call. This operation is faster than converting a DateMidnight to a MutableDateTime and back again when setting one field. When setting multiple fields, it is generally quicker to make the conversion to MutableDateTime.
- @param value the value to add to the field in the copy
+ <p>
+ The DateMidnight attached to this property is unchanged by this call.
+ This operation is faster than converting a DateMidnight to a MutableDateTime
+ and back again when setting one field. When setting multiple fields,
+ it is generally quicker to make the conversion to MutableDateTime.
+ @param value  the value to add to the field in the copy
  @return a copy of the DateMidnight with the field value changed
  @throws IllegalArgumentException if the value isn't valid
  */
 - (OrgJodaTimeDateMidnight *)addToCopyWithLong:(jlong)value;
 
-/**
+/*!
  @brief Adds to this field, possibly wrapped, in a copy of this DateMidnight.
- A wrapped operation only changes this field. Thus 31st January addWrapField one day goes to the 1st January. <p> The DateMidnight attached to this property is unchanged by this call. This operation is faster than converting a DateMidnight to a MutableDateTime and back again when setting one field. When setting multiple fields, it is generally quicker to make the conversion to MutableDateTime.
- @param value the value to add to the field in the copy
+ A wrapped operation only changes this field.
+ Thus 31st January addWrapField one day goes to the 1st January.
+ <p>
+ The DateMidnight attached to this property is unchanged by this call.
+ This operation is faster than converting a DateMidnight to a MutableDateTime
+ and back again when setting one field. When setting multiple fields,
+ it is generally quicker to make the conversion to MutableDateTime.
+ @param value  the value to add to the field in the copy
  @return a copy of the DateMidnight with the field value changed
  @throws IllegalArgumentException if the value isn't valid
  */
 - (OrgJodaTimeDateMidnight *)addWrapFieldToCopyWithInt:(jint)value;
 
-/**
+/*!
  @brief Gets the datetime being used.
  @return the datetime
  */
 - (OrgJodaTimeDateMidnight *)getDateMidnight;
 
-/**
+/*!
  @brief Gets the field being used.
  @return the field
  */
 - (OrgJodaTimeDateTimeField *)getField;
 
-/**
+/*!
  @brief Rounds to the highest whole unit of this field on a copy of this DateMidnight.
  @return a copy of the DateMidnight with the field value changed
  */
 - (OrgJodaTimeDateMidnight *)roundCeilingCopy;
 
-/**
+/*!
  @brief Rounds to the lowest whole unit of this field on a copy of this DateMidnight.
  @return a copy of the DateMidnight with the field value changed
  */
 - (OrgJodaTimeDateMidnight *)roundFloorCopy;
 
-/**
- @brief Rounds to the nearest whole unit of this field on a copy of this DateMidnight, favoring the ceiling if halfway.
+/*!
+ @brief Rounds to the nearest whole unit of this field on a copy of this DateMidnight,
+ favoring the ceiling if halfway.
  @return a copy of the DateMidnight with the field value changed
  */
 - (OrgJodaTimeDateMidnight *)roundHalfCeilingCopy;
 
-/**
+/*!
  @brief Rounds to the nearest whole unit of this field on a copy of this DateMidnight.
  If halfway, the ceiling is favored over the floor only if it makes this field's value even.
  @return a copy of the DateMidnight with the field value changed
  */
 - (OrgJodaTimeDateMidnight *)roundHalfEvenCopy;
 
-/**
- @brief Rounds to the nearest whole unit of this field on a copy of this DateMidnight, favoring the floor if halfway.
+/*!
+ @brief Rounds to the nearest whole unit of this field on a copy of this DateMidnight,
+ favoring the floor if halfway.
  @return a copy of the DateMidnight with the field value changed
  */
 - (OrgJodaTimeDateMidnight *)roundHalfFloorCopy;
 
-/**
+/*!
  @brief Sets this field in a copy of the DateMidnight.
- <p> The DateMidnight attached to this property is unchanged by this call. This operation is faster than converting a DateMidnight to a MutableDateTime and back again when setting one field. When setting multiple fields, it is generally quicker to make the conversion to MutableDateTime.
- @param value the value to set the field in the copy to
+ <p>
+ The DateMidnight attached to this property is unchanged by this call.
+ This operation is faster than converting a DateMidnight to a MutableDateTime
+ and back again when setting one field. When setting multiple fields,
+ it is generally quicker to make the conversion to MutableDateTime.
+ @param value  the value to set the field in the copy to
  @return a copy of the DateMidnight with the field value changed
  @throws IllegalArgumentException if the value isn't valid
  */
 - (OrgJodaTimeDateMidnight *)setCopyWithInt:(jint)value;
 
-/**
+/*!
  @brief Sets this field in a copy of the DateMidnight to a parsed text value.
- <p> The DateMidnight attached to this property is unchanged by this call. This operation is faster than converting a DateMidnight to a MutableDateTime and back again when setting one field. When setting multiple fields, it is generally quicker to make the conversion to MutableDateTime.
- @param text the text value to set
+ <p>
+ The DateMidnight attached to this property is unchanged by this call.
+ This operation is faster than converting a DateMidnight to a MutableDateTime
+ and back again when setting one field. When setting multiple fields,
+ it is generally quicker to make the conversion to MutableDateTime.
+ @param text  the text value to set
  @return a copy of the DateMidnight with the field value changed
  @throws IllegalArgumentException if the text value isn't valid
  */
 - (OrgJodaTimeDateMidnight *)setCopyWithNSString:(NSString *)text;
 
-/**
+/*!
  @brief Sets this field in a copy of the DateMidnight to a parsed text value.
- <p> The DateMidnight attached to this property is unchanged by this call. This operation is faster than converting a DateMidnight to a MutableDateTime and back again when setting one field. When setting multiple fields, it is generally quicker to make the conversion to MutableDateTime.
- @param text the text value to set
- @param locale optional locale to use for selecting a text symbol
+ <p>
+ The DateMidnight attached to this property is unchanged by this call.
+ This operation is faster than converting a DateMidnight to a MutableDateTime
+ and back again when setting one field. When setting multiple fields,
+ it is generally quicker to make the conversion to MutableDateTime.
+ @param text  the text value to set
+ @param locale  optional locale to use for selecting a text symbol
  @return a copy of the DateMidnight with the field value changed
  @throws IllegalArgumentException if the text value isn't valid
  */
 - (OrgJodaTimeDateMidnight *)setCopyWithNSString:(NSString *)text
                               withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
- @brief Returns a new DateMidnight with this field set to the maximum value for this field.
- <p> This operation is useful for obtaining a DateTime on the last day of the month, as month lengths vary. <pre> DateMidnight lastDayOfMonth = dt.dayOfMonth().withMaximumValue(); </pre> <p> The DateMidnight attached to this property is unchanged by this call.
+/*!
+ @brief Returns a new DateMidnight with this field set to the maximum value
+ for this field.
+ <p>
+ This operation is useful for obtaining a DateTime on the last day
+ of the month, as month lengths vary.
+ @code
+
+  DateMidnight lastDayOfMonth = dt.dayOfMonth().withMaximumValue();
+  
+@endcode
+ <p>
+ The DateMidnight attached to this property is unchanged by this call.
  @return a copy of the DateMidnight with this field set to its maximum
  @since 1.2
  */
 - (OrgJodaTimeDateMidnight *)withMaximumValue;
 
-/**
- @brief Returns a new DateMidnight with this field set to the minimum value for this field.
- <p> The DateMidnight attached to this property is unchanged by this call.
+/*!
+ @brief Returns a new DateMidnight with this field set to the minimum value
+ for this field.
+ <p>
+ The DateMidnight attached to this property is unchanged by this call.
  @return a copy of the DateMidnight with this field set to its minimum
  @since 1.2
  */
@@ -811,14 +1164,14 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateMidnight)
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Gets the chronology of the datetime that this property is linked to.
  @return the chronology
  @since 1.4
  */
 - (OrgJodaTimeChronology *)getChronology;
 
-/**
+/*!
  @brief Gets the milliseconds of the datetime that this property is linked to.
  @return the milliseconds
  */
@@ -826,10 +1179,10 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateMidnight)
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Constructor.
- @param instant the instant to set
- @param field the field to use
+ @param instant  the instant to set
+ @param field  the field to use
  */
 - (instancetype)initWithOrgJodaTimeDateMidnight:(OrgJodaTimeDateMidnight *)instant
                    withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;

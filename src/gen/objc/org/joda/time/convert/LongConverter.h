@@ -15,7 +15,7 @@
 @class IOSClass;
 @class OrgJodaTimeChronology;
 
-/**
+/*!
  @brief LongConverter converts a Long to an instant, partial or duration.
  The Long value represents milliseconds in the ISO chronology.
  @author Stephen Colebourne
@@ -26,19 +26,19 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Gets the millisecond duration, which is the Long value.
- @param object the Long to convert, must not be null
+ @param object  the Long to convert, must not be null
  @return the millisecond duration
  @throws NullPointerException if the object is null
  @throws ClassCastException if the object is an invalid type
  */
 - (jlong)getDurationMillisWithId:(id)object;
 
-/**
+/*!
  @brief Gets the millisecond instant, which is the Long value.
- @param object the Long to convert, must not be null
- @param chrono the chronology to use, which is always non-null
+ @param object  the Long to convert, must not be null
+ @param chrono  the chronology to use, which is always non-null
  @return the millisecond value
  @throws NullPointerException if the object is null
  @throws ClassCastException if the object is an invalid type
@@ -46,7 +46,7 @@
 - (jlong)getInstantMillisWithId:(id)object
       withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
 
-/**
+/*!
  @brief Returns Long.class.
  @return Long.class
  */
@@ -54,7 +54,7 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)init;

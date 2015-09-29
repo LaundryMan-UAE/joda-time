@@ -12,9 +12,13 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeField;
 
-/**
+/*!
  @brief Wraps another field such that a certain value is skipped.
- <p> This is most useful for years where you want to skip zero, so the sequence runs ...,2,1,-1,-2,... <p> SkipDateTimeField is thread-safe and immutable.
+ <p>
+ This is most useful for years where you want to skip zero, so the
+ sequence runs ...,2,1,-1,-2,...
+ <p>
+ SkipDateTimeField is thread-safe and immutable.
  @author Brian S O'Neill
  @author Stephen Colebourne
  @since 1.0
@@ -23,19 +27,19 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Constructor that skips zero.
- @param chronology the chronoogy to use
- @param field the field to skip zero on
+ @param chronology  the chronoogy to use
+ @param field  the field to skip zero on
  */
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology
                  withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
 
-/**
+/*!
  @brief Constructor.
- @param chronology the chronoogy to use
- @param field the field to skip zero on
- @param skip the value to skip
+ @param chronology  the chronoogy to use
+ @param field  the field to skip zero on
+ @param skip  the value to skip
  */
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology
                  withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field

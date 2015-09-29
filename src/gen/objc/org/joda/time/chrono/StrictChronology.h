@@ -12,9 +12,10 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeZone;
 
-/**
+/*!
  @brief Wraps another Chronology, ensuring all the fields are strict.
- <p> StrictChronology is thread-safe and immutable.
+ <p>
+ StrictChronology is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -22,29 +23,30 @@
 
 #pragma mark Public
 
-/**
- @brief A strict chronology is only equal to a strict chronology with the same base chronology.
- @param obj the object to compare to
+/*!
+ @brief A strict chronology is only equal to a strict chronology with the
+ same base chronology.
+ @param obj  the object to compare to
  @return true if equal
  @since 1.4
  */
 - (jboolean)isEqual:(id)obj;
 
-/**
+/*!
  @brief Create a StrictChronology for any chronology.
  @param base the chronology to wrap
  @throws IllegalArgumentException if chronology is null
  */
 + (OrgJodaTimeChronoStrictChronology *)getInstanceWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base;
 
-/**
+/*!
  @brief A suitable hashcode for the chronology.
  @return the hashcode
  @since 1.4
  */
 - (NSUInteger)hash;
 
-/**
+/*!
  @brief A debugging string for the chronology.
  @return the debugging string
  */

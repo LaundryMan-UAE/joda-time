@@ -18,15 +18,15 @@
 
 @interface OrgJodaTimeFieldDelegatedDateTimeField () {
  @public
-  /**
+  /*!
    @brief The DateTimeField being wrapped.
    */
   OrgJodaTimeDateTimeField *iField_;
-  /**
+  /*!
    @brief The range duration.
    */
   OrgJodaTimeDurationField *iRangeDurationField_;
-  /**
+  /*!
    @brief The override field type.
    */
   OrgJodaTimeDateTimeFieldType *iType_;
@@ -305,7 +305,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldDelegatedDateTimeField, serialVersion
 }
 
 - (void)dealloc {
-  if (iField_ != self) RELEASE_(iField_);
+  RELEASE_(iField_);
   RELEASE_(iRangeDurationField_);
   RELEASE_(iType_);
   [super dealloc];
@@ -370,9 +370,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldDelegatedDateTimeField, serialVersion
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldDelegatedDateTimeField_serialVersionUID },
-    { "iField_", NULL, 0x12, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iRangeDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iType_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL, NULL,  },
+    { "iField_", NULL, 0x12, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iRangeDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iType_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldDelegatedDateTimeField = { 2, "DelegatedDateTimeField", "org.joda.time.field", NULL, 0x1, 54, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldDelegatedDateTimeField;
@@ -405,9 +405,9 @@ void OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_wit
   if (field == nil) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The field must not be null") autorelease];
   }
-  OrgJodaTimeFieldDelegatedDateTimeField_set_iField_(self, field);
-  OrgJodaTimeFieldDelegatedDateTimeField_set_iRangeDurationField_(self, rangeField);
-  OrgJodaTimeFieldDelegatedDateTimeField_set_iType_(self, (type == nil ? [((OrgJodaTimeDateTimeField *) nil_chk(field)) getType] : type));
+  JreStrongAssign(&self->iField_, field);
+  JreStrongAssign(&self->iRangeDurationField_, rangeField);
+  JreStrongAssign(&self->iType_, (type == nil ? [((OrgJodaTimeDateTimeField *) nil_chk(field)) getType] : type));
 }
 
 OrgJodaTimeFieldDelegatedDateTimeField *new_OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDurationField *rangeField, OrgJodaTimeDateTimeFieldType *type) {

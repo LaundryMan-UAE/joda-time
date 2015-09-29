@@ -3,6 +3,7 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/joda-time/src/main/java/org/joda/time/base/AbstractPartial.java
 //
 
+#include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
@@ -24,10 +25,12 @@
 
 @implementation OrgJodaTimeBaseAbstractPartial
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeBaseAbstractPartial_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgJodaTimeDateTimeField *)getFieldWithInt:(jint)index
                     withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
@@ -119,18 +122,18 @@
 
 - (jboolean)isEqual:(id)partial {
   if (self == partial) {
-    return YES;
+    return true;
   }
-  if ([OrgJodaTimeReadablePartial_class_() isInstance:partial] == NO) {
-    return NO;
+  if ([OrgJodaTimeReadablePartial_class_() isInstance:partial] == false) {
+    return false;
   }
-  id<OrgJodaTimeReadablePartial> other = (id<OrgJodaTimeReadablePartial>) check_protocol_cast(partial, @protocol(OrgJodaTimeReadablePartial));
+  id<OrgJodaTimeReadablePartial> other = (id<OrgJodaTimeReadablePartial>) check_protocol_cast(partial, OrgJodaTimeReadablePartial_class_());
   if ([self size] != [((id<OrgJodaTimeReadablePartial>) nil_chk(other)) size]) {
-    return NO;
+    return false;
   }
   for (jint i = 0, isize = [self size]; i < isize; i++) {
     if ([self getValueWithInt:i] != [other getValueWithInt:i] || [self getFieldTypeWithInt:i] != [other getFieldTypeWithInt:i]) {
-      return NO;
+      return false;
     }
   }
   return OrgJodaTimeFieldFieldUtils_equalsWithId_withId_([self getChronology], [other getChronology]);
@@ -147,7 +150,7 @@
 }
 
 - (jint)compareToWithId:(id<OrgJodaTimeReadablePartial>)other {
-  check_protocol_cast(other, @protocol(OrgJodaTimeReadablePartial));
+  check_protocol_cast(other, OrgJodaTimeReadablePartial_class_());
   if (self == other) {
     return 0;
   }

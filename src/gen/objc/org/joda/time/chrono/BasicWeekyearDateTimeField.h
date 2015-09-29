@@ -12,7 +12,7 @@
 @class OrgJodaTimeChronoBasicChronology;
 @class OrgJodaTimeDurationField;
 
-/**
+/*!
  @brief Provides time calculations for the week of the weekyear component of time.
  @author Guy Allard
  @author Stephen Colebourne
@@ -23,10 +23,10 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Add the specified years to the specified time instant.
- @param instant the time instant in millis to update.
- @param years the years to add (can be negative).
+ @param instant  the time instant in millis to update.
+ @param years  the years to add (can be negative).
  @return the updated time instant.
  */
 - (jlong)addWithLong:(jlong)instant
@@ -35,18 +35,19 @@
 - (jlong)addWithLong:(jlong)instant
             withLong:(jlong)value;
 
-/**
- @brief Add to the year component of the specified time instant wrapping around within that component if necessary.
- @param instant the time instant in millis to update.
- @param years the years to add (can be negative).
+/*!
+ @brief Add to the year component of the specified time instant
+ wrapping around within that component if necessary.
+ @param instant  the time instant in millis to update.
+ @param years  the years to add (can be negative).
  @return the updated time instant.
  */
 - (jlong)addWrapFieldWithLong:(jlong)instant
                       withInt:(jint)years;
 
-/**
+/*!
  @brief Get the Year of a week based year component of the specified time instant.
- @param instant the time instant in millis to query.
+ @param instant  the time instant in millis to query.
  @return the year extracted from the input.
  */
 - (jint)getWithLong:(jlong)instant;
@@ -72,19 +73,19 @@
 
 - (jlong)roundFloorWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Set the Year of a week based year component of the specified time instant.
- @param instant the time instant in millis to update.
- @param year the year (-9999,9999) to set the date to.
+ @param instant  the time instant in millis to update.
+ @param year  the year (-9999,9999) to set the date to.
  @return the updated DateTime.
- @throws IllegalArgumentException if year is invalid.
+ @throws IllegalArgumentException  if year is invalid.
  */
 - (jlong)setWithLong:(jlong)instant
              withInt:(jint)year;
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Restricted constructor
  */
 - (instancetype)initWithOrgJodaTimeChronoBasicChronology:(OrgJodaTimeChronoBasicChronology *)chronology;

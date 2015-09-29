@@ -170,11 +170,11 @@ __attribute__((unused)) static jint OrgJodaTimeFieldDividedDateTimeField_getRema
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldDividedDateTimeField_serialVersionUID },
-    { "iDivisor_", NULL, 0x10, "I", NULL, NULL,  },
-    { "iDurationField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iRangeDurationField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iMin_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iMax_", NULL, 0x12, "I", NULL, NULL,  },
+    { "iDivisor_", NULL, 0x10, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iDurationField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iRangeDurationField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMin_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMax_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldDividedDateTimeField = { 2, "DividedDateTimeField", "org.joda.time.field", NULL, 0x1, 19, methods, 6, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldDividedDateTimeField;
@@ -199,12 +199,12 @@ void OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withO
   }
   OrgJodaTimeDurationField *unitField = [((OrgJodaTimeDateTimeField *) nil_chk(field)) getDurationField];
   if (unitField == nil) {
-    OrgJodaTimeFieldDividedDateTimeField_set_iDurationField_(self, nil);
+    JreStrongAssign(&self->iDurationField_, nil);
   }
   else {
-    OrgJodaTimeFieldDividedDateTimeField_setAndConsume_iDurationField_(self, new_OrgJodaTimeFieldScaledDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_withInt_(unitField, [((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getDurationType], divisor));
+    JreStrongAssignAndConsume(&self->iDurationField_, new_OrgJodaTimeFieldScaledDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_withInt_(unitField, [((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getDurationType], divisor));
   }
-  OrgJodaTimeFieldDividedDateTimeField_set_iRangeDurationField_(self, rangeField);
+  JreStrongAssign(&self->iRangeDurationField_, rangeField);
   self->iDivisor_ = divisor;
   jint i = [field getMinimumValue];
   jint min = (i >= 0) ? i / divisor : ((i + 1) / divisor - 1);
@@ -233,8 +233,8 @@ OrgJodaTimeFieldDividedDateTimeField *new_OrgJodaTimeFieldDividedDateTimeField_i
 void OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldDividedDateTimeField *self, OrgJodaTimeFieldRemainderDateTimeField *remainderField, OrgJodaTimeDurationField *rangeField, OrgJodaTimeDateTimeFieldType *type) {
   OrgJodaTimeFieldDecoratedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, [((OrgJodaTimeFieldRemainderDateTimeField *) nil_chk(remainderField)) getWrappedField], type);
   jint divisor = self->iDivisor_ = remainderField->iDivisor_;
-  OrgJodaTimeFieldDividedDateTimeField_set_iDurationField_(self, remainderField->iRangeField_);
-  OrgJodaTimeFieldDividedDateTimeField_set_iRangeDurationField_(self, rangeField);
+  JreStrongAssign(&self->iDurationField_, remainderField->iRangeField_);
+  JreStrongAssign(&self->iRangeDurationField_, rangeField);
   OrgJodaTimeDateTimeField *field = [self getWrappedField];
   jint i = [((OrgJodaTimeDateTimeField *) nil_chk(field)) getMinimumValue];
   jint min = (i >= 0) ? i / divisor : ((i + 1) / divisor - 1);

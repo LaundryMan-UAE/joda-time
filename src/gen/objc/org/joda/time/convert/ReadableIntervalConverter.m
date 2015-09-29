@@ -20,19 +20,21 @@ OrgJodaTimeConvertReadableIntervalConverter *OrgJodaTimeConvertReadableIntervalC
 
 @implementation OrgJodaTimeConvertReadableIntervalConverter
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeConvertReadableIntervalConverter_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (jlong)getDurationMillisWithId:(id)object {
-  return [((id<OrgJodaTimeReadableInterval>) nil_chk((((id<OrgJodaTimeReadableInterval>) check_protocol_cast(object, @protocol(OrgJodaTimeReadableInterval)))))) toDurationMillis];
+  return [((id<OrgJodaTimeReadableInterval>) nil_chk((((id<OrgJodaTimeReadableInterval>) check_protocol_cast(object, OrgJodaTimeReadableInterval_class_()))))) toDurationMillis];
 }
 
 - (void)setIntoWithOrgJodaTimeReadWritablePeriod:(id<OrgJodaTimeReadWritablePeriod>)writablePeriod
                                           withId:(id)object
                        withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
-  id<OrgJodaTimeReadableInterval> interval = (id<OrgJodaTimeReadableInterval>) check_protocol_cast(object, @protocol(OrgJodaTimeReadableInterval));
+  id<OrgJodaTimeReadableInterval> interval = (id<OrgJodaTimeReadableInterval>) check_protocol_cast(object, OrgJodaTimeReadableInterval_class_());
   chrono = (chrono != nil ? chrono : OrgJodaTimeDateTimeUtils_getIntervalChronologyWithOrgJodaTimeReadableInterval_(interval));
   jlong start = [((id<OrgJodaTimeReadableInterval>) nil_chk(interval)) getStartMillis];
   jlong end = [interval getEndMillis];
@@ -44,13 +46,13 @@ OrgJodaTimeConvertReadableIntervalConverter *OrgJodaTimeConvertReadableIntervalC
 
 - (jboolean)isReadableIntervalWithId:(id)object
            withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
-  return YES;
+  return true;
 }
 
 - (void)setIntoWithOrgJodaTimeReadWritableInterval:(id<OrgJodaTimeReadWritableInterval>)writableInterval
                                             withId:(id)object
                          withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
-  id<OrgJodaTimeReadableInterval> input = (id<OrgJodaTimeReadableInterval>) check_protocol_cast(object, @protocol(OrgJodaTimeReadableInterval));
+  id<OrgJodaTimeReadableInterval> input = (id<OrgJodaTimeReadableInterval>) check_protocol_cast(object, OrgJodaTimeReadableInterval_class_());
   [((id<OrgJodaTimeReadWritableInterval>) nil_chk(writableInterval)) setIntervalWithOrgJodaTimeReadableInterval:input];
   if (chrono != nil) {
     [writableInterval setChronologyWithOrgJodaTimeChronology:chrono];
@@ -66,7 +68,7 @@ OrgJodaTimeConvertReadableIntervalConverter *OrgJodaTimeConvertReadableIntervalC
 
 + (void)initialize {
   if (self == [OrgJodaTimeConvertReadableIntervalConverter class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeConvertReadableIntervalConverter_INSTANCE_, nil, new_OrgJodaTimeConvertReadableIntervalConverter_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeConvertReadableIntervalConverter_INSTANCE_, new_OrgJodaTimeConvertReadableIntervalConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertReadableIntervalConverter)
   }
 }
@@ -81,7 +83,7 @@ OrgJodaTimeConvertReadableIntervalConverter *OrgJodaTimeConvertReadableIntervalC
     { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.ReadableIntervalConverter;", &OrgJodaTimeConvertReadableIntervalConverter_INSTANCE_, NULL,  },
+    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.ReadableIntervalConverter;", &OrgJodaTimeConvertReadableIntervalConverter_INSTANCE_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeConvertReadableIntervalConverter = { 2, "ReadableIntervalConverter", "org.joda.time.convert", NULL, 0x0, 6, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeConvertReadableIntervalConverter;

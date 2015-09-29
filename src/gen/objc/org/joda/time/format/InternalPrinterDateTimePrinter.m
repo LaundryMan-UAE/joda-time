@@ -103,17 +103,17 @@ __attribute__((unused)) static OrgJodaTimeFormatInternalPrinterDateTimePrinter *
 
 - (jboolean)isEqual:(id)obj {
   if (obj == self) {
-    return YES;
+    return true;
   }
   if ([obj isKindOfClass:[OrgJodaTimeFormatInternalPrinterDateTimePrinter class]]) {
     OrgJodaTimeFormatInternalPrinterDateTimePrinter *other = (OrgJodaTimeFormatInternalPrinterDateTimePrinter *) check_class_cast(obj, [OrgJodaTimeFormatInternalPrinterDateTimePrinter class]);
     return [((id<OrgJodaTimeFormatInternalPrinter>) nil_chk(underlying_)) isEqual:((OrgJodaTimeFormatInternalPrinterDateTimePrinter *) nil_chk(other))->underlying_];
   }
-  return NO;
+  return false;
 }
 
 - (void)dealloc {
-  if (underlying_ != self) RELEASE_(underlying_);
+  RELEASE_(underlying_);
   [super dealloc];
 }
 
@@ -131,7 +131,7 @@ __attribute__((unused)) static OrgJodaTimeFormatInternalPrinterDateTimePrinter *
     { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "underlying_", NULL, 0x12, "Lorg.joda.time.format.InternalPrinter;", NULL, NULL,  },
+    { "underlying_", NULL, 0x12, "Lorg.joda.time.format.InternalPrinter;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatInternalPrinterDateTimePrinter = { 2, "InternalPrinterDateTimePrinter", "org.joda.time.format", NULL, 0x0, 10, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatInternalPrinterDateTimePrinter;
@@ -145,7 +145,7 @@ id<OrgJodaTimeFormatDateTimePrinter> OrgJodaTimeFormatInternalPrinterDateTimePri
     return [((OrgJodaTimeFormatDateTimePrinterInternalPrinter *) nil_chk(((OrgJodaTimeFormatDateTimePrinterInternalPrinter *) check_class_cast(underlying, [OrgJodaTimeFormatDateTimePrinterInternalPrinter class])))) getUnderlying];
   }
   if ([OrgJodaTimeFormatDateTimePrinter_class_() isInstance:underlying]) {
-    return (id<OrgJodaTimeFormatDateTimePrinter>) check_protocol_cast(underlying, @protocol(OrgJodaTimeFormatDateTimePrinter));
+    return (id<OrgJodaTimeFormatDateTimePrinter>) check_protocol_cast(underlying, OrgJodaTimeFormatDateTimePrinter_class_());
   }
   if (underlying == nil) {
     return nil;
@@ -155,7 +155,7 @@ id<OrgJodaTimeFormatDateTimePrinter> OrgJodaTimeFormatInternalPrinterDateTimePri
 
 void OrgJodaTimeFormatInternalPrinterDateTimePrinter_initWithOrgJodaTimeFormatInternalPrinter_(OrgJodaTimeFormatInternalPrinterDateTimePrinter *self, id<OrgJodaTimeFormatInternalPrinter> underlying) {
   NSObject_init(self);
-  OrgJodaTimeFormatInternalPrinterDateTimePrinter_set_underlying_(self, underlying);
+  JreStrongAssign(&self->underlying_, underlying);
 }
 
 OrgJodaTimeFormatInternalPrinterDateTimePrinter *new_OrgJodaTimeFormatInternalPrinterDateTimePrinter_initWithOrgJodaTimeFormatInternalPrinter_(id<OrgJodaTimeFormatInternalPrinter> underlying) {

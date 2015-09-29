@@ -15,7 +15,7 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeZone;
 
-/**
+/*!
  @brief ReadableInstantConverter extracts milliseconds and chronology from a ReadableInstant.
  @author Stephen Colebourne
  @since 1.0
@@ -24,30 +24,35 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Gets the chronology, which is taken from the ReadableInstant.
- <p> If the passed in chronology is non-null, it is used. Otherwise the chronology from the instant is used.
- @param object the ReadableInstant to convert, must not be null
- @param chrono the chronology to use, null means use that from object
+ <p>
+ If the passed in chronology is non-null, it is used.
+ Otherwise the chronology from the instant is used.
+ @param object  the ReadableInstant to convert, must not be null
+ @param chrono  the chronology to use, null means use that from object
  @return the chronology, never null
  */
 - (OrgJodaTimeChronology *)getChronologyWithId:(id)object
                      withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
 
-/**
+/*!
  @brief Gets the chronology, which is taken from the ReadableInstant.
- If the chronology on the instant is null, the ISOChronology in the specified time zone is used. If the chronology on the instant is not in the specified zone, it is adapted.
- @param object the ReadableInstant to convert, must not be null
- @param zone the specified zone to use, null means default zone
+ If the chronology on the instant is null, the ISOChronology in the
+ specified time zone is used.
+ If the chronology on the instant is not in the specified zone, it is
+ adapted.
+ @param object  the ReadableInstant to convert, must not be null
+ @param zone  the specified zone to use, null means default zone
  @return the chronology, never null
  */
 - (OrgJodaTimeChronology *)getChronologyWithId:(id)object
                    withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
-/**
+/*!
  @brief Extracts the millis from an object of this convertor's type.
- @param object the ReadableInstant to convert, must not be null
- @param chrono the non-null result of getChronology
+ @param object  the ReadableInstant to convert, must not be null
+ @param chrono  the non-null result of getChronology
  @return the millisecond value
  @throws NullPointerException if the object is null
  @throws ClassCastException if the object is an invalid type
@@ -55,7 +60,7 @@
 - (jlong)getInstantMillisWithId:(id)object
       withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
 
-/**
+/*!
  @brief Returns ReadableInstant.class.
  @return ReadableInstant.class
  */
@@ -63,7 +68,7 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)init;

@@ -3,7 +3,6 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/joda-time/src/main/java/org/joda/time/chrono/GJLocaleSymbols.java
 //
 
-#include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "java/lang/Integer.h"
@@ -52,7 +51,7 @@
 
 + (jint)maxLengthWithNSStringArray:(IOSObjectArray *)a;
 
-/**
+/*!
  @param locale must not be null
  */
 - (instancetype)initWithJavaUtilLocale:(JavaUtilLocale *)locale;
@@ -222,7 +221,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoGJLocaleSymbols)
 
 + (void)initialize {
   if (self == [OrgJodaTimeChronoGJLocaleSymbols class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeChronoGJLocaleSymbols_cCache_, nil, new_JavaUtilConcurrentConcurrentHashMap_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeChronoGJLocaleSymbols_cCache_, new_JavaUtilConcurrentConcurrentHashMap_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeChronoGJLocaleSymbols)
   }
 }
@@ -254,22 +253,22 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoGJLocaleSymbols)
     { "getHalfdayMaxTextLength", NULL, "I", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "cCache_", NULL, 0xa, "Ljava.util.concurrent.ConcurrentMap;", &OrgJodaTimeChronoGJLocaleSymbols_cCache_, "Ljava/util/concurrent/ConcurrentMap<Ljava/util/Locale;Lorg/joda/time/chrono/GJLocaleSymbols;>;",  },
-    { "iEras_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL,  },
-    { "iDaysOfWeek_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL,  },
-    { "iShortDaysOfWeek_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL,  },
-    { "iMonths_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL,  },
-    { "iShortMonths_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL,  },
-    { "iHalfday_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL,  },
-    { "iParseEras_", NULL, 0x12, "Ljava.util.TreeMap;", NULL, "Ljava/util/TreeMap<Ljava/lang/String;Ljava/lang/Integer;>;",  },
-    { "iParseDaysOfWeek_", NULL, 0x12, "Ljava.util.TreeMap;", NULL, "Ljava/util/TreeMap<Ljava/lang/String;Ljava/lang/Integer;>;",  },
-    { "iParseMonths_", NULL, 0x12, "Ljava.util.TreeMap;", NULL, "Ljava/util/TreeMap<Ljava/lang/String;Ljava/lang/Integer;>;",  },
-    { "iMaxEraLength_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iMaxDayOfWeekLength_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iMaxShortDayOfWeekLength_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iMaxMonthLength_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iMaxShortMonthLength_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iMaxHalfdayLength_", NULL, 0x12, "I", NULL, NULL,  },
+    { "cCache_", NULL, 0xa, "Ljava.util.concurrent.ConcurrentMap;", &OrgJodaTimeChronoGJLocaleSymbols_cCache_, "Ljava/util/concurrent/ConcurrentMap<Ljava/util/Locale;Lorg/joda/time/chrono/GJLocaleSymbols;>;", .constantValue.asLong = 0 },
+    { "iEras_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iDaysOfWeek_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iShortDaysOfWeek_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMonths_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iShortMonths_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iHalfday_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iParseEras_", NULL, 0x12, "Ljava.util.TreeMap;", NULL, "Ljava/util/TreeMap<Ljava/lang/String;Ljava/lang/Integer;>;", .constantValue.asLong = 0 },
+    { "iParseDaysOfWeek_", NULL, 0x12, "Ljava.util.TreeMap;", NULL, "Ljava/util/TreeMap<Ljava/lang/String;Ljava/lang/Integer;>;", .constantValue.asLong = 0 },
+    { "iParseMonths_", NULL, 0x12, "Ljava.util.TreeMap;", NULL, "Ljava/util/TreeMap<Ljava/lang/String;Ljava/lang/Integer;>;", .constantValue.asLong = 0 },
+    { "iMaxEraLength_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMaxDayOfWeekLength_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMaxShortDayOfWeekLength_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMaxMonthLength_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMaxShortMonthLength_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMaxHalfdayLength_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoGJLocaleSymbols = { 2, "GJLocaleSymbols", "org.joda.time.chrono", NULL, 0x0, 23, methods, 16, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoGJLocaleSymbols;
@@ -346,27 +345,27 @@ jint OrgJodaTimeChronoGJLocaleSymbols_maxLengthWithNSStringArray_(IOSObjectArray
 void OrgJodaTimeChronoGJLocaleSymbols_initWithJavaUtilLocale_(OrgJodaTimeChronoGJLocaleSymbols *self, JavaUtilLocale *locale) {
   NSObject_init(self);
   JavaTextDateFormatSymbols *dfs = OrgJodaTimeDateTimeUtils_getDateFormatSymbolsWithJavaUtilLocale_(locale);
-  OrgJodaTimeChronoGJLocaleSymbols_set_iEras_(self, [((JavaTextDateFormatSymbols *) nil_chk(dfs)) getEras]);
-  OrgJodaTimeChronoGJLocaleSymbols_set_iDaysOfWeek_(self, OrgJodaTimeChronoGJLocaleSymbols_realignDaysOfWeekWithNSStringArray_([dfs getWeekdays]));
-  OrgJodaTimeChronoGJLocaleSymbols_set_iShortDaysOfWeek_(self, OrgJodaTimeChronoGJLocaleSymbols_realignDaysOfWeekWithNSStringArray_([dfs getShortWeekdays]));
-  OrgJodaTimeChronoGJLocaleSymbols_set_iMonths_(self, OrgJodaTimeChronoGJLocaleSymbols_realignMonthsWithNSStringArray_([dfs getMonths]));
-  OrgJodaTimeChronoGJLocaleSymbols_set_iShortMonths_(self, OrgJodaTimeChronoGJLocaleSymbols_realignMonthsWithNSStringArray_([dfs getShortMonths]));
-  OrgJodaTimeChronoGJLocaleSymbols_set_iHalfday_(self, [dfs getAmPmStrings]);
+  JreStrongAssign(&self->iEras_, [((JavaTextDateFormatSymbols *) nil_chk(dfs)) getEras]);
+  JreStrongAssign(&self->iDaysOfWeek_, OrgJodaTimeChronoGJLocaleSymbols_realignDaysOfWeekWithNSStringArray_([dfs getWeekdays]));
+  JreStrongAssign(&self->iShortDaysOfWeek_, OrgJodaTimeChronoGJLocaleSymbols_realignDaysOfWeekWithNSStringArray_([dfs getShortWeekdays]));
+  JreStrongAssign(&self->iMonths_, OrgJodaTimeChronoGJLocaleSymbols_realignMonthsWithNSStringArray_([dfs getMonths]));
+  JreStrongAssign(&self->iShortMonths_, OrgJodaTimeChronoGJLocaleSymbols_realignMonthsWithNSStringArray_([dfs getShortMonths]));
+  JreStrongAssign(&self->iHalfday_, [dfs getAmPmStrings]);
   IOSObjectArray *integers = [IOSObjectArray arrayWithLength:13 type:JavaLangInteger_class_()];
   for (jint i = 0; i < 13; i++) {
     IOSObjectArray_Set(integers, i, JavaLangInteger_valueOfWithInt_(i));
   }
-  OrgJodaTimeChronoGJLocaleSymbols_setAndConsume_iParseEras_(self, new_JavaUtilTreeMap_initWithJavaUtilComparator_(NSString_get_CASE_INSENSITIVE_ORDER_()));
+  JreStrongAssignAndConsume(&self->iParseEras_, new_JavaUtilTreeMap_initWithJavaUtilComparator_(JreLoadStatic(NSString, CASE_INSENSITIVE_ORDER_)));
   OrgJodaTimeChronoGJLocaleSymbols_addSymbolsWithJavaUtilTreeMap_withNSStringArray_withJavaLangIntegerArray_(self->iParseEras_, self->iEras_, integers);
   if ([@"en" isEqual:[((JavaUtilLocale *) nil_chk(locale)) getLanguage]]) {
     [self->iParseEras_ putWithId:@"BCE" withId:IOSObjectArray_Get(integers, 0)];
     [self->iParseEras_ putWithId:@"CE" withId:IOSObjectArray_Get(integers, 1)];
   }
-  OrgJodaTimeChronoGJLocaleSymbols_setAndConsume_iParseDaysOfWeek_(self, new_JavaUtilTreeMap_initWithJavaUtilComparator_(NSString_get_CASE_INSENSITIVE_ORDER_()));
+  JreStrongAssignAndConsume(&self->iParseDaysOfWeek_, new_JavaUtilTreeMap_initWithJavaUtilComparator_(JreLoadStatic(NSString, CASE_INSENSITIVE_ORDER_)));
   OrgJodaTimeChronoGJLocaleSymbols_addSymbolsWithJavaUtilTreeMap_withNSStringArray_withJavaLangIntegerArray_(self->iParseDaysOfWeek_, self->iDaysOfWeek_, integers);
   OrgJodaTimeChronoGJLocaleSymbols_addSymbolsWithJavaUtilTreeMap_withNSStringArray_withJavaLangIntegerArray_(self->iParseDaysOfWeek_, self->iShortDaysOfWeek_, integers);
   OrgJodaTimeChronoGJLocaleSymbols_addNumeralsWithJavaUtilTreeMap_withInt_withInt_withJavaLangIntegerArray_(self->iParseDaysOfWeek_, 1, 7, integers);
-  OrgJodaTimeChronoGJLocaleSymbols_setAndConsume_iParseMonths_(self, new_JavaUtilTreeMap_initWithJavaUtilComparator_(NSString_get_CASE_INSENSITIVE_ORDER_()));
+  JreStrongAssignAndConsume(&self->iParseMonths_, new_JavaUtilTreeMap_initWithJavaUtilComparator_(JreLoadStatic(NSString, CASE_INSENSITIVE_ORDER_)));
   OrgJodaTimeChronoGJLocaleSymbols_addSymbolsWithJavaUtilTreeMap_withNSStringArray_withJavaLangIntegerArray_(self->iParseMonths_, self->iMonths_, integers);
   OrgJodaTimeChronoGJLocaleSymbols_addSymbolsWithJavaUtilTreeMap_withNSStringArray_withJavaLangIntegerArray_(self->iParseMonths_, self->iShortMonths_, integers);
   OrgJodaTimeChronoGJLocaleSymbols_addNumeralsWithJavaUtilTreeMap_withInt_withInt_withJavaLangIntegerArray_(self->iParseMonths_, 1, 12, integers);

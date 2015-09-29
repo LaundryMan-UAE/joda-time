@@ -12,8 +12,9 @@
 @class IOSObjectArray;
 @protocol OrgJodaTimeConvertConverter;
 
-/**
- @brief A set of converters, which allows exact converters to be quickly selected.
+/*!
+ @brief A set of converters, which allows exact converters to be quickly
+ selected.
  This class is threadsafe because it is (essentially) immutable.
  @author Brian S O'Neill
  @since 1.0
@@ -24,33 +25,38 @@
 
 - (instancetype)initWithOrgJodaTimeConvertConverterArray:(IOSObjectArray *)converters;
 
-/**
+/*!
  @brief Returns a copy of this set, with the given converter added.
- If a matching converter is already in the set, the given converter replaces it. If the converter is exactly the same as one already in the set, the original set is returned.
- @param converter converter to add, must not be null
- @param removed if not null, element 0 is set to the removed converter
+ If a
+ matching converter is already in the set, the given converter replaces
+ it. If the converter is exactly the same as one already in the set, the
+ original set is returned.
+ @param converter  converter to add, must not be null
+ @param removed  if not null, element 0 is set to the removed converter
  @throws NullPointerException if converter is null
  */
 - (OrgJodaTimeConvertConverterSet *)addWithOrgJodaTimeConvertConverter:(id<OrgJodaTimeConvertConverter>)converter
                                   withOrgJodaTimeConvertConverterArray:(IOSObjectArray *)removed;
 
-/**
+/*!
  @brief Copies all the converters in the set to the given array.
  */
 - (void)copyIntoWithOrgJodaTimeConvertConverterArray:(IOSObjectArray *)converters OBJC_METHOD_FAMILY_NONE;
 
-/**
+/*!
  @brief Returns a copy of this set, with the given converter removed.
- If the converter was not in the set, the original set is returned.
- @param converter converter to remove, must not be null
- @param removed if not null, element 0 is set to the removed converter
+ If the
+ converter was not in the set, the original set is returned.
+ @param converter  converter to remove, must not be null
+ @param removed  if not null, element 0 is set to the removed converter
  @throws NullPointerException if converter is null
  */
 - (OrgJodaTimeConvertConverterSet *)removeWithOrgJodaTimeConvertConverter:(id<OrgJodaTimeConvertConverter>)converter
                                      withOrgJodaTimeConvertConverterArray:(IOSObjectArray *)removed;
 
-/**
- @brief Returns a copy of this set, with the converter at the given index removed.
+/*!
+ @brief Returns a copy of this set, with the converter at the given index
+ removed.
  @param index index of converter to remove
  @param removed if not null, element 0 is set to the removed converter
  @throws IndexOutOfBoundsException if the index is invalid
@@ -58,14 +64,16 @@
 - (OrgJodaTimeConvertConverterSet *)removeWithInt:(jint)index
              withOrgJodaTimeConvertConverterArray:(IOSObjectArray *)removed;
 
-/**
- @brief Returns the closest matching converter for the given type, or null if none found.
+/*!
+ @brief Returns the closest matching converter for the given type, or null if
+ none found.
  @param type type to select, which may be null
- @throws IllegalStateException if multiple converters match the type equally well
+ @throws IllegalStateException if multiple converters match the type
+ equally well
  */
 - (id<OrgJodaTimeConvertConverter>)selectWithIOSClass:(IOSClass *)type;
 
-/**
+/*!
  @brief Returns the amount of converters in the set.
  */
 - (jint)size;

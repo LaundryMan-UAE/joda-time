@@ -15,9 +15,19 @@
 @protocol OrgJodaTimeReadableInterval;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
+/*!
  @brief An immutable time period representing a number of years.
- <p> <code>Years</code> is an immutable period that can only store years. It does not store months, days or hours for example. As such it is a type-safe way of representing a number of years in an application. <p> The number of years is set in the constructor, and may be queried using <code>getYears()</code>. Basic mathematical operations are provided - <code>plus()</code>, <code>minus()</code>, <code>multipliedBy()</code> and <code>dividedBy()</code>. <p> <code>Years</code> is thread-safe and immutable.
+ <p>
+ <code>Years</code> is an immutable period that can only store years.
+ It does not store months, days or hours for example. As such it is a
+ type-safe way of representing a number of years in an application.
+ <p>
+ The number of years is set in the constructor, and may be queried using
+ <code>getYears()</code>. Basic mathematical operations are provided -
+ <code>plus()</code>, <code>minus()</code>, <code>multipliedBy()</code> and
+ <code>dividedBy()</code>.
+ <p>
+ <code>Years</code> is thread-safe and immutable.
  @author Stephen Colebourne
  @since 1.4
  */
@@ -25,149 +35,168 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Returns a new instance with the years divided by the specified divisor.
- The calculation uses integer division, thus 3 divided by 2 is 1. <p> This instance is immutable and unaffected by this method call.
- @param divisor the amount to divide by, may be negative
+ The calculation uses integer division, thus 3 divided by 2 is 1.
+ <p>
+ This instance is immutable and unaffected by this method call.
+ @param divisor  the amount to divide by, may be negative
  @return the new period divided by the specified divisor
  @throws ArithmeticException if the divisor is zero
  */
 - (OrgJodaTimeYears *)dividedByWithInt:(jint)divisor;
 
-/**
+/*!
  @brief Gets the duration field type, which is <code>years</code>.
  @return the period type
  */
 - (OrgJodaTimeDurationFieldType *)getFieldType;
 
-/**
+/*!
  @brief Gets the period type, which is <code>years</code>.
  @return the period type
  */
 - (OrgJodaTimePeriodType *)getPeriodType;
 
-/**
+/*!
  @brief Gets the number of years that this period represents.
  @return the number of years in the period
  */
 - (jint)getYears;
 
-/**
+/*!
  @brief Is this years instance greater than the specified number of years.
- @param other the other period, null means zero
+ @param other  the other period, null means zero
  @return true if this years instance is greater than the specified one
  */
 - (jboolean)isGreaterThanWithOrgJodaTimeYears:(OrgJodaTimeYears *)other;
 
-/**
+/*!
  @brief Is this years instance less than the specified number of years.
- @param other the other period, null means zero
+ @param other  the other period, null means zero
  @return true if this years instance is less than the specified one
  */
 - (jboolean)isLessThanWithOrgJodaTimeYears:(OrgJodaTimeYears *)other;
 
-/**
+/*!
  @brief Returns a new instance with the specified number of years taken away.
- <p> This instance is immutable and unaffected by this method call.
- @param years the amount of years to take away, may be negative
+ <p>
+ This instance is immutable and unaffected by this method call.
+ @param years  the amount of years to take away, may be negative
  @return the new period minus the specified number of years
  @throws ArithmeticException if the result overflows an int
  */
 - (OrgJodaTimeYears *)minusWithInt:(jint)years;
 
-/**
+/*!
  @brief Returns a new instance with the specified number of years taken away.
- <p> This instance is immutable and unaffected by this method call.
- @param years the amount of years to take away, may be negative, null means zero
+ <p>
+ This instance is immutable and unaffected by this method call.
+ @param years  the amount of years to take away, may be negative, null means zero
  @return the new period minus the specified number of years
  @throws ArithmeticException if the result overflows an int
  */
 - (OrgJodaTimeYears *)minusWithOrgJodaTimeYears:(OrgJodaTimeYears *)years;
 
-/**
+/*!
  @brief Returns a new instance with the years multiplied by the specified scalar.
- <p> This instance is immutable and unaffected by this method call.
- @param scalar the amount to multiply by, may be negative
+ <p>
+ This instance is immutable and unaffected by this method call.
+ @param scalar  the amount to multiply by, may be negative
  @return the new period multiplied by the specified scalar
  @throws ArithmeticException if the result overflows an int
  */
 - (OrgJodaTimeYears *)multipliedByWithInt:(jint)scalar;
 
-/**
+/*!
  @brief Returns a new instance with the years value negated.
  @return the new period with a negated value
  @throws ArithmeticException if the result overflows an int
  */
 - (OrgJodaTimeYears *)negated;
 
-/**
+/*!
  @brief Creates a new <code>Years</code> by parsing a string in the ISO8601 format 'PnY'.
- <p> The parse will accept the full ISO syntax of PnYnMnWnDTnHnMnS however only the years component may be non-zero. If any other component is non-zero, an exception will be thrown.
- @param periodStr the period string, null returns zero
+ <p>
+ The parse will accept the full ISO syntax of PnYnMnWnDTnHnMnS however only the
+ years component may be non-zero. If any other component is non-zero, an exception
+ will be thrown.
+ @param periodStr  the period string, null returns zero
  @return the period in years
  @throws IllegalArgumentException if the string format is invalid
  */
 + (OrgJodaTimeYears *)parseYearsWithNSString:(NSString *)periodStr;
 
-/**
+/*!
  @brief Returns a new instance with the specified number of years added.
- <p> This instance is immutable and unaffected by this method call.
- @param years the amount of years to add, may be negative
+ <p>
+ This instance is immutable and unaffected by this method call.
+ @param years  the amount of years to add, may be negative
  @return the new period plus the specified number of years
  @throws ArithmeticException if the result overflows an int
  */
 - (OrgJodaTimeYears *)plusWithInt:(jint)years;
 
-/**
+/*!
  @brief Returns a new instance with the specified number of years added.
- <p> This instance is immutable and unaffected by this method call.
- @param years the amount of years to add, may be negative, null means zero
+ <p>
+ This instance is immutable and unaffected by this method call.
+ @param years  the amount of years to add, may be negative, null means zero
  @return the new period plus the specified number of years
  @throws ArithmeticException if the result overflows an int
  */
 - (OrgJodaTimeYears *)plusWithOrgJodaTimeYears:(OrgJodaTimeYears *)years;
 
-/**
+/*!
  @brief Gets this instance as a String in the ISO8601 duration format.
- <p> For example, "P4Y" represents 4 years.
+ <p>
+ For example, "P4Y" represents 4 years.
  @return the value as an ISO8601 string
  */
 - (NSString *)description;
 
-/**
+/*!
  @brief Obtains an instance of <code>Years</code> that may be cached.
- <code>Years</code> is immutable, so instances can be cached and shared. This factory method provides access to shared instances.
- @param years the number of years to obtain an instance for
+ <code>Years</code> is immutable, so instances can be cached and shared.
+ This factory method provides access to shared instances.
+ @param years  the number of years to obtain an instance for
  @return the instance of Years
  */
 + (OrgJodaTimeYears *)yearsWithInt:(jint)years;
 
-/**
- @brief Creates a <code>Years</code> representing the number of whole years between the two specified datetimes.
- This method corectly handles any daylight savings time changes that may occur during the interval.
- @param start the start instant, must not be null
- @param end the end instant, must not be null
+/*!
+ @brief Creates a <code>Years</code> representing the number of whole years
+ between the two specified datetimes.
+ This method corectly handles
+ any daylight savings time changes that may occur during the interval.
+ @param start  the start instant, must not be null
+ @param end  the end instant, must not be null
  @return the period in years
  @throws IllegalArgumentException if the instants are null or invalid
  */
 + (OrgJodaTimeYears *)yearsBetweenWithOrgJodaTimeReadableInstant:(id<OrgJodaTimeReadableInstant>)start
                                   withOrgJodaTimeReadableInstant:(id<OrgJodaTimeReadableInstant>)end;
 
-/**
- @brief Creates a <code>Years</code> representing the number of whole years between the two specified partial datetimes.
- <p> The two partials must contain the same fields, for example you can specify two <code>LocalDate</code> objects.
- @param start the start partial date, must not be null
- @param end the end partial date, must not be null
+/*!
+ @brief Creates a <code>Years</code> representing the number of whole years
+ between the two specified partial datetimes.
+ <p>
+ The two partials must contain the same fields, for example you can specify
+ two <code>LocalDate</code> objects.
+ @param start  the start partial date, must not be null
+ @param end  the end partial date, must not be null
  @return the period in years
  @throws IllegalArgumentException if the partials are null or invalid
  */
 + (OrgJodaTimeYears *)yearsBetweenWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)start
                                   withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)end;
 
-/**
- @brief Creates a <code>Years</code> representing the number of whole years in the specified interval.
- This method corectly handles any daylight savings time changes that may occur during the interval.
- @param interval the interval to extract years from, null returns zero
+/*!
+ @brief Creates a <code>Years</code> representing the number of whole years
+ in the specified interval.
+ This method corectly handles any daylight
+ savings time changes that may occur during the interval.
+ @param interval  the interval to extract years from, null returns zero
  @return the period in years
  @throws IllegalArgumentException if the partials are null or invalid
  */

@@ -19,9 +19,11 @@
 @protocol OrgJodaTimeReadWritableInterval;
 @protocol OrgJodaTimeReadWritablePeriod;
 
-/**
- @brief NullConverter converts null to an instant, partial, duration, period or interval.
- Null means now for instant/partial, zero for duration/period and from now to now for interval.
+/*!
+ @brief NullConverter converts null to an instant, partial, duration, period
+ or interval.
+ Null means now for instant/partial, zero for duration/period
+ and from now to now for interval.
  @author Stephen Colebourne
  @author Brian S O'Neill
  @since 1.0
@@ -30,35 +32,36 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Gets the millisecond duration, which is zero.
- @param object the object to convert, which is null
+ @param object  the object to convert, which is null
  @return the millisecond duration
  */
 - (jlong)getDurationMillisWithId:(id)object;
 
-/**
+/*!
  @brief Returns null.
  @return null
  */
 - (IOSClass *)getSupportedType;
 
-/**
- @brief Extracts interval endpoint values from an object of this converter's type, and sets them into the given ReadWritableInterval.
+/*!
+ @brief Extracts interval endpoint values from an object of this converter's
+ type, and sets them into the given ReadWritableInterval.
  @param writableInterval interval to get modified, not null
- @param object the object to convert, which is null
- @param chrono the chronology to use, may be null
+ @param object  the object to convert, which is null
+ @param chrono  the chronology to use, may be null
  @throws NullPointerException if the interval is null
  */
 - (void)setIntoWithOrgJodaTimeReadWritableInterval:(id<OrgJodaTimeReadWritableInterval>)writableInterval
                                             withId:(id)object
                          withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
 
-/**
+/*!
  @brief Sets the given ReadWritableDuration to zero milliseconds.
  @param duration duration to get modified
- @param object the object to convert, which is null
- @param chrono the chronology to use
+ @param object  the object to convert, which is null
+ @param chrono  the chronology to use
  @throws NullPointerException if the duration is null
  */
 - (void)setIntoWithOrgJodaTimeReadWritablePeriod:(id<OrgJodaTimeReadWritablePeriod>)duration
@@ -67,7 +70,7 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)init;

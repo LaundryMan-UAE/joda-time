@@ -41,41 +41,41 @@
 
 @interface OrgJodaTimeFormatDateTimeFormatter () {
  @public
-  /**
+  /*!
    @brief The internal printer used to output the datetime.
    */
   id<OrgJodaTimeFormatInternalPrinter> iPrinter_;
-  /**
+  /*!
    @brief The internal parser used to output the datetime.
    */
   id<OrgJodaTimeFormatInternalParser> iParser_;
-  /**
+  /*!
    @brief The locale to use for printing and parsing.
    */
   JavaUtilLocale *iLocale_;
-  /**
+  /*!
    @brief Whether the offset is parsed.
    */
   jboolean iOffsetParsed_;
-  /**
+  /*!
    @brief The chronology to use as an override.
    */
   OrgJodaTimeChronology *iChrono_;
-  /**
+  /*!
    @brief The zone to use as an override.
    */
   OrgJodaTimeDateTimeZone *iZone_;
-  /**
+  /*!
    @brief The pivot year to use for two-digit year parsing.
    */
   JavaLangInteger *iPivotYear_;
-  /**
+  /*!
    @brief The default year for parsing month/day without year.
    */
   jint iDefaultYear_;
 }
 
-/**
+/*!
  @brief Constructor.
  */
 - (instancetype)initWithOrgJodaTimeFormatInternalPrinter:(id<OrgJodaTimeFormatInternalPrinter>)printer
@@ -91,21 +91,21 @@
                              withLong:(jlong)instant
             withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
 
-/**
+/*!
  @brief Checks whether printing is supported.
  @throws UnsupportedOperationException if printing is not supported
  */
 - (id<OrgJodaTimeFormatInternalPrinter>)requirePrinter;
 
-/**
+/*!
  @brief Checks whether parsing is supported.
  @throws UnsupportedOperationException if parsing is not supported
  */
 - (id<OrgJodaTimeFormatInternalParser>)requireParser;
 
-/**
+/*!
  @brief Determines the correct chronology to use.
- @param chrono the proposed chronology
+ @param chrono  the proposed chronology
  @return the actual chronology
  */
 - (OrgJodaTimeChronology *)selectChronologyWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
@@ -193,10 +193,10 @@ __attribute__((unused)) static OrgJodaTimeChronology *OrgJodaTimeFormatDateTimeF
 }
 
 - (OrgJodaTimeFormatDateTimeFormatter *)withOffsetParsed {
-  if (iOffsetParsed_ == YES) {
+  if (iOffsetParsed_ == true) {
     return self;
   }
-  return [new_OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_withJavaUtilLocale_withBoolean_withOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_withJavaLangInteger_withInt_(iPrinter_, iParser_, iLocale_, YES, iChrono_, nil, iPivotYear_, iDefaultYear_) autorelease];
+  return [new_OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_withJavaUtilLocale_withBoolean_withOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_withJavaLangInteger_withInt_(iPrinter_, iParser_, iLocale_, true, iChrono_, nil, iPivotYear_, iDefaultYear_) autorelease];
 }
 
 - (jboolean)isOffsetParsed {
@@ -219,14 +219,14 @@ __attribute__((unused)) static OrgJodaTimeChronology *OrgJodaTimeFormatDateTimeF
 }
 
 - (OrgJodaTimeFormatDateTimeFormatter *)withZoneUTC {
-  return [self withZoneWithOrgJodaTimeDateTimeZone:OrgJodaTimeDateTimeZone_get_UTC_()];
+  return [self withZoneWithOrgJodaTimeDateTimeZone:JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_)];
 }
 
 - (OrgJodaTimeFormatDateTimeFormatter *)withZoneWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   if (iZone_ == zone) {
     return self;
   }
-  return [new_OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_withJavaUtilLocale_withBoolean_withOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_withJavaLangInteger_withInt_(iPrinter_, iParser_, iLocale_, NO, iChrono_, zone, iPivotYear_, iDefaultYear_) autorelease];
+  return [new_OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_withJavaUtilLocale_withBoolean_withOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_withJavaLangInteger_withInt_(iPrinter_, iParser_, iLocale_, false, iChrono_, zone, iPivotYear_, iDefaultYear_) autorelease];
 }
 
 - (OrgJodaTimeDateTimeZone *)getZone {
@@ -373,7 +373,7 @@ __attribute__((unused)) static OrgJodaTimeChronology *OrgJodaTimeFormatDateTimeF
   chrono = OrgJodaTimeFormatDateTimeFormatter_selectChronologyWithOrgJodaTimeChronology_(self, chrono);
   OrgJodaTimeFormatDateTimeParserBucket *bucket = [new_OrgJodaTimeFormatDateTimeParserBucket_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_withJavaLangInteger_withInt_(instantLocal, chrono, iLocale_, iPivotYear_, defaultYear) autorelease];
   jint newPos = [((id<OrgJodaTimeFormatInternalParser>) nil_chk(parser)) parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:bucket withJavaLangCharSequence:text withInt:position];
-  [instant setMillisWithLong:[bucket computeMillisWithBoolean:NO withNSString:text]];
+  [instant setMillisWithLong:[bucket computeMillisWithBoolean:false withNSString:text]];
   if (iOffsetParsed_ && [bucket getOffsetInteger] != nil) {
     jint parsedOffset = [((JavaLangInteger *) nil_chk([bucket getOffsetInteger])) intValue];
     OrgJodaTimeDateTimeZone *parsedZone = OrgJodaTimeDateTimeZone_forOffsetMillisWithInt_(parsedOffset);
@@ -411,7 +411,7 @@ __attribute__((unused)) static OrgJodaTimeChronology *OrgJodaTimeFormatDateTimeF
   jint newPos = [((id<OrgJodaTimeFormatInternalParser>) nil_chk(parser)) parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:bucket withJavaLangCharSequence:text withInt:0];
   if (newPos >= 0) {
     if (newPos >= ((jint) [((NSString *) nil_chk(text)) length])) {
-      jlong millis = [bucket computeMillisWithBoolean:YES withNSString:text];
+      jlong millis = [bucket computeMillisWithBoolean:true withNSString:text];
       if ([bucket getOffsetInteger] != nil) {
         jint parsedOffset = [((JavaLangInteger *) nil_chk([bucket getOffsetInteger])) intValue];
         OrgJodaTimeDateTimeZone *parsedZone = OrgJodaTimeDateTimeZone_forOffsetMillisWithInt_(parsedOffset);
@@ -436,7 +436,7 @@ __attribute__((unused)) static OrgJodaTimeChronology *OrgJodaTimeFormatDateTimeF
   jint newPos = [((id<OrgJodaTimeFormatInternalParser>) nil_chk(parser)) parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:bucket withJavaLangCharSequence:text withInt:0];
   if (newPos >= 0) {
     if (newPos >= ((jint) [((NSString *) nil_chk(text)) length])) {
-      jlong millis = [bucket computeMillisWithBoolean:YES withNSString:text];
+      jlong millis = [bucket computeMillisWithBoolean:true withNSString:text];
       if (iOffsetParsed_ && [bucket getOffsetInteger] != nil) {
         jint parsedOffset = [((JavaLangInteger *) nil_chk([bucket getOffsetInteger])) intValue];
         OrgJodaTimeDateTimeZone *parsedZone = OrgJodaTimeDateTimeZone_forOffsetMillisWithInt_(parsedOffset);
@@ -465,7 +465,7 @@ __attribute__((unused)) static OrgJodaTimeChronology *OrgJodaTimeFormatDateTimeF
   jint newPos = [((id<OrgJodaTimeFormatInternalParser>) nil_chk(parser)) parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:bucket withJavaLangCharSequence:text withInt:0];
   if (newPos >= 0) {
     if (newPos >= ((jint) [((NSString *) nil_chk(text)) length])) {
-      jlong millis = [bucket computeMillisWithBoolean:YES withNSString:text];
+      jlong millis = [bucket computeMillisWithBoolean:true withNSString:text];
       if (iOffsetParsed_ && [bucket getOffsetInteger] != nil) {
         jint parsedOffset = [((JavaLangInteger *) nil_chk([bucket getOffsetInteger])) intValue];
         OrgJodaTimeDateTimeZone *parsedZone = OrgJodaTimeDateTimeZone_forOffsetMillisWithInt_(parsedOffset);
@@ -560,14 +560,14 @@ __attribute__((unused)) static OrgJodaTimeChronology *OrgJodaTimeFormatDateTimeF
     { "selectChronologyWithOrgJodaTimeChronology:", "selectChronology", "Lorg.joda.time.Chronology;", 0x2, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "iPrinter_", NULL, 0x12, "Lorg.joda.time.format.InternalPrinter;", NULL, NULL,  },
-    { "iParser_", NULL, 0x12, "Lorg.joda.time.format.InternalParser;", NULL, NULL,  },
-    { "iLocale_", NULL, 0x12, "Ljava.util.Locale;", NULL, NULL,  },
-    { "iOffsetParsed_", NULL, 0x12, "Z", NULL, NULL,  },
-    { "iChrono_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL,  },
-    { "iZone_", NULL, 0x12, "Lorg.joda.time.DateTimeZone;", NULL, NULL,  },
-    { "iPivotYear_", NULL, 0x12, "Ljava.lang.Integer;", NULL, NULL,  },
-    { "iDefaultYear_", NULL, 0x12, "I", NULL, NULL,  },
+    { "iPrinter_", NULL, 0x12, "Lorg.joda.time.format.InternalPrinter;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iParser_", NULL, 0x12, "Lorg.joda.time.format.InternalParser;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iLocale_", NULL, 0x12, "Ljava.util.Locale;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iOffsetParsed_", NULL, 0x12, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "iChrono_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iZone_", NULL, 0x12, "Lorg.joda.time.DateTimeZone;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iPivotYear_", NULL, 0x12, "Ljava.lang.Integer;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iDefaultYear_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeFormatter = { 2, "DateTimeFormatter", "org.joda.time.format", NULL, 0x1, 47, methods, 8, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatDateTimeFormatter;
@@ -587,13 +587,13 @@ OrgJodaTimeFormatDateTimeFormatter *new_OrgJodaTimeFormatDateTimeFormatter_initW
 
 void OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(OrgJodaTimeFormatDateTimeFormatter *self, id<OrgJodaTimeFormatInternalPrinter> printer, id<OrgJodaTimeFormatInternalParser> parser) {
   NSObject_init(self);
-  OrgJodaTimeFormatDateTimeFormatter_set_iPrinter_(self, printer);
-  OrgJodaTimeFormatDateTimeFormatter_set_iParser_(self, parser);
-  OrgJodaTimeFormatDateTimeFormatter_set_iLocale_(self, nil);
-  self->iOffsetParsed_ = NO;
-  OrgJodaTimeFormatDateTimeFormatter_set_iChrono_(self, nil);
-  OrgJodaTimeFormatDateTimeFormatter_set_iZone_(self, nil);
-  OrgJodaTimeFormatDateTimeFormatter_set_iPivotYear_(self, nil);
+  JreStrongAssign(&self->iPrinter_, printer);
+  JreStrongAssign(&self->iParser_, parser);
+  JreStrongAssign(&self->iLocale_, nil);
+  self->iOffsetParsed_ = false;
+  JreStrongAssign(&self->iChrono_, nil);
+  JreStrongAssign(&self->iZone_, nil);
+  JreStrongAssign(&self->iPivotYear_, nil);
   self->iDefaultYear_ = 2000;
 }
 
@@ -605,13 +605,13 @@ OrgJodaTimeFormatDateTimeFormatter *new_OrgJodaTimeFormatDateTimeFormatter_initW
 
 void OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_withJavaUtilLocale_withBoolean_withOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_withJavaLangInteger_withInt_(OrgJodaTimeFormatDateTimeFormatter *self, id<OrgJodaTimeFormatInternalPrinter> printer, id<OrgJodaTimeFormatInternalParser> parser, JavaUtilLocale *locale, jboolean offsetParsed, OrgJodaTimeChronology *chrono, OrgJodaTimeDateTimeZone *zone, JavaLangInteger *pivotYear, jint defaultYear) {
   NSObject_init(self);
-  OrgJodaTimeFormatDateTimeFormatter_set_iPrinter_(self, printer);
-  OrgJodaTimeFormatDateTimeFormatter_set_iParser_(self, parser);
-  OrgJodaTimeFormatDateTimeFormatter_set_iLocale_(self, locale);
+  JreStrongAssign(&self->iPrinter_, printer);
+  JreStrongAssign(&self->iParser_, parser);
+  JreStrongAssign(&self->iLocale_, locale);
   self->iOffsetParsed_ = offsetParsed;
-  OrgJodaTimeFormatDateTimeFormatter_set_iChrono_(self, chrono);
-  OrgJodaTimeFormatDateTimeFormatter_set_iZone_(self, zone);
-  OrgJodaTimeFormatDateTimeFormatter_set_iPivotYear_(self, pivotYear);
+  JreStrongAssign(&self->iChrono_, chrono);
+  JreStrongAssign(&self->iZone_, zone);
+  JreStrongAssign(&self->iPivotYear_, pivotYear);
   self->iDefaultYear_ = defaultYear;
 }
 
@@ -628,7 +628,7 @@ void OrgJodaTimeFormatDateTimeFormatter_printToWithJavaLangAppendable_withLong_w
   jint offset = [((OrgJodaTimeDateTimeZone *) nil_chk(zone)) getOffsetWithLong:instant];
   jlong adjustedInstant = instant + offset;
   if ((instant ^ adjustedInstant) < 0 && (instant ^ offset) >= 0) {
-    zone = OrgJodaTimeDateTimeZone_get_UTC_();
+    zone = JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_);
     offset = 0;
     adjustedInstant = instant;
   }

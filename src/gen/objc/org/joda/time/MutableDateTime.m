@@ -41,11 +41,11 @@
 
 @interface OrgJodaTimeMutableDateTime () {
  @public
-  /**
+  /*!
    @brief The field to round on
    */
   OrgJodaTimeDateTimeField *iRoundingField_;
-  /**
+  /*!
    @brief The mode of rounding
    */
   jint iRoundingMode_;
@@ -61,22 +61,22 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMutableDateTime, serialVersionUID, jlong)
 
 @interface OrgJodaTimeMutableDateTime_Property () {
  @public
-  /**
+  /*!
    @brief The instant this property is working against
    */
   OrgJodaTimeMutableDateTime *iInstant_;
-  /**
+  /*!
    @brief The field this property is working against
    */
   OrgJodaTimeDateTimeField *iField_;
 }
 
-/**
+/*!
  @brief Writes the property in a safe serialization format.
  */
 - (void)writeObjectWithJavaIoObjectOutputStream:(JavaIoObjectOutputStream *)oos;
 
-/**
+/*!
  @brief Reads the property from a safe serialization format.
  */
 - (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)oos;
@@ -111,10 +111,12 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMutableDateTime_Property, serialVersionUID
   return OrgJodaTimeMutableDateTime_parseWithNSString_withOrgJodaTimeFormatDateTimeFormatter_(str, formatter);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeMutableDateTime_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (instancetype)initWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   OrgJodaTimeMutableDateTime_initWithOrgJodaTimeDateTimeZone_(self, zone);
@@ -212,7 +214,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   if (field != nil && (mode < OrgJodaTimeMutableDateTime_ROUND_NONE || mode > OrgJodaTimeMutableDateTime_ROUND_HALF_EVEN)) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Illegal rounding mode: ", mode)) autorelease];
   }
-  OrgJodaTimeMutableDateTime_set_iRoundingField_(self, (mode == OrgJodaTimeMutableDateTime_ROUND_NONE ? nil : field));
+  JreStrongAssign(&iRoundingField_, (mode == OrgJodaTimeMutableDateTime_ROUND_NONE ? nil : field));
   iRoundingMode_ = (field == nil ? OrgJodaTimeMutableDateTime_ROUND_NONE : mode);
   [self setMillisWithLong:[self getMillis]];
 }
@@ -429,7 +431,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
 - (void)setDateWithOrgJodaTimeReadableInstant:(id<OrgJodaTimeReadableInstant>)instant {
   jlong instantMillis = OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(instant);
   if ([OrgJodaTimeReadableDateTime_class_() isInstance:instant]) {
-    id<OrgJodaTimeReadableDateTime> rdt = (id<OrgJodaTimeReadableDateTime>) check_protocol_cast(instant, @protocol(OrgJodaTimeReadableDateTime));
+    id<OrgJodaTimeReadableDateTime> rdt = (id<OrgJodaTimeReadableDateTime>) check_protocol_cast(instant, OrgJodaTimeReadableDateTime_class_());
     OrgJodaTimeChronology *instantChrono = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_([((id<OrgJodaTimeReadableDateTime>) nil_chk(rdt)) getChronology]);
     OrgJodaTimeDateTimeZone *zone = [((OrgJodaTimeChronology *) nil_chk(instantChrono)) getZone];
     if (zone != nil) {
@@ -457,7 +459,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   OrgJodaTimeChronology *instantChrono = OrgJodaTimeDateTimeUtils_getInstantChronologyWithOrgJodaTimeReadableInstant_(instant);
   OrgJodaTimeDateTimeZone *zone = [((OrgJodaTimeChronology *) nil_chk(instantChrono)) getZone];
   if (zone != nil) {
-    instantMillis = [zone getMillisKeepLocalWithOrgJodaTimeDateTimeZone:OrgJodaTimeDateTimeZone_get_UTC_() withLong:instantMillis];
+    instantMillis = [zone getMillisKeepLocalWithOrgJodaTimeDateTimeZone:JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_) withLong:instantMillis];
   }
   [self setTimeWithLong:instantMillis];
 }
@@ -486,7 +488,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The DateTimeFieldType must not be null") autorelease];
   }
   OrgJodaTimeDateTimeField *field = [((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getFieldWithOrgJodaTimeChronology:[self getChronology]];
-  if ([((OrgJodaTimeDateTimeField *) nil_chk(field)) isSupported] == NO) {
+  if ([((OrgJodaTimeDateTimeField *) nil_chk(field)) isSupported] == false) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@$", @"Field '", type, @"' is not supported")) autorelease];
   }
   return [new_OrgJodaTimeMutableDateTime_Property_initWithOrgJodaTimeMutableDateTime_withOrgJodaTimeDateTimeField_(self, field) autorelease];
@@ -685,8 +687,8 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
     { "ROUND_HALF_FLOOR", "ROUND_HALF_FLOOR", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeMutableDateTime_ROUND_HALF_FLOOR },
     { "ROUND_HALF_CEILING", "ROUND_HALF_CEILING", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeMutableDateTime_ROUND_HALF_CEILING },
     { "ROUND_HALF_EVEN", "ROUND_HALF_EVEN", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeMutableDateTime_ROUND_HALF_EVEN },
-    { "iRoundingField_", NULL, 0x2, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iRoundingMode_", NULL, 0x2, "I", NULL, NULL,  },
+    { "iRoundingField_", NULL, 0x2, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iRoundingMode_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lorg.joda.time.MutableDateTime$Property;"};
   static const J2ObjcClassInfo _OrgJodaTimeMutableDateTime = { 2, "MutableDateTime", "org.joda.time", NULL, 0x1, 84, methods, 9, fields, 0, NULL, 1, inner_classes, NULL, NULL };
@@ -862,9 +864,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeMutableDateTime)
 }
 
 - (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)oos {
-  OrgJodaTimeMutableDateTime_Property_set_iInstant_(self, (OrgJodaTimeMutableDateTime *) check_class_cast([((JavaIoObjectInputStream *) nil_chk(oos)) readObject], [OrgJodaTimeMutableDateTime class]));
+  JreStrongAssign(&iInstant_, (OrgJodaTimeMutableDateTime *) check_class_cast([((JavaIoObjectInputStream *) nil_chk(oos)) readObject], [OrgJodaTimeMutableDateTime class]));
   OrgJodaTimeDateTimeFieldType *type = (OrgJodaTimeDateTimeFieldType *) check_class_cast([oos readObject], [OrgJodaTimeDateTimeFieldType class]);
-  OrgJodaTimeMutableDateTime_Property_set_iField_(self, [((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getFieldWithOrgJodaTimeChronology:[((OrgJodaTimeMutableDateTime *) nil_chk(iInstant_)) getChronology]]);
+  JreStrongAssign(&iField_, [((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getFieldWithOrgJodaTimeChronology:[((OrgJodaTimeMutableDateTime *) nil_chk(iInstant_)) getChronology]]);
 }
 
 - (OrgJodaTimeDateTimeField *)getField {
@@ -968,8 +970,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeMutableDateTime)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeMutableDateTime_Property_serialVersionUID },
-    { "iInstant_", NULL, 0x2, "Lorg.joda.time.MutableDateTime;", NULL, NULL,  },
-    { "iField_", NULL, 0x2, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
+    { "iInstant_", NULL, 0x2, "Lorg.joda.time.MutableDateTime;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iField_", NULL, 0x2, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeMutableDateTime_Property = { 2, "Property", "org.joda.time", "MutableDateTime", 0x19, 18, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeMutableDateTime_Property;
@@ -979,8 +981,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeMutableDateTime)
 
 void OrgJodaTimeMutableDateTime_Property_initWithOrgJodaTimeMutableDateTime_withOrgJodaTimeDateTimeField_(OrgJodaTimeMutableDateTime_Property *self, OrgJodaTimeMutableDateTime *instant, OrgJodaTimeDateTimeField *field) {
   OrgJodaTimeFieldAbstractReadableInstantFieldProperty_init(self);
-  OrgJodaTimeMutableDateTime_Property_set_iInstant_(self, instant);
-  OrgJodaTimeMutableDateTime_Property_set_iField_(self, field);
+  JreStrongAssign(&self->iInstant_, instant);
+  JreStrongAssign(&self->iField_, field);
 }
 
 OrgJodaTimeMutableDateTime_Property *new_OrgJodaTimeMutableDateTime_Property_initWithOrgJodaTimeMutableDateTime_withOrgJodaTimeDateTimeField_(OrgJodaTimeMutableDateTime *instant, OrgJodaTimeDateTimeField *field) {

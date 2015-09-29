@@ -13,9 +13,19 @@
 @class OrgJodaTimeDateTimeFieldType;
 @class OrgJodaTimeDurationField;
 
-/**
- @brief <code>DecoratedDateTimeField</code> extends BaseDateTimeField , implementing only the minimum required set of methods.
- These implemented methods delegate to a wrapped field. <p> This design allows new DateTimeField types to be defined that piggyback on top of another, inheriting all the safe method implementations from BaseDateTimeField. Should any method require pure delegation to the wrapped field, simply override and use the provided getWrappedField method. <p> DecoratedDateTimeField is thread-safe and immutable, and its subclasses must be as well.
+/*!
+ @brief <code>DecoratedDateTimeField</code> extends <code>BaseDateTimeField</code>,
+ implementing only the minimum required set of methods.
+ These implemented
+ methods delegate to a wrapped field.
+ <p>
+ This design allows new DateTimeField types to be defined that piggyback on
+ top of another, inheriting all the safe method implementations from
+ BaseDateTimeField. Should any method require pure delegation to the
+ wrapped field, simply override and use the provided getWrappedField method.
+ <p>
+ DecoratedDateTimeField is thread-safe and immutable, and its subclasses must
+ be as well.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -33,7 +43,7 @@
 
 - (OrgJodaTimeDurationField *)getRangeDurationField;
 
-/**
+/*!
  @brief Gets the wrapped date time field.
  @return the wrapped DateTimeField
  */
@@ -48,10 +58,10 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Constructor.
- @param field the field being decorated
- @param type allow type to be overridden
+ @param field  the field being decorated
+ @param type  allow type to be overridden
  */
 - (instancetype)initWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
                 withOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type;

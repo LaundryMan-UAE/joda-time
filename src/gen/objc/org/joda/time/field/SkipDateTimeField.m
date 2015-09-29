@@ -20,15 +20,15 @@ static jint (*OrgJodaTimeFieldSkipDateTimeField_super$_getMinimumValue)(id, SEL)
 
 @interface OrgJodaTimeFieldSkipDateTimeField () {
  @public
-  /**
+  /*!
    @brief The chronology to wrap.
    */
   OrgJodaTimeChronology *iChronology_;
-  /**
+  /*!
    @brief The value to skip.
    */
   jint iSkip_;
-  /**
+  /*!
    @brief The calculated minimum value.
    */
   jint iMinValue_;
@@ -110,9 +110,9 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFieldSkipDateTimeField)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldSkipDateTimeField_serialVersionUID },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL,  },
-    { "iSkip_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iMinValue_", NULL, 0x82, "I", NULL, NULL,  },
+    { "iChronology_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iSkip_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMinValue_", NULL, 0x82, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldSkipDateTimeField = { 2, "SkipDateTimeField", "org.joda.time.field", NULL, 0x11, 6, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldSkipDateTimeField;
@@ -132,7 +132,7 @@ OrgJodaTimeFieldSkipDateTimeField *new_OrgJodaTimeFieldSkipDateTimeField_initWit
 
 void OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(OrgJodaTimeFieldSkipDateTimeField *self, OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field, jint skip) {
   OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_(self, field);
-  OrgJodaTimeFieldSkipDateTimeField_set_iChronology_(self, chronology);
+  JreStrongAssign(&self->iChronology_, chronology);
   jint min = OrgJodaTimeFieldSkipDateTimeField_super$_getMinimumValue(self, @selector(getMinimumValue));
   if (min < skip) {
     self->iMinValue_ = min - 1;

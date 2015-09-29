@@ -185,7 +185,7 @@ OrgJodaTimeDuration *OrgJodaTimeDuration_ZERO_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeDuration class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeDuration_ZERO_, nil, new_OrgJodaTimeDuration_initWithLong_(0LL));
+    JreStrongAssignAndConsume(&OrgJodaTimeDuration_ZERO_, new_OrgJodaTimeDuration_initWithLong_(0LL));
     J2OBJC_SET_INITIALIZED(OrgJodaTimeDuration)
   }
 }
@@ -227,7 +227,7 @@ OrgJodaTimeDuration *OrgJodaTimeDuration_ZERO_;
     { "negated", NULL, "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Duration;", &OrgJodaTimeDuration_ZERO_, NULL,  },
+    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Duration;", &OrgJodaTimeDuration_ZERO_, NULL, .constantValue.asLong = 0 },
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeDuration_serialVersionUID },
   };
   static const J2ObjcClassInfo _OrgJodaTimeDuration = { 2, "Duration", "org.joda.time", NULL, 0x11, 29, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };

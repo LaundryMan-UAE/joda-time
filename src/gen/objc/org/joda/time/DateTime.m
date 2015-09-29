@@ -49,22 +49,22 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTime, serialVersionUID, jlong)
 
 @interface OrgJodaTimeDateTime_Property () {
  @public
-  /**
+  /*!
    @brief The instant this property is working against
    */
   OrgJodaTimeDateTime *iInstant_;
-  /**
+  /*!
    @brief The field this property is working against
    */
   OrgJodaTimeDateTimeField *iField_;
 }
 
-/**
+/*!
  @brief Writes the property in a safe serialization format.
  */
 - (void)writeObjectWithJavaIoObjectOutputStream:(JavaIoObjectOutputStream *)oos;
 
-/**
+/*!
  @brief Reads the property from a safe serialization format.
  */
 - (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)oos;
@@ -99,10 +99,12 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTime_Property, serialVersionUID, jlong
   return OrgJodaTimeDateTime_parseWithNSString_withOrgJodaTimeFormatDateTimeFormatter_(str, formatter);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeDateTime_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (instancetype)initWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   OrgJodaTimeDateTime_initWithOrgJodaTimeDateTimeZone_(self, zone);
@@ -295,12 +297,12 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
 }
 
 - (OrgJodaTimeDateTime *)withEarlierOffsetAtOverlap {
-  jlong newMillis = [((OrgJodaTimeDateTimeZone *) nil_chk([self getZone])) adjustOffsetWithLong:[self getMillis] withBoolean:NO];
+  jlong newMillis = [((OrgJodaTimeDateTimeZone *) nil_chk([self getZone])) adjustOffsetWithLong:[self getMillis] withBoolean:false];
   return [self withMillisWithLong:newMillis];
 }
 
 - (OrgJodaTimeDateTime *)withLaterOffsetAtOverlap {
-  jlong newMillis = [((OrgJodaTimeDateTimeZone *) nil_chk([self getZone])) adjustOffsetWithLong:[self getMillis] withBoolean:YES];
+  jlong newMillis = [((OrgJodaTimeDateTimeZone *) nil_chk([self getZone])) adjustOffsetWithLong:[self getMillis] withBoolean:true];
   return [self withMillisWithLong:newMillis];
 }
 
@@ -543,7 +545,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The DateTimeFieldType must not be null") autorelease];
   }
   OrgJodaTimeDateTimeField *field = [((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getFieldWithOrgJodaTimeChronology:[self getChronology]];
-  if ([((OrgJodaTimeDateTimeField *) nil_chk(field)) isSupported] == NO) {
+  if ([((OrgJodaTimeDateTimeField *) nil_chk(field)) isSupported] == false) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@$", @"Field '", type, @"' is not supported")) autorelease];
   }
   return [new_OrgJodaTimeDateTime_Property_initWithOrgJodaTimeDateTime_withOrgJodaTimeDateTimeField_(self, field) autorelease];
@@ -1070,9 +1072,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTime)
 }
 
 - (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)oos {
-  OrgJodaTimeDateTime_Property_set_iInstant_(self, (OrgJodaTimeDateTime *) check_class_cast([((JavaIoObjectInputStream *) nil_chk(oos)) readObject], [OrgJodaTimeDateTime class]));
+  JreStrongAssign(&iInstant_, (OrgJodaTimeDateTime *) check_class_cast([((JavaIoObjectInputStream *) nil_chk(oos)) readObject], [OrgJodaTimeDateTime class]));
   OrgJodaTimeDateTimeFieldType *type = (OrgJodaTimeDateTimeFieldType *) check_class_cast([oos readObject], [OrgJodaTimeDateTimeFieldType class]);
-  OrgJodaTimeDateTime_Property_set_iField_(self, [((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getFieldWithOrgJodaTimeChronology:[((OrgJodaTimeDateTime *) nil_chk(iInstant_)) getChronology]]);
+  JreStrongAssign(&iField_, [((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getFieldWithOrgJodaTimeChronology:[((OrgJodaTimeDateTime *) nil_chk(iInstant_)) getChronology]]);
 }
 
 - (OrgJodaTimeDateTimeField *)getField {
@@ -1193,8 +1195,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTime)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeDateTime_Property_serialVersionUID },
-    { "iInstant_", NULL, 0x2, "Lorg.joda.time.DateTime;", NULL, NULL,  },
-    { "iField_", NULL, 0x2, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
+    { "iInstant_", NULL, 0x2, "Lorg.joda.time.DateTime;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iField_", NULL, 0x2, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeDateTime_Property = { 2, "Property", "org.joda.time", "DateTime", 0x19, 20, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeDateTime_Property;
@@ -1204,8 +1206,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTime)
 
 void OrgJodaTimeDateTime_Property_initWithOrgJodaTimeDateTime_withOrgJodaTimeDateTimeField_(OrgJodaTimeDateTime_Property *self, OrgJodaTimeDateTime *instant, OrgJodaTimeDateTimeField *field) {
   OrgJodaTimeFieldAbstractReadableInstantFieldProperty_init(self);
-  OrgJodaTimeDateTime_Property_set_iInstant_(self, instant);
-  OrgJodaTimeDateTime_Property_set_iField_(self, field);
+  JreStrongAssign(&self->iInstant_, instant);
+  JreStrongAssign(&self->iField_, field);
 }
 
 OrgJodaTimeDateTime_Property *new_OrgJodaTimeDateTime_Property_initWithOrgJodaTimeDateTime_withOrgJodaTimeDateTimeField_(OrgJodaTimeDateTime *instant, OrgJodaTimeDateTimeField *field) {

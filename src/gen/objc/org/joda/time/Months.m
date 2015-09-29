@@ -29,14 +29,15 @@
 
 @interface OrgJodaTimeMonths ()
 
-/**
+/*!
  @brief Creates a new instance representing a number of months.
- You should consider using the factory method #months(int) instead of the constructor.
- @param months the number of months to represent
+ You should consider using the factory method <code>months(int)</code>
+ instead of the constructor.
+ @param months  the number of months to represent
  */
 - (instancetype)initWithInt:(jint)months;
 
-/**
+/*!
  @brief Resolves singletons.
  @return the singleton instance
  */
@@ -176,22 +177,22 @@ OrgJodaTimeMonths *OrgJodaTimeMonths_MIN_VALUE_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeMonths class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_ZERO_, nil, new_OrgJodaTimeMonths_initWithInt_(0));
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_ONE_, nil, new_OrgJodaTimeMonths_initWithInt_(1));
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_TWO_, nil, new_OrgJodaTimeMonths_initWithInt_(2));
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_THREE_, nil, new_OrgJodaTimeMonths_initWithInt_(3));
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_FOUR_, nil, new_OrgJodaTimeMonths_initWithInt_(4));
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_FIVE_, nil, new_OrgJodaTimeMonths_initWithInt_(5));
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_SIX_, nil, new_OrgJodaTimeMonths_initWithInt_(6));
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_SEVEN_, nil, new_OrgJodaTimeMonths_initWithInt_(7));
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_EIGHT_, nil, new_OrgJodaTimeMonths_initWithInt_(8));
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_NINE_, nil, new_OrgJodaTimeMonths_initWithInt_(9));
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_TEN_, nil, new_OrgJodaTimeMonths_initWithInt_(10));
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_ELEVEN_, nil, new_OrgJodaTimeMonths_initWithInt_(11));
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_TWELVE_, nil, new_OrgJodaTimeMonths_initWithInt_(12));
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_MAX_VALUE_, nil, new_OrgJodaTimeMonths_initWithInt_(JavaLangInteger_MAX_VALUE));
-    JreStrongAssignAndConsume(&OrgJodaTimeMonths_MIN_VALUE_, nil, new_OrgJodaTimeMonths_initWithInt_(JavaLangInteger_MIN_VALUE));
-    JreStrongAssign(&OrgJodaTimeMonths_PARSER_, nil, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_months()]);
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_ZERO_, new_OrgJodaTimeMonths_initWithInt_(0));
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_ONE_, new_OrgJodaTimeMonths_initWithInt_(1));
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_TWO_, new_OrgJodaTimeMonths_initWithInt_(2));
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_THREE_, new_OrgJodaTimeMonths_initWithInt_(3));
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_FOUR_, new_OrgJodaTimeMonths_initWithInt_(4));
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_FIVE_, new_OrgJodaTimeMonths_initWithInt_(5));
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_SIX_, new_OrgJodaTimeMonths_initWithInt_(6));
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_SEVEN_, new_OrgJodaTimeMonths_initWithInt_(7));
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_EIGHT_, new_OrgJodaTimeMonths_initWithInt_(8));
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_NINE_, new_OrgJodaTimeMonths_initWithInt_(9));
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_TEN_, new_OrgJodaTimeMonths_initWithInt_(10));
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_ELEVEN_, new_OrgJodaTimeMonths_initWithInt_(11));
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_TWELVE_, new_OrgJodaTimeMonths_initWithInt_(12));
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_MAX_VALUE_, new_OrgJodaTimeMonths_initWithInt_(JavaLangInteger_MAX_VALUE));
+    JreStrongAssignAndConsume(&OrgJodaTimeMonths_MIN_VALUE_, new_OrgJodaTimeMonths_initWithInt_(JavaLangInteger_MIN_VALUE));
+    JreStrongAssign(&OrgJodaTimeMonths_PARSER_, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_months()]);
     J2OBJC_SET_INITIALIZED(OrgJodaTimeMonths)
   }
 }
@@ -228,22 +229,22 @@ OrgJodaTimeMonths *OrgJodaTimeMonths_MIN_VALUE_;
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_ZERO_, NULL,  },
-    { "ONE_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_ONE_, NULL,  },
-    { "TWO_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_TWO_, NULL,  },
-    { "THREE_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_THREE_, NULL,  },
-    { "FOUR_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_FOUR_, NULL,  },
-    { "FIVE_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_FIVE_, NULL,  },
-    { "SIX_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_SIX_, NULL,  },
-    { "SEVEN_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_SEVEN_, NULL,  },
-    { "EIGHT_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_EIGHT_, NULL,  },
-    { "NINE_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_NINE_, NULL,  },
-    { "TEN_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_TEN_, NULL,  },
-    { "ELEVEN_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_ELEVEN_, NULL,  },
-    { "TWELVE_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_TWELVE_, NULL,  },
-    { "MAX_VALUE_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_MAX_VALUE_, NULL,  },
-    { "MIN_VALUE_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_MIN_VALUE_, NULL,  },
-    { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeMonths_PARSER_, NULL,  },
+    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_ZERO_, NULL, .constantValue.asLong = 0 },
+    { "ONE_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_ONE_, NULL, .constantValue.asLong = 0 },
+    { "TWO_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_TWO_, NULL, .constantValue.asLong = 0 },
+    { "THREE_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_THREE_, NULL, .constantValue.asLong = 0 },
+    { "FOUR_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_FOUR_, NULL, .constantValue.asLong = 0 },
+    { "FIVE_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_FIVE_, NULL, .constantValue.asLong = 0 },
+    { "SIX_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_SIX_, NULL, .constantValue.asLong = 0 },
+    { "SEVEN_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_SEVEN_, NULL, .constantValue.asLong = 0 },
+    { "EIGHT_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_EIGHT_, NULL, .constantValue.asLong = 0 },
+    { "NINE_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_NINE_, NULL, .constantValue.asLong = 0 },
+    { "TEN_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_TEN_, NULL, .constantValue.asLong = 0 },
+    { "ELEVEN_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_ELEVEN_, NULL, .constantValue.asLong = 0 },
+    { "TWELVE_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_TWELVE_, NULL, .constantValue.asLong = 0 },
+    { "MAX_VALUE_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_MAX_VALUE_, NULL, .constantValue.asLong = 0 },
+    { "MIN_VALUE_", NULL, 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_MIN_VALUE_, NULL, .constantValue.asLong = 0 },
+    { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeMonths_PARSER_, NULL, .constantValue.asLong = 0 },
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeMonths_serialVersionUID },
   };
   static const J2ObjcClassInfo _OrgJodaTimeMonths = { 2, "Months", "org.joda.time", NULL, 0x11, 20, methods, 17, fields, 0, NULL, 0, NULL, NULL, NULL };

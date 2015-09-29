@@ -27,10 +27,12 @@
 
 @implementation OrgJodaTimeBaseAbstractInstant
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeBaseAbstractInstant_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgJodaTimeDateTimeZone *)getZone {
   return [((OrgJodaTimeChronology *) nil_chk([self getChronology])) getZone];
@@ -45,7 +47,7 @@
 
 - (jboolean)isSupportedWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type {
   if (type == nil) {
-    return NO;
+    return false;
   }
   return [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getFieldWithOrgJodaTimeChronology:[self getChronology]])) isSupported];
 }
@@ -103,21 +105,21 @@
 
 - (jboolean)isEqual:(id)readableInstant {
   if (self == readableInstant) {
-    return YES;
+    return true;
   }
-  if ([OrgJodaTimeReadableInstant_class_() isInstance:readableInstant] == NO) {
-    return NO;
+  if ([OrgJodaTimeReadableInstant_class_() isInstance:readableInstant] == false) {
+    return false;
   }
-  id<OrgJodaTimeReadableInstant> otherInstant = (id<OrgJodaTimeReadableInstant>) check_protocol_cast(readableInstant, @protocol(OrgJodaTimeReadableInstant));
+  id<OrgJodaTimeReadableInstant> otherInstant = (id<OrgJodaTimeReadableInstant>) check_protocol_cast(readableInstant, OrgJodaTimeReadableInstant_class_());
   return [self getMillis] == [((id<OrgJodaTimeReadableInstant>) nil_chk(otherInstant)) getMillis] && OrgJodaTimeFieldFieldUtils_equalsWithId_withId_([self getChronology], [otherInstant getChronology]);
 }
 
 - (NSUInteger)hash {
-  return ((jint) ([self getMillis] ^ (URShift64([self getMillis], 32)))) + (((jint) [((OrgJodaTimeChronology *) nil_chk([self getChronology])) hash]));
+  return ((jint) ([self getMillis] ^ (JreURShift64([self getMillis], 32)))) + (((jint) [((OrgJodaTimeChronology *) nil_chk([self getChronology])) hash]));
 }
 
 - (jint)compareToWithId:(id<OrgJodaTimeReadableInstant>)other {
-  check_protocol_cast(other, @protocol(OrgJodaTimeReadableInstant));
+  check_protocol_cast(other, OrgJodaTimeReadableInstant_class_());
   if (self == other) {
     return 0;
   }

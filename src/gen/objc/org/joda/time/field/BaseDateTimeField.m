@@ -21,7 +21,7 @@
 
 @interface OrgJodaTimeFieldBaseDateTimeField () {
  @public
-  /**
+  /*!
    @brief The field type.
    */
   OrgJodaTimeDateTimeFieldType *iType_;
@@ -51,7 +51,7 @@ __attribute__((unused)) static NSString *OrgJodaTimeFieldBaseDateTimeField_getNa
 }
 
 - (jboolean)isSupported {
-  return YES;
+  return true;
 }
 
 - (jint)getWithLong:(jlong)instant {
@@ -321,7 +321,7 @@ __attribute__((unused)) static NSString *OrgJodaTimeFieldBaseDateTimeField_getNa
 }
 
 - (jboolean)isLeapWithLong:(jlong)instant {
-  return NO;
+  return false;
 }
 
 - (jint)getLeapAmountWithLong:(jlong)instant {
@@ -517,7 +517,7 @@ __attribute__((unused)) static NSString *OrgJodaTimeFieldBaseDateTimeField_getNa
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "iType_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL, NULL,  },
+    { "iType_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldBaseDateTimeField = { 2, "BaseDateTimeField", "org.joda.time.field", NULL, 0x401, 51, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldBaseDateTimeField;
@@ -530,7 +530,7 @@ void OrgJodaTimeFieldBaseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_(Org
   if (type == nil) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The type must not be null") autorelease];
   }
-  OrgJodaTimeFieldBaseDateTimeField_set_iType_(self, type);
+  JreStrongAssign(&self->iType_, type);
 }
 
 OrgJodaTimeDateTimeFieldType *OrgJodaTimeFieldBaseDateTimeField_getType(OrgJodaTimeFieldBaseDateTimeField *self) {

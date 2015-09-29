@@ -18,19 +18,21 @@ OrgJodaTimeConvertReadablePeriodConverter *OrgJodaTimeConvertReadablePeriodConve
 
 @implementation OrgJodaTimeConvertReadablePeriodConverter
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeConvertReadablePeriodConverter_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)setIntoWithOrgJodaTimeReadWritablePeriod:(id<OrgJodaTimeReadWritablePeriod>)duration
                                           withId:(id)object
                        withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
-  [((id<OrgJodaTimeReadWritablePeriod>) nil_chk(duration)) setPeriodWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>) check_protocol_cast(object, @protocol(OrgJodaTimeReadablePeriod))];
+  [((id<OrgJodaTimeReadWritablePeriod>) nil_chk(duration)) setPeriodWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>) check_protocol_cast(object, OrgJodaTimeReadablePeriod_class_())];
 }
 
 - (OrgJodaTimePeriodType *)getPeriodTypeWithId:(id)object {
-  id<OrgJodaTimeReadablePeriod> period = (id<OrgJodaTimeReadablePeriod>) check_protocol_cast(object, @protocol(OrgJodaTimeReadablePeriod));
+  id<OrgJodaTimeReadablePeriod> period = (id<OrgJodaTimeReadablePeriod>) check_protocol_cast(object, OrgJodaTimeReadablePeriod_class_());
   return [((id<OrgJodaTimeReadablePeriod>) nil_chk(period)) getPeriodType];
 }
 
@@ -40,7 +42,7 @@ OrgJodaTimeConvertReadablePeriodConverter *OrgJodaTimeConvertReadablePeriodConve
 
 + (void)initialize {
   if (self == [OrgJodaTimeConvertReadablePeriodConverter class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeConvertReadablePeriodConverter_INSTANCE_, nil, new_OrgJodaTimeConvertReadablePeriodConverter_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeConvertReadablePeriodConverter_INSTANCE_, new_OrgJodaTimeConvertReadablePeriodConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertReadablePeriodConverter)
   }
 }
@@ -53,7 +55,7 @@ OrgJodaTimeConvertReadablePeriodConverter *OrgJodaTimeConvertReadablePeriodConve
     { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.ReadablePeriodConverter;", &OrgJodaTimeConvertReadablePeriodConverter_INSTANCE_, NULL,  },
+    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.ReadablePeriodConverter;", &OrgJodaTimeConvertReadablePeriodConverter_INSTANCE_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeConvertReadablePeriodConverter = { 2, "ReadablePeriodConverter", "org.joda.time.convert", NULL, 0x0, 4, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeConvertReadablePeriodConverter;

@@ -24,7 +24,7 @@
 
 @interface OrgJodaTimeInstant () {
  @public
-  /**
+  /*!
    @brief The millis from 1970-01-01T00:00:00Z
    */
   jlong iMillis_;
@@ -49,10 +49,12 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeInstant, serialVersionUID, jlong)
   return OrgJodaTimeInstant_parseWithNSString_withOrgJodaTimeFormatDateTimeFormatter_(str, formatter);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeInstant_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (instancetype)initWithLong:(jlong)instant {
   OrgJodaTimeInstant_initWithLong_(self, instant);
@@ -166,7 +168,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeInstant, serialVersionUID, jlong)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeInstant_serialVersionUID },
-    { "iMillis_", NULL, 0x12, "J", NULL, NULL,  },
+    { "iMillis_", NULL, 0x12, "J", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeInstant = { 2, "Instant", "org.joda.time", NULL, 0x11, 20, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeInstant;

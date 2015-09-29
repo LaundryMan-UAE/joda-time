@@ -20,10 +20,12 @@ OrgJodaTimeConvertReadablePartialConverter *OrgJodaTimeConvertReadablePartialCon
 
 @implementation OrgJodaTimeConvertReadablePartialConverter
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeConvertReadablePartialConverter_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgJodaTimeChronology *)getChronologyWithId:(id)object
                    withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
@@ -33,7 +35,7 @@ OrgJodaTimeConvertReadablePartialConverter *OrgJodaTimeConvertReadablePartialCon
 - (OrgJodaTimeChronology *)getChronologyWithId:(id)object
                      withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
   if (chrono == nil) {
-    chrono = [((id<OrgJodaTimeReadablePartial>) nil_chk(((id<OrgJodaTimeReadablePartial>) check_protocol_cast(object, @protocol(OrgJodaTimeReadablePartial))))) getChronology];
+    chrono = [((id<OrgJodaTimeReadablePartial>) nil_chk(((id<OrgJodaTimeReadablePartial>) check_protocol_cast(object, OrgJodaTimeReadablePartial_class_())))) getChronology];
     chrono = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chrono);
   }
   return chrono;
@@ -42,7 +44,7 @@ OrgJodaTimeConvertReadablePartialConverter *OrgJodaTimeConvertReadablePartialCon
 - (IOSIntArray *)getPartialValuesWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)fieldSource
                                                          withId:(id)object
                                       withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
-  id<OrgJodaTimeReadablePartial> input = (id<OrgJodaTimeReadablePartial>) check_protocol_cast(object, @protocol(OrgJodaTimeReadablePartial));
+  id<OrgJodaTimeReadablePartial> input = (id<OrgJodaTimeReadablePartial>) check_protocol_cast(object, OrgJodaTimeReadablePartial_class_());
   jint size = [((id<OrgJodaTimeReadablePartial>) nil_chk(fieldSource)) size];
   IOSIntArray *values = [IOSIntArray arrayWithLength:size];
   for (jint i = 0; i < size; i++) {
@@ -58,7 +60,7 @@ OrgJodaTimeConvertReadablePartialConverter *OrgJodaTimeConvertReadablePartialCon
 
 + (void)initialize {
   if (self == [OrgJodaTimeConvertReadablePartialConverter class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeConvertReadablePartialConverter_INSTANCE_, nil, new_OrgJodaTimeConvertReadablePartialConverter_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeConvertReadablePartialConverter_INSTANCE_, new_OrgJodaTimeConvertReadablePartialConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertReadablePartialConverter)
   }
 }
@@ -72,7 +74,7 @@ OrgJodaTimeConvertReadablePartialConverter *OrgJodaTimeConvertReadablePartialCon
     { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.ReadablePartialConverter;", &OrgJodaTimeConvertReadablePartialConverter_INSTANCE_, NULL,  },
+    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.ReadablePartialConverter;", &OrgJodaTimeConvertReadablePartialConverter_INSTANCE_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeConvertReadablePartialConverter = { 2, "ReadablePartialConverter", "org.joda.time.convert", NULL, 0x0, 5, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeConvertReadablePartialConverter;

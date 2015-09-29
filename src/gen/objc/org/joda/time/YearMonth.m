@@ -40,7 +40,7 @@
 
 @interface OrgJodaTimeYearMonth ()
 
-/**
+/*!
  @brief Handle broken serialization from other tools.
  @return the resolved object, not null
  */
@@ -57,11 +57,11 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeYearMonth, FIELD_TYPES_, IOSObjectArray *)
 
 @interface OrgJodaTimeYearMonth_Property () {
  @public
-  /**
+  /*!
    @brief The partial
    */
   OrgJodaTimeYearMonth *iBase_;
-  /**
+  /*!
    @brief The field index
    */
   jint iFieldIndex_;
@@ -106,10 +106,12 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeYearMonth)
   return OrgJodaTimeYearMonth_fromDateFieldsWithJavaUtilDate_(date);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeYearMonth_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (instancetype)initWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   OrgJodaTimeYearMonth_initWithOrgJodaTimeDateTimeZone_(self, zone);
@@ -169,7 +171,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeYearMonth)
 }
 
 - (id)readResolve {
-  if ([((OrgJodaTimeDateTimeZone *) nil_chk(OrgJodaTimeDateTimeZone_get_UTC_())) isEqual:[((OrgJodaTimeChronology *) nil_chk([self getChronology])) getZone]] == NO) {
+  if ([((OrgJodaTimeDateTimeZone *) nil_chk(JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_))) isEqual:[((OrgJodaTimeChronology *) nil_chk([self getChronology])) getZone]] == false) {
     return [new_OrgJodaTimeYearMonth_initWithOrgJodaTimeYearMonth_withOrgJodaTimeChronology_(self, [((OrgJodaTimeChronology *) nil_chk([self getChronology])) withUTC]) autorelease];
   }
   return self;
@@ -342,7 +344,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeYearMonth)
 
 + (void)initialize {
   if (self == [OrgJodaTimeYearMonth class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeYearMonth_FIELD_TYPES_, nil, [IOSObjectArray newArrayWithObjects:(id[]){ OrgJodaTimeDateTimeFieldType_year(), OrgJodaTimeDateTimeFieldType_monthOfYear() } count:2 type:OrgJodaTimeDateTimeFieldType_class_()]);
+    JreStrongAssignAndConsume(&OrgJodaTimeYearMonth_FIELD_TYPES_, [IOSObjectArray newArrayWithObjects:(id[]){ OrgJodaTimeDateTimeFieldType_year(), OrgJodaTimeDateTimeFieldType_monthOfYear() } count:2 type:OrgJodaTimeDateTimeFieldType_class_()]);
     J2OBJC_SET_INITIALIZED(OrgJodaTimeYearMonth)
   }
 }
@@ -406,7 +408,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeYearMonth)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeYearMonth_serialVersionUID },
-    { "FIELD_TYPES_", NULL, 0x1a, "[Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeYearMonth_FIELD_TYPES_, NULL,  },
+    { "FIELD_TYPES_", NULL, 0x1a, "[Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeYearMonth_FIELD_TYPES_, NULL, .constantValue.asLong = 0 },
     { "YEAR", "YEAR", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeYearMonth_YEAR },
     { "MONTH_OF_YEAR", "MONTH_OF_YEAR", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeYearMonth_MONTH_OF_YEAR },
   };
@@ -650,8 +652,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeYearMonth)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeYearMonth_Property_serialVersionUID },
-    { "iBase_", NULL, 0x12, "Lorg.joda.time.YearMonth;", NULL, NULL,  },
-    { "iFieldIndex_", NULL, 0x12, "I", NULL, NULL,  },
+    { "iBase_", NULL, 0x12, "Lorg.joda.time.YearMonth;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iFieldIndex_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeYearMonth_Property = { 2, "Property", "org.joda.time", "YearMonth", 0x9, 10, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeYearMonth_Property;
@@ -661,7 +663,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeYearMonth)
 
 void OrgJodaTimeYearMonth_Property_initWithOrgJodaTimeYearMonth_withInt_(OrgJodaTimeYearMonth_Property *self, OrgJodaTimeYearMonth *partial, jint fieldIndex) {
   OrgJodaTimeFieldAbstractPartialFieldProperty_init(self);
-  OrgJodaTimeYearMonth_Property_set_iBase_(self, partial);
+  JreStrongAssign(&self->iBase_, partial);
   self->iFieldIndex_ = fieldIndex;
 }
 

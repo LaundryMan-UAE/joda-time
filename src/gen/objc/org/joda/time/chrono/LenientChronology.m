@@ -20,7 +20,7 @@
   OrgJodaTimeChronology *iWithUTC_;
 }
 
-/**
+/*!
  @brief Create a LenientChronology for any chronology.
  @param base the chronology to wrap
  */
@@ -53,11 +53,11 @@ __attribute__((unused)) static OrgJodaTimeDateTimeField *OrgJodaTimeChronoLenien
 
 - (OrgJodaTimeChronology *)withUTC {
   if (iWithUTC_ == nil) {
-    if ([self getZone] == OrgJodaTimeDateTimeZone_get_UTC_()) {
-      OrgJodaTimeChronoLenientChronology_set_iWithUTC_(self, self);
+    if ([self getZone] == JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_)) {
+      JreStrongAssign(&iWithUTC_, self);
     }
     else {
-      OrgJodaTimeChronoLenientChronology_set_iWithUTC_(self, OrgJodaTimeChronoLenientChronology_getInstanceWithOrgJodaTimeChronology_([((OrgJodaTimeChronology *) nil_chk([self getBase])) withUTC]));
+      JreStrongAssign(&iWithUTC_, OrgJodaTimeChronoLenientChronology_getInstanceWithOrgJodaTimeChronology_([((OrgJodaTimeChronology *) nil_chk([self getBase])) withUTC]));
     }
   }
   return iWithUTC_;
@@ -67,7 +67,7 @@ __attribute__((unused)) static OrgJodaTimeDateTimeField *OrgJodaTimeChronoLenien
   if (zone == nil) {
     zone = OrgJodaTimeDateTimeZone_getDefault();
   }
-  if (zone == OrgJodaTimeDateTimeZone_get_UTC_()) {
+  if (zone == JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_)) {
     return [self withUTC];
   }
   if (zone == [self getZone]) {
@@ -77,29 +77,29 @@ __attribute__((unused)) static OrgJodaTimeDateTimeField *OrgJodaTimeChronoLenien
 }
 
 - (void)assembleWithOrgJodaTimeChronoAssembledChronology_Fields:(OrgJodaTimeChronoAssembledChronology_Fields *)fields {
-  OrgJodaTimeChronoAssembledChronology_Fields_set_year_(nil_chk(fields), OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->year_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_yearOfEra_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->yearOfEra_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_yearOfCentury_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->yearOfCentury_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_centuryOfEra_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->centuryOfEra_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_era_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->era_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfWeek_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->dayOfWeek_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfMonth_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->dayOfMonth_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfYear_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->dayOfYear_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_monthOfYear_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->monthOfYear_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekOfWeekyear_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->weekOfWeekyear_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyear_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->weekyear_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_weekyearOfCentury_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->weekyearOfCentury_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_millisOfSecond_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->millisOfSecond_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_millisOfDay_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->millisOfDay_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_secondOfMinute_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->secondOfMinute_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_secondOfDay_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->secondOfDay_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_minuteOfHour_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->minuteOfHour_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_minuteOfDay_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->minuteOfDay_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_hourOfDay_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->hourOfDay_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_hourOfHalfday_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->hourOfHalfday_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_clockhourOfDay_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->clockhourOfDay_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_clockhourOfHalfday_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->clockhourOfHalfday_));
-  OrgJodaTimeChronoAssembledChronology_Fields_set_halfdayOfDay_(fields, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->halfdayOfDay_));
+  JreStrongAssign(&((OrgJodaTimeChronoAssembledChronology_Fields *) nil_chk(fields))->year_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->year_));
+  JreStrongAssign(&fields->yearOfEra_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->yearOfEra_));
+  JreStrongAssign(&fields->yearOfCentury_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->yearOfCentury_));
+  JreStrongAssign(&fields->centuryOfEra_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->centuryOfEra_));
+  JreStrongAssign(&fields->era_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->era_));
+  JreStrongAssign(&fields->dayOfWeek_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->dayOfWeek_));
+  JreStrongAssign(&fields->dayOfMonth_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->dayOfMonth_));
+  JreStrongAssign(&fields->dayOfYear_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->dayOfYear_));
+  JreStrongAssign(&fields->monthOfYear_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->monthOfYear_));
+  JreStrongAssign(&fields->weekOfWeekyear_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->weekOfWeekyear_));
+  JreStrongAssign(&fields->weekyear_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->weekyear_));
+  JreStrongAssign(&fields->weekyearOfCentury_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->weekyearOfCentury_));
+  JreStrongAssign(&fields->millisOfSecond_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->millisOfSecond_));
+  JreStrongAssign(&fields->millisOfDay_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->millisOfDay_));
+  JreStrongAssign(&fields->secondOfMinute_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->secondOfMinute_));
+  JreStrongAssign(&fields->secondOfDay_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->secondOfDay_));
+  JreStrongAssign(&fields->minuteOfHour_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->minuteOfHour_));
+  JreStrongAssign(&fields->minuteOfDay_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->minuteOfDay_));
+  JreStrongAssign(&fields->hourOfDay_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->hourOfDay_));
+  JreStrongAssign(&fields->hourOfHalfday_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->hourOfHalfday_));
+  JreStrongAssign(&fields->clockhourOfDay_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->clockhourOfDay_));
+  JreStrongAssign(&fields->clockhourOfHalfday_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->clockhourOfHalfday_));
+  JreStrongAssign(&fields->halfdayOfDay_, OrgJodaTimeChronoLenientChronology_convertFieldWithOrgJodaTimeDateTimeField_(self, fields->halfdayOfDay_));
 }
 
 - (OrgJodaTimeDateTimeField *)convertFieldWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field {
@@ -108,10 +108,10 @@ __attribute__((unused)) static OrgJodaTimeDateTimeField *OrgJodaTimeChronoLenien
 
 - (jboolean)isEqual:(id)obj {
   if (self == obj) {
-    return YES;
+    return true;
   }
-  if ([obj isKindOfClass:[OrgJodaTimeChronoLenientChronology class]] == NO) {
-    return NO;
+  if ([obj isKindOfClass:[OrgJodaTimeChronoLenientChronology class]] == false) {
+    return false;
   }
   OrgJodaTimeChronoLenientChronology *chrono = (OrgJodaTimeChronoLenientChronology *) check_class_cast(obj, [OrgJodaTimeChronoLenientChronology class]);
   return [((OrgJodaTimeChronology *) nil_chk([self getBase])) isEqual:[((OrgJodaTimeChronoLenientChronology *) nil_chk(chrono)) getBase]];
@@ -126,7 +126,7 @@ __attribute__((unused)) static OrgJodaTimeDateTimeField *OrgJodaTimeChronoLenien
 }
 
 - (void)dealloc {
-  if (iWithUTC_ != self) RELEASE_(iWithUTC_);
+  RELEASE_(iWithUTC_);
   [super dealloc];
 }
 
@@ -144,7 +144,7 @@ __attribute__((unused)) static OrgJodaTimeDateTimeField *OrgJodaTimeChronoLenien
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoLenientChronology_serialVersionUID },
-    { "iWithUTC_", NULL, 0x82, "Lorg.joda.time.Chronology;", NULL, NULL,  },
+    { "iWithUTC_", NULL, 0x82, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoLenientChronology = { 2, "LenientChronology", "org.joda.time.chrono", NULL, 0x11, 9, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoLenientChronology;

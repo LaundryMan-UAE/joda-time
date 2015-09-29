@@ -12,7 +12,7 @@
 @class JavaUtilLocale;
 @class OrgJodaTimeDurationField;
 
-/**
+/*!
  @brief Provides time calculations for the coptic era component of time.
  @author Brian S O'Neill
  @author Stephen Colebourne
@@ -22,65 +22,80 @@
 
 #pragma mark Public
 
-/**
+/*!
+  
  */
 - (jint)getWithLong:(jlong)instant;
 
-/**
+/*!
+  
  */
 - (NSString *)getAsTextWithInt:(jint)fieldValue
             withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
+  
  */
 - (OrgJodaTimeDurationField *)getDurationField;
 
-/**
+/*!
+  
  */
 - (jint)getMaximumTextLengthWithJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
+  
  */
 - (jint)getMaximumValue;
 
-/**
+/*!
+  
  */
 - (jint)getMinimumValue;
 
-/**
+/*!
+  
  */
 - (OrgJodaTimeDurationField *)getRangeDurationField;
 
-/**
+/*!
+  
  */
 - (jboolean)isLenient;
 
-/**
+/*!
+  
  */
 - (jlong)roundCeilingWithLong:(jlong)instant;
 
-/**
+/*!
+  
  */
 - (jlong)roundFloorWithLong:(jlong)instant;
 
-/**
+/*!
+  
  */
 - (jlong)roundHalfCeilingWithLong:(jlong)instant;
 
-/**
+/*!
+  
  */
 - (jlong)roundHalfEvenWithLong:(jlong)instant;
 
-/**
+/*!
+  
  */
 - (jlong)roundHalfFloorWithLong:(jlong)instant;
 
-/**
+/*!
+  
  */
 - (jlong)setWithLong:(jlong)instant
              withInt:(jint)era;
 
-/**
+/*!
+  
  */
 - (jlong)setWithLong:(jlong)instant
         withNSString:(NSString *)text
@@ -88,7 +103,7 @@
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)initWithNSString:(NSString *)text;

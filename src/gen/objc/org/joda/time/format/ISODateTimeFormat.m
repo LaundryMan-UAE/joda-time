@@ -19,13 +19,13 @@
 
 @interface OrgJodaTimeFormatISODateTimeFormat ()
 
-/**
+/*!
  @brief Creates a date using the calendar date format.
  Specification reference: 5.2.1.
- @param bld the builder
- @param fields the fields
- @param extended true to use extended format
- @param strictISO true to only allow ISO formats
+ @param bld  the builder
+ @param fields  the fields
+ @param extended  true to use extended format
+ @param strictISO  true to only allow ISO formats
  @return true if reduced precision
  @since 1.1
  */
@@ -34,13 +34,13 @@
                                                          withBoolean:(jboolean)extended
                                                          withBoolean:(jboolean)strictISO;
 
-/**
+/*!
  @brief Creates a date using the ordinal date format.
  Specification reference: 5.2.2.
- @param bld the builder
- @param fields the fields
- @param extended true to use extended format
- @param strictISO true to only allow ISO formats
+ @param bld  the builder
+ @param fields  the fields
+ @param extended  true to use extended format
+ @param strictISO  true to only allow ISO formats
  @since 1.1
  */
 + (jboolean)dateByOrdinalWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)bld
@@ -48,13 +48,13 @@
                                                            withBoolean:(jboolean)extended
                                                            withBoolean:(jboolean)strictISO;
 
-/**
+/*!
  @brief Creates a date using the calendar date format.
  Specification reference: 5.2.3.
- @param bld the builder
- @param fields the fields
- @param extended true to use extended format
- @param strictISO true to only allow ISO formats
+ @param bld  the builder
+ @param fields  the fields
+ @param extended  true to use extended format
+ @param strictISO  true to only allow ISO formats
  @since 1.1
  */
 + (jboolean)dateByWeekWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)bld
@@ -62,15 +62,15 @@
                                                         withBoolean:(jboolean)extended
                                                         withBoolean:(jboolean)strictISO;
 
-/**
+/*!
  @brief Adds the time fields to the builder.
  Specification reference: 5.3.1.
- @param bld the builder
- @param fields the fields
- @param extended whether to use the extended format
- @param strictISO whether to be strict
- @param reducedPrec whether the date was reduced precision
- @param datePresent whether there was a date
+ @param bld  the builder
+ @param fields  the fields
+ @param extended  whether to use the extended format
+ @param strictISO  whether to be strict
+ @param reducedPrec  whether the date was reduced precision
+ @param datePresent  whether there was a date
  @since 1.1
  */
 + (void)timeWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)bld
@@ -80,20 +80,20 @@
                                               withBoolean:(jboolean)reducedPrec
                                               withBoolean:(jboolean)datePresent;
 
-/**
+/*!
  @brief Checks that the iso only flag is not set, throwing an exception if it is.
- @param fields the fields
- @param strictISO true if only ISO formats allowed
+ @param fields  the fields
+ @param strictISO  true if only ISO formats allowed
  @since 1.1
  */
 + (void)checkNotStrictISOWithJavaUtilCollection:(id<JavaUtilCollection>)fields
                                     withBoolean:(jboolean)strictISO;
 
-/**
+/*!
  @brief Appends the separator if necessary.
- @param bld the builder
- @param extended whether to append the separator
- @param sep the separator
+ @param bld  the builder
+ @param extended  whether to append the separator
+ @param sep  the separator
  @since 1.1
  */
 + (void)appendSeparatorWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)bld
@@ -532,10 +532,12 @@ __attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFo
 
 @implementation OrgJodaTimeFormatISODateTimeFormat
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeFormatISODateTimeFormat_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (OrgJodaTimeFormatDateTimeFormatter *)forFieldsWithJavaUtilCollection:(id<JavaUtilCollection>)fields
                                                             withBoolean:(jboolean)extended
@@ -873,7 +875,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_forFields
   }
   id<JavaUtilSet> workingFields = [new_JavaUtilHashSet_initWithJavaUtilCollection_(fields) autorelease];
   jint inputSize = [workingFields size];
-  jboolean reducedPrec = NO;
+  jboolean reducedPrec = false;
   OrgJodaTimeFormatDateTimeFormatterBuilder *bld = [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease];
   if ([workingFields containsWithId:OrgJodaTimeDateTimeFieldType_monthOfYear()]) {
     reducedPrec = OrgJodaTimeFormatISODateTimeFormat_dateByMonthWithOrgJodaTimeFormatDateTimeFormatterBuilder_withJavaUtilCollection_withBoolean_withBoolean_(bld, workingFields, extended, strictISO);
@@ -891,16 +893,16 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_forFields
     reducedPrec = OrgJodaTimeFormatISODateTimeFormat_dateByWeekWithOrgJodaTimeFormatDateTimeFormatterBuilder_withJavaUtilCollection_withBoolean_withBoolean_(bld, workingFields, extended, strictISO);
   }
   else if ([workingFields removeWithId:OrgJodaTimeDateTimeFieldType_year()]) {
-    [bld appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_get_ye_()];
-    reducedPrec = YES;
+    [bld appendWithOrgJodaTimeFormatDateTimeFormatter:JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, ye_)];
+    reducedPrec = true;
   }
   else if ([workingFields removeWithId:OrgJodaTimeDateTimeFieldType_weekyear()]) {
-    [bld appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_get_we_()];
-    reducedPrec = YES;
+    [bld appendWithOrgJodaTimeFormatDateTimeFormatter:JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, we_)];
+    reducedPrec = true;
   }
   jboolean datePresent = ([workingFields size] < inputSize);
   OrgJodaTimeFormatISODateTimeFormat_timeWithOrgJodaTimeFormatDateTimeFormatterBuilder_withJavaUtilCollection_withBoolean_withBoolean_withBoolean_withBoolean_(bld, workingFields, extended, strictISO, reducedPrec, datePresent);
-  if ([bld canBuildFormatter] == NO) {
+  if ([bld canBuildFormatter] == false) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@", @"No valid format for fields: ", fields)) autorelease];
   }
   @try {
@@ -913,9 +915,9 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_forFields
 
 jboolean OrgJodaTimeFormatISODateTimeFormat_dateByMonthWithOrgJodaTimeFormatDateTimeFormatterBuilder_withJavaUtilCollection_withBoolean_withBoolean_(OrgJodaTimeFormatDateTimeFormatterBuilder *bld, id<JavaUtilCollection> fields, jboolean extended, jboolean strictISO) {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  jboolean reducedPrec = NO;
+  jboolean reducedPrec = false;
   if ([((id<JavaUtilCollection>) nil_chk(fields)) removeWithId:OrgJodaTimeDateTimeFieldType_year()]) {
-    [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk(bld)) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_get_ye_()];
+    [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk(bld)) appendWithOrgJodaTimeFormatDateTimeFormatter:JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, ye_)];
     if ([fields removeWithId:OrgJodaTimeDateTimeFieldType_monthOfYear()]) {
       if ([fields removeWithId:OrgJodaTimeDateTimeFieldType_dayOfMonth()]) {
         OrgJodaTimeFormatISODateTimeFormat_appendSeparatorWithOrgJodaTimeFormatDateTimeFormatterBuilder_withBoolean_(bld, extended);
@@ -926,7 +928,7 @@ jboolean OrgJodaTimeFormatISODateTimeFormat_dateByMonthWithOrgJodaTimeFormatDate
       else {
         [bld appendLiteralWithChar:'-'];
         [bld appendMonthOfYearWithInt:2];
-        reducedPrec = YES;
+        reducedPrec = true;
       }
     }
     else {
@@ -937,7 +939,7 @@ jboolean OrgJodaTimeFormatISODateTimeFormat_dateByMonthWithOrgJodaTimeFormatDate
         [bld appendDayOfMonthWithInt:2];
       }
       else {
-        reducedPrec = YES;
+        reducedPrec = true;
       }
     }
   }
@@ -950,7 +952,7 @@ jboolean OrgJodaTimeFormatISODateTimeFormat_dateByMonthWithOrgJodaTimeFormatDate
       [bld appendDayOfMonthWithInt:2];
     }
     else {
-      reducedPrec = YES;
+      reducedPrec = true;
     }
   }
   else if ([fields removeWithId:OrgJodaTimeDateTimeFieldType_dayOfMonth()]) {
@@ -964,15 +966,15 @@ jboolean OrgJodaTimeFormatISODateTimeFormat_dateByMonthWithOrgJodaTimeFormatDate
 
 jboolean OrgJodaTimeFormatISODateTimeFormat_dateByOrdinalWithOrgJodaTimeFormatDateTimeFormatterBuilder_withJavaUtilCollection_withBoolean_withBoolean_(OrgJodaTimeFormatDateTimeFormatterBuilder *bld, id<JavaUtilCollection> fields, jboolean extended, jboolean strictISO) {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  jboolean reducedPrec = NO;
+  jboolean reducedPrec = false;
   if ([((id<JavaUtilCollection>) nil_chk(fields)) removeWithId:OrgJodaTimeDateTimeFieldType_year()]) {
-    [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk(bld)) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_get_ye_()];
+    [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk(bld)) appendWithOrgJodaTimeFormatDateTimeFormatter:JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, ye_)];
     if ([fields removeWithId:OrgJodaTimeDateTimeFieldType_dayOfYear()]) {
       OrgJodaTimeFormatISODateTimeFormat_appendSeparatorWithOrgJodaTimeFormatDateTimeFormatterBuilder_withBoolean_(bld, extended);
       [bld appendDayOfYearWithInt:3];
     }
     else {
-      reducedPrec = YES;
+      reducedPrec = true;
     }
   }
   else if ([fields removeWithId:OrgJodaTimeDateTimeFieldType_dayOfYear()]) {
@@ -984,9 +986,9 @@ jboolean OrgJodaTimeFormatISODateTimeFormat_dateByOrdinalWithOrgJodaTimeFormatDa
 
 jboolean OrgJodaTimeFormatISODateTimeFormat_dateByWeekWithOrgJodaTimeFormatDateTimeFormatterBuilder_withJavaUtilCollection_withBoolean_withBoolean_(OrgJodaTimeFormatDateTimeFormatterBuilder *bld, id<JavaUtilCollection> fields, jboolean extended, jboolean strictISO) {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  jboolean reducedPrec = NO;
+  jboolean reducedPrec = false;
   if ([((id<JavaUtilCollection>) nil_chk(fields)) removeWithId:OrgJodaTimeDateTimeFieldType_weekyear()]) {
-    [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk(bld)) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_get_we_()];
+    [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk(bld)) appendWithOrgJodaTimeFormatDateTimeFormatter:JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, we_)];
     if ([fields removeWithId:OrgJodaTimeDateTimeFieldType_weekOfWeekyear()]) {
       OrgJodaTimeFormatISODateTimeFormat_appendSeparatorWithOrgJodaTimeFormatDateTimeFormatterBuilder_withBoolean_(bld, extended);
       [bld appendLiteralWithChar:'W'];
@@ -996,7 +998,7 @@ jboolean OrgJodaTimeFormatISODateTimeFormat_dateByWeekWithOrgJodaTimeFormatDateT
         [bld appendDayOfWeekWithInt:1];
       }
       else {
-        reducedPrec = YES;
+        reducedPrec = true;
       }
     }
     else {
@@ -1008,7 +1010,7 @@ jboolean OrgJodaTimeFormatISODateTimeFormat_dateByWeekWithOrgJodaTimeFormatDateT
         [bld appendDayOfWeekWithInt:1];
       }
       else {
-        reducedPrec = YES;
+        reducedPrec = true;
       }
     }
   }
@@ -1021,7 +1023,7 @@ jboolean OrgJodaTimeFormatISODateTimeFormat_dateByWeekWithOrgJodaTimeFormatDateT
       [bld appendDayOfWeekWithInt:1];
     }
     else {
-      reducedPrec = YES;
+      reducedPrec = true;
     }
   }
   else if ([fields removeWithId:OrgJodaTimeDateTimeFieldType_dayOfWeek()]) {
@@ -1110,47 +1112,47 @@ void OrgJodaTimeFormatISODateTimeFormat_appendSeparatorWithOrgJodaTimeFormatDate
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateParser() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_dp_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, dp_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_localDateParser() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_ldp_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, ldp_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateElementParser() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_dpe_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, dpe_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_timeParser() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_tp_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, tp_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_localTimeParser() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_ltp_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, ltp_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_timeElementParser() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_tpe_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, tpe_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateTimeParser() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_dtp_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, dtp_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateOptionalTimeParser() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_dotp_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, dotp_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_localDateOptionalTimeParser() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_ldotp_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, ldotp_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_date() {
@@ -1160,207 +1162,207 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_date() {
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_time() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_t_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, t_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_timeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_tx_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, tx_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_tTime() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_tt_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, tt_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_tTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_ttx_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, ttx_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateTime() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_dt_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, dt_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_dtx_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, dtx_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_ordinalDate() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_od_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, od_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_ordinalDateTime() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_odt_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, odt_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_ordinalDateTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_odtx_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, odtx_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_weekDate() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_wwd_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, wwd_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_weekDateTime() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_wdt_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, wdt_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_weekDateTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_wdtx_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, wdtx_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicDate() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_bd_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, bd_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicTime() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_bt_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, bt_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_btx_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, btx_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicTTime() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_btt_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, btt_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicTTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_bttx_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, bttx_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicDateTime() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_bdt_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, bdt_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicDateTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_bdtx_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, bdtx_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicOrdinalDate() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_bod_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, bod_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicOrdinalDateTime() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_bodt_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, bodt_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicOrdinalDateTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_bodtx_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, bodtx_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicWeekDate() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_bwd_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, bwd_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicWeekDateTime() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_bwdt_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, bwdt_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_basicWeekDateTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_bwdtx_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, bwdtx_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_year() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_ye_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, ye_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_yearMonth() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_ym_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, ym_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_yearMonthDay() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_ymd_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, ymd_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_weekyear() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_we_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, we_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_weekyearWeek() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_ww_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, ww_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_weekyearWeekDay() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_wwd_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, wwd_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_hour() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_hde_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, hde_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_hourMinute() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_hm_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, hm_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_hourMinuteSecond() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_hms_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, hms_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_hourMinuteSecondMillis() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_hmsl_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, hmsl_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_hourMinuteSecondFraction() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_hmsf_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, hmsf_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateHour() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_dh_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, dh_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateHourMinute() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_dhm_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, dhm_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateHourMinuteSecond() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_dhms_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, dhms_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateHourMinuteSecondMillis() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_dhmsl_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, dhmsl_);
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_dateHourMinuteSecondFraction() {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
-  return OrgJodaTimeFormatISODateTimeFormat_Constants_get_dhmsf_();
+  return JreLoadStatic(OrgJodaTimeFormatISODateTimeFormat_Constants, dhmsf_);
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatISODateTimeFormat)
@@ -1605,72 +1607,74 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatISODateTimeFormat_Constants)
   return OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement();
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeFormatISODateTimeFormat_Constants_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)initialize {
   if (self == [OrgJodaTimeFormatISODateTimeFormat_Constants class]) {
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ye_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_mye_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_monthElement());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dme_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfMonthElement());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_we_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearElement());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_wwe_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_weekElement());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dwe_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfWeekElement());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dye_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfYearElement());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_hde_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_mhe_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_sme_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_secondElement());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_fse_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_fractionElement());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ze_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_lte_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ym_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_yearMonth());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ymd_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_yearMonthDay());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ww_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearWeek());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_wwd_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearWeekDay());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_hm_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinute());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_hms_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecond());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_hmsl_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecondMillis());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_hmsf_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecondFraction());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dh_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_dateHour());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dhm_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_dateHourMinute());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dhms_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_dateHourMinuteSecond());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsl_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_dateHourMinuteSecondMillis());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsf_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_dateHourMinuteSecondFraction());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_t_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_time());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_tx_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_timeNoMillis());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_tt_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_tTime());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ttx_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_tTimeNoMillis());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dt_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_dateTime());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dtx_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_dateTimeNoMillis());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_wdt_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_weekDateTime());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_wdtx_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_weekDateTimeNoMillis());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_od_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_ordinalDate());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_odt_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_ordinalDateTime());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_odtx_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_ordinalDateTimeNoMillis());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bd_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_basicDate());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bt_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_basicTime());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_btx_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_basicTimeNoMillis());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_btt_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTime());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bttx_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTimeNoMillis());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bdt_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_basicDateTime());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bdtx_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_basicDateTimeNoMillis());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bod_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_basicOrdinalDate());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bodt_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_basicOrdinalDateTime());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bodtx_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_basicOrdinalDateTimeNoMillis());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bwd_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_basicWeekDate());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bwdt_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_basicWeekDateTime());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bwdtx_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_basicWeekDateTimeNoMillis());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dpe_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_dateElementParser());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_tpe_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dp_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_dateParser());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ldp_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_localDateParser());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_tp_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_timeParser());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ltp_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_localTimeParser());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dtp_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_dateTimeParser());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dotp_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_dateOptionalTimeParser());
-    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ldotp_, nil, OrgJodaTimeFormatISODateTimeFormat_Constants_localDateOptionalTimeParser());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ye_, OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_mye_, OrgJodaTimeFormatISODateTimeFormat_Constants_monthElement());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dme_, OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfMonthElement());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_we_, OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearElement());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_wwe_, OrgJodaTimeFormatISODateTimeFormat_Constants_weekElement());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dwe_, OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfWeekElement());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dye_, OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfYearElement());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_hde_, OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_mhe_, OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_sme_, OrgJodaTimeFormatISODateTimeFormat_Constants_secondElement());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_fse_, OrgJodaTimeFormatISODateTimeFormat_Constants_fractionElement());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ze_, OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_lte_, OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ym_, OrgJodaTimeFormatISODateTimeFormat_Constants_yearMonth());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ymd_, OrgJodaTimeFormatISODateTimeFormat_Constants_yearMonthDay());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ww_, OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearWeek());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_wwd_, OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearWeekDay());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_hm_, OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinute());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_hms_, OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecond());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_hmsl_, OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecondMillis());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_hmsf_, OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecondFraction());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dh_, OrgJodaTimeFormatISODateTimeFormat_Constants_dateHour());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dhm_, OrgJodaTimeFormatISODateTimeFormat_Constants_dateHourMinute());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dhms_, OrgJodaTimeFormatISODateTimeFormat_Constants_dateHourMinuteSecond());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsl_, OrgJodaTimeFormatISODateTimeFormat_Constants_dateHourMinuteSecondMillis());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsf_, OrgJodaTimeFormatISODateTimeFormat_Constants_dateHourMinuteSecondFraction());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_t_, OrgJodaTimeFormatISODateTimeFormat_Constants_time());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_tx_, OrgJodaTimeFormatISODateTimeFormat_Constants_timeNoMillis());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_tt_, OrgJodaTimeFormatISODateTimeFormat_Constants_tTime());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ttx_, OrgJodaTimeFormatISODateTimeFormat_Constants_tTimeNoMillis());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dt_, OrgJodaTimeFormatISODateTimeFormat_Constants_dateTime());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dtx_, OrgJodaTimeFormatISODateTimeFormat_Constants_dateTimeNoMillis());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_wdt_, OrgJodaTimeFormatISODateTimeFormat_Constants_weekDateTime());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_wdtx_, OrgJodaTimeFormatISODateTimeFormat_Constants_weekDateTimeNoMillis());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_od_, OrgJodaTimeFormatISODateTimeFormat_Constants_ordinalDate());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_odt_, OrgJodaTimeFormatISODateTimeFormat_Constants_ordinalDateTime());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_odtx_, OrgJodaTimeFormatISODateTimeFormat_Constants_ordinalDateTimeNoMillis());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bd_, OrgJodaTimeFormatISODateTimeFormat_Constants_basicDate());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bt_, OrgJodaTimeFormatISODateTimeFormat_Constants_basicTime());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_btx_, OrgJodaTimeFormatISODateTimeFormat_Constants_basicTimeNoMillis());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_btt_, OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTime());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bttx_, OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTimeNoMillis());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bdt_, OrgJodaTimeFormatISODateTimeFormat_Constants_basicDateTime());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bdtx_, OrgJodaTimeFormatISODateTimeFormat_Constants_basicDateTimeNoMillis());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bod_, OrgJodaTimeFormatISODateTimeFormat_Constants_basicOrdinalDate());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bodt_, OrgJodaTimeFormatISODateTimeFormat_Constants_basicOrdinalDateTime());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bodtx_, OrgJodaTimeFormatISODateTimeFormat_Constants_basicOrdinalDateTimeNoMillis());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bwd_, OrgJodaTimeFormatISODateTimeFormat_Constants_basicWeekDate());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bwdt_, OrgJodaTimeFormatISODateTimeFormat_Constants_basicWeekDateTime());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_bwdtx_, OrgJodaTimeFormatISODateTimeFormat_Constants_basicWeekDateTimeNoMillis());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dpe_, OrgJodaTimeFormatISODateTimeFormat_Constants_dateElementParser());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_tpe_, OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dp_, OrgJodaTimeFormatISODateTimeFormat_Constants_dateParser());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ldp_, OrgJodaTimeFormatISODateTimeFormat_Constants_localDateParser());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_tp_, OrgJodaTimeFormatISODateTimeFormat_Constants_timeParser());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ltp_, OrgJodaTimeFormatISODateTimeFormat_Constants_localTimeParser());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dtp_, OrgJodaTimeFormatISODateTimeFormat_Constants_dateTimeParser());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_dotp_, OrgJodaTimeFormatISODateTimeFormat_Constants_dateOptionalTimeParser());
+    JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ldotp_, OrgJodaTimeFormatISODateTimeFormat_Constants_localDateOptionalTimeParser());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeFormatISODateTimeFormat_Constants)
   }
 }
@@ -1739,65 +1743,65 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatISODateTimeFormat_Constants)
     { "init", NULL, NULL, 0x0, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "ye_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ye_, NULL,  },
-    { "mye_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_mye_, NULL,  },
-    { "dme_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dme_, NULL,  },
-    { "we_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_we_, NULL,  },
-    { "wwe_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_wwe_, NULL,  },
-    { "dwe_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dwe_, NULL,  },
-    { "dye_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dye_, NULL,  },
-    { "hde_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hde_, NULL,  },
-    { "mhe_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_mhe_, NULL,  },
-    { "sme_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_sme_, NULL,  },
-    { "fse_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_fse_, NULL,  },
-    { "ze_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ze_, NULL,  },
-    { "lte_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_lte_, NULL,  },
-    { "ym_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ym_, NULL,  },
-    { "ymd_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ymd_, NULL,  },
-    { "ww_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ww_, NULL,  },
-    { "wwd_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_wwd_, NULL,  },
-    { "hm_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hm_, NULL,  },
-    { "hms_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hms_, NULL,  },
-    { "hmsl_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hmsl_, NULL,  },
-    { "hmsf_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hmsf_, NULL,  },
-    { "dh_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dh_, NULL,  },
-    { "dhm_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dhm_, NULL,  },
-    { "dhms_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dhms_, NULL,  },
-    { "dhmsl_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsl_, NULL,  },
-    { "dhmsf_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsf_, NULL,  },
-    { "t_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_t_, NULL,  },
-    { "tx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_tx_, NULL,  },
-    { "tt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_tt_, NULL,  },
-    { "ttx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ttx_, NULL,  },
-    { "dt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dt_, NULL,  },
-    { "dtx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dtx_, NULL,  },
-    { "wdt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_wdt_, NULL,  },
-    { "wdtx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_wdtx_, NULL,  },
-    { "od_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_od_, NULL,  },
-    { "odt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_odt_, NULL,  },
-    { "odtx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_odtx_, NULL,  },
-    { "bd_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bd_, NULL,  },
-    { "bt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bt_, NULL,  },
-    { "btx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_btx_, NULL,  },
-    { "btt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_btt_, NULL,  },
-    { "bttx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bttx_, NULL,  },
-    { "bdt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bdt_, NULL,  },
-    { "bdtx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bdtx_, NULL,  },
-    { "bod_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bod_, NULL,  },
-    { "bodt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bodt_, NULL,  },
-    { "bodtx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bodtx_, NULL,  },
-    { "bwd_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bwd_, NULL,  },
-    { "bwdt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bwdt_, NULL,  },
-    { "bwdtx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bwdtx_, NULL,  },
-    { "dpe_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dpe_, NULL,  },
-    { "tpe_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_tpe_, NULL,  },
-    { "dp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dp_, NULL,  },
-    { "ldp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ldp_, NULL,  },
-    { "tp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_tp_, NULL,  },
-    { "ltp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ltp_, NULL,  },
-    { "dtp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dtp_, NULL,  },
-    { "dotp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dotp_, NULL,  },
-    { "ldotp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ldotp_, NULL,  },
+    { "ye_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ye_, NULL, .constantValue.asLong = 0 },
+    { "mye_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_mye_, NULL, .constantValue.asLong = 0 },
+    { "dme_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dme_, NULL, .constantValue.asLong = 0 },
+    { "we_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_we_, NULL, .constantValue.asLong = 0 },
+    { "wwe_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_wwe_, NULL, .constantValue.asLong = 0 },
+    { "dwe_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dwe_, NULL, .constantValue.asLong = 0 },
+    { "dye_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dye_, NULL, .constantValue.asLong = 0 },
+    { "hde_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hde_, NULL, .constantValue.asLong = 0 },
+    { "mhe_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_mhe_, NULL, .constantValue.asLong = 0 },
+    { "sme_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_sme_, NULL, .constantValue.asLong = 0 },
+    { "fse_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_fse_, NULL, .constantValue.asLong = 0 },
+    { "ze_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ze_, NULL, .constantValue.asLong = 0 },
+    { "lte_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_lte_, NULL, .constantValue.asLong = 0 },
+    { "ym_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ym_, NULL, .constantValue.asLong = 0 },
+    { "ymd_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ymd_, NULL, .constantValue.asLong = 0 },
+    { "ww_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ww_, NULL, .constantValue.asLong = 0 },
+    { "wwd_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_wwd_, NULL, .constantValue.asLong = 0 },
+    { "hm_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hm_, NULL, .constantValue.asLong = 0 },
+    { "hms_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hms_, NULL, .constantValue.asLong = 0 },
+    { "hmsl_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hmsl_, NULL, .constantValue.asLong = 0 },
+    { "hmsf_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hmsf_, NULL, .constantValue.asLong = 0 },
+    { "dh_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dh_, NULL, .constantValue.asLong = 0 },
+    { "dhm_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dhm_, NULL, .constantValue.asLong = 0 },
+    { "dhms_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dhms_, NULL, .constantValue.asLong = 0 },
+    { "dhmsl_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsl_, NULL, .constantValue.asLong = 0 },
+    { "dhmsf_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsf_, NULL, .constantValue.asLong = 0 },
+    { "t_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_t_, NULL, .constantValue.asLong = 0 },
+    { "tx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_tx_, NULL, .constantValue.asLong = 0 },
+    { "tt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_tt_, NULL, .constantValue.asLong = 0 },
+    { "ttx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ttx_, NULL, .constantValue.asLong = 0 },
+    { "dt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dt_, NULL, .constantValue.asLong = 0 },
+    { "dtx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dtx_, NULL, .constantValue.asLong = 0 },
+    { "wdt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_wdt_, NULL, .constantValue.asLong = 0 },
+    { "wdtx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_wdtx_, NULL, .constantValue.asLong = 0 },
+    { "od_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_od_, NULL, .constantValue.asLong = 0 },
+    { "odt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_odt_, NULL, .constantValue.asLong = 0 },
+    { "odtx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_odtx_, NULL, .constantValue.asLong = 0 },
+    { "bd_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bd_, NULL, .constantValue.asLong = 0 },
+    { "bt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bt_, NULL, .constantValue.asLong = 0 },
+    { "btx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_btx_, NULL, .constantValue.asLong = 0 },
+    { "btt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_btt_, NULL, .constantValue.asLong = 0 },
+    { "bttx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bttx_, NULL, .constantValue.asLong = 0 },
+    { "bdt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bdt_, NULL, .constantValue.asLong = 0 },
+    { "bdtx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bdtx_, NULL, .constantValue.asLong = 0 },
+    { "bod_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bod_, NULL, .constantValue.asLong = 0 },
+    { "bodt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bodt_, NULL, .constantValue.asLong = 0 },
+    { "bodtx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bodtx_, NULL, .constantValue.asLong = 0 },
+    { "bwd_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bwd_, NULL, .constantValue.asLong = 0 },
+    { "bwdt_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bwdt_, NULL, .constantValue.asLong = 0 },
+    { "bwdtx_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bwdtx_, NULL, .constantValue.asLong = 0 },
+    { "dpe_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dpe_, NULL, .constantValue.asLong = 0 },
+    { "tpe_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_tpe_, NULL, .constantValue.asLong = 0 },
+    { "dp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dp_, NULL, .constantValue.asLong = 0 },
+    { "ldp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ldp_, NULL, .constantValue.asLong = 0 },
+    { "tp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_tp_, NULL, .constantValue.asLong = 0 },
+    { "ltp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ltp_, NULL, .constantValue.asLong = 0 },
+    { "dtp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dtp_, NULL, .constantValue.asLong = 0 },
+    { "dotp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dotp_, NULL, .constantValue.asLong = 0 },
+    { "ldotp_", NULL, 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ldotp_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatISODateTimeFormat_Constants = { 2, "Constants", "org.joda.time.format", "ISODateTimeFormat", 0x18, 60, methods, 59, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatISODateTimeFormat_Constants;
@@ -1981,7 +1985,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicTime() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_bt_ == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_hourOfDay() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_minuteOfHour() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_secondOfMinute() withInt:2])) appendLiteralWithChar:'.'])) appendFractionOfSecondWithInt:3 withInt:9])) appendTimeZoneOffsetWithNSString:@"Z" withBoolean:NO withInt:2 withInt:2])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_hourOfDay() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_minuteOfHour() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_secondOfMinute() withInt:2])) appendLiteralWithChar:'.'])) appendFractionOfSecondWithInt:3 withInt:9])) appendTimeZoneOffsetWithNSString:@"Z" withBoolean:false withInt:2 withInt:2])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_bt_;
 }
@@ -1989,7 +1993,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_btx_ == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_hourOfDay() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_minuteOfHour() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_secondOfMinute() withInt:2])) appendTimeZoneOffsetWithNSString:@"Z" withBoolean:NO withInt:2 withInt:2])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_hourOfDay() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_minuteOfHour() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_secondOfMinute() withInt:2])) appendTimeZoneOffsetWithNSString:@"Z" withBoolean:false withInt:2 withInt:2])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_btx_;
 }
@@ -2277,7 +2281,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_ze_ == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendTimeZoneOffsetWithNSString:@"Z" withBoolean:YES withInt:2 withInt:4])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendTimeZoneOffsetWithNSString:@"Z" withBoolean:true withInt:2 withInt:4])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_ze_;
 }

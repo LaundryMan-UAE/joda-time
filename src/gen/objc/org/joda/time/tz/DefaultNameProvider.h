@@ -11,9 +11,11 @@
 
 @class JavaUtilLocale;
 
-/**
- @brief The default name provider acquires localized names from DateFormatSymbols java.text.DateFormatSymbols .
- <p> DefaultNameProvider is thread-safe and immutable.
+/*!
+ @brief The default name provider acquires localized names from
+ <code>java.text.DateFormatSymbols</code>.
+ <p>
+ DefaultNameProvider is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */

@@ -21,7 +21,7 @@
   OrgJodaTimeChronoBasicChronology *iChronology_;
 }
 
-/**
+/*!
  @brief Serialization singleton
  */
 - (id)readResolve;
@@ -104,7 +104,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJDayOfWeekDateTimeField, serialVers
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoGJDayOfWeekDateTimeField_serialVersionUID },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL, NULL,  },
+    { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoGJDayOfWeekDateTimeField = { 2, "GJDayOfWeekDateTimeField", "org.joda.time.chrono", NULL, 0x10, 11, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoGJDayOfWeekDateTimeField;
@@ -114,7 +114,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoGJDayOfWeekDateTimeField, serialVers
 
 void OrgJodaTimeChronoGJDayOfWeekDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(OrgJodaTimeChronoGJDayOfWeekDateTimeField *self, OrgJodaTimeChronoBasicChronology *chronology, OrgJodaTimeDurationField *days) {
   OrgJodaTimeFieldPreciseDurationDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_(self, OrgJodaTimeDateTimeFieldType_dayOfWeek(), days);
-  OrgJodaTimeChronoGJDayOfWeekDateTimeField_set_iChronology_(self, chronology);
+  JreStrongAssign(&self->iChronology_, chronology);
 }
 
 OrgJodaTimeChronoGJDayOfWeekDateTimeField *new_OrgJodaTimeChronoGJDayOfWeekDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(OrgJodaTimeChronoBasicChronology *chronology, OrgJodaTimeDurationField *days) {

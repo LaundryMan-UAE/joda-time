@@ -10,9 +10,15 @@
 
 @class OrgJodaTimeFormatPeriodFormatter;
 
-/**
+/*!
  @brief Factory that creates instances of PeriodFormatter for the ISO8601 standard.
- <p> Period formatting is performed by the PeriodFormatter class. Three classes provide factory methods to create formatters, and this is one. The others are PeriodFormat and PeriodFormatterBuilder . <p> ISOPeriodFormat is thread-safe and immutable, and the formatters it returns are as well.
+ <p>
+ Period formatting is performed by the <code>PeriodFormatter</code> class.
+ Three classes provide factory methods to create formatters, and this is one.
+ The others are <code>PeriodFormat</code> and <code>PeriodFormatterBuilder</code>.
+ <p>
+ ISOPeriodFormat is thread-safe and immutable, and the formatters it
+ returns are as well.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -20,44 +26,54 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief The alternate ISO format, PyyyymmddThhmmss, which excludes weeks.
- <p> Even if weeks are present in the period, they are not output. Fractional seconds (milliseconds) will appear if required.
+ <p>
+ Even if weeks are present in the period, they are not output.
+ Fractional seconds (milliseconds) will appear if required.
  @return the formatter
  */
 + (OrgJodaTimeFormatPeriodFormatter *)alternate;
 
-/**
+/*!
  @brief The alternate ISO format, Pyyyy-mm-ddThh:mm:ss, which excludes weeks.
- <p> Even if weeks are present in the period, they are not output. Fractional seconds (milliseconds) will appear if required.
+ <p>
+ Even if weeks are present in the period, they are not output.
+ Fractional seconds (milliseconds) will appear if required.
  @return the formatter
  */
 + (OrgJodaTimeFormatPeriodFormatter *)alternateExtended;
 
-/**
+/*!
  @brief The alternate ISO format, Pyyyy-Www-ddThh:mm:ss, which excludes months.
- <p> Even if months are present in the period, they are not output. Fractional seconds (milliseconds) will appear if required.
+ <p>
+ Even if months are present in the period, they are not output.
+ Fractional seconds (milliseconds) will appear if required.
  @return the formatter
  */
 + (OrgJodaTimeFormatPeriodFormatter *)alternateExtendedWithWeeks;
 
-/**
+/*!
  @brief The alternate ISO format, PyyyyWwwddThhmmss, which excludes months.
- <p> Even if months are present in the period, they are not output. Fractional seconds (milliseconds) will appear if required.
+ <p>
+ Even if months are present in the period, they are not output.
+ Fractional seconds (milliseconds) will appear if required.
  @return the formatter
  */
 + (OrgJodaTimeFormatPeriodFormatter *)alternateWithWeeks;
 
-/**
+/*!
  @brief The standard ISO format - PyYmMwWdDThHmMsS.
- Milliseconds are not output. Note that the ISO8601 standard actually indicates weeks should not be shown if any other field is present and vice versa.
+ Milliseconds are not output.
+ Note that the ISO8601 standard actually indicates weeks should not
+ be shown if any other field is present and vice versa.
  @return the formatter
  */
 + (OrgJodaTimeFormatPeriodFormatter *)standard;
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Constructor.
  @since 1.1 (previously private)
  */

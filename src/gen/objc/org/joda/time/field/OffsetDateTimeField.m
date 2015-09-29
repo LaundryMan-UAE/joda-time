@@ -152,9 +152,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldOffsetDateTimeField, serialVersionUID
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldOffsetDateTimeField_serialVersionUID },
-    { "iOffset_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iMin_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iMax_", NULL, 0x12, "I", NULL, NULL,  },
+    { "iOffset_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMin_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMax_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldOffsetDateTimeField = { 2, "OffsetDateTimeField", "org.joda.time.field", NULL, 0x1, 20, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldOffsetDateTimeField;

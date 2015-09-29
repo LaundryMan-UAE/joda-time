@@ -15,7 +15,7 @@
 
 @interface OrgJodaTimeFieldDecoratedDateTimeField () {
  @public
-  /**
+  /*!
    @brief The DateTimeField being wrapped
    */
   OrgJodaTimeDateTimeField *iField_;
@@ -73,7 +73,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldDecoratedDateTimeField, serialVersion
 }
 
 - (void)dealloc {
-  if (iField_ != self) RELEASE_(iField_);
+  RELEASE_(iField_);
   [super dealloc];
 }
 
@@ -92,7 +92,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldDecoratedDateTimeField, serialVersion
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldDecoratedDateTimeField_serialVersionUID },
-    { "iField_", NULL, 0x12, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
+    { "iField_", NULL, 0x12, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldDecoratedDateTimeField = { 2, "DecoratedDateTimeField", "org.joda.time.field", NULL, 0x401, 10, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldDecoratedDateTimeField;
@@ -108,7 +108,7 @@ void OrgJodaTimeFieldDecoratedDateTimeField_initWithOrgJodaTimeDateTimeField_wit
   if (![((OrgJodaTimeDateTimeField *) nil_chk(field)) isSupported]) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The field must be supported") autorelease];
   }
-  OrgJodaTimeFieldDecoratedDateTimeField_set_iField_(self, field);
+  JreStrongAssign(&self->iField_, field);
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldDecoratedDateTimeField)

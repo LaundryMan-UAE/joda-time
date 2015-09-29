@@ -22,7 +22,7 @@
   OrgJodaTimeChronoBasicChronology *iChronology_;
 }
 
-/**
+/*!
  @brief Serialization singleton
  */
 - (id)readResolve;
@@ -43,7 +43,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicWeekyearDateTimeField, WEEK_53,
 }
 
 - (jboolean)isLenient {
-  return NO;
+  return false;
 }
 
 - (jint)getWithLong:(jlong)instant {
@@ -186,7 +186,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicWeekyearDateTimeField, WEEK_53,
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoBasicWeekyearDateTimeField_serialVersionUID },
     { "WEEK_53", "WEEK_53", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoBasicWeekyearDateTimeField_WEEK_53 },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL, NULL,  },
+    { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoBasicWeekyearDateTimeField = { 2, "BasicWeekyearDateTimeField", "org.joda.time.chrono", NULL, 0x10, 17, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoBasicWeekyearDateTimeField;
@@ -196,7 +196,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicWeekyearDateTimeField, WEEK_53,
 
 void OrgJodaTimeChronoBasicWeekyearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(OrgJodaTimeChronoBasicWeekyearDateTimeField *self, OrgJodaTimeChronoBasicChronology *chronology) {
   OrgJodaTimeFieldImpreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withLong_(self, OrgJodaTimeDateTimeFieldType_weekyear(), [((OrgJodaTimeChronoBasicChronology *) nil_chk(chronology)) getAverageMillisPerYear]);
-  OrgJodaTimeChronoBasicWeekyearDateTimeField_set_iChronology_(self, chronology);
+  JreStrongAssign(&self->iChronology_, chronology);
 }
 
 OrgJodaTimeChronoBasicWeekyearDateTimeField *new_OrgJodaTimeChronoBasicWeekyearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(OrgJodaTimeChronoBasicChronology *chronology) {

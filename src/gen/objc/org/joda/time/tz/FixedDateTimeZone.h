@@ -11,9 +11,10 @@
 
 @class JavaUtilTimeZone;
 
-/**
+/*!
  @brief Basic DateTimeZone implementation that has a fixed name key and offsets.
- <p> FixedDateTimeZone is thread-safe and immutable.
+ <p>
+ FixedDateTimeZone is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -44,7 +45,7 @@
 
 - (jlong)previousTransitionWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Override to return the correct timzone instance.
  @since 1.5
  */

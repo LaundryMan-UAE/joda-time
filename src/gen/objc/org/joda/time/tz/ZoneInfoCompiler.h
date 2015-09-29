@@ -20,9 +20,19 @@
 @class OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear;
 @protocol JavaUtilMap;
 
-/**
- @brief Compiles IANA ZoneInfo database files into binary files for each time zone in the database.
- DateTimeZoneBuilder is used to construct and encode compiled data files. ZoneInfoProvider loads the encoded files and converts them back into DateTimeZone objects. <p> Although this tool is similar to zic, the binary formats are not compatible. The latest IANA time zone database files may be obtained <a href="http://www.iana.org/time-zones">here</a>. <p> ZoneInfoCompiler is mutable and not thread-safe, although the main method may be safely invoked by multiple threads.
+/*!
+ @brief Compiles IANA ZoneInfo database files into binary files for each time zone
+ in the database.
+ <code>DateTimeZoneBuilder</code> is used to construct and encode
+ compiled data files. <code>ZoneInfoProvider</code> loads the encoded files and
+ converts them back into <code>DateTimeZone</code> objects.
+ <p>
+ Although this tool is similar to zic, the binary formats are not
+ compatible. The latest IANA time zone database files may be obtained
+ <a href="http://www.iana.org/time-zones">here</a>.
+ <p>
+ ZoneInfoCompiler is mutable and not thread-safe, although the main method
+ may be safely invoked by multiple threads.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -32,7 +42,7 @@
 
 - (instancetype)init;
 
-/**
+/*!
  @brief Returns a map of ids to DateTimeZones.
  @param outputDir optional directory to write compiled data files to
  @param sources optional list of source files to parse
@@ -40,15 +50,23 @@
 - (id<JavaUtilMap>)compileWithJavaIoFile:(JavaIoFile *)outputDir
                      withJavaIoFileArray:(IOSObjectArray *)sources;
 
-/**
+/*!
  @brief Launches the ZoneInfoCompiler tool.
- <pre> Usage: java org.joda.time.tz.ZoneInfoCompiler &lt;options&gt; &lt;source files&gt; where possible options include: -src &lt;directory&gt;    Specify where to read source files -dst &lt;directory&gt;    Specify where to write generated files -verbose            Output verbosely (default false) </pre>
+ @code
+
+  Usage: java org.joda.time.tz.ZoneInfoCompiler &lt;options&gt; &lt;source files&gt;
+  where possible options include:
+   -src &lt;directory&gt;    Specify where to read source files
+   -dst &lt;directory&gt;    Specify where to write generated files
+   -verbose            Output verbosely (default false)
+  
+@endcode
  */
 + (void)mainWithNSStringArray:(IOSObjectArray *)args;
 
 - (void)parseDataFileWithJavaIoBufferedReader:(JavaIoBufferedReader *)inArg;
 
-/**
+/*!
  @brief Gets a flag indicating that verbose logging is required.
  @return true to log verbosely
  */
@@ -73,13 +91,13 @@
 
 + (jchar)parseZoneCharWithChar:(jchar)c;
 
-/**
+/*!
  @return false if error.
  */
 + (jboolean)testWithNSString:(NSString *)id_
  withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)tz;
 
-/**
+/*!
  @param zimap maps string ids to DateTimeZone objects.
  */
 + (void)writeZoneInfoMapWithJavaIoDataOutputStream:(JavaIoDataOutputStream *)dout
@@ -143,13 +161,13 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzZoneInfoCompiler)
 
 #pragma mark Public
 
-/**
+/*!
  @brief Adds a cutover to the builder.
  */
 - (void)addCutoverWithOrgJodaTimeTzDateTimeZoneBuilder:(OrgJodaTimeTzDateTimeZoneBuilder *)builder
                                                withInt:(jint)year;
 
-/**
+/*!
  @brief Adds a recurring savings rule to the builder.
  */
 - (void)addRecurringWithOrgJodaTimeTzDateTimeZoneBuilder:(OrgJodaTimeTzDateTimeZoneBuilder *)builder

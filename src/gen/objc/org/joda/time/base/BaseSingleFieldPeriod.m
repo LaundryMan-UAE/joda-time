@@ -29,10 +29,10 @@
 
 @interface OrgJodaTimeBaseBaseSingleFieldPeriod () {
  @public
-  /**
+  /*!
    @brief The period in the units of this period.
    */
-  jint iPeriod_;
+  volatile_jint iPeriod_;
 }
 
 @end
@@ -66,11 +66,11 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseSingleFieldPeriod, START_1972, jlo
 }
 
 - (jint)getValue {
-  return iPeriod_;
+  return JreLoadVolatileInt(&iPeriod_);
 }
 
 - (void)setValueWithInt:(jint)value {
-  iPeriod_ = value;
+  JreAssignVolatileInt(&iPeriod_, value);
 }
 
 - (OrgJodaTimeDurationFieldType *)getFieldType {
@@ -115,7 +115,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseSingleFieldPeriod, START_1972, jlo
 }
 
 - (OrgJodaTimePeriod *)toPeriod {
-  return [((OrgJodaTimePeriod *) nil_chk(OrgJodaTimePeriod_get_ZERO_())) withFieldsWithOrgJodaTimeReadablePeriod:self];
+  return [((OrgJodaTimePeriod *) nil_chk(JreLoadStatic(OrgJodaTimePeriod, ZERO_))) withFieldsWithOrgJodaTimeReadablePeriod:self];
 }
 
 - (OrgJodaTimeMutablePeriod *)toMutablePeriod {
@@ -126,12 +126,12 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseSingleFieldPeriod, START_1972, jlo
 
 - (jboolean)isEqual:(id)period {
   if (self == period) {
-    return YES;
+    return true;
   }
-  if ([OrgJodaTimeReadablePeriod_class_() isInstance:period] == NO) {
-    return NO;
+  if ([OrgJodaTimeReadablePeriod_class_() isInstance:period] == false) {
+    return false;
   }
-  id<OrgJodaTimeReadablePeriod> other = (id<OrgJodaTimeReadablePeriod>) check_protocol_cast(period, @protocol(OrgJodaTimeReadablePeriod));
+  id<OrgJodaTimeReadablePeriod> other = (id<OrgJodaTimeReadablePeriod>) check_protocol_cast(period, OrgJodaTimeReadablePeriod_class_());
   return ([((id<OrgJodaTimeReadablePeriod>) nil_chk(other)) getPeriodType] == [self getPeriodType] && [other getValueWithInt:0] == [self getValue]);
 }
 
@@ -182,7 +182,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseSingleFieldPeriod, START_1972, jlo
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeBaseBaseSingleFieldPeriod_serialVersionUID },
     { "START_1972", "START_1972", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeBaseBaseSingleFieldPeriod_START_1972 },
-    { "iPeriod_", NULL, 0x42, "I", NULL, NULL,  },
+    { "iPeriod_", NULL, 0x42, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeBaseBaseSingleFieldPeriod = { 2, "BaseSingleFieldPeriod", "org.joda.time.base", NULL, 0x401, 18, methods, 3, fields, 0, NULL, 0, NULL, NULL, "Ljava/lang/Object;Lorg/joda/time/ReadablePeriod;Ljava/lang/Comparable<Lorg/joda/time/base/BaseSingleFieldPeriod;>;Ljava/io/Serializable;" };
   return &_OrgJodaTimeBaseBaseSingleFieldPeriod;
@@ -213,7 +213,7 @@ jint OrgJodaTimeBaseBaseSingleFieldPeriod_betweenWithOrgJodaTimeReadablePartial_
       @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must have the same set of fields") autorelease];
     }
   }
-  if (OrgJodaTimeDateTimeUtils_isContiguousWithOrgJodaTimeReadablePartial_(start) == NO) {
+  if (OrgJodaTimeDateTimeUtils_isContiguousWithOrgJodaTimeReadablePartial_(start) == false) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must be contiguous") autorelease];
   }
   OrgJodaTimeChronology *chrono = [((OrgJodaTimeChronology *) nil_chk(OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_([start getChronology]))) withUTC];
@@ -232,7 +232,7 @@ jint OrgJodaTimeBaseBaseSingleFieldPeriod_standardPeriodInWithOrgJodaTimeReadabl
     jint value = [period getValueWithInt:i];
     if (value != 0) {
       OrgJodaTimeDurationField *field = [((OrgJodaTimeDurationFieldType *) nil_chk([period getFieldTypeWithInt:i])) getFieldWithOrgJodaTimeChronology:iso];
-      if ([((OrgJodaTimeDurationField *) nil_chk(field)) isPrecise] == NO) {
+      if ([((OrgJodaTimeDurationField *) nil_chk(field)) isPrecise] == false) {
         @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$$@", @"Cannot convert period to duration as ", [field getName], @" is not precise in the period ", period)) autorelease];
       }
       duration = OrgJodaTimeFieldFieldUtils_safeAddWithLong_withLong_(duration, OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withInt_([field getUnitMillis], value));
@@ -243,7 +243,7 @@ jint OrgJodaTimeBaseBaseSingleFieldPeriod_standardPeriodInWithOrgJodaTimeReadabl
 
 void OrgJodaTimeBaseBaseSingleFieldPeriod_initWithInt_(OrgJodaTimeBaseBaseSingleFieldPeriod *self, jint period) {
   NSObject_init(self);
-  self->iPeriod_ = period;
+  JreAssignVolatileInt(&self->iPeriod_, period);
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseBaseSingleFieldPeriod)

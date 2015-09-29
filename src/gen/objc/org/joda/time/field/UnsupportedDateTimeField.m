@@ -3,7 +3,6 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/joda-time/src/main/java/org/joda/time/field/UnsupportedDateTimeField.java
 //
 
-#include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "java/lang/IllegalArgumentException.h"
@@ -20,25 +19,25 @@
 
 @interface OrgJodaTimeFieldUnsupportedDateTimeField () {
  @public
-  /**
+  /*!
    @brief The field type
    */
   OrgJodaTimeDateTimeFieldType *iType_;
-  /**
+  /*!
    @brief The duration of the datetime field
    */
   OrgJodaTimeDurationField *iDurationField_;
 }
 
-/**
+/*!
  @brief Constructor.
- @param type the field type
- @param durationField the duration to use
+ @param type  the field type
+ @param durationField  the duration to use
  */
 - (instancetype)initWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type
                         withOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)durationField;
 
-/**
+/*!
  @brief Ensure proper singleton serialization
  */
 - (id)readResolve;
@@ -84,11 +83,11 @@ __attribute__((unused)) static JavaLangUnsupportedOperationException *OrgJodaTim
 }
 
 - (jboolean)isSupported {
-  return NO;
+  return false;
 }
 
 - (jboolean)isLenient {
-  return NO;
+  return false;
 }
 
 - (jint)getWithLong:(jlong)instant {
@@ -385,9 +384,9 @@ __attribute__((unused)) static JavaLangUnsupportedOperationException *OrgJodaTim
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldUnsupportedDateTimeField_serialVersionUID },
-    { "cCache_", NULL, 0xa, "Ljava.util.HashMap;", &OrgJodaTimeFieldUnsupportedDateTimeField_cCache_, "Ljava/util/HashMap<Lorg/joda/time/DateTimeFieldType;Lorg/joda/time/field/UnsupportedDateTimeField;>;",  },
-    { "iType_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL, NULL,  },
-    { "iDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL,  },
+    { "cCache_", NULL, 0xa, "Ljava.util.HashMap;", &OrgJodaTimeFieldUnsupportedDateTimeField_cCache_, "Ljava/util/HashMap<Lorg/joda/time/DateTimeFieldType;Lorg/joda/time/field/UnsupportedDateTimeField;>;", .constantValue.asLong = 0 },
+    { "iType_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldUnsupportedDateTimeField = { 2, "UnsupportedDateTimeField", "org.joda.time.field", NULL, 0x11, 54, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldUnsupportedDateTimeField;
@@ -400,7 +399,7 @@ OrgJodaTimeFieldUnsupportedDateTimeField *OrgJodaTimeFieldUnsupportedDateTimeFie
   @synchronized(OrgJodaTimeFieldUnsupportedDateTimeField_class_()) {
     OrgJodaTimeFieldUnsupportedDateTimeField *field;
     if (OrgJodaTimeFieldUnsupportedDateTimeField_cCache_ == nil) {
-      JreStrongAssignAndConsume(&OrgJodaTimeFieldUnsupportedDateTimeField_cCache_, nil, new_JavaUtilHashMap_initWithInt_(7));
+      JreStrongAssignAndConsume(&OrgJodaTimeFieldUnsupportedDateTimeField_cCache_, new_JavaUtilHashMap_initWithInt_(7));
       field = nil;
     }
     else {
@@ -422,8 +421,8 @@ void OrgJodaTimeFieldUnsupportedDateTimeField_initWithOrgJodaTimeDateTimeFieldTy
   if (type == nil || durationField == nil) {
     @throw [new_JavaLangIllegalArgumentException_init() autorelease];
   }
-  OrgJodaTimeFieldUnsupportedDateTimeField_set_iType_(self, type);
-  OrgJodaTimeFieldUnsupportedDateTimeField_set_iDurationField_(self, durationField);
+  JreStrongAssign(&self->iType_, type);
+  JreStrongAssign(&self->iDurationField_, durationField);
 }
 
 OrgJodaTimeFieldUnsupportedDateTimeField *new_OrgJodaTimeFieldUnsupportedDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType *type, OrgJodaTimeDurationField *durationField) {

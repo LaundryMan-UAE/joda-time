@@ -19,9 +19,10 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
+/*!
  @brief Wraps another Chronology to add support for time zones.
- <p> ZonedChronology is thread-safe and immutable.
+ <p>
+ ZonedChronology is thread-safe and immutable.
  @author Brian S O'Neill
  @author Stephen Colebourne
  @since 1.0
@@ -30,9 +31,10 @@
 
 #pragma mark Public
 
-/**
- @brief A zoned chronology is only equal to a zoned chronology with the same base chronology and zone.
- @param obj the object to compare to
+/*!
+ @brief A zoned chronology is only equal to a zoned chronology with the
+ same base chronology and zone.
+ @param obj  the object to compare to
  @return true if equal
  @since 1.4
  */
@@ -57,8 +59,9 @@
                            withInt:(jint)secondOfMinute
                            withInt:(jint)millisOfSecond;
 
-/**
- @brief Create a ZonedChronology for any chronology, overriding any time zone it may already have.
+/*!
+ @brief Create a ZonedChronology for any chronology, overriding any time zone it
+ may already have.
  @param base base chronology to wrap
  @param zone the time zone
  @throws IllegalArgumentException if chronology or time zone is null
@@ -68,14 +71,14 @@
 
 - (OrgJodaTimeDateTimeZone *)getZone;
 
-/**
+/*!
  @brief A suitable hashcode for the chronology.
  @return the hashcode
  @since 1.4
  */
 - (NSUInteger)hash;
 
-/**
+/*!
  @brief A debugging string for the chronology.
  @return the debugging string
  */
@@ -162,9 +165,11 @@ FOUNDATION_EXPORT OrgJodaTimeChronoZonedChronology_ZonedDurationField *new_OrgJo
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoZonedChronology_ZonedDurationField)
 
-/**
+/*!
  @brief A DateTimeField that decorates another to add timezone behaviour.
- <p> This class converts passed in instants to local wall time, and vice versa on output.
+ <p>
+ This class converts passed in instants to local wall time, and vice
+ versa on output.
  */
 @interface OrgJodaTimeChronoZonedChronology_ZonedDateTimeField : OrgJodaTimeFieldBaseDateTimeField {
  @public

@@ -40,35 +40,35 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJCacheKey, cutoverInstant_, OrgJodaTimeIns
 
 - (jboolean)isEqual:(id)obj {
   if (self == obj) {
-    return YES;
+    return true;
   }
   if (obj == nil) {
-    return NO;
+    return false;
   }
   if (!([obj isKindOfClass:[OrgJodaTimeChronoGJCacheKey class]])) {
-    return NO;
+    return false;
   }
   OrgJodaTimeChronoGJCacheKey *other = (OrgJodaTimeChronoGJCacheKey *) check_class_cast(obj, [OrgJodaTimeChronoGJCacheKey class]);
   if (cutoverInstant_ == nil) {
     if (((OrgJodaTimeChronoGJCacheKey *) nil_chk(other))->cutoverInstant_ != nil) {
-      return NO;
+      return false;
     }
   }
   else if (![cutoverInstant_ isEqual:((OrgJodaTimeChronoGJCacheKey *) nil_chk(other))->cutoverInstant_]) {
-    return NO;
+    return false;
   }
   if (minDaysInFirstWeek_ != ((OrgJodaTimeChronoGJCacheKey *) nil_chk(other))->minDaysInFirstWeek_) {
-    return NO;
+    return false;
   }
   if (zone_ == nil) {
     if (other->zone_ != nil) {
-      return NO;
+      return false;
     }
   }
   else if (![zone_ isEqual:other->zone_]) {
-    return NO;
+    return false;
   }
-  return YES;
+  return true;
 }
 
 - (void)dealloc {
@@ -84,9 +84,9 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJCacheKey, cutoverInstant_, OrgJodaTimeIns
     { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "zone_", NULL, 0x12, "Lorg.joda.time.DateTimeZone;", NULL, NULL,  },
-    { "cutoverInstant_", NULL, 0x12, "Lorg.joda.time.Instant;", NULL, NULL,  },
-    { "minDaysInFirstWeek_", NULL, 0x12, "I", NULL, NULL,  },
+    { "zone_", NULL, 0x12, "Lorg.joda.time.DateTimeZone;", NULL, NULL, .constantValue.asLong = 0 },
+    { "cutoverInstant_", NULL, 0x12, "Lorg.joda.time.Instant;", NULL, NULL, .constantValue.asLong = 0 },
+    { "minDaysInFirstWeek_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoGJCacheKey = { 2, "GJCacheKey", "org.joda.time.chrono", NULL, 0x0, 3, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoGJCacheKey;
@@ -96,8 +96,8 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJCacheKey, cutoverInstant_, OrgJodaTimeIns
 
 void OrgJodaTimeChronoGJCacheKey_initWithOrgJodaTimeDateTimeZone_withOrgJodaTimeInstant_withInt_(OrgJodaTimeChronoGJCacheKey *self, OrgJodaTimeDateTimeZone *zone, OrgJodaTimeInstant *cutoverInstant, jint minDaysInFirstWeek) {
   NSObject_init(self);
-  OrgJodaTimeChronoGJCacheKey_set_zone_(self, zone);
-  OrgJodaTimeChronoGJCacheKey_set_cutoverInstant_(self, cutoverInstant);
+  JreStrongAssign(&self->zone_, zone);
+  JreStrongAssign(&self->cutoverInstant_, cutoverInstant);
   self->minDaysInFirstWeek_ = minDaysInFirstWeek;
 }
 

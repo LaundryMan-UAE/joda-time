@@ -13,7 +13,7 @@
 @class OrgJodaTimePeriodType;
 @protocol OrgJodaTimeReadWritablePeriod;
 
-/**
+/*!
  @brief PeriodConverter defines how an object is converted to a time period.
  @author Stephen Colebourne
  @author Brian S O'Neill
@@ -21,20 +21,21 @@
  */
 @protocol OrgJodaTimeConvertPeriodConverter < OrgJodaTimeConvertConverter, NSObject, JavaObject >
 
-/**
- @brief Extracts duration values from an object of this converter's type, and sets them into the given ReadWritableDuration.
- @param period the period to modify
- @param object the object to convert, must not be null
- @param chrono the chronology to use, must not be null
+/*!
+ @brief Extracts duration values from an object of this converter's type, and
+ sets them into the given ReadWritableDuration.
+ @param period  the period to modify
+ @param object  the object to convert, must not be null
+ @param chrono  the chronology to use, must not be null
  @throws ClassCastException if the object is invalid
  */
 - (void)setIntoWithOrgJodaTimeReadWritablePeriod:(id<OrgJodaTimeReadWritablePeriod>)period
                                           withId:(id)object
                        withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
 
-/**
+/*!
  @brief Selects a suitable period type for the given object.
- @param object the object to examine, must not be null
+ @param object  the object to examine, must not be null
  @return the period type, never null
  @throws ClassCastException if the object is invalid
  */

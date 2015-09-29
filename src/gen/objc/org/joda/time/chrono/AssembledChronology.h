@@ -15,9 +15,11 @@
 @class OrgJodaTimeDateTimeZone;
 @class OrgJodaTimeDurationField;
 
-/**
- @brief Abstract Chronology that enables chronologies to be assembled from a container of fields.
- <p> AssembledChronology is thread-safe and immutable.
+/*!
+ @brief Abstract Chronology that enables chronologies to be assembled from
+ a container of fields.
+ <p>
+ AssembledChronology is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -118,28 +120,36 @@
 
 #pragma mark Protected
 
-/**
- @brief Constructor calls the assemble method, enabling subclasses to define its supported fields.
- If a base chronology is supplied, the field set initially contains references to each base chronology field. <p> Other methods in this class will delegate to the base chronology, if it can be determined that the base chronology will produce the same results as AbstractChronology.
+/*!
+ @brief Constructor calls the assemble method, enabling subclasses to define its
+ supported fields.
+ If a base chronology is supplied, the field set
+ initially contains references to each base chronology field.
+ <p>
+ Other methods in this class will delegate to the base chronology, if it
+ can be determined that the base chronology will produce the same results
+ as AbstractChronology.
  @param base optional base chronology to copy initial fields from
  @param param optional param object avalable for assemble method
  */
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
                                        withId:(id)param;
 
-/**
- @brief Invoked by the constructor and after deserialization to allow subclasses to define all of its supported fields.
- All unset fields default to unsupported instances.
+/*!
+ @brief Invoked by the constructor and after deserialization to allow subclasses
+ to define all of its supported fields.
+ All unset fields default to
+ unsupported instances.
  @param fields container of fields
  */
 - (void)assembleWithOrgJodaTimeChronoAssembledChronology_Fields:(OrgJodaTimeChronoAssembledChronology_Fields *)fields;
 
-/**
+/*!
  @brief Returns the same base chronology as passed into the constructor.
  */
 - (OrgJodaTimeChronology *)getBase;
 
-/**
+/*!
  @brief Returns the same param object as passed into the constructor.
  */
 - (id)getParam;
@@ -152,7 +162,7 @@ FOUNDATION_EXPORT void OrgJodaTimeChronoAssembledChronology_initWithOrgJodaTimeC
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoAssembledChronology)
 
-/**
+/*!
  @brief A container of fields used for assembling a chronology.
  */
 @interface OrgJodaTimeChronoAssembledChronology_Fields : NSObject {
@@ -196,7 +206,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoAssembledChronology)
 
 #pragma mark Public
 
-/**
+/*!
  @brief Copy the supported fields from a chronology into this container.
  */
 - (void)copyFieldsFromWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono OBJC_METHOD_FAMILY_NONE;

@@ -20,10 +20,12 @@
 
 @implementation OrgJodaTimeConvertAbstractConverter
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeConvertAbstractConverter_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (jlong)getInstantMillisWithId:(id)object
       withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
@@ -60,7 +62,7 @@
 
 - (jboolean)isReadableIntervalWithId:(id)object
            withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
-  return NO;
+  return false;
 }
 
 - (NSString *)description {

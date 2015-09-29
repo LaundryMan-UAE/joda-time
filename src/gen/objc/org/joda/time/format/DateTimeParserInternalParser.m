@@ -3,6 +3,7 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/joda-time/src/main/java/org/joda/time/format/DateTimeParserInternalParser.java
 //
 
+#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "java/lang/CharSequence.h"
 #include "org/joda/time/format/DateTimeParser.h"
@@ -65,7 +66,7 @@ __attribute__((unused)) static OrgJodaTimeFormatDateTimeParserInternalParser *ne
     { "parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withJavaLangCharSequence:withInt:", "parseInto", "I", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "underlying_", NULL, 0x12, "Lorg.joda.time.format.DateTimeParser;", NULL, NULL,  },
+    { "underlying_", NULL, 0x12, "Lorg.joda.time.format.DateTimeParser;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeParserInternalParser = { 2, "DateTimeParserInternalParser", "org.joda.time.format", NULL, 0x0, 5, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatDateTimeParserInternalParser;
@@ -76,7 +77,7 @@ __attribute__((unused)) static OrgJodaTimeFormatDateTimeParserInternalParser *ne
 id<OrgJodaTimeFormatInternalParser> OrgJodaTimeFormatDateTimeParserInternalParser_ofWithOrgJodaTimeFormatDateTimeParser_(id<OrgJodaTimeFormatDateTimeParser> underlying) {
   OrgJodaTimeFormatDateTimeParserInternalParser_initialize();
   if ([underlying isKindOfClass:[OrgJodaTimeFormatInternalParserDateTimeParser class]]) {
-    return (id<OrgJodaTimeFormatInternalParser>) check_protocol_cast(underlying, @protocol(OrgJodaTimeFormatInternalParser));
+    return (id<OrgJodaTimeFormatInternalParser>) check_protocol_cast(underlying, OrgJodaTimeFormatInternalParser_class_());
   }
   if (underlying == nil) {
     return nil;
@@ -86,7 +87,7 @@ id<OrgJodaTimeFormatInternalParser> OrgJodaTimeFormatDateTimeParserInternalParse
 
 void OrgJodaTimeFormatDateTimeParserInternalParser_initWithOrgJodaTimeFormatDateTimeParser_(OrgJodaTimeFormatDateTimeParserInternalParser *self, id<OrgJodaTimeFormatDateTimeParser> underlying) {
   NSObject_init(self);
-  OrgJodaTimeFormatDateTimeParserInternalParser_set_underlying_(self, underlying);
+  JreStrongAssign(&self->underlying_, underlying);
 }
 
 OrgJodaTimeFormatDateTimeParserInternalParser *new_OrgJodaTimeFormatDateTimeParserInternalParser_initWithOrgJodaTimeFormatDateTimeParser_(id<OrgJodaTimeFormatDateTimeParser> underlying) {

@@ -15,7 +15,7 @@
 
 @interface OrgJodaTimeFieldPreciseDateTimeField () {
  @public
-  /**
+  /*!
    @brief The maximum range in the correct units
    */
   jint iRange_;
@@ -88,8 +88,8 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldPreciseDateTimeField, serialVersionUI
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldPreciseDateTimeField_serialVersionUID },
-    { "iRange_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iRangeField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL,  },
+    { "iRange_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iRangeField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldPreciseDateTimeField = { 2, "PreciseDateTimeField", "org.joda.time.field", NULL, 0x1, 7, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldPreciseDateTimeField;
@@ -107,7 +107,7 @@ void OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_w
   if (self->iRange_ < 2) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The effective range must be at least 2") autorelease];
   }
-  OrgJodaTimeFieldPreciseDateTimeField_set_iRangeField_(self, range);
+  JreStrongAssign(&self->iRangeField_, range);
 }
 
 OrgJodaTimeFieldPreciseDateTimeField *new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType *type, OrgJodaTimeDurationField *unit, OrgJodaTimeDurationField *range) {

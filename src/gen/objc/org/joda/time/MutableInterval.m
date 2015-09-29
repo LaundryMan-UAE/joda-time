@@ -28,10 +28,12 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeMutableInterval, serialVersionUID, jlong)
   return OrgJodaTimeMutableInterval_parseWithNSString_(str);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeMutableInterval_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (instancetype)initWithLong:(jlong)startInstant
                     withLong:(jlong)endInstant {

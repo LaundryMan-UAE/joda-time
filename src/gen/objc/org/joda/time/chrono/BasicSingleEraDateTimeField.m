@@ -20,7 +20,7 @@
 
 @interface OrgJodaTimeChronoBasicSingleEraDateTimeField () {
  @public
-  /**
+  /*!
    @brief Text value of the era.
    */
   NSString *iEraText_;
@@ -40,7 +40,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicSingleEraDateTimeField, ERA_VAL
 }
 
 - (jboolean)isLenient {
-  return NO;
+  return false;
 }
 
 - (jint)getWithLong:(jlong)instant {
@@ -56,7 +56,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicSingleEraDateTimeField, ERA_VAL
 - (jlong)setWithLong:(jlong)instant
         withNSString:(NSString *)text
   withJavaUtilLocale:(JavaUtilLocale *)locale {
-  if ([((NSString *) nil_chk(iEraText_)) isEqual:text] == NO && [@"1" isEqual:text] == NO) {
+  if ([((NSString *) nil_chk(iEraText_)) isEqual:text] == false && [@"1" isEqual:text] == false) {
     @throw [new_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSString_(OrgJodaTimeDateTimeFieldType_era(), text) autorelease];
   }
   return instant;
@@ -133,7 +133,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicSingleEraDateTimeField, ERA_VAL
   };
   static const J2ObjcFieldInfo fields[] = {
     { "ERA_VALUE", "ERA_VALUE", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoBasicSingleEraDateTimeField_ERA_VALUE },
-    { "iEraText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL,  },
+    { "iEraText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoBasicSingleEraDateTimeField = { 2, "BasicSingleEraDateTimeField", "org.joda.time.chrono", NULL, 0x10, 16, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoBasicSingleEraDateTimeField;
@@ -143,7 +143,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicSingleEraDateTimeField, ERA_VAL
 
 void OrgJodaTimeChronoBasicSingleEraDateTimeField_initWithNSString_(OrgJodaTimeChronoBasicSingleEraDateTimeField *self, NSString *text) {
   OrgJodaTimeFieldBaseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_(self, OrgJodaTimeDateTimeFieldType_era());
-  OrgJodaTimeChronoBasicSingleEraDateTimeField_set_iEraText_(self, text);
+  JreStrongAssign(&self->iEraText_, text);
 }
 
 OrgJodaTimeChronoBasicSingleEraDateTimeField *new_OrgJodaTimeChronoBasicSingleEraDateTimeField_initWithNSString_(NSString *text) {

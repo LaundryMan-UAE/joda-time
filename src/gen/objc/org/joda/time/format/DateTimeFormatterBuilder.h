@@ -27,9 +27,32 @@
 @protocol OrgJodaTimeFormatDateTimePrinter;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
+/*!
  @brief Factory that creates complex instances of DateTimeFormatter via method calls.
- <p> Datetime formatting is performed by the DateTimeFormatter class. Three classes provide factory methods to create formatters, and this is one. The others are DateTimeFormat and ISODateTimeFormat . <p> DateTimeFormatterBuilder is used for constructing formatters which are then used to print or parse. The formatters are built by appending specific fields or other formatters to an instance of this builder. <p> For example, a formatter that prints month and year, like "January 1970", can be constructed as follows: <p> <pre> DateTimeFormatter monthAndYear = new DateTimeFormatterBuilder() .appendMonthOfYearText() .appendLiteral(' ') .appendYear(4, 4) .toFormatter(); </pre> <p> DateTimeFormatterBuilder itself is mutable and not thread-safe, but the formatters that it builds are thread-safe and immutable.
+ <p>
+ Datetime formatting is performed by the <code>DateTimeFormatter</code> class.
+ Three classes provide factory methods to create formatters, and this is one.
+ The others are <code>DateTimeFormat</code> and <code>ISODateTimeFormat</code>.
+ <p>
+ DateTimeFormatterBuilder is used for constructing formatters which are then
+ used to print or parse. The formatters are built by appending specific fields
+ or other formatters to an instance of this builder.
+ <p>
+ For example, a formatter that prints month and year, like "January 1970",
+ can be constructed as follows:
+ <p>
+ @code
+
+  DateTimeFormatter monthAndYear = new DateTimeFormatterBuilder()
+     .appendMonthOfYearText()
+     .appendLiteral(' ')
+     .appendYear(4, 4)
+     .toFormatter();
+  
+@endcode
+ <p>
+ DateTimeFormatterBuilder itself is mutable and not thread-safe, but the
+ formatters that it builds are thread-safe and immutable.
  @author Brian S O'Neill
  @author Stephen Colebourne
  @author Fredrik Borgh
@@ -39,54 +62,93 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Creates a DateTimeFormatterBuilder.
  */
 - (instancetype)init;
 
-/**
+/*!
  @brief Appends another formatter.
- <p> This extracts the underlying printer and parser and appends them The printer and parser interfaces are the low-level part of the formatting API. Normally, instances are extracted from another formatter. Note however that any formatter specific information, such as the locale, time-zone, chronology, offset parsing or pivot/default year, will not be extracted by this method.
- @param formatter the formatter to add
+ <p>
+ This extracts the underlying printer and parser and appends them
+ The printer and parser interfaces are the low-level part of the formatting API.
+ Normally, instances are extracted from another formatter.
+ Note however that any formatter specific information, such as the locale,
+ time-zone, chronology, offset parsing or pivot/default year, will not be
+ extracted by this method.
+ @param formatter  the formatter to add
  @return this DateTimeFormatterBuilder, for chaining
  @throws IllegalArgumentException if formatter is null or of an invalid type
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendWithOrgJodaTimeFormatDateTimeFormatter:(OrgJodaTimeFormatDateTimeFormatter *)formatter;
 
-/**
+/*!
  @brief Appends just a parser.
- With no matching printer, a printer cannot be built from this builder. <p> The parser interface is part of the low-level part of the formatting API. Normally, instances are extracted from another formatter. Note however that any formatter specific information, such as the locale, time-zone, chronology, offset parsing or pivot/default year, will not be extracted by this method.
- @param parser the parser to add, not null
+ With no matching printer, a printer cannot be
+ built from this builder.
+ <p>
+ The parser interface is part of the low-level part of the formatting API.
+ Normally, instances are extracted from another formatter.
+ Note however that any formatter specific information, such as the locale,
+ time-zone, chronology, offset parsing or pivot/default year, will not be
+ extracted by this method.
+ @param parser  the parser to add, not null
  @return this DateTimeFormatterBuilder, for chaining
  @throws IllegalArgumentException if parser is null or of an invalid type
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendWithOrgJodaTimeFormatDateTimeParser:(id<OrgJodaTimeFormatDateTimeParser>)parser;
 
-/**
+/*!
  @brief Appends just a printer.
- With no matching parser, a parser cannot be built from this DateTimeFormatterBuilder. <p> The printer interface is part of the low-level part of the formatting API. Normally, instances are extracted from another formatter. Note however that any formatter specific information, such as the locale, time-zone, chronology, offset parsing or pivot/default year, will not be extracted by this method.
- @param printer the printer to add, not null
+ With no matching parser, a parser cannot be
+ built from this DateTimeFormatterBuilder.
+ <p>
+ The printer interface is part of the low-level part of the formatting API.
+ Normally, instances are extracted from another formatter.
+ Note however that any formatter specific information, such as the locale,
+ time-zone, chronology, offset parsing or pivot/default year, will not be
+ extracted by this method.
+ @param printer  the printer to add, not null
  @return this DateTimeFormatterBuilder, for chaining
  @throws IllegalArgumentException if printer is null or of an invalid type
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendWithOrgJodaTimeFormatDateTimePrinter:(id<OrgJodaTimeFormatDateTimePrinter>)printer;
 
-/**
+/*!
  @brief Appends a printer/parser pair.
- <p> The printer and parser interfaces are the low-level part of the formatting API. Normally, instances are extracted from another formatter. Note however that any formatter specific information, such as the locale, time-zone, chronology, offset parsing or pivot/default year, will not be extracted by this method.
- @param printer the printer to add, not null
- @param parser the parser to add, not null
+ <p>
+ The printer and parser interfaces are the low-level part of the formatting API.
+ Normally, instances are extracted from another formatter.
+ Note however that any formatter specific information, such as the locale,
+ time-zone, chronology, offset parsing or pivot/default year, will not be
+ extracted by this method.
+ @param printer  the printer to add, not null
+ @param parser  the parser to add, not null
  @return this DateTimeFormatterBuilder, for chaining
  @throws IllegalArgumentException if printer or parser is null or of an invalid type
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendWithOrgJodaTimeFormatDateTimePrinter:(id<OrgJodaTimeFormatDateTimePrinter>)printer
                                                       withOrgJodaTimeFormatDateTimeParser:(id<OrgJodaTimeFormatDateTimeParser>)parser;
 
-/**
+/*!
  @brief Appends a printer and a set of matching parsers.
- When parsing, the first parser in the list is selected for parsing. If it fails, the next is chosen, and so on. If none of these parsers succeeds, then the failed position of the parser that made the greatest progress is returned. <p> Only the printer is optional. In addition, it is illegal for any but the last of the parser array elements to be null. If the last element is null, this represents the empty parser. The presence of an empty parser indicates that the entire array of parse formats is optional. <p> The printer and parser interfaces are the low-level part of the formatting API. Normally, instances are extracted from another formatter. Note however that any formatter specific information, such as the locale, time-zone, chronology, offset parsing or pivot/default year, will not be extracted by this method.
- @param printer the printer to add
- @param parsers the parsers to add
+ When parsing, the first
+ parser in the list is selected for parsing. If it fails, the next is
+ chosen, and so on. If none of these parsers succeeds, then the failed
+ position of the parser that made the greatest progress is returned.
+ <p>
+ Only the printer is optional. In addition, it is illegal for any but the
+ last of the parser array elements to be null. If the last element is
+ null, this represents the empty parser. The presence of an empty parser
+ indicates that the entire array of parse formats is optional.
+ <p>
+ The printer and parser interfaces are the low-level part of the formatting API.
+ Normally, instances are extracted from another formatter.
+ Note however that any formatter specific information, such as the locale,
+ time-zone, chronology, offset parsing or pivot/default year, will not be
+ extracted by this method.
+ @param printer  the printer to add
+ @param parsers  the parsers to add
  @return this DateTimeFormatterBuilder, for chaining
  @throws IllegalArgumentException if any printer or parser is of an invalid type
  @throws IllegalArgumentException if any parser element but the last is null
@@ -94,69 +156,75 @@
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendWithOrgJodaTimeFormatDateTimePrinter:(id<OrgJodaTimeFormatDateTimePrinter>)printer
                                                  withOrgJodaTimeFormatDateTimeParserArray:(IOSObjectArray *)parsers;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric century of era field.
- @param minDigits minimum number of digits to print
- @param maxDigits maximum number of digits to <i>parse</i>, or the estimated maximum number of digits to print
+ @param minDigits  minimum number of digits to print
+ @param maxDigits  maximum number of digits to <i>parse</i>, or the estimated
+ maximum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendCenturyOfEraWithInt:(jint)minDigits
                                                                  withInt:(jint)maxDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric clockhourOfDay field.
  @param minDigits minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendClockhourOfDayWithInt:(jint)minDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric clockhourOfHalfday field.
- @param minDigits minimum number of digits to print
+ @param minDigits  minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendClockhourOfHalfdayWithInt:(jint)minDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric dayOfMonth field.
- @param minDigits minimum number of digits to print
+ @param minDigits  minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendDayOfMonthWithInt:(jint)minDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric dayOfWeek field.
- @param minDigits minimum number of digits to print
+ @param minDigits  minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendDayOfWeekWithInt:(jint)minDigits;
 
-/**
- @brief Instructs the printer to emit a short locale-specific dayOfWeek text.
- The parser will accept a long or short dayOfWeek text, case-insensitive.
+/*!
+ @brief Instructs the printer to emit a short locale-specific dayOfWeek
+ text.
+ The parser will accept a long or short dayOfWeek text,
+ case-insensitive.
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendDayOfWeekShortText;
 
-/**
+/*!
  @brief Instructs the printer to emit a locale-specific dayOfWeek text.
- The parser will accept a long or short dayOfWeek text, case-insensitive.
+ The
+ parser will accept a long or short dayOfWeek text, case-insensitive.
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendDayOfWeekText;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric dayOfYear field.
- @param minDigits minimum number of digits to print
+ @param minDigits  minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendDayOfYearWithInt:(jint)minDigits;
 
-/**
- @brief Instructs the printer to emit a field value as a decimal number, and the parser to expect an unsigned decimal number.
- @param fieldType type of field to append
- @param minDigits minimum number of digits to <i>print</i>
- @param maxDigits maximum number of digits to <i>parse</i>, or the estimated maximum number of digits to print
+/*!
+ @brief Instructs the printer to emit a field value as a decimal number, and the
+ parser to expect an unsigned decimal number.
+ @param fieldType  type of field to append
+ @param minDigits  minimum number of digits to <i>print</i>
+ @param maxDigits  maximum number of digits to <i>parse</i>, or the estimated
+ maximum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  @throws IllegalArgumentException if field type is null
  */
@@ -164,17 +232,21 @@
                                                                                      withInt:(jint)minDigits
                                                                                      withInt:(jint)maxDigits;
 
-/**
- @brief Instructs the printer to emit a locale-specific era text (BC/AD), and the parser to expect it.
+/*!
+ @brief Instructs the printer to emit a locale-specific era text (BC/AD), and
+ the parser to expect it.
  The parser is case-insensitive.
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendEraText;
 
-/**
- @brief Instructs the printer to emit a field value as a fixed-width decimal number (smaller numbers will be left-padded with zeros), and the parser to expect an unsigned decimal number with the same fixed width.
- @param fieldType type of field to append
- @param numDigits the exact number of digits to parse or print, except if printed value requires more digits
+/*!
+ @brief Instructs the printer to emit a field value as a fixed-width decimal
+ number (smaller numbers will be left-padded with zeros), and the parser
+ to expect an unsigned decimal number with the same fixed width.
+ @param fieldType  type of field to append
+ @param numDigits  the exact number of digits to parse or print, except if
+ printed value requires more digits
  @return this DateTimeFormatterBuilder, for chaining
  @throws IllegalArgumentException if field type is null or if <code>numDigits <= 0</code>
  @since 1.5
@@ -182,10 +254,13 @@
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType
                                                                                           withInt:(jint)numDigits;
 
-/**
- @brief Instructs the printer to emit a field value as a fixed-width decimal number (smaller numbers will be left-padded with zeros), and the parser to expect an signed decimal number with the same fixed width.
- @param fieldType type of field to append
- @param numDigits the exact number of digits to parse or print, except if printed value requires more digits
+/*!
+ @brief Instructs the printer to emit a field value as a fixed-width decimal
+ number (smaller numbers will be left-padded with zeros), and the parser
+ to expect an signed decimal number with the same fixed width.
+ @param fieldType  type of field to append
+ @param numDigits  the exact number of digits to parse or print, except if
+ printed value requires more digits
  @return this DateTimeFormatterBuilder, for chaining
  @throws IllegalArgumentException if field type is null or if <code>numDigits <= 0</code>
  @since 1.5
@@ -193,12 +268,16 @@
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendFixedSignedDecimalWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType
                                                                                                 withInt:(jint)numDigits;
 
-/**
- @brief Instructs the printer to emit a remainder of time as a decimal fraction, without decimal point.
- For example, if the field is specified as minuteOfHour and the time is 12:30:45, the value printed is 75. A decimal point is implied, so the fraction is 0.75, or three-quarters of a minute.
- @param fieldType type of field to append
- @param minDigits minimum number of digits to print.
- @param maxDigits maximum number of digits to print or parse.
+/*!
+ @brief Instructs the printer to emit a remainder of time as a decimal fraction,
+ without decimal point.
+ For example, if the field is specified as
+ minuteOfHour and the time is 12:30:45, the value printed is 75. A
+ decimal point is implied, so the fraction is 0.75, or three-quarters of
+ a minute.
+ @param fieldType  type of field to append
+ @param minDigits  minimum number of digits to print.
+ @param maxDigits  maximum number of digits to print or parse.
  @return this DateTimeFormatterBuilder, for chaining
  @throws IllegalArgumentException if field type is null
  */
@@ -206,174 +285,218 @@
                                                                                       withInt:(jint)minDigits
                                                                                       withInt:(jint)maxDigits;
 
-/**
+/*!
  @brief Appends the print/parse of a fractional day.
- <p> This reliably handles the case where fractional digits are being handled beyond a visible decimal point. The digits parsed will always be treated as the most significant (numerically largest) digits. Thus '23' will be parsed as 0.23 days (converted to milliseconds). This method does not print or parse the decimal point itself.
- @param minDigits minimum number of digits to print
- @param maxDigits maximum number of digits to print or parse
+ <p>
+ This reliably handles the case where fractional digits are being handled
+ beyond a visible decimal point. The digits parsed will always be treated
+ as the most significant (numerically largest) digits.
+ Thus '23' will be parsed as 0.23 days (converted to milliseconds).
+ This method does not print or parse the decimal point itself.
+ @param minDigits  minimum number of digits to print
+ @param maxDigits  maximum number of digits to print or parse
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendFractionOfDayWithInt:(jint)minDigits
                                                                   withInt:(jint)maxDigits;
 
-/**
+/*!
  @brief Appends the print/parse of a fractional hour.
- <p> This reliably handles the case where fractional digits are being handled beyond a visible decimal point. The digits parsed will always be treated as the most significant (numerically largest) digits. Thus '23' will be parsed as 0.23 hours (converted to milliseconds). This method does not print or parse the decimal point itself.
- @param minDigits minimum number of digits to print
- @param maxDigits maximum number of digits to print or parse
+ <p>
+ This reliably handles the case where fractional digits are being handled
+ beyond a visible decimal point. The digits parsed will always be treated
+ as the most significant (numerically largest) digits.
+ Thus '23' will be parsed as 0.23 hours (converted to milliseconds).
+ This method does not print or parse the decimal point itself.
+ @param minDigits  minimum number of digits to print
+ @param maxDigits  maximum number of digits to print or parse
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendFractionOfHourWithInt:(jint)minDigits
                                                                    withInt:(jint)maxDigits;
 
-/**
+/*!
  @brief Appends the print/parse of a fractional minute.
- <p> This reliably handles the case where fractional digits are being handled beyond a visible decimal point. The digits parsed will always be treated as the most significant (numerically largest) digits. Thus '23' will be parsed as 0.23 minutes (converted to milliseconds). This method does not print or parse the decimal point itself.
- @param minDigits minimum number of digits to print
- @param maxDigits maximum number of digits to print or parse
+ <p>
+ This reliably handles the case where fractional digits are being handled
+ beyond a visible decimal point. The digits parsed will always be treated
+ as the most significant (numerically largest) digits.
+ Thus '23' will be parsed as 0.23 minutes (converted to milliseconds).
+ This method does not print or parse the decimal point itself.
+ @param minDigits  minimum number of digits to print
+ @param maxDigits  maximum number of digits to print or parse
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendFractionOfMinuteWithInt:(jint)minDigits
                                                                      withInt:(jint)maxDigits;
 
-/**
+/*!
  @brief Appends the print/parse of a fractional second.
- <p> This reliably handles the case where fractional digits are being handled beyond a visible decimal point. The digits parsed will always be treated as the most significant (numerically largest) digits. Thus '23' will be parsed as 230 milliseconds. Contrast this behaviour to #appendMillisOfSecond . This method does not print or parse the decimal point itself.
- @param minDigits minimum number of digits to print
- @param maxDigits maximum number of digits to print or parse
+ <p>
+ This reliably handles the case where fractional digits are being handled
+ beyond a visible decimal point. The digits parsed will always be treated
+ as the most significant (numerically largest) digits.
+ Thus '23' will be parsed as 230 milliseconds.
+ Contrast this behaviour to <code>appendMillisOfSecond</code>.
+ This method does not print or parse the decimal point itself.
+ @param minDigits  minimum number of digits to print
+ @param maxDigits  maximum number of digits to print or parse
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendFractionOfSecondWithInt:(jint)minDigits
                                                                      withInt:(jint)maxDigits;
 
-/**
- @brief Instructs the printer to emit a locale-specific AM/PM text, and the parser to expect it.
+/*!
+ @brief Instructs the printer to emit a locale-specific AM/PM text, and the
+ parser to expect it.
  The parser is case-insensitive.
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendHalfdayOfDayText;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric hourOfDay field.
- @param minDigits minimum number of digits to print
+ @param minDigits  minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendHourOfDayWithInt:(jint)minDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric hourOfHalfday field.
- @param minDigits minimum number of digits to print
+ @param minDigits  minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendHourOfHalfdayWithInt:(jint)minDigits;
 
-/**
- @brief Instructs the printer to emit a specific character, and the parser to expect it.
+/*!
+ @brief Instructs the printer to emit a specific character, and the parser to
+ expect it.
  The parser is case-insensitive.
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendLiteralWithChar:(jchar)c;
 
-/**
- @brief Instructs the printer to emit specific text, and the parser to expect it.
+/*!
+ @brief Instructs the printer to emit specific text, and the parser to expect
+ it.
  The parser is case-insensitive.
  @return this DateTimeFormatterBuilder, for chaining
  @throws IllegalArgumentException if text is null
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendLiteralWithNSString:(NSString *)text;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric millisOfDay field.
- @param minDigits minimum number of digits to print
+ @param minDigits  minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendMillisOfDayWithInt:(jint)minDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric millisOfSecond field.
- <p> This method will append a field that prints a three digit value. During parsing the value that is parsed is assumed to be three digits. If less than three digits are present then they will be counted as the smallest parts of the millisecond. This is probably not what you want if you are using the field as a fraction. Instead, a fractional millisecond should be produced using #appendFractionOfSecond .
- @param minDigits minimum number of digits to print
+ <p>
+ This method will append a field that prints a three digit value.
+ During parsing the value that is parsed is assumed to be three digits.
+ If less than three digits are present then they will be counted as the
+ smallest parts of the millisecond. This is probably not what you want
+ if you are using the field as a fraction. Instead, a fractional
+ millisecond should be produced using <code>appendFractionOfSecond</code>.
+ @param minDigits  minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendMillisOfSecondWithInt:(jint)minDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric minuteOfDay field.
- @param minDigits minimum number of digits to print
+ @param minDigits  minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendMinuteOfDayWithInt:(jint)minDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric minuteOfHour field.
- @param minDigits minimum number of digits to print
+ @param minDigits  minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendMinuteOfHourWithInt:(jint)minDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric monthOfYear field.
- @param minDigits minimum number of digits to print
+ @param minDigits  minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendMonthOfYearWithInt:(jint)minDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a locale-specific monthOfYear text.
- The parser will accept a long or short monthOfYear text, case-insensitive.
+ The
+ parser will accept a long or short monthOfYear text, case-insensitive.
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendMonthOfYearShortText;
 
-/**
- @brief Instructs the printer to emit a short locale-specific monthOfYear text.
- The parser will accept a long or short monthOfYear text, case-insensitive.
+/*!
+ @brief Instructs the printer to emit a short locale-specific monthOfYear
+ text.
+ The parser will accept a long or short monthOfYear text,
+ case-insensitive.
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendMonthOfYearText;
 
-/**
+/*!
  @brief Appends just a parser element which is optional.
- With no matching printer, a printer cannot be built from this DateTimeFormatterBuilder. <p> The parser interface is part of the low-level part of the formatting API. Normally, instances are extracted from another formatter. Note however that any formatter specific information, such as the locale, time-zone, chronology, offset parsing or pivot/default year, will not be extracted by this method.
+ With no matching
+ printer, a printer cannot be built from this DateTimeFormatterBuilder.
+ <p>
+ The parser interface is part of the low-level part of the formatting API.
+ Normally, instances are extracted from another formatter.
+ Note however that any formatter specific information, such as the locale,
+ time-zone, chronology, offset parsing or pivot/default year, will not be
+ extracted by this method.
  @return this DateTimeFormatterBuilder, for chaining
  @throws IllegalArgumentException if parser is null or of an invalid type
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendOptionalWithOrgJodaTimeFormatDateTimeParser:(id<OrgJodaTimeFormatDateTimeParser>)parser;
 
-/**
- @brief Calls upon DateTimeFormat to parse the pattern and append the results into this builder.
- @param pattern pattern specification
+/*!
+ @brief Calls upon <code>DateTimeFormat</code> to parse the pattern and append the
+ results into this builder.
+ @param pattern  pattern specification
  @throws IllegalArgumentException if the pattern is invalid
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendPatternWithNSString:(NSString *)pattern;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric secondOfDay field.
- @param minDigits minimum number of digits to print
+ @param minDigits  minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendSecondOfDayWithInt:(jint)minDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric secondOfMinute field.
- @param minDigits minimum number of digits to print
+ @param minDigits  minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendSecondOfMinuteWithInt:(jint)minDigits;
 
-/**
- @brief Instructs the printer to emit a field value as short text, and the parser to expect text.
- @param fieldType type of field to append
+/*!
+ @brief Instructs the printer to emit a field value as short text, and the
+ parser to expect text.
+ @param fieldType  type of field to append
  @return this DateTimeFormatterBuilder, for chaining
  @throws IllegalArgumentException if field type is null
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendShortTextWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType;
 
-/**
- @brief Instructs the printer to emit a field value as a decimal number, and the parser to expect a signed decimal number.
- @param fieldType type of field to append
- @param minDigits minimum number of digits to <i>print</i>
- @param maxDigits maximum number of digits to <i>parse</i>, or the estimated maximum number of digits to print
+/*!
+ @brief Instructs the printer to emit a field value as a decimal number, and the
+ parser to expect a signed decimal number.
+ @param fieldType  type of field to append
+ @param minDigits  minimum number of digits to <i>print</i>
+ @param maxDigits  maximum number of digits to <i>parse</i>, or the estimated
+ maximum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  @throws IllegalArgumentException if field type is null
  */
@@ -381,43 +504,55 @@
                                                                                            withInt:(jint)minDigits
                                                                                            withInt:(jint)maxDigits;
 
-/**
- @brief Instructs the printer to emit a field value as text, and the parser to expect text.
- @param fieldType type of field to append
+/*!
+ @brief Instructs the printer to emit a field value as text, and the
+ parser to expect text.
+ @param fieldType  type of field to append
  @return this DateTimeFormatterBuilder, for chaining
  @throws IllegalArgumentException if field type is null
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTextWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)fieldType;
 
-/**
+/*!
  @brief Instructs the printer to emit the identifier of the time zone.
  From version 2.0, this field can be parsed.
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTimeZoneId;
 
-/**
+/*!
  @brief Instructs the printer to emit a locale-specific time zone name.
- Using this method prevents parsing, because time zone names are not unique. See #appendTimeZoneName(Map) .
+ Using this method prevents parsing, because time zone names are not unique.
+ See <code>appendTimeZoneName(Map)</code>.
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTimeZoneName;
 
-/**
+/*!
  @brief Instructs the printer to emit a locale-specific time zone name, providing a lookup for parsing.
- Time zone names are not unique, thus the API forces you to supply the lookup. The names are searched in the order of the map, thus it is strongly recommended to use a <code>LinkedHashMap</code> or similar.
- @param parseLookup the table of names, not null
+ Time zone names are not unique, thus the API forces you to supply the lookup.
+ The names are searched in the order of the map, thus it is strongly recommended
+ to use a <code>LinkedHashMap</code> or similar.
+ @param parseLookup  the table of names, not null
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTimeZoneNameWithJavaUtilMap:(id<JavaUtilMap>)parseLookup;
 
-/**
- @brief Instructs the printer to emit text and numbers to display time zone offset from UTC.
- A parser will use the parsed time zone offset to adjust the datetime. <p> If zero offset text is supplied, then it will be printed when the zone is zero. During parsing, either the zero offset text, or the offset will be parsed.
- @param zeroOffsetText the text to use if time zone offset is zero. If null, offset is always shown.
- @param showSeparators if true, prints ':' separator before minute and second field and prints '.' separator before fraction field.
- @param minFields minimum number of fields to print, stopping when no more precision is required. 1=hours, 2=minutes, 3=seconds, 4=fraction
- @param maxFields maximum number of fields to print
+/*!
+ @brief Instructs the printer to emit text and numbers to display time zone
+ offset from UTC.
+ A parser will use the parsed time zone offset to adjust
+ the datetime.
+ <p>
+ If zero offset text is supplied, then it will be printed when the zone is zero.
+ During parsing, either the zero offset text, or the offset will be parsed.
+ @param zeroOffsetText  the text to use if time zone offset is zero. If
+ null, offset is always shown.
+ @param showSeparators  if true, prints ':' separator before minute and
+ second field and prints '.' separator before fraction field.
+ @param minFields  minimum number of fields to print, stopping when no
+ more precision is required. 1=hours, 2=minutes, 3=seconds, 4=fraction
+ @param maxFields  maximum number of fields to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTimeZoneOffsetWithNSString:(NSString *)zeroOffsetText
@@ -425,14 +560,23 @@
                                                                         withInt:(jint)minFields
                                                                         withInt:(jint)maxFields;
 
-/**
- @brief Instructs the printer to emit text and numbers to display time zone offset from UTC.
- A parser will use the parsed time zone offset to adjust the datetime. <p> If zero offset print text is supplied, then it will be printed when the zone is zero. If zero offset parse text is supplied, then either it or the offset will be parsed.
- @param zeroOffsetPrintText the text to print if time zone offset is zero. If null, offset is always shown.
- @param zeroOffsetParseText the text to optionally parse to indicate that the time zone offset is zero. If null, then always use the offset.
- @param showSeparators if true, prints ':' separator before minute and second field and prints '.' separator before fraction field.
- @param minFields minimum number of fields to print, stopping when no more precision is required. 1=hours, 2=minutes, 3=seconds, 4=fraction
- @param maxFields maximum number of fields to print
+/*!
+ @brief Instructs the printer to emit text and numbers to display time zone
+ offset from UTC.
+ A parser will use the parsed time zone offset to adjust
+ the datetime.
+ <p>
+ If zero offset print text is supplied, then it will be printed when the zone is zero.
+ If zero offset parse text is supplied, then either it or the offset will be parsed.
+ @param zeroOffsetPrintText  the text to print if time zone offset is zero. If
+ null, offset is always shown.
+ @param zeroOffsetParseText  the text to optionally parse to indicate that the time
+ zone offset is zero. If null, then always use the offset.
+ @param showSeparators  if true, prints ':' separator before minute and
+ second field and prints '.' separator before fraction field.
+ @param minFields  minimum number of fields to print, stopping when no
+ more precision is required. 1=hours, 2=minutes, 3=seconds, 4=fraction
+ @param maxFields  maximum number of fields to print
  @return this DateTimeFormatterBuilder, for chaining
  @since 2.0
  */
@@ -442,142 +586,213 @@
                                                                         withInt:(jint)minFields
                                                                         withInt:(jint)maxFields;
 
-/**
+/*!
  @brief Instructs the printer to emit a short locale-specific time zone name.
- Using this method prevents parsing, because time zone names are not unique. See #appendTimeZoneShortName(Map) .
+ Using this method prevents parsing, because time zone names are not unique.
+ See <code>appendTimeZoneShortName(Map)</code>.
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTimeZoneShortName;
 
-/**
- @brief Instructs the printer to emit a short locale-specific time zone name, providing a lookup for parsing.
- Time zone names are not unique, thus the API forces you to supply the lookup. The names are searched in the order of the map, thus it is strongly recommended to use a <code>LinkedHashMap</code> or similar.
- @param parseLookup the table of names, null to use the DateTimeUtils#getDefaultTimeZoneNames() default names
+/*!
+ @brief Instructs the printer to emit a short locale-specific time zone
+ name, providing a lookup for parsing.
+ Time zone names are not unique, thus the API forces you to supply the lookup.
+ The names are searched in the order of the map, thus it is strongly recommended
+ to use a <code>LinkedHashMap</code> or similar.
+ @param parseLookup  the table of names, null to use the <code>default names</code>
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTimeZoneShortNameWithJavaUtilMap:(id<JavaUtilMap>)parseLookup;
 
-/**
- @brief Instructs the printer to emit a numeric weekyear field which always prints and parses two digits.
- A pivot year is used during parsing to determine the range of supported years as <code>(pivot - 50) .. (pivot + 49)</code>. <pre> pivot   supported range   00 is   20 is   40 is   60 is   80 is --------------------------------------------------------------- 1950      1900..1999      1900    1920    1940    1960    1980 1975      1925..2024      2000    2020    1940    1960    1980 2000      1950..2049      2000    2020    2040    1960    1980 2025      1975..2074      2000    2020    2040    2060    1980 2050      2000..2099      2000    2020    2040    2060    2080 </pre>
- @param pivot pivot weekyear to use when parsing
+/*!
+ @brief Instructs the printer to emit a numeric weekyear field which always prints
+ and parses two digits.
+ A pivot year is used during parsing to determine
+ the range of supported years as <code>(pivot - 50) .. (pivot + 49)</code>.
+ @code
+
+  pivot   supported range   00 is   20 is   40 is   60 is   80 is
+  ---------------------------------------------------------------
+  1950      1900..1999      1900    1920    1940    1960    1980
+  1975      1925..2024      2000    2020    1940    1960    1980
+  2000      1950..2049      2000    2020    2040    1960    1980
+  2025      1975..2074      2000    2020    2040    2060    1980
+  2050      2000..2099      2000    2020    2040    2060    2080
+  
+@endcode
+ @param pivot  pivot weekyear to use when parsing
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTwoDigitWeekyearWithInt:(jint)pivot;
 
-/**
- @brief Instructs the printer to emit a numeric weekyear field which always prints two digits.
- A pivot year is used during parsing to determine the range of supported years as <code>(pivot - 50) .. (pivot + 49)</code>. If parse is instructed to be lenient and the digit count is not two, it is treated as an absolute weekyear. With lenient parsing, specifying a positive or negative sign before the weekyear also makes it absolute.
- @param pivot pivot weekyear to use when parsing
- @param lenientParse when true, if digit count is not two, it is treated as an absolute weekyear
+/*!
+ @brief Instructs the printer to emit a numeric weekyear field which always prints
+ two digits.
+ A pivot year is used during parsing to determine the range
+ of supported years as <code>(pivot - 50) .. (pivot + 49)</code>. If
+ parse is instructed to be lenient and the digit count is not two, it is
+ treated as an absolute weekyear. With lenient parsing, specifying a positive
+ or negative sign before the weekyear also makes it absolute.
+ @param pivot  pivot weekyear to use when parsing
+ @param lenientParse  when true, if digit count is not two, it is treated
+ as an absolute weekyear
  @return this DateTimeFormatterBuilder, for chaining
  @since 1.1
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTwoDigitWeekyearWithInt:(jint)pivot
                                                                  withBoolean:(jboolean)lenientParse;
 
-/**
- @brief Instructs the printer to emit a numeric year field which always prints and parses two digits.
- A pivot year is used during parsing to determine the range of supported years as <code>(pivot - 50) .. (pivot + 49)</code>. <pre> pivot   supported range   00 is   20 is   40 is   60 is   80 is --------------------------------------------------------------- 1950      1900..1999      1900    1920    1940    1960    1980 1975      1925..2024      2000    2020    1940    1960    1980 2000      1950..2049      2000    2020    2040    1960    1980 2025      1975..2074      2000    2020    2040    2060    1980 2050      2000..2099      2000    2020    2040    2060    2080 </pre>
- @param pivot pivot year to use when parsing
+/*!
+ @brief Instructs the printer to emit a numeric year field which always prints
+ and parses two digits.
+ A pivot year is used during parsing to determine
+ the range of supported years as <code>(pivot - 50) .. (pivot + 49)</code>.
+ @code
+
+  pivot   supported range   00 is   20 is   40 is   60 is   80 is
+  ---------------------------------------------------------------
+  1950      1900..1999      1900    1920    1940    1960    1980
+  1975      1925..2024      2000    2020    1940    1960    1980
+  2000      1950..2049      2000    2020    2040    1960    1980
+  2025      1975..2074      2000    2020    2040    2060    1980
+  2050      2000..2099      2000    2020    2040    2060    2080
+  
+@endcode
+ @param pivot  pivot year to use when parsing
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTwoDigitYearWithInt:(jint)pivot;
 
-/**
- @brief Instructs the printer to emit a numeric year field which always prints two digits.
- A pivot year is used during parsing to determine the range of supported years as <code>(pivot - 50) .. (pivot + 49)</code>. If parse is instructed to be lenient and the digit count is not two, it is treated as an absolute year. With lenient parsing, specifying a positive or negative sign before the year also makes it absolute.
- @param pivot pivot year to use when parsing
- @param lenientParse when true, if digit count is not two, it is treated as an absolute year
+/*!
+ @brief Instructs the printer to emit a numeric year field which always prints
+ two digits.
+ A pivot year is used during parsing to determine the range
+ of supported years as <code>(pivot - 50) .. (pivot + 49)</code>. If
+ parse is instructed to be lenient and the digit count is not two, it is
+ treated as an absolute year. With lenient parsing, specifying a positive
+ or negative sign before the year also makes it absolute.
+ @param pivot  pivot year to use when parsing
+ @param lenientParse  when true, if digit count is not two, it is treated
+ as an absolute year
  @return this DateTimeFormatterBuilder, for chaining
  @since 1.1
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendTwoDigitYearWithInt:(jint)pivot
                                                              withBoolean:(jboolean)lenientParse;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric weekOfWeekyear field.
- @param minDigits minimum number of digits to print
+ @param minDigits  minimum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendWeekOfWeekyearWithInt:(jint)minDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric weekyear field.
- @param minDigits minimum number of digits to <i>print</i>
- @param maxDigits maximum number of digits to <i>parse</i>, or the estimated maximum number of digits to print
+ @param minDigits  minimum number of digits to <i>print</i>
+ @param maxDigits  maximum number of digits to <i>parse</i>, or the estimated
+ maximum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendWeekyearWithInt:(jint)minDigits
                                                              withInt:(jint)maxDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric year field.
- @param minDigits minimum number of digits to <i>print</i>
- @param maxDigits maximum number of digits to <i>parse</i>, or the estimated maximum number of digits to print
+ @param minDigits  minimum number of digits to <i>print</i>
+ @param maxDigits  maximum number of digits to <i>parse</i>, or the estimated
+ maximum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendYearWithInt:(jint)minDigits
                                                          withInt:(jint)maxDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric year of century field.
- @param minDigits minimum number of digits to print
- @param maxDigits maximum number of digits to <i>parse</i>, or the estimated maximum number of digits to print
+ @param minDigits  minimum number of digits to print
+ @param maxDigits  maximum number of digits to <i>parse</i>, or the estimated
+ maximum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendYearOfCenturyWithInt:(jint)minDigits
                                                                   withInt:(jint)maxDigits;
 
-/**
+/*!
  @brief Instructs the printer to emit a numeric yearOfEra field.
- @param minDigits minimum number of digits to <i>print</i>
- @param maxDigits maximum number of digits to <i>parse</i>, or the estimated maximum number of digits to print
+ @param minDigits  minimum number of digits to <i>print</i>
+ @param maxDigits  maximum number of digits to <i>parse</i>, or the estimated
+ maximum number of digits to print
  @return this DateTimeFormatterBuilder, for chaining
  */
 - (OrgJodaTimeFormatDateTimeFormatterBuilder *)appendYearOfEraWithInt:(jint)minDigits
                                                               withInt:(jint)maxDigits;
 
-/**
- @brief Returns true if toFormatter can be called without throwing an UnsupportedOperationException.
+/*!
+ @brief Returns true if toFormatter can be called without throwing an
+ UnsupportedOperationException.
  @return true if a formatter can be built
  */
 - (jboolean)canBuildFormatter;
 
-/**
- @brief Returns true if toParser can be called without throwing an UnsupportedOperationException.
+/*!
+ @brief Returns true if toParser can be called without throwing an
+ UnsupportedOperationException.
  @return true if a parser can be built
  */
 - (jboolean)canBuildParser;
 
-/**
- @brief Returns true if toPrinter can be called without throwing an UnsupportedOperationException.
+/*!
+ @brief Returns true if toPrinter can be called without throwing an
+ UnsupportedOperationException.
  @return true if a printer can be built
  */
 - (jboolean)canBuildPrinter;
 
-/**
- @brief Clears out all the appended elements, allowing this builder to be reused.
+/*!
+ @brief Clears out all the appended elements, allowing this builder to be
+ reused.
  */
 - (void)clear;
 
-/**
+/*!
  @brief Constructs a DateTimeFormatter using all the appended elements.
- <p> This is the main method used by applications at the end of the build process to create a usable formatter. <p> Subsequent changes to this builder do not affect the returned formatter. <p> The returned formatter may not support both printing and parsing. The methods DateTimeFormatter#isPrinter() and DateTimeFormatter#isParser() will help you determine the state of the formatter.
+ <p>
+ This is the main method used by applications at the end of the build
+ process to create a usable formatter.
+ <p>
+ Subsequent changes to this builder do not affect the returned formatter.
+ <p>
+ The returned formatter may not support both printing and parsing.
+ The methods <code>DateTimeFormatter.isPrinter()</code> and
+ <code>DateTimeFormatter.isParser()</code> will help you determine the state
+ of the formatter.
  @throws UnsupportedOperationException if neither printing nor parsing is supported
  */
 - (OrgJodaTimeFormatDateTimeFormatter *)toFormatter;
 
-/**
- @brief Internal method to create a DateTimeParser instance using all the appended elements.
- <p> Most applications will not use this method. If you want a parser in an application, call #toFormatter() and just use the parsing API. <p> Subsequent changes to this builder do not affect the returned parser.
+/*!
+ @brief Internal method to create a DateTimeParser instance using all the
+ appended elements.
+ <p>
+ Most applications will not use this method.
+ If you want a parser in an application, call <code>toFormatter()</code>
+ and just use the parsing API.
+ <p>
+ Subsequent changes to this builder do not affect the returned parser.
  @throws UnsupportedOperationException if parsing is not supported
  */
 - (id<OrgJodaTimeFormatDateTimeParser>)toParser;
 
-/**
- @brief Internal method to create a DateTimePrinter instance using all the appended elements.
- <p> Most applications will not use this method. If you want a printer in an application, call #toFormatter() and just use the printing API. <p> Subsequent changes to this builder do not affect the returned printer.
+/*!
+ @brief Internal method to create a DateTimePrinter instance using all the
+ appended elements.
+ <p>
+ Most applications will not use this method.
+ If you want a printer in an application, call <code>toFormatter()</code>
+ and just use the printing API.
+ <p>
+ Subsequent changes to this builder do not affect the returned printer.
  @throws UnsupportedOperationException if printing is not supported
  */
 - (id<OrgJodaTimeFormatDateTimePrinter>)toPrinter;

@@ -47,21 +47,21 @@
   jlong iGapDuration_;
 }
 
-/**
+/*!
  @brief Convert a datetime from one chronology to another.
  */
 + (jlong)convertByYearWithLong:(jlong)instant
      withOrgJodaTimeChronology:(OrgJodaTimeChronology *)from
      withOrgJodaTimeChronology:(OrgJodaTimeChronology *)to;
 
-/**
+/*!
  @brief Convert a datetime from one chronology to another.
  */
 + (jlong)convertByWeekyearWithLong:(jlong)instant
          withOrgJodaTimeChronology:(OrgJodaTimeChronology *)from
          withOrgJodaTimeChronology:(OrgJodaTimeChronology *)to;
 
-/**
+/*!
  @param julian chronology used before the cutover instant
  @param gregorian chronology used at and after the cutover instant
  @param cutoverInstant instant when the gregorian chronology began
@@ -70,7 +70,7 @@
                  withOrgJodaTimeChronoGregorianChronology:(OrgJodaTimeChronoGregorianChronology *)gregorian
                                    withOrgJodaTimeInstant:(OrgJodaTimeInstant *)cutoverInstant;
 
-/**
+/*!
  @brief Called when applying a time zone.
  */
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
@@ -78,7 +78,7 @@
      withOrgJodaTimeChronoGregorianChronology:(OrgJodaTimeChronoGregorianChronology *)gregorian
                        withOrgJodaTimeInstant:(OrgJodaTimeInstant *)cutoverInstant;
 
-/**
+/*!
  @brief Serialization singleton
  */
 - (id)readResolve;
@@ -108,8 +108,9 @@ __attribute__((unused)) static OrgJodaTimeChronoGJChronology *new_OrgJodaTimeChr
 
 #define OrgJodaTimeChronoGJChronology_CutoverField_serialVersionUID 3528501219481026402LL
 
-/**
- @brief This basic cutover field adjusts calls to 'get' and 'set' methods, and assumes that calls to add and addWrapField are unaffected by the cutover.
+/*!
+ @brief This basic cutover field adjusts calls to 'get' and 'set' methods, and
+ assumes that calls to add and addWrapField are unaffected by the cutover.
  */
 @interface OrgJodaTimeChronoGJChronology_CutoverField : OrgJodaTimeFieldBaseDateTimeField {
  @public
@@ -122,20 +123,20 @@ __attribute__((unused)) static OrgJodaTimeChronoGJChronology *new_OrgJodaTimeChr
   OrgJodaTimeDurationField *iRangeDurationField_;
 }
 
-/**
+/*!
  @param julianField field from the chronology used before the cutover instant
  @param gregorianField field from the chronology used at and after the cutover
- @param cutoverMillis the millis of the cutover
+ @param cutoverMillis  the millis of the cutover
  */
 - (instancetype)initWithOrgJodaTimeChronoGJChronology:(OrgJodaTimeChronoGJChronology *)outer$
                          withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)julianField
                          withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)gregorianField
                                              withLong:(jlong)cutoverMillis;
 
-/**
+/*!
  @param julianField field from the chronology used before the cutover instant
  @param gregorianField field from the chronology used at and after the cutover
- @param cutoverMillis the millis of the cutover
+ @param cutoverMillis  the millis of the cutover
  @param convertByWeekyear
  */
 - (instancetype)initWithOrgJodaTimeChronoGJChronology:(OrgJodaTimeChronoGJChronology *)outer$
@@ -144,11 +145,11 @@ __attribute__((unused)) static OrgJodaTimeChronoGJChronology *new_OrgJodaTimeChr
                                              withLong:(jlong)cutoverMillis
                                           withBoolean:(jboolean)convertByWeekyear;
 
-/**
+/*!
  @param julianField field from the chronology used before the cutover instant
  @param gregorianField field from the chronology used at and after the cutover
- @param rangeField the range field
- @param cutoverMillis the millis of the cutover
+ @param rangeField  the range field
+ @param cutoverMillis  the millis of the cutover
  @param convertByWeekyear
  */
 - (instancetype)initWithOrgJodaTimeChronoGJChronology:(OrgJodaTimeChronoGJChronology *)outer$
@@ -266,16 +267,19 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJChronology_CutoverField)
 
 #define OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_serialVersionUID 3410248757173576441LL
 
-/**
+/*!
  @brief Cutover field for variable length fields.
- These fields internally call set whenever add is called. As a result, the same correction applied to set must be applied to add and addWrapField. Knowing when to use this field requires specific knowledge of how the GJ fields are implemented.
+ These fields internally call
+ set whenever add is called. As a result, the same correction applied to
+ set must be applied to add and addWrapField. Knowing when to use this
+ field requires specific knowledge of how the GJ fields are implemented.
  */
 @interface OrgJodaTimeChronoGJChronology_ImpreciseCutoverField : OrgJodaTimeChronoGJChronology_CutoverField {
  @public
   OrgJodaTimeChronoGJChronology *this$1_;
 }
 
-/**
+/*!
  @brief Creates a duration field that links back to this.
  */
 - (instancetype)initWithOrgJodaTimeChronoGJChronology:(OrgJodaTimeChronoGJChronology *)outer$
@@ -283,7 +287,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJChronology_CutoverField)
                          withOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)gregorianField
                                              withLong:(jlong)cutoverMillis;
 
-/**
+/*!
  @brief Uses a shared duration field rather than creating a new one.
  @param durationField shared duration field
  */
@@ -293,7 +297,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJChronology_CutoverField)
                          withOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)durationField
                                              withLong:(jlong)cutoverMillis;
 
-/**
+/*!
  @brief Uses shared duration fields rather than creating a new one.
  @param durationField shared duration field
  */
@@ -304,7 +308,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJChronology_CutoverField)
                          withOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)rangeDurationField
                                              withLong:(jlong)cutoverMillis;
 
-/**
+/*!
  @brief Uses a shared duration field rather than creating a new one.
  @param durationField shared duration field
  */
@@ -359,7 +363,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJChronology_ImpreciseCutoverField)
 
 #define OrgJodaTimeChronoGJChronology_LinkedDurationField_serialVersionUID 4097975388007713084LL
 
-/**
+/*!
  @brief Links the duration back to a ImpreciseCutoverField.
  */
 @interface OrgJodaTimeChronoGJChronology_LinkedDurationField : OrgJodaTimeFieldDecoratedDurationField {
@@ -467,11 +471,11 @@ OrgJodaTimeInstant *OrgJodaTimeChronoGJChronology_DEFAULT_CUTOVER_;
   if ((base = [self getBase]) != nil) {
     return [((OrgJodaTimeChronology *) nil_chk(base)) getZone];
   }
-  return OrgJodaTimeDateTimeZone_get_UTC_();
+  return JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_);
 }
 
 - (OrgJodaTimeChronology *)withUTC {
-  return [self withZoneWithOrgJodaTimeDateTimeZone:OrgJodaTimeDateTimeZone_get_UTC_()];
+  return [self withZoneWithOrgJodaTimeDateTimeZone:JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_)];
 }
 
 - (OrgJodaTimeChronology *)withZoneWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
@@ -545,13 +549,13 @@ OrgJodaTimeInstant *OrgJodaTimeChronoGJChronology_DEFAULT_CUTOVER_;
 
 - (jboolean)isEqual:(id)obj {
   if (self == obj) {
-    return YES;
+    return true;
   }
   if ([obj isKindOfClass:[OrgJodaTimeChronoGJChronology class]]) {
     OrgJodaTimeChronoGJChronology *chrono = (OrgJodaTimeChronoGJChronology *) check_class_cast(obj, [OrgJodaTimeChronoGJChronology class]);
     return iCutoverMillis_ == ((OrgJodaTimeChronoGJChronology *) nil_chk(chrono))->iCutoverMillis_ && [self getMinimumDaysInFirstWeek] == [chrono getMinimumDaysInFirstWeek] && [((OrgJodaTimeDateTimeZone *) nil_chk([self getZone])) isEqual:[chrono getZone]];
   }
-  return NO;
+  return false;
 }
 
 - (NSUInteger)hash {
@@ -588,9 +592,9 @@ OrgJodaTimeInstant *OrgJodaTimeChronoGJChronology_DEFAULT_CUTOVER_;
   OrgJodaTimeChronoGregorianChronology *gregorian = (OrgJodaTimeChronoGregorianChronology *) check_class_cast(IOSObjectArray_Get(params, 1), [OrgJodaTimeChronoGregorianChronology class]);
   OrgJodaTimeInstant *cutoverInstant = (OrgJodaTimeInstant *) check_class_cast(IOSObjectArray_Get(params, 2), [OrgJodaTimeInstant class]);
   iCutoverMillis_ = [((OrgJodaTimeInstant *) nil_chk(cutoverInstant)) getMillis];
-  OrgJodaTimeChronoGJChronology_set_iJulianChronology_(self, julian);
-  OrgJodaTimeChronoGJChronology_set_iGregorianChronology_(self, gregorian);
-  OrgJodaTimeChronoGJChronology_set_iCutoverInstant_(self, cutoverInstant);
+  JreStrongAssign(&iJulianChronology_, julian);
+  JreStrongAssign(&iGregorianChronology_, gregorian);
+  JreStrongAssign(&iCutoverInstant_, cutoverInstant);
   if ([self getBase] != nil) {
     return;
   }
@@ -600,46 +604,46 @@ OrgJodaTimeInstant *OrgJodaTimeChronoGJChronology_DEFAULT_CUTOVER_;
   iGapDuration_ = iCutoverMillis_ - [self julianToGregorianByYearWithLong:iCutoverMillis_];
   [((OrgJodaTimeChronoAssembledChronology_Fields *) nil_chk(fields)) copyFieldsFromWithOrgJodaTimeChronology:gregorian];
   if ([((OrgJodaTimeDateTimeField *) nil_chk([gregorian millisOfDay])) getWithLong:iCutoverMillis_] == 0) {
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_millisOfSecond_(fields, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian millisOfSecond], fields->millisOfSecond_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_millisOfDay_(fields, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian millisOfDay], fields->millisOfDay_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_secondOfMinute_(fields, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian secondOfMinute], fields->secondOfMinute_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_secondOfDay_(fields, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian secondOfDay], fields->secondOfDay_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_minuteOfHour_(fields, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian minuteOfHour], fields->minuteOfHour_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_minuteOfDay_(fields, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian minuteOfDay], fields->minuteOfDay_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_hourOfDay_(fields, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian hourOfDay], fields->hourOfDay_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_hourOfHalfday_(fields, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian hourOfHalfday], fields->hourOfHalfday_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_clockhourOfDay_(fields, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian clockhourOfDay], fields->clockhourOfDay_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_clockhourOfHalfday_(fields, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian clockhourOfHalfday], fields->clockhourOfHalfday_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_halfdayOfDay_(fields, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian halfdayOfDay], fields->halfdayOfDay_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->millisOfSecond_, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian millisOfSecond], fields->millisOfSecond_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->millisOfDay_, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian millisOfDay], fields->millisOfDay_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->secondOfMinute_, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian secondOfMinute], fields->secondOfMinute_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->secondOfDay_, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian secondOfDay], fields->secondOfDay_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->minuteOfHour_, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian minuteOfHour], fields->minuteOfHour_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->minuteOfDay_, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian minuteOfDay], fields->minuteOfDay_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->hourOfDay_, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian hourOfDay], fields->hourOfDay_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->hourOfHalfday_, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian hourOfHalfday], fields->hourOfHalfday_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->clockhourOfDay_, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian clockhourOfDay], fields->clockhourOfDay_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->clockhourOfHalfday_, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian clockhourOfHalfday], fields->clockhourOfHalfday_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->halfdayOfDay_, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian halfdayOfDay], fields->halfdayOfDay_, iCutoverMillis_));
   }
   {
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_era_(fields, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian era], fields->era_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->era_, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian era], fields->era_, iCutoverMillis_));
   }
   {
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_year_(fields, new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian year], fields->year_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_set_years_(fields, [fields->year_ getDurationField]);
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_yearOfEra_(fields, new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_(self, [julian yearOfEra], fields->yearOfEra_, fields->years_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_centuryOfEra_(fields, new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian centuryOfEra], fields->centuryOfEra_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_set_centuries_(fields, [fields->centuryOfEra_ getDurationField]);
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_yearOfCentury_(fields, new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withLong_(self, [julian yearOfCentury], fields->yearOfCentury_, fields->years_, fields->centuries_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_monthOfYear_(fields, new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withLong_(self, [julian monthOfYear], fields->monthOfYear_, nil, fields->years_, iCutoverMillis_));
-    OrgJodaTimeChronoAssembledChronology_Fields_set_months_(fields, [fields->monthOfYear_ getDurationField]);
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_weekyear_(fields, new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(self, [julian weekyear], fields->weekyear_, nil, iCutoverMillis_, YES));
-    OrgJodaTimeChronoAssembledChronology_Fields_set_weekyears_(fields, [fields->weekyear_ getDurationField]);
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_weekyearOfCentury_(fields, new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withLong_(self, [julian weekyearOfCentury], fields->weekyearOfCentury_, fields->weekyears_, fields->centuries_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->year_, new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian year], fields->year_, iCutoverMillis_));
+    JreStrongAssign(&fields->years_, [fields->year_ getDurationField]);
+    JreStrongAssignAndConsume(&fields->yearOfEra_, new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_(self, [julian yearOfEra], fields->yearOfEra_, fields->years_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->centuryOfEra_, new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian centuryOfEra], fields->centuryOfEra_, iCutoverMillis_));
+    JreStrongAssign(&fields->centuries_, [fields->centuryOfEra_ getDurationField]);
+    JreStrongAssignAndConsume(&fields->yearOfCentury_, new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withLong_(self, [julian yearOfCentury], fields->yearOfCentury_, fields->years_, fields->centuries_, iCutoverMillis_));
+    JreStrongAssignAndConsume(&fields->monthOfYear_, new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withLong_(self, [julian monthOfYear], fields->monthOfYear_, nil, fields->years_, iCutoverMillis_));
+    JreStrongAssign(&fields->months_, [fields->monthOfYear_ getDurationField]);
+    JreStrongAssignAndConsume(&fields->weekyear_, new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(self, [julian weekyear], fields->weekyear_, nil, iCutoverMillis_, true));
+    JreStrongAssign(&fields->weekyears_, [fields->weekyear_ getDurationField]);
+    JreStrongAssignAndConsume(&fields->weekyearOfCentury_, new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withLong_(self, [julian weekyearOfCentury], fields->weekyearOfCentury_, fields->weekyears_, fields->centuries_, iCutoverMillis_));
   }
   {
     jlong cutover = [((OrgJodaTimeDateTimeField *) nil_chk([gregorian year])) roundCeilingWithLong:iCutoverMillis_];
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_dayOfYear_(fields, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(self, [julian dayOfYear], fields->dayOfYear_, fields->years_, cutover, NO));
+    JreStrongAssignAndConsume(&fields->dayOfYear_, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(self, [julian dayOfYear], fields->dayOfYear_, fields->years_, cutover, false));
   }
   {
     jlong cutover = [((OrgJodaTimeDateTimeField *) nil_chk([gregorian weekyear])) roundCeilingWithLong:iCutoverMillis_];
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_weekOfWeekyear_(fields, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(self, [julian weekOfWeekyear], fields->weekOfWeekyear_, fields->weekyears_, cutover, YES));
+    JreStrongAssignAndConsume(&fields->weekOfWeekyear_, new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(self, [julian weekOfWeekyear], fields->weekOfWeekyear_, fields->weekyears_, cutover, true));
   }
   {
     OrgJodaTimeChronoGJChronology_CutoverField *cf = [new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(self, [julian dayOfMonth], fields->dayOfMonth_, iCutoverMillis_) autorelease];
-    OrgJodaTimeChronoGJChronology_CutoverField_set_iRangeDurationField_(cf, fields->months_);
-    OrgJodaTimeChronoAssembledChronology_Fields_set_dayOfMonth_(fields, cf);
+    JreStrongAssign(&cf->iRangeDurationField_, fields->months_);
+    JreStrongAssign(&fields->dayOfMonth_, cf);
   }
 }
 
@@ -668,8 +672,8 @@ OrgJodaTimeInstant *OrgJodaTimeChronoGJChronology_DEFAULT_CUTOVER_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeChronoGJChronology class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeChronoGJChronology_DEFAULT_CUTOVER_, nil, new_OrgJodaTimeInstant_initWithLong_(-12219292800000LL));
-    JreStrongAssignAndConsume(&OrgJodaTimeChronoGJChronology_cCache_, nil, new_JavaUtilConcurrentConcurrentHashMap_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeChronoGJChronology_DEFAULT_CUTOVER_, new_OrgJodaTimeInstant_initWithLong_(-12219292800000LL));
+    JreStrongAssignAndConsume(&OrgJodaTimeChronoGJChronology_cCache_, new_JavaUtilConcurrentConcurrentHashMap_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeChronoGJChronology)
   }
 }
@@ -705,13 +709,13 @@ OrgJodaTimeInstant *OrgJodaTimeChronoGJChronology_DEFAULT_CUTOVER_;
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoGJChronology_serialVersionUID },
-    { "DEFAULT_CUTOVER_", NULL, 0x18, "Lorg.joda.time.Instant;", &OrgJodaTimeChronoGJChronology_DEFAULT_CUTOVER_, NULL,  },
-    { "cCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoGJChronology_cCache_, "Ljava/util/concurrent/ConcurrentHashMap<Lorg/joda/time/chrono/GJCacheKey;Lorg/joda/time/chrono/GJChronology;>;",  },
-    { "iJulianChronology_", NULL, 0x2, "Lorg.joda.time.chrono.JulianChronology;", NULL, NULL,  },
-    { "iGregorianChronology_", NULL, 0x2, "Lorg.joda.time.chrono.GregorianChronology;", NULL, NULL,  },
-    { "iCutoverInstant_", NULL, 0x2, "Lorg.joda.time.Instant;", NULL, NULL,  },
-    { "iCutoverMillis_", NULL, 0x2, "J", NULL, NULL,  },
-    { "iGapDuration_", NULL, 0x2, "J", NULL, NULL,  },
+    { "DEFAULT_CUTOVER_", NULL, 0x18, "Lorg.joda.time.Instant;", &OrgJodaTimeChronoGJChronology_DEFAULT_CUTOVER_, NULL, .constantValue.asLong = 0 },
+    { "cCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoGJChronology_cCache_, "Ljava/util/concurrent/ConcurrentHashMap<Lorg/joda/time/chrono/GJCacheKey;Lorg/joda/time/chrono/GJChronology;>;", .constantValue.asLong = 0 },
+    { "iJulianChronology_", NULL, 0x2, "Lorg.joda.time.chrono.JulianChronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iGregorianChronology_", NULL, 0x2, "Lorg.joda.time.chrono.GregorianChronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iCutoverInstant_", NULL, 0x2, "Lorg.joda.time.Instant;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iCutoverMillis_", NULL, 0x2, "J", NULL, NULL, .constantValue.asLong = 0 },
+    { "iGapDuration_", NULL, 0x2, "J", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lorg.joda.time.chrono.GJChronology$CutoverField;", "Lorg.joda.time.chrono.GJChronology$ImpreciseCutoverField;", "Lorg.joda.time.chrono.GJChronology$LinkedDurationField;"};
   static const J2ObjcClassInfo _OrgJodaTimeChronoGJChronology = { 2, "GJChronology", "org.joda.time.chrono", NULL, 0x11, 26, methods, 8, fields, 0, NULL, 3, inner_classes, NULL, NULL };
@@ -737,7 +741,7 @@ jlong OrgJodaTimeChronoGJChronology_convertByWeekyearWithLong_withOrgJodaTimeChr
 
 OrgJodaTimeChronoGJChronology *OrgJodaTimeChronoGJChronology_getInstanceUTC() {
   OrgJodaTimeChronoGJChronology_initialize();
-  return OrgJodaTimeChronoGJChronology_getInstanceWithOrgJodaTimeDateTimeZone_withOrgJodaTimeReadableInstant_withInt_(OrgJodaTimeDateTimeZone_get_UTC_(), OrgJodaTimeChronoGJChronology_DEFAULT_CUTOVER_, 4);
+  return OrgJodaTimeChronoGJChronology_getInstanceWithOrgJodaTimeDateTimeZone_withOrgJodaTimeReadableInstant_withInt_(JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_), OrgJodaTimeChronoGJChronology_DEFAULT_CUTOVER_, 4);
 }
 
 OrgJodaTimeChronoGJChronology *OrgJodaTimeChronoGJChronology_getInstance() {
@@ -772,11 +776,11 @@ OrgJodaTimeChronoGJChronology *OrgJodaTimeChronoGJChronology_getInstanceWithOrgJ
   OrgJodaTimeChronoGJCacheKey *cacheKey = [new_OrgJodaTimeChronoGJCacheKey_initWithOrgJodaTimeDateTimeZone_withOrgJodaTimeInstant_withInt_(zone, cutoverInstant, minDaysInFirstWeek) autorelease];
   OrgJodaTimeChronoGJChronology *chrono = [((JavaUtilConcurrentConcurrentHashMap *) nil_chk(OrgJodaTimeChronoGJChronology_cCache_)) getWithId:cacheKey];
   if (chrono == nil) {
-    if (zone == OrgJodaTimeDateTimeZone_get_UTC_()) {
+    if (zone == JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_)) {
       chrono = [new_OrgJodaTimeChronoGJChronology_initWithOrgJodaTimeChronoJulianChronology_withOrgJodaTimeChronoGregorianChronology_withOrgJodaTimeInstant_(OrgJodaTimeChronoJulianChronology_getInstanceWithOrgJodaTimeDateTimeZone_withInt_(zone, minDaysInFirstWeek), OrgJodaTimeChronoGregorianChronology_getInstanceWithOrgJodaTimeDateTimeZone_withInt_(zone, minDaysInFirstWeek), cutoverInstant) autorelease];
     }
     else {
-      chrono = OrgJodaTimeChronoGJChronology_getInstanceWithOrgJodaTimeDateTimeZone_withOrgJodaTimeReadableInstant_withInt_(OrgJodaTimeDateTimeZone_get_UTC_(), cutoverInstant, minDaysInFirstWeek);
+      chrono = OrgJodaTimeChronoGJChronology_getInstanceWithOrgJodaTimeDateTimeZone_withOrgJodaTimeReadableInstant_withInt_(JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_), cutoverInstant, minDaysInFirstWeek);
       chrono = [new_OrgJodaTimeChronoGJChronology_initWithOrgJodaTimeChronology_withOrgJodaTimeChronoJulianChronology_withOrgJodaTimeChronoGregorianChronology_withOrgJodaTimeInstant_(OrgJodaTimeChronoZonedChronology_getInstanceWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_(chrono, zone), ((OrgJodaTimeChronoGJChronology *) nil_chk(chrono))->iJulianChronology_, chrono->iGregorianChronology_, chrono->iCutoverInstant_) autorelease];
     }
     OrgJodaTimeChronoGJChronology *oldChrono = [OrgJodaTimeChronoGJChronology_cCache_ putIfAbsentWithId:cacheKey withId:chrono];
@@ -851,7 +855,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJChronology)
 }
 
 - (jboolean)isLenient {
-  return NO;
+  return false;
 }
 
 - (jint)getWithLong:(jlong)instant {
@@ -1129,8 +1133,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJChronology)
 
 - (void)dealloc {
   RELEASE_(this$0_);
-  if (iJulianField_ != self) RELEASE_(iJulianField_);
-  if (iGregorianField_ != self) RELEASE_(iGregorianField_);
+  RELEASE_(iJulianField_);
+  RELEASE_(iGregorianField_);
   RELEASE_(iDurationField_);
   RELEASE_(iRangeDurationField_);
   [super dealloc];
@@ -1175,14 +1179,14 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJChronology)
     { "gregorianToJulianWithLong:", "gregorianToJulian", "J", 0x4, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", NULL, 0x1012, "Lorg.joda.time.chrono.GJChronology;", NULL, NULL,  },
+    { "this$0_", NULL, 0x1012, "Lorg.joda.time.chrono.GJChronology;", NULL, NULL, .constantValue.asLong = 0 },
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoGJChronology_CutoverField_serialVersionUID },
-    { "iJulianField_", NULL, 0x10, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iGregorianField_", NULL, 0x10, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
-    { "iCutover_", NULL, 0x10, "J", NULL, NULL,  },
-    { "iConvertByWeekyear_", NULL, 0x10, "Z", NULL, NULL,  },
-    { "iDurationField_", NULL, 0x4, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iRangeDurationField_", NULL, 0x4, "Lorg.joda.time.DurationField;", NULL, NULL,  },
+    { "iJulianField_", NULL, 0x10, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iGregorianField_", NULL, 0x10, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iCutover_", NULL, 0x10, "J", NULL, NULL, .constantValue.asLong = 0 },
+    { "iConvertByWeekyear_", NULL, 0x10, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "iDurationField_", NULL, 0x4, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iRangeDurationField_", NULL, 0x4, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoGJChronology_CutoverField = { 2, "CutoverField", "org.joda.time.chrono", "GJChronology", 0x2, 35, methods, 8, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoGJChronology_CutoverField;
@@ -1191,7 +1195,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJChronology)
 @end
 
 void OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(OrgJodaTimeChronoGJChronology_CutoverField *self, OrgJodaTimeChronoGJChronology *outer$, OrgJodaTimeDateTimeField *julianField, OrgJodaTimeDateTimeField *gregorianField, jlong cutoverMillis) {
-  OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_withBoolean_(self, outer$, julianField, gregorianField, cutoverMillis, NO);
+  OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_withBoolean_(self, outer$, julianField, gregorianField, cutoverMillis, false);
 }
 
 OrgJodaTimeChronoGJChronology_CutoverField *new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(OrgJodaTimeChronoGJChronology *outer$, OrgJodaTimeDateTimeField *julianField, OrgJodaTimeDateTimeField *gregorianField, jlong cutoverMillis) {
@@ -1211,20 +1215,20 @@ OrgJodaTimeChronoGJChronology_CutoverField *new_OrgJodaTimeChronoGJChronology_Cu
 }
 
 void OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(OrgJodaTimeChronoGJChronology_CutoverField *self, OrgJodaTimeChronoGJChronology *outer$, OrgJodaTimeDateTimeField *julianField, OrgJodaTimeDateTimeField *gregorianField, OrgJodaTimeDurationField *rangeField, jlong cutoverMillis, jboolean convertByWeekyear) {
-  OrgJodaTimeChronoGJChronology_CutoverField_set_this$0_(self, outer$);
+  JreStrongAssign(&self->this$0_, outer$);
   OrgJodaTimeFieldBaseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_(self, [((OrgJodaTimeDateTimeField *) nil_chk(gregorianField)) getType]);
-  OrgJodaTimeChronoGJChronology_CutoverField_set_iJulianField_(self, julianField);
-  OrgJodaTimeChronoGJChronology_CutoverField_set_iGregorianField_(self, gregorianField);
+  JreStrongAssign(&self->iJulianField_, julianField);
+  JreStrongAssign(&self->iGregorianField_, gregorianField);
   self->iCutover_ = cutoverMillis;
   self->iConvertByWeekyear_ = convertByWeekyear;
-  OrgJodaTimeChronoGJChronology_CutoverField_set_iDurationField_(self, [gregorianField getDurationField]);
+  JreStrongAssign(&self->iDurationField_, [gregorianField getDurationField]);
   if (rangeField == nil) {
     rangeField = [gregorianField getRangeDurationField];
     if (rangeField == nil) {
       rangeField = [((OrgJodaTimeDateTimeField *) nil_chk(julianField)) getRangeDurationField];
     }
   }
-  OrgJodaTimeChronoGJChronology_CutoverField_set_iRangeDurationField_(self, rangeField);
+  JreStrongAssign(&self->iRangeDurationField_, rangeField);
 }
 
 OrgJodaTimeChronoGJChronology_CutoverField *new_OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(OrgJodaTimeChronoGJChronology *outer$, OrgJodaTimeDateTimeField *julianField, OrgJodaTimeDateTimeField *gregorianField, OrgJodaTimeDurationField *rangeField, jlong cutoverMillis, jboolean convertByWeekyear) {
@@ -1413,7 +1417,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJChronology_CutoverField)
     { "getMaximumValueWithLong:", "getMaximumValue", "I", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "this$1_", NULL, 0x1012, "Lorg.joda.time.chrono.GJChronology;", NULL, NULL,  },
+    { "this$1_", NULL, 0x1012, "Lorg.joda.time.chrono.GJChronology;", NULL, NULL, .constantValue.asLong = 0 },
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_serialVersionUID },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoGJChronology_ImpreciseCutoverField = { 2, "ImpreciseCutoverField", "org.joda.time.chrono", "GJChronology", 0x12, 10, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
@@ -1423,7 +1427,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJChronology_CutoverField)
 @end
 
 void OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *self, OrgJodaTimeChronoGJChronology *outer$, OrgJodaTimeDateTimeField *julianField, OrgJodaTimeDateTimeField *gregorianField, jlong cutoverMillis) {
-  OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(self, outer$, julianField, gregorianField, nil, cutoverMillis, NO);
+  OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(self, outer$, julianField, gregorianField, nil, cutoverMillis, false);
 }
 
 OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_(OrgJodaTimeChronoGJChronology *outer$, OrgJodaTimeDateTimeField *julianField, OrgJodaTimeDateTimeField *gregorianField, jlong cutoverMillis) {
@@ -1433,7 +1437,7 @@ OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *new_OrgJodaTimeChronoGJChro
 }
 
 void OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_(OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *self, OrgJodaTimeChronoGJChronology *outer$, OrgJodaTimeDateTimeField *julianField, OrgJodaTimeDateTimeField *gregorianField, OrgJodaTimeDurationField *durationField, jlong cutoverMillis) {
-  OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(self, outer$, julianField, gregorianField, durationField, cutoverMillis, NO);
+  OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(self, outer$, julianField, gregorianField, durationField, cutoverMillis, false);
 }
 
 OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_(OrgJodaTimeChronoGJChronology *outer$, OrgJodaTimeDateTimeField *julianField, OrgJodaTimeDateTimeField *gregorianField, OrgJodaTimeDurationField *durationField, jlong cutoverMillis) {
@@ -1443,8 +1447,8 @@ OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *new_OrgJodaTimeChronoGJChro
 }
 
 void OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withLong_(OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *self, OrgJodaTimeChronoGJChronology *outer$, OrgJodaTimeDateTimeField *julianField, OrgJodaTimeDateTimeField *gregorianField, OrgJodaTimeDurationField *durationField, OrgJodaTimeDurationField *rangeDurationField, jlong cutoverMillis) {
-  OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(self, outer$, julianField, gregorianField, durationField, cutoverMillis, NO);
-  OrgJodaTimeChronoGJChronology_CutoverField_set_iRangeDurationField_(self, rangeDurationField);
+  OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(self, outer$, julianField, gregorianField, durationField, cutoverMillis, false);
+  JreStrongAssign(&self->iRangeDurationField_, rangeDurationField);
 }
 
 OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withLong_(OrgJodaTimeChronoGJChronology *outer$, OrgJodaTimeDateTimeField *julianField, OrgJodaTimeDateTimeField *gregorianField, OrgJodaTimeDurationField *durationField, OrgJodaTimeDurationField *rangeDurationField, jlong cutoverMillis) {
@@ -1454,12 +1458,12 @@ OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *new_OrgJodaTimeChronoGJChro
 }
 
 void OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *self, OrgJodaTimeChronoGJChronology *outer$, OrgJodaTimeDateTimeField *julianField, OrgJodaTimeDateTimeField *gregorianField, OrgJodaTimeDurationField *durationField, jlong cutoverMillis, jboolean convertByWeekyear) {
-  OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_set_this$1_(self, outer$);
+  JreStrongAssign(&self->this$1_, outer$);
   OrgJodaTimeChronoGJChronology_CutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withLong_withBoolean_(self, outer$, julianField, gregorianField, cutoverMillis, convertByWeekyear);
   if (durationField == nil) {
     durationField = [new_OrgJodaTimeChronoGJChronology_LinkedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeChronoGJChronology_ImpreciseCutoverField_(self->iDurationField_, self) autorelease];
   }
-  OrgJodaTimeChronoGJChronology_CutoverField_set_iDurationField_(self, durationField);
+  JreStrongAssign(&self->iDurationField_, durationField);
 }
 
 OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *new_OrgJodaTimeChronoGJChronology_ImpreciseCutoverField_initWithOrgJodaTimeChronoGJChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withLong_withBoolean_(OrgJodaTimeChronoGJChronology *outer$, OrgJodaTimeDateTimeField *julianField, OrgJodaTimeDateTimeField *gregorianField, OrgJodaTimeDurationField *durationField, jlong cutoverMillis, jboolean convertByWeekyear) {
@@ -1513,7 +1517,7 @@ withOrgJodaTimeChronoGJChronology_ImpreciseCutoverField:(OrgJodaTimeChronoGJChro
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoGJChronology_LinkedDurationField_serialVersionUID },
-    { "iField_LinkedDurationField_", "iField", 0x12, "Lorg.joda.time.chrono.GJChronology$ImpreciseCutoverField;", NULL, NULL,  },
+    { "iField_LinkedDurationField_", "iField", 0x12, "Lorg.joda.time.chrono.GJChronology$ImpreciseCutoverField;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoGJChronology_LinkedDurationField = { 2, "LinkedDurationField", "org.joda.time.chrono", "GJChronology", 0xa, 5, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoGJChronology_LinkedDurationField;
@@ -1523,7 +1527,7 @@ withOrgJodaTimeChronoGJChronology_ImpreciseCutoverField:(OrgJodaTimeChronoGJChro
 
 void OrgJodaTimeChronoGJChronology_LinkedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeChronoGJChronology_ImpreciseCutoverField_(OrgJodaTimeChronoGJChronology_LinkedDurationField *self, OrgJodaTimeDurationField *durationField, OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *dateTimeField) {
   OrgJodaTimeFieldDecoratedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_(self, durationField, [((OrgJodaTimeDurationField *) nil_chk(durationField)) getType]);
-  OrgJodaTimeChronoGJChronology_LinkedDurationField_set_iField_LinkedDurationField_(self, dateTimeField);
+  JreStrongAssign(&self->iField_LinkedDurationField_, dateTimeField);
 }
 
 OrgJodaTimeChronoGJChronology_LinkedDurationField *new_OrgJodaTimeChronoGJChronology_LinkedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeChronoGJChronology_ImpreciseCutoverField_(OrgJodaTimeDurationField *durationField, OrgJodaTimeChronoGJChronology_ImpreciseCutoverField *dateTimeField) {

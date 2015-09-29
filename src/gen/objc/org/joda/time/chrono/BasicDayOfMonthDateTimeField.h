@@ -14,7 +14,7 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
+/*!
  @brief Provides time calculations for the day of the month component of time.
  @author Guy Allard
  @author Stephen Colebourne
@@ -49,7 +49,7 @@
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)initWithOrgJodaTimeChronoBasicChronology:(OrgJodaTimeChronoBasicChronology *)chronology

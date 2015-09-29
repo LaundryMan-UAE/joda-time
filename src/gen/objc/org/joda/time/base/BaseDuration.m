@@ -20,10 +20,10 @@
 
 @interface OrgJodaTimeBaseBaseDuration () {
  @public
-  /**
+  /*!
    @brief The duration length
    */
-  jlong iMillis_;
+  volatile_jlong iMillis_;
 }
 
 @end
@@ -55,11 +55,11 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseDuration, serialVersionUID, jlong)
 }
 
 - (jlong)getMillis {
-  return iMillis_;
+  return JreLoadVolatileLong(&iMillis_);
 }
 
 - (void)setMillisWithLong:(jlong)duration {
-  iMillis_ = duration;
+  JreAssignVolatileLong(&iMillis_, duration);
 }
 
 - (OrgJodaTimePeriod *)toPeriodWithOrgJodaTimePeriodType:(OrgJodaTimePeriodType *)type {
@@ -121,7 +121,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseDuration, serialVersionUID, jlong)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeBaseBaseDuration_serialVersionUID },
-    { "iMillis_", NULL, 0x42, "J", NULL, NULL,  },
+    { "iMillis_", NULL, 0x42, "J", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeBaseBaseDuration = { 2, "BaseDuration", "org.joda.time.base", NULL, 0x401, 15, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeBaseBaseDuration;
@@ -131,30 +131,30 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeBaseBaseDuration, serialVersionUID, jlong)
 
 void OrgJodaTimeBaseBaseDuration_initWithLong_(OrgJodaTimeBaseBaseDuration *self, jlong duration) {
   OrgJodaTimeBaseAbstractDuration_init(self);
-  self->iMillis_ = duration;
+  JreAssignVolatileLong(&self->iMillis_, duration);
 }
 
 void OrgJodaTimeBaseBaseDuration_initWithLong_withLong_(OrgJodaTimeBaseBaseDuration *self, jlong startInstant, jlong endInstant) {
   OrgJodaTimeBaseAbstractDuration_init(self);
-  self->iMillis_ = OrgJodaTimeFieldFieldUtils_safeSubtractWithLong_withLong_(endInstant, startInstant);
+  JreAssignVolatileLong(&self->iMillis_, OrgJodaTimeFieldFieldUtils_safeSubtractWithLong_withLong_(endInstant, startInstant));
 }
 
 void OrgJodaTimeBaseBaseDuration_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(OrgJodaTimeBaseBaseDuration *self, id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end) {
   OrgJodaTimeBaseAbstractDuration_init(self);
   if (start == end) {
-    self->iMillis_ = 0LL;
+    JreAssignVolatileLong(&self->iMillis_, 0LL);
   }
   else {
     jlong startMillis = OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(start);
     jlong endMillis = OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(end);
-    self->iMillis_ = OrgJodaTimeFieldFieldUtils_safeSubtractWithLong_withLong_(endMillis, startMillis);
+    JreAssignVolatileLong(&self->iMillis_, OrgJodaTimeFieldFieldUtils_safeSubtractWithLong_withLong_(endMillis, startMillis));
   }
 }
 
 void OrgJodaTimeBaseBaseDuration_initWithId_(OrgJodaTimeBaseBaseDuration *self, id duration) {
   OrgJodaTimeBaseAbstractDuration_init(self);
   id<OrgJodaTimeConvertDurationConverter> converter = [((OrgJodaTimeConvertConverterManager *) nil_chk(OrgJodaTimeConvertConverterManager_getInstance())) getDurationConverterWithId:duration];
-  self->iMillis_ = [((id<OrgJodaTimeConvertDurationConverter>) nil_chk(converter)) getDurationMillisWithId:duration];
+  JreAssignVolatileLong(&self->iMillis_, [((id<OrgJodaTimeConvertDurationConverter>) nil_chk(converter)) getDurationMillisWithId:duration]);
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseBaseDuration)

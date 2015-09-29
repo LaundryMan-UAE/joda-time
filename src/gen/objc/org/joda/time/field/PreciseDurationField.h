@@ -11,9 +11,10 @@
 
 @class OrgJodaTimeDurationFieldType;
 
-/**
+/*!
  @brief Duration field class representing a field with a fixed unit length.
- <p> PreciseDurationField is thread-safe and immutable.
+ <p>
+ PreciseDurationField is thread-safe and immutable.
  @author Stephen Colebourne
  @author Brian S O'Neill
  @since 1.0
@@ -22,10 +23,10 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Constructor.
- @param type the field type
- @param unitMillis the unit milliseconds
+ @param type  the field type
+ @param unitMillis  the unit milliseconds
  */
 - (instancetype)initWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)type
                                             withLong:(jlong)unitMillis;
@@ -36,10 +37,10 @@
 - (jlong)addWithLong:(jlong)instant
             withLong:(jlong)value;
 
-/**
+/*!
  @brief Compares this duration field to another.
  Two fields are equal if of the same type and duration.
- @param obj the object to compare to
+ @param obj  the object to compare to
  @return if equal
  */
 - (jboolean)isEqual:(id)obj;
@@ -47,46 +48,49 @@
 - (jlong)getDifferenceAsLongWithLong:(jlong)minuendInstant
                             withLong:(jlong)subtrahendInstant;
 
-/**
+/*!
  @brief Get the millisecond duration of this field from its value.
- @param value the value of the field, which may be negative
- @param instant ignored
- @return the milliseconds that the field represents, which may be negative
+ @param value  the value of the field, which may be negative
+ @param instant  ignored
+ @return the milliseconds that the field represents, which may be
+ negative
  */
 - (jlong)getMillisWithInt:(jint)value
                  withLong:(jlong)instant;
 
-/**
+/*!
  @brief Get the millisecond duration of this field from its value.
- @param value the value of the field, which may be negative
- @param instant ignored
- @return the milliseconds that the field represents, which may be negative
+ @param value  the value of the field, which may be negative
+ @param instant  ignored
+ @return the milliseconds that the field represents, which may be
+ negative
  */
 - (jlong)getMillisWithLong:(jlong)value
                   withLong:(jlong)instant;
 
-/**
+/*!
  @brief Returns the amount of milliseconds per unit value of this field.
  @return the unit size of this field, in milliseconds
  */
 - (jlong)getUnitMillis;
 
-/**
+/*!
  @brief Get the value of this field from the milliseconds.
- @param duration the milliseconds to query, which may be negative
- @param instant ignored
- @return the value of the field, in the units of the field, which may be negative
+ @param duration  the milliseconds to query, which may be negative
+ @param instant  ignored
+ @return the value of the field, in the units of the field, which may be
+ negative
  */
 - (jlong)getValueAsLongWithLong:(jlong)duration
                        withLong:(jlong)instant;
 
-/**
+/*!
  @brief Gets a hash code for this instance.
  @return a suitable hashcode
  */
 - (NSUInteger)hash;
 
-/**
+/*!
  @brief This field is precise.
  @return true always
  */

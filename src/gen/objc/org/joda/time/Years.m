@@ -29,14 +29,15 @@
 
 @interface OrgJodaTimeYears ()
 
-/**
+/*!
  @brief Creates a new instance representing a number of years.
- You should consider using the factory method #years(int) instead of the constructor.
- @param years the number of years to represent
+ You should consider using the factory method <code>years(int)</code>
+ instead of the constructor.
+ @param years  the number of years to represent
  */
 - (instancetype)initWithInt:(jint)years;
 
-/**
+/*!
  @brief Resolves singletons.
  @return the singleton instance
  */
@@ -167,13 +168,13 @@ OrgJodaTimeYears *OrgJodaTimeYears_MIN_VALUE_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeYears class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeYears_ZERO_, nil, new_OrgJodaTimeYears_initWithInt_(0));
-    JreStrongAssignAndConsume(&OrgJodaTimeYears_ONE_, nil, new_OrgJodaTimeYears_initWithInt_(1));
-    JreStrongAssignAndConsume(&OrgJodaTimeYears_TWO_, nil, new_OrgJodaTimeYears_initWithInt_(2));
-    JreStrongAssignAndConsume(&OrgJodaTimeYears_THREE_, nil, new_OrgJodaTimeYears_initWithInt_(3));
-    JreStrongAssignAndConsume(&OrgJodaTimeYears_MAX_VALUE_, nil, new_OrgJodaTimeYears_initWithInt_(JavaLangInteger_MAX_VALUE));
-    JreStrongAssignAndConsume(&OrgJodaTimeYears_MIN_VALUE_, nil, new_OrgJodaTimeYears_initWithInt_(JavaLangInteger_MIN_VALUE));
-    JreStrongAssign(&OrgJodaTimeYears_PARSER_, nil, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_years()]);
+    JreStrongAssignAndConsume(&OrgJodaTimeYears_ZERO_, new_OrgJodaTimeYears_initWithInt_(0));
+    JreStrongAssignAndConsume(&OrgJodaTimeYears_ONE_, new_OrgJodaTimeYears_initWithInt_(1));
+    JreStrongAssignAndConsume(&OrgJodaTimeYears_TWO_, new_OrgJodaTimeYears_initWithInt_(2));
+    JreStrongAssignAndConsume(&OrgJodaTimeYears_THREE_, new_OrgJodaTimeYears_initWithInt_(3));
+    JreStrongAssignAndConsume(&OrgJodaTimeYears_MAX_VALUE_, new_OrgJodaTimeYears_initWithInt_(JavaLangInteger_MAX_VALUE));
+    JreStrongAssignAndConsume(&OrgJodaTimeYears_MIN_VALUE_, new_OrgJodaTimeYears_initWithInt_(JavaLangInteger_MIN_VALUE));
+    JreStrongAssign(&OrgJodaTimeYears_PARSER_, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_years()]);
     J2OBJC_SET_INITIALIZED(OrgJodaTimeYears)
   }
 }
@@ -210,13 +211,13 @@ OrgJodaTimeYears *OrgJodaTimeYears_MIN_VALUE_;
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_ZERO_, NULL,  },
-    { "ONE_", NULL, 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_ONE_, NULL,  },
-    { "TWO_", NULL, 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_TWO_, NULL,  },
-    { "THREE_", NULL, 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_THREE_, NULL,  },
-    { "MAX_VALUE_", NULL, 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_MAX_VALUE_, NULL,  },
-    { "MIN_VALUE_", NULL, 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_MIN_VALUE_, NULL,  },
-    { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeYears_PARSER_, NULL,  },
+    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_ZERO_, NULL, .constantValue.asLong = 0 },
+    { "ONE_", NULL, 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_ONE_, NULL, .constantValue.asLong = 0 },
+    { "TWO_", NULL, 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_TWO_, NULL, .constantValue.asLong = 0 },
+    { "THREE_", NULL, 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_THREE_, NULL, .constantValue.asLong = 0 },
+    { "MAX_VALUE_", NULL, 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_MAX_VALUE_, NULL, .constantValue.asLong = 0 },
+    { "MIN_VALUE_", NULL, 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_MIN_VALUE_, NULL, .constantValue.asLong = 0 },
+    { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeYears_PARSER_, NULL, .constantValue.asLong = 0 },
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeYears_serialVersionUID },
   };
   static const J2ObjcClassInfo _OrgJodaTimeYears = { 2, "Years", "org.joda.time", NULL, 0x11, 20, methods, 8, fields, 0, NULL, 0, NULL, NULL, NULL };

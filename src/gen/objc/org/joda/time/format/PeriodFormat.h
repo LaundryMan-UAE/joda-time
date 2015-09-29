@@ -11,9 +11,15 @@
 @class JavaUtilLocale;
 @class OrgJodaTimeFormatPeriodFormatter;
 
-/**
+/*!
  @brief Factory that creates instances of PeriodFormatter.
- <p> Period formatting is performed by the PeriodFormatter class. Three classes provide factory methods to create formatters, and this is one. The others are ISOPeriodFormat and PeriodFormatterBuilder . <p> PeriodFormat is thread-safe and immutable, and the formatters it returns are as well.
+ <p>
+ Period formatting is performed by the <code>PeriodFormatter</code> class.
+ Three classes provide factory methods to create formatters, and this is one.
+ The others are <code>ISOPeriodFormat</code> and <code>PeriodFormatterBuilder</code>.
+ <p>
+ PeriodFormat is thread-safe and immutable, and the formatters it returns
+ are as well.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -21,24 +27,133 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Gets the default formatter that outputs words in English.
- <p> This calls #wordBased(Locale) using a locale of <code>ENGLISH</code> .
+ <p>
+ This calls <code>wordBased(Locale)</code> using a locale of <code>ENGLISH</code>.
  @return the formatter, not null
  */
 + (OrgJodaTimeFormatPeriodFormatter *)getDefault;
 
-/**
+/*!
  @brief Returns a word based formatter for the JDK default locale.
- <p> This calls #wordBased(Locale) using the Locale#getDefault() default locale .
+ <p>
+ This calls <code>wordBased(Locale)</code> using the <code>default locale</code>.
  @return the formatter, not null
  @since 2.0
  */
 + (OrgJodaTimeFormatPeriodFormatter *)wordBased;
 
-/**
+/*!
  @brief Returns a word based formatter for the specified locale.
- <p> The words are configured in a resource bundle text file - <code>org.joda.time.format.messages</code> . This can be added to via the normal classpath resource bundle mechanisms. <p> You can add your own translation by creating messages_<locale>.properties file and adding it to the <code>org.joda.time.format.messages</code> path. <p> Simple example (1 -> singular suffix, not 1 -> plural suffix): <pre> PeriodFormat.space=\ PeriodFormat.comma=, PeriodFormat.commandand=,and PeriodFormat.commaspaceand=, and PeriodFormat.commaspace=, PeriodFormat.spaceandspace=\ and PeriodFormat.year=\ year PeriodFormat.years=\ years PeriodFormat.month=\ month PeriodFormat.months=\ months PeriodFormat.week=\ week PeriodFormat.weeks=\ weeks PeriodFormat.day=\ day PeriodFormat.days=\ days PeriodFormat.hour=\ hour PeriodFormat.hours=\ hours PeriodFormat.minute=\ minute PeriodFormat.minutes=\ minutes PeriodFormat.second=\ second PeriodFormat.seconds=\ seconds PeriodFormat.millisecond=\ millisecond PeriodFormat.milliseconds=\ milliseconds </pre> <p> Some languages contain more than two suffixes. You can use regular expressions for them. Here's an example using regular expression for English: <pre> PeriodFormat.space=\ PeriodFormat.comma=, PeriodFormat.commandand=,and PeriodFormat.commaspaceand=, and PeriodFormat.commaspace=, PeriodFormat.spaceandspace=\ and PeriodFormat.regex.separator=% PeriodFormat.years.regex=1$%. PeriodFormat.years.list=\ year%\ years PeriodFormat.months.regex=1$%. PeriodFormat.months.list=\ month%\ months PeriodFormat.weeks.regex=1$%. PeriodFormat.weeks.list=\ week%\ weeks PeriodFormat.days.regex=1$%. PeriodFormat.days.list=\ day%\ days PeriodFormat.hours.regex=1$%. PeriodFormat.hours.list=\ hour%\ hours PeriodFormat.minutes.regex=1$%. PeriodFormat.minutes.list=\ minute%\ minutes PeriodFormat.seconds.regex=1$%. PeriodFormat.seconds.list=\ second%\ seconds PeriodFormat.milliseconds.regex=1$%. PeriodFormat.milliseconds.list=\ millisecond%\ milliseconds </pre> <p> You can mix both approaches. Here's example for Polish ( "1 year, 2 years, 5 years, 12 years, 15 years, 21 years, 22 years, 25 years" translates to "1 rok, 2 lata, 5 lat, 12 lat, 15 lat, 21 lat, 22 lata, 25 lat"). Notice that PeriodFormat.day and PeriodFormat.days is used for day suffixes as there is no need for regular expressions: <pre> PeriodFormat.space=\ PeriodFormat.comma=, PeriodFormat.commandand=,i PeriodFormat.commaspaceand=, i PeriodFormat.commaspace=, PeriodFormat.spaceandspace=\ i PeriodFormat.regex.separator=% PeriodFormat.years.regex=^1$%[0-9]*(?&lt;!1)[2-4]$%[0-9] PeriodFormat.years.list=\ rok%\ lata%\ lat PeriodFormat.months.regex=^1$%[0-9]*(?&lt;!1)[2-4]$%[0-9] PeriodFormat.months.list=\ miesi\u0105c%\ miesi\u0105ce%\ miesi\u0119cy PeriodFormat.weeks.regex=^1$%[0-9]*(?&lt;!1)[2-4]$%[0-9] PeriodFormat.weeks.list=\ tydzie\u0144%\ tygodnie%\ tygodni PeriodFormat.day=\ dzie\u0144 PeriodFormat.days=\ dni PeriodFormat.hours.regex=^1$%[0-9]*(?&lt;!1)[2-4]$%[0-9] PeriodFormat.hours.list=\ godzina%\ godziny%\ godzin PeriodFormat.minutes.regex=^1$%[0-9]*(?&lt;!1)[2-4]$%[0-9] PeriodFormat.minutes.list=\ minuta%\ minuty%\ minut PeriodFormat.seconds.regex=^1$%[0-9]*(?&lt;!1)[2-4]$%[0-9] PeriodFormat.seconds.list=\ sekunda%\ sekundy%\ sekund PeriodFormat.milliseconds.regex=^1$%[0-9]*(?&lt;!1)[2-4]$%[0-9] PeriodFormat.milliseconds.list=\ milisekunda%\ milisekundy%\ milisekund </pre> <p> Each PeriodFormat.&lt;duration_field_type&gt;.regex property stands for an array of regular expressions and is followed by a property PeriodFormat.&lt;duration_field_type&gt;.list holding an array of suffixes. PeriodFormat.regex.separator is used for splitting. See PeriodFormatterBuilder#appendSuffix(String[],String[]) for details. <p> Available languages are English, Danish, Dutch, French, German, Japanese, Polish, Portuguese and Spanish.
+ <p>
+ The words are configured in a resource bundle text file -
+ <code>org.joda.time.format.messages</code>.
+ This can be added to via the normal classpath resource bundle mechanisms.
+ <p>
+ You can add your own translation by creating messages_<locale>.properties file
+ and adding it to the <code>org.joda.time.format.messages</code> path.
+ <p>
+ Simple example (1 -> singular suffix, not 1 -> plural suffix):
+ @code
+
+  PeriodFormat.space=\ 
+  PeriodFormat.comma=,
+  PeriodFormat.commandand=,and 
+  PeriodFormat.commaspaceand=, and 
+  PeriodFormat.commaspace=, 
+  PeriodFormat.spaceandspace=\ and 
+  PeriodFormat.year=\ year
+  PeriodFormat.years=\ years
+  PeriodFormat.month=\ month
+  PeriodFormat.months=\ months
+  PeriodFormat.week=\ week
+  PeriodFormat.weeks=\ weeks
+  PeriodFormat.day=\ day
+  PeriodFormat.days=\ days
+  PeriodFormat.hour=\ hour
+  PeriodFormat.hours=\ hours
+  PeriodFormat.minute=\ minute
+  PeriodFormat.minutes=\ minutes
+  PeriodFormat.second=\ second
+  PeriodFormat.seconds=\ seconds
+  PeriodFormat.millisecond=\ millisecond
+  PeriodFormat.milliseconds=\ milliseconds
+  
+@endcode
+ <p>
+ Some languages contain more than two suffixes. You can use regular expressions
+ for them. Here's an example using regular expression for English:
+ @code
+
+  PeriodFormat.space=\ 
+  PeriodFormat.comma=,
+  PeriodFormat.commandand=,and 
+  PeriodFormat.commaspaceand=, and 
+  PeriodFormat.commaspace=, 
+  PeriodFormat.spaceandspace=\ and 
+  PeriodFormat.regex.separator=%
+  PeriodFormat.years.regex=1$%.
+  PeriodFormat.years.list=\ year%\ years
+  PeriodFormat.months.regex=1$%.
+  PeriodFormat.months.list=\ month%\ months
+  PeriodFormat.weeks.regex=1$%.
+  PeriodFormat.weeks.list=\ week%\ weeks
+  PeriodFormat.days.regex=1$%.
+  PeriodFormat.days.list=\ day%\ days
+  PeriodFormat.hours.regex=1$%.
+  PeriodFormat.hours.list=\ hour%\ hours
+  PeriodFormat.minutes.regex=1$%.
+  PeriodFormat.minutes.list=\ minute%\ minutes
+  PeriodFormat.seconds.regex=1$%.
+  PeriodFormat.seconds.list=\ second%\ seconds
+  PeriodFormat.milliseconds.regex=1$%.
+  PeriodFormat.milliseconds.list=\ millisecond%\ milliseconds
+  
+@endcode
+ <p>
+ You can mix both approaches. Here's example for Polish (
+ "1 year, 2 years, 5 years, 12 years, 15 years, 21 years, 22 years, 25 years"
+ translates to
+ "1 rok, 2 lata, 5 lat, 12 lat, 15 lat, 21 lat, 22 lata, 25 lat"). Notice that
+ PeriodFormat.day and PeriodFormat.days is used for day suffixes as there is no
+ need for regular expressions:
+ @code
+
+  PeriodFormat.space=\ 
+  PeriodFormat.comma=,
+  PeriodFormat.commandand=,i 
+  PeriodFormat.commaspaceand=, i 
+  PeriodFormat.commaspace=, 
+  PeriodFormat.spaceandspace=\ i 
+  PeriodFormat.regex.separator=%
+  PeriodFormat.years.regex=^1$%[0-9]*(?&lt;!1)[2-4]$%[0-9]
+  PeriodFormat.years.list=\ rok%\ lata%\ lat
+  PeriodFormat.months.regex=^1$%[0-9]*(?&lt;!1)[2-4]$%[0-9]
+  PeriodFormat.months.list=\ miesi\u0105c%\ miesi\u0105ce%\ miesi\u0119cy
+  PeriodFormat.weeks.regex=^1$%[0-9]*(?&lt;!1)[2-4]$%[0-9]
+  PeriodFormat.weeks.list=\ tydzie\u0144%\ tygodnie%\ tygodni
+  PeriodFormat.day=\ dzie\u0144
+  PeriodFormat.days=\ dni
+  PeriodFormat.hours.regex=^1$%[0-9]*(?&lt;!1)[2-4]$%[0-9]
+  PeriodFormat.hours.list=\ godzina%\ godziny%\ godzin
+  PeriodFormat.minutes.regex=^1$%[0-9]*(?&lt;!1)[2-4]$%[0-9]
+  PeriodFormat.minutes.list=\ minuta%\ minuty%\ minut
+  PeriodFormat.seconds.regex=^1$%[0-9]*(?&lt;!1)[2-4]$%[0-9]
+  PeriodFormat.seconds.list=\ sekunda%\ sekundy%\ sekund
+  PeriodFormat.milliseconds.regex=^1$%[0-9]*(?&lt;!1)[2-4]$%[0-9]
+  PeriodFormat.milliseconds.list=\ milisekunda%\ milisekundy%\ milisekund
+  
+@endcode
+ <p>
+ Each PeriodFormat.&lt;duration_field_type&gt;.regex property stands for an array of
+ regular expressions and is followed by a property
+ PeriodFormat.&lt;duration_field_type&gt;.list holding an array of suffixes.
+ PeriodFormat.regex.separator is used for splitting. See
+ <code>PeriodFormatterBuilder.appendSuffix(String[],String[])</code> for details.
+ <p>
+ Available languages are English, Danish, Dutch, French, German, Japanese,
+ Polish, Portuguese and Spanish.
  @return the formatter, not null
  @since 2.0, regex since 2.5
  */
@@ -46,7 +161,7 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Constructor.
  @since 1.1 (previously private)
  */

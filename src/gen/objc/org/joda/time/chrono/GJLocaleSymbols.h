@@ -10,7 +10,7 @@
 
 @class JavaUtilLocale;
 
-/**
+/*!
  @brief Utility class used by a few of the GJDateTimeFields.
  @author Brian S O'Neill
  @since 1.0
@@ -53,9 +53,9 @@
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Obtains the symbols for a locale.
- @param locale the locale, null returns default
+ @param locale  the locale, null returns default
  @return the symbols, not null
  */
 + (OrgJodaTimeChronoGJLocaleSymbols *)forLocaleWithJavaUtilLocale:(JavaUtilLocale *)locale;

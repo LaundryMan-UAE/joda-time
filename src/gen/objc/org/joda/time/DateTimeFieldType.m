@@ -16,7 +16,7 @@
 
 @interface OrgJodaTimeDateTimeFieldType () {
  @public
-  /**
+  /*!
    @brief The name of the field.
    */
   NSString *iName_;
@@ -101,53 +101,58 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeDateTimeFieldType, MILLIS_OF_SECOND_TYPE_,
 
 @interface OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType : OrgJodaTimeDateTimeFieldType {
  @public
-  /**
+  /*!
    @brief The ordinal of the standard field type, for switch statements
    */
   jbyte iOrdinal_;
-  /**
+  /*!
    @brief The unit duration of the field.
    */
   OrgJodaTimeDurationFieldType *iUnitType_;
-  /**
+  /*!
    @brief The range duration of the field.
    */
   OrgJodaTimeDurationFieldType *iRangeType_;
 }
 
-/**
+/*!
  @brief Constructor.
- @param name the name to use
- @param ordinal the byte value for the oridinal index
- @param unitType the unit duration type
- @param rangeType the range duration type
+ @param name  the name to use
+ @param ordinal  the byte value for the oridinal index
+ @param unitType  the unit duration type
+ @param rangeType  the range duration type
  */
 - (instancetype)initWithNSString:(NSString *)name
                         withByte:(jbyte)ordinal
 withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)unitType
 withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)rangeType;
 
-/**
+/*!
+  
  */
 - (OrgJodaTimeDurationFieldType *)getDurationType;
 
-/**
+/*!
+  
  */
 - (OrgJodaTimeDurationFieldType *)getRangeDurationType;
 
-/**
+/*!
+  
  */
 - (jboolean)isEqual:(id)obj;
 
-/**
+/*!
+  
  */
 - (NSUInteger)hash;
 
-/**
+/*!
+  
  */
 - (OrgJodaTimeDateTimeField *)getFieldWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology;
 
-/**
+/*!
  @brief Ensure a singleton is returned.
  @return the singleton type
  */
@@ -306,29 +311,29 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeFieldType)
 
 + (void)initialize {
   if (self == [OrgJodaTimeDateTimeFieldType class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_ERA_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"era", OrgJodaTimeDateTimeFieldType_ERA, OrgJodaTimeDurationFieldType_eras(), nil));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_YEAR_OF_ERA_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"yearOfEra", OrgJodaTimeDateTimeFieldType_YEAR_OF_ERA, OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_eras()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_CENTURY_OF_ERA_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"centuryOfEra", OrgJodaTimeDateTimeFieldType_CENTURY_OF_ERA, OrgJodaTimeDurationFieldType_centuries(), OrgJodaTimeDurationFieldType_eras()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_YEAR_OF_CENTURY_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"yearOfCentury", OrgJodaTimeDateTimeFieldType_YEAR_OF_CENTURY, OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_centuries()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_YEAR_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"year", OrgJodaTimeDateTimeFieldType_YEAR, OrgJodaTimeDurationFieldType_years(), nil));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_DAY_OF_YEAR_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"dayOfYear", OrgJodaTimeDateTimeFieldType_DAY_OF_YEAR, OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_years()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_MONTH_OF_YEAR_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"monthOfYear", OrgJodaTimeDateTimeFieldType_MONTH_OF_YEAR, OrgJodaTimeDurationFieldType_months(), OrgJodaTimeDurationFieldType_years()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_DAY_OF_MONTH_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"dayOfMonth", OrgJodaTimeDateTimeFieldType_DAY_OF_MONTH, OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_months()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_WEEKYEAR_OF_CENTURY_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"weekyearOfCentury", OrgJodaTimeDateTimeFieldType_WEEKYEAR_OF_CENTURY, OrgJodaTimeDurationFieldType_weekyears(), OrgJodaTimeDurationFieldType_centuries()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_WEEKYEAR_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"weekyear", OrgJodaTimeDateTimeFieldType_WEEKYEAR, OrgJodaTimeDurationFieldType_weekyears(), nil));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_WEEK_OF_WEEKYEAR_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"weekOfWeekyear", OrgJodaTimeDateTimeFieldType_WEEK_OF_WEEKYEAR, OrgJodaTimeDurationFieldType_weeks(), OrgJodaTimeDurationFieldType_weekyears()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_DAY_OF_WEEK_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"dayOfWeek", OrgJodaTimeDateTimeFieldType_DAY_OF_WEEK, OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_weeks()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_HALFDAY_OF_DAY_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"halfdayOfDay", OrgJodaTimeDateTimeFieldType_HALFDAY_OF_DAY, OrgJodaTimeDurationFieldType_halfdays(), OrgJodaTimeDurationFieldType_days()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_HOUR_OF_HALFDAY_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"hourOfHalfday", OrgJodaTimeDateTimeFieldType_HOUR_OF_HALFDAY, OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_halfdays()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_HALFDAY_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"clockhourOfHalfday", OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_HALFDAY, OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_halfdays()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_DAY_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"clockhourOfDay", OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_DAY, OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_days()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_HOUR_OF_DAY_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"hourOfDay", OrgJodaTimeDateTimeFieldType_HOUR_OF_DAY, OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_days()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_MINUTE_OF_DAY_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"minuteOfDay", OrgJodaTimeDateTimeFieldType_MINUTE_OF_DAY, OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_days()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_MINUTE_OF_HOUR_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"minuteOfHour", OrgJodaTimeDateTimeFieldType_MINUTE_OF_HOUR, OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_hours()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_SECOND_OF_DAY_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"secondOfDay", OrgJodaTimeDateTimeFieldType_SECOND_OF_DAY, OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_days()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_SECOND_OF_MINUTE_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"secondOfMinute", OrgJodaTimeDateTimeFieldType_SECOND_OF_MINUTE, OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_minutes()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_MILLIS_OF_DAY_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"millisOfDay", OrgJodaTimeDateTimeFieldType_MILLIS_OF_DAY, OrgJodaTimeDurationFieldType_millis(), OrgJodaTimeDurationFieldType_days()));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND_TYPE_, nil, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"millisOfSecond", OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND, OrgJodaTimeDurationFieldType_millis(), OrgJodaTimeDurationFieldType_seconds()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_ERA_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"era", OrgJodaTimeDateTimeFieldType_ERA, OrgJodaTimeDurationFieldType_eras(), nil));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_YEAR_OF_ERA_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"yearOfEra", OrgJodaTimeDateTimeFieldType_YEAR_OF_ERA, OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_eras()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_CENTURY_OF_ERA_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"centuryOfEra", OrgJodaTimeDateTimeFieldType_CENTURY_OF_ERA, OrgJodaTimeDurationFieldType_centuries(), OrgJodaTimeDurationFieldType_eras()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_YEAR_OF_CENTURY_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"yearOfCentury", OrgJodaTimeDateTimeFieldType_YEAR_OF_CENTURY, OrgJodaTimeDurationFieldType_years(), OrgJodaTimeDurationFieldType_centuries()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_YEAR_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"year", OrgJodaTimeDateTimeFieldType_YEAR, OrgJodaTimeDurationFieldType_years(), nil));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_DAY_OF_YEAR_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"dayOfYear", OrgJodaTimeDateTimeFieldType_DAY_OF_YEAR, OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_years()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_MONTH_OF_YEAR_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"monthOfYear", OrgJodaTimeDateTimeFieldType_MONTH_OF_YEAR, OrgJodaTimeDurationFieldType_months(), OrgJodaTimeDurationFieldType_years()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_DAY_OF_MONTH_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"dayOfMonth", OrgJodaTimeDateTimeFieldType_DAY_OF_MONTH, OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_months()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_WEEKYEAR_OF_CENTURY_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"weekyearOfCentury", OrgJodaTimeDateTimeFieldType_WEEKYEAR_OF_CENTURY, OrgJodaTimeDurationFieldType_weekyears(), OrgJodaTimeDurationFieldType_centuries()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_WEEKYEAR_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"weekyear", OrgJodaTimeDateTimeFieldType_WEEKYEAR, OrgJodaTimeDurationFieldType_weekyears(), nil));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_WEEK_OF_WEEKYEAR_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"weekOfWeekyear", OrgJodaTimeDateTimeFieldType_WEEK_OF_WEEKYEAR, OrgJodaTimeDurationFieldType_weeks(), OrgJodaTimeDurationFieldType_weekyears()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_DAY_OF_WEEK_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"dayOfWeek", OrgJodaTimeDateTimeFieldType_DAY_OF_WEEK, OrgJodaTimeDurationFieldType_days(), OrgJodaTimeDurationFieldType_weeks()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_HALFDAY_OF_DAY_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"halfdayOfDay", OrgJodaTimeDateTimeFieldType_HALFDAY_OF_DAY, OrgJodaTimeDurationFieldType_halfdays(), OrgJodaTimeDurationFieldType_days()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_HOUR_OF_HALFDAY_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"hourOfHalfday", OrgJodaTimeDateTimeFieldType_HOUR_OF_HALFDAY, OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_halfdays()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_HALFDAY_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"clockhourOfHalfday", OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_HALFDAY, OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_halfdays()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_DAY_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"clockhourOfDay", OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_DAY, OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_days()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_HOUR_OF_DAY_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"hourOfDay", OrgJodaTimeDateTimeFieldType_HOUR_OF_DAY, OrgJodaTimeDurationFieldType_hours(), OrgJodaTimeDurationFieldType_days()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_MINUTE_OF_DAY_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"minuteOfDay", OrgJodaTimeDateTimeFieldType_MINUTE_OF_DAY, OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_days()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_MINUTE_OF_HOUR_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"minuteOfHour", OrgJodaTimeDateTimeFieldType_MINUTE_OF_HOUR, OrgJodaTimeDurationFieldType_minutes(), OrgJodaTimeDurationFieldType_hours()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_SECOND_OF_DAY_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"secondOfDay", OrgJodaTimeDateTimeFieldType_SECOND_OF_DAY, OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_days()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_SECOND_OF_MINUTE_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"secondOfMinute", OrgJodaTimeDateTimeFieldType_SECOND_OF_MINUTE, OrgJodaTimeDurationFieldType_seconds(), OrgJodaTimeDurationFieldType_minutes()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_MILLIS_OF_DAY_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"millisOfDay", OrgJodaTimeDateTimeFieldType_MILLIS_OF_DAY, OrgJodaTimeDurationFieldType_millis(), OrgJodaTimeDurationFieldType_days()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND_TYPE_, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"millisOfSecond", OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND, OrgJodaTimeDurationFieldType_millis(), OrgJodaTimeDurationFieldType_seconds()));
     J2OBJC_SET_INITIALIZED(OrgJodaTimeDateTimeFieldType)
   }
 }
@@ -391,30 +396,30 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeFieldType)
     { "SECOND_OF_MINUTE", "SECOND_OF_MINUTE", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_SECOND_OF_MINUTE },
     { "MILLIS_OF_DAY", "MILLIS_OF_DAY", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_MILLIS_OF_DAY },
     { "MILLIS_OF_SECOND", "MILLIS_OF_SECOND", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND },
-    { "ERA_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_ERA_TYPE_, NULL,  },
-    { "YEAR_OF_ERA_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_YEAR_OF_ERA_TYPE_, NULL,  },
-    { "CENTURY_OF_ERA_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_CENTURY_OF_ERA_TYPE_, NULL,  },
-    { "YEAR_OF_CENTURY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_YEAR_OF_CENTURY_TYPE_, NULL,  },
-    { "YEAR_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_YEAR_TYPE_, NULL,  },
-    { "DAY_OF_YEAR_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_DAY_OF_YEAR_TYPE_, NULL,  },
-    { "MONTH_OF_YEAR_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MONTH_OF_YEAR_TYPE_, NULL,  },
-    { "DAY_OF_MONTH_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_DAY_OF_MONTH_TYPE_, NULL,  },
-    { "WEEKYEAR_OF_CENTURY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_WEEKYEAR_OF_CENTURY_TYPE_, NULL,  },
-    { "WEEKYEAR_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_WEEKYEAR_TYPE_, NULL,  },
-    { "WEEK_OF_WEEKYEAR_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_WEEK_OF_WEEKYEAR_TYPE_, NULL,  },
-    { "DAY_OF_WEEK_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_DAY_OF_WEEK_TYPE_, NULL,  },
-    { "HALFDAY_OF_DAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_HALFDAY_OF_DAY_TYPE_, NULL,  },
-    { "HOUR_OF_HALFDAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_HOUR_OF_HALFDAY_TYPE_, NULL,  },
-    { "CLOCKHOUR_OF_HALFDAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_HALFDAY_TYPE_, NULL,  },
-    { "CLOCKHOUR_OF_DAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_DAY_TYPE_, NULL,  },
-    { "HOUR_OF_DAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_HOUR_OF_DAY_TYPE_, NULL,  },
-    { "MINUTE_OF_DAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MINUTE_OF_DAY_TYPE_, NULL,  },
-    { "MINUTE_OF_HOUR_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MINUTE_OF_HOUR_TYPE_, NULL,  },
-    { "SECOND_OF_DAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_SECOND_OF_DAY_TYPE_, NULL,  },
-    { "SECOND_OF_MINUTE_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_SECOND_OF_MINUTE_TYPE_, NULL,  },
-    { "MILLIS_OF_DAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MILLIS_OF_DAY_TYPE_, NULL,  },
-    { "MILLIS_OF_SECOND_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND_TYPE_, NULL,  },
-    { "iName_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL,  },
+    { "ERA_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_ERA_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "YEAR_OF_ERA_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_YEAR_OF_ERA_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "CENTURY_OF_ERA_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_CENTURY_OF_ERA_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "YEAR_OF_CENTURY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_YEAR_OF_CENTURY_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "YEAR_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_YEAR_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "DAY_OF_YEAR_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_DAY_OF_YEAR_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "MONTH_OF_YEAR_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MONTH_OF_YEAR_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "DAY_OF_MONTH_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_DAY_OF_MONTH_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "WEEKYEAR_OF_CENTURY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_WEEKYEAR_OF_CENTURY_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "WEEKYEAR_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_WEEKYEAR_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "WEEK_OF_WEEKYEAR_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_WEEK_OF_WEEKYEAR_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "DAY_OF_WEEK_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_DAY_OF_WEEK_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "HALFDAY_OF_DAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_HALFDAY_OF_DAY_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "HOUR_OF_HALFDAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_HOUR_OF_HALFDAY_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "CLOCKHOUR_OF_HALFDAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_HALFDAY_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "CLOCKHOUR_OF_DAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_DAY_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "HOUR_OF_DAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_HOUR_OF_DAY_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "MINUTE_OF_DAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MINUTE_OF_DAY_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "MINUTE_OF_HOUR_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MINUTE_OF_HOUR_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "SECOND_OF_DAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_SECOND_OF_DAY_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "SECOND_OF_MINUTE_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_SECOND_OF_MINUTE_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "MILLIS_OF_DAY_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MILLIS_OF_DAY_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "MILLIS_OF_SECOND_TYPE_", NULL, 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND_TYPE_, NULL, .constantValue.asLong = 0 },
+    { "iName_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lorg.joda.time.DateTimeFieldType$StandardDateTimeFieldType;"};
   static const J2ObjcClassInfo _OrgJodaTimeDateTimeFieldType = { 2, "DateTimeFieldType", "org.joda.time", NULL, 0x401, 30, methods, 48, fields, 0, NULL, 1, inner_classes, NULL, NULL };
@@ -425,7 +430,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeFieldType)
 
 void OrgJodaTimeDateTimeFieldType_initWithNSString_(OrgJodaTimeDateTimeFieldType *self, NSString *name) {
   NSObject_init(self);
-  OrgJodaTimeDateTimeFieldType_set_iName_(self, name);
+  JreStrongAssign(&self->iName_, name);
 }
 
 OrgJodaTimeDateTimeFieldType *OrgJodaTimeDateTimeFieldType_millisOfSecond() {
@@ -565,16 +570,16 @@ withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)rangeType {
 
 - (jboolean)isEqual:(id)obj {
   if (self == obj) {
-    return YES;
+    return true;
   }
   if ([obj isKindOfClass:[OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType class]]) {
     return iOrdinal_ == ((OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType *) nil_chk(((OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType *) check_class_cast(obj, [OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType class]))))->iOrdinal_;
   }
-  return NO;
+  return false;
 }
 
 - (NSUInteger)hash {
-  return (LShift32(1, iOrdinal_));
+  return (JreLShift32(1, iOrdinal_));
 }
 
 - (OrgJodaTimeDateTimeField *)getFieldWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology {
@@ -634,51 +639,51 @@ withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)rangeType {
 - (id)readResolve {
   switch (iOrdinal_) {
     case OrgJodaTimeDateTimeFieldType_ERA:
-    return OrgJodaTimeDateTimeFieldType_get_ERA_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, ERA_TYPE_);
     case OrgJodaTimeDateTimeFieldType_YEAR_OF_ERA:
-    return OrgJodaTimeDateTimeFieldType_get_YEAR_OF_ERA_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, YEAR_OF_ERA_TYPE_);
     case OrgJodaTimeDateTimeFieldType_CENTURY_OF_ERA:
-    return OrgJodaTimeDateTimeFieldType_get_CENTURY_OF_ERA_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, CENTURY_OF_ERA_TYPE_);
     case OrgJodaTimeDateTimeFieldType_YEAR_OF_CENTURY:
-    return OrgJodaTimeDateTimeFieldType_get_YEAR_OF_CENTURY_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, YEAR_OF_CENTURY_TYPE_);
     case OrgJodaTimeDateTimeFieldType_YEAR:
-    return OrgJodaTimeDateTimeFieldType_get_YEAR_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, YEAR_TYPE_);
     case OrgJodaTimeDateTimeFieldType_DAY_OF_YEAR:
-    return OrgJodaTimeDateTimeFieldType_get_DAY_OF_YEAR_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, DAY_OF_YEAR_TYPE_);
     case OrgJodaTimeDateTimeFieldType_MONTH_OF_YEAR:
-    return OrgJodaTimeDateTimeFieldType_get_MONTH_OF_YEAR_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, MONTH_OF_YEAR_TYPE_);
     case OrgJodaTimeDateTimeFieldType_DAY_OF_MONTH:
-    return OrgJodaTimeDateTimeFieldType_get_DAY_OF_MONTH_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, DAY_OF_MONTH_TYPE_);
     case OrgJodaTimeDateTimeFieldType_WEEKYEAR_OF_CENTURY:
-    return OrgJodaTimeDateTimeFieldType_get_WEEKYEAR_OF_CENTURY_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, WEEKYEAR_OF_CENTURY_TYPE_);
     case OrgJodaTimeDateTimeFieldType_WEEKYEAR:
-    return OrgJodaTimeDateTimeFieldType_get_WEEKYEAR_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, WEEKYEAR_TYPE_);
     case OrgJodaTimeDateTimeFieldType_WEEK_OF_WEEKYEAR:
-    return OrgJodaTimeDateTimeFieldType_get_WEEK_OF_WEEKYEAR_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, WEEK_OF_WEEKYEAR_TYPE_);
     case OrgJodaTimeDateTimeFieldType_DAY_OF_WEEK:
-    return OrgJodaTimeDateTimeFieldType_get_DAY_OF_WEEK_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, DAY_OF_WEEK_TYPE_);
     case OrgJodaTimeDateTimeFieldType_HALFDAY_OF_DAY:
-    return OrgJodaTimeDateTimeFieldType_get_HALFDAY_OF_DAY_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, HALFDAY_OF_DAY_TYPE_);
     case OrgJodaTimeDateTimeFieldType_HOUR_OF_HALFDAY:
-    return OrgJodaTimeDateTimeFieldType_get_HOUR_OF_HALFDAY_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, HOUR_OF_HALFDAY_TYPE_);
     case OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_HALFDAY:
-    return OrgJodaTimeDateTimeFieldType_get_CLOCKHOUR_OF_HALFDAY_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, CLOCKHOUR_OF_HALFDAY_TYPE_);
     case OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_DAY:
-    return OrgJodaTimeDateTimeFieldType_get_CLOCKHOUR_OF_DAY_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, CLOCKHOUR_OF_DAY_TYPE_);
     case OrgJodaTimeDateTimeFieldType_HOUR_OF_DAY:
-    return OrgJodaTimeDateTimeFieldType_get_HOUR_OF_DAY_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, HOUR_OF_DAY_TYPE_);
     case OrgJodaTimeDateTimeFieldType_MINUTE_OF_DAY:
-    return OrgJodaTimeDateTimeFieldType_get_MINUTE_OF_DAY_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, MINUTE_OF_DAY_TYPE_);
     case OrgJodaTimeDateTimeFieldType_MINUTE_OF_HOUR:
-    return OrgJodaTimeDateTimeFieldType_get_MINUTE_OF_HOUR_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, MINUTE_OF_HOUR_TYPE_);
     case OrgJodaTimeDateTimeFieldType_SECOND_OF_DAY:
-    return OrgJodaTimeDateTimeFieldType_get_SECOND_OF_DAY_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, SECOND_OF_DAY_TYPE_);
     case OrgJodaTimeDateTimeFieldType_SECOND_OF_MINUTE:
-    return OrgJodaTimeDateTimeFieldType_get_SECOND_OF_MINUTE_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, SECOND_OF_MINUTE_TYPE_);
     case OrgJodaTimeDateTimeFieldType_MILLIS_OF_DAY:
-    return OrgJodaTimeDateTimeFieldType_get_MILLIS_OF_DAY_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, MILLIS_OF_DAY_TYPE_);
     case OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND:
-    return OrgJodaTimeDateTimeFieldType_get_MILLIS_OF_SECOND_TYPE_();
+    return JreLoadStatic(OrgJodaTimeDateTimeFieldType, MILLIS_OF_SECOND_TYPE_);
     default:
     return self;
   }
@@ -702,9 +707,9 @@ withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)rangeType {
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_serialVersionUID },
-    { "iOrdinal_", NULL, 0x12, "B", NULL, NULL,  },
-    { "iUnitType_", NULL, 0x92, "Lorg.joda.time.DurationFieldType;", NULL, NULL,  },
-    { "iRangeType_", NULL, 0x92, "Lorg.joda.time.DurationFieldType;", NULL, NULL,  },
+    { "iOrdinal_", NULL, 0x12, "B", NULL, NULL, .constantValue.asLong = 0 },
+    { "iUnitType_", NULL, 0x92, "Lorg.joda.time.DurationFieldType;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iRangeType_", NULL, 0x92, "Lorg.joda.time.DurationFieldType;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType = { 2, "StandardDateTimeFieldType", "org.joda.time", "DateTimeFieldType", 0xa, 7, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType;
@@ -715,8 +720,8 @@ withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)rangeType {
 void OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType *self, NSString *name, jbyte ordinal, OrgJodaTimeDurationFieldType *unitType, OrgJodaTimeDurationFieldType *rangeType) {
   OrgJodaTimeDateTimeFieldType_initWithNSString_(self, name);
   self->iOrdinal_ = ordinal;
-  OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_set_iUnitType_(self, unitType);
-  OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_set_iRangeType_(self, rangeType);
+  JreStrongAssign(&self->iUnitType_, unitType);
+  JreStrongAssign(&self->iRangeType_, rangeType);
 }
 
 OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType *new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(NSString *name, jbyte ordinal, OrgJodaTimeDurationFieldType *unitType, OrgJodaTimeDurationFieldType *rangeType) {

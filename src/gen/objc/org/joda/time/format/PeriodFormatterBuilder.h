@@ -23,9 +23,36 @@
 @protocol OrgJodaTimeReadWritablePeriod;
 @protocol OrgJodaTimeReadablePeriod;
 
-/**
+/*!
  @brief Factory that creates complex instances of PeriodFormatter via method calls.
- <p> Period formatting is performed by the PeriodFormatter class. Three classes provide factory methods to create formatters, and this is one. The others are PeriodFormat and ISOPeriodFormat . <p> PeriodFormatterBuilder is used for constructing formatters which are then used to print or parse. The formatters are built by appending specific fields or other formatters to an instance of this builder. <p> For example, a formatter that prints years and months, like "15 years and 8 months", can be constructed as follows: <p> <pre> PeriodFormatter yearsAndMonths = new PeriodFormatterBuilder() .printZeroAlways() .appendYears() .appendSuffix(" year", " years") .appendSeparator(" and ") .printZeroRarelyLast() .appendMonths() .appendSuffix(" month", " months") .toFormatter(); </pre> <p> PeriodFormatterBuilder itself is mutable and not thread-safe, but the formatters that it builds are thread-safe and immutable.
+ <p>
+ Period formatting is performed by the <code>PeriodFormatter</code> class.
+ Three classes provide factory methods to create formatters, and this is one.
+ The others are <code>PeriodFormat</code> and <code>ISOPeriodFormat</code>.
+ <p>
+ PeriodFormatterBuilder is used for constructing formatters which are then
+ used to print or parse. The formatters are built by appending specific fields
+ or other formatters to an instance of this builder.
+ <p>
+ For example, a formatter that prints years and months, like "15 years and 8 months",
+ can be constructed as follows:
+ <p>
+ @code
+
+  PeriodFormatter yearsAndMonths = new PeriodFormatterBuilder()
+     .printZeroAlways()
+     .appendYears()
+     .appendSuffix(" year", " years")
+     .appendSeparator(" and ")
+     .printZeroRarelyLast()
+     .appendMonths()
+     .appendSuffix(" month", " months")
+     .toFormatter();
+  
+@endcode
+ <p>
+ PeriodFormatterBuilder itself is mutable and not thread-safe, but the
+ formatters that it builds are thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -35,38 +62,44 @@
 
 - (instancetype)init;
 
-/**
+/*!
  @brief Appends another formatter.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendWithOrgJodaTimeFormatPeriodFormatter:(OrgJodaTimeFormatPeriodFormatter *)formatter;
 
-/**
+/*!
  @brief Appends a printer parser pair.
- <p> Either the printer or the parser may be null, in which case the builder will be unable to produce a parser or printer repectively.
- @param printer appends a printer to the builder, null if printing is not supported
- @param parser appends a parser to the builder, null if parsing is not supported
+ <p>
+ Either the printer or the parser may be null, in which case the builder will
+ be unable to produce a parser or printer repectively.
+ @param printer  appends a printer to the builder, null if printing is not supported
+ @param parser  appends a parser to the builder, null if parsing is not supported
  @return this PeriodFormatterBuilder
  @throws IllegalArgumentException if both the printer and parser are null
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendWithOrgJodaTimeFormatPeriodPrinter:(id<OrgJodaTimeFormatPeriodPrinter>)printer
                                                     withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)parser;
 
-/**
+/*!
  @brief Instruct the printer to emit an integer days field, if supported.
- <p> The number of printed and parsed digits can be controlled using #minimumPrintedDigits(int) and #maximumParsedDigits(int) .
+ <p>
+ The number of printed and parsed digits can be controlled using
+ <code>minimumPrintedDigits(int)</code> and <code>maximumParsedDigits(int)</code>.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendDays;
 
-/**
+/*!
  @brief Instruct the printer to emit an integer hours field, if supported.
- <p> The number of printed and parsed digits can be controlled using #minimumPrintedDigits(int) and #maximumParsedDigits(int) .
+ <p>
+ The number of printed and parsed digits can be controlled using
+ <code>minimumPrintedDigits(int)</code> and <code>maximumParsedDigits(int)</code>.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendHours;
 
-/**
+/*!
  @brief Instructs the printer to emit specific text, and the parser to expect it.
  The parser is case-insensitive.
  @return this PeriodFormatterBuilder
@@ -74,45 +107,57 @@
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendLiteralWithNSString:(NSString *)text;
 
-/**
+/*!
  @brief Instruct the printer to emit an integer millis field, if supported.
- <p> The number of printed and parsed digits can be controlled using #minimumPrintedDigits(int) and #maximumParsedDigits(int) .
+ <p>
+ The number of printed and parsed digits can be controlled using
+ <code>minimumPrintedDigits(int)</code> and <code>maximumParsedDigits(int)</code>.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendMillis;
 
-/**
+/*!
  @brief Instruct the printer to emit an integer millis field, if supported.
- <p> The number of arsed digits can be controlled using #maximumParsedDigits(int) .
+ <p>
+ The number of arsed digits can be controlled using <code>maximumParsedDigits(int)</code>.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendMillis3Digit;
 
-/**
+/*!
  @brief Instruct the printer to emit an integer minutes field, if supported.
- <p> The number of printed and parsed digits can be controlled using #minimumPrintedDigits(int) and #maximumParsedDigits(int) .
+ <p>
+ The number of printed and parsed digits can be controlled using
+ <code>minimumPrintedDigits(int)</code> and <code>maximumParsedDigits(int)</code>.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendMinutes;
 
-/**
+/*!
  @brief Instruct the printer to emit an integer months field, if supported.
- <p> The number of printed and parsed digits can be controlled using #minimumPrintedDigits(int) and #maximumParsedDigits(int) .
+ <p>
+ The number of printed and parsed digits can be controlled using
+ <code>minimumPrintedDigits(int)</code> and <code>maximumParsedDigits(int)</code>.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendMonths;
 
-/**
+/*!
  @brief Append a field prefix which applies only to the next appended field.
- If the field is not printed, neither is the prefix.
+ If
+ the field is not printed, neither is the prefix.
  @param text text to print before field only if field is printed
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendPrefixWithNSString:(NSString *)text;
 
-/**
+/*!
  @brief Append a field prefix which applies only to the next appended field.
- If the field is not printed, neither is the prefix. <p> During parsing, the singular and plural versions are accepted whether or not the actual value matches plurality.
+ If
+ the field is not printed, neither is the prefix.
+ <p>
+ During parsing, the singular and plural versions are accepted whether
+ or not the actual value matches plurality.
  @param singularText text to print if field value is one
  @param pluralText text to print if field value is not one
  @return this PeriodFormatterBuilder
@@ -120,11 +165,33 @@
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendPrefixWithNSString:(NSString *)singularText
                                                          withNSString:(NSString *)pluralText;
 
-/**
+/*!
  @brief Append a field prefix which applies only to the next appended field.
- If the field is not printed, neither is the prefix. <p> The value is converted to String. During parsing, the prefix is selected based on the match with the regular expression. The index of the first regular expression that matches value converted to String nominates the prefix. If none of the regular expressions match the value converted to String then the last prefix is selected. <p> An example usage for English might look like this: <pre> appendPrefix(new String[] { &quot;&circ;1$&quot;, &quot;.*&quot; }, new String[] { &quot; year&quot;, &quot; years&quot; }) </pre> <p> Please note that for languages with simple mapping (singular and plural prefix only - like the one above) the #appendPrefix(String,String) method will produce in a slightly faster formatter and that #appendPrefix(String[],String[]) method should be only used when the mapping between values and prefixes is more complicated than the difference between singular and plural.
- @param regularExpressions an array of regular expressions, at least one element, length has to match the length of prefixes parameter
- @param prefixes an array of prefixes, at least one element, length has to match the length of regularExpressions parameter
+ If the field is not printed, neither is the prefix.
+ <p>
+ The value is converted to String. During parsing, the prefix is selected based
+ on the match with the regular expression. The index of the first regular
+ expression that matches value converted to String nominates the prefix. If
+ none of the regular expressions match the value converted to String then the
+ last prefix is selected.
+ <p>
+ An example usage for English might look like this:
+ @code
+
+  appendPrefix(new String[] { &quot;&circ;1$&quot;, &quot;.*&quot; }, new String[] { &quot; year&quot;, &quot; years&quot; })
+  
+@endcode
+ <p>
+ Please note that for languages with simple mapping (singular and plural prefix
+ only - like the one above) the <code>appendPrefix(String,String)</code> method
+ will produce in a slightly faster formatter and that
+ <code>appendPrefix(String[],String[])</code> method should be only used when the
+ mapping between values and prefixes is more complicated than the difference between
+ singular and plural.
+ @param regularExpressions  an array of regular expressions, at least one
+ element, length has to match the length of prefixes parameter
+ @param prefixes  an array of prefixes, at least one element, length has to
+ match the length of regularExpressions parameter
  @return this PeriodFormatterBuilder
  @throws IllegalStateException if no field exists to append to
  @since 2.5
@@ -132,53 +199,89 @@
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendPrefixWithNSStringArray:(IOSObjectArray *)regularExpressions
                                                          withNSStringArray:(IOSObjectArray *)prefixes;
 
-/**
+/*!
  @brief Instruct the printer to emit an integer seconds field, if supported.
- <p> The number of printed and parsed digits can be controlled using #minimumPrintedDigits(int) and #maximumParsedDigits(int) .
+ <p>
+ The number of printed and parsed digits can be controlled using
+ <code>minimumPrintedDigits(int)</code> and <code>maximumParsedDigits(int)</code>.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSeconds;
 
-/**
+/*!
  @brief Instruct the printer to emit a combined seconds and millis field, if supported.
- The millis will overflow into the seconds if necessary. The millis are always output.
+ The millis will overflow into the seconds if necessary.
+ The millis are always output.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSecondsWithMillis;
 
-/**
+/*!
  @brief Instruct the printer to emit a combined seconds and millis field, if supported.
- The millis will overflow into the seconds if necessary. The millis are only output if non-zero.
+ The millis will overflow into the seconds if necessary.
+ The millis are only output if non-zero.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSecondsWithOptionalMillis;
 
-/**
- @brief Append a separator, which is output if fields are printed both before and after the separator.
- <p> For example, <code>builder.appendDays().appendSeparator(",").appendHours()</code> will only output the comma if both the days and hours fields are output. <p> The text will be parsed case-insensitively. <p> Note: appending a separator discontinues any further work on the latest appended field.
- @param text the text to use as a separator
+/*!
+ @brief Append a separator, which is output if fields are printed both before
+ and after the separator.
+ <p>
+ For example, <code>builder.appendDays().appendSeparator(",").appendHours()</code>
+ will only output the comma if both the days and hours fields are output.
+ <p>
+ The text will be parsed case-insensitively.
+ <p>
+ Note: appending a separator discontinues any further work on the latest
+ appended field.
+ @param text  the text to use as a separator
  @return this PeriodFormatterBuilder
  @throws IllegalStateException if this separator follows a previous one
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSeparatorWithNSString:(NSString *)text;
 
-/**
- @brief Append a separator, which is output if fields are printed both before and after the separator.
- <p> This method changes the separator depending on whether it is the last separator to be output. <p> For example, <code>builder.appendDays().appendSeparator(",", "&").appendHours().appendSeparator(",", "&").appendMinutes()</code> will output '1,2&3' if all three fields are output, '1&2' if two fields are output and '1' if just one field is output. <p> The text will be parsed case-insensitively. <p> Note: appending a separator discontinues any further work on the latest appended field.
- @param text the text to use as a separator
- @param finalText the text used used if this is the final separator to be printed
+/*!
+ @brief Append a separator, which is output if fields are printed both before
+ and after the separator.
+ <p>
+ This method changes the separator depending on whether it is the last separator
+ to be output.
+ <p>
+ For example, <code>builder.appendDays().appendSeparator(",", "&").appendHours().appendSeparator(",", "&").appendMinutes()</code>
+ will output '1,2&3' if all three fields are output, '1&2' if two fields are output
+ and '1' if just one field is output.
+ <p>
+ The text will be parsed case-insensitively.
+ <p>
+ Note: appending a separator discontinues any further work on the latest
+ appended field.
+ @param text  the text to use as a separator
+ @param finalText  the text used used if this is the final separator to be printed
  @return this PeriodFormatterBuilder
  @throws IllegalStateException if this separator follows a previous one
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSeparatorWithNSString:(NSString *)text
                                                             withNSString:(NSString *)finalText;
 
-/**
- @brief Append a separator, which is output if fields are printed both before and after the separator.
- <p> This method changes the separator depending on whether it is the last separator to be output. <p> For example, <code>builder.appendDays().appendSeparator(",", "&").appendHours().appendSeparator(",", "&").appendMinutes()</code> will output '1,2&3' if all three fields are output, '1&2' if two fields are output and '1' if just one field is output. <p> The text will be parsed case-insensitively. <p> Note: appending a separator discontinues any further work on the latest appended field.
- @param text the text to use as a separator
- @param finalText the text used used if this is the final separator to be printed
- @param variants set of text values which are also acceptable when parsed
+/*!
+ @brief Append a separator, which is output if fields are printed both before
+ and after the separator.
+ <p>
+ This method changes the separator depending on whether it is the last separator
+ to be output.
+ <p>
+ For example, <code>builder.appendDays().appendSeparator(",", "&").appendHours().appendSeparator(",", "&").appendMinutes()</code>
+ will output '1,2&3' if all three fields are output, '1&2' if two fields are output
+ and '1' if just one field is output.
+ <p>
+ The text will be parsed case-insensitively.
+ <p>
+ Note: appending a separator discontinues any further work on the latest
+ appended field.
+ @param text  the text to use as a separator
+ @param finalText  the text used used if this is the final separator to be printed
+ @param variants  set of text values which are also acceptable when parsed
  @return this PeriodFormatterBuilder
  @throws IllegalStateException if this separator follows a previous one
  */
@@ -186,36 +289,57 @@
                                                             withNSString:(NSString *)finalText
                                                        withNSStringArray:(IOSObjectArray *)variants;
 
-/**
+/*!
  @brief Append a separator, which is output only if fields are printed after the separator.
- <p> For example, <code>builder.appendDays().appendSeparatorIfFieldsAfter(",").appendHours()</code> will only output the comma if the hours fields is output. <p> The text will be parsed case-insensitively. <p> Note: appending a separator discontinues any further work on the latest appended field.
- @param text the text to use as a separator
+ <p>
+ For example,
+ <code>builder.appendDays().appendSeparatorIfFieldsAfter(",").appendHours()</code>
+ will only output the comma if the hours fields is output.
+ <p>
+ The text will be parsed case-insensitively.
+ <p>
+ Note: appending a separator discontinues any further work on the latest
+ appended field.
+ @param text  the text to use as a separator
  @return this PeriodFormatterBuilder
  @throws IllegalStateException if this separator follows a previous one
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSeparatorIfFieldsAfterWithNSString:(NSString *)text;
 
-/**
+/*!
  @brief Append a separator, which is output only if fields are printed before the separator.
- <p> For example, <code>builder.appendDays().appendSeparatorIfFieldsBefore(",").appendHours()</code> will only output the comma if the days fields is output. <p> The text will be parsed case-insensitively. <p> Note: appending a separator discontinues any further work on the latest appended field.
- @param text the text to use as a separator
+ <p>
+ For example,
+ <code>builder.appendDays().appendSeparatorIfFieldsBefore(",").appendHours()</code>
+ will only output the comma if the days fields is output.
+ <p>
+ The text will be parsed case-insensitively.
+ <p>
+ Note: appending a separator discontinues any further work on the latest
+ appended field.
+ @param text  the text to use as a separator
  @return this PeriodFormatterBuilder
  @throws IllegalStateException if this separator follows a previous one
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSeparatorIfFieldsBeforeWithNSString:(NSString *)text;
 
-/**
+/*!
  @brief Append a field suffix which applies only to the last appended field.
- If the field is not printed, neither is the suffix.
+ If
+ the field is not printed, neither is the suffix.
  @param text text to print after field only if field is printed
  @return this PeriodFormatterBuilder
  @throws IllegalStateException if no field exists to append to
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSuffixWithNSString:(NSString *)text;
 
-/**
+/*!
  @brief Append a field suffix which applies only to the last appended field.
- If the field is not printed, neither is the suffix. <p> During parsing, the singular and plural versions are accepted whether or not the actual value matches plurality.
+ If
+ the field is not printed, neither is the suffix.
+ <p>
+ During parsing, the singular and plural versions are accepted whether or
+ not the actual value matches plurality.
  @param singularText text to print if field value is one
  @param pluralText text to print if field value is not one
  @return this PeriodFormatterBuilder
@@ -224,11 +348,33 @@
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSuffixWithNSString:(NSString *)singularText
                                                          withNSString:(NSString *)pluralText;
 
-/**
+/*!
  @brief Append a field suffix which applies only to the last appended field.
- If the field is not printed, neither is the suffix. <p> The value is converted to String. During parsing, the suffix is selected based on the match with the regular expression. The index of the first regular expression that matches value converted to String nominates the suffix. If none of the regular expressions match the value converted to String then the last suffix is selected. <p> An example usage for English might look like this: <pre> appendSuffix(new String[] { &quot;&circ;1$&quot;, &quot;.*&quot; }, new String[] { &quot; year&quot;, &quot; years&quot; }) </pre> <p> Please note that for languages with simple mapping (singular and plural suffix only - like the one above) the #appendSuffix(String,String) method will result in a slightly faster formatter and that #appendSuffix(String[],String[]) method should be only used when the mapping between values and prefixes is more complicated than the difference between singular and plural.
- @param regularExpressions an array of regular expressions, at least one element, length has to match the length of suffixes parameter
- @param suffixes an array of suffixes, at least one element, length has to match the length of regularExpressions parameter
+ If the field is not printed, neither is the suffix.
+ <p>
+ The value is converted to String. During parsing, the suffix is selected based
+ on the match with the regular expression. The index of the first regular
+ expression that matches value converted to String nominates the suffix. If
+ none of the regular expressions match the value converted to String then the
+ last suffix is selected.
+ <p>
+ An example usage for English might look like this:
+ @code
+
+  appendSuffix(new String[] { &quot;&circ;1$&quot;, &quot;.*&quot; }, new String[] { &quot; year&quot;, &quot; years&quot; })
+  
+@endcode
+ <p>
+ Please note that for languages with simple mapping (singular and plural suffix
+ only - like the one above) the <code>appendSuffix(String,String)</code> method
+ will result in a slightly faster formatter and that
+ <code>appendSuffix(String[],String[])</code> method should be only used when the
+ mapping between values and prefixes is more complicated than the difference between
+ singular and plural.
+ @param regularExpressions  an array of regular expressions, at least one
+ element, length has to match the length of suffixes parameter
+ @param suffixes  an array of suffixes, at least one element, length has to
+ match the length of regularExpressions parameter
  @return this PeriodFormatterBuilder
  @throws IllegalStateException if no field exists to append to
  @since 2.5
@@ -236,97 +382,138 @@
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendSuffixWithNSStringArray:(IOSObjectArray *)regularExpressions
                                                          withNSStringArray:(IOSObjectArray *)suffixes;
 
-/**
+/*!
  @brief Instruct the printer to emit an integer weeks field, if supported.
- <p> The number of printed and parsed digits can be controlled using #minimumPrintedDigits(int) and #maximumParsedDigits(int) .
+ <p>
+ The number of printed and parsed digits can be controlled using
+ <code>minimumPrintedDigits(int)</code> and <code>maximumParsedDigits(int)</code>.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendWeeks;
 
-/**
+/*!
  @brief Instruct the printer to emit an integer years field, if supported.
- <p> The number of printed and parsed digits can be controlled using #minimumPrintedDigits(int) and #maximumParsedDigits(int) .
+ <p>
+ The number of printed and parsed digits can be controlled using
+ <code>minimumPrintedDigits(int)</code> and <code>maximumParsedDigits(int)</code>.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)appendYears;
 
-/**
+/*!
  @brief Clears out all the appended elements, allowing this builder to be reused.
  */
 - (void)clear;
 
-/**
- @brief Set the maximum digits parsed for the next and following appended fields.
+/*!
+ @brief Set the maximum digits parsed for the next and following appended
+ fields.
  By default, the maximum digits parsed is ten.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)maximumParsedDigitsWithInt:(jint)maxDigits;
 
-/**
- @brief Set the minimum digits printed for the next and following appended fields.
- By default, the minimum digits printed is one. If the field value is zero, it is not printed unless a printZero rule is applied.
+/*!
+ @brief Set the minimum digits printed for the next and following appended
+ fields.
+ By default, the minimum digits printed is one. If the field value
+ is zero, it is not printed unless a printZero rule is applied.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)minimumPrintedDigitsWithInt:(jint)minDigits;
 
-/**
- @brief Always print zero values for the next and following appended fields, even if the period doesn't support it.
- The parser requires values for fields that always print zero.
+/*!
+ @brief Always print zero values for the next and following appended fields,
+ even if the period doesn't support it.
+ The parser requires values for
+ fields that always print zero.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)printZeroAlways;
 
-/**
- @brief Print zero values for the next and following appened fields only if the period supports it.
+/*!
+ @brief Print zero values for the next and following appened fields only if the
+ period supports it.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)printZeroIfSupported;
 
-/**
- @brief Never print zero values for the next and following appended fields, unless no fields would be printed.
- If no fields are printed, the printer forces the last "printZeroRarely" field to print a zero. <p> This field setting is the default.
+/*!
+ @brief Never print zero values for the next and following appended fields,
+ unless no fields would be printed.
+ If no fields are printed, the printer
+ forces the last "printZeroRarely" field to print a zero.
+ <p>
+ This field setting is the default.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)printZeroNever;
 
-/**
- @brief Never print zero values for the next and following appended fields, unless no fields would be printed.
- If no fields are printed, the printer forces the first "printZeroRarely" field to print a zero.
+/*!
+ @brief Never print zero values for the next and following appended fields,
+ unless no fields would be printed.
+ If no fields are printed, the printer
+ forces the first "printZeroRarely" field to print a zero.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)printZeroRarelyFirst;
 
-/**
- @brief Never print zero values for the next and following appended fields, unless no fields would be printed.
- If no fields are printed, the printer forces the last "printZeroRarely" field to print a zero. <p> This field setting is the default.
+/*!
+ @brief Never print zero values for the next and following appended fields,
+ unless no fields would be printed.
+ If no fields are printed, the printer
+ forces the last "printZeroRarely" field to print a zero.
+ <p>
+ This field setting is the default.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)printZeroRarelyLast;
 
-/**
+/*!
  @brief Reject signed values when parsing the next and following appended fields.
  @return this PeriodFormatterBuilder
  */
 - (OrgJodaTimeFormatPeriodFormatterBuilder *)rejectSignedValuesWithBoolean:(jboolean)v;
 
-/**
+/*!
  @brief Constructs a PeriodFormatter using all the appended elements.
- <p> This is the main method used by applications at the end of the build process to create a usable formatter. <p> Subsequent changes to this builder do not affect the returned formatter. <p> The returned formatter may not support both printing and parsing. The methods PeriodFormatter#isPrinter() and PeriodFormatter#isParser() will help you determine the state of the formatter.
+ <p>
+ This is the main method used by applications at the end of the build
+ process to create a usable formatter.
+ <p>
+ Subsequent changes to this builder do not affect the returned formatter.
+ <p>
+ The returned formatter may not support both printing and parsing.
+ The methods <code>PeriodFormatter.isPrinter()</code> and
+ <code>PeriodFormatter.isParser()</code> will help you determine the state
+ of the formatter.
  @return the newly created formatter
  @throws IllegalStateException if the builder can produce neither a printer nor a parser
  */
 - (OrgJodaTimeFormatPeriodFormatter *)toFormatter;
 
-/**
- @brief Internal method to create a PeriodParser instance using all the appended elements.
- <p> Most applications will not use this method. If you want a printer in an application, call #toFormatter() and just use the printing API. <p> Subsequent changes to this builder do not affect the returned parser.
+/*!
+ @brief Internal method to create a PeriodParser instance using all the
+ appended elements.
+ <p>
+ Most applications will not use this method.
+ If you want a printer in an application, call <code>toFormatter()</code>
+ and just use the printing API.
+ <p>
+ Subsequent changes to this builder do not affect the returned parser.
  @return the newly created parser, null if builder cannot create a parser
  */
 - (id<OrgJodaTimeFormatPeriodParser>)toParser;
 
-/**
- @brief Internal method to create a PeriodPrinter instance using all the appended elements.
- <p> Most applications will not use this method. If you want a printer in an application, call #toFormatter() and just use the printing API. <p> Subsequent changes to this builder do not affect the returned printer.
+/*!
+ @brief Internal method to create a PeriodPrinter instance using all the
+ appended elements.
+ <p>
+ Most applications will not use this method.
+ If you want a printer in an application, call <code>toFormatter()</code>
+ and just use the printing API.
+ <p>
+ Subsequent changes to this builder do not affect the returned printer.
  @return the newly created printer, null if builder cannot create a printer
  */
 - (id<OrgJodaTimeFormatPeriodPrinter>)toPrinter;
@@ -341,7 +528,7 @@ FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatterBuilder *new_OrgJodaTimeFormat
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder)
 
-/**
+/*!
  @brief Defines a formatted field's prefix or suffix text.
  This can be used for fields such as 'n hours' or 'nH' or 'Hour:n'.
  */
@@ -355,26 +542,31 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder)
 - (void)printToWithJavaIoWriter:(JavaIoWriter *)outArg
                         withInt:(jint)value;
 
-/**
+/*!
  @return new position after parsing affix, or ~position of failure
  */
 - (jint)parseWithNSString:(NSString *)periodStr
                   withInt:(jint)position;
 
-/**
+/*!
  @return position where affix starts, or original ~position if not found
  */
 - (jint)scanWithNSString:(NSString *)periodStr
                  withInt:(jint)position;
 
-/**
+/*!
  @return a copy of array of affixes
  */
 - (IOSObjectArray *)getAffixes;
 
-/**
+/*!
  @brief This method should be called only once.
- After first call consecutive calls to this methods will have no effect. Causes this affix to ignore a match (parse and scan methods) if there is an affix in the passed list that holds affix text which satisfy both following conditions: - the affix text is also a match - the affix text is longer than the match from this object
+ After first call consecutive calls to this methods will have no effect.
+ Causes this affix to ignore a match (parse and scan
+ methods) if there is an affix in the passed list that holds 
+ affix text which satisfy both following conditions:
+ - the affix text is also a match
+ - the affix text is longer than the match from this object
  @param affixesToIgnore
  */
 - (void)finishWithJavaUtilSet:(id<JavaUtilSet>)affixesToIgnore;
@@ -385,7 +577,7 @@ J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffi
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix)
 
-/**
+/*!
  @brief An affix that can be ignored.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix : NSObject < OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix >
@@ -396,12 +588,14 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAf
 
 #pragma mark Protected
 
-/**
- @brief Checks if there is a match among the other affixes (stored internally) that is longer than the passed value (textLength).
- @param textLength the length of the match
- @param periodStr the Period string that will be parsed
- @param position the position in the Period string at which the parsing should be started.
- @return true if the other affixes (stored internally) contain a match that is longer than the textLength parameter, false otherwise
+/*!
+ @brief Checks if there is a match among the other affixes (stored internally) 
+ that is longer than the passed value (textLength).
+ @param textLength  the length of the match
+ @param periodStr  the Period string that will be parsed
+ @param position  the position in the Period string at which the parsing should be started.
+ @return true if the other affixes (stored internally) contain a match 
+ that is longer than the textLength parameter, false otherwise
  */
 - (jboolean)matchesOtherAffixWithInt:(jint)textLength
                         withNSString:(NSString *)periodStr
@@ -419,7 +613,7 @@ FOUNDATION_EXPORT void OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_in
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix)
 
-/**
+/*!
  @brief Implements an affix where the text does not vary by the amount.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix : OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix
@@ -456,7 +650,7 @@ FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix *new_OrgJo
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix)
 
-/**
+/*!
  @brief Implements an affix where the text varies by the amount of the field.
  Only singular (1) and plural (not 1) are supported.
  */
@@ -495,7 +689,7 @@ FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix *new_OrgJo
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix)
 
-/**
+/*!
  @brief Implements an affix where the text varies by the amount of the field.
  Different amounts are supported based on the provided parameters.
  */
@@ -534,7 +728,7 @@ FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix *new_OrgJod
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix)
 
-/**
+/*!
  @brief Builds a composite affix by merging two other affix implementations.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix : OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix
@@ -572,7 +766,7 @@ FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix *new_Or
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix)
 
-/**
+/*!
  @brief Formats the numeric value of a field, potentially with prefix/suffix.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter : NSObject < OrgJodaTimeFormatPeriodPrinter, OrgJodaTimeFormatPeriodParser >
@@ -617,7 +811,7 @@ withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:(id<OrgJodaTimeForm
 
 - (jint)getFieldType;
 
-/**
+/*!
  @return Long.MAX_VALUE if nothing to print, otherwise value
  */
 - (jlong)getFieldValueWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period;
@@ -645,7 +839,7 @@ FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *new_Or
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter)
 
-/**
+/*!
  @brief Handles a simple literal piece of text.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_Literal : NSObject < OrgJodaTimeFormatPeriodPrinter, OrgJodaTimeFormatPeriodParser >
@@ -689,7 +883,7 @@ FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatterBuilder_Literal *new_OrgJodaTi
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_Literal)
 
-/**
+/*!
  @brief Handles a separator, that splits the fields into multiple parts.
  For example, the 'T' in the ISO8601 standard.
  */
@@ -740,7 +934,7 @@ FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatterBuilder_Separator *new_OrgJoda
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator)
 
-/**
+/*!
  @brief Composite implementation that merges other fields to create a full pattern.
  */
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_Composite : NSObject < OrgJodaTimeFormatPeriodPrinter, OrgJodaTimeFormatPeriodParser >

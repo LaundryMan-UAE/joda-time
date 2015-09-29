@@ -17,7 +17,7 @@
 
 @interface OrgJodaTimeFormatFormatUtils ()
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)init;
@@ -35,10 +35,12 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatFormatUtils)
 
 @implementation OrgJodaTimeFormatFormatUtils
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeFormatFormatUtils_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)appendPaddedIntegerWithJavaLangStringBuffer:(JavaLangStringBuffer *)buf
                                             withInt:(jint)value
@@ -147,7 +149,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatFormatUtils)
     { "createErrorMessageWithNSString:withInt:", "createErrorMessage", "Ljava.lang.String;", 0x8, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "LOG_10_", NULL, 0x1a, "D", &OrgJodaTimeFormatFormatUtils_LOG_10_, NULL,  },
+    { "LOG_10_", NULL, 0x1a, "D", &OrgJodaTimeFormatFormatUtils_LOG_10_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatFormatUtils = { 2, "FormatUtils", "org.joda.time.format", NULL, 0x1, 16, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatFormatUtils;
@@ -199,9 +201,9 @@ void OrgJodaTimeFormatFormatUtils_appendPaddedIntegerWithJavaLangAppendable_with
     for (; size > 2; size--) {
       [((id<JavaLangAppendable>) nil_chk(appenadble)) appendWithChar:'0'];
     }
-    jint d = RShift32(((value + 1) * 13421772), 27);
+    jint d = JreRShift32(((value + 1) * 13421772), 27);
     [((id<JavaLangAppendable>) nil_chk(appenadble)) appendWithChar:(jchar) (d + '0')];
-    [appenadble appendWithChar:(jchar) (value - (LShift32(d, 3)) - (LShift32(d, 1)) + '0')];
+    [appenadble appendWithChar:(jchar) (value - (JreLShift32(d, 3)) - (JreLShift32(d, 1)) + '0')];
   }
   else {
     jint digits;
@@ -212,7 +214,7 @@ void OrgJodaTimeFormatFormatUtils_appendPaddedIntegerWithJavaLangAppendable_with
       digits = 4;
     }
     else {
-      digits = J2ObjCFpToInt((JavaLangMath_logWithDouble_(value) / OrgJodaTimeFormatFormatUtils_LOG_10_)) + 1;
+      digits = JreFpToInt((JavaLangMath_logWithDouble_(value) / OrgJodaTimeFormatFormatUtils_LOG_10_)) + 1;
     }
     for (; size > digits; size--) {
       [((id<JavaLangAppendable>) nil_chk(appenadble)) appendWithChar:'0'];
@@ -253,7 +255,7 @@ void OrgJodaTimeFormatFormatUtils_appendPaddedIntegerWithJavaLangAppendable_with
         return;
       }
     }
-    jint digits = J2ObjCFpToInt((JavaLangMath_logWithDouble_(value) / OrgJodaTimeFormatFormatUtils_LOG_10_)) + 1;
+    jint digits = JreFpToInt((JavaLangMath_logWithDouble_(value) / OrgJodaTimeFormatFormatUtils_LOG_10_)) + 1;
     for (; size > digits; size--) {
       [((id<JavaLangAppendable>) nil_chk(appendable)) appendWithChar:'0'];
     }
@@ -286,9 +288,9 @@ void OrgJodaTimeFormatFormatUtils_writePaddedIntegerWithJavaIoWriter_withInt_wit
     for (; size > 2; size--) {
       [((JavaIoWriter *) nil_chk(outArg)) writeWithInt:'0'];
     }
-    jint d = RShift32(((value + 1) * 13421772), 27);
+    jint d = JreRShift32(((value + 1) * 13421772), 27);
     [((JavaIoWriter *) nil_chk(outArg)) writeWithInt:d + '0'];
-    [outArg writeWithInt:value - (LShift32(d, 3)) - (LShift32(d, 1)) + '0'];
+    [outArg writeWithInt:value - (JreLShift32(d, 3)) - (JreLShift32(d, 1)) + '0'];
   }
   else {
     jint digits;
@@ -299,7 +301,7 @@ void OrgJodaTimeFormatFormatUtils_writePaddedIntegerWithJavaIoWriter_withInt_wit
       digits = 4;
     }
     else {
-      digits = J2ObjCFpToInt((JavaLangMath_logWithDouble_(value) / OrgJodaTimeFormatFormatUtils_LOG_10_)) + 1;
+      digits = JreFpToInt((JavaLangMath_logWithDouble_(value) / OrgJodaTimeFormatFormatUtils_LOG_10_)) + 1;
     }
     for (; size > digits; size--) {
       [((JavaIoWriter *) nil_chk(outArg)) writeWithInt:'0'];
@@ -331,7 +333,7 @@ void OrgJodaTimeFormatFormatUtils_writePaddedIntegerWithJavaIoWriter_withLong_wi
         return;
       }
     }
-    jint digits = J2ObjCFpToInt((JavaLangMath_logWithDouble_(value) / OrgJodaTimeFormatFormatUtils_LOG_10_)) + 1;
+    jint digits = JreFpToInt((JavaLangMath_logWithDouble_(value) / OrgJodaTimeFormatFormatUtils_LOG_10_)) + 1;
     for (; size > digits; size--) {
       [((JavaIoWriter *) nil_chk(outArg)) writeWithInt:'0'];
     }
@@ -364,9 +366,9 @@ void OrgJodaTimeFormatFormatUtils_appendUnpaddedIntegerWithJavaLangAppendable_wi
     [((id<JavaLangAppendable>) nil_chk(appendable)) appendWithChar:(jchar) (value + '0')];
   }
   else if (value < 100) {
-    jint d = RShift32(((value + 1) * 13421772), 27);
+    jint d = JreRShift32(((value + 1) * 13421772), 27);
     [((id<JavaLangAppendable>) nil_chk(appendable)) appendWithChar:(jchar) (d + '0')];
-    [appendable appendWithChar:(jchar) (value - (LShift32(d, 3)) - (LShift32(d, 1)) + '0')];
+    [appendable appendWithChar:(jchar) (value - (JreLShift32(d, 3)) - (JreLShift32(d, 1)) + '0')];
   }
   else {
     [((id<JavaLangAppendable>) nil_chk(appendable)) appendWithJavaLangCharSequence:JavaLangInteger_toStringWithInt_(value)];
@@ -409,9 +411,9 @@ void OrgJodaTimeFormatFormatUtils_writeUnpaddedIntegerWithJavaIoWriter_withInt_(
     [((JavaIoWriter *) nil_chk(outArg)) writeWithInt:value + '0'];
   }
   else if (value < 100) {
-    jint d = RShift32(((value + 1) * 13421772), 27);
+    jint d = JreRShift32(((value + 1) * 13421772), 27);
     [((JavaIoWriter *) nil_chk(outArg)) writeWithInt:d + '0'];
-    [outArg writeWithInt:value - (LShift32(d, 3)) - (LShift32(d, 1)) + '0'];
+    [outArg writeWithInt:value - (JreLShift32(d, 3)) - (JreLShift32(d, 1)) + '0'];
   }
   else {
     [((JavaIoWriter *) nil_chk(outArg)) writeWithNSString:JavaLangInteger_toStringWithInt_(value)];
@@ -439,13 +441,13 @@ jint OrgJodaTimeFormatFormatUtils_calculateDigitCountWithLong_(jlong value) {
       return 20;
     }
   }
-  return (value < 10 ? 1 : (value < 100 ? 2 : (value < 1000 ? 3 : (value < 10000 ? 4 : (J2ObjCFpToInt((JavaLangMath_logWithDouble_(value) / OrgJodaTimeFormatFormatUtils_LOG_10_)) + 1)))));
+  return (value < 10 ? 1 : (value < 100 ? 2 : (value < 1000 ? 3 : (value < 10000 ? 4 : (JreFpToInt((JavaLangMath_logWithDouble_(value) / OrgJodaTimeFormatFormatUtils_LOG_10_)) + 1)))));
 }
 
 jint OrgJodaTimeFormatFormatUtils_parseTwoDigitsWithJavaLangCharSequence_withInt_(id<JavaLangCharSequence> text, jint position) {
   OrgJodaTimeFormatFormatUtils_initialize();
   jint value = [((id<JavaLangCharSequence>) nil_chk(text)) charAtWithInt:position] - '0';
-  return ((LShift32(value, 3)) + (LShift32(value, 1))) + [text charAtWithInt:position + 1] - '0';
+  return ((JreLShift32(value, 3)) + (JreLShift32(value, 1))) + [text charAtWithInt:position + 1] - '0';
 }
 
 NSString *OrgJodaTimeFormatFormatUtils_createErrorMessageWithNSString_withInt_(NSString *text, jint errorPos) {

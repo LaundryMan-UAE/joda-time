@@ -12,9 +12,10 @@
 @class OrgJodaTimeDateTimeZone;
 @protocol JavaUtilSet;
 
-/**
+/*!
  @brief Simple time zone provider that supports only UTC.
- <p> UTCProvider is thread-safe and immutable.
+ <p>
+ UTCProvider is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -22,18 +23,19 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Constructor.
  */
 - (instancetype)init;
 
-/**
+/*!
  @brief Returns a singleton collection containing only <code>"UTC"</code>.
  */
 - (id<JavaUtilSet>)getAvailableIDs;
 
-/**
- @brief Returns DateTimeZone#UTC UTC for <code>"UTC"</code>, null otherwise.
+/*!
+ @brief Returns <code>UTC</code> for <code>"UTC"</code>, null
+ otherwise.
  */
 - (OrgJodaTimeDateTimeZone *)getZoneWithNSString:(NSString *)id_;
 

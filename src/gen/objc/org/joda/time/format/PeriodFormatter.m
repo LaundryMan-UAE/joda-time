@@ -23,49 +23,49 @@
 
 @interface OrgJodaTimeFormatPeriodFormatter () {
  @public
-  /**
+  /*!
    @brief The internal printer used to output the datetime.
    */
   id<OrgJodaTimeFormatPeriodPrinter> iPrinter_;
-  /**
+  /*!
    @brief The internal parser used to output the datetime.
    */
   id<OrgJodaTimeFormatPeriodParser> iParser_;
-  /**
+  /*!
    @brief The locale to use for printing and parsing.
    */
   JavaUtilLocale *iLocale_;
-  /**
+  /*!
    @brief The period type used in parsing.
    */
   OrgJodaTimePeriodType *iParseType_;
 }
 
-/**
+/*!
  @brief Constructor.
- @param printer the internal printer, null if cannot print
- @param parser the internal parser, null if cannot parse
- @param locale the locale to use
- @param type the parse period type
+ @param printer  the internal printer, null if cannot print
+ @param parser  the internal parser, null if cannot parse
+ @param locale  the locale to use
+ @param type  the parse period type
  */
 - (instancetype)initWithOrgJodaTimeFormatPeriodPrinter:(id<OrgJodaTimeFormatPeriodPrinter>)printer
                      withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)parser
                                     withJavaUtilLocale:(JavaUtilLocale *)locale
                              withOrgJodaTimePeriodType:(OrgJodaTimePeriodType *)type;
 
-/**
+/*!
  @brief Checks whether printing is supported.
  @throws UnsupportedOperationException if printing is not supported
  */
 - (void)checkPrinter;
 
-/**
+/*!
  @brief Checks whether the period is non-null.
  @throws IllegalArgumentException if the period is null
  */
 - (void)checkPeriodWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period;
 
-/**
+/*!
  @brief Checks whether parsing is supported.
  @throws UnsupportedOperationException if parsing is not supported
  */
@@ -236,10 +236,10 @@ __attribute__((unused)) static void OrgJodaTimeFormatPeriodFormatter_checkParser
     { "checkParser", NULL, "V", 0x2, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "iPrinter_", NULL, 0x12, "Lorg.joda.time.format.PeriodPrinter;", NULL, NULL,  },
-    { "iParser_", NULL, 0x12, "Lorg.joda.time.format.PeriodParser;", NULL, NULL,  },
-    { "iLocale_", NULL, 0x12, "Ljava.util.Locale;", NULL, NULL,  },
-    { "iParseType_", NULL, 0x12, "Lorg.joda.time.PeriodType;", NULL, NULL,  },
+    { "iPrinter_", NULL, 0x12, "Lorg.joda.time.format.PeriodPrinter;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iParser_", NULL, 0x12, "Lorg.joda.time.format.PeriodParser;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iLocale_", NULL, 0x12, "Ljava.util.Locale;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iParseType_", NULL, 0x12, "Lorg.joda.time.PeriodType;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormatter = { 2, "PeriodFormatter", "org.joda.time.format", NULL, 0x1, 19, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatPeriodFormatter;
@@ -249,10 +249,10 @@ __attribute__((unused)) static void OrgJodaTimeFormatPeriodFormatter_checkParser
 
 void OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_(OrgJodaTimeFormatPeriodFormatter *self, id<OrgJodaTimeFormatPeriodPrinter> printer, id<OrgJodaTimeFormatPeriodParser> parser) {
   NSObject_init(self);
-  OrgJodaTimeFormatPeriodFormatter_set_iPrinter_(self, printer);
-  OrgJodaTimeFormatPeriodFormatter_set_iParser_(self, parser);
-  OrgJodaTimeFormatPeriodFormatter_set_iLocale_(self, nil);
-  OrgJodaTimeFormatPeriodFormatter_set_iParseType_(self, nil);
+  JreStrongAssign(&self->iPrinter_, printer);
+  JreStrongAssign(&self->iParser_, parser);
+  JreStrongAssign(&self->iLocale_, nil);
+  JreStrongAssign(&self->iParseType_, nil);
 }
 
 OrgJodaTimeFormatPeriodFormatter *new_OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_(id<OrgJodaTimeFormatPeriodPrinter> printer, id<OrgJodaTimeFormatPeriodParser> parser) {
@@ -263,10 +263,10 @@ OrgJodaTimeFormatPeriodFormatter *new_OrgJodaTimeFormatPeriodFormatter_initWithO
 
 void OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withJavaUtilLocale_withOrgJodaTimePeriodType_(OrgJodaTimeFormatPeriodFormatter *self, id<OrgJodaTimeFormatPeriodPrinter> printer, id<OrgJodaTimeFormatPeriodParser> parser, JavaUtilLocale *locale, OrgJodaTimePeriodType *type) {
   NSObject_init(self);
-  OrgJodaTimeFormatPeriodFormatter_set_iPrinter_(self, printer);
-  OrgJodaTimeFormatPeriodFormatter_set_iParser_(self, parser);
-  OrgJodaTimeFormatPeriodFormatter_set_iLocale_(self, locale);
-  OrgJodaTimeFormatPeriodFormatter_set_iParseType_(self, type);
+  JreStrongAssign(&self->iPrinter_, printer);
+  JreStrongAssign(&self->iParser_, parser);
+  JreStrongAssign(&self->iLocale_, locale);
+  JreStrongAssign(&self->iParseType_, type);
 }
 
 OrgJodaTimeFormatPeriodFormatter *new_OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withJavaUtilLocale_withOrgJodaTimePeriodType_(id<OrgJodaTimeFormatPeriodPrinter> printer, id<OrgJodaTimeFormatPeriodParser> parser, JavaUtilLocale *locale, OrgJodaTimePeriodType *type) {

@@ -25,9 +25,20 @@
 #define OrgJodaTimeDurationFieldType_SECONDS 11
 #define OrgJodaTimeDurationFieldType_MILLIS 12
 
-/**
+/*!
  @brief Identifies a duration field, such as years or minutes, in a chronology-neutral way.
- <p> A duration field type defines the type of the field, such as hours. If does not directly enable any calculations, however it does provide a #getField(Chronology) method that returns the actual calculation engine for a particular chronology. <p> Instances of <code>DurationFieldType</code> are singletons. They can be compared using <code>==</code>. <p> If required, you can create your own field, for example a quarters. You must create a subclass of <code>DurationFieldType</code> that defines the field type. This class returns the actual calculation engine from #getField(Chronology) .
+ <p>
+ A duration field type defines the type of the field, such as hours.
+ If does not directly enable any calculations, however it does provide a
+ <code>getField(Chronology)</code> method that returns the actual calculation engine
+ for a particular chronology.
+ <p>
+ Instances of <code>DurationFieldType</code> are singletons.
+ They can be compared using <code>==</code>.
+ <p>
+ If required, you can create your own field, for example a quarters.
+ You must create a subclass of <code>DurationFieldType</code> that defines the field type.
+ This class returns the actual calculation engine from <code>getField(Chronology)</code>.
  @author Stephen Colebourne
  @author Brian S O'Neill
  @since 1.0
@@ -36,100 +47,100 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Get the centuries field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDurationFieldType *)centuries;
 
-/**
+/*!
  @brief Get the days field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDurationFieldType *)days;
 
-/**
+/*!
  @brief Get the eras field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDurationFieldType *)eras;
 
-/**
+/*!
  @brief Gets a suitable field for this type from the given Chronology.
- @param chronology the chronology to use, null means ISOChronology in default zone
+ @param chronology  the chronology to use, null means ISOChronology in default zone
  @return a suitable field
  */
 - (OrgJodaTimeDurationField *)getFieldWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology;
 
-/**
+/*!
  @brief Get the name of the field.
  By convention, names are plural.
  @return field name
  */
 - (NSString *)getName;
 
-/**
+/*!
  @brief Get the halfdays field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDurationFieldType *)halfdays;
 
-/**
+/*!
  @brief Get the hours field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDurationFieldType *)hours;
 
-/**
+/*!
  @brief Checks whether this field supported in the given Chronology.
- @param chronology the chronology to use, null means ISOChronology in default zone
+ @param chronology  the chronology to use, null means ISOChronology in default zone
  @return true if supported
  */
 - (jboolean)isSupportedWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology;
 
-/**
+/*!
  @brief Get the millis field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDurationFieldType *)millis;
 
-/**
+/*!
  @brief Get the minutes field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDurationFieldType *)minutes;
 
-/**
+/*!
  @brief Get the months field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDurationFieldType *)months;
 
-/**
+/*!
  @brief Get the seconds field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDurationFieldType *)seconds;
 
-/**
+/*!
  @brief Get a suitable debug string.
  @return debug string
  */
 - (NSString *)description;
 
-/**
+/*!
  @brief Get the weeks field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDurationFieldType *)weeks;
 
-/**
+/*!
  @brief Get the weekyears field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDurationFieldType *)weekyears;
 
-/**
+/*!
  @brief Get the years field type.
  @return the DateTimeFieldType constant
  */
@@ -137,9 +148,9 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Constructor.
- @param name the name to use, which by convention, are plural.
+ @param name  the name to use, which by convention, are plural.
  */
 - (instancetype)initWithNSString:(NSString *)name;
 

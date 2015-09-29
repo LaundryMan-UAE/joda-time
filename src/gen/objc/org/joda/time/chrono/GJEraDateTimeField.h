@@ -13,7 +13,7 @@
 @class OrgJodaTimeChronoBasicChronology;
 @class OrgJodaTimeDurationField;
 
-/**
+/*!
  @brief Provides time calculations for the era component of time.
  @author Stephen Colebourne
  @author Brian S O'Neill
@@ -23,9 +23,9 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Get the Era component of the specified time instant.
- @param instant the time instant in millis to query.
+ @param instant  the time instant in millis to query.
  */
 - (jint)getWithLong:(jlong)instant;
 
@@ -54,12 +54,12 @@
 
 - (jlong)roundHalfFloorWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Set the Era component of the specified time instant.
- @param instant the time instant in millis to update.
- @param era the era to update the time to.
+ @param instant  the time instant in millis to update.
+ @param era  the era to update the time to.
  @return the updated time instant.
- @throws IllegalArgumentException if era is invalid.
+ @throws IllegalArgumentException  if era is invalid.
  */
 - (jlong)setWithLong:(jlong)instant
              withInt:(jint)era;
@@ -70,7 +70,7 @@
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Restricted constructor
  */
 - (instancetype)initWithOrgJodaTimeChronoBasicChronology:(OrgJodaTimeChronoBasicChronology *)chronology;

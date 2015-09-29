@@ -12,7 +12,7 @@
 @class OrgJodaTimeChronology;
 @protocol OrgJodaTimeReadWritableInterval;
 
-/**
+/*!
  @brief IntervalConverter defines how an object is converted to an interval.
  @author Brian S O'Neill
  @author Stephen Colebourne
@@ -20,22 +20,24 @@
  */
 @protocol OrgJodaTimeConvertIntervalConverter < OrgJodaTimeConvertConverter, NSObject, JavaObject >
 
-/**
+/*!
  @brief Checks if the input is a ReadableInterval.
- <p> If it is, then the calling code should cast and copy the fields directly.
- @param object the object to convert, must not be null
- @param chrono the chronology to use, may be null
+ <p>
+ If it is, then the calling code should cast and copy the fields directly.
+ @param object  the object to convert, must not be null
+ @param chrono  the chronology to use, may be null
  @return true if the input is a ReadableInterval
  @throws ClassCastException if the object is invalid
  */
 - (jboolean)isReadableIntervalWithId:(id)object
            withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
 
-/**
- @brief Extracts interval endpoint values from an object of this converter's type, and sets them into the given ReadWritableInterval.
- @param writableInterval interval to get modified, not null
- @param object the object to convert, must not be null
- @param chrono the chronology to use, may be null
+/*!
+ @brief Extracts interval endpoint values from an object of this converter's
+ type, and sets them into the given ReadWritableInterval.
+ @param writableInterval  interval to get modified, not null
+ @param object  the object to convert, must not be null
+ @param chrono  the chronology to use, may be null
  @throws ClassCastException if the object is invalid
  */
 - (void)setIntoWithOrgJodaTimeReadWritableInterval:(id<OrgJodaTimeReadWritableInterval>)writableInterval

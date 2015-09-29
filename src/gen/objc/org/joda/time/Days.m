@@ -36,14 +36,15 @@
 
 @interface OrgJodaTimeDays ()
 
-/**
+/*!
  @brief Creates a new instance representing a number of days.
- You should consider using the factory method #days(int) instead of the constructor.
- @param days the number of days to represent
+ You should consider using the factory method <code>days(int)</code>
+ instead of the constructor.
+ @param days  the number of days to represent
  */
 - (instancetype)initWithInt:(jint)days;
 
-/**
+/*!
  @brief Resolves singletons.
  @return the singleton instance
  */
@@ -203,17 +204,17 @@ OrgJodaTimeDays *OrgJodaTimeDays_MIN_VALUE_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeDays class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeDays_ZERO_, nil, new_OrgJodaTimeDays_initWithInt_(0));
-    JreStrongAssignAndConsume(&OrgJodaTimeDays_ONE_, nil, new_OrgJodaTimeDays_initWithInt_(1));
-    JreStrongAssignAndConsume(&OrgJodaTimeDays_TWO_, nil, new_OrgJodaTimeDays_initWithInt_(2));
-    JreStrongAssignAndConsume(&OrgJodaTimeDays_THREE_, nil, new_OrgJodaTimeDays_initWithInt_(3));
-    JreStrongAssignAndConsume(&OrgJodaTimeDays_FOUR_, nil, new_OrgJodaTimeDays_initWithInt_(4));
-    JreStrongAssignAndConsume(&OrgJodaTimeDays_FIVE_, nil, new_OrgJodaTimeDays_initWithInt_(5));
-    JreStrongAssignAndConsume(&OrgJodaTimeDays_SIX_, nil, new_OrgJodaTimeDays_initWithInt_(6));
-    JreStrongAssignAndConsume(&OrgJodaTimeDays_SEVEN_, nil, new_OrgJodaTimeDays_initWithInt_(7));
-    JreStrongAssignAndConsume(&OrgJodaTimeDays_MAX_VALUE_, nil, new_OrgJodaTimeDays_initWithInt_(JavaLangInteger_MAX_VALUE));
-    JreStrongAssignAndConsume(&OrgJodaTimeDays_MIN_VALUE_, nil, new_OrgJodaTimeDays_initWithInt_(JavaLangInteger_MIN_VALUE));
-    JreStrongAssign(&OrgJodaTimeDays_PARSER_, nil, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_days()]);
+    JreStrongAssignAndConsume(&OrgJodaTimeDays_ZERO_, new_OrgJodaTimeDays_initWithInt_(0));
+    JreStrongAssignAndConsume(&OrgJodaTimeDays_ONE_, new_OrgJodaTimeDays_initWithInt_(1));
+    JreStrongAssignAndConsume(&OrgJodaTimeDays_TWO_, new_OrgJodaTimeDays_initWithInt_(2));
+    JreStrongAssignAndConsume(&OrgJodaTimeDays_THREE_, new_OrgJodaTimeDays_initWithInt_(3));
+    JreStrongAssignAndConsume(&OrgJodaTimeDays_FOUR_, new_OrgJodaTimeDays_initWithInt_(4));
+    JreStrongAssignAndConsume(&OrgJodaTimeDays_FIVE_, new_OrgJodaTimeDays_initWithInt_(5));
+    JreStrongAssignAndConsume(&OrgJodaTimeDays_SIX_, new_OrgJodaTimeDays_initWithInt_(6));
+    JreStrongAssignAndConsume(&OrgJodaTimeDays_SEVEN_, new_OrgJodaTimeDays_initWithInt_(7));
+    JreStrongAssignAndConsume(&OrgJodaTimeDays_MAX_VALUE_, new_OrgJodaTimeDays_initWithInt_(JavaLangInteger_MAX_VALUE));
+    JreStrongAssignAndConsume(&OrgJodaTimeDays_MIN_VALUE_, new_OrgJodaTimeDays_initWithInt_(JavaLangInteger_MIN_VALUE));
+    JreStrongAssign(&OrgJodaTimeDays_PARSER_, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_days()]);
     J2OBJC_SET_INITIALIZED(OrgJodaTimeDays)
   }
 }
@@ -256,17 +257,17 @@ OrgJodaTimeDays *OrgJodaTimeDays_MIN_VALUE_;
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_ZERO_, NULL,  },
-    { "ONE_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_ONE_, NULL,  },
-    { "TWO_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_TWO_, NULL,  },
-    { "THREE_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_THREE_, NULL,  },
-    { "FOUR_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_FOUR_, NULL,  },
-    { "FIVE_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_FIVE_, NULL,  },
-    { "SIX_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_SIX_, NULL,  },
-    { "SEVEN_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_SEVEN_, NULL,  },
-    { "MAX_VALUE_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_MAX_VALUE_, NULL,  },
-    { "MIN_VALUE_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_MIN_VALUE_, NULL,  },
-    { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeDays_PARSER_, NULL,  },
+    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_ZERO_, NULL, .constantValue.asLong = 0 },
+    { "ONE_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_ONE_, NULL, .constantValue.asLong = 0 },
+    { "TWO_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_TWO_, NULL, .constantValue.asLong = 0 },
+    { "THREE_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_THREE_, NULL, .constantValue.asLong = 0 },
+    { "FOUR_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_FOUR_, NULL, .constantValue.asLong = 0 },
+    { "FIVE_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_FIVE_, NULL, .constantValue.asLong = 0 },
+    { "SIX_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_SIX_, NULL, .constantValue.asLong = 0 },
+    { "SEVEN_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_SEVEN_, NULL, .constantValue.asLong = 0 },
+    { "MAX_VALUE_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_MAX_VALUE_, NULL, .constantValue.asLong = 0 },
+    { "MIN_VALUE_", NULL, 0x19, "Lorg.joda.time.Days;", &OrgJodaTimeDays_MIN_VALUE_, NULL, .constantValue.asLong = 0 },
+    { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeDays_PARSER_, NULL, .constantValue.asLong = 0 },
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeDays_serialVersionUID },
   };
   static const J2ObjcClassInfo _OrgJodaTimeDays = { 2, "Days", "org.joda.time", NULL, 0x11, 26, methods, 12, fields, 0, NULL, 0, NULL, NULL, NULL };

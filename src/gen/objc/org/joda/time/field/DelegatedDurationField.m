@@ -14,11 +14,11 @@
 
 @interface OrgJodaTimeFieldDelegatedDurationField () {
  @public
-  /**
+  /*!
    @brief The DurationField being wrapped
    */
   OrgJodaTimeDurationField *iField_;
-  /**
+  /*!
    @brief The field type
    */
   OrgJodaTimeDurationFieldType *iType_;
@@ -133,7 +133,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldDelegatedDurationField, serialVersion
   if ([obj isKindOfClass:[OrgJodaTimeFieldDelegatedDurationField class]]) {
     return [((OrgJodaTimeDurationField *) nil_chk(iField_)) isEqual:((OrgJodaTimeFieldDelegatedDurationField *) nil_chk(((OrgJodaTimeFieldDelegatedDurationField *) check_class_cast(obj, [OrgJodaTimeFieldDelegatedDurationField class]))))->iField_];
   }
-  return NO;
+  return false;
 }
 
 - (NSUInteger)hash {
@@ -145,7 +145,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldDelegatedDurationField, serialVersion
 }
 
 - (void)dealloc {
-  if (iField_ != self) RELEASE_(iField_);
+  RELEASE_(iField_);
   RELEASE_(iType_);
   [super dealloc];
 }
@@ -179,8 +179,8 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeFieldDelegatedDurationField, serialVersion
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldDelegatedDurationField_serialVersionUID },
-    { "iField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iType_", NULL, 0x12, "Lorg.joda.time.DurationFieldType;", NULL, NULL,  },
+    { "iField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iType_", NULL, 0x12, "Lorg.joda.time.DurationFieldType;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldDelegatedDurationField = { 2, "DelegatedDurationField", "org.joda.time.field", NULL, 0x1, 24, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldDelegatedDurationField;
@@ -203,8 +203,8 @@ void OrgJodaTimeFieldDelegatedDurationField_initWithOrgJodaTimeDurationField_wit
   if (field == nil) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The field must not be null") autorelease];
   }
-  OrgJodaTimeFieldDelegatedDurationField_set_iField_(self, field);
-  OrgJodaTimeFieldDelegatedDurationField_set_iType_(self, (type == nil ? [((OrgJodaTimeDurationField *) nil_chk(field)) getType] : type));
+  JreStrongAssign(&self->iField_, field);
+  JreStrongAssign(&self->iType_, (type == nil ? [((OrgJodaTimeDurationField *) nil_chk(field)) getType] : type));
 }
 
 OrgJodaTimeFieldDelegatedDurationField *new_OrgJodaTimeFieldDelegatedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationField *field, OrgJodaTimeDurationFieldType *type) {

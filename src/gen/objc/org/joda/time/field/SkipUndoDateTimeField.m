@@ -17,15 +17,15 @@ static jint (*OrgJodaTimeFieldSkipUndoDateTimeField_super$_getMinimumValue)(id, 
 
 @interface OrgJodaTimeFieldSkipUndoDateTimeField () {
  @public
-  /**
+  /*!
    @brief The chronology to wrap.
    */
   OrgJodaTimeChronology *iChronology_;
-  /**
+  /*!
    @brief The value to skip.
    */
   jint iSkip_;
-  /**
+  /*!
    @brief The calculated minimum value.
    */
   jint iMinValue_;
@@ -104,9 +104,9 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFieldSkipUndoDateTimeField)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldSkipUndoDateTimeField_serialVersionUID },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL,  },
-    { "iSkip_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iMinValue_", NULL, 0x82, "I", NULL, NULL,  },
+    { "iChronology_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iSkip_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMinValue_", NULL, 0x82, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldSkipUndoDateTimeField = { 2, "SkipUndoDateTimeField", "org.joda.time.field", NULL, 0x11, 6, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldSkipUndoDateTimeField;
@@ -126,7 +126,7 @@ OrgJodaTimeFieldSkipUndoDateTimeField *new_OrgJodaTimeFieldSkipUndoDateTimeField
 
 void OrgJodaTimeFieldSkipUndoDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(OrgJodaTimeFieldSkipUndoDateTimeField *self, OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field, jint skip) {
   OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_(self, field);
-  OrgJodaTimeFieldSkipUndoDateTimeField_set_iChronology_(self, chronology);
+  JreStrongAssign(&self->iChronology_, chronology);
   jint min = OrgJodaTimeFieldSkipUndoDateTimeField_super$_getMinimumValue(self, @selector(getMinimumValue));
   if (min < skip) {
     self->iMinValue_ = min + 1;

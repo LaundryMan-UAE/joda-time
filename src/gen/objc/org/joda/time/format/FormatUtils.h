@@ -13,9 +13,10 @@
 @protocol JavaLangAppendable;
 @protocol JavaLangCharSequence;
 
-/**
+/*!
  @brief Utility methods used by formatters.
- <p> FormatUtils is thread-safe and immutable.
+ <p>
+ FormatUtils is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -23,8 +24,9 @@
 
 #pragma mark Public
 
-/**
- @brief Converts an integer to a string, prepended with a variable amount of '0' pad characters, and appends it to the given appendable.
+/*!
+ @brief Converts an integer to a string, prepended with a variable amount of '0'
+ pad characters, and appends it to the given appendable.
  <p>This method is optimized for converting small values to strings.
  @param appenadble receives integer converted to a string
  @param value value to convert to a string
@@ -35,8 +37,9 @@
                                           withInt:(jint)value
                                           withInt:(jint)size;
 
-/**
- @brief Converts an integer to a string, prepended with a variable amount of '0' pad characters, and appends it to the given buffer.
+/*!
+ @brief Converts an integer to a string, prepended with a variable amount of '0'
+ pad characters, and appends it to the given buffer.
  <p>This method is optimized for converting small values to strings.
  @param appendable receives integer converted to a string
  @param value value to convert to a string
@@ -47,8 +50,9 @@
                                          withLong:(jlong)value
                                           withInt:(jint)size;
 
-/**
- @brief Converts an integer to a string, prepended with a variable amount of '0' pad characters, and appends it to the given buffer.
+/*!
+ @brief Converts an integer to a string, prepended with a variable amount of '0'
+ pad characters, and appends it to the given buffer.
  <p>This method is optimized for converting small values to strings.
  @param buf receives integer converted to a string
  @param value value to convert to a string
@@ -58,8 +62,9 @@
                                             withInt:(jint)value
                                             withInt:(jint)size;
 
-/**
- @brief Converts an integer to a string, prepended with a variable amount of '0' pad characters, and appends it to the given buffer.
+/*!
+ @brief Converts an integer to a string, prepended with a variable amount of '0'
+ pad characters, and appends it to the given buffer.
  <p>This method is optimized for converting small values to strings.
  @param buf receives integer converted to a string
  @param value value to convert to a string
@@ -69,7 +74,7 @@
                                            withLong:(jlong)value
                                             withInt:(jint)size;
 
-/**
+/*!
  @brief Converts an integer to a string, and appends it to the given appendable.
  <p>This method is optimized for converting small values to strings.
  @param appendable receives integer converted to a string
@@ -79,7 +84,7 @@
 + (void)appendUnpaddedIntegerWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
                                             withInt:(jint)value;
 
-/**
+/*!
  @brief Converts an integer to a string, and appends it to the given appendable.
  <p>This method is optimized for converting small values to strings.
  @param appendable receives integer converted to a string
@@ -88,7 +93,7 @@
 + (void)appendUnpaddedIntegerWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
                                            withLong:(jlong)value;
 
-/**
+/*!
  @brief Converts an integer to a string, and appends it to the given buffer.
  <p>This method is optimized for converting small values to strings.
  @param buf receives integer converted to a string
@@ -97,7 +102,7 @@
 + (void)appendUnpaddedIntegerWithJavaLangStringBuffer:(JavaLangStringBuffer *)buf
                                               withInt:(jint)value;
 
-/**
+/*!
  @brief Converts an integer to a string, and appends it to the given buffer.
  <p>This method is optimized for converting small values to strings.
  @param buf receives integer converted to a string
@@ -106,15 +111,17 @@
 + (void)appendUnpaddedIntegerWithJavaLangStringBuffer:(JavaLangStringBuffer *)buf
                                              withLong:(jlong)value;
 
-/**
- @brief Calculates the number of decimal digits for the given value, including the sign.
+/*!
+ @brief Calculates the number of decimal digits for the given value,
+ including the sign.
  */
 + (jint)calculateDigitCountWithLong:(jlong)value;
 
-/**
- @brief Converts an integer to a string, prepended with a variable amount of '0' pad characters, and writes it to the given writer.
+/*!
+ @brief Converts an integer to a string, prepended with a variable amount of '0'
+ pad characters, and writes it to the given writer.
  <p>This method is optimized for converting small values to strings.
- @param out receives integer converted to a string
+ @param outArg receives integer converted to a string
  @param value value to convert to a string
  @param size minimum amount of digits to append
  */
@@ -122,10 +129,11 @@
                                    withInt:(jint)value
                                    withInt:(jint)size;
 
-/**
- @brief Converts an integer to a string, prepended with a variable amount of '0' pad characters, and writes it to the given writer.
+/*!
+ @brief Converts an integer to a string, prepended with a variable amount of '0'
+ pad characters, and writes it to the given writer.
  <p>This method is optimized for converting small values to strings.
- @param out receives integer converted to a string
+ @param outArg receives integer converted to a string
  @param value value to convert to a string
  @param size minimum amount of digits to append
  */
@@ -133,19 +141,19 @@
                                   withLong:(jlong)value
                                    withInt:(jint)size;
 
-/**
+/*!
  @brief Converts an integer to a string, and writes it to the given writer.
  <p>This method is optimized for converting small values to strings.
- @param out receives integer converted to a string
+ @param outArg receives integer converted to a string
  @param value value to convert to a string
  */
 + (void)writeUnpaddedIntegerWithJavaIoWriter:(JavaIoWriter *)outArg
                                      withInt:(jint)value;
 
-/**
+/*!
  @brief Converts an integer to a string, and writes it to the given writer.
  <p>This method is optimized for converting small values to strings.
- @param out receives integer converted to a string
+ @param outArg receives integer converted to a string
  @param value value to convert to a string
  */
 + (void)writeUnpaddedIntegerWithJavaIoWriter:(JavaIoWriter *)outArg

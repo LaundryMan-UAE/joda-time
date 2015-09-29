@@ -36,14 +36,15 @@
 
 @interface OrgJodaTimeHours ()
 
-/**
+/*!
  @brief Creates a new instance representing a number of hours.
- You should consider using the factory method #hours(int) instead of the constructor.
- @param hours the number of hours to represent
+ You should consider using the factory method <code>hours(int)</code>
+ instead of the constructor.
+ @param hours  the number of hours to represent
  */
 - (instancetype)initWithInt:(jint)hours;
 
-/**
+/*!
  @brief Resolves singletons.
  @return the singleton instance
  */
@@ -204,18 +205,18 @@ OrgJodaTimeHours *OrgJodaTimeHours_MIN_VALUE_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeHours class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeHours_ZERO_, nil, new_OrgJodaTimeHours_initWithInt_(0));
-    JreStrongAssignAndConsume(&OrgJodaTimeHours_ONE_, nil, new_OrgJodaTimeHours_initWithInt_(1));
-    JreStrongAssignAndConsume(&OrgJodaTimeHours_TWO_, nil, new_OrgJodaTimeHours_initWithInt_(2));
-    JreStrongAssignAndConsume(&OrgJodaTimeHours_THREE_, nil, new_OrgJodaTimeHours_initWithInt_(3));
-    JreStrongAssignAndConsume(&OrgJodaTimeHours_FOUR_, nil, new_OrgJodaTimeHours_initWithInt_(4));
-    JreStrongAssignAndConsume(&OrgJodaTimeHours_FIVE_, nil, new_OrgJodaTimeHours_initWithInt_(5));
-    JreStrongAssignAndConsume(&OrgJodaTimeHours_SIX_, nil, new_OrgJodaTimeHours_initWithInt_(6));
-    JreStrongAssignAndConsume(&OrgJodaTimeHours_SEVEN_, nil, new_OrgJodaTimeHours_initWithInt_(7));
-    JreStrongAssignAndConsume(&OrgJodaTimeHours_EIGHT_, nil, new_OrgJodaTimeHours_initWithInt_(8));
-    JreStrongAssignAndConsume(&OrgJodaTimeHours_MAX_VALUE_, nil, new_OrgJodaTimeHours_initWithInt_(JavaLangInteger_MAX_VALUE));
-    JreStrongAssignAndConsume(&OrgJodaTimeHours_MIN_VALUE_, nil, new_OrgJodaTimeHours_initWithInt_(JavaLangInteger_MIN_VALUE));
-    JreStrongAssign(&OrgJodaTimeHours_PARSER_, nil, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_hours()]);
+    JreStrongAssignAndConsume(&OrgJodaTimeHours_ZERO_, new_OrgJodaTimeHours_initWithInt_(0));
+    JreStrongAssignAndConsume(&OrgJodaTimeHours_ONE_, new_OrgJodaTimeHours_initWithInt_(1));
+    JreStrongAssignAndConsume(&OrgJodaTimeHours_TWO_, new_OrgJodaTimeHours_initWithInt_(2));
+    JreStrongAssignAndConsume(&OrgJodaTimeHours_THREE_, new_OrgJodaTimeHours_initWithInt_(3));
+    JreStrongAssignAndConsume(&OrgJodaTimeHours_FOUR_, new_OrgJodaTimeHours_initWithInt_(4));
+    JreStrongAssignAndConsume(&OrgJodaTimeHours_FIVE_, new_OrgJodaTimeHours_initWithInt_(5));
+    JreStrongAssignAndConsume(&OrgJodaTimeHours_SIX_, new_OrgJodaTimeHours_initWithInt_(6));
+    JreStrongAssignAndConsume(&OrgJodaTimeHours_SEVEN_, new_OrgJodaTimeHours_initWithInt_(7));
+    JreStrongAssignAndConsume(&OrgJodaTimeHours_EIGHT_, new_OrgJodaTimeHours_initWithInt_(8));
+    JreStrongAssignAndConsume(&OrgJodaTimeHours_MAX_VALUE_, new_OrgJodaTimeHours_initWithInt_(JavaLangInteger_MAX_VALUE));
+    JreStrongAssignAndConsume(&OrgJodaTimeHours_MIN_VALUE_, new_OrgJodaTimeHours_initWithInt_(JavaLangInteger_MIN_VALUE));
+    JreStrongAssign(&OrgJodaTimeHours_PARSER_, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_hours()]);
     J2OBJC_SET_INITIALIZED(OrgJodaTimeHours)
   }
 }
@@ -258,18 +259,18 @@ OrgJodaTimeHours *OrgJodaTimeHours_MIN_VALUE_;
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_ZERO_, NULL,  },
-    { "ONE_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_ONE_, NULL,  },
-    { "TWO_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_TWO_, NULL,  },
-    { "THREE_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_THREE_, NULL,  },
-    { "FOUR_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_FOUR_, NULL,  },
-    { "FIVE_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_FIVE_, NULL,  },
-    { "SIX_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_SIX_, NULL,  },
-    { "SEVEN_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_SEVEN_, NULL,  },
-    { "EIGHT_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_EIGHT_, NULL,  },
-    { "MAX_VALUE_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_MAX_VALUE_, NULL,  },
-    { "MIN_VALUE_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_MIN_VALUE_, NULL,  },
-    { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeHours_PARSER_, NULL,  },
+    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_ZERO_, NULL, .constantValue.asLong = 0 },
+    { "ONE_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_ONE_, NULL, .constantValue.asLong = 0 },
+    { "TWO_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_TWO_, NULL, .constantValue.asLong = 0 },
+    { "THREE_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_THREE_, NULL, .constantValue.asLong = 0 },
+    { "FOUR_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_FOUR_, NULL, .constantValue.asLong = 0 },
+    { "FIVE_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_FIVE_, NULL, .constantValue.asLong = 0 },
+    { "SIX_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_SIX_, NULL, .constantValue.asLong = 0 },
+    { "SEVEN_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_SEVEN_, NULL, .constantValue.asLong = 0 },
+    { "EIGHT_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_EIGHT_, NULL, .constantValue.asLong = 0 },
+    { "MAX_VALUE_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_MAX_VALUE_, NULL, .constantValue.asLong = 0 },
+    { "MIN_VALUE_", NULL, 0x19, "Lorg.joda.time.Hours;", &OrgJodaTimeHours_MIN_VALUE_, NULL, .constantValue.asLong = 0 },
+    { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeHours_PARSER_, NULL, .constantValue.asLong = 0 },
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeHours_serialVersionUID },
   };
   static const J2ObjcClassInfo _OrgJodaTimeHours = { 2, "Hours", "org.joda.time", NULL, 0x11, 26, methods, 13, fields, 0, NULL, 0, NULL, NULL, NULL };

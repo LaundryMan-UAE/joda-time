@@ -11,7 +11,7 @@
 @class OrgJodaTimeDateTimeZone;
 @class OrgJodaTimeInstant;
 
-/**
+/*!
  @brief For internal usage in GJChronology only.
  */
 @interface OrgJodaTimeChronoGJCacheKey : NSObject

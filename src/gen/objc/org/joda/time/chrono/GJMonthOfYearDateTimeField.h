@@ -12,7 +12,7 @@
 @class JavaUtilLocale;
 @class OrgJodaTimeChronoBasicChronology;
 
-/**
+/*!
  @brief Provides time calculations for the month of the year component of time.
  @author Guy Allard
  @author Stephen Colebourne
@@ -40,7 +40,7 @@
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Restricted constructor
  */
 - (instancetype)initWithOrgJodaTimeChronoBasicChronology:(OrgJodaTimeChronoBasicChronology *)chronology;

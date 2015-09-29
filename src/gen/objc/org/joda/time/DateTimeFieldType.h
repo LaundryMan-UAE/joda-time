@@ -37,9 +37,22 @@
 #define OrgJodaTimeDateTimeFieldType_MILLIS_OF_DAY 22
 #define OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND 23
 
-/**
+/*!
  @brief Identifies a field, such as year or minuteOfHour, in a chronology-neutral way.
- <p> A field type defines the type of the field, such as hourOfDay. If does not directly enable any calculations, however it does provide a #getField(Chronology) method that returns the actual calculation engine for a particular chronology. It also provides access to the related DurationFieldType s. <p> Instances of <code>DateTimeFieldType</code> are singletons. They can be compared using <code>==</code>. <p> If required, you can create your own field, for example a quarterOfYear. You must create a subclass of <code>DateTimeFieldType</code> that defines the field type. This class returns the actual calculation engine from #getField(Chronology) . The subclass should implement equals and hashCode.
+ <p>
+ A field type defines the type of the field, such as hourOfDay.
+ If does not directly enable any calculations, however it does provide a
+ <code>getField(Chronology)</code> method that returns the actual calculation engine
+ for a particular chronology.
+ It also provides access to the related <code>DurationFieldType</code>s.
+ <p>
+ Instances of <code>DateTimeFieldType</code> are singletons.
+ They can be compared using <code>==</code>.
+ <p>
+ If required, you can create your own field, for example a quarterOfYear.
+ You must create a subclass of <code>DateTimeFieldType</code> that defines the field type.
+ This class returns the actual calculation engine from <code>getField(Chronology)</code>.
+ The subclass should implement equals and hashCode.
  @author Stephen Colebourne
  @author Brian S O'Neill
  @since 1.0
@@ -48,178 +61,182 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Get the century of era field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)centuryOfEra;
 
-/**
+/*!
  @brief Get the hour of day (offset to 1-24) field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)clockhourOfDay;
 
-/**
+/*!
  @brief Get the hour of am/pm (offset to 1-12) field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)clockhourOfHalfday;
 
-/**
+/*!
  @brief Get the day of month field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)dayOfMonth;
 
-/**
+/*!
  @brief Get the day of week field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)dayOfWeek;
 
-/**
+/*!
  @brief Get the day of year field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)dayOfYear;
 
-/**
+/*!
  @brief Get the era field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)era;
 
-/**
+/*!
  @brief Get the duration unit of the field.
  @return duration unit of the field, never null
  */
 - (OrgJodaTimeDurationFieldType *)getDurationType;
 
-/**
+/*!
  @brief Gets a suitable field for this type from the given Chronology.
- @param chronology the chronology to use, null means ISOChronology in default zone
+ @param chronology  the chronology to use, null means ISOChronology in default zone
  @return a suitable field
  */
 - (OrgJodaTimeDateTimeField *)getFieldWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology;
 
-/**
+/*!
  @brief Get the name of the field.
- <p> By convention, names follow a pattern of "dddOfRrr", where "ddd" represents the (singular) duration unit field name and "Rrr" represents the (singular) duration range field name. If the range field is not applicable, then the name of the field is simply the (singular) duration field name.
+ <p>
+ By convention, names follow a pattern of "dddOfRrr", where "ddd" represents
+ the (singular) duration unit field name and "Rrr" represents the (singular)
+ duration range field name. If the range field is not applicable, then
+ the name of the field is simply the (singular) duration field name.
  @return field name
  */
 - (NSString *)getName;
 
-/**
+/*!
  @brief Get the duration range of the field.
  @return duration range of the field, null if unbounded
  */
 - (OrgJodaTimeDurationFieldType *)getRangeDurationType;
 
-/**
+/*!
  @brief Get the AM(0) PM(1) field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)halfdayOfDay;
 
-/**
+/*!
  @brief Get the hour of day (0-23) field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)hourOfDay;
 
-/**
+/*!
  @brief Get the hour of am/pm (0-11) field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)hourOfHalfday;
 
-/**
+/*!
  @brief Checks whether this field supported in the given Chronology.
- @param chronology the chronology to use, null means ISOChronology in default zone
+ @param chronology  the chronology to use, null means ISOChronology in default zone
  @return true if supported
  */
 - (jboolean)isSupportedWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology;
 
-/**
+/*!
  @brief Get the millis of day field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)millisOfDay;
 
-/**
+/*!
  @brief Get the millis of second field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)millisOfSecond;
 
-/**
+/*!
  @brief Get the minute of day field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)minuteOfDay;
 
-/**
+/*!
  @brief Get the minute of hour field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)minuteOfHour;
 
-/**
+/*!
  @brief Get the month of year field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)monthOfYear;
 
-/**
+/*!
  @brief Get the second of day field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)secondOfDay;
 
-/**
+/*!
  @brief Get the second of minute field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)secondOfMinute;
 
-/**
+/*!
  @brief Get a suitable debug string.
  @return debug string
  */
 - (NSString *)description;
 
-/**
+/*!
  @brief Get the week of a week based year field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)weekOfWeekyear;
 
-/**
+/*!
  @brief Get the year of a week based year field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)weekyear;
 
-/**
+/*!
  @brief Get the year of a week based year within a century field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)weekyearOfCentury;
 
-/**
+/*!
  @brief Get the year field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)year;
 
-/**
+/*!
  @brief Get the year of century field type.
  @return the DateTimeFieldType constant
  */
 + (OrgJodaTimeDateTimeFieldType *)yearOfCentury;
 
-/**
+/*!
  @brief Get the year of era field type.
  @return the DateTimeFieldType constant
  */
@@ -227,9 +244,9 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Constructor.
- @param name the name to use
+ @param name  the name to use
  */
 - (instancetype)initWithNSString:(NSString *)name;
 

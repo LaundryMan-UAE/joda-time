@@ -51,7 +51,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTzFixedDateTimeZone, serialVersionUID, jlo
 }
 
 - (jboolean)isFixed {
-  return YES;
+  return true;
 }
 
 - (jlong)nextTransitionWithLong:(jlong)instant {
@@ -72,13 +72,13 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTzFixedDateTimeZone, serialVersionUID, jlo
 
 - (jboolean)isEqual:(id)obj {
   if (self == obj) {
-    return YES;
+    return true;
   }
   if ([obj isKindOfClass:[OrgJodaTimeTzFixedDateTimeZone class]]) {
     OrgJodaTimeTzFixedDateTimeZone *other = (OrgJodaTimeTzFixedDateTimeZone *) check_class_cast(obj, [OrgJodaTimeTzFixedDateTimeZone class]);
     return [((NSString *) nil_chk([self getID])) isEqual:[((OrgJodaTimeTzFixedDateTimeZone *) nil_chk(other)) getID]] && iStandardOffset_ == other->iStandardOffset_ && iWallOffset_ == other->iWallOffset_;
   }
-  return NO;
+  return false;
 }
 
 - (NSUInteger)hash {
@@ -106,9 +106,9 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTzFixedDateTimeZone, serialVersionUID, jlo
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeTzFixedDateTimeZone_serialVersionUID },
-    { "iNameKey_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL,  },
-    { "iWallOffset_", NULL, 0x12, "I", NULL, NULL,  },
-    { "iStandardOffset_", NULL, 0x12, "I", NULL, NULL,  },
+    { "iNameKey_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iWallOffset_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iStandardOffset_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeTzFixedDateTimeZone = { 2, "FixedDateTimeZone", "org.joda.time.tz", NULL, 0x11, 11, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeTzFixedDateTimeZone;
@@ -118,7 +118,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTzFixedDateTimeZone, serialVersionUID, jlo
 
 void OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSString_withInt_withInt_(OrgJodaTimeTzFixedDateTimeZone *self, NSString *id_, NSString *nameKey, jint wallOffset, jint standardOffset) {
   OrgJodaTimeDateTimeZone_initWithNSString_(self, id_);
-  OrgJodaTimeTzFixedDateTimeZone_set_iNameKey_(self, nameKey);
+  JreStrongAssign(&self->iNameKey_, nameKey);
   self->iWallOffset_ = wallOffset;
   self->iStandardOffset_ = standardOffset;
 }

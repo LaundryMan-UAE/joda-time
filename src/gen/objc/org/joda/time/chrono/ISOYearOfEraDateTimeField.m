@@ -3,7 +3,6 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/joda-time/src/main/java/org/joda/time/chrono/ISOYearOfEraDateTimeField.java
 //
 
-#include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "org/joda/time/DateTimeField.h"
@@ -19,12 +18,12 @@
 
 @interface OrgJodaTimeChronoISOYearOfEraDateTimeField ()
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)init;
 
-/**
+/*!
  @brief Serialization singleton
  */
 - (id)readResolve;
@@ -43,10 +42,12 @@ OrgJodaTimeDateTimeField *OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE_;
 
 @implementation OrgJodaTimeChronoISOYearOfEraDateTimeField
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeChronoISOYearOfEraDateTimeField_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgJodaTimeDurationField *)getRangeDurationField {
   return [((OrgJodaTimeChronoGregorianChronology *) nil_chk(OrgJodaTimeChronoGregorianChronology_getInstanceUTC())) eras];
@@ -124,7 +125,7 @@ OrgJodaTimeDateTimeField *OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeChronoISOYearOfEraDateTimeField class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE_, nil, new_OrgJodaTimeChronoISOYearOfEraDateTimeField_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE_, new_OrgJodaTimeChronoISOYearOfEraDateTimeField_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeChronoISOYearOfEraDateTimeField)
   }
 }
@@ -150,7 +151,7 @@ OrgJodaTimeDateTimeField *OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE_;
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoISOYearOfEraDateTimeField_serialVersionUID },
-    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE_, NULL,  },
+    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoISOYearOfEraDateTimeField = { 2, "ISOYearOfEraDateTimeField", "org.joda.time.chrono", NULL, 0x0, 16, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoISOYearOfEraDateTimeField;

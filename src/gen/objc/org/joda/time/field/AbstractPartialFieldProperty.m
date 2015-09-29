@@ -19,10 +19,12 @@
 
 @implementation OrgJodaTimeFieldAbstractPartialFieldProperty
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeFieldAbstractPartialFieldProperty_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgJodaTimeDateTimeField *)getField {
   // can't call an abstract method
@@ -138,10 +140,10 @@
 
 - (jboolean)isEqual:(id)object {
   if (self == object) {
-    return YES;
+    return true;
   }
-  if ([object isKindOfClass:[OrgJodaTimeFieldAbstractPartialFieldProperty class]] == NO) {
-    return NO;
+  if ([object isKindOfClass:[OrgJodaTimeFieldAbstractPartialFieldProperty class]] == false) {
+    return false;
   }
   OrgJodaTimeFieldAbstractPartialFieldProperty *other = (OrgJodaTimeFieldAbstractPartialFieldProperty *) check_class_cast(object, [OrgJodaTimeFieldAbstractPartialFieldProperty class]);
   return [self get] == [((OrgJodaTimeFieldAbstractPartialFieldProperty *) nil_chk(other)) get] && [self getFieldType] == [other getFieldType] && OrgJodaTimeFieldFieldUtils_equalsWithId_withId_([((id<OrgJodaTimeReadablePartial>) nil_chk([self getReadablePartial])) getChronology], [((id<OrgJodaTimeReadablePartial>) nil_chk([other getReadablePartial])) getChronology]);

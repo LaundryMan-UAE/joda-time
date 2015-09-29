@@ -18,10 +18,12 @@ OrgJodaTimeConvertNullConverter *OrgJodaTimeConvertNullConverter_INSTANCE_;
 
 @implementation OrgJodaTimeConvertNullConverter
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeConvertNullConverter_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (jlong)getDurationMillisWithId:(id)object {
   return 0LL;
@@ -47,7 +49,7 @@ OrgJodaTimeConvertNullConverter *OrgJodaTimeConvertNullConverter_INSTANCE_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeConvertNullConverter class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeConvertNullConverter_INSTANCE_, nil, new_OrgJodaTimeConvertNullConverter_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeConvertNullConverter_INSTANCE_, new_OrgJodaTimeConvertNullConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertNullConverter)
   }
 }
@@ -61,7 +63,7 @@ OrgJodaTimeConvertNullConverter *OrgJodaTimeConvertNullConverter_INSTANCE_;
     { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.NullConverter;", &OrgJodaTimeConvertNullConverter_INSTANCE_, NULL,  },
+    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.NullConverter;", &OrgJodaTimeConvertNullConverter_INSTANCE_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeConvertNullConverter = { 2, "NullConverter", "org.joda.time.convert", NULL, 0x0, 5, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeConvertNullConverter;

@@ -20,7 +20,7 @@
   OrgJodaTimeChronoBasicChronology *iChronology_;
 }
 
-/**
+/*!
  @brief Serialization singleton
  */
 - (id)readResolve;
@@ -115,7 +115,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicDayOfYearDateTimeField, serialV
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoBasicDayOfYearDateTimeField_serialVersionUID },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL, NULL,  },
+    { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoBasicDayOfYearDateTimeField = { 2, "BasicDayOfYearDateTimeField", "org.joda.time.chrono", NULL, 0x10, 11, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoBasicDayOfYearDateTimeField;
@@ -125,7 +125,7 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBasicDayOfYearDateTimeField, serialV
 
 void OrgJodaTimeChronoBasicDayOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(OrgJodaTimeChronoBasicDayOfYearDateTimeField *self, OrgJodaTimeChronoBasicChronology *chronology, OrgJodaTimeDurationField *days) {
   OrgJodaTimeFieldPreciseDurationDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_(self, OrgJodaTimeDateTimeFieldType_dayOfYear(), days);
-  OrgJodaTimeChronoBasicDayOfYearDateTimeField_set_iChronology_(self, chronology);
+  JreStrongAssign(&self->iChronology_, chronology);
 }
 
 OrgJodaTimeChronoBasicDayOfYearDateTimeField *new_OrgJodaTimeChronoBasicDayOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(OrgJodaTimeChronoBasicChronology *chronology, OrgJodaTimeDurationField *days) {

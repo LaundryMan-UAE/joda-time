@@ -11,9 +11,11 @@
 
 @class JavaUtilTimeZone;
 
-/**
+/*!
  @brief A DateTimeZone implementation for UTC.
- <p> This exists instead of using FixedDateTimeZone to avoid deadlocks. https://github.com/JodaOrg/joda-time/issues/171
+ <p>
+ This exists instead of using FixedDateTimeZone to avoid deadlocks.
+ https://github.com/JodaOrg/joda-time/issues/171
  */
 @interface OrgJodaTimeUTCDateTimeZone : OrgJodaTimeDateTimeZone
 

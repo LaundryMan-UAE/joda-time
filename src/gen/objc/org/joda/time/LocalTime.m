@@ -48,17 +48,17 @@
 
 @interface OrgJodaTimeLocalTime () {
  @public
-  /**
+  /*!
    @brief The local millis from 1970-01-01T00:00:00
    */
   jlong iLocalMillis_;
-  /**
+  /*!
    @brief The chronology to use, in UTC
    */
   OrgJodaTimeChronology *iChronology_;
 }
 
-/**
+/*!
  @brief Handle broken serialization from other tools.
  @return the resolved object, not null
  */
@@ -85,22 +85,22 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeLocalTime, TIME_DURATION_TYPES_, id<JavaUt
 
 @interface OrgJodaTimeLocalTime_Property () {
  @public
-  /**
+  /*!
    @brief The instant this property is working against
    */
   OrgJodaTimeLocalTime *iInstant_;
-  /**
+  /*!
    @brief The field this property is working against
    */
   OrgJodaTimeDateTimeField *iField_;
 }
 
-/**
+/*!
  @brief Writes the property in a safe serialization format.
  */
 - (void)writeObjectWithJavaIoObjectOutputStream:(JavaIoObjectOutputStream *)oos;
 
-/**
+/*!
  @brief Reads the property from a safe serialization format.
  */
 - (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)oos;
@@ -156,10 +156,12 @@ OrgJodaTimeLocalTime *OrgJodaTimeLocalTime_MIDNIGHT_;
   return OrgJodaTimeLocalTime_fromDateFieldsWithJavaUtilDate_(date);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeLocalTime_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (instancetype)initWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   OrgJodaTimeLocalTime_initWithOrgJodaTimeDateTimeZone_(self, zone);
@@ -239,7 +241,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   if (iChronology_ == nil) {
     return [new_OrgJodaTimeLocalTime_initWithLong_withOrgJodaTimeChronology_(iLocalMillis_, OrgJodaTimeChronoISOChronology_getInstanceUTC()) autorelease];
   }
-  if ([((OrgJodaTimeDateTimeZone *) nil_chk(OrgJodaTimeDateTimeZone_get_UTC_())) isEqual:[((OrgJodaTimeChronology *) nil_chk(iChronology_)) getZone]] == NO) {
+  if ([((OrgJodaTimeDateTimeZone *) nil_chk(JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_))) isEqual:[((OrgJodaTimeChronology *) nil_chk(iChronology_)) getZone]] == false) {
     return [new_OrgJodaTimeLocalTime_initWithLong_withOrgJodaTimeChronology_(iLocalMillis_, [iChronology_ withUTC]) autorelease];
   }
   return self;
@@ -284,7 +286,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   if (fieldType == nil) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The DateTimeFieldType must not be null") autorelease];
   }
-  if ([self isSupportedWithOrgJodaTimeDateTimeFieldType:fieldType] == NO) {
+  if ([self isSupportedWithOrgJodaTimeDateTimeFieldType:fieldType] == false) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@$", @"Field '", fieldType, @"' is not supported")) autorelease];
   }
   return [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeDateTimeFieldType *) nil_chk(fieldType)) getFieldWithOrgJodaTimeChronology:[self getChronology]])) getWithLong:[self getLocalMillis]];
@@ -292,10 +294,10 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
 
 - (jboolean)isSupportedWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type {
   if (type == nil) {
-    return NO;
+    return false;
   }
-  if ([self isSupportedWithOrgJodaTimeDurationFieldType:[((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getDurationType]] == NO) {
-    return NO;
+  if ([self isSupportedWithOrgJodaTimeDurationFieldType:[((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getDurationType]] == false) {
+    return false;
   }
   OrgJodaTimeDurationFieldType *range = [type getRangeDurationType];
   return ([self isSupportedWithOrgJodaTimeDurationFieldType:range] || range == OrgJodaTimeDurationFieldType_days());
@@ -303,13 +305,13 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
 
 - (jboolean)isSupportedWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)type {
   if (type == nil) {
-    return NO;
+    return false;
   }
   OrgJodaTimeDurationField *field = [((OrgJodaTimeDurationFieldType *) nil_chk(type)) getFieldWithOrgJodaTimeChronology:[self getChronology]];
   if ([((id<JavaUtilSet>) nil_chk(OrgJodaTimeLocalTime_TIME_DURATION_TYPES_)) containsWithId:type] || [((OrgJodaTimeDurationField *) nil_chk(field)) getUnitMillis] < [((OrgJodaTimeDurationField *) nil_chk([((OrgJodaTimeChronology *) nil_chk([self getChronology])) days])) getUnitMillis]) {
     return [((OrgJodaTimeDurationField *) nil_chk(field)) isSupported];
   }
-  return NO;
+  return false;
 }
 
 - (jlong)getLocalMillis {
@@ -322,7 +324,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
 
 - (jboolean)isEqual:(id)partial {
   if (self == partial) {
-    return YES;
+    return true;
   }
   if ([partial isKindOfClass:[OrgJodaTimeLocalTime class]]) {
     OrgJodaTimeLocalTime *other = (OrgJodaTimeLocalTime *) check_class_cast(partial, [OrgJodaTimeLocalTime class]);
@@ -334,7 +336,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
 }
 
 - (jint)compareToWithId:(id<OrgJodaTimeReadablePartial>)partial {
-  check_protocol_cast(partial, @protocol(OrgJodaTimeReadablePartial));
+  check_protocol_cast(partial, OrgJodaTimeReadablePartial_class_());
   if (self == partial) {
     return 0;
   }
@@ -363,7 +365,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   if (fieldType == nil) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Field must not be null") autorelease];
   }
-  if ([self isSupportedWithOrgJodaTimeDateTimeFieldType:fieldType] == NO) {
+  if ([self isSupportedWithOrgJodaTimeDateTimeFieldType:fieldType] == false) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@$", @"Field '", fieldType, @"' is not supported")) autorelease];
   }
   jlong instant = [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeDateTimeFieldType *) nil_chk(fieldType)) getFieldWithOrgJodaTimeChronology:[self getChronology]])) setWithLong:[self getLocalMillis] withInt:value];
@@ -375,7 +377,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   if (fieldType == nil) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Field must not be null") autorelease];
   }
-  if ([self isSupportedWithOrgJodaTimeDurationFieldType:fieldType] == NO) {
+  if ([self isSupportedWithOrgJodaTimeDurationFieldType:fieldType] == false) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@$", @"Field '", fieldType, @"' is not supported")) autorelease];
   }
   if (amount == 0) {
@@ -470,7 +472,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   if (fieldType == nil) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The DateTimeFieldType must not be null") autorelease];
   }
-  if ([self isSupportedWithOrgJodaTimeDateTimeFieldType:fieldType] == NO) {
+  if ([self isSupportedWithOrgJodaTimeDateTimeFieldType:fieldType] == false) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@$", @"Field '", fieldType, @"' is not supported")) autorelease];
   }
   return [new_OrgJodaTimeLocalTime_Property_initWithOrgJodaTimeLocalTime_withOrgJodaTimeDateTimeField_(self, [((OrgJodaTimeDateTimeFieldType *) nil_chk(fieldType)) getFieldWithOrgJodaTimeChronology:[self getChronology]]) autorelease];
@@ -573,8 +575,8 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
 
 + (void)initialize {
   if (self == [OrgJodaTimeLocalTime class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeLocalTime_MIDNIGHT_, nil, new_OrgJodaTimeLocalTime_initWithInt_withInt_withInt_withInt_(0, 0, 0, 0));
-    JreStrongAssignAndConsume(&OrgJodaTimeLocalTime_TIME_DURATION_TYPES_, nil, new_JavaUtilHashSet_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeLocalTime_MIDNIGHT_, new_OrgJodaTimeLocalTime_initWithInt_withInt_withInt_withInt_(0, 0, 0, 0));
+    JreStrongAssignAndConsume(&OrgJodaTimeLocalTime_TIME_DURATION_TYPES_, new_JavaUtilHashSet_init());
     {
       [OrgJodaTimeLocalTime_TIME_DURATION_TYPES_ addWithId:OrgJodaTimeDurationFieldType_millis()];
       [OrgJodaTimeLocalTime_TIME_DURATION_TYPES_ addWithId:OrgJodaTimeDurationFieldType_seconds()];
@@ -667,14 +669,14 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeLocalTime_serialVersionUID },
-    { "MIDNIGHT_", NULL, 0x19, "Lorg.joda.time.LocalTime;", &OrgJodaTimeLocalTime_MIDNIGHT_, NULL,  },
+    { "MIDNIGHT_", NULL, 0x19, "Lorg.joda.time.LocalTime;", &OrgJodaTimeLocalTime_MIDNIGHT_, NULL, .constantValue.asLong = 0 },
     { "HOUR_OF_DAY", "HOUR_OF_DAY", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeLocalTime_HOUR_OF_DAY },
     { "MINUTE_OF_HOUR", "MINUTE_OF_HOUR", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeLocalTime_MINUTE_OF_HOUR },
     { "SECOND_OF_MINUTE", "SECOND_OF_MINUTE", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeLocalTime_SECOND_OF_MINUTE },
     { "MILLIS_OF_SECOND", "MILLIS_OF_SECOND", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeLocalTime_MILLIS_OF_SECOND },
-    { "TIME_DURATION_TYPES_", NULL, 0x1a, "Ljava.util.Set;", &OrgJodaTimeLocalTime_TIME_DURATION_TYPES_, "Ljava/util/Set<Lorg/joda/time/DurationFieldType;>;",  },
-    { "iLocalMillis_", NULL, 0x12, "J", NULL, NULL,  },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL,  },
+    { "TIME_DURATION_TYPES_", NULL, 0x1a, "Ljava.util.Set;", &OrgJodaTimeLocalTime_TIME_DURATION_TYPES_, "Ljava/util/Set<Lorg/joda/time/DurationFieldType;>;", .constantValue.asLong = 0 },
+    { "iLocalMillis_", NULL, 0x12, "J", NULL, NULL, .constantValue.asLong = 0 },
+    { "iChronology_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lorg.joda.time.LocalTime$Property;"};
   static const J2ObjcClassInfo _OrgJodaTimeLocalTime = { 2, "LocalTime", "org.joda.time", NULL, 0x11, 69, methods, 9, fields, 0, NULL, 1, inner_classes, NULL, NULL };
@@ -794,10 +796,10 @@ OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_initWithLong_withOrgJodaTimeDateT
 void OrgJodaTimeLocalTime_initWithLong_withOrgJodaTimeChronology_(OrgJodaTimeLocalTime *self, jlong instant, OrgJodaTimeChronology *chronology) {
   OrgJodaTimeBaseBaseLocal_init(self);
   chronology = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chronology);
-  jlong localMillis = [((OrgJodaTimeDateTimeZone *) nil_chk([((OrgJodaTimeChronology *) nil_chk(chronology)) getZone])) getMillisKeepLocalWithOrgJodaTimeDateTimeZone:OrgJodaTimeDateTimeZone_get_UTC_() withLong:instant];
+  jlong localMillis = [((OrgJodaTimeDateTimeZone *) nil_chk([((OrgJodaTimeChronology *) nil_chk(chronology)) getZone])) getMillisKeepLocalWithOrgJodaTimeDateTimeZone:JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_) withLong:instant];
   chronology = [chronology withUTC];
   self->iLocalMillis_ = [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeChronology *) nil_chk(chronology)) millisOfDay])) getWithLong:localMillis];
-  OrgJodaTimeLocalTime_set_iChronology_(self, chronology);
+  JreStrongAssign(&self->iChronology_, chronology);
 }
 
 OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_initWithLong_withOrgJodaTimeChronology_(jlong instant, OrgJodaTimeChronology *chronology) {
@@ -821,7 +823,7 @@ void OrgJodaTimeLocalTime_initWithId_withOrgJodaTimeDateTimeZone_(OrgJodaTimeLoc
   id<OrgJodaTimeConvertPartialConverter> converter = [((OrgJodaTimeConvertConverterManager *) nil_chk(OrgJodaTimeConvertConverterManager_getInstance())) getPartialConverterWithId:instant];
   OrgJodaTimeChronology *chronology = [((id<OrgJodaTimeConvertPartialConverter>) nil_chk(converter)) getChronologyWithId:instant withOrgJodaTimeDateTimeZone:zone];
   chronology = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chronology);
-  OrgJodaTimeLocalTime_set_iChronology_(self, [((OrgJodaTimeChronology *) nil_chk(chronology)) withUTC]);
+  JreStrongAssign(&self->iChronology_, [((OrgJodaTimeChronology *) nil_chk(chronology)) withUTC]);
   IOSIntArray *values = [converter getPartialValuesWithOrgJodaTimeReadablePartial:self withId:instant withOrgJodaTimeChronology:chronology withOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_localTimeParser()];
   self->iLocalMillis_ = [((OrgJodaTimeChronology *) nil_chk(self->iChronology_)) getDateTimeMillisWithLong:0LL withInt:IOSIntArray_Get(nil_chk(values), 0) withInt:IOSIntArray_Get(values, 1) withInt:IOSIntArray_Get(values, 2) withInt:IOSIntArray_Get(values, 3)];
 }
@@ -837,7 +839,7 @@ void OrgJodaTimeLocalTime_initWithId_withOrgJodaTimeChronology_(OrgJodaTimeLocal
   id<OrgJodaTimeConvertPartialConverter> converter = [((OrgJodaTimeConvertConverterManager *) nil_chk(OrgJodaTimeConvertConverterManager_getInstance())) getPartialConverterWithId:instant];
   chronology = [((id<OrgJodaTimeConvertPartialConverter>) nil_chk(converter)) getChronologyWithId:instant withOrgJodaTimeChronology:chronology];
   chronology = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chronology);
-  OrgJodaTimeLocalTime_set_iChronology_(self, [((OrgJodaTimeChronology *) nil_chk(chronology)) withUTC]);
+  JreStrongAssign(&self->iChronology_, [((OrgJodaTimeChronology *) nil_chk(chronology)) withUTC]);
   IOSIntArray *values = [converter getPartialValuesWithOrgJodaTimeReadablePartial:self withId:instant withOrgJodaTimeChronology:chronology withOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_localTimeParser()];
   self->iLocalMillis_ = [((OrgJodaTimeChronology *) nil_chk(self->iChronology_)) getDateTimeMillisWithLong:0LL withInt:IOSIntArray_Get(nil_chk(values), 0) withInt:IOSIntArray_Get(values, 1) withInt:IOSIntArray_Get(values, 2) withInt:IOSIntArray_Get(values, 3)];
 }
@@ -882,7 +884,7 @@ void OrgJodaTimeLocalTime_initWithInt_withInt_withInt_withInt_withOrgJodaTimeChr
   OrgJodaTimeBaseBaseLocal_init(self);
   chronology = [((OrgJodaTimeChronology *) nil_chk(OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chronology))) withUTC];
   jlong instant = [((OrgJodaTimeChronology *) nil_chk(chronology)) getDateTimeMillisWithLong:0LL withInt:hourOfDay withInt:minuteOfHour withInt:secondOfMinute withInt:millisOfSecond];
-  OrgJodaTimeLocalTime_set_iChronology_(self, chronology);
+  JreStrongAssign(&self->iChronology_, chronology);
   self->iLocalMillis_ = instant;
 }
 
@@ -908,9 +910,9 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeLocalTime)
 }
 
 - (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)oos {
-  OrgJodaTimeLocalTime_Property_set_iInstant_(self, (OrgJodaTimeLocalTime *) check_class_cast([((JavaIoObjectInputStream *) nil_chk(oos)) readObject], [OrgJodaTimeLocalTime class]));
+  JreStrongAssign(&iInstant_, (OrgJodaTimeLocalTime *) check_class_cast([((JavaIoObjectInputStream *) nil_chk(oos)) readObject], [OrgJodaTimeLocalTime class]));
   OrgJodaTimeDateTimeFieldType *type = (OrgJodaTimeDateTimeFieldType *) check_class_cast([oos readObject], [OrgJodaTimeDateTimeFieldType class]);
-  OrgJodaTimeLocalTime_Property_set_iField_(self, [((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getFieldWithOrgJodaTimeChronology:[((OrgJodaTimeLocalTime *) nil_chk(iInstant_)) getChronology]]);
+  JreStrongAssign(&iField_, [((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getFieldWithOrgJodaTimeChronology:[((OrgJodaTimeLocalTime *) nil_chk(iInstant_)) getChronology]]);
 }
 
 - (OrgJodaTimeDateTimeField *)getField {
@@ -1023,8 +1025,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeLocalTime)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeLocalTime_Property_serialVersionUID },
-    { "iInstant_", NULL, 0x82, "Lorg.joda.time.LocalTime;", NULL, NULL,  },
-    { "iField_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL,  },
+    { "iInstant_", NULL, 0x82, "Lorg.joda.time.LocalTime;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iField_", NULL, 0x82, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeLocalTime_Property = { 2, "Property", "org.joda.time", "LocalTime", 0x19, 21, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeLocalTime_Property;
@@ -1034,8 +1036,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeLocalTime)
 
 void OrgJodaTimeLocalTime_Property_initWithOrgJodaTimeLocalTime_withOrgJodaTimeDateTimeField_(OrgJodaTimeLocalTime_Property *self, OrgJodaTimeLocalTime *instant, OrgJodaTimeDateTimeField *field) {
   OrgJodaTimeFieldAbstractReadableInstantFieldProperty_init(self);
-  OrgJodaTimeLocalTime_Property_set_iInstant_(self, instant);
-  OrgJodaTimeLocalTime_Property_set_iField_(self, field);
+  JreStrongAssign(&self->iInstant_, instant);
+  JreStrongAssign(&self->iField_, field);
 }
 
 OrgJodaTimeLocalTime_Property *new_OrgJodaTimeLocalTime_Property_initWithOrgJodaTimeLocalTime_withOrgJodaTimeDateTimeField_(OrgJodaTimeLocalTime *instant, OrgJodaTimeDateTimeField *field) {

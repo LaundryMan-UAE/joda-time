@@ -102,7 +102,7 @@ __attribute__((unused)) static OrgJodaTimeFormatDateTimePrinterInternalPrinter *
     { "printToWithJavaLangAppendable:withOrgJodaTimeReadablePartial:withJavaUtilLocale:", "printTo", "V", 0x1, "Ljava.io.IOException;", NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "underlying_", NULL, 0x12, "Lorg.joda.time.format.DateTimePrinter;", NULL, NULL,  },
+    { "underlying_", NULL, 0x12, "Lorg.joda.time.format.DateTimePrinter;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimePrinterInternalPrinter = { 2, "DateTimePrinterInternalPrinter", "org.joda.time.format", NULL, 0x0, 6, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFormatDateTimePrinterInternalPrinter;
@@ -113,7 +113,7 @@ __attribute__((unused)) static OrgJodaTimeFormatDateTimePrinterInternalPrinter *
 id<OrgJodaTimeFormatInternalPrinter> OrgJodaTimeFormatDateTimePrinterInternalPrinter_ofWithOrgJodaTimeFormatDateTimePrinter_(id<OrgJodaTimeFormatDateTimePrinter> underlying) {
   OrgJodaTimeFormatDateTimePrinterInternalPrinter_initialize();
   if ([underlying isKindOfClass:[OrgJodaTimeFormatInternalPrinterDateTimePrinter class]]) {
-    return (id<OrgJodaTimeFormatInternalPrinter>) check_protocol_cast(underlying, @protocol(OrgJodaTimeFormatInternalPrinter));
+    return (id<OrgJodaTimeFormatInternalPrinter>) check_protocol_cast(underlying, OrgJodaTimeFormatInternalPrinter_class_());
   }
   if (underlying == nil) {
     return nil;
@@ -123,7 +123,7 @@ id<OrgJodaTimeFormatInternalPrinter> OrgJodaTimeFormatDateTimePrinterInternalPri
 
 void OrgJodaTimeFormatDateTimePrinterInternalPrinter_initWithOrgJodaTimeFormatDateTimePrinter_(OrgJodaTimeFormatDateTimePrinterInternalPrinter *self, id<OrgJodaTimeFormatDateTimePrinter> underlying) {
   NSObject_init(self);
-  OrgJodaTimeFormatDateTimePrinterInternalPrinter_set_underlying_(self, underlying);
+  JreStrongAssign(&self->underlying_, underlying);
 }
 
 OrgJodaTimeFormatDateTimePrinterInternalPrinter *new_OrgJodaTimeFormatDateTimePrinterInternalPrinter_initWithOrgJodaTimeFormatDateTimePrinter_(id<OrgJodaTimeFormatDateTimePrinter> underlying) {

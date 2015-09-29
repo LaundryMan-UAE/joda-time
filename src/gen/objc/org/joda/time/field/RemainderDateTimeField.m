@@ -164,9 +164,9 @@ __attribute__((unused)) static jint OrgJodaTimeFieldRemainderDateTimeField_getDi
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldRemainderDateTimeField_serialVersionUID },
-    { "iDivisor_", NULL, 0x10, "I", NULL, NULL,  },
-    { "iDurationField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL,  },
-    { "iRangeField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL,  },
+    { "iDivisor_", NULL, 0x10, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iDurationField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iRangeField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeFieldRemainderDateTimeField = { 2, "RemainderDateTimeField", "org.joda.time.field", NULL, 0x1, 20, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeFieldRemainderDateTimeField;
@@ -181,12 +181,12 @@ void OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeDateTimeField_wit
   }
   OrgJodaTimeDurationField *rangeField = [((OrgJodaTimeDateTimeField *) nil_chk(field)) getDurationField];
   if (rangeField == nil) {
-    OrgJodaTimeFieldRemainderDateTimeField_set_iRangeField_(self, nil);
+    JreStrongAssign(&self->iRangeField_, nil);
   }
   else {
-    OrgJodaTimeFieldRemainderDateTimeField_setAndConsume_iRangeField_(self, new_OrgJodaTimeFieldScaledDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_withInt_(rangeField, [((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getRangeDurationType], divisor));
+    JreStrongAssignAndConsume(&self->iRangeField_, new_OrgJodaTimeFieldScaledDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_withInt_(rangeField, [((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getRangeDurationType], divisor));
   }
-  OrgJodaTimeFieldRemainderDateTimeField_set_iDurationField_(self, [field getDurationField]);
+  JreStrongAssign(&self->iDurationField_, [field getDurationField]);
   self->iDivisor_ = divisor;
 }
 
@@ -201,8 +201,8 @@ void OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeDateTimeField_wit
   if (divisor < 2) {
     @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The divisor must be at least 2") autorelease];
   }
-  OrgJodaTimeFieldRemainderDateTimeField_set_iRangeField_(self, rangeField);
-  OrgJodaTimeFieldRemainderDateTimeField_set_iDurationField_(self, [((OrgJodaTimeDateTimeField *) nil_chk(field)) getDurationField]);
+  JreStrongAssign(&self->iRangeField_, rangeField);
+  JreStrongAssign(&self->iDurationField_, [((OrgJodaTimeDateTimeField *) nil_chk(field)) getDurationField]);
   self->iDivisor_ = divisor;
 }
 
@@ -235,8 +235,8 @@ OrgJodaTimeFieldRemainderDateTimeField *new_OrgJodaTimeFieldRemainderDateTimeFie
 void OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldRemainderDateTimeField *self, OrgJodaTimeFieldDividedDateTimeField *dividedField, OrgJodaTimeDurationField *durationField, OrgJodaTimeDateTimeFieldType *type) {
   OrgJodaTimeFieldDecoratedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, [((OrgJodaTimeFieldDividedDateTimeField *) nil_chk(dividedField)) getWrappedField], type);
   self->iDivisor_ = dividedField->iDivisor_;
-  OrgJodaTimeFieldRemainderDateTimeField_set_iDurationField_(self, durationField);
-  OrgJodaTimeFieldRemainderDateTimeField_set_iRangeField_(self, dividedField->iDurationField_);
+  JreStrongAssign(&self->iDurationField_, durationField);
+  JreStrongAssign(&self->iRangeField_, dividedField->iDurationField_);
 }
 
 OrgJodaTimeFieldRemainderDateTimeField *new_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldDividedDateTimeField *dividedField, OrgJodaTimeDurationField *durationField, OrgJodaTimeDateTimeFieldType *type) {

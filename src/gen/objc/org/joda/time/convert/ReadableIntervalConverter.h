@@ -17,7 +17,7 @@
 @protocol OrgJodaTimeReadWritableInterval;
 @protocol OrgJodaTimeReadWritablePeriod;
 
-/**
+/*!
  @brief Converts intervals into durations of any requested period type.
  @author Brian S O'Neill
  @since 1.0
@@ -26,44 +26,46 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Gets the millisecond length of the interval.
- @param object the interval
+ @param object  the interval
  */
 - (jlong)getDurationMillisWithId:(id)object;
 
-/**
+/*!
  @brief Returns ReadableInterval.class.
  */
 - (IOSClass *)getSupportedType;
 
-/**
+/*!
  @brief Checks if the input is a ReadableInterval.
- <p> If it is, then the calling code should cast and copy the fields directly.
- @param object the object to convert, must not be null
- @param chrono the chronology to use, may be null
+ <p>
+ If it is, then the calling code should cast and copy the fields directly.
+ @param object  the object to convert, must not be null
+ @param chrono  the chronology to use, may be null
  @return true if the input is a ReadableInterval
  @throws ClassCastException if the object is invalid
  */
 - (jboolean)isReadableIntervalWithId:(id)object
            withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
 
-/**
- @brief Extracts interval endpoint values from an object of this converter's type, and sets them into the given ReadWritableInterval.
+/*!
+ @brief Extracts interval endpoint values from an object of this converter's
+ type, and sets them into the given ReadWritableInterval.
  @param writableInterval interval to get modified, not null
- @param object the object to convert, must not be null
- @param chrono the chronology to use, may be null
+ @param object  the object to convert, must not be null
+ @param chrono  the chronology to use, may be null
  @throws ClassCastException if the object is invalid
  */
 - (void)setIntoWithOrgJodaTimeReadWritableInterval:(id<OrgJodaTimeReadWritableInterval>)writableInterval
                                             withId:(id)object
                          withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
 
-/**
+/*!
  @brief Sets the values of the mutable duration from the specified interval.
- @param writablePeriod the period to modify
- @param object the interval to set from
- @param chrono the chronology to use
+ @param writablePeriod  the period to modify
+ @param object  the interval to set from
+ @param chrono  the chronology to use
  */
 - (void)setIntoWithOrgJodaTimeReadWritablePeriod:(id<OrgJodaTimeReadWritablePeriod>)writablePeriod
                                           withId:(id)object
@@ -71,7 +73,7 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)init;

@@ -32,10 +32,12 @@ OrgJodaTimeConvertStringConverter *OrgJodaTimeConvertStringConverter_INSTANCE_;
 
 @implementation OrgJodaTimeConvertStringConverter
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeConvertStringConverter_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (jlong)getInstantMillisWithId:(id)object
       withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
@@ -66,12 +68,12 @@ OrgJodaTimeConvertStringConverter *OrgJodaTimeConvertStringConverter_INSTANCE_;
   }
   str = [str substring:2 endIndex:len - 1];
   jint dot = -1;
-  jboolean negative = NO;
+  jboolean negative = false;
   for (jint i = 0; i < ((jint) [((NSString *) nil_chk(str)) length]); i++) {
     if ([str charAtWithInt:i] >= '0' && [str charAtWithInt:i] <= '9') {
     }
     else if (i == 0 && [str charAtWithInt:0] == '-') {
-      negative = YES;
+      negative = true;
     }
     else if (i > (negative ? 1 : 0) && [str charAtWithInt:i] == '.' && dot == -1) {
       dot = i;
@@ -178,7 +180,7 @@ OrgJodaTimeConvertStringConverter *OrgJodaTimeConvertStringConverter_INSTANCE_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeConvertStringConverter class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeConvertStringConverter_INSTANCE_, nil, new_OrgJodaTimeConvertStringConverter_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeConvertStringConverter_INSTANCE_, new_OrgJodaTimeConvertStringConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertStringConverter)
   }
 }
@@ -194,7 +196,7 @@ OrgJodaTimeConvertStringConverter *OrgJodaTimeConvertStringConverter_INSTANCE_;
     { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.StringConverter;", &OrgJodaTimeConvertStringConverter_INSTANCE_, NULL,  },
+    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.StringConverter;", &OrgJodaTimeConvertStringConverter_INSTANCE_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeConvertStringConverter = { 2, "StringConverter", "org.joda.time.convert", NULL, 0x0, 7, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeConvertStringConverter;

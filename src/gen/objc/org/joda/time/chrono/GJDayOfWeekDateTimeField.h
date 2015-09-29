@@ -13,8 +13,9 @@
 @class OrgJodaTimeChronoBasicChronology;
 @class OrgJodaTimeDurationField;
 
-/**
- @brief GJDayOfWeekDateTimeField provides time calculations for the day of the week component of time.
+/*!
+ @brief GJDayOfWeekDateTimeField provides time calculations for the
+ day of the week component of time.
  @since 1.0
  @author Guy Allard
  @author Stephen Colebourne
@@ -24,52 +25,52 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Get the value of the specified time instant.
- @param instant the time instant in millis to query
+ @param instant  the time instant in millis to query
  @return the day of the week extracted from the input
  */
 - (jint)getWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Get the abbreviated textual value of the specified time instant.
- @param fieldValue the field value to query
- @param locale the locale to use
+ @param fieldValue  the field value to query
+ @param locale  the locale to use
  @return the day of the week, such as 'Mon'
  */
 - (NSString *)getAsShortTextWithInt:(jint)fieldValue
                  withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Get the textual value of the specified time instant.
- @param fieldValue the field value to query
- @param locale the locale to use
+ @param fieldValue  the field value to query
+ @param locale  the locale to use
  @return the day of the week, such as 'Monday'
  */
 - (NSString *)getAsTextWithInt:(jint)fieldValue
             withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Get the maximum length of the abbreviated text returned by this field.
- @param locale the locale to use
+ @param locale  the locale to use
  @return the maximum abbreviated textual length
  */
 - (jint)getMaximumShortTextLengthWithJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Get the maximum length of the text returned by this field.
- @param locale the locale to use
+ @param locale  the locale to use
  @return the maximum textual length
  */
 - (jint)getMaximumTextLengthWithJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Get the maximum value that this field can have.
  @return the field's maximum value
  */
 - (jint)getMaximumValue;
 
-/**
+/*!
  @brief Get the minimum value that this field can have.
  @return the field's minimum value
  */
@@ -79,10 +80,10 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Convert the specified text and locale into a value.
- @param text the text to convert
- @param locale the locale to convert using
+ @param text  the text to convert
+ @param locale  the locale to convert using
  @return the value extracted from the text
  @throws IllegalArgumentException if the text is invalid
  */
@@ -91,7 +92,7 @@
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)initWithOrgJodaTimeChronoBasicChronology:(OrgJodaTimeChronoBasicChronology *)chronology

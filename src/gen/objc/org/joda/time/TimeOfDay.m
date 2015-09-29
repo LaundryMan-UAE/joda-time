@@ -43,11 +43,11 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeTimeOfDay, FIELD_TYPES_, IOSObjectArray *)
 
 @interface OrgJodaTimeTimeOfDay_Property () {
  @public
-  /**
+  /*!
    @brief The partial
    */
   OrgJodaTimeTimeOfDay *iTimeOfDay_;
-  /**
+  /*!
    @brief The field index
    */
   jint iFieldIndex_;
@@ -82,10 +82,12 @@ OrgJodaTimeTimeOfDay *OrgJodaTimeTimeOfDay_MIDNIGHT_;
   return OrgJodaTimeTimeOfDay_fromMillisOfDayWithLong_withOrgJodaTimeChronology_(millisOfDay, chrono);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeTimeOfDay_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (instancetype)initWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   OrgJodaTimeTimeOfDay_initWithOrgJodaTimeDateTimeZone_(self, zone);
@@ -376,8 +378,8 @@ OrgJodaTimeTimeOfDay *OrgJodaTimeTimeOfDay_MIDNIGHT_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeTimeOfDay class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeTimeOfDay_FIELD_TYPES_, nil, [IOSObjectArray newArrayWithObjects:(id[]){ OrgJodaTimeDateTimeFieldType_hourOfDay(), OrgJodaTimeDateTimeFieldType_minuteOfHour(), OrgJodaTimeDateTimeFieldType_secondOfMinute(), OrgJodaTimeDateTimeFieldType_millisOfSecond() } count:4 type:OrgJodaTimeDateTimeFieldType_class_()]);
-    JreStrongAssignAndConsume(&OrgJodaTimeTimeOfDay_MIDNIGHT_, nil, new_OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withInt_(0, 0, 0, 0));
+    JreStrongAssignAndConsume(&OrgJodaTimeTimeOfDay_FIELD_TYPES_, [IOSObjectArray newArrayWithObjects:(id[]){ OrgJodaTimeDateTimeFieldType_hourOfDay(), OrgJodaTimeDateTimeFieldType_minuteOfHour(), OrgJodaTimeDateTimeFieldType_secondOfMinute(), OrgJodaTimeDateTimeFieldType_millisOfSecond() } count:4 type:OrgJodaTimeDateTimeFieldType_class_()]);
+    JreStrongAssignAndConsume(&OrgJodaTimeTimeOfDay_MIDNIGHT_, new_OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withInt_(0, 0, 0, 0));
     J2OBJC_SET_INITIALIZED(OrgJodaTimeTimeOfDay)
   }
 }
@@ -445,8 +447,8 @@ OrgJodaTimeTimeOfDay *OrgJodaTimeTimeOfDay_MIDNIGHT_;
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeTimeOfDay_serialVersionUID },
-    { "FIELD_TYPES_", NULL, 0x1a, "[Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeTimeOfDay_FIELD_TYPES_, NULL,  },
-    { "MIDNIGHT_", NULL, 0x19, "Lorg.joda.time.TimeOfDay;", &OrgJodaTimeTimeOfDay_MIDNIGHT_, NULL,  },
+    { "FIELD_TYPES_", NULL, 0x1a, "[Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeTimeOfDay_FIELD_TYPES_, NULL, .constantValue.asLong = 0 },
+    { "MIDNIGHT_", NULL, 0x19, "Lorg.joda.time.TimeOfDay;", &OrgJodaTimeTimeOfDay_MIDNIGHT_, NULL, .constantValue.asLong = 0 },
     { "HOUR_OF_DAY", "HOUR_OF_DAY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeTimeOfDay_HOUR_OF_DAY },
     { "MINUTE_OF_HOUR", "MINUTE_OF_HOUR", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeTimeOfDay_MINUTE_OF_HOUR },
     { "SECOND_OF_MINUTE", "SECOND_OF_MINUTE", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeTimeOfDay_SECOND_OF_MINUTE },
@@ -733,8 +735,8 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTimeOfDay)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeTimeOfDay_Property_serialVersionUID },
-    { "iTimeOfDay_", NULL, 0x12, "Lorg.joda.time.TimeOfDay;", NULL, NULL,  },
-    { "iFieldIndex_", NULL, 0x12, "I", NULL, NULL,  },
+    { "iTimeOfDay_", NULL, 0x12, "Lorg.joda.time.TimeOfDay;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iFieldIndex_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeTimeOfDay_Property = { 2, "Property", "org.joda.time", "TimeOfDay", 0x9, 13, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeTimeOfDay_Property;
@@ -744,7 +746,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTimeOfDay)
 
 void OrgJodaTimeTimeOfDay_Property_initWithOrgJodaTimeTimeOfDay_withInt_(OrgJodaTimeTimeOfDay_Property *self, OrgJodaTimeTimeOfDay *partial, jint fieldIndex) {
   OrgJodaTimeFieldAbstractPartialFieldProperty_init(self);
-  OrgJodaTimeTimeOfDay_Property_set_iTimeOfDay_(self, partial);
+  JreStrongAssign(&self->iTimeOfDay_, partial);
   self->iFieldIndex_ = fieldIndex;
 }
 

@@ -11,9 +11,23 @@
 
 @class JavaLangThrowable;
 
-/**
+/*!
  @brief Exception thrown when attempting to create an instant or date-time that cannot exist.
- <p> Classes like <code>DateTime</code> only store valid date-times. One of the cases where validity is important is handling daylight savings time (DST). In many places DST is used, where the local clock moves forward by an hour in spring and back by an hour in autumn/fall. This means that in spring, there is a "gap" where a local time does not exist. <p> This exception refers to this gap, and it means that your application tried to create a date-time inside the gap - a time that did not exist. Since Joda-Time objects must be valid, this is not allowed. <p> Possible solutions may be as follows:<br /> Use <code>LocalDateTime</code>, as all local date-times are valid.<br /> When converting a <code>LocalDate</code> to a <code>DateTime</code>, then use <code>toDateTimeAsStartOfDay()</code> as this handles and manages any gaps.<br /> When parsing, use <code>parseLocalDateTime()</code> if the string being parsed has no time-zone.
+ <p>
+ Classes like <code>DateTime</code> only store valid date-times.
+ One of the cases where validity is important is handling daylight savings time (DST).
+ In many places DST is used, where the local clock moves forward by an hour in spring and back by an hour in autumn/fall.
+ This means that in spring, there is a "gap" where a local time does not exist.
+ <p>
+ This exception refers to this gap, and it means that your application tried to create
+ a date-time inside the gap - a time that did not exist.
+ Since Joda-Time objects must be valid, this is not allowed.
+ <p>
+ Possible solutions may be as follows:<br />
+ Use <code>LocalDateTime</code>, as all local date-times are valid.<br />
+ When converting a <code>LocalDate</code> to a <code>DateTime</code>, then use <code>toDateTimeAsStartOfDay()</code>
+ as this handles and manages any gaps.<br />
+ When parsing, use <code>parseLocalDateTime()</code> if the string being parsed has no time-zone.
  @author Stephen Colebourne
  @since 2.2
  */
@@ -21,23 +35,23 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Constructor.
- @param instantLocal the local instant
- @param zoneId the time-zone ID, may be null
+ @param instantLocal  the local instant
+ @param zoneId  the time-zone ID, may be null
  */
 - (instancetype)initWithLong:(jlong)instantLocal
                 withNSString:(NSString *)zoneId;
 
-/**
+/*!
  @brief Constructor.
- @param message the message
+ @param message  the message
  */
 - (instancetype)initWithNSString:(NSString *)message;
 
-/**
- @brief Checks if the exception is, or has a cause, of <code>IllegalInstantException</code> .
- @param ex the exception to check
+/*!
+ @brief Checks if the exception is, or has a cause, of <code>IllegalInstantException</code>.
+ @param ex  the exception to check
  @return true if an <code>IllegalInstantException</code>
  */
 + (jboolean)isIllegalInstantWithJavaLangThrowable:(JavaLangThrowable *)ex;

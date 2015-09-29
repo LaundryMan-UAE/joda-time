@@ -10,27 +10,27 @@
 
 @class JavaUtilLocale;
 
-/**
+/*!
  @brief Service provider factory for localized time zone names.
  @author Brian S O'Neill
  @since 1.0
  */
 @protocol OrgJodaTimeTzNameProvider < NSObject, JavaObject >
 
-/**
+/*!
  @brief Returns a localized short name, or null if not found.
  @param locale locale to use for selecting name set
- @param id time zone id
+ @param id_ time zone id
  @param nameKey time zone name key
  */
 - (NSString *)getShortNameWithJavaUtilLocale:(JavaUtilLocale *)locale
                                 withNSString:(NSString *)id_
                                 withNSString:(NSString *)nameKey;
 
-/**
+/*!
  @brief Returns a localized name, or null if not found.
  @param locale locale to use for selecting name set
- @param id time zone id
+ @param id_ time zone id
  @param nameKey time zone name key
  */
 - (NSString *)getNameWithJavaUtilLocale:(JavaUtilLocale *)locale

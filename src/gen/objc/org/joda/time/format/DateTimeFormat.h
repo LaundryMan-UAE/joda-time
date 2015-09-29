@@ -29,9 +29,97 @@
 #define OrgJodaTimeFormatDateTimeFormat_TIME 1
 #define OrgJodaTimeFormatDateTimeFormat_DATETIME 2
 
-/**
+/*!
  @brief Factory that creates instances of DateTimeFormatter from patterns and styles.
- <p> Datetime formatting is performed by the DateTimeFormatter class. Three classes provide factory methods to create formatters, and this is one. The others are ISODateTimeFormat and DateTimeFormatterBuilder . <p> This class provides two types of factory: <ul> <li> #forPattern(String) Pattern provides a DateTimeFormatter based on a pattern string that is mostly compatible with the JDK date patterns. <li> #forStyle(String) Style provides a DateTimeFormatter based on a two character style, representing short, medium, long and full. </ul> <p> For example, to use a patterm: <pre> DateTime dt = new DateTime(); DateTimeFormatter fmt = DateTimeFormat.forPattern("MMMM, yyyy"); String str = fmt.print(dt); </pre> The pattern syntax is mostly compatible with java.text.SimpleDateFormat - time zone names cannot be parsed and a few more symbols are supported. All ASCII letters are reserved as pattern letters, which are defined as follows: <blockquote> <pre> Symbol  Meaning                      Presentation  Examples ------  -------                      ------------  ------- G       era                          text          AD C       century of era (&gt;=0)         number        20 Y       year of era (&gt;=0)            year          1996 x       weekyear                     year          1996 w       week of weekyear             number        27 e       day of week                  number        2 E       day of week                  text          Tuesday; Tue y       year                         year          1996 D       day of year                  number        189 M       month of year                month         July; Jul; 07 d       day of month                 number        10 a       halfday of day               text          PM K       hour of halfday (0~11)       number        0 h       clockhour of halfday (1~12)  number        12 H       hour of day (0~23)           number        0 k       clockhour of day (1~24)      number        24 m       minute of hour               number        30 s       second of minute             number        55 S       fraction of second           millis        978 z       time zone                    text          Pacific Standard Time; PST Z       time zone offset/id          zone          -0800; -08:00; America/Los_Angeles '       escape for text              delimiter ''      single quote                 literal       ' </pre> </blockquote> The count of pattern letters determine the format. <p> <strong>Text</strong>: If the number of pattern letters is 4 or more, the full form is used; otherwise a short or abbreviated form is used if available. <p> <strong>Number</strong>: The minimum number of digits. Shorter numbers are zero-padded to this amount. When parsing, any number of digits are accepted. <p> <strong>Year</strong>: Numeric presentation for year and weekyear fields are handled specially. For example, if the count of 'y' is 2, the year will be displayed as the zero-based year of the century, which is two digits. <p> <strong>Month</strong>: 3 or over, use text, otherwise use number. <p> <strong>Millis</strong>: The exact number of fractional digits. If more millisecond digits are available then specified the number will be truncated, if there are fewer than specified then the number will be zero-padded to the right. When parsing, only the exact number of digits are accepted. <p> <strong>Zone</strong>: 'Z' outputs offset without a colon, 'ZZ' outputs the offset with a colon, 'ZZZ' or more outputs the zone id. <p> <strong>Zone names</strong>: Time zone names ('z') cannot be parsed. <p> Any characters in the pattern that are not in the ranges of ['a'..'z'] and ['A'..'Z'] will be treated as quoted text. For instance, characters like ':', '.', ' ', '#' and '?' will appear in the resulting time text even they are not embraced within single quotes. <p> DateTimeFormat is thread-safe and immutable, and the formatters it returns are as well.
+ <p>
+ Datetime formatting is performed by the <code>DateTimeFormatter</code> class.
+ Three classes provide factory methods to create formatters, and this is one.
+ The others are <code>ISODateTimeFormat</code> and <code>DateTimeFormatterBuilder</code>.
+ <p>
+ This class provides two types of factory:
+ <ul>
+ <li><code>Pattern</code> provides a DateTimeFormatter based on
+ a pattern string that is mostly compatible with the JDK date patterns.
+ <li><code>Style</code> provides a DateTimeFormatter based on a
+ two character style, representing short, medium, long and full.
+ </ul>
+ <p>
+ For example, to use a patterm:
+ @code
+
+  DateTime dt = new DateTime();
+  DateTimeFormatter fmt = DateTimeFormat.forPattern("MMMM, yyyy");
+  String str = fmt.print(dt);
+  
+@endcode
+ The pattern syntax is mostly compatible with java.text.SimpleDateFormat -
+ time zone names cannot be parsed and a few more symbols are supported.
+ All ASCII letters are reserved as pattern letters, which are defined as follows:
+ <blockquote>
+ @code
+
+  Symbol  Meaning                      Presentation  Examples
+  ------  -------                      ------------  -------
+  G       era                          text          AD
+  C       century of era (&gt;=0)         number        20
+  Y       year of era (&gt;=0)            year          1996
+  x       weekyear                     year          1996
+  w       week of weekyear             number        27
+  e       day of week                  number        2
+  E       day of week                  text          Tuesday; Tue
+  y       year                         year          1996
+  D       day of year                  number        189
+  M       month of year                month         July; Jul; 07
+  d       day of month                 number        10
+  a       halfday of day               text          PM
+  K       hour of halfday (0~11)       number        0
+  h       clockhour of halfday (1~12)  number        12
+  H       hour of day (0~23)           number        0
+  k       clockhour of day (1~24)      number        24
+  m       minute of hour               number        30
+  s       second of minute             number        55
+  S       fraction of second           millis        978
+  z       time zone                    text          Pacific Standard Time; PST
+  Z       time zone offset/id          zone          -0800; -08:00; America/Los_Angeles
+  '       escape for text              delimiter
+  ''      single quote                 literal       '
+  
+@endcode
+ </blockquote>
+ The count of pattern letters determine the format.
+ <p>
+ <strong>Text</strong>: If the number of pattern letters is 4 or more,
+ the full form is used; otherwise a short or abbreviated form is used if
+ available.
+ <p>
+ <strong>Number</strong>: The minimum number of digits.
+ Shorter numbers are zero-padded to this amount.
+ When parsing, any number of digits are accepted.
+ <p>
+ <strong>Year</strong>: Numeric presentation for year and weekyear fields
+ are handled specially. For example, if the count of 'y' is 2, the year
+ will be displayed as the zero-based year of the century, which is two
+ digits.
+ <p>
+ <strong>Month</strong>: 3 or over, use text, otherwise use number.
+ <p>
+ <strong>Millis</strong>: The exact number of fractional digits.
+ If more millisecond digits are available then specified the number will be truncated,
+ if there are fewer than specified then the number will be zero-padded to the right.
+ When parsing, only the exact number of digits are accepted.
+ <p>
+ <strong>Zone</strong>: 'Z' outputs offset without a colon, 'ZZ' outputs
+ the offset with a colon, 'ZZZ' or more outputs the zone id.
+ <p>
+ <strong>Zone names</strong>: Time zone names ('z') cannot be parsed.
+ <p>
+ Any characters in the pattern that are not in the ranges of ['a'..'z']
+ and ['A'..'Z'] will be treated as quoted text. For instance, characters
+ like ':', '.', ' ', '#' and '?' will appear in the resulting time text
+ even they are not embraced within single quotes.
+ <p>
+ DateTimeFormat is thread-safe and immutable, and the formatters it returns
+ are as well.
  @author Brian S O'Neill
  @author Maxim Zhao
  @since 1.0
@@ -40,92 +128,139 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Factory to create a formatter from a pattern string.
- The pattern string is described above in the class level javadoc. It is very similar to SimpleDateFormat patterns. <p> The format may contain locale specific output, and this will change as you change the locale of the formatter. Call DateTimeFormatter#withLocale(Locale) to switch the locale. For example: <pre> DateTimeFormat.forPattern(pattern).withLocale(Locale.FRANCE).print(dt); </pre>
- @param pattern pattern specification
+ The pattern string is described above in the class level javadoc.
+ It is very similar to SimpleDateFormat patterns.
+ <p>
+ The format may contain locale specific output, and this will change as
+ you change the locale of the formatter.
+ Call <code>DateTimeFormatter.withLocale(Locale)</code> to switch the locale.
+ For example:
+ @code
+
+  DateTimeFormat.forPattern(pattern).withLocale(Locale.FRANCE).print(dt);
+  
+@endcode
+ @param pattern  pattern specification
  @return the formatter
  @throws IllegalArgumentException if the pattern is invalid
  */
 + (OrgJodaTimeFormatDateTimeFormatter *)forPatternWithNSString:(NSString *)pattern;
 
-/**
+/*!
  @brief Factory to create a format from a two character style pattern.
- <p> The first character is the date style, and the second character is the time style. Specify a character of 'S' for short style, 'M' for medium, 'L' for long, and 'F' for full. A date or time may be ommitted by specifying a style character '-'. <p> The returned formatter will dynamically adjust to the locale that the print/parse takes place in. Thus you just call DateTimeFormatter#withLocale(Locale) and the Short/Medium/Long/Full style for that locale will be output. For example: <pre> DateTimeFormat.forStyle(style).withLocale(Locale.FRANCE).print(dt); </pre>
- @param style two characters from the set {"S", "M", "L", "F", "-"}
+ <p>
+ The first character is the date style, and the second character is the
+ time style. Specify a character of 'S' for short style, 'M' for medium,
+ 'L' for long, and 'F' for full.
+ A date or time may be ommitted by specifying a style character '-'.
+ <p>
+ The returned formatter will dynamically adjust to the locale that
+ the print/parse takes place in. Thus you just call
+ <code>DateTimeFormatter.withLocale(Locale)</code> and the Short/Medium/Long/Full
+ style for that locale will be output. For example:
+ @code
+
+  DateTimeFormat.forStyle(style).withLocale(Locale.FRANCE).print(dt);
+  
+@endcode
+ @param style  two characters from the set {"S", "M", "L", "F", "-"}
  @return the formatter
  @throws IllegalArgumentException if the style is invalid
  */
 + (OrgJodaTimeFormatDateTimeFormatter *)forStyleWithNSString:(NSString *)style;
 
-/**
+/*!
  @brief Creates a format that outputs a full date format.
- <p> The format will change as you change the locale of the formatter. Call DateTimeFormatter#withLocale(Locale) to switch the locale.
+ <p>
+ The format will change as you change the locale of the formatter.
+ Call <code>DateTimeFormatter.withLocale(Locale)</code> to switch the locale.
  @return the formatter
  */
 + (OrgJodaTimeFormatDateTimeFormatter *)fullDate;
 
-/**
+/*!
  @brief Creates a format that outputs a full datetime format.
- <p> The format will change as you change the locale of the formatter. Call DateTimeFormatter#withLocale(Locale) to switch the locale.
+ <p>
+ The format will change as you change the locale of the formatter.
+ Call <code>DateTimeFormatter.withLocale(Locale)</code> to switch the locale.
  @return the formatter
  */
 + (OrgJodaTimeFormatDateTimeFormatter *)fullDateTime;
 
-/**
+/*!
  @brief Creates a format that outputs a full time format.
- <p> The format will change as you change the locale of the formatter. Call DateTimeFormatter#withLocale(Locale) to switch the locale.
+ <p>
+ The format will change as you change the locale of the formatter.
+ Call <code>DateTimeFormatter.withLocale(Locale)</code> to switch the locale.
  @return the formatter
  */
 + (OrgJodaTimeFormatDateTimeFormatter *)fullTime;
 
-/**
+/*!
  @brief Creates a format that outputs a long date format.
- <p> The format will change as you change the locale of the formatter. Call DateTimeFormatter#withLocale(Locale) to switch the locale.
+ <p>
+ The format will change as you change the locale of the formatter.
+ Call <code>DateTimeFormatter.withLocale(Locale)</code> to switch the locale.
  @return the formatter
  */
 + (OrgJodaTimeFormatDateTimeFormatter *)longDate;
 
-/**
+/*!
  @brief Creates a format that outputs a long datetime format.
- <p> The format will change as you change the locale of the formatter. Call DateTimeFormatter#withLocale(Locale) to switch the locale.
+ <p>
+ The format will change as you change the locale of the formatter.
+ Call <code>DateTimeFormatter.withLocale(Locale)</code> to switch the locale.
  @return the formatter
  */
 + (OrgJodaTimeFormatDateTimeFormatter *)longDateTime;
 
-/**
+/*!
  @brief Creates a format that outputs a long time format.
- <p> The format will change as you change the locale of the formatter. Call DateTimeFormatter#withLocale(Locale) to switch the locale.
+ <p>
+ The format will change as you change the locale of the formatter.
+ Call <code>DateTimeFormatter.withLocale(Locale)</code> to switch the locale.
  @return the formatter
  */
 + (OrgJodaTimeFormatDateTimeFormatter *)longTime;
 
-/**
+/*!
  @brief Creates a format that outputs a medium date format.
- <p> The format will change as you change the locale of the formatter. Call DateTimeFormatter#withLocale(Locale) to switch the locale.
+ <p>
+ The format will change as you change the locale of the formatter.
+ Call <code>DateTimeFormatter.withLocale(Locale)</code> to switch the locale.
  @return the formatter
  */
 + (OrgJodaTimeFormatDateTimeFormatter *)mediumDate;
 
-/**
+/*!
  @brief Creates a format that outputs a medium datetime format.
- <p> The format will change as you change the locale of the formatter. Call DateTimeFormatter#withLocale(Locale) to switch the locale.
+ <p>
+ The format will change as you change the locale of the formatter.
+ Call <code>DateTimeFormatter.withLocale(Locale)</code> to switch the locale.
  @return the formatter
  */
 + (OrgJodaTimeFormatDateTimeFormatter *)mediumDateTime;
 
-/**
+/*!
  @brief Creates a format that outputs a medium time format.
- <p> The format will change as you change the locale of the formatter. Call DateTimeFormatter#withLocale(Locale) to switch the locale.
+ <p>
+ The format will change as you change the locale of the formatter.
+ Call <code>DateTimeFormatter.withLocale(Locale)</code> to switch the locale.
  @return the formatter
  */
 + (OrgJodaTimeFormatDateTimeFormatter *)mediumTime;
 
-/**
+/*!
  @brief Returns the pattern used by a particular style and locale.
- <p> The first character is the date style, and the second character is the time style. Specify a character of 'S' for short style, 'M' for medium, 'L' for long, and 'F' for full. A date or time may be ommitted by specifying a style character '-'.
- @param style two characters from the set {"S", "M", "L", "F", "-"}
- @param locale locale to use, null means default
+ <p>
+ The first character is the date style, and the second character is the
+ time style. Specify a character of 'S' for short style, 'M' for medium,
+ 'L' for long, and 'F' for full.
+ A date or time may be ommitted by specifying a style character '-'.
+ @param style  two characters from the set {"S", "M", "L", "F", "-"}
+ @param locale  locale to use, null means default
  @return the formatter
  @throws IllegalArgumentException if the style is invalid
  @since 1.3
@@ -133,30 +268,36 @@
 + (NSString *)patternForStyleWithNSString:(NSString *)style
                        withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Creates a format that outputs a short date format.
- <p> The format will change as you change the locale of the formatter. Call DateTimeFormatter#withLocale(Locale) to switch the locale.
+ <p>
+ The format will change as you change the locale of the formatter.
+ Call <code>DateTimeFormatter.withLocale(Locale)</code> to switch the locale.
  @return the formatter
  */
 + (OrgJodaTimeFormatDateTimeFormatter *)shortDate;
 
-/**
+/*!
  @brief Creates a format that outputs a short datetime format.
- <p> The format will change as you change the locale of the formatter. Call DateTimeFormatter#withLocale(Locale) to switch the locale.
+ <p>
+ The format will change as you change the locale of the formatter.
+ Call <code>DateTimeFormatter.withLocale(Locale)</code> to switch the locale.
  @return the formatter
  */
 + (OrgJodaTimeFormatDateTimeFormatter *)shortDateTime;
 
-/**
+/*!
  @brief Creates a format that outputs a short time format.
- <p> The format will change as you change the locale of the formatter. Call DateTimeFormatter#withLocale(Locale) to switch the locale.
+ <p>
+ The format will change as you change the locale of the formatter.
+ Call <code>DateTimeFormatter.withLocale(Locale)</code> to switch the locale.
  @return the formatter
  */
 + (OrgJodaTimeFormatDateTimeFormatter *)shortTime;
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Constructor.
  @since 1.1 (previously private)
  */
@@ -164,9 +305,10 @@
 
 #pragma mark Package-Private
 
-/**
- @brief Parses the given pattern and appends the rules to the given DateTimeFormatterBuilder.
- @param pattern pattern specification
+/*!
+ @brief Parses the given pattern and appends the rules to the given
+ DateTimeFormatterBuilder.
+ @param pattern  pattern specification
  @throws IllegalArgumentException if the pattern is invalid
  */
 + (void)appendPatternToWithOrgJodaTimeFormatDateTimeFormatterBuilder:(OrgJodaTimeFormatDateTimeFormatterBuilder *)builder

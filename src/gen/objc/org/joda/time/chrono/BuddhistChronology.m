@@ -31,14 +31,14 @@
 
 @interface OrgJodaTimeChronoBuddhistChronology ()
 
-/**
+/*!
  @brief Restricted constructor.
  @param param if non-null, then don't change the field set
  */
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
                                        withId:(id)param;
 
-/**
+/*!
  @brief Serialization singleton
  */
 - (id)readResolve;
@@ -105,13 +105,13 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBuddhistChronology)
 
 - (jboolean)isEqual:(id)obj {
   if (self == obj) {
-    return YES;
+    return true;
   }
   if ([obj isKindOfClass:[OrgJodaTimeChronoBuddhistChronology class]]) {
     OrgJodaTimeChronoBuddhistChronology *chrono = (OrgJodaTimeChronoBuddhistChronology *) check_class_cast(obj, [OrgJodaTimeChronoBuddhistChronology class]);
     return [((OrgJodaTimeDateTimeZone *) nil_chk([self getZone])) isEqual:[((OrgJodaTimeChronoBuddhistChronology *) nil_chk(chrono)) getZone]];
   }
-  return NO;
+  return false;
 }
 
 - (NSUInteger)hash {
@@ -129,29 +129,29 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBuddhistChronology)
 
 - (void)assembleWithOrgJodaTimeChronoAssembledChronology_Fields:(OrgJodaTimeChronoAssembledChronology_Fields *)fields {
   if ([self getParam] == nil) {
-    OrgJodaTimeChronoAssembledChronology_Fields_set_eras_(nil_chk(fields), OrgJodaTimeFieldUnsupportedDurationField_getInstanceWithOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationFieldType_eras()));
+    JreStrongAssign(&((OrgJodaTimeChronoAssembledChronology_Fields *) nil_chk(fields))->eras_, OrgJodaTimeFieldUnsupportedDurationField_getInstanceWithOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationFieldType_eras()));
     OrgJodaTimeDateTimeField *field = fields->year_;
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_year_(fields, new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withInt_([new_OrgJodaTimeFieldSkipUndoDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(self, field) autorelease], OrgJodaTimeChronoBuddhistChronology_BUDDHIST_OFFSET));
+    JreStrongAssignAndConsume(&fields->year_, new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withInt_([new_OrgJodaTimeFieldSkipUndoDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(self, field) autorelease], OrgJodaTimeChronoBuddhistChronology_BUDDHIST_OFFSET));
     field = fields->yearOfEra_;
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_yearOfEra_(fields, new_OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(fields->year_, fields->eras_, OrgJodaTimeDateTimeFieldType_yearOfEra()));
+    JreStrongAssignAndConsume(&fields->yearOfEra_, new_OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(fields->year_, fields->eras_, OrgJodaTimeDateTimeFieldType_yearOfEra()));
     field = fields->weekyear_;
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_weekyear_(fields, new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withInt_([new_OrgJodaTimeFieldSkipUndoDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(self, field) autorelease], OrgJodaTimeChronoBuddhistChronology_BUDDHIST_OFFSET));
+    JreStrongAssignAndConsume(&fields->weekyear_, new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withInt_([new_OrgJodaTimeFieldSkipUndoDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(self, field) autorelease], OrgJodaTimeChronoBuddhistChronology_BUDDHIST_OFFSET));
     field = [new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withInt_(fields->yearOfEra_, 99) autorelease];
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_centuryOfEra_(fields, new_OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_withInt_(field, fields->eras_, OrgJodaTimeDateTimeFieldType_centuryOfEra(), 100));
-    OrgJodaTimeChronoAssembledChronology_Fields_set_centuries_(fields, [fields->centuryOfEra_ getDurationField]);
+    JreStrongAssignAndConsume(&fields->centuryOfEra_, new_OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_withInt_(field, fields->eras_, OrgJodaTimeDateTimeFieldType_centuryOfEra(), 100));
+    JreStrongAssign(&fields->centuries_, [fields->centuryOfEra_ getDurationField]);
     field = [new_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_((OrgJodaTimeFieldDividedDateTimeField *) check_class_cast(fields->centuryOfEra_, [OrgJodaTimeFieldDividedDateTimeField class])) autorelease];
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_yearOfCentury_(fields, new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(field, OrgJodaTimeDateTimeFieldType_yearOfCentury(), 1));
+    JreStrongAssignAndConsume(&fields->yearOfCentury_, new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(field, OrgJodaTimeDateTimeFieldType_yearOfCentury(), 1));
     field = [new_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_withInt_(fields->weekyear_, fields->centuries_, OrgJodaTimeDateTimeFieldType_weekyearOfCentury(), 100) autorelease];
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_weekyearOfCentury_(fields, new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(field, OrgJodaTimeDateTimeFieldType_weekyearOfCentury(), 1));
-    OrgJodaTimeChronoAssembledChronology_Fields_set_era_(fields, OrgJodaTimeChronoBuddhistChronology_ERA_FIELD_);
+    JreStrongAssignAndConsume(&fields->weekyearOfCentury_, new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(field, OrgJodaTimeDateTimeFieldType_weekyearOfCentury(), 1));
+    JreStrongAssign(&fields->era_, OrgJodaTimeChronoBuddhistChronology_ERA_FIELD_);
   }
 }
 
 + (void)initialize {
   if (self == [OrgJodaTimeChronoBuddhistChronology class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeChronoBuddhistChronology_ERA_FIELD_, nil, new_OrgJodaTimeChronoBasicSingleEraDateTimeField_initWithNSString_(@"BE"));
-    JreStrongAssignAndConsume(&OrgJodaTimeChronoBuddhistChronology_cCache_, nil, new_JavaUtilConcurrentConcurrentHashMap_init());
-    JreStrongAssign(&OrgJodaTimeChronoBuddhistChronology_INSTANCE_UTC_, nil, OrgJodaTimeChronoBuddhistChronology_getInstanceWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone_get_UTC_()));
+    JreStrongAssignAndConsume(&OrgJodaTimeChronoBuddhistChronology_ERA_FIELD_, new_OrgJodaTimeChronoBasicSingleEraDateTimeField_initWithNSString_(@"BE"));
+    JreStrongAssignAndConsume(&OrgJodaTimeChronoBuddhistChronology_cCache_, new_JavaUtilConcurrentConcurrentHashMap_init());
+    JreStrongAssign(&OrgJodaTimeChronoBuddhistChronology_INSTANCE_UTC_, OrgJodaTimeChronoBuddhistChronology_getInstanceWithOrgJodaTimeDateTimeZone_(JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_)));
     J2OBJC_SET_INITIALIZED(OrgJodaTimeChronoBuddhistChronology)
   }
 }
@@ -173,10 +173,10 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBuddhistChronology)
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoBuddhistChronology_serialVersionUID },
     { "BE", "BE", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoBuddhistChronology_BE },
-    { "ERA_FIELD_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBuddhistChronology_ERA_FIELD_, NULL,  },
+    { "ERA_FIELD_", NULL, 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoBuddhistChronology_ERA_FIELD_, NULL, .constantValue.asLong = 0 },
     { "BUDDHIST_OFFSET", "BUDDHIST_OFFSET", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoBuddhistChronology_BUDDHIST_OFFSET },
-    { "cCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoBuddhistChronology_cCache_, "Ljava/util/concurrent/ConcurrentHashMap<Lorg/joda/time/DateTimeZone;Lorg/joda/time/chrono/BuddhistChronology;>;",  },
-    { "INSTANCE_UTC_", NULL, 0x1a, "Lorg.joda.time.chrono.BuddhistChronology;", &OrgJodaTimeChronoBuddhistChronology_INSTANCE_UTC_, NULL,  },
+    { "cCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoBuddhistChronology_cCache_, "Ljava/util/concurrent/ConcurrentHashMap<Lorg/joda/time/DateTimeZone;Lorg/joda/time/chrono/BuddhistChronology;>;", .constantValue.asLong = 0 },
+    { "INSTANCE_UTC_", NULL, 0x1a, "Lorg.joda.time.chrono.BuddhistChronology;", &OrgJodaTimeChronoBuddhistChronology_INSTANCE_UTC_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoBuddhistChronology = { 2, "BuddhistChronology", "org.joda.time.chrono", NULL, 0x11, 11, methods, 6, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoBuddhistChronology;

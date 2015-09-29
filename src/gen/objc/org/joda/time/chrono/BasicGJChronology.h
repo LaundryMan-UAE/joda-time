@@ -11,9 +11,13 @@
 
 @class OrgJodaTimeChronology;
 
-/**
+/*!
  @brief Abstract Chronology for implementing chronologies based on Gregorian/Julian formulae.
- Most of the utility methods required by subclasses are package-private, reflecting the intention that they be defined in the same package. <p> BasicGJChronology is thread-safe and immutable, and all subclasses must be as well.
+ Most of the utility methods required by subclasses are package-private,
+ reflecting the intention that they be defined in the same package.
+ <p>
+ BasicGJChronology is thread-safe and immutable, and all subclasses must
+ be as well.
  @author Stephen Colebourne
  @author Brian S O'Neill
  @author Guy Allard
@@ -23,7 +27,7 @@
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Constructor.
  */
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
@@ -35,10 +39,10 @@
 - (jint)getDaysInMonthMaxForSetWithLong:(jlong)instant
                                 withInt:(jint)value;
 
-/**
+/*!
  @brief Gets the number of days in the specified month and year.
- @param year the year
- @param month the month
+ @param year  the year
+ @param month  the month
  @return the number of days
  */
 - (jint)getDaysInYearMonthWithInt:(jint)year

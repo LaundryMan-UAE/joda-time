@@ -3,7 +3,6 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/joda-time/src/main/java/org/joda/time/UTCDateTimeZone.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "java/util/SimpleTimeZone.h"
 #include "java/util/TimeZone.h"
@@ -20,10 +19,12 @@ OrgJodaTimeDateTimeZone *OrgJodaTimeUTCDateTimeZone_INSTANCE_;
 
 @implementation OrgJodaTimeUTCDateTimeZone
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeUTCDateTimeZone_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (NSString *)getNameKeyWithLong:(jlong)instant {
   return @"UTC";
@@ -42,7 +43,7 @@ OrgJodaTimeDateTimeZone *OrgJodaTimeUTCDateTimeZone_INSTANCE_;
 }
 
 - (jboolean)isFixed {
-  return YES;
+  return true;
 }
 
 - (jlong)nextTransitionWithLong:(jlong)instant {
@@ -67,7 +68,7 @@ OrgJodaTimeDateTimeZone *OrgJodaTimeUTCDateTimeZone_INSTANCE_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeUTCDateTimeZone class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeUTCDateTimeZone_INSTANCE_, nil, new_OrgJodaTimeUTCDateTimeZone_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeUTCDateTimeZone_INSTANCE_, new_OrgJodaTimeUTCDateTimeZone_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeUTCDateTimeZone)
   }
 }
@@ -87,7 +88,7 @@ OrgJodaTimeDateTimeZone *OrgJodaTimeUTCDateTimeZone_INSTANCE_;
     { "hash", "hashCode", "I", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.DateTimeZone;", &OrgJodaTimeUTCDateTimeZone_INSTANCE_, NULL,  },
+    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.DateTimeZone;", &OrgJodaTimeUTCDateTimeZone_INSTANCE_, NULL, .constantValue.asLong = 0 },
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeUTCDateTimeZone_serialVersionUID },
   };
   static const J2ObjcClassInfo _OrgJodaTimeUTCDateTimeZone = { 2, "UTCDateTimeZone", "org.joda.time", NULL, 0x10, 11, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };

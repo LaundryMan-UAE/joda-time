@@ -27,10 +27,12 @@ OrgJodaTimeConvertCalendarConverter *OrgJodaTimeConvertCalendarConverter_INSTANC
 
 @implementation OrgJodaTimeConvertCalendarConverter
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeConvertCalendarConverter_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgJodaTimeChronology *)getChronologyWithId:(id)object
                      withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
@@ -83,7 +85,7 @@ OrgJodaTimeConvertCalendarConverter *OrgJodaTimeConvertCalendarConverter_INSTANC
 
 + (void)initialize {
   if (self == [OrgJodaTimeConvertCalendarConverter class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeConvertCalendarConverter_INSTANCE_, nil, new_OrgJodaTimeConvertCalendarConverter_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeConvertCalendarConverter_INSTANCE_, new_OrgJodaTimeConvertCalendarConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertCalendarConverter)
   }
 }
@@ -97,7 +99,7 @@ OrgJodaTimeConvertCalendarConverter *OrgJodaTimeConvertCalendarConverter_INSTANC
     { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.CalendarConverter;", &OrgJodaTimeConvertCalendarConverter_INSTANCE_, NULL,  },
+    { "INSTANCE_", NULL, 0x18, "Lorg.joda.time.convert.CalendarConverter;", &OrgJodaTimeConvertCalendarConverter_INSTANCE_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeConvertCalendarConverter = { 2, "CalendarConverter", "org.joda.time.convert", NULL, 0x10, 5, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeConvertCalendarConverter;

@@ -16,9 +16,12 @@
 @class OrgJodaTimeDurationField;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
- @brief <code>DelegatedDateTimeField</code> delegates each method call to the date time field it wraps.
- <p> DelegatedDateTimeField is thread-safe and immutable, and its subclasses must be as well.
+/*!
+ @brief <code>DelegatedDateTimeField</code> delegates each method call to the
+ date time field it wraps.
+ <p>
+ DelegatedDateTimeField is thread-safe and immutable, and its subclasses must
+ be as well.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -26,25 +29,25 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Constructor.
- @param field the field being decorated
+ @param field  the field being decorated
  */
 - (instancetype)initWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
 
-/**
+/*!
  @brief Constructor.
- @param field the field being decorated
- @param type the field type override
+ @param field  the field being decorated
+ @param type  the field type override
  */
 - (instancetype)initWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
                 withOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type;
 
-/**
+/*!
  @brief Constructor.
- @param field the field being decorated
- @param rangeField the range field, null to derive
- @param type the field type override
+ @param field  the field being decorated
+ @param rangeField  the range field, null to derive
+ @param type  the field type override
  */
 - (instancetype)initWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field
                     withOrgJodaTimeDurationField:(OrgJodaTimeDurationField *)rangeField
@@ -146,7 +149,7 @@
 
 - (OrgJodaTimeDateTimeFieldType *)getType;
 
-/**
+/*!
  @brief Gets the wrapped date time field.
  @return the wrapped DateTimeField
  */

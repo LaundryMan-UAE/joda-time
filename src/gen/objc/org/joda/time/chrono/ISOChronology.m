@@ -28,14 +28,15 @@
 
 @interface OrgJodaTimeChronoISOChronology ()
 
-/**
+/*!
  @brief Restricted constructor
  */
 - (instancetype)initWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base;
 
-/**
+/*!
  @brief Serialize ISOChronology instances using a small stub.
- This reduces the serialized size, and deserialized instances come from the cache.
+ This reduces the
+ serialized size, and deserialized instances come from the cache.
  */
 - (id)writeReplace;
 
@@ -127,23 +128,23 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoISOChronology)
 }
 
 - (void)assembleWithOrgJodaTimeChronoAssembledChronology_Fields:(OrgJodaTimeChronoAssembledChronology_Fields *)fields {
-  if ([((OrgJodaTimeChronology *) nil_chk([self getBase])) getZone] == OrgJodaTimeDateTimeZone_get_UTC_()) {
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_centuryOfEra_(nil_chk(fields), new_OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeChronoISOYearOfEraDateTimeField_get_INSTANCE_(), OrgJodaTimeDateTimeFieldType_centuryOfEra(), 100));
-    OrgJodaTimeChronoAssembledChronology_Fields_set_centuries_(fields, [fields->centuryOfEra_ getDurationField]);
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_yearOfCentury_(fields, new_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_withOrgJodaTimeDateTimeFieldType_((OrgJodaTimeFieldDividedDateTimeField *) check_class_cast(fields->centuryOfEra_, [OrgJodaTimeFieldDividedDateTimeField class]), OrgJodaTimeDateTimeFieldType_yearOfCentury()));
-    OrgJodaTimeChronoAssembledChronology_Fields_setAndConsume_weekyearOfCentury_(fields, new_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_((OrgJodaTimeFieldDividedDateTimeField *) check_class_cast(fields->centuryOfEra_, [OrgJodaTimeFieldDividedDateTimeField class]), fields->weekyears_, OrgJodaTimeDateTimeFieldType_weekyearOfCentury()));
+  if ([((OrgJodaTimeChronology *) nil_chk([self getBase])) getZone] == JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_)) {
+    JreStrongAssignAndConsume(&((OrgJodaTimeChronoAssembledChronology_Fields *) nil_chk(fields))->centuryOfEra_, new_OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(JreLoadStatic(OrgJodaTimeChronoISOYearOfEraDateTimeField, INSTANCE_), OrgJodaTimeDateTimeFieldType_centuryOfEra(), 100));
+    JreStrongAssign(&fields->centuries_, [fields->centuryOfEra_ getDurationField]);
+    JreStrongAssignAndConsume(&fields->yearOfCentury_, new_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_withOrgJodaTimeDateTimeFieldType_((OrgJodaTimeFieldDividedDateTimeField *) check_class_cast(fields->centuryOfEra_, [OrgJodaTimeFieldDividedDateTimeField class]), OrgJodaTimeDateTimeFieldType_yearOfCentury()));
+    JreStrongAssignAndConsume(&fields->weekyearOfCentury_, new_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_((OrgJodaTimeFieldDividedDateTimeField *) check_class_cast(fields->centuryOfEra_, [OrgJodaTimeFieldDividedDateTimeField class]), fields->weekyears_, OrgJodaTimeDateTimeFieldType_weekyearOfCentury()));
   }
 }
 
 - (jboolean)isEqual:(id)obj {
   if (self == obj) {
-    return YES;
+    return true;
   }
   if ([obj isKindOfClass:[OrgJodaTimeChronoISOChronology class]]) {
     OrgJodaTimeChronoISOChronology *chrono = (OrgJodaTimeChronoISOChronology *) check_class_cast(obj, [OrgJodaTimeChronoISOChronology class]);
     return [((OrgJodaTimeDateTimeZone *) nil_chk([self getZone])) isEqual:[((OrgJodaTimeChronoISOChronology *) nil_chk(chrono)) getZone]];
   }
-  return NO;
+  return false;
 }
 
 - (NSUInteger)hash {
@@ -156,10 +157,10 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoISOChronology)
 
 + (void)initialize {
   if (self == [OrgJodaTimeChronoISOChronology class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeChronoISOChronology_cCache_, nil, new_JavaUtilConcurrentConcurrentHashMap_init());
+    JreStrongAssignAndConsume(&OrgJodaTimeChronoISOChronology_cCache_, new_JavaUtilConcurrentConcurrentHashMap_init());
     {
-      JreStrongAssignAndConsume(&OrgJodaTimeChronoISOChronology_INSTANCE_UTC_, nil, new_OrgJodaTimeChronoISOChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronoGregorianChronology_getInstanceUTC()));
-      [OrgJodaTimeChronoISOChronology_cCache_ putWithId:OrgJodaTimeDateTimeZone_get_UTC_() withId:OrgJodaTimeChronoISOChronology_INSTANCE_UTC_];
+      JreStrongAssignAndConsume(&OrgJodaTimeChronoISOChronology_INSTANCE_UTC_, new_OrgJodaTimeChronoISOChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronoGregorianChronology_getInstanceUTC()));
+      [OrgJodaTimeChronoISOChronology_cCache_ putWithId:JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_) withId:OrgJodaTimeChronoISOChronology_INSTANCE_UTC_];
     }
     J2OBJC_SET_INITIALIZED(OrgJodaTimeChronoISOChronology)
   }
@@ -181,8 +182,8 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoISOChronology)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoISOChronology_serialVersionUID },
-    { "INSTANCE_UTC_", NULL, 0x1a, "Lorg.joda.time.chrono.ISOChronology;", &OrgJodaTimeChronoISOChronology_INSTANCE_UTC_, NULL,  },
-    { "cCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoISOChronology_cCache_, "Ljava/util/concurrent/ConcurrentHashMap<Lorg/joda/time/DateTimeZone;Lorg/joda/time/chrono/ISOChronology;>;",  },
+    { "INSTANCE_UTC_", NULL, 0x1a, "Lorg.joda.time.chrono.ISOChronology;", &OrgJodaTimeChronoISOChronology_INSTANCE_UTC_, NULL, .constantValue.asLong = 0 },
+    { "cCache_", NULL, 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoISOChronology_cCache_, "Ljava/util/concurrent/ConcurrentHashMap<Lorg/joda/time/DateTimeZone;Lorg/joda/time/chrono/ISOChronology;>;", .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lorg.joda.time.chrono.ISOChronology$Stub;"};
   static const J2ObjcClassInfo _OrgJodaTimeChronoISOChronology = { 2, "ISOChronology", "org.joda.time.chrono", NULL, 0x11, 11, methods, 3, fields, 0, NULL, 1, inner_classes, NULL, NULL };
@@ -245,7 +246,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoISOChronology)
 }
 
 - (void)readObjectWithJavaIoObjectInputStream:(JavaIoObjectInputStream *)inArg {
-  OrgJodaTimeChronoISOChronology_Stub_set_iZone_(self, (OrgJodaTimeDateTimeZone *) check_class_cast([((JavaIoObjectInputStream *) nil_chk(inArg)) readObject], [OrgJodaTimeDateTimeZone class]));
+  JreStrongAssign(&iZone_, (OrgJodaTimeDateTimeZone *) check_class_cast([((JavaIoObjectInputStream *) nil_chk(inArg)) readObject], [OrgJodaTimeDateTimeZone class]));
 }
 
 - (void)dealloc {
@@ -262,7 +263,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoISOChronology)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoISOChronology_Stub_serialVersionUID },
-    { "iZone_", NULL, 0x82, "Lorg.joda.time.DateTimeZone;", NULL, NULL,  },
+    { "iZone_", NULL, 0x82, "Lorg.joda.time.DateTimeZone;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeChronoISOChronology_Stub = { 2, "Stub", "org.joda.time.chrono", "ISOChronology", 0x1a, 4, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_OrgJodaTimeChronoISOChronology_Stub;
@@ -272,7 +273,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoISOChronology)
 
 void OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeChronoISOChronology_Stub *self, OrgJodaTimeDateTimeZone *zone) {
   NSObject_init(self);
-  OrgJodaTimeChronoISOChronology_Stub_set_iZone_(self, zone);
+  JreStrongAssign(&self->iZone_, zone);
 }
 
 OrgJodaTimeChronoISOChronology_Stub *new_OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {

@@ -14,7 +14,7 @@
 @class IOSClass;
 @class OrgJodaTimeChronology;
 
-/**
+/*!
  @brief DateConverter converts a java util Date to an instant or partial.
  The Date is converted to milliseconds in the ISO chronology.
  @author Stephen Colebourne
@@ -24,10 +24,10 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Gets the millis, which is the Date millis value.
- @param object the Date to convert, must not be null
- @param chrono the non-null result of getChronology
+ @param object  the Date to convert, must not be null
+ @param chrono  the non-null result of getChronology
  @return the millisecond value
  @throws NullPointerException if the object is null
  @throws ClassCastException if the object is an invalid type
@@ -35,7 +35,7 @@
 - (jlong)getInstantMillisWithId:(id)object
       withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono;
 
-/**
+/*!
  @brief Returns Date.class.
  @return Date.class
  */
@@ -43,7 +43,7 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)init;

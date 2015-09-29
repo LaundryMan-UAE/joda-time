@@ -14,29 +14,32 @@
 @protocol JavaLangAppendable;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
+/*!
  @brief Internal interface for creating textual representations of datetimes.
- <p> This has been separated from DateTimePrinter to avoid code duplication.
+ <p>
+ This has been separated from <code>DateTimePrinter</code> to avoid code duplication.
  @author Stephen Colebourne
  @since 2.4
  */
 @protocol OrgJodaTimeFormatInternalPrinter < NSObject, JavaObject >
 
-/**
+/*!
  @brief Returns the expected maximum number of characters produced.
  The actual amount should rarely exceed this estimate.
  @return the estimated length
  */
 - (jint)estimatePrintedLength;
 
-/**
- @brief Prints an instant from milliseconds since 1970-01-01T00:00:00Z, using the given Chronology.
- @param appendable formatted instant is appended to, not null
- @param instant millis since 1970-01-01T00:00:00Z
- @param chrono the chronology to use, not null
- @param displayOffset if a time zone offset is printed, force it to use this millisecond value
- @param displayZone the time zone to use, null means local time
- @param locale the locale to use, null means default locale
+/*!
+ @brief Prints an instant from milliseconds since 1970-01-01T00:00:00Z,
+ using the given Chronology.
+ @param appendable  formatted instant is appended to, not null
+ @param instant  millis since 1970-01-01T00:00:00Z
+ @param chrono  the chronology to use, not null
+ @param displayOffset  if a time zone offset is printed, force it to use
+ this millisecond value
+ @param displayZone  the time zone to use, null means local time
+ @param locale  the locale to use, null means default locale
  */
 - (void)printToWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
                              withLong:(jlong)instant
@@ -45,11 +48,11 @@
           withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
                    withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-/**
+/*!
  @brief Prints a ReadablePartial.
- @param appendable formatted instant is appended to, not null
- @param partial partial to format, not null
- @param locale the locale to use, null means default locale
+ @param appendable  formatted instant is appended to, not null
+ @param partial  partial to format, not null
+ @param locale  the locale to use, null means default locale
  */
 - (void)printToWithJavaLangAppendable:(id<JavaLangAppendable>)appendable
        withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial

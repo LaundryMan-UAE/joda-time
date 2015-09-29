@@ -28,10 +28,12 @@ J2OBJC_STATIC_FIELD_GETTER(OrgJodaTimeChronoBaseChronology, serialVersionUID, jl
 
 @implementation OrgJodaTimeChronoBaseChronology
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeChronoBaseChronology_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgJodaTimeDateTimeZone *)getZone {
   // can't call an abstract method

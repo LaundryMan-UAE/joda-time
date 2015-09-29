@@ -16,17 +16,17 @@
 
 @interface OrgJodaTimeDateTimeComparator () {
  @public
-  /**
+  /*!
    @brief The lower limit of fields to compare, null if no limit
    */
   OrgJodaTimeDateTimeFieldType *iLowerLimit_;
-  /**
+  /*!
    @brief The upper limit of fields to compare, null if no limit
    */
   OrgJodaTimeDateTimeFieldType *iUpperLimit_;
 }
 
-/**
+/*!
  @brief Support serialization singletons.
  @return the resolved singleton instance
  */
@@ -123,7 +123,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeComparator)
     OrgJodaTimeDateTimeComparator *other = (OrgJodaTimeDateTimeComparator *) check_class_cast(object, [OrgJodaTimeDateTimeComparator class]);
     return (iLowerLimit_ == [((OrgJodaTimeDateTimeComparator *) nil_chk(other)) getLowerLimit] || (iLowerLimit_ != nil && [iLowerLimit_ isEqual:[other getLowerLimit]])) && (iUpperLimit_ == [other getUpperLimit] || (iUpperLimit_ != nil && [iUpperLimit_ isEqual:[other getUpperLimit]]));
   }
-  return NO;
+  return false;
 }
 
 - (NSUInteger)hash {
@@ -147,9 +147,9 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeComparator)
 
 + (void)initialize {
   if (self == [OrgJodaTimeDateTimeComparator class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeComparator_ALL_INSTANCE_, nil, new_OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(nil, nil));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeComparator_DATE_INSTANCE_, nil, new_OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeFieldType_dayOfYear(), nil));
-    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeComparator_TIME_INSTANCE_, nil, new_OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(nil, OrgJodaTimeDateTimeFieldType_dayOfYear()));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeComparator_ALL_INSTANCE_, new_OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(nil, nil));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeComparator_DATE_INSTANCE_, new_OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeFieldType_dayOfYear(), nil));
+    JreStrongAssignAndConsume(&OrgJodaTimeDateTimeComparator_TIME_INSTANCE_, new_OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(nil, OrgJodaTimeDateTimeFieldType_dayOfYear()));
     J2OBJC_SET_INITIALIZED(OrgJodaTimeDateTimeComparator)
   }
 }
@@ -172,11 +172,11 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeComparator)
   };
   static const J2ObjcFieldInfo fields[] = {
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeDateTimeComparator_serialVersionUID },
-    { "ALL_INSTANCE_", NULL, 0x1a, "Lorg.joda.time.DateTimeComparator;", &OrgJodaTimeDateTimeComparator_ALL_INSTANCE_, NULL,  },
-    { "DATE_INSTANCE_", NULL, 0x1a, "Lorg.joda.time.DateTimeComparator;", &OrgJodaTimeDateTimeComparator_DATE_INSTANCE_, NULL,  },
-    { "TIME_INSTANCE_", NULL, 0x1a, "Lorg.joda.time.DateTimeComparator;", &OrgJodaTimeDateTimeComparator_TIME_INSTANCE_, NULL,  },
-    { "iLowerLimit_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL, NULL,  },
-    { "iUpperLimit_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL, NULL,  },
+    { "ALL_INSTANCE_", NULL, 0x1a, "Lorg.joda.time.DateTimeComparator;", &OrgJodaTimeDateTimeComparator_ALL_INSTANCE_, NULL, .constantValue.asLong = 0 },
+    { "DATE_INSTANCE_", NULL, 0x1a, "Lorg.joda.time.DateTimeComparator;", &OrgJodaTimeDateTimeComparator_DATE_INSTANCE_, NULL, .constantValue.asLong = 0 },
+    { "TIME_INSTANCE_", NULL, 0x1a, "Lorg.joda.time.DateTimeComparator;", &OrgJodaTimeDateTimeComparator_TIME_INSTANCE_, NULL, .constantValue.asLong = 0 },
+    { "iLowerLimit_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL, NULL, .constantValue.asLong = 0 },
+    { "iUpperLimit_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _OrgJodaTimeDateTimeComparator = { 2, "DateTimeComparator", "org.joda.time", NULL, 0x1, 13, methods, 6, fields, 0, NULL, 0, NULL, NULL, "Ljava/lang/Object;Ljava/util/Comparator<Ljava/lang/Object;>;Ljava/io/Serializable;" };
   return &_OrgJodaTimeDateTimeComparator;
@@ -220,8 +220,8 @@ OrgJodaTimeDateTimeComparator *OrgJodaTimeDateTimeComparator_getTimeOnlyInstance
 
 void OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeComparator *self, OrgJodaTimeDateTimeFieldType *lowerLimit, OrgJodaTimeDateTimeFieldType *upperLimit) {
   NSObject_init(self);
-  OrgJodaTimeDateTimeComparator_set_iLowerLimit_(self, lowerLimit);
-  OrgJodaTimeDateTimeComparator_set_iUpperLimit_(self, upperLimit);
+  JreStrongAssign(&self->iLowerLimit_, lowerLimit);
+  JreStrongAssign(&self->iUpperLimit_, upperLimit);
 }
 
 OrgJodaTimeDateTimeComparator *new_OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeFieldType *lowerLimit, OrgJodaTimeDateTimeFieldType *upperLimit) {

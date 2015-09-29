@@ -15,7 +15,7 @@
 @class OrgJodaTimePeriodType;
 @protocol OrgJodaTimeReadWritablePeriod;
 
-/**
+/*!
  @brief ReadablePeriodConverter extracts milliseconds and chronology from a ReadablePeriod.
  @author Stephen Colebourne
  @author Brian S O'Neill
@@ -25,26 +25,27 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Selects a suitable period type for the given object.
- @param object the object to examine, must not be null
+ @param object  the object to examine, must not be null
  @return the period type from the readable duration
  @throws NullPointerException if the object is null
  @throws ClassCastException if the object is an invalid type
  */
 - (OrgJodaTimePeriodType *)getPeriodTypeWithId:(id)object;
 
-/**
+/*!
  @brief Returns ReadablePeriod class.
  @return ReadablePeriod.class
  */
 - (IOSClass *)getSupportedType;
 
-/**
- @brief Extracts duration values from an object of this converter's type, and sets them into the given ReadWritablePeriod.
+/*!
+ @brief Extracts duration values from an object of this converter's type, and
+ sets them into the given ReadWritablePeriod.
  @param duration duration to get modified
- @param object the object to convert, must not be null
- @param chrono the chronology to use
+ @param object  the object to convert, must not be null
+ @param chrono  the chronology to use
  @throws NullPointerException if the duration or object is null
  @throws ClassCastException if the object is an invalid type
  @throws IllegalArgumentException if the object is invalid
@@ -55,7 +56,7 @@
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Restricted constructor.
  */
 - (instancetype)init;

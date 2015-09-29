@@ -11,9 +11,12 @@
 
 @class OrgJodaTimeDateTimeField;
 
-/**
+/*!
  @brief Converts a lenient DateTimeField into a strict one.
- By being strict, the set throws an IllegalArgumentException if the value is out of bounds. <p> StrictDateTimeField is thread-safe and immutable.
+ By being strict, the set
+ throws an IllegalArgumentException if the value is out of bounds.
+ <p>
+ StrictDateTimeField is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -21,15 +24,17 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Returns a strict version of the given field.
- If it is already strict, then it is returned as-is. Otherwise, a new StrictDateTimeField is returned.
+ If it is already strict,
+ then it is returned as-is. Otherwise, a new StrictDateTimeField is
+ returned.
  */
 + (OrgJodaTimeDateTimeField *)getInstanceWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field;
 
 - (jboolean)isLenient;
 
-/**
+/*!
  @brief Does a bounds check before setting the value.
  @throws IllegalArgumentException if the value is invalid
  */

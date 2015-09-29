@@ -92,12 +92,12 @@ NSString *OrgJodaTimeIllegalInstantException_createMessageWithLong_withNSString_
 jboolean OrgJodaTimeIllegalInstantException_isIllegalInstantWithJavaLangThrowable_(JavaLangThrowable *ex) {
   OrgJodaTimeIllegalInstantException_initialize();
   if ([ex isKindOfClass:[OrgJodaTimeIllegalInstantException class]]) {
-    return YES;
+    return true;
   }
   while ([((JavaLangThrowable *) nil_chk(ex)) getCause] != nil && [ex getCause] != ex) {
     return OrgJodaTimeIllegalInstantException_isIllegalInstantWithJavaLangThrowable_([ex getCause]);
   }
-  return NO;
+  return false;
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeIllegalInstantException)

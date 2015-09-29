@@ -12,9 +12,11 @@
 
 @class OrgJodaTimeDurationFieldType;
 
-/**
- @brief Duration field class representing a field with a fixed unit length of one millisecond.
- <p> MillisDurationField is thread-safe and immutable.
+/*!
+ @brief Duration field class representing a field with a fixed unit length of one
+ millisecond.
+ <p>
+ MillisDurationField is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -52,7 +54,7 @@
 
 - (OrgJodaTimeDurationFieldType *)getType;
 
-/**
+/*!
  @brief Returns the amount of milliseconds per unit value of this field.
  @return one always
  */
@@ -70,19 +72,19 @@
 
 - (NSUInteger)hash;
 
-/**
+/*!
  @brief Returns true as this field is precise.
  @return true always
  */
 - (jboolean)isPrecise;
 
-/**
+/*!
  @brief Returns true as this field is supported.
  @return true always
  */
 - (jboolean)isSupported;
 
-/**
+/*!
  @brief Get a suitable debug string.
  @return debug string
  */

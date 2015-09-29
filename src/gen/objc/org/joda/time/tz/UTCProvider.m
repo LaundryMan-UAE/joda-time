@@ -11,14 +11,16 @@
 
 @implementation OrgJodaTimeTzUTCProvider
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeTzUTCProvider_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgJodaTimeDateTimeZone *)getZoneWithNSString:(NSString *)id_ {
   if ([@"UTC" equalsIgnoreCase:id_]) {
-    return OrgJodaTimeDateTimeZone_get_UTC_();
+    return JreLoadStatic(OrgJodaTimeDateTimeZone, UTC_);
   }
   return nil;
 }

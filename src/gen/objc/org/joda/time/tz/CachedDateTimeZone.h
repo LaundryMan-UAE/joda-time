@@ -9,9 +9,13 @@
 #include "J2ObjC_header.h"
 #include "org/joda/time/DateTimeZone.h"
 
-/**
- @brief Improves the performance of requesting time zone offsets and name keys by caching the results.
- Time zones that have simple rules or are fixed should not be cached, as it is unlikely to improve performance. <p> CachedDateTimeZone is thread-safe and immutable.
+/*!
+ @brief Improves the performance of requesting time zone offsets and name keys by
+ caching the results.
+ Time zones that have simple rules or are fixed should
+ not be cached, as it is unlikely to improve performance.
+ <p>
+ CachedDateTimeZone is thread-safe and immutable.
  @author Brian S O'Neill
  @since 1.0
  */
@@ -21,7 +25,7 @@
 
 - (jboolean)isEqual:(id)obj;
 
-/**
+/*!
  @brief Returns a new CachedDateTimeZone unless given zone is already cached.
  */
 + (OrgJodaTimeTzCachedDateTimeZone *)forZoneWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
@@ -32,7 +36,7 @@
 
 - (jint)getStandardOffsetWithLong:(jlong)instant;
 
-/**
+/*!
  @brief Returns the DateTimeZone being wrapped.
  */
 - (OrgJodaTimeDateTimeZone *)getUncachedZone;

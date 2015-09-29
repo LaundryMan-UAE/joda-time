@@ -14,9 +14,17 @@
 @class OrgJodaTimeDateTimeZone;
 @protocol OrgJodaTimeReadableDateTime;
 
-/**
- @brief Wraps another Chronology to impose limits on the range of instants that the fields within a Chronology may support.
- The limits are applied to both DateTimeFields and DurationFields. <p> Methods in DateTimeField and DurationField throw an IllegalArgumentException whenever given an input instant that is outside the limits or when an attempt is made to move an instant outside the limits. <p> LimitChronology is thread-safe and immutable.
+/*!
+ @brief Wraps another Chronology to impose limits on the range of instants that
+ the fields within a Chronology may support.
+ The limits are applied to both
+ DateTimeFields and DurationFields.
+ <p>
+ Methods in DateTimeField and DurationField throw an IllegalArgumentException
+ whenever given an input instant that is outside the limits or when an
+ attempt is made to move an instant outside the limits.
+ <p>
+ LimitChronology is thread-safe and immutable.
  @author Brian S O'Neill
  @author Stephen Colebourne
  @since 1.0
@@ -29,9 +37,10 @@
 
 #pragma mark Public
 
-/**
- @brief A limit chronology is only equal to a limit chronology with the same base chronology and limits.
- @param obj the object to compare to
+/*!
+ @brief A limit chronology is only equal to a limit chronology with the
+ same base chronology and limits.
+ @param obj  the object to compare to
  @return true if equal
  @since 1.4
  */
@@ -56,52 +65,58 @@
                            withInt:(jint)secondOfMinute
                            withInt:(jint)millisOfSecond;
 
-/**
+/*!
  @brief Wraps another chronology, with datetime limits.
- When withUTC or withZone is called, the returned LimitChronology instance has the same limits, except they are time zone adjusted.
- @param base base chronology to wrap
- @param lowerLimit inclusive lower limit, or null if none
- @param upperLimit exclusive upper limit, or null if none
+ When withUTC or
+ withZone is called, the returned LimitChronology instance has
+ the same limits, except they are time zone adjusted.
+ @param base  base chronology to wrap
+ @param lowerLimit  inclusive lower limit, or null if none
+ @param upperLimit  exclusive upper limit, or null if none
  @throws IllegalArgumentException if chronology is null or limits are invalid
  */
 + (OrgJodaTimeChronoLimitChronology *)getInstanceWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)base
                                            withOrgJodaTimeReadableDateTime:(id<OrgJodaTimeReadableDateTime>)lowerLimit
                                            withOrgJodaTimeReadableDateTime:(id<OrgJodaTimeReadableDateTime>)upperLimit;
 
-/**
+/*!
  @brief Returns the inclusive lower limit instant.
  @return lower limit
  */
 - (OrgJodaTimeDateTime *)getLowerLimit;
 
-/**
+/*!
  @brief Returns the inclusive upper limit instant.
  @return upper limit
  */
 - (OrgJodaTimeDateTime *)getUpperLimit;
 
-/**
+/*!
  @brief A suitable hashcode for the chronology.
  @return the hashcode
  @since 1.4
  */
 - (NSUInteger)hash;
 
-/**
+/*!
  @brief A debugging string for the chronology.
  @return the debugging string
  */
 - (NSString *)description;
 
-/**
- @brief If this LimitChronology is already UTC, then this is returned.
- Otherwise, a new instance is returned, with the limits adjusted to the new time zone.
+/*!
+ @brief If this LimitChronology is already UTC, then this is
+ returned.
+ Otherwise, a new instance is returned, with the limits
+ adjusted to the new time zone.
  */
 - (OrgJodaTimeChronology *)withUTC;
 
-/**
- @brief If this LimitChronology has the same time zone as the one given, then this is returned.
- Otherwise, a new instance is returned, with the limits adjusted to the new time zone.
+/*!
+ @brief If this LimitChronology has the same time zone as the one given, then
+ this is returned.
+ Otherwise, a new instance is returned, with the limits
+ adjusted to the new time zone.
  */
 - (OrgJodaTimeChronology *)withZoneWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 

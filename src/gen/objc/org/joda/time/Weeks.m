@@ -36,14 +36,15 @@
 
 @interface OrgJodaTimeWeeks ()
 
-/**
+/*!
  @brief Creates a new instance representing a number of weeks.
- You should consider using the factory method #weeks(int) instead of the constructor.
- @param weeks the number of weeks to represent
+ You should consider using the factory method <code>weeks(int)</code>
+ instead of the constructor.
+ @param weeks  the number of weeks to represent
  */
 - (instancetype)initWithInt:(jint)weeks;
 
-/**
+/*!
  @brief Resolves singletons.
  @return the singleton instance
  */
@@ -199,13 +200,13 @@ OrgJodaTimeWeeks *OrgJodaTimeWeeks_MIN_VALUE_;
 
 + (void)initialize {
   if (self == [OrgJodaTimeWeeks class]) {
-    JreStrongAssignAndConsume(&OrgJodaTimeWeeks_ZERO_, nil, new_OrgJodaTimeWeeks_initWithInt_(0));
-    JreStrongAssignAndConsume(&OrgJodaTimeWeeks_ONE_, nil, new_OrgJodaTimeWeeks_initWithInt_(1));
-    JreStrongAssignAndConsume(&OrgJodaTimeWeeks_TWO_, nil, new_OrgJodaTimeWeeks_initWithInt_(2));
-    JreStrongAssignAndConsume(&OrgJodaTimeWeeks_THREE_, nil, new_OrgJodaTimeWeeks_initWithInt_(3));
-    JreStrongAssignAndConsume(&OrgJodaTimeWeeks_MAX_VALUE_, nil, new_OrgJodaTimeWeeks_initWithInt_(JavaLangInteger_MAX_VALUE));
-    JreStrongAssignAndConsume(&OrgJodaTimeWeeks_MIN_VALUE_, nil, new_OrgJodaTimeWeeks_initWithInt_(JavaLangInteger_MIN_VALUE));
-    JreStrongAssign(&OrgJodaTimeWeeks_PARSER_, nil, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_weeks()]);
+    JreStrongAssignAndConsume(&OrgJodaTimeWeeks_ZERO_, new_OrgJodaTimeWeeks_initWithInt_(0));
+    JreStrongAssignAndConsume(&OrgJodaTimeWeeks_ONE_, new_OrgJodaTimeWeeks_initWithInt_(1));
+    JreStrongAssignAndConsume(&OrgJodaTimeWeeks_TWO_, new_OrgJodaTimeWeeks_initWithInt_(2));
+    JreStrongAssignAndConsume(&OrgJodaTimeWeeks_THREE_, new_OrgJodaTimeWeeks_initWithInt_(3));
+    JreStrongAssignAndConsume(&OrgJodaTimeWeeks_MAX_VALUE_, new_OrgJodaTimeWeeks_initWithInt_(JavaLangInteger_MAX_VALUE));
+    JreStrongAssignAndConsume(&OrgJodaTimeWeeks_MIN_VALUE_, new_OrgJodaTimeWeeks_initWithInt_(JavaLangInteger_MIN_VALUE));
+    JreStrongAssign(&OrgJodaTimeWeeks_PARSER_, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_weeks()]);
     J2OBJC_SET_INITIALIZED(OrgJodaTimeWeeks)
   }
 }
@@ -248,13 +249,13 @@ OrgJodaTimeWeeks *OrgJodaTimeWeeks_MIN_VALUE_;
     { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Weeks;", &OrgJodaTimeWeeks_ZERO_, NULL,  },
-    { "ONE_", NULL, 0x19, "Lorg.joda.time.Weeks;", &OrgJodaTimeWeeks_ONE_, NULL,  },
-    { "TWO_", NULL, 0x19, "Lorg.joda.time.Weeks;", &OrgJodaTimeWeeks_TWO_, NULL,  },
-    { "THREE_", NULL, 0x19, "Lorg.joda.time.Weeks;", &OrgJodaTimeWeeks_THREE_, NULL,  },
-    { "MAX_VALUE_", NULL, 0x19, "Lorg.joda.time.Weeks;", &OrgJodaTimeWeeks_MAX_VALUE_, NULL,  },
-    { "MIN_VALUE_", NULL, 0x19, "Lorg.joda.time.Weeks;", &OrgJodaTimeWeeks_MIN_VALUE_, NULL,  },
-    { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeWeeks_PARSER_, NULL,  },
+    { "ZERO_", NULL, 0x19, "Lorg.joda.time.Weeks;", &OrgJodaTimeWeeks_ZERO_, NULL, .constantValue.asLong = 0 },
+    { "ONE_", NULL, 0x19, "Lorg.joda.time.Weeks;", &OrgJodaTimeWeeks_ONE_, NULL, .constantValue.asLong = 0 },
+    { "TWO_", NULL, 0x19, "Lorg.joda.time.Weeks;", &OrgJodaTimeWeeks_TWO_, NULL, .constantValue.asLong = 0 },
+    { "THREE_", NULL, 0x19, "Lorg.joda.time.Weeks;", &OrgJodaTimeWeeks_THREE_, NULL, .constantValue.asLong = 0 },
+    { "MAX_VALUE_", NULL, 0x19, "Lorg.joda.time.Weeks;", &OrgJodaTimeWeeks_MAX_VALUE_, NULL, .constantValue.asLong = 0 },
+    { "MIN_VALUE_", NULL, 0x19, "Lorg.joda.time.Weeks;", &OrgJodaTimeWeeks_MIN_VALUE_, NULL, .constantValue.asLong = 0 },
+    { "PARSER_", NULL, 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeWeeks_PARSER_, NULL, .constantValue.asLong = 0 },
     { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeWeeks_serialVersionUID },
   };
   static const J2ObjcClassInfo _OrgJodaTimeWeeks = { 2, "Weeks", "org.joda.time", NULL, 0x11, 26, methods, 8, fields, 0, NULL, 0, NULL, NULL, NULL };

@@ -16,7 +16,7 @@
 @protocol OrgJodaTimeFormatDateTimePrinter;
 @protocol OrgJodaTimeReadablePartial;
 
-/**
+/*!
  @brief Adapter between old and new printer interface.
  @author Stephen Colebourne
  @since 2.4

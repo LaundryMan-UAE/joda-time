@@ -21,10 +21,12 @@
 
 @implementation OrgJodaTimeBaseAbstractPeriod
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   OrgJodaTimeBaseAbstractPeriod_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)size {
   return [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) size];
@@ -76,21 +78,21 @@
 
 - (jboolean)isEqual:(id)period {
   if (self == period) {
-    return YES;
+    return true;
   }
-  if ([OrgJodaTimeReadablePeriod_class_() isInstance:period] == NO) {
-    return NO;
+  if ([OrgJodaTimeReadablePeriod_class_() isInstance:period] == false) {
+    return false;
   }
-  id<OrgJodaTimeReadablePeriod> other = (id<OrgJodaTimeReadablePeriod>) check_protocol_cast(period, @protocol(OrgJodaTimeReadablePeriod));
+  id<OrgJodaTimeReadablePeriod> other = (id<OrgJodaTimeReadablePeriod>) check_protocol_cast(period, OrgJodaTimeReadablePeriod_class_());
   if ([self size] != [((id<OrgJodaTimeReadablePeriod>) nil_chk(other)) size]) {
-    return NO;
+    return false;
   }
   for (jint i = 0, isize = [self size]; i < isize; i++) {
     if ([self getValueWithInt:i] != [other getValueWithInt:i] || [self getFieldTypeWithInt:i] != [other getFieldTypeWithInt:i]) {
-      return NO;
+      return false;
     }
   }
-  return YES;
+  return true;
 }
 
 - (NSUInteger)hash {

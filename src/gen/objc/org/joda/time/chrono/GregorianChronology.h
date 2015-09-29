@@ -13,9 +13,16 @@
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeZone;
 
-/**
- @brief Implements a pure proleptic Gregorian calendar system, which defines every fourth year as leap, unless the year is divisible by 100 and not by 400.
- This improves upon the Julian calendar leap year rule. <p> Although the Gregorian calendar did not exist before 1582 CE, this chronology assumes it did, thus it is proleptic. This implementation also fixes the start of the year at January 1, and defines the year zero. <p> GregorianChronology is thread-safe and immutable.
+/*!
+ @brief Implements a pure proleptic Gregorian calendar system, which defines every
+ fourth year as leap, unless the year is divisible by 100 and not by 400.
+ This improves upon the Julian calendar leap year rule.
+ <p>
+ Although the Gregorian calendar did not exist before 1582 CE, this
+ chronology assumes it did, thus it is proleptic. This implementation also
+ fixes the start of the year at January 1, and defines the year zero.
+ <p>
+ GregorianChronology is thread-safe and immutable.
  @author Guy Allard
  @author Stephen Colebourne
  @author Brian S O'Neill
@@ -25,44 +32,44 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Gets an instance of the GregorianChronology in the default time zone.
  @return a chronology in the default time zone
  */
 + (OrgJodaTimeChronoGregorianChronology *)getInstance;
 
-/**
+/*!
  @brief Gets an instance of the GregorianChronology in the given time zone.
- @param zone the time zone to get the chronology in, null is default
+ @param zone  the time zone to get the chronology in, null is default
  @return a chronology in the specified time zone
  */
 + (OrgJodaTimeChronoGregorianChronology *)getInstanceWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
 
-/**
+/*!
  @brief Gets an instance of the GregorianChronology in the given time zone.
- @param zone the time zone to get the chronology in, null is default
- @param minDaysInFirstWeek minimum number of days in first week of the year; default is 4
+ @param zone  the time zone to get the chronology in, null is default
+ @param minDaysInFirstWeek  minimum number of days in first week of the year; default is 4
  @return a chronology in the specified time zone
  */
 + (OrgJodaTimeChronoGregorianChronology *)getInstanceWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone
                                                                          withInt:(jint)minDaysInFirstWeek;
 
-/**
+/*!
  @brief Gets an instance of the GregorianChronology.
  The time zone of the returned instance is UTC.
  @return a singleton UTC instance of the chronology
  */
 + (OrgJodaTimeChronoGregorianChronology *)getInstanceUTC;
 
-/**
+/*!
  @brief Gets the Chronology in the UTC time zone.
  @return the chronology in UTC
  */
 - (OrgJodaTimeChronology *)withUTC;
 
-/**
+/*!
  @brief Gets the Chronology in a specific time zone.
- @param zone the zone to get the chronology in, null is default
+ @param zone  the zone to get the chronology in, null is default
  @return the chronology
  */
 - (OrgJodaTimeChronology *)withZoneWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone;
