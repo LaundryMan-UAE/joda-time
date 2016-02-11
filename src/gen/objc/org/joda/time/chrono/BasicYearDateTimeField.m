@@ -179,4 +179,10 @@ OrgJodaTimeChronoBasicYearDateTimeField *new_OrgJodaTimeChronoBasicYearDateTimeF
   return self;
 }
 
+OrgJodaTimeChronoBasicYearDateTimeField *create_OrgJodaTimeChronoBasicYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(OrgJodaTimeChronoBasicChronology *chronology) {
+  OrgJodaTimeChronoBasicYearDateTimeField *self = [[OrgJodaTimeChronoBasicYearDateTimeField alloc] autorelease];
+  OrgJodaTimeChronoBasicYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self, chronology);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicYearDateTimeField)

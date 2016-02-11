@@ -117,6 +117,8 @@ FOUNDATION_EXPORT void OrgJodaTimeConvertNullConverter_init(OrgJodaTimeConvertNu
 
 FOUNDATION_EXPORT OrgJodaTimeConvertNullConverter *new_OrgJodaTimeConvertNullConverter_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeConvertNullConverter *create_OrgJodaTimeConvertNullConverter_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertNullConverter)
 
 #endif

@@ -68,6 +68,8 @@ __attribute__((unused)) static void OrgJodaTimeWeeks_initWithInt_(OrgJodaTimeWee
 
 __attribute__((unused)) static OrgJodaTimeWeeks *new_OrgJodaTimeWeeks_initWithInt_(jint weeks) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeWeeks *create_OrgJodaTimeWeeks_initWithInt_(jint weeks);
+
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeWeeks)
 
 OrgJodaTimeWeeks *OrgJodaTimeWeeks_ZERO;
@@ -338,6 +340,12 @@ void OrgJodaTimeWeeks_initWithInt_(OrgJodaTimeWeeks *self, jint weeks) {
 
 OrgJodaTimeWeeks *new_OrgJodaTimeWeeks_initWithInt_(jint weeks) {
   OrgJodaTimeWeeks *self = [OrgJodaTimeWeeks alloc];
+  OrgJodaTimeWeeks_initWithInt_(self, weeks);
+  return self;
+}
+
+OrgJodaTimeWeeks *create_OrgJodaTimeWeeks_initWithInt_(jint weeks) {
+  OrgJodaTimeWeeks *self = [[OrgJodaTimeWeeks alloc] autorelease];
   OrgJodaTimeWeeks_initWithInt_(self, weeks);
   return self;
 }

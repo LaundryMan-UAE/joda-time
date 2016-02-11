@@ -487,12 +487,24 @@ OrgJodaTimeYearMonth *new_OrgJodaTimeYearMonth_init() {
   return self;
 }
 
+OrgJodaTimeYearMonth *create_OrgJodaTimeYearMonth_init() {
+  OrgJodaTimeYearMonth *self = [[OrgJodaTimeYearMonth alloc] autorelease];
+  OrgJodaTimeYearMonth_init(self);
+  return self;
+}
+
 void OrgJodaTimeYearMonth_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeYearMonth *self, OrgJodaTimeDateTimeZone *zone) {
   OrgJodaTimeBaseBasePartial_initWithOrgJodaTimeChronology_(self, OrgJodaTimeChronoISOChronology_getInstanceWithOrgJodaTimeDateTimeZone_(zone));
 }
 
 OrgJodaTimeYearMonth *new_OrgJodaTimeYearMonth_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {
   OrgJodaTimeYearMonth *self = [OrgJodaTimeYearMonth alloc];
+  OrgJodaTimeYearMonth_initWithOrgJodaTimeDateTimeZone_(self, zone);
+  return self;
+}
+
+OrgJodaTimeYearMonth *create_OrgJodaTimeYearMonth_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {
+  OrgJodaTimeYearMonth *self = [[OrgJodaTimeYearMonth alloc] autorelease];
   OrgJodaTimeYearMonth_initWithOrgJodaTimeDateTimeZone_(self, zone);
   return self;
 }
@@ -507,12 +519,24 @@ OrgJodaTimeYearMonth *new_OrgJodaTimeYearMonth_initWithOrgJodaTimeChronology_(Or
   return self;
 }
 
+OrgJodaTimeYearMonth *create_OrgJodaTimeYearMonth_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeYearMonth *self = [[OrgJodaTimeYearMonth alloc] autorelease];
+  OrgJodaTimeYearMonth_initWithOrgJodaTimeChronology_(self, chronology);
+  return self;
+}
+
 void OrgJodaTimeYearMonth_initWithLong_(OrgJodaTimeYearMonth *self, jlong instant) {
   OrgJodaTimeBaseBasePartial_initWithLong_(self, instant);
 }
 
 OrgJodaTimeYearMonth *new_OrgJodaTimeYearMonth_initWithLong_(jlong instant) {
   OrgJodaTimeYearMonth *self = [OrgJodaTimeYearMonth alloc];
+  OrgJodaTimeYearMonth_initWithLong_(self, instant);
+  return self;
+}
+
+OrgJodaTimeYearMonth *create_OrgJodaTimeYearMonth_initWithLong_(jlong instant) {
+  OrgJodaTimeYearMonth *self = [[OrgJodaTimeYearMonth alloc] autorelease];
   OrgJodaTimeYearMonth_initWithLong_(self, instant);
   return self;
 }
@@ -527,12 +551,24 @@ OrgJodaTimeYearMonth *new_OrgJodaTimeYearMonth_initWithLong_withOrgJodaTimeChron
   return self;
 }
 
+OrgJodaTimeYearMonth *create_OrgJodaTimeYearMonth_initWithLong_withOrgJodaTimeChronology_(jlong instant, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeYearMonth *self = [[OrgJodaTimeYearMonth alloc] autorelease];
+  OrgJodaTimeYearMonth_initWithLong_withOrgJodaTimeChronology_(self, instant, chronology);
+  return self;
+}
+
 void OrgJodaTimeYearMonth_initWithId_(OrgJodaTimeYearMonth *self, id instant) {
   OrgJodaTimeBaseBasePartial_initWithId_withOrgJodaTimeChronology_withOrgJodaTimeFormatDateTimeFormatter_(self, instant, nil, OrgJodaTimeFormatISODateTimeFormat_localDateParser());
 }
 
 OrgJodaTimeYearMonth *new_OrgJodaTimeYearMonth_initWithId_(id instant) {
   OrgJodaTimeYearMonth *self = [OrgJodaTimeYearMonth alloc];
+  OrgJodaTimeYearMonth_initWithId_(self, instant);
+  return self;
+}
+
+OrgJodaTimeYearMonth *create_OrgJodaTimeYearMonth_initWithId_(id instant) {
+  OrgJodaTimeYearMonth *self = [[OrgJodaTimeYearMonth alloc] autorelease];
   OrgJodaTimeYearMonth_initWithId_(self, instant);
   return self;
 }
@@ -547,12 +583,24 @@ OrgJodaTimeYearMonth *new_OrgJodaTimeYearMonth_initWithId_withOrgJodaTimeChronol
   return self;
 }
 
+OrgJodaTimeYearMonth *create_OrgJodaTimeYearMonth_initWithId_withOrgJodaTimeChronology_(id instant, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeYearMonth *self = [[OrgJodaTimeYearMonth alloc] autorelease];
+  OrgJodaTimeYearMonth_initWithId_withOrgJodaTimeChronology_(self, instant, chronology);
+  return self;
+}
+
 void OrgJodaTimeYearMonth_initWithInt_withInt_(OrgJodaTimeYearMonth *self, jint year, jint monthOfYear) {
   OrgJodaTimeYearMonth_initWithInt_withInt_withOrgJodaTimeChronology_(self, year, monthOfYear, nil);
 }
 
 OrgJodaTimeYearMonth *new_OrgJodaTimeYearMonth_initWithInt_withInt_(jint year, jint monthOfYear) {
   OrgJodaTimeYearMonth *self = [OrgJodaTimeYearMonth alloc];
+  OrgJodaTimeYearMonth_initWithInt_withInt_(self, year, monthOfYear);
+  return self;
+}
+
+OrgJodaTimeYearMonth *create_OrgJodaTimeYearMonth_initWithInt_withInt_(jint year, jint monthOfYear) {
+  OrgJodaTimeYearMonth *self = [[OrgJodaTimeYearMonth alloc] autorelease];
   OrgJodaTimeYearMonth_initWithInt_withInt_(self, year, monthOfYear);
   return self;
 }
@@ -567,6 +615,12 @@ OrgJodaTimeYearMonth *new_OrgJodaTimeYearMonth_initWithInt_withInt_withOrgJodaTi
   return self;
 }
 
+OrgJodaTimeYearMonth *create_OrgJodaTimeYearMonth_initWithInt_withInt_withOrgJodaTimeChronology_(jint year, jint monthOfYear, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeYearMonth *self = [[OrgJodaTimeYearMonth alloc] autorelease];
+  OrgJodaTimeYearMonth_initWithInt_withInt_withOrgJodaTimeChronology_(self, year, monthOfYear, chronology);
+  return self;
+}
+
 void OrgJodaTimeYearMonth_initWithOrgJodaTimeYearMonth_withIntArray_(OrgJodaTimeYearMonth *self, OrgJodaTimeYearMonth *partial, IOSIntArray *values) {
   OrgJodaTimeBaseBasePartial_initWithOrgJodaTimeBaseBasePartial_withIntArray_(self, partial, values);
 }
@@ -577,12 +631,24 @@ OrgJodaTimeYearMonth *new_OrgJodaTimeYearMonth_initWithOrgJodaTimeYearMonth_with
   return self;
 }
 
+OrgJodaTimeYearMonth *create_OrgJodaTimeYearMonth_initWithOrgJodaTimeYearMonth_withIntArray_(OrgJodaTimeYearMonth *partial, IOSIntArray *values) {
+  OrgJodaTimeYearMonth *self = [[OrgJodaTimeYearMonth alloc] autorelease];
+  OrgJodaTimeYearMonth_initWithOrgJodaTimeYearMonth_withIntArray_(self, partial, values);
+  return self;
+}
+
 void OrgJodaTimeYearMonth_initWithOrgJodaTimeYearMonth_withOrgJodaTimeChronology_(OrgJodaTimeYearMonth *self, OrgJodaTimeYearMonth *partial, OrgJodaTimeChronology *chrono) {
   OrgJodaTimeBaseBasePartial_initWithOrgJodaTimeBaseBasePartial_withOrgJodaTimeChronology_(self, partial, chrono);
 }
 
 OrgJodaTimeYearMonth *new_OrgJodaTimeYearMonth_initWithOrgJodaTimeYearMonth_withOrgJodaTimeChronology_(OrgJodaTimeYearMonth *partial, OrgJodaTimeChronology *chrono) {
   OrgJodaTimeYearMonth *self = [OrgJodaTimeYearMonth alloc];
+  OrgJodaTimeYearMonth_initWithOrgJodaTimeYearMonth_withOrgJodaTimeChronology_(self, partial, chrono);
+  return self;
+}
+
+OrgJodaTimeYearMonth *create_OrgJodaTimeYearMonth_initWithOrgJodaTimeYearMonth_withOrgJodaTimeChronology_(OrgJodaTimeYearMonth *partial, OrgJodaTimeChronology *chrono) {
+  OrgJodaTimeYearMonth *self = [[OrgJodaTimeYearMonth alloc] autorelease];
   OrgJodaTimeYearMonth_initWithOrgJodaTimeYearMonth_withOrgJodaTimeChronology_(self, partial, chrono);
   return self;
 }
@@ -679,6 +745,12 @@ void OrgJodaTimeYearMonth_Property_initWithOrgJodaTimeYearMonth_withInt_(OrgJoda
 
 OrgJodaTimeYearMonth_Property *new_OrgJodaTimeYearMonth_Property_initWithOrgJodaTimeYearMonth_withInt_(OrgJodaTimeYearMonth *partial, jint fieldIndex) {
   OrgJodaTimeYearMonth_Property *self = [OrgJodaTimeYearMonth_Property alloc];
+  OrgJodaTimeYearMonth_Property_initWithOrgJodaTimeYearMonth_withInt_(self, partial, fieldIndex);
+  return self;
+}
+
+OrgJodaTimeYearMonth_Property *create_OrgJodaTimeYearMonth_Property_initWithOrgJodaTimeYearMonth_withInt_(OrgJodaTimeYearMonth *partial, jint fieldIndex) {
+  OrgJodaTimeYearMonth_Property *self = [[OrgJodaTimeYearMonth_Property alloc] autorelease];
   OrgJodaTimeYearMonth_Property_initWithOrgJodaTimeYearMonth_withInt_(self, partial, fieldIndex);
   return self;
 }

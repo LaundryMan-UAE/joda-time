@@ -36,6 +36,8 @@ __attribute__((unused)) static void OrgJodaTimeChronoISOYearOfEraDateTimeField_i
 
 __attribute__((unused)) static OrgJodaTimeChronoISOYearOfEraDateTimeField *new_OrgJodaTimeChronoISOYearOfEraDateTimeField_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeChronoISOYearOfEraDateTimeField *create_OrgJodaTimeChronoISOYearOfEraDateTimeField_init();
+
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoISOYearOfEraDateTimeField)
 
 OrgJodaTimeDateTimeField *OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE;
@@ -165,6 +167,12 @@ void OrgJodaTimeChronoISOYearOfEraDateTimeField_init(OrgJodaTimeChronoISOYearOfE
 
 OrgJodaTimeChronoISOYearOfEraDateTimeField *new_OrgJodaTimeChronoISOYearOfEraDateTimeField_init() {
   OrgJodaTimeChronoISOYearOfEraDateTimeField *self = [OrgJodaTimeChronoISOYearOfEraDateTimeField alloc];
+  OrgJodaTimeChronoISOYearOfEraDateTimeField_init(self);
+  return self;
+}
+
+OrgJodaTimeChronoISOYearOfEraDateTimeField *create_OrgJodaTimeChronoISOYearOfEraDateTimeField_init() {
+  OrgJodaTimeChronoISOYearOfEraDateTimeField *self = [[OrgJodaTimeChronoISOYearOfEraDateTimeField alloc] autorelease];
   OrgJodaTimeChronoISOYearOfEraDateTimeField_init(self);
   return self;
 }

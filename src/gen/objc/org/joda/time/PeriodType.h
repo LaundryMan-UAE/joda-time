@@ -481,6 +481,8 @@ FOUNDATION_EXPORT void OrgJodaTimePeriodType_initWithNSString_withOrgJodaTimeDur
 
 FOUNDATION_EXPORT OrgJodaTimePeriodType *new_OrgJodaTimePeriodType_initWithNSString_withOrgJodaTimeDurationFieldTypeArray_withIntArray_(NSString *name, IOSObjectArray *types, IOSIntArray *indices) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimePeriodType *create_OrgJodaTimePeriodType_initWithNSString_withOrgJodaTimeDurationFieldTypeArray_withIntArray_(NSString *name, IOSObjectArray *types, IOSIntArray *indices);
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimePeriodType)
 
 #endif

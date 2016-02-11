@@ -125,4 +125,10 @@ OrgJodaTimeFieldPreciseDurationField *new_OrgJodaTimeFieldPreciseDurationField_i
   return self;
 }
 
+OrgJodaTimeFieldPreciseDurationField *create_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType *type, jlong unitMillis) {
+  OrgJodaTimeFieldPreciseDurationField *self = [[OrgJodaTimeFieldPreciseDurationField alloc] autorelease];
+  OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(self, type, unitMillis);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldPreciseDurationField)

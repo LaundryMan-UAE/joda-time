@@ -427,12 +427,24 @@ OrgJodaTimeFormatDateTimeParserBucket *new_OrgJodaTimeFormatDateTimeParserBucket
   return self;
 }
 
+OrgJodaTimeFormatDateTimeParserBucket *create_OrgJodaTimeFormatDateTimeParserBucket_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_(jlong instantLocal, OrgJodaTimeChronology *chrono, JavaUtilLocale *locale) {
+  OrgJodaTimeFormatDateTimeParserBucket *self = [[OrgJodaTimeFormatDateTimeParserBucket alloc] autorelease];
+  OrgJodaTimeFormatDateTimeParserBucket_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_(self, instantLocal, chrono, locale);
+  return self;
+}
+
 void OrgJodaTimeFormatDateTimeParserBucket_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_withJavaLangInteger_(OrgJodaTimeFormatDateTimeParserBucket *self, jlong instantLocal, OrgJodaTimeChronology *chrono, JavaUtilLocale *locale, JavaLangInteger *pivotYear) {
   OrgJodaTimeFormatDateTimeParserBucket_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_withJavaLangInteger_withInt_(self, instantLocal, chrono, locale, pivotYear, 2000);
 }
 
 OrgJodaTimeFormatDateTimeParserBucket *new_OrgJodaTimeFormatDateTimeParserBucket_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_withJavaLangInteger_(jlong instantLocal, OrgJodaTimeChronology *chrono, JavaUtilLocale *locale, JavaLangInteger *pivotYear) {
   OrgJodaTimeFormatDateTimeParserBucket *self = [OrgJodaTimeFormatDateTimeParserBucket alloc];
+  OrgJodaTimeFormatDateTimeParserBucket_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_withJavaLangInteger_(self, instantLocal, chrono, locale, pivotYear);
+  return self;
+}
+
+OrgJodaTimeFormatDateTimeParserBucket *create_OrgJodaTimeFormatDateTimeParserBucket_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_withJavaLangInteger_(jlong instantLocal, OrgJodaTimeChronology *chrono, JavaUtilLocale *locale, JavaLangInteger *pivotYear) {
+  OrgJodaTimeFormatDateTimeParserBucket *self = [[OrgJodaTimeFormatDateTimeParserBucket alloc] autorelease];
   OrgJodaTimeFormatDateTimeParserBucket_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_withJavaLangInteger_(self, instantLocal, chrono, locale, pivotYear);
   return self;
 }
@@ -453,6 +465,12 @@ void OrgJodaTimeFormatDateTimeParserBucket_initWithLong_withOrgJodaTimeChronolog
 
 OrgJodaTimeFormatDateTimeParserBucket *new_OrgJodaTimeFormatDateTimeParserBucket_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_withJavaLangInteger_withInt_(jlong instantLocal, OrgJodaTimeChronology *chrono, JavaUtilLocale *locale, JavaLangInteger *pivotYear, jint defaultYear) {
   OrgJodaTimeFormatDateTimeParserBucket *self = [OrgJodaTimeFormatDateTimeParserBucket alloc];
+  OrgJodaTimeFormatDateTimeParserBucket_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_withJavaLangInteger_withInt_(self, instantLocal, chrono, locale, pivotYear, defaultYear);
+  return self;
+}
+
+OrgJodaTimeFormatDateTimeParserBucket *create_OrgJodaTimeFormatDateTimeParserBucket_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_withJavaLangInteger_withInt_(jlong instantLocal, OrgJodaTimeChronology *chrono, JavaUtilLocale *locale, JavaLangInteger *pivotYear, jint defaultYear) {
+  OrgJodaTimeFormatDateTimeParserBucket *self = [[OrgJodaTimeFormatDateTimeParserBucket alloc] autorelease];
   OrgJodaTimeFormatDateTimeParserBucket_initWithLong_withOrgJodaTimeChronology_withJavaUtilLocale_withJavaLangInteger_withInt_(self, instantLocal, chrono, locale, pivotYear, defaultYear);
   return self;
 }
@@ -569,6 +587,12 @@ OrgJodaTimeFormatDateTimeParserBucket_SavedState *new_OrgJodaTimeFormatDateTimeP
   return self;
 }
 
+OrgJodaTimeFormatDateTimeParserBucket_SavedState *create_OrgJodaTimeFormatDateTimeParserBucket_SavedState_initWithOrgJodaTimeFormatDateTimeParserBucket_(OrgJodaTimeFormatDateTimeParserBucket *outer$) {
+  OrgJodaTimeFormatDateTimeParserBucket_SavedState *self = [[OrgJodaTimeFormatDateTimeParserBucket_SavedState alloc] autorelease];
+  OrgJodaTimeFormatDateTimeParserBucket_SavedState_initWithOrgJodaTimeFormatDateTimeParserBucket_(self, outer$);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeParserBucket_SavedState)
 
 @implementation OrgJodaTimeFormatDateTimeParserBucket_SavedField
@@ -654,6 +678,12 @@ void OrgJodaTimeFormatDateTimeParserBucket_SavedField_init(OrgJodaTimeFormatDate
 
 OrgJodaTimeFormatDateTimeParserBucket_SavedField *new_OrgJodaTimeFormatDateTimeParserBucket_SavedField_init() {
   OrgJodaTimeFormatDateTimeParserBucket_SavedField *self = [OrgJodaTimeFormatDateTimeParserBucket_SavedField alloc];
+  OrgJodaTimeFormatDateTimeParserBucket_SavedField_init(self);
+  return self;
+}
+
+OrgJodaTimeFormatDateTimeParserBucket_SavedField *create_OrgJodaTimeFormatDateTimeParserBucket_SavedField_init() {
+  OrgJodaTimeFormatDateTimeParserBucket_SavedField *self = [[OrgJodaTimeFormatDateTimeParserBucket_SavedField alloc] autorelease];
   OrgJodaTimeFormatDateTimeParserBucket_SavedField_init(self);
   return self;
 }

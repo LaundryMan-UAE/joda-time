@@ -205,6 +205,12 @@ OrgJodaTimeInstant *new_OrgJodaTimeInstant_init() {
   return self;
 }
 
+OrgJodaTimeInstant *create_OrgJodaTimeInstant_init() {
+  OrgJodaTimeInstant *self = [[OrgJodaTimeInstant alloc] autorelease];
+  OrgJodaTimeInstant_init(self);
+  return self;
+}
+
 void OrgJodaTimeInstant_initWithLong_(OrgJodaTimeInstant *self, jlong instant) {
   OrgJodaTimeBaseAbstractInstant_init(self);
   self->iMillis_ = instant;
@@ -212,6 +218,12 @@ void OrgJodaTimeInstant_initWithLong_(OrgJodaTimeInstant *self, jlong instant) {
 
 OrgJodaTimeInstant *new_OrgJodaTimeInstant_initWithLong_(jlong instant) {
   OrgJodaTimeInstant *self = [OrgJodaTimeInstant alloc];
+  OrgJodaTimeInstant_initWithLong_(self, instant);
+  return self;
+}
+
+OrgJodaTimeInstant *create_OrgJodaTimeInstant_initWithLong_(jlong instant) {
+  OrgJodaTimeInstant *self = [[OrgJodaTimeInstant alloc] autorelease];
   OrgJodaTimeInstant_initWithLong_(self, instant);
   return self;
 }
@@ -224,6 +236,12 @@ void OrgJodaTimeInstant_initWithId_(OrgJodaTimeInstant *self, id instant) {
 
 OrgJodaTimeInstant *new_OrgJodaTimeInstant_initWithId_(id instant) {
   OrgJodaTimeInstant *self = [OrgJodaTimeInstant alloc];
+  OrgJodaTimeInstant_initWithId_(self, instant);
+  return self;
+}
+
+OrgJodaTimeInstant *create_OrgJodaTimeInstant_initWithId_(id instant) {
+  OrgJodaTimeInstant *self = [[OrgJodaTimeInstant alloc] autorelease];
   OrgJodaTimeInstant_initWithId_(self, instant);
   return self;
 }

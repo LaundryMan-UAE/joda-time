@@ -264,6 +264,8 @@ __attribute__((unused)) static void OrgJodaTimeFormatPeriodFormatterBuilder_RegE
 
 __attribute__((unused)) static OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1 *new_OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1 *create_OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1)
 
 @interface OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix () {
@@ -776,6 +778,12 @@ OrgJodaTimeFormatPeriodFormatterBuilder *new_OrgJodaTimeFormatPeriodFormatterBui
   return self;
 }
 
+OrgJodaTimeFormatPeriodFormatterBuilder *create_OrgJodaTimeFormatPeriodFormatterBuilder_init() {
+  OrgJodaTimeFormatPeriodFormatterBuilder *self = [[OrgJodaTimeFormatPeriodFormatterBuilder alloc] autorelease];
+  OrgJodaTimeFormatPeriodFormatterBuilder_init(self);
+  return self;
+}
+
 OrgJodaTimeFormatPeriodFormatterBuilder *OrgJodaTimeFormatPeriodFormatterBuilder_appendPrefixWithOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(OrgJodaTimeFormatPeriodFormatterBuilder *self, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> prefix) {
   if (prefix == nil) {
     @throw [new_JavaLangIllegalArgumentException_init() autorelease];
@@ -1136,6 +1144,12 @@ OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix *new_OrgJodaTimeFormatPeriod
   return self;
 }
 
+OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix *create_OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix_initWithNSString_(NSString *text) {
+  OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix *self = [[OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix alloc] autorelease];
+  OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix_initWithNSString_(self, text);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix)
 
 @implementation OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix
@@ -1247,6 +1261,12 @@ void OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_initWithNSString_withNS
 
 OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix *new_OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_initWithNSString_withNSString_(NSString *singularText, NSString *pluralText) {
   OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix *self = [OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix alloc];
+  OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_initWithNSString_withNSString_(self, singularText, pluralText);
+  return self;
+}
+
+OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix *create_OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_initWithNSString_withNSString_(NSString *singularText, NSString *pluralText) {
+  OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix *self = [[OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix alloc] autorelease];
   OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_initWithNSString_withNSString_(self, singularText, pluralText);
   return self;
 }
@@ -1383,6 +1403,12 @@ OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix *new_OrgJodaTimeFormatPeriodF
   return self;
 }
 
+OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix *create_OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_initWithNSStringArray_withNSStringArray_(IOSObjectArray *regExes, IOSObjectArray *texts) {
+  OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix *self = [[OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix alloc] autorelease];
+  OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_initWithNSStringArray_withNSStringArray_(self, regExes, texts);
+  return self;
+}
+
 jint OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_selectSuffixIndexWithInt_(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix *self, jint value) {
   NSString *valueString = NSString_valueOfInt_(value);
   for (jint i = 0; i < ((IOSObjectArray *) nil_chk(self->iPatterns_))->size_; i++) {
@@ -1426,6 +1452,12 @@ void OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1_init(OrgJodaTimeForma
 
 OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1 *new_OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1_init() {
   OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1 *self = [OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1 alloc];
+  OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1_init(self);
+  return self;
+}
+
+OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1 *create_OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1_init() {
+  OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1 *self = [[OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1 alloc] autorelease];
   OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_$1_init(self);
   return self;
 }
@@ -1544,6 +1576,12 @@ void OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_initWithOrgJodaTimeF
 
 OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix *new_OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_initWithOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> left, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> right) {
   OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix *self = [OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix alloc];
+  OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_initWithOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(self, left, right);
+  return self;
+}
+
+OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix *create_OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_initWithOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> left, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> right) {
+  OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix *self = [[OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix alloc] autorelease];
   OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_initWithOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(self, left, right);
   return self;
 }
@@ -2048,6 +2086,12 @@ OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *new_OrgJodaTimeFormatPer
   return self;
 }
 
+OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *create_OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_initWithInt_withInt_withInt_withBoolean_withInt_withOrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatterArray_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(jint minPrintedDigits, jint printZeroSetting, jint maxParsedDigits, jboolean rejectSignedValues, jint fieldType, IOSObjectArray *fieldFormatters, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> prefix, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> suffix) {
+  OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *self = [[OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter alloc] autorelease];
+  OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_initWithInt_withInt_withInt_withBoolean_withInt_withOrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatterArray_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(self, minPrintedDigits, printZeroSetting, maxParsedDigits, rejectSignedValues, fieldType, fieldFormatters, prefix, suffix);
+  return self;
+}
+
 void OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_initWithOrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *self, OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *field, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> suffix) {
   NSObject_init(self);
   self->iMinPrintedDigits_ = ((OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *) nil_chk(field))->iMinPrintedDigits_;
@@ -2065,6 +2109,12 @@ void OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_initWithOrgJodaTimeF
 
 OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *new_OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_initWithOrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *field, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> suffix) {
   OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *self = [OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter alloc];
+  OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_initWithOrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(self, field, suffix);
+  return self;
+}
+
+OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *create_OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_initWithOrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *field, id<OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix> suffix) {
+  OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter *self = [[OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter alloc] autorelease];
   OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_initWithOrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_(self, field, suffix);
   return self;
 }
@@ -2180,6 +2230,12 @@ void OrgJodaTimeFormatPeriodFormatterBuilder_Literal_initWithNSString_(OrgJodaTi
 
 OrgJodaTimeFormatPeriodFormatterBuilder_Literal *new_OrgJodaTimeFormatPeriodFormatterBuilder_Literal_initWithNSString_(NSString *text) {
   OrgJodaTimeFormatPeriodFormatterBuilder_Literal *self = [OrgJodaTimeFormatPeriodFormatterBuilder_Literal alloc];
+  OrgJodaTimeFormatPeriodFormatterBuilder_Literal_initWithNSString_(self, text);
+  return self;
+}
+
+OrgJodaTimeFormatPeriodFormatterBuilder_Literal *create_OrgJodaTimeFormatPeriodFormatterBuilder_Literal_initWithNSString_(NSString *text) {
+  OrgJodaTimeFormatPeriodFormatterBuilder_Literal *self = [[OrgJodaTimeFormatPeriodFormatterBuilder_Literal alloc] autorelease];
   OrgJodaTimeFormatPeriodFormatterBuilder_Literal_initWithNSString_(self, text);
   return self;
 }
@@ -2404,6 +2460,12 @@ OrgJodaTimeFormatPeriodFormatterBuilder_Separator *new_OrgJodaTimeFormatPeriodFo
   return self;
 }
 
+OrgJodaTimeFormatPeriodFormatterBuilder_Separator *create_OrgJodaTimeFormatPeriodFormatterBuilder_Separator_initWithNSString_withNSString_withNSStringArray_withOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withBoolean_withBoolean_(NSString *text, NSString *finalText, IOSObjectArray *variants, id<OrgJodaTimeFormatPeriodPrinter> beforePrinter, id<OrgJodaTimeFormatPeriodParser> beforeParser, jboolean useBefore, jboolean useAfter) {
+  OrgJodaTimeFormatPeriodFormatterBuilder_Separator *self = [[OrgJodaTimeFormatPeriodFormatterBuilder_Separator alloc] autorelease];
+  OrgJodaTimeFormatPeriodFormatterBuilder_Separator_initWithNSString_withNSString_withNSStringArray_withOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withBoolean_withBoolean_(self, text, finalText, variants, beforePrinter, beforeParser, useBefore, useAfter);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_Separator)
 
 @implementation OrgJodaTimeFormatPeriodFormatterBuilder_Composite
@@ -2528,6 +2590,12 @@ void OrgJodaTimeFormatPeriodFormatterBuilder_Composite_initWithJavaUtilList_(Org
 
 OrgJodaTimeFormatPeriodFormatterBuilder_Composite *new_OrgJodaTimeFormatPeriodFormatterBuilder_Composite_initWithJavaUtilList_(id<JavaUtilList> elementPairs) {
   OrgJodaTimeFormatPeriodFormatterBuilder_Composite *self = [OrgJodaTimeFormatPeriodFormatterBuilder_Composite alloc];
+  OrgJodaTimeFormatPeriodFormatterBuilder_Composite_initWithJavaUtilList_(self, elementPairs);
+  return self;
+}
+
+OrgJodaTimeFormatPeriodFormatterBuilder_Composite *create_OrgJodaTimeFormatPeriodFormatterBuilder_Composite_initWithJavaUtilList_(id<JavaUtilList> elementPairs) {
+  OrgJodaTimeFormatPeriodFormatterBuilder_Composite *self = [[OrgJodaTimeFormatPeriodFormatterBuilder_Composite alloc] autorelease];
   OrgJodaTimeFormatPeriodFormatterBuilder_Composite_initWithJavaUtilList_(self, elementPairs);
   return self;
 }

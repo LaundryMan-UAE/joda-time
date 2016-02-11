@@ -197,4 +197,10 @@ OrgJodaTimeFieldZeroIsMaxDateTimeField *new_OrgJodaTimeFieldZeroIsMaxDateTimeFie
   return self;
 }
 
+OrgJodaTimeFieldZeroIsMaxDateTimeField *create_OrgJodaTimeFieldZeroIsMaxDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type) {
+  OrgJodaTimeFieldZeroIsMaxDateTimeField *self = [[OrgJodaTimeFieldZeroIsMaxDateTimeField alloc] autorelease];
+  OrgJodaTimeFieldZeroIsMaxDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, field, type);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldZeroIsMaxDateTimeField)

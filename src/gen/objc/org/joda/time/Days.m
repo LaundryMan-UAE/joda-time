@@ -68,6 +68,8 @@ __attribute__((unused)) static void OrgJodaTimeDays_initWithInt_(OrgJodaTimeDays
 
 __attribute__((unused)) static OrgJodaTimeDays *new_OrgJodaTimeDays_initWithInt_(jint days) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeDays *create_OrgJodaTimeDays_initWithInt_(jint days);
+
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDays)
 
 OrgJodaTimeDays *OrgJodaTimeDays_ZERO;
@@ -358,6 +360,12 @@ void OrgJodaTimeDays_initWithInt_(OrgJodaTimeDays *self, jint days) {
 
 OrgJodaTimeDays *new_OrgJodaTimeDays_initWithInt_(jint days) {
   OrgJodaTimeDays *self = [OrgJodaTimeDays alloc];
+  OrgJodaTimeDays_initWithInt_(self, days);
+  return self;
+}
+
+OrgJodaTimeDays *create_OrgJodaTimeDays_initWithInt_(jint days) {
+  OrgJodaTimeDays *self = [[OrgJodaTimeDays alloc] autorelease];
   OrgJodaTimeDays_initWithInt_(self, days);
   return self;
 }

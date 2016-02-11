@@ -87,6 +87,8 @@ __attribute__((unused)) static void OrgJodaTimeChronoGJLocaleSymbols_initWithJav
 
 __attribute__((unused)) static OrgJodaTimeChronoGJLocaleSymbols *new_OrgJodaTimeChronoGJLocaleSymbols_initWithJavaUtilLocale_(JavaUtilLocale *locale) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeChronoGJLocaleSymbols *create_OrgJodaTimeChronoGJLocaleSymbols_initWithJavaUtilLocale_(JavaUtilLocale *locale);
+
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoGJLocaleSymbols)
 
 @implementation OrgJodaTimeChronoGJLocaleSymbols
@@ -380,6 +382,12 @@ void OrgJodaTimeChronoGJLocaleSymbols_initWithJavaUtilLocale_(OrgJodaTimeChronoG
 
 OrgJodaTimeChronoGJLocaleSymbols *new_OrgJodaTimeChronoGJLocaleSymbols_initWithJavaUtilLocale_(JavaUtilLocale *locale) {
   OrgJodaTimeChronoGJLocaleSymbols *self = [OrgJodaTimeChronoGJLocaleSymbols alloc];
+  OrgJodaTimeChronoGJLocaleSymbols_initWithJavaUtilLocale_(self, locale);
+  return self;
+}
+
+OrgJodaTimeChronoGJLocaleSymbols *create_OrgJodaTimeChronoGJLocaleSymbols_initWithJavaUtilLocale_(JavaUtilLocale *locale) {
+  OrgJodaTimeChronoGJLocaleSymbols *self = [[OrgJodaTimeChronoGJLocaleSymbols alloc] autorelease];
   OrgJodaTimeChronoGJLocaleSymbols_initWithJavaUtilLocale_(self, locale);
   return self;
 }

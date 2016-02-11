@@ -144,4 +144,10 @@ OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField *new_OrgJodaTimeChronoBasicWee
   return self;
 }
 
+OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField *create_OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(OrgJodaTimeChronoBasicChronology *chronology, OrgJodaTimeDurationField *weeks) {
+  OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField *self = [[OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField alloc] autorelease];
+  OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(self, chronology, weeks);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField)

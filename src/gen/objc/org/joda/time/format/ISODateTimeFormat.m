@@ -927,6 +927,12 @@ OrgJodaTimeFormatISODateTimeFormat *new_OrgJodaTimeFormatISODateTimeFormat_init(
   return self;
 }
 
+OrgJodaTimeFormatISODateTimeFormat *create_OrgJodaTimeFormatISODateTimeFormat_init() {
+  OrgJodaTimeFormatISODateTimeFormat *self = [[OrgJodaTimeFormatISODateTimeFormat alloc] autorelease];
+  OrgJodaTimeFormatISODateTimeFormat_init(self);
+  return self;
+}
+
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_forFieldsWithJavaUtilCollection_withBoolean_withBoolean_(id<JavaUtilCollection> fields, jboolean extended, jboolean strictISO) {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
   if (fields == nil || [fields size] == 0) {
@@ -2351,6 +2357,12 @@ void OrgJodaTimeFormatISODateTimeFormat_Constants_init(OrgJodaTimeFormatISODateT
 
 OrgJodaTimeFormatISODateTimeFormat_Constants *new_OrgJodaTimeFormatISODateTimeFormat_Constants_init() {
   OrgJodaTimeFormatISODateTimeFormat_Constants *self = [OrgJodaTimeFormatISODateTimeFormat_Constants alloc];
+  OrgJodaTimeFormatISODateTimeFormat_Constants_init(self);
+  return self;
+}
+
+OrgJodaTimeFormatISODateTimeFormat_Constants *create_OrgJodaTimeFormatISODateTimeFormat_Constants_init() {
+  OrgJodaTimeFormatISODateTimeFormat_Constants *self = [[OrgJodaTimeFormatISODateTimeFormat_Constants alloc] autorelease];
   OrgJodaTimeFormatISODateTimeFormat_Constants_init(self);
   return self;
 }

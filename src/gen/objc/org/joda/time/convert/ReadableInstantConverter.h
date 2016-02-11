@@ -106,6 +106,8 @@ FOUNDATION_EXPORT void OrgJodaTimeConvertReadableInstantConverter_init(OrgJodaTi
 
 FOUNDATION_EXPORT OrgJodaTimeConvertReadableInstantConverter *new_OrgJodaTimeConvertReadableInstantConverter_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeConvertReadableInstantConverter *create_OrgJodaTimeConvertReadableInstantConverter_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertReadableInstantConverter)
 
 #endif

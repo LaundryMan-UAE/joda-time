@@ -81,6 +81,8 @@ __attribute__((unused)) static void OrgJodaTimeChronoBuddhistChronology_initWith
 
 __attribute__((unused)) static OrgJodaTimeChronoBuddhistChronology *new_OrgJodaTimeChronoBuddhistChronology_initWithOrgJodaTimeChronology_withId_(OrgJodaTimeChronology *base, id param) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeChronoBuddhistChronology *create_OrgJodaTimeChronoBuddhistChronology_initWithOrgJodaTimeChronology_withId_(OrgJodaTimeChronology *base, id param);
+
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBuddhistChronology)
 
 @implementation OrgJodaTimeChronoBuddhistChronology
@@ -237,6 +239,12 @@ void OrgJodaTimeChronoBuddhistChronology_initWithOrgJodaTimeChronology_withId_(O
 
 OrgJodaTimeChronoBuddhistChronology *new_OrgJodaTimeChronoBuddhistChronology_initWithOrgJodaTimeChronology_withId_(OrgJodaTimeChronology *base, id param) {
   OrgJodaTimeChronoBuddhistChronology *self = [OrgJodaTimeChronoBuddhistChronology alloc];
+  OrgJodaTimeChronoBuddhistChronology_initWithOrgJodaTimeChronology_withId_(self, base, param);
+  return self;
+}
+
+OrgJodaTimeChronoBuddhistChronology *create_OrgJodaTimeChronoBuddhistChronology_initWithOrgJodaTimeChronology_withId_(OrgJodaTimeChronology *base, id param) {
+  OrgJodaTimeChronoBuddhistChronology *self = [[OrgJodaTimeChronoBuddhistChronology alloc] autorelease];
   OrgJodaTimeChronoBuddhistChronology_initWithOrgJodaTimeChronology_withId_(self, base, param);
   return self;
 }

@@ -92,4 +92,10 @@ OrgJodaTimeConvertReadablePartialConverter *new_OrgJodaTimeConvertReadablePartia
   return self;
 }
 
+OrgJodaTimeConvertReadablePartialConverter *create_OrgJodaTimeConvertReadablePartialConverter_init() {
+  OrgJodaTimeConvertReadablePartialConverter *self = [[OrgJodaTimeConvertReadablePartialConverter alloc] autorelease];
+  OrgJodaTimeConvertReadablePartialConverter_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertReadablePartialConverter)

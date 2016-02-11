@@ -299,13 +299,19 @@ FOUNDATION_EXPORT void OrgJodaTimeInstant_init(OrgJodaTimeInstant *self);
 
 FOUNDATION_EXPORT OrgJodaTimeInstant *new_OrgJodaTimeInstant_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeInstant *create_OrgJodaTimeInstant_init();
+
 FOUNDATION_EXPORT void OrgJodaTimeInstant_initWithLong_(OrgJodaTimeInstant *self, jlong instant);
 
 FOUNDATION_EXPORT OrgJodaTimeInstant *new_OrgJodaTimeInstant_initWithLong_(jlong instant) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeInstant *create_OrgJodaTimeInstant_initWithLong_(jlong instant);
+
 FOUNDATION_EXPORT void OrgJodaTimeInstant_initWithId_(OrgJodaTimeInstant *self, id instant);
 
 FOUNDATION_EXPORT OrgJodaTimeInstant *new_OrgJodaTimeInstant_initWithId_(id instant) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeInstant *create_OrgJodaTimeInstant_initWithId_(id instant);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeInstant)
 

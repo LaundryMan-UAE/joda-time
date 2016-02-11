@@ -480,6 +480,12 @@ OrgJodaTimePartial *new_OrgJodaTimePartial_init() {
   return self;
 }
 
+OrgJodaTimePartial *create_OrgJodaTimePartial_init() {
+  OrgJodaTimePartial *self = [[OrgJodaTimePartial alloc] autorelease];
+  OrgJodaTimePartial_init(self);
+  return self;
+}
+
 void OrgJodaTimePartial_initWithOrgJodaTimeChronology_(OrgJodaTimePartial *self, OrgJodaTimeChronology *chrono) {
   OrgJodaTimeBaseAbstractPartial_init(self);
   JreStrongAssign(&self->iChronology_, [((OrgJodaTimeChronology *) nil_chk(OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chrono))) withUTC]);
@@ -493,12 +499,24 @@ OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimeChronology_(OrgJod
   return self;
 }
 
+OrgJodaTimePartial *create_OrgJodaTimePartial_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chrono) {
+  OrgJodaTimePartial *self = [[OrgJodaTimePartial alloc] autorelease];
+  OrgJodaTimePartial_initWithOrgJodaTimeChronology_(self, chrono);
+  return self;
+}
+
 void OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimePartial *self, OrgJodaTimeDateTimeFieldType *type, jint value) {
   OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldType_withInt_withOrgJodaTimeChronology_(self, type, value, nil);
 }
 
 OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeDateTimeFieldType *type, jint value) {
   OrgJodaTimePartial *self = [OrgJodaTimePartial alloc];
+  OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldType_withInt_(self, type, value);
+  return self;
+}
+
+OrgJodaTimePartial *create_OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeDateTimeFieldType *type, jint value) {
+  OrgJodaTimePartial *self = [[OrgJodaTimePartial alloc] autorelease];
   OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldType_withInt_(self, type, value);
   return self;
 }
@@ -521,12 +539,24 @@ OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldType_
   return self;
 }
 
+OrgJodaTimePartial *create_OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldType_withInt_withOrgJodaTimeChronology_(OrgJodaTimeDateTimeFieldType *type, jint value, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimePartial *self = [[OrgJodaTimePartial alloc] autorelease];
+  OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldType_withInt_withOrgJodaTimeChronology_(self, type, value, chronology);
+  return self;
+}
+
 void OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeArray_withIntArray_(OrgJodaTimePartial *self, IOSObjectArray *types, IOSIntArray *values) {
   OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeArray_withIntArray_withOrgJodaTimeChronology_(self, types, values, nil);
 }
 
 OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeArray_withIntArray_(IOSObjectArray *types, IOSIntArray *values) {
   OrgJodaTimePartial *self = [OrgJodaTimePartial alloc];
+  OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeArray_withIntArray_(self, types, values);
+  return self;
+}
+
+OrgJodaTimePartial *create_OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeArray_withIntArray_(IOSObjectArray *types, IOSIntArray *values) {
+  OrgJodaTimePartial *self = [[OrgJodaTimePartial alloc] autorelease];
   OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeArray_withIntArray_(self, types, values);
   return self;
 }
@@ -614,6 +644,12 @@ OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeA
   return self;
 }
 
+OrgJodaTimePartial *create_OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeArray_withIntArray_withOrgJodaTimeChronology_(IOSObjectArray *types, IOSIntArray *values, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimePartial *self = [[OrgJodaTimePartial alloc] autorelease];
+  OrgJodaTimePartial_initWithOrgJodaTimeDateTimeFieldTypeArray_withIntArray_withOrgJodaTimeChronology_(self, types, values, chronology);
+  return self;
+}
+
 void OrgJodaTimePartial_initWithOrgJodaTimeReadablePartial_(OrgJodaTimePartial *self, id<OrgJodaTimeReadablePartial> partial) {
   OrgJodaTimeBaseAbstractPartial_init(self);
   if (partial == nil) {
@@ -634,6 +670,12 @@ OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimeReadablePartial_(i
   return self;
 }
 
+OrgJodaTimePartial *create_OrgJodaTimePartial_initWithOrgJodaTimeReadablePartial_(id<OrgJodaTimeReadablePartial> partial) {
+  OrgJodaTimePartial *self = [[OrgJodaTimePartial alloc] autorelease];
+  OrgJodaTimePartial_initWithOrgJodaTimeReadablePartial_(self, partial);
+  return self;
+}
+
 void OrgJodaTimePartial_initWithOrgJodaTimePartial_withIntArray_(OrgJodaTimePartial *self, OrgJodaTimePartial *partial, IOSIntArray *values) {
   OrgJodaTimeBaseAbstractPartial_init(self);
   JreStrongAssign(&self->iChronology_, ((OrgJodaTimePartial *) nil_chk(partial))->iChronology_);
@@ -647,6 +689,12 @@ OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimePartial_withIntArr
   return self;
 }
 
+OrgJodaTimePartial *create_OrgJodaTimePartial_initWithOrgJodaTimePartial_withIntArray_(OrgJodaTimePartial *partial, IOSIntArray *values) {
+  OrgJodaTimePartial *self = [[OrgJodaTimePartial alloc] autorelease];
+  OrgJodaTimePartial_initWithOrgJodaTimePartial_withIntArray_(self, partial, values);
+  return self;
+}
+
 void OrgJodaTimePartial_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeFieldTypeArray_withIntArray_(OrgJodaTimePartial *self, OrgJodaTimeChronology *chronology, IOSObjectArray *types, IOSIntArray *values) {
   OrgJodaTimeBaseAbstractPartial_init(self);
   JreStrongAssign(&self->iChronology_, chronology);
@@ -656,6 +704,12 @@ void OrgJodaTimePartial_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeFie
 
 OrgJodaTimePartial *new_OrgJodaTimePartial_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeFieldTypeArray_withIntArray_(OrgJodaTimeChronology *chronology, IOSObjectArray *types, IOSIntArray *values) {
   OrgJodaTimePartial *self = [OrgJodaTimePartial alloc];
+  OrgJodaTimePartial_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeFieldTypeArray_withIntArray_(self, chronology, types, values);
+  return self;
+}
+
+OrgJodaTimePartial *create_OrgJodaTimePartial_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeFieldTypeArray_withIntArray_(OrgJodaTimeChronology *chronology, IOSObjectArray *types, IOSIntArray *values) {
+  OrgJodaTimePartial *self = [[OrgJodaTimePartial alloc] autorelease];
   OrgJodaTimePartial_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeFieldTypeArray_withIntArray_(self, chronology, types, values);
   return self;
 }
@@ -762,6 +816,12 @@ void OrgJodaTimePartial_Property_initWithOrgJodaTimePartial_withInt_(OrgJodaTime
 
 OrgJodaTimePartial_Property *new_OrgJodaTimePartial_Property_initWithOrgJodaTimePartial_withInt_(OrgJodaTimePartial *partial, jint fieldIndex) {
   OrgJodaTimePartial_Property *self = [OrgJodaTimePartial_Property alloc];
+  OrgJodaTimePartial_Property_initWithOrgJodaTimePartial_withInt_(self, partial, fieldIndex);
+  return self;
+}
+
+OrgJodaTimePartial_Property *create_OrgJodaTimePartial_Property_initWithOrgJodaTimePartial_withInt_(OrgJodaTimePartial *partial, jint fieldIndex) {
+  OrgJodaTimePartial_Property *self = [[OrgJodaTimePartial_Property alloc] autorelease];
   OrgJodaTimePartial_Property_initWithOrgJodaTimePartial_withInt_(self, partial, fieldIndex);
   return self;
 }

@@ -73,4 +73,10 @@ OrgJodaTimeConvertReadablePeriodConverter *new_OrgJodaTimeConvertReadablePeriodC
   return self;
 }
 
+OrgJodaTimeConvertReadablePeriodConverter *create_OrgJodaTimeConvertReadablePeriodConverter_init() {
+  OrgJodaTimeConvertReadablePeriodConverter *self = [[OrgJodaTimeConvertReadablePeriodConverter alloc] autorelease];
+  OrgJodaTimeConvertReadablePeriodConverter_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertReadablePeriodConverter)

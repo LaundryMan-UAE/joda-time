@@ -139,6 +139,8 @@ FOUNDATION_EXPORT void OrgJodaTimeChronoEthiopicChronology_initWithOrgJodaTimeCh
 
 FOUNDATION_EXPORT OrgJodaTimeChronoEthiopicChronology *new_OrgJodaTimeChronoEthiopicChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronology *base, id param, jint minDaysInFirstWeek) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeChronoEthiopicChronology *create_OrgJodaTimeChronoEthiopicChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronology *base, id param, jint minDaysInFirstWeek);
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoEthiopicChronology)
 
 #endif

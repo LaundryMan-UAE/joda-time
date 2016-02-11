@@ -52,6 +52,8 @@ FOUNDATION_EXPORT void OrgJodaTimeTzDefaultNameProvider_init(OrgJodaTimeTzDefaul
 
 FOUNDATION_EXPORT OrgJodaTimeTzDefaultNameProvider *new_OrgJodaTimeTzDefaultNameProvider_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeTzDefaultNameProvider *create_OrgJodaTimeTzDefaultNameProvider_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzDefaultNameProvider)
 
 #endif

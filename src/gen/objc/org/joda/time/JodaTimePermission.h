@@ -63,6 +63,8 @@ FOUNDATION_EXPORT void OrgJodaTimeJodaTimePermission_initWithNSString_(OrgJodaTi
 
 FOUNDATION_EXPORT OrgJodaTimeJodaTimePermission *new_OrgJodaTimeJodaTimePermission_initWithNSString_(NSString *name) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeJodaTimePermission *create_OrgJodaTimeJodaTimePermission_initWithNSString_(NSString *name);
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeJodaTimePermission)
 
 #endif

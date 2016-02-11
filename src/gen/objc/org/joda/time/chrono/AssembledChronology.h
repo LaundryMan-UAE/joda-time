@@ -279,6 +279,8 @@ FOUNDATION_EXPORT void OrgJodaTimeChronoAssembledChronology_Fields_init(OrgJodaT
 
 FOUNDATION_EXPORT OrgJodaTimeChronoAssembledChronology_Fields *new_OrgJodaTimeChronoAssembledChronology_Fields_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeChronoAssembledChronology_Fields *create_OrgJodaTimeChronoAssembledChronology_Fields_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoAssembledChronology_Fields)
 
 #endif

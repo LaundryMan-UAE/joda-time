@@ -34,6 +34,8 @@ __attribute__((unused)) static void OrgJodaTimeFieldMillisDurationField_init(Org
 
 __attribute__((unused)) static OrgJodaTimeFieldMillisDurationField *new_OrgJodaTimeFieldMillisDurationField_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeFieldMillisDurationField *create_OrgJodaTimeFieldMillisDurationField_init();
+
 __attribute__((unused)) static jlong OrgJodaTimeFieldMillisDurationField_getUnitMillis(OrgJodaTimeFieldMillisDurationField *self);
 
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFieldMillisDurationField)
@@ -208,6 +210,12 @@ void OrgJodaTimeFieldMillisDurationField_init(OrgJodaTimeFieldMillisDurationFiel
 
 OrgJodaTimeFieldMillisDurationField *new_OrgJodaTimeFieldMillisDurationField_init() {
   OrgJodaTimeFieldMillisDurationField *self = [OrgJodaTimeFieldMillisDurationField alloc];
+  OrgJodaTimeFieldMillisDurationField_init(self);
+  return self;
+}
+
+OrgJodaTimeFieldMillisDurationField *create_OrgJodaTimeFieldMillisDurationField_init() {
+  OrgJodaTimeFieldMillisDurationField *self = [[OrgJodaTimeFieldMillisDurationField alloc] autorelease];
   OrgJodaTimeFieldMillisDurationField_init(self);
   return self;
 }

@@ -642,45 +642,67 @@ FOUNDATION_EXPORT void OrgJodaTimeMonthDay_init(OrgJodaTimeMonthDay *self);
 
 FOUNDATION_EXPORT OrgJodaTimeMonthDay *new_OrgJodaTimeMonthDay_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeMonthDay *create_OrgJodaTimeMonthDay_init();
+
 FOUNDATION_EXPORT void OrgJodaTimeMonthDay_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeMonthDay *self, OrgJodaTimeDateTimeZone *zone);
 
 FOUNDATION_EXPORT OrgJodaTimeMonthDay *new_OrgJodaTimeMonthDay_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeMonthDay *create_OrgJodaTimeMonthDay_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
 
 FOUNDATION_EXPORT void OrgJodaTimeMonthDay_initWithOrgJodaTimeChronology_(OrgJodaTimeMonthDay *self, OrgJodaTimeChronology *chronology);
 
 FOUNDATION_EXPORT OrgJodaTimeMonthDay *new_OrgJodaTimeMonthDay_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chronology) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeMonthDay *create_OrgJodaTimeMonthDay_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chronology);
+
 FOUNDATION_EXPORT void OrgJodaTimeMonthDay_initWithLong_(OrgJodaTimeMonthDay *self, jlong instant);
 
 FOUNDATION_EXPORT OrgJodaTimeMonthDay *new_OrgJodaTimeMonthDay_initWithLong_(jlong instant) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeMonthDay *create_OrgJodaTimeMonthDay_initWithLong_(jlong instant);
 
 FOUNDATION_EXPORT void OrgJodaTimeMonthDay_initWithLong_withOrgJodaTimeChronology_(OrgJodaTimeMonthDay *self, jlong instant, OrgJodaTimeChronology *chronology);
 
 FOUNDATION_EXPORT OrgJodaTimeMonthDay *new_OrgJodaTimeMonthDay_initWithLong_withOrgJodaTimeChronology_(jlong instant, OrgJodaTimeChronology *chronology) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeMonthDay *create_OrgJodaTimeMonthDay_initWithLong_withOrgJodaTimeChronology_(jlong instant, OrgJodaTimeChronology *chronology);
+
 FOUNDATION_EXPORT void OrgJodaTimeMonthDay_initWithId_(OrgJodaTimeMonthDay *self, id instant);
 
 FOUNDATION_EXPORT OrgJodaTimeMonthDay *new_OrgJodaTimeMonthDay_initWithId_(id instant) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeMonthDay *create_OrgJodaTimeMonthDay_initWithId_(id instant);
 
 FOUNDATION_EXPORT void OrgJodaTimeMonthDay_initWithId_withOrgJodaTimeChronology_(OrgJodaTimeMonthDay *self, id instant, OrgJodaTimeChronology *chronology);
 
 FOUNDATION_EXPORT OrgJodaTimeMonthDay *new_OrgJodaTimeMonthDay_initWithId_withOrgJodaTimeChronology_(id instant, OrgJodaTimeChronology *chronology) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeMonthDay *create_OrgJodaTimeMonthDay_initWithId_withOrgJodaTimeChronology_(id instant, OrgJodaTimeChronology *chronology);
+
 FOUNDATION_EXPORT void OrgJodaTimeMonthDay_initWithInt_withInt_(OrgJodaTimeMonthDay *self, jint monthOfYear, jint dayOfMonth);
 
 FOUNDATION_EXPORT OrgJodaTimeMonthDay *new_OrgJodaTimeMonthDay_initWithInt_withInt_(jint monthOfYear, jint dayOfMonth) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeMonthDay *create_OrgJodaTimeMonthDay_initWithInt_withInt_(jint monthOfYear, jint dayOfMonth);
 
 FOUNDATION_EXPORT void OrgJodaTimeMonthDay_initWithInt_withInt_withOrgJodaTimeChronology_(OrgJodaTimeMonthDay *self, jint monthOfYear, jint dayOfMonth, OrgJodaTimeChronology *chronology);
 
 FOUNDATION_EXPORT OrgJodaTimeMonthDay *new_OrgJodaTimeMonthDay_initWithInt_withInt_withOrgJodaTimeChronology_(jint monthOfYear, jint dayOfMonth, OrgJodaTimeChronology *chronology) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeMonthDay *create_OrgJodaTimeMonthDay_initWithInt_withInt_withOrgJodaTimeChronology_(jint monthOfYear, jint dayOfMonth, OrgJodaTimeChronology *chronology);
+
 FOUNDATION_EXPORT void OrgJodaTimeMonthDay_initWithOrgJodaTimeMonthDay_withIntArray_(OrgJodaTimeMonthDay *self, OrgJodaTimeMonthDay *partial, IOSIntArray *values);
 
 FOUNDATION_EXPORT OrgJodaTimeMonthDay *new_OrgJodaTimeMonthDay_initWithOrgJodaTimeMonthDay_withIntArray_(OrgJodaTimeMonthDay *partial, IOSIntArray *values) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeMonthDay *create_OrgJodaTimeMonthDay_initWithOrgJodaTimeMonthDay_withIntArray_(OrgJodaTimeMonthDay *partial, IOSIntArray *values);
+
 FOUNDATION_EXPORT void OrgJodaTimeMonthDay_initWithOrgJodaTimeMonthDay_withOrgJodaTimeChronology_(OrgJodaTimeMonthDay *self, OrgJodaTimeMonthDay *partial, OrgJodaTimeChronology *chrono);
 
 FOUNDATION_EXPORT OrgJodaTimeMonthDay *new_OrgJodaTimeMonthDay_initWithOrgJodaTimeMonthDay_withOrgJodaTimeChronology_(OrgJodaTimeMonthDay *partial, OrgJodaTimeChronology *chrono) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeMonthDay *create_OrgJodaTimeMonthDay_initWithOrgJodaTimeMonthDay_withOrgJodaTimeChronology_(OrgJodaTimeMonthDay *partial, OrgJodaTimeChronology *chrono);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeMonthDay)
 
@@ -825,6 +847,8 @@ J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeMonthDay_Property)
 FOUNDATION_EXPORT void OrgJodaTimeMonthDay_Property_initWithOrgJodaTimeMonthDay_withInt_(OrgJodaTimeMonthDay_Property *self, OrgJodaTimeMonthDay *partial, jint fieldIndex);
 
 FOUNDATION_EXPORT OrgJodaTimeMonthDay_Property *new_OrgJodaTimeMonthDay_Property_initWithOrgJodaTimeMonthDay_withInt_(OrgJodaTimeMonthDay *partial, jint fieldIndex) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeMonthDay_Property *create_OrgJodaTimeMonthDay_Property_initWithOrgJodaTimeMonthDay_withInt_(OrgJodaTimeMonthDay *partial, jint fieldIndex);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeMonthDay_Property)
 

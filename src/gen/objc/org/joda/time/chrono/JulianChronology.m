@@ -307,4 +307,10 @@ OrgJodaTimeChronoJulianChronology *new_OrgJodaTimeChronoJulianChronology_initWit
   return self;
 }
 
+OrgJodaTimeChronoJulianChronology *create_OrgJodaTimeChronoJulianChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronology *base, id param, jint minDaysInFirstWeek) {
+  OrgJodaTimeChronoJulianChronology *self = [[OrgJodaTimeChronoJulianChronology alloc] autorelease];
+  OrgJodaTimeChronoJulianChronology_initWithOrgJodaTimeChronology_withId_withInt_(self, base, param, minDaysInFirstWeek);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoJulianChronology)

@@ -430,6 +430,12 @@ OrgJodaTimeFormatDateTimeFormat *new_OrgJodaTimeFormatDateTimeFormat_init() {
   return self;
 }
 
+OrgJodaTimeFormatDateTimeFormat *create_OrgJodaTimeFormatDateTimeFormat_init() {
+  OrgJodaTimeFormatDateTimeFormat *self = [[OrgJodaTimeFormatDateTimeFormat alloc] autorelease];
+  OrgJodaTimeFormatDateTimeFormat_init(self);
+  return self;
+}
+
 void OrgJodaTimeFormatDateTimeFormat_parsePatternToWithOrgJodaTimeFormatDateTimeFormatterBuilder_withNSString_(OrgJodaTimeFormatDateTimeFormatterBuilder *builder, NSString *pattern) {
   OrgJodaTimeFormatDateTimeFormat_initialize();
   jint length = ((jint) [((NSString *) nil_chk(pattern)) length]);
@@ -860,6 +866,12 @@ OrgJodaTimeFormatDateTimeFormat_StyleFormatter *new_OrgJodaTimeFormatDateTimeFor
   return self;
 }
 
+OrgJodaTimeFormatDateTimeFormat_StyleFormatter *create_OrgJodaTimeFormatDateTimeFormat_StyleFormatter_initWithInt_withInt_withInt_(jint dateStyle, jint timeStyle, jint type) {
+  OrgJodaTimeFormatDateTimeFormat_StyleFormatter *self = [[OrgJodaTimeFormatDateTimeFormat_StyleFormatter alloc] autorelease];
+  OrgJodaTimeFormatDateTimeFormat_StyleFormatter_initWithInt_withInt_withInt_(self, dateStyle, timeStyle, type);
+  return self;
+}
+
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatDateTimeFormat_StyleFormatter_getFormatterWithJavaUtilLocale_(OrgJodaTimeFormatDateTimeFormat_StyleFormatter *self, JavaUtilLocale *locale) {
   locale = (locale == nil ? JavaUtilLocale_getDefault() : locale);
   OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey *key = [new_OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey_initWithInt_withInt_withInt_withJavaUtilLocale_(self->iType_, self->iDateStyle_, self->iTimeStyle_, locale) autorelease];
@@ -948,6 +960,12 @@ void OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey_initWithInt_withInt_
 
 OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey *new_OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey_initWithInt_withInt_withInt_withJavaUtilLocale_(jint iType, jint iDateStyle, jint iTimeStyle, JavaUtilLocale *locale) {
   OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey *self = [OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey alloc];
+  OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey_initWithInt_withInt_withInt_withJavaUtilLocale_(self, iType, iDateStyle, iTimeStyle, locale);
+  return self;
+}
+
+OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey *create_OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey_initWithInt_withInt_withInt_withJavaUtilLocale_(jint iType, jint iDateStyle, jint iTimeStyle, JavaUtilLocale *locale) {
+  OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey *self = [[OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey alloc] autorelease];
   OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey_initWithInt_withInt_withInt_withJavaUtilLocale_(self, iType, iDateStyle, iTimeStyle, locale);
   return self;
 }

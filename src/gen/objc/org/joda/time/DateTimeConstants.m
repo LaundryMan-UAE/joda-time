@@ -77,4 +77,10 @@ OrgJodaTimeDateTimeConstants *new_OrgJodaTimeDateTimeConstants_init() {
   return self;
 }
 
+OrgJodaTimeDateTimeConstants *create_OrgJodaTimeDateTimeConstants_init() {
+  OrgJodaTimeDateTimeConstants *self = [[OrgJodaTimeDateTimeConstants alloc] autorelease];
+  OrgJodaTimeDateTimeConstants_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeConstants)

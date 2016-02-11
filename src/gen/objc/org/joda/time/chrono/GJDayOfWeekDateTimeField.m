@@ -126,4 +126,10 @@ OrgJodaTimeChronoGJDayOfWeekDateTimeField *new_OrgJodaTimeChronoGJDayOfWeekDateT
   return self;
 }
 
+OrgJodaTimeChronoGJDayOfWeekDateTimeField *create_OrgJodaTimeChronoGJDayOfWeekDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(OrgJodaTimeChronoBasicChronology *chronology, OrgJodaTimeDurationField *days) {
+  OrgJodaTimeChronoGJDayOfWeekDateTimeField *self = [[OrgJodaTimeChronoGJDayOfWeekDateTimeField alloc] autorelease];
+  OrgJodaTimeChronoGJDayOfWeekDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(self, chronology, days);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJDayOfWeekDateTimeField)

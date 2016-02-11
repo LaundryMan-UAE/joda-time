@@ -162,4 +162,10 @@ OrgJodaTimeChronoGJYearOfEraDateTimeField *new_OrgJodaTimeChronoGJYearOfEraDateT
   return self;
 }
 
+OrgJodaTimeChronoGJYearOfEraDateTimeField *create_OrgJodaTimeChronoGJYearOfEraDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronoBasicChronology_(OrgJodaTimeDateTimeField *yearField, OrgJodaTimeChronoBasicChronology *chronology) {
+  OrgJodaTimeChronoGJYearOfEraDateTimeField *self = [[OrgJodaTimeChronoGJYearOfEraDateTimeField alloc] autorelease];
+  OrgJodaTimeChronoGJYearOfEraDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronoBasicChronology_(self, yearField, chronology);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJYearOfEraDateTimeField)

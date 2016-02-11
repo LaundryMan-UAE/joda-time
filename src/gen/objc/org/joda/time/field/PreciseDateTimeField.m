@@ -116,4 +116,10 @@ OrgJodaTimeFieldPreciseDateTimeField *new_OrgJodaTimeFieldPreciseDateTimeField_i
   return self;
 }
 
+OrgJodaTimeFieldPreciseDateTimeField *create_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType *type, OrgJodaTimeDurationField *unit, OrgJodaTimeDurationField *range) {
+  OrgJodaTimeFieldPreciseDateTimeField *self = [[OrgJodaTimeFieldPreciseDateTimeField alloc] autorelease];
+  OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(self, type, unit, range);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldPreciseDateTimeField)

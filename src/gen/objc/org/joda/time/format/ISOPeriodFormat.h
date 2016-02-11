@@ -97,6 +97,8 @@ FOUNDATION_EXPORT void OrgJodaTimeFormatISOPeriodFormat_init(OrgJodaTimeFormatIS
 
 FOUNDATION_EXPORT OrgJodaTimeFormatISOPeriodFormat *new_OrgJodaTimeFormatISOPeriodFormat_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeFormatISOPeriodFormat *create_OrgJodaTimeFormatISOPeriodFormat_init();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_standard();
 
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_alternate();

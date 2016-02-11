@@ -75,4 +75,10 @@ OrgJodaTimeFieldStrictDateTimeField *new_OrgJodaTimeFieldStrictDateTimeField_ini
   return self;
 }
 
+OrgJodaTimeFieldStrictDateTimeField *create_OrgJodaTimeFieldStrictDateTimeField_initWithOrgJodaTimeDateTimeField_(OrgJodaTimeDateTimeField *field) {
+  OrgJodaTimeFieldStrictDateTimeField *self = [[OrgJodaTimeFieldStrictDateTimeField alloc] autorelease];
+  OrgJodaTimeFieldStrictDateTimeField_initWithOrgJodaTimeDateTimeField_(self, field);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldStrictDateTimeField)

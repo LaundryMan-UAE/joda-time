@@ -70,6 +70,8 @@ FOUNDATION_EXPORT void OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSStr
 
 FOUNDATION_EXPORT OrgJodaTimeTzFixedDateTimeZone *new_OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSString_withInt_withInt_(NSString *id_, NSString *nameKey, jint wallOffset, jint standardOffset) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeTzFixedDateTimeZone *create_OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSString_withInt_withInt_(NSString *id_, NSString *nameKey, jint wallOffset, jint standardOffset);
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzFixedDateTimeZone)
 
 #endif

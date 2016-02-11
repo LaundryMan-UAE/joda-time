@@ -257,6 +257,8 @@ __attribute__((unused)) static void OrgJodaTimeDateTimeZone_Stub_initWithNSStrin
 
 __attribute__((unused)) static OrgJodaTimeDateTimeZone_Stub *new_OrgJodaTimeDateTimeZone_Stub_initWithNSString_(NSString *id_) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeDateTimeZone_Stub *create_OrgJodaTimeDateTimeZone_Stub_initWithNSString_(NSString *id_);
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeZone_Stub)
 
 @interface OrgJodaTimeDateTimeZone_$1 : OrgJodaTimeChronoBaseChronology
@@ -282,6 +284,8 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeDateTimeZone_$1, serialVersionUID, jlong
 __attribute__((unused)) static void OrgJodaTimeDateTimeZone_$1_init(OrgJodaTimeDateTimeZone_$1 *self);
 
 __attribute__((unused)) static OrgJodaTimeDateTimeZone_$1 *new_OrgJodaTimeDateTimeZone_$1_init() NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static OrgJodaTimeDateTimeZone_$1 *create_OrgJodaTimeDateTimeZone_$1_init();
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeZone_$1)
 
@@ -951,7 +955,7 @@ id<OrgJodaTimeTzProvider> OrgJodaTimeDateTimeZone_getDefaultProvider() {
         provider = (id<OrgJodaTimeTzProvider>) cast_check([((IOSClass *) nil_chk(IOSClass_forName_(providerClass))) newInstance], OrgJodaTimeTzProvider_class_());
       }
       @catch (JavaLangException *ex) {
-        @throw [new_JavaLangRuntimeException_initWithJavaLangThrowable_(ex) autorelease];
+        @throw [new_JavaLangRuntimeException_initWithNSException_(ex) autorelease];
       }
     }
   }
@@ -1003,7 +1007,7 @@ id<OrgJodaTimeTzNameProvider> OrgJodaTimeDateTimeZone_getDefaultNameProvider() {
         nameProvider = (id<OrgJodaTimeTzNameProvider>) cast_check([((IOSClass *) nil_chk(IOSClass_forName_(providerClass))) newInstance], OrgJodaTimeTzNameProvider_class_());
       }
       @catch (JavaLangException *ex) {
-        @throw [new_JavaLangRuntimeException_initWithJavaLangThrowable_(ex) autorelease];
+        @throw [new_JavaLangRuntimeException_initWithNSException_(ex) autorelease];
       }
     }
   }
@@ -1174,6 +1178,12 @@ OrgJodaTimeDateTimeZone_Stub *new_OrgJodaTimeDateTimeZone_Stub_initWithNSString_
   return self;
 }
 
+OrgJodaTimeDateTimeZone_Stub *create_OrgJodaTimeDateTimeZone_Stub_initWithNSString_(NSString *id_) {
+  OrgJodaTimeDateTimeZone_Stub *self = [[OrgJodaTimeDateTimeZone_Stub alloc] autorelease];
+  OrgJodaTimeDateTimeZone_Stub_initWithNSString_(self, id_);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeZone_Stub)
 
 @implementation OrgJodaTimeDateTimeZone_$1
@@ -1225,6 +1235,12 @@ void OrgJodaTimeDateTimeZone_$1_init(OrgJodaTimeDateTimeZone_$1 *self) {
 
 OrgJodaTimeDateTimeZone_$1 *new_OrgJodaTimeDateTimeZone_$1_init() {
   OrgJodaTimeDateTimeZone_$1 *self = [OrgJodaTimeDateTimeZone_$1 alloc];
+  OrgJodaTimeDateTimeZone_$1_init(self);
+  return self;
+}
+
+OrgJodaTimeDateTimeZone_$1 *create_OrgJodaTimeDateTimeZone_$1_init() {
+  OrgJodaTimeDateTimeZone_$1 *self = [[OrgJodaTimeDateTimeZone_$1 alloc] autorelease];
   OrgJodaTimeDateTimeZone_$1_init(self);
   return self;
 }

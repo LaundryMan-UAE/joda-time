@@ -1071,12 +1071,24 @@ OrgJodaTimeLocalDateTime *new_OrgJodaTimeLocalDateTime_init() {
   return self;
 }
 
+OrgJodaTimeLocalDateTime *create_OrgJodaTimeLocalDateTime_init() {
+  OrgJodaTimeLocalDateTime *self = [[OrgJodaTimeLocalDateTime alloc] autorelease];
+  OrgJodaTimeLocalDateTime_init(self);
+  return self;
+}
+
 void OrgJodaTimeLocalDateTime_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeLocalDateTime *self, OrgJodaTimeDateTimeZone *zone) {
   OrgJodaTimeLocalDateTime_initWithLong_withOrgJodaTimeChronology_(self, OrgJodaTimeDateTimeUtils_currentTimeMillis(), OrgJodaTimeChronoISOChronology_getInstanceWithOrgJodaTimeDateTimeZone_(zone));
 }
 
 OrgJodaTimeLocalDateTime *new_OrgJodaTimeLocalDateTime_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {
   OrgJodaTimeLocalDateTime *self = [OrgJodaTimeLocalDateTime alloc];
+  OrgJodaTimeLocalDateTime_initWithOrgJodaTimeDateTimeZone_(self, zone);
+  return self;
+}
+
+OrgJodaTimeLocalDateTime *create_OrgJodaTimeLocalDateTime_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {
+  OrgJodaTimeLocalDateTime *self = [[OrgJodaTimeLocalDateTime alloc] autorelease];
   OrgJodaTimeLocalDateTime_initWithOrgJodaTimeDateTimeZone_(self, zone);
   return self;
 }
@@ -1091,6 +1103,12 @@ OrgJodaTimeLocalDateTime *new_OrgJodaTimeLocalDateTime_initWithOrgJodaTimeChrono
   return self;
 }
 
+OrgJodaTimeLocalDateTime *create_OrgJodaTimeLocalDateTime_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeLocalDateTime *self = [[OrgJodaTimeLocalDateTime alloc] autorelease];
+  OrgJodaTimeLocalDateTime_initWithOrgJodaTimeChronology_(self, chronology);
+  return self;
+}
+
 void OrgJodaTimeLocalDateTime_initWithLong_(OrgJodaTimeLocalDateTime *self, jlong instant) {
   OrgJodaTimeLocalDateTime_initWithLong_withOrgJodaTimeChronology_(self, instant, OrgJodaTimeChronoISOChronology_getInstance());
 }
@@ -1101,12 +1119,24 @@ OrgJodaTimeLocalDateTime *new_OrgJodaTimeLocalDateTime_initWithLong_(jlong insta
   return self;
 }
 
+OrgJodaTimeLocalDateTime *create_OrgJodaTimeLocalDateTime_initWithLong_(jlong instant) {
+  OrgJodaTimeLocalDateTime *self = [[OrgJodaTimeLocalDateTime alloc] autorelease];
+  OrgJodaTimeLocalDateTime_initWithLong_(self, instant);
+  return self;
+}
+
 void OrgJodaTimeLocalDateTime_initWithLong_withOrgJodaTimeDateTimeZone_(OrgJodaTimeLocalDateTime *self, jlong instant, OrgJodaTimeDateTimeZone *zone) {
   OrgJodaTimeLocalDateTime_initWithLong_withOrgJodaTimeChronology_(self, instant, OrgJodaTimeChronoISOChronology_getInstanceWithOrgJodaTimeDateTimeZone_(zone));
 }
 
 OrgJodaTimeLocalDateTime *new_OrgJodaTimeLocalDateTime_initWithLong_withOrgJodaTimeDateTimeZone_(jlong instant, OrgJodaTimeDateTimeZone *zone) {
   OrgJodaTimeLocalDateTime *self = [OrgJodaTimeLocalDateTime alloc];
+  OrgJodaTimeLocalDateTime_initWithLong_withOrgJodaTimeDateTimeZone_(self, instant, zone);
+  return self;
+}
+
+OrgJodaTimeLocalDateTime *create_OrgJodaTimeLocalDateTime_initWithLong_withOrgJodaTimeDateTimeZone_(jlong instant, OrgJodaTimeDateTimeZone *zone) {
+  OrgJodaTimeLocalDateTime *self = [[OrgJodaTimeLocalDateTime alloc] autorelease];
   OrgJodaTimeLocalDateTime_initWithLong_withOrgJodaTimeDateTimeZone_(self, instant, zone);
   return self;
 }
@@ -1125,12 +1155,24 @@ OrgJodaTimeLocalDateTime *new_OrgJodaTimeLocalDateTime_initWithLong_withOrgJodaT
   return self;
 }
 
+OrgJodaTimeLocalDateTime *create_OrgJodaTimeLocalDateTime_initWithLong_withOrgJodaTimeChronology_(jlong instant, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeLocalDateTime *self = [[OrgJodaTimeLocalDateTime alloc] autorelease];
+  OrgJodaTimeLocalDateTime_initWithLong_withOrgJodaTimeChronology_(self, instant, chronology);
+  return self;
+}
+
 void OrgJodaTimeLocalDateTime_initWithId_(OrgJodaTimeLocalDateTime *self, id instant) {
   OrgJodaTimeLocalDateTime_initWithId_withOrgJodaTimeChronology_(self, instant, nil);
 }
 
 OrgJodaTimeLocalDateTime *new_OrgJodaTimeLocalDateTime_initWithId_(id instant) {
   OrgJodaTimeLocalDateTime *self = [OrgJodaTimeLocalDateTime alloc];
+  OrgJodaTimeLocalDateTime_initWithId_(self, instant);
+  return self;
+}
+
+OrgJodaTimeLocalDateTime *create_OrgJodaTimeLocalDateTime_initWithId_(id instant) {
+  OrgJodaTimeLocalDateTime *self = [[OrgJodaTimeLocalDateTime alloc] autorelease];
   OrgJodaTimeLocalDateTime_initWithId_(self, instant);
   return self;
 }
@@ -1151,6 +1193,12 @@ OrgJodaTimeLocalDateTime *new_OrgJodaTimeLocalDateTime_initWithId_withOrgJodaTim
   return self;
 }
 
+OrgJodaTimeLocalDateTime *create_OrgJodaTimeLocalDateTime_initWithId_withOrgJodaTimeDateTimeZone_(id instant, OrgJodaTimeDateTimeZone *zone) {
+  OrgJodaTimeLocalDateTime *self = [[OrgJodaTimeLocalDateTime alloc] autorelease];
+  OrgJodaTimeLocalDateTime_initWithId_withOrgJodaTimeDateTimeZone_(self, instant, zone);
+  return self;
+}
+
 void OrgJodaTimeLocalDateTime_initWithId_withOrgJodaTimeChronology_(OrgJodaTimeLocalDateTime *self, id instant, OrgJodaTimeChronology *chronology) {
   OrgJodaTimeBaseBaseLocal_init(self);
   id<OrgJodaTimeConvertPartialConverter> converter = [((OrgJodaTimeConvertConverterManager *) nil_chk(OrgJodaTimeConvertConverterManager_getInstance())) getPartialConverterWithId:instant];
@@ -1167,12 +1215,24 @@ OrgJodaTimeLocalDateTime *new_OrgJodaTimeLocalDateTime_initWithId_withOrgJodaTim
   return self;
 }
 
+OrgJodaTimeLocalDateTime *create_OrgJodaTimeLocalDateTime_initWithId_withOrgJodaTimeChronology_(id instant, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeLocalDateTime *self = [[OrgJodaTimeLocalDateTime alloc] autorelease];
+  OrgJodaTimeLocalDateTime_initWithId_withOrgJodaTimeChronology_(self, instant, chronology);
+  return self;
+}
+
 void OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_(OrgJodaTimeLocalDateTime *self, jint year, jint monthOfYear, jint dayOfMonth, jint hourOfDay, jint minuteOfHour) {
   OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(self, year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, 0, 0, OrgJodaTimeChronoISOChronology_getInstanceUTC());
 }
 
 OrgJodaTimeLocalDateTime *new_OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_(jint year, jint monthOfYear, jint dayOfMonth, jint hourOfDay, jint minuteOfHour) {
   OrgJodaTimeLocalDateTime *self = [OrgJodaTimeLocalDateTime alloc];
+  OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_(self, year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour);
+  return self;
+}
+
+OrgJodaTimeLocalDateTime *create_OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_(jint year, jint monthOfYear, jint dayOfMonth, jint hourOfDay, jint minuteOfHour) {
+  OrgJodaTimeLocalDateTime *self = [[OrgJodaTimeLocalDateTime alloc] autorelease];
   OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_(self, year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour);
   return self;
 }
@@ -1187,12 +1247,24 @@ OrgJodaTimeLocalDateTime *new_OrgJodaTimeLocalDateTime_initWithInt_withInt_withI
   return self;
 }
 
+OrgJodaTimeLocalDateTime *create_OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_(jint year, jint monthOfYear, jint dayOfMonth, jint hourOfDay, jint minuteOfHour, jint secondOfMinute) {
+  OrgJodaTimeLocalDateTime *self = [[OrgJodaTimeLocalDateTime alloc] autorelease];
+  OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_(self, year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute);
+  return self;
+}
+
 void OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_(OrgJodaTimeLocalDateTime *self, jint year, jint monthOfYear, jint dayOfMonth, jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond) {
   OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(self, year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond, OrgJodaTimeChronoISOChronology_getInstanceUTC());
 }
 
 OrgJodaTimeLocalDateTime *new_OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_(jint year, jint monthOfYear, jint dayOfMonth, jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond) {
   OrgJodaTimeLocalDateTime *self = [OrgJodaTimeLocalDateTime alloc];
+  OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_(self, year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
+  return self;
+}
+
+OrgJodaTimeLocalDateTime *create_OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_(jint year, jint monthOfYear, jint dayOfMonth, jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond) {
+  OrgJodaTimeLocalDateTime *self = [[OrgJodaTimeLocalDateTime alloc] autorelease];
   OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_(self, year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
   return self;
 }
@@ -1207,6 +1279,12 @@ void OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_withIn
 
 OrgJodaTimeLocalDateTime *new_OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(jint year, jint monthOfYear, jint dayOfMonth, jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond, OrgJodaTimeChronology *chronology) {
   OrgJodaTimeLocalDateTime *self = [OrgJodaTimeLocalDateTime alloc];
+  OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(self, year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond, chronology);
+  return self;
+}
+
+OrgJodaTimeLocalDateTime *create_OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(jint year, jint monthOfYear, jint dayOfMonth, jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeLocalDateTime *self = [[OrgJodaTimeLocalDateTime alloc] autorelease];
   OrgJodaTimeLocalDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(self, year, monthOfYear, dayOfMonth, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond, chronology);
   return self;
 }
@@ -1375,6 +1453,12 @@ void OrgJodaTimeLocalDateTime_Property_initWithOrgJodaTimeLocalDateTime_withOrgJ
 
 OrgJodaTimeLocalDateTime_Property *new_OrgJodaTimeLocalDateTime_Property_initWithOrgJodaTimeLocalDateTime_withOrgJodaTimeDateTimeField_(OrgJodaTimeLocalDateTime *instant, OrgJodaTimeDateTimeField *field) {
   OrgJodaTimeLocalDateTime_Property *self = [OrgJodaTimeLocalDateTime_Property alloc];
+  OrgJodaTimeLocalDateTime_Property_initWithOrgJodaTimeLocalDateTime_withOrgJodaTimeDateTimeField_(self, instant, field);
+  return self;
+}
+
+OrgJodaTimeLocalDateTime_Property *create_OrgJodaTimeLocalDateTime_Property_initWithOrgJodaTimeLocalDateTime_withOrgJodaTimeDateTimeField_(OrgJodaTimeLocalDateTime *instant, OrgJodaTimeDateTimeField *field) {
+  OrgJodaTimeLocalDateTime_Property *self = [[OrgJodaTimeLocalDateTime_Property alloc] autorelease];
   OrgJodaTimeLocalDateTime_Property_initWithOrgJodaTimeLocalDateTime_withOrgJodaTimeDateTimeField_(self, instant, field);
   return self;
 }

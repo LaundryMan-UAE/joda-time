@@ -146,6 +146,8 @@ __attribute__((unused)) static void OrgJodaTimeTzDateTimeZoneBuilder_OfYear_init
 
 __attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_OfYear *new_OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_(jchar mode, jint monthOfYear, jint dayOfMonth, jint dayOfWeek, jboolean advanceDayOfWeek, jint millisOfDay) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_OfYear *create_OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_(jchar mode, jint monthOfYear, jint dayOfMonth, jint dayOfWeek, jboolean advanceDayOfWeek, jint millisOfDay);
+
 __attribute__((unused)) static jlong OrgJodaTimeTzDateTimeZoneBuilder_OfYear_setDayOfMonthNextWithOrgJodaTimeChronology_withLong_(OrgJodaTimeTzDateTimeZoneBuilder_OfYear *self, OrgJodaTimeChronology *chrono, jlong next);
 
 __attribute__((unused)) static jlong OrgJodaTimeTzDateTimeZoneBuilder_OfYear_setDayOfMonthPreviousWithOrgJodaTimeChronology_withLong_(OrgJodaTimeTzDateTimeZoneBuilder_OfYear *self, OrgJodaTimeChronology *chrono, jlong prev);
@@ -213,6 +215,8 @@ __attribute__((unused)) static void OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_
 
 __attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *new_OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_OfYear *ofYear, NSString *nameKey, jint saveMillis) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *create_OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_OfYear *ofYear, NSString *nameKey, jint saveMillis);
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzDateTimeZoneBuilder_Recurrence)
 
 /*!
@@ -252,6 +256,8 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeTzDateTimeZoneBuilder_Rule, iRecurrence_, OrgJoda
 __attribute__((unused)) static void OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_Rule *self, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *recurrence, jint fromYear, jint toYear);
 
 __attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_Rule *new_OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *recurrence, jint fromYear, jint toYear) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_Rule *create_OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *recurrence, jint fromYear, jint toYear);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzDateTimeZoneBuilder_Rule)
 
@@ -300,13 +306,19 @@ __attribute__((unused)) static void OrgJodaTimeTzDateTimeZoneBuilder_Transition_
 
 __attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_Transition *new_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_(jlong millis, OrgJodaTimeTzDateTimeZoneBuilder_Transition *tr) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_Transition *create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_(jlong millis, OrgJodaTimeTzDateTimeZoneBuilder_Transition *tr);
+
 __attribute__((unused)) static void OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_Transition *self, jlong millis, OrgJodaTimeTzDateTimeZoneBuilder_Rule *rule, jint standardOffset);
 
 __attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_Transition *new_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(jlong millis, OrgJodaTimeTzDateTimeZoneBuilder_Rule *rule, jint standardOffset) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_Transition *create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(jlong millis, OrgJodaTimeTzDateTimeZoneBuilder_Rule *rule, jint standardOffset);
+
 __attribute__((unused)) static void OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_Transition *self, jlong millis, NSString *nameKey, jint wallOffset, jint standardOffset);
 
 __attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_Transition *new_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(jlong millis, NSString *nameKey, jint wallOffset, jint standardOffset) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_Transition *create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(jlong millis, NSString *nameKey, jint wallOffset, jint standardOffset);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzDateTimeZoneBuilder_Transition)
 
@@ -386,9 +398,13 @@ __attribute__((unused)) static void OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_ini
 
 __attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *new_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *create_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_init();
+
 __attribute__((unused)) static void OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *self, OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *rs);
 
 __attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *new_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *rs) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *create_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *rs);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet)
 
@@ -441,6 +457,8 @@ __attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *OrgJoda
 __attribute__((unused)) static void OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *self, NSString *id_, jint standardOffset, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *startRecurrence, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *endRecurrence);
 
 __attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *new_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(NSString *id_, jint standardOffset, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *startRecurrence, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *endRecurrence) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *create_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(NSString *id_, jint standardOffset, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *startRecurrence, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *endRecurrence);
 
 __attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_findMatchingRecurrenceWithLong_(OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *self, jlong instant);
 
@@ -519,6 +537,8 @@ __attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZon
 __attribute__((unused)) static void OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *self, NSString *id_, IOSLongArray *transitions, IOSIntArray *wallOffsets, IOSIntArray *standardOffsets, IOSObjectArray *nameKeys, OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *tailZone);
 
 __attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *new_OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(NSString *id_, IOSLongArray *transitions, IOSIntArray *wallOffsets, IOSIntArray *standardOffsets, IOSObjectArray *nameKeys, OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *tailZone) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *create_OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(NSString *id_, IOSLongArray *transitions, IOSIntArray *wallOffsets, IOSIntArray *standardOffsets, IOSObjectArray *nameKeys, OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *tailZone);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone)
 
@@ -834,6 +854,12 @@ OrgJodaTimeTzDateTimeZoneBuilder *new_OrgJodaTimeTzDateTimeZoneBuilder_init() {
   return self;
 }
 
+OrgJodaTimeTzDateTimeZoneBuilder *create_OrgJodaTimeTzDateTimeZoneBuilder_init() {
+  OrgJodaTimeTzDateTimeZoneBuilder *self = [[OrgJodaTimeTzDateTimeZoneBuilder alloc] autorelease];
+  OrgJodaTimeTzDateTimeZoneBuilder_init(self);
+  return self;
+}
+
 OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *OrgJodaTimeTzDateTimeZoneBuilder_getLastRuleSet(OrgJodaTimeTzDateTimeZoneBuilder *self) {
   if ([((JavaUtilArrayList *) nil_chk(self->iRuleSets_)) size] == 0) {
     [self addCutoverWithInt:JavaLangInteger_MIN_VALUE withChar:'w' withInt:1 withInt:1 withInt:0 withBoolean:false withInt:0];
@@ -1074,6 +1100,12 @@ OrgJodaTimeTzDateTimeZoneBuilder_OfYear *new_OrgJodaTimeTzDateTimeZoneBuilder_Of
   return self;
 }
 
+OrgJodaTimeTzDateTimeZoneBuilder_OfYear *create_OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_(jchar mode, jint monthOfYear, jint dayOfMonth, jint dayOfWeek, jboolean advanceDayOfWeek, jint millisOfDay) {
+  OrgJodaTimeTzDateTimeZoneBuilder_OfYear *self = [[OrgJodaTimeTzDateTimeZoneBuilder_OfYear alloc] autorelease];
+  OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_(self, mode, monthOfYear, dayOfMonth, dayOfWeek, advanceDayOfWeek, millisOfDay);
+  return self;
+}
+
 jlong OrgJodaTimeTzDateTimeZoneBuilder_OfYear_setDayOfMonthNextWithOrgJodaTimeChronology_withLong_(OrgJodaTimeTzDateTimeZoneBuilder_OfYear *self, OrgJodaTimeChronology *chrono, jlong next) {
   @try {
     next = OrgJodaTimeTzDateTimeZoneBuilder_OfYear_setDayOfMonthWithOrgJodaTimeChronology_withLong_(self, chrono, next);
@@ -1254,6 +1286,12 @@ OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *new_OrgJodaTimeTzDateTimeZoneBuilde
   return self;
 }
 
+OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *create_OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_OfYear *ofYear, NSString *nameKey, jint saveMillis) {
+  OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *self = [[OrgJodaTimeTzDateTimeZoneBuilder_Recurrence alloc] autorelease];
+  OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(self, ofYear, nameKey, saveMillis);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder_Recurrence)
 
 @implementation OrgJodaTimeTzDateTimeZoneBuilder_Rule
@@ -1347,6 +1385,12 @@ void OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuil
 
 OrgJodaTimeTzDateTimeZoneBuilder_Rule *new_OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *recurrence, jint fromYear, jint toYear) {
   OrgJodaTimeTzDateTimeZoneBuilder_Rule *self = [OrgJodaTimeTzDateTimeZoneBuilder_Rule alloc];
+  OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_(self, recurrence, fromYear, toYear);
+  return self;
+}
+
+OrgJodaTimeTzDateTimeZoneBuilder_Rule *create_OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *recurrence, jint fromYear, jint toYear) {
+  OrgJodaTimeTzDateTimeZoneBuilder_Rule *self = [[OrgJodaTimeTzDateTimeZoneBuilder_Rule alloc] autorelease];
   OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_(self, recurrence, fromYear, toYear);
   return self;
 }
@@ -1446,6 +1490,12 @@ OrgJodaTimeTzDateTimeZoneBuilder_Transition *new_OrgJodaTimeTzDateTimeZoneBuilde
   return self;
 }
 
+OrgJodaTimeTzDateTimeZoneBuilder_Transition *create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_(jlong millis, OrgJodaTimeTzDateTimeZoneBuilder_Transition *tr) {
+  OrgJodaTimeTzDateTimeZoneBuilder_Transition *self = [[OrgJodaTimeTzDateTimeZoneBuilder_Transition alloc] autorelease];
+  OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_(self, millis, tr);
+  return self;
+}
+
 void OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_Transition *self, jlong millis, OrgJodaTimeTzDateTimeZoneBuilder_Rule *rule, jint standardOffset) {
   NSObject_init(self);
   self->iMillis_ = millis;
@@ -1460,6 +1510,12 @@ OrgJodaTimeTzDateTimeZoneBuilder_Transition *new_OrgJodaTimeTzDateTimeZoneBuilde
   return self;
 }
 
+OrgJodaTimeTzDateTimeZoneBuilder_Transition *create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(jlong millis, OrgJodaTimeTzDateTimeZoneBuilder_Rule *rule, jint standardOffset) {
+  OrgJodaTimeTzDateTimeZoneBuilder_Transition *self = [[OrgJodaTimeTzDateTimeZoneBuilder_Transition alloc] autorelease];
+  OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(self, millis, rule, standardOffset);
+  return self;
+}
+
 void OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_Transition *self, jlong millis, NSString *nameKey, jint wallOffset, jint standardOffset) {
   NSObject_init(self);
   self->iMillis_ = millis;
@@ -1470,6 +1526,12 @@ void OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withI
 
 OrgJodaTimeTzDateTimeZoneBuilder_Transition *new_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(jlong millis, NSString *nameKey, jint wallOffset, jint standardOffset) {
   OrgJodaTimeTzDateTimeZoneBuilder_Transition *self = [OrgJodaTimeTzDateTimeZoneBuilder_Transition alloc];
+  OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(self, millis, nameKey, wallOffset, standardOffset);
+  return self;
+}
+
+OrgJodaTimeTzDateTimeZoneBuilder_Transition *create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(jlong millis, NSString *nameKey, jint wallOffset, jint standardOffset) {
+  OrgJodaTimeTzDateTimeZoneBuilder_Transition *self = [[OrgJodaTimeTzDateTimeZoneBuilder_Transition alloc] autorelease];
   OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(self, millis, nameKey, wallOffset, standardOffset);
   return self;
 }
@@ -1663,6 +1725,12 @@ OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *new_OrgJodaTimeTzDateTimeZoneBuilder_R
   return self;
 }
 
+OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *create_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_init() {
+  OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *self = [[OrgJodaTimeTzDateTimeZoneBuilder_RuleSet alloc] autorelease];
+  OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_init(self);
+  return self;
+}
+
 void OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *self, OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *rs) {
   NSObject_init(self);
   self->iStandardOffset_ = ((OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *) nil_chk(rs))->iStandardOffset_;
@@ -1675,6 +1743,12 @@ void OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneB
 
 OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *new_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *rs) {
   OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *self = [OrgJodaTimeTzDateTimeZoneBuilder_RuleSet alloc];
+  OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(self, rs);
+  return self;
+}
+
+OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *create_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *rs) {
+  OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *self = [[OrgJodaTimeTzDateTimeZoneBuilder_RuleSet alloc] autorelease];
   OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(self, rs);
   return self;
 }
@@ -1844,6 +1918,12 @@ void OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJo
 
 OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *new_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(NSString *id_, jint standardOffset, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *startRecurrence, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *endRecurrence) {
   OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *self = [OrgJodaTimeTzDateTimeZoneBuilder_DSTZone alloc];
+  OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(self, id_, standardOffset, startRecurrence, endRecurrence);
+  return self;
+}
+
+OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *create_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(NSString *id_, jint standardOffset, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *startRecurrence, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *endRecurrence) {
+  OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *self = [[OrgJodaTimeTzDateTimeZoneBuilder_DSTZone alloc] autorelease];
   OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(self, id_, standardOffset, startRecurrence, endRecurrence);
   return self;
 }
@@ -2246,6 +2326,12 @@ void OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLon
 
 OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *new_OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(NSString *id_, IOSLongArray *transitions, IOSIntArray *wallOffsets, IOSIntArray *standardOffsets, IOSObjectArray *nameKeys, OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *tailZone) {
   OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *self = [OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone alloc];
+  OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(self, id_, transitions, wallOffsets, standardOffsets, nameKeys, tailZone);
+  return self;
+}
+
+OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *create_OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(NSString *id_, IOSLongArray *transitions, IOSIntArray *wallOffsets, IOSIntArray *standardOffsets, IOSObjectArray *nameKeys, OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *tailZone) {
+  OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *self = [[OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone alloc] autorelease];
   OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(self, id_, transitions, wallOffsets, standardOffsets, nameKeys, tailZone);
   return self;
 }

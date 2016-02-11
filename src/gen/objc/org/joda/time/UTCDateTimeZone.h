@@ -67,6 +67,8 @@ FOUNDATION_EXPORT void OrgJodaTimeUTCDateTimeZone_init(OrgJodaTimeUTCDateTimeZon
 
 FOUNDATION_EXPORT OrgJodaTimeUTCDateTimeZone *new_OrgJodaTimeUTCDateTimeZone_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeUTCDateTimeZone *create_OrgJodaTimeUTCDateTimeZone_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeUTCDateTimeZone)
 
 #endif

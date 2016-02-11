@@ -214,4 +214,10 @@ OrgJodaTimeConvertStringConverter *new_OrgJodaTimeConvertStringConverter_init() 
   return self;
 }
 
+OrgJodaTimeConvertStringConverter *create_OrgJodaTimeConvertStringConverter_init() {
+  OrgJodaTimeConvertStringConverter *self = [[OrgJodaTimeConvertStringConverter alloc] autorelease];
+  OrgJodaTimeConvertStringConverter_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertStringConverter)

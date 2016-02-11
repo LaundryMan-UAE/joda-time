@@ -287,6 +287,12 @@ OrgJodaTimeDateTimeUtils *new_OrgJodaTimeDateTimeUtils_init() {
   return self;
 }
 
+OrgJodaTimeDateTimeUtils *create_OrgJodaTimeDateTimeUtils_init() {
+  OrgJodaTimeDateTimeUtils *self = [[OrgJodaTimeDateTimeUtils alloc] autorelease];
+  OrgJodaTimeDateTimeUtils_init(self);
+  return self;
+}
+
 jlong OrgJodaTimeDateTimeUtils_currentTimeMillis() {
   OrgJodaTimeDateTimeUtils_initialize();
   return [((id<OrgJodaTimeDateTimeUtils_MillisProvider>) nil_chk(JreLoadVolatileId(&OrgJodaTimeDateTimeUtils_cMillisProvider))) getMillis];
@@ -526,6 +532,12 @@ OrgJodaTimeDateTimeUtils_SystemMillisProvider *new_OrgJodaTimeDateTimeUtils_Syst
   return self;
 }
 
+OrgJodaTimeDateTimeUtils_SystemMillisProvider *create_OrgJodaTimeDateTimeUtils_SystemMillisProvider_init() {
+  OrgJodaTimeDateTimeUtils_SystemMillisProvider *self = [[OrgJodaTimeDateTimeUtils_SystemMillisProvider alloc] autorelease];
+  OrgJodaTimeDateTimeUtils_SystemMillisProvider_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeUtils_SystemMillisProvider)
 
 @implementation OrgJodaTimeDateTimeUtils_FixedMillisProvider
@@ -564,6 +576,12 @@ OrgJodaTimeDateTimeUtils_FixedMillisProvider *new_OrgJodaTimeDateTimeUtils_Fixed
   return self;
 }
 
+OrgJodaTimeDateTimeUtils_FixedMillisProvider *create_OrgJodaTimeDateTimeUtils_FixedMillisProvider_initWithLong_(jlong fixedMillis) {
+  OrgJodaTimeDateTimeUtils_FixedMillisProvider *self = [[OrgJodaTimeDateTimeUtils_FixedMillisProvider alloc] autorelease];
+  OrgJodaTimeDateTimeUtils_FixedMillisProvider_initWithLong_(self, fixedMillis);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeUtils_FixedMillisProvider)
 
 @implementation OrgJodaTimeDateTimeUtils_OffsetMillisProvider
@@ -598,6 +616,12 @@ void OrgJodaTimeDateTimeUtils_OffsetMillisProvider_initWithLong_(OrgJodaTimeDate
 
 OrgJodaTimeDateTimeUtils_OffsetMillisProvider *new_OrgJodaTimeDateTimeUtils_OffsetMillisProvider_initWithLong_(jlong offsetMillis) {
   OrgJodaTimeDateTimeUtils_OffsetMillisProvider *self = [OrgJodaTimeDateTimeUtils_OffsetMillisProvider alloc];
+  OrgJodaTimeDateTimeUtils_OffsetMillisProvider_initWithLong_(self, offsetMillis);
+  return self;
+}
+
+OrgJodaTimeDateTimeUtils_OffsetMillisProvider *create_OrgJodaTimeDateTimeUtils_OffsetMillisProvider_initWithLong_(jlong offsetMillis) {
+  OrgJodaTimeDateTimeUtils_OffsetMillisProvider *self = [[OrgJodaTimeDateTimeUtils_OffsetMillisProvider alloc] autorelease];
   OrgJodaTimeDateTimeUtils_OffsetMillisProvider_initWithLong_(self, offsetMillis);
   return self;
 }

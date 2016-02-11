@@ -26,6 +26,8 @@ __attribute__((unused)) static void OrgJodaTimeFieldFieldUtils_init(OrgJodaTimeF
 
 __attribute__((unused)) static OrgJodaTimeFieldFieldUtils *new_OrgJodaTimeFieldFieldUtils_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeFieldFieldUtils *create_OrgJodaTimeFieldFieldUtils_init();
+
 @implementation OrgJodaTimeFieldFieldUtils
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -154,6 +156,12 @@ void OrgJodaTimeFieldFieldUtils_init(OrgJodaTimeFieldFieldUtils *self) {
 
 OrgJodaTimeFieldFieldUtils *new_OrgJodaTimeFieldFieldUtils_init() {
   OrgJodaTimeFieldFieldUtils *self = [OrgJodaTimeFieldFieldUtils alloc];
+  OrgJodaTimeFieldFieldUtils_init(self);
+  return self;
+}
+
+OrgJodaTimeFieldFieldUtils *create_OrgJodaTimeFieldFieldUtils_init() {
+  OrgJodaTimeFieldFieldUtils *self = [[OrgJodaTimeFieldFieldUtils alloc] autorelease];
   OrgJodaTimeFieldFieldUtils_init(self);
   return self;
 }

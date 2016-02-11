@@ -185,6 +185,8 @@ FOUNDATION_EXPORT void OrgJodaTimeFormatPeriodFormat_init(OrgJodaTimeFormatPerio
 
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormat *new_OrgJodaTimeFormatPeriodFormat_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormat *create_OrgJodaTimeFormatPeriodFormat_init();
+
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormat_getDefault();
 
 FOUNDATION_EXPORT OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormat_wordBased();

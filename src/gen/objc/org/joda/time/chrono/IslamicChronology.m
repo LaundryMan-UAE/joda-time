@@ -555,6 +555,12 @@ OrgJodaTimeChronoIslamicChronology *new_OrgJodaTimeChronoIslamicChronology_initW
   return self;
 }
 
+OrgJodaTimeChronoIslamicChronology *create_OrgJodaTimeChronoIslamicChronology_initWithOrgJodaTimeChronology_withId_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_(OrgJodaTimeChronology *base, id param, OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *leapYears) {
+  OrgJodaTimeChronoIslamicChronology *self = [[OrgJodaTimeChronoIslamicChronology alloc] autorelease];
+  OrgJodaTimeChronoIslamicChronology_initWithOrgJodaTimeChronology_withId_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_(self, base, param, leapYears);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoIslamicChronology)
 
 @implementation OrgJodaTimeChronoIslamicChronology_LeapYearPatternType
@@ -623,6 +629,12 @@ void OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_initWithInt_withInt_
 
 OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *new_OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_initWithInt_withInt_(jint index, jint pattern) {
   OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *self = [OrgJodaTimeChronoIslamicChronology_LeapYearPatternType alloc];
+  OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_initWithInt_withInt_(self, index, pattern);
+  return self;
+}
+
+OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *create_OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_initWithInt_withInt_(jint index, jint pattern) {
+  OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *self = [[OrgJodaTimeChronoIslamicChronology_LeapYearPatternType alloc] autorelease];
   OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_initWithInt_withInt_(self, index, pattern);
   return self;
 }

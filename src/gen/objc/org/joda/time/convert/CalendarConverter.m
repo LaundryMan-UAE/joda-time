@@ -117,4 +117,10 @@ OrgJodaTimeConvertCalendarConverter *new_OrgJodaTimeConvertCalendarConverter_ini
   return self;
 }
 
+OrgJodaTimeConvertCalendarConverter *create_OrgJodaTimeConvertCalendarConverter_init() {
+  OrgJodaTimeConvertCalendarConverter *self = [[OrgJodaTimeConvertCalendarConverter alloc] autorelease];
+  OrgJodaTimeConvertCalendarConverter_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertCalendarConverter)

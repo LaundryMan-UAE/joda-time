@@ -69,4 +69,10 @@ OrgJodaTimeConvertLongConverter *new_OrgJodaTimeConvertLongConverter_init() {
   return self;
 }
 
+OrgJodaTimeConvertLongConverter *create_OrgJodaTimeConvertLongConverter_init() {
+  OrgJodaTimeConvertLongConverter *self = [[OrgJodaTimeConvertLongConverter alloc] autorelease];
+  OrgJodaTimeConvertLongConverter_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertLongConverter)

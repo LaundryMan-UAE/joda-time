@@ -294,12 +294,24 @@ OrgJodaTimeDuration *new_OrgJodaTimeDuration_initWithLong_(jlong duration) {
   return self;
 }
 
+OrgJodaTimeDuration *create_OrgJodaTimeDuration_initWithLong_(jlong duration) {
+  OrgJodaTimeDuration *self = [[OrgJodaTimeDuration alloc] autorelease];
+  OrgJodaTimeDuration_initWithLong_(self, duration);
+  return self;
+}
+
 void OrgJodaTimeDuration_initWithLong_withLong_(OrgJodaTimeDuration *self, jlong startInstant, jlong endInstant) {
   OrgJodaTimeBaseBaseDuration_initWithLong_withLong_(self, startInstant, endInstant);
 }
 
 OrgJodaTimeDuration *new_OrgJodaTimeDuration_initWithLong_withLong_(jlong startInstant, jlong endInstant) {
   OrgJodaTimeDuration *self = [OrgJodaTimeDuration alloc];
+  OrgJodaTimeDuration_initWithLong_withLong_(self, startInstant, endInstant);
+  return self;
+}
+
+OrgJodaTimeDuration *create_OrgJodaTimeDuration_initWithLong_withLong_(jlong startInstant, jlong endInstant) {
+  OrgJodaTimeDuration *self = [[OrgJodaTimeDuration alloc] autorelease];
   OrgJodaTimeDuration_initWithLong_withLong_(self, startInstant, endInstant);
   return self;
 }
@@ -314,12 +326,24 @@ OrgJodaTimeDuration *new_OrgJodaTimeDuration_initWithOrgJodaTimeReadableInstant_
   return self;
 }
 
+OrgJodaTimeDuration *create_OrgJodaTimeDuration_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end) {
+  OrgJodaTimeDuration *self = [[OrgJodaTimeDuration alloc] autorelease];
+  OrgJodaTimeDuration_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(self, start, end);
+  return self;
+}
+
 void OrgJodaTimeDuration_initWithId_(OrgJodaTimeDuration *self, id duration) {
   OrgJodaTimeBaseBaseDuration_initWithId_(self, duration);
 }
 
 OrgJodaTimeDuration *new_OrgJodaTimeDuration_initWithId_(id duration) {
   OrgJodaTimeDuration *self = [OrgJodaTimeDuration alloc];
+  OrgJodaTimeDuration_initWithId_(self, duration);
+  return self;
+}
+
+OrgJodaTimeDuration *create_OrgJodaTimeDuration_initWithId_(id duration) {
+  OrgJodaTimeDuration *self = [[OrgJodaTimeDuration alloc] autorelease];
   OrgJodaTimeDuration_initWithId_(self, duration);
   return self;
 }

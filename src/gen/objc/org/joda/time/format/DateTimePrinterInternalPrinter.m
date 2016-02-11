@@ -33,6 +33,8 @@ __attribute__((unused)) static void OrgJodaTimeFormatDateTimePrinterInternalPrin
 
 __attribute__((unused)) static OrgJodaTimeFormatDateTimePrinterInternalPrinter *new_OrgJodaTimeFormatDateTimePrinterInternalPrinter_initWithOrgJodaTimeFormatDateTimePrinter_(id<OrgJodaTimeFormatDateTimePrinter> underlying) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeFormatDateTimePrinterInternalPrinter *create_OrgJodaTimeFormatDateTimePrinterInternalPrinter_initWithOrgJodaTimeFormatDateTimePrinter_(id<OrgJodaTimeFormatDateTimePrinter> underlying);
+
 @implementation OrgJodaTimeFormatDateTimePrinterInternalPrinter
 
 + (id<OrgJodaTimeFormatInternalPrinter>)ofWithOrgJodaTimeFormatDateTimePrinter:(id<OrgJodaTimeFormatDateTimePrinter>)underlying {
@@ -128,6 +130,12 @@ void OrgJodaTimeFormatDateTimePrinterInternalPrinter_initWithOrgJodaTimeFormatDa
 
 OrgJodaTimeFormatDateTimePrinterInternalPrinter *new_OrgJodaTimeFormatDateTimePrinterInternalPrinter_initWithOrgJodaTimeFormatDateTimePrinter_(id<OrgJodaTimeFormatDateTimePrinter> underlying) {
   OrgJodaTimeFormatDateTimePrinterInternalPrinter *self = [OrgJodaTimeFormatDateTimePrinterInternalPrinter alloc];
+  OrgJodaTimeFormatDateTimePrinterInternalPrinter_initWithOrgJodaTimeFormatDateTimePrinter_(self, underlying);
+  return self;
+}
+
+OrgJodaTimeFormatDateTimePrinterInternalPrinter *create_OrgJodaTimeFormatDateTimePrinterInternalPrinter_initWithOrgJodaTimeFormatDateTimePrinter_(id<OrgJodaTimeFormatDateTimePrinter> underlying) {
+  OrgJodaTimeFormatDateTimePrinterInternalPrinter *self = [[OrgJodaTimeFormatDateTimePrinterInternalPrinter alloc] autorelease];
   OrgJodaTimeFormatDateTimePrinterInternalPrinter_initWithOrgJodaTimeFormatDateTimePrinter_(self, underlying);
   return self;
 }

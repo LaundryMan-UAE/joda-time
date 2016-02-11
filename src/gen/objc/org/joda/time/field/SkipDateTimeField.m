@@ -133,6 +133,12 @@ OrgJodaTimeFieldSkipDateTimeField *new_OrgJodaTimeFieldSkipDateTimeField_initWit
   return self;
 }
 
+OrgJodaTimeFieldSkipDateTimeField *create_OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field) {
+  OrgJodaTimeFieldSkipDateTimeField *self = [[OrgJodaTimeFieldSkipDateTimeField alloc] autorelease];
+  OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(self, chronology, field);
+  return self;
+}
+
 void OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(OrgJodaTimeFieldSkipDateTimeField *self, OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field, jint skip) {
   OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_(self, field);
   JreStrongAssign(&self->iChronology_, chronology);
@@ -151,6 +157,12 @@ void OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJoda
 
 OrgJodaTimeFieldSkipDateTimeField *new_OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field, jint skip) {
   OrgJodaTimeFieldSkipDateTimeField *self = [OrgJodaTimeFieldSkipDateTimeField alloc];
+  OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(self, chronology, field, skip);
+  return self;
+}
+
+OrgJodaTimeFieldSkipDateTimeField *create_OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field, jint skip) {
+  OrgJodaTimeFieldSkipDateTimeField *self = [[OrgJodaTimeFieldSkipDateTimeField alloc] autorelease];
   OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(self, chronology, field, skip);
   return self;
 }

@@ -762,6 +762,12 @@ OrgJodaTimeChronoAssembledChronology_Fields *new_OrgJodaTimeChronoAssembledChron
   return self;
 }
 
+OrgJodaTimeChronoAssembledChronology_Fields *create_OrgJodaTimeChronoAssembledChronology_Fields_init() {
+  OrgJodaTimeChronoAssembledChronology_Fields *self = [[OrgJodaTimeChronoAssembledChronology_Fields alloc] autorelease];
+  OrgJodaTimeChronoAssembledChronology_Fields_init(self);
+  return self;
+}
+
 jboolean OrgJodaTimeChronoAssembledChronology_Fields_isSupportedWithOrgJodaTimeDurationField_(OrgJodaTimeDurationField *field) {
   OrgJodaTimeChronoAssembledChronology_Fields_initialize();
   return field == nil ? false : [field isSupported];

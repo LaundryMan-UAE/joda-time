@@ -250,12 +250,24 @@ OrgJodaTimeMutableInterval *new_OrgJodaTimeMutableInterval_init() {
   return self;
 }
 
+OrgJodaTimeMutableInterval *create_OrgJodaTimeMutableInterval_init() {
+  OrgJodaTimeMutableInterval *self = [[OrgJodaTimeMutableInterval alloc] autorelease];
+  OrgJodaTimeMutableInterval_init(self);
+  return self;
+}
+
 void OrgJodaTimeMutableInterval_initWithLong_withLong_(OrgJodaTimeMutableInterval *self, jlong startInstant, jlong endInstant) {
   OrgJodaTimeBaseBaseInterval_initWithLong_withLong_withOrgJodaTimeChronology_(self, startInstant, endInstant, nil);
 }
 
 OrgJodaTimeMutableInterval *new_OrgJodaTimeMutableInterval_initWithLong_withLong_(jlong startInstant, jlong endInstant) {
   OrgJodaTimeMutableInterval *self = [OrgJodaTimeMutableInterval alloc];
+  OrgJodaTimeMutableInterval_initWithLong_withLong_(self, startInstant, endInstant);
+  return self;
+}
+
+OrgJodaTimeMutableInterval *create_OrgJodaTimeMutableInterval_initWithLong_withLong_(jlong startInstant, jlong endInstant) {
+  OrgJodaTimeMutableInterval *self = [[OrgJodaTimeMutableInterval alloc] autorelease];
   OrgJodaTimeMutableInterval_initWithLong_withLong_(self, startInstant, endInstant);
   return self;
 }
@@ -270,12 +282,24 @@ OrgJodaTimeMutableInterval *new_OrgJodaTimeMutableInterval_initWithLong_withLong
   return self;
 }
 
+OrgJodaTimeMutableInterval *create_OrgJodaTimeMutableInterval_initWithLong_withLong_withOrgJodaTimeChronology_(jlong startInstant, jlong endInstant, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeMutableInterval *self = [[OrgJodaTimeMutableInterval alloc] autorelease];
+  OrgJodaTimeMutableInterval_initWithLong_withLong_withOrgJodaTimeChronology_(self, startInstant, endInstant, chronology);
+  return self;
+}
+
 void OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(OrgJodaTimeMutableInterval *self, id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end) {
   OrgJodaTimeBaseBaseInterval_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(self, start, end);
 }
 
 OrgJodaTimeMutableInterval *new_OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end) {
   OrgJodaTimeMutableInterval *self = [OrgJodaTimeMutableInterval alloc];
+  OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(self, start, end);
+  return self;
+}
+
+OrgJodaTimeMutableInterval *create_OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end) {
+  OrgJodaTimeMutableInterval *self = [[OrgJodaTimeMutableInterval alloc] autorelease];
   OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(self, start, end);
   return self;
 }
@@ -290,12 +314,24 @@ OrgJodaTimeMutableInterval *new_OrgJodaTimeMutableInterval_initWithOrgJodaTimeRe
   return self;
 }
 
+OrgJodaTimeMutableInterval *create_OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableDuration> duration) {
+  OrgJodaTimeMutableInterval *self = [[OrgJodaTimeMutableInterval alloc] autorelease];
+  OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_(self, start, duration);
+  return self;
+}
+
 void OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(OrgJodaTimeMutableInterval *self, id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> end) {
   OrgJodaTimeBaseBaseInterval_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(self, duration, end);
 }
 
 OrgJodaTimeMutableInterval *new_OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> end) {
   OrgJodaTimeMutableInterval *self = [OrgJodaTimeMutableInterval alloc];
+  OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(self, duration, end);
+  return self;
+}
+
+OrgJodaTimeMutableInterval *create_OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> end) {
+  OrgJodaTimeMutableInterval *self = [[OrgJodaTimeMutableInterval alloc] autorelease];
   OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(self, duration, end);
   return self;
 }
@@ -310,12 +346,24 @@ OrgJodaTimeMutableInterval *new_OrgJodaTimeMutableInterval_initWithOrgJodaTimeRe
   return self;
 }
 
+OrgJodaTimeMutableInterval *create_OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadablePeriod_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadablePeriod> period) {
+  OrgJodaTimeMutableInterval *self = [[OrgJodaTimeMutableInterval alloc] autorelease];
+  OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadablePeriod_(self, start, period);
+  return self;
+}
+
 void OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadablePeriod_withOrgJodaTimeReadableInstant_(OrgJodaTimeMutableInterval *self, id<OrgJodaTimeReadablePeriod> period, id<OrgJodaTimeReadableInstant> end) {
   OrgJodaTimeBaseBaseInterval_initWithOrgJodaTimeReadablePeriod_withOrgJodaTimeReadableInstant_(self, period, end);
 }
 
 OrgJodaTimeMutableInterval *new_OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadablePeriod_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadablePeriod> period, id<OrgJodaTimeReadableInstant> end) {
   OrgJodaTimeMutableInterval *self = [OrgJodaTimeMutableInterval alloc];
+  OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadablePeriod_withOrgJodaTimeReadableInstant_(self, period, end);
+  return self;
+}
+
+OrgJodaTimeMutableInterval *create_OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadablePeriod_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadablePeriod> period, id<OrgJodaTimeReadableInstant> end) {
+  OrgJodaTimeMutableInterval *self = [[OrgJodaTimeMutableInterval alloc] autorelease];
   OrgJodaTimeMutableInterval_initWithOrgJodaTimeReadablePeriod_withOrgJodaTimeReadableInstant_(self, period, end);
   return self;
 }
@@ -330,12 +378,24 @@ OrgJodaTimeMutableInterval *new_OrgJodaTimeMutableInterval_initWithId_(id interv
   return self;
 }
 
+OrgJodaTimeMutableInterval *create_OrgJodaTimeMutableInterval_initWithId_(id interval) {
+  OrgJodaTimeMutableInterval *self = [[OrgJodaTimeMutableInterval alloc] autorelease];
+  OrgJodaTimeMutableInterval_initWithId_(self, interval);
+  return self;
+}
+
 void OrgJodaTimeMutableInterval_initWithId_withOrgJodaTimeChronology_(OrgJodaTimeMutableInterval *self, id interval, OrgJodaTimeChronology *chronology) {
   OrgJodaTimeBaseBaseInterval_initWithId_withOrgJodaTimeChronology_(self, interval, chronology);
 }
 
 OrgJodaTimeMutableInterval *new_OrgJodaTimeMutableInterval_initWithId_withOrgJodaTimeChronology_(id interval, OrgJodaTimeChronology *chronology) {
   OrgJodaTimeMutableInterval *self = [OrgJodaTimeMutableInterval alloc];
+  OrgJodaTimeMutableInterval_initWithId_withOrgJodaTimeChronology_(self, interval, chronology);
+  return self;
+}
+
+OrgJodaTimeMutableInterval *create_OrgJodaTimeMutableInterval_initWithId_withOrgJodaTimeChronology_(id interval, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeMutableInterval *self = [[OrgJodaTimeMutableInterval alloc] autorelease];
   OrgJodaTimeMutableInterval_initWithId_withOrgJodaTimeChronology_(self, interval, chronology);
   return self;
 }

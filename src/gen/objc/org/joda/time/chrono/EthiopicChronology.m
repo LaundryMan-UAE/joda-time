@@ -274,4 +274,10 @@ OrgJodaTimeChronoEthiopicChronology *new_OrgJodaTimeChronoEthiopicChronology_ini
   return self;
 }
 
+OrgJodaTimeChronoEthiopicChronology *create_OrgJodaTimeChronoEthiopicChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronology *base, id param, jint minDaysInFirstWeek) {
+  OrgJodaTimeChronoEthiopicChronology *self = [[OrgJodaTimeChronoEthiopicChronology alloc] autorelease];
+  OrgJodaTimeChronoEthiopicChronology_initWithOrgJodaTimeChronology_withId_withInt_(self, base, param, minDaysInFirstWeek);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoEthiopicChronology)

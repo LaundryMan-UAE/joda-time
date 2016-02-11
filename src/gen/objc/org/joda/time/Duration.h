@@ -416,17 +416,25 @@ FOUNDATION_EXPORT void OrgJodaTimeDuration_initWithLong_(OrgJodaTimeDuration *se
 
 FOUNDATION_EXPORT OrgJodaTimeDuration *new_OrgJodaTimeDuration_initWithLong_(jlong duration) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeDuration *create_OrgJodaTimeDuration_initWithLong_(jlong duration);
+
 FOUNDATION_EXPORT void OrgJodaTimeDuration_initWithLong_withLong_(OrgJodaTimeDuration *self, jlong startInstant, jlong endInstant);
 
 FOUNDATION_EXPORT OrgJodaTimeDuration *new_OrgJodaTimeDuration_initWithLong_withLong_(jlong startInstant, jlong endInstant) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeDuration *create_OrgJodaTimeDuration_initWithLong_withLong_(jlong startInstant, jlong endInstant);
 
 FOUNDATION_EXPORT void OrgJodaTimeDuration_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(OrgJodaTimeDuration *self, id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end);
 
 FOUNDATION_EXPORT OrgJodaTimeDuration *new_OrgJodaTimeDuration_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeDuration *create_OrgJodaTimeDuration_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end);
+
 FOUNDATION_EXPORT void OrgJodaTimeDuration_initWithId_(OrgJodaTimeDuration *self, id duration);
 
 FOUNDATION_EXPORT OrgJodaTimeDuration *new_OrgJodaTimeDuration_initWithId_(id duration) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeDuration *create_OrgJodaTimeDuration_initWithId_(id duration);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDuration)
 

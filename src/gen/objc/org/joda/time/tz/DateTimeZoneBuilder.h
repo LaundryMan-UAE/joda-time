@@ -222,6 +222,8 @@ FOUNDATION_EXPORT void OrgJodaTimeTzDateTimeZoneBuilder_init(OrgJodaTimeTzDateTi
 
 FOUNDATION_EXPORT OrgJodaTimeTzDateTimeZoneBuilder *new_OrgJodaTimeTzDateTimeZoneBuilder_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeTzDateTimeZoneBuilder *create_OrgJodaTimeTzDateTimeZoneBuilder_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzDateTimeZoneBuilder)
 
 #endif

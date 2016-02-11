@@ -75,4 +75,10 @@ OrgJodaTimeChronoGJMonthOfYearDateTimeField *new_OrgJodaTimeChronoGJMonthOfYearD
   return self;
 }
 
+OrgJodaTimeChronoGJMonthOfYearDateTimeField *create_OrgJodaTimeChronoGJMonthOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(OrgJodaTimeChronoBasicChronology *chronology) {
+  OrgJodaTimeChronoGJMonthOfYearDateTimeField *self = [[OrgJodaTimeChronoGJMonthOfYearDateTimeField alloc] autorelease];
+  OrgJodaTimeChronoGJMonthOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self, chronology);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJMonthOfYearDateTimeField)

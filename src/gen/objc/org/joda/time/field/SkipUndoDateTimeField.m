@@ -127,6 +127,12 @@ OrgJodaTimeFieldSkipUndoDateTimeField *new_OrgJodaTimeFieldSkipUndoDateTimeField
   return self;
 }
 
+OrgJodaTimeFieldSkipUndoDateTimeField *create_OrgJodaTimeFieldSkipUndoDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field) {
+  OrgJodaTimeFieldSkipUndoDateTimeField *self = [[OrgJodaTimeFieldSkipUndoDateTimeField alloc] autorelease];
+  OrgJodaTimeFieldSkipUndoDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(self, chronology, field);
+  return self;
+}
+
 void OrgJodaTimeFieldSkipUndoDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(OrgJodaTimeFieldSkipUndoDateTimeField *self, OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field, jint skip) {
   OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_(self, field);
   JreStrongAssign(&self->iChronology_, chronology);
@@ -145,6 +151,12 @@ void OrgJodaTimeFieldSkipUndoDateTimeField_initWithOrgJodaTimeChronology_withOrg
 
 OrgJodaTimeFieldSkipUndoDateTimeField *new_OrgJodaTimeFieldSkipUndoDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field, jint skip) {
   OrgJodaTimeFieldSkipUndoDateTimeField *self = [OrgJodaTimeFieldSkipUndoDateTimeField alloc];
+  OrgJodaTimeFieldSkipUndoDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(self, chronology, field, skip);
+  return self;
+}
+
+OrgJodaTimeFieldSkipUndoDateTimeField *create_OrgJodaTimeFieldSkipUndoDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field, jint skip) {
+  OrgJodaTimeFieldSkipUndoDateTimeField *self = [[OrgJodaTimeFieldSkipUndoDateTimeField alloc] autorelease];
   OrgJodaTimeFieldSkipUndoDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(self, chronology, field, skip);
   return self;
 }

@@ -201,6 +201,12 @@ OrgJodaTimeFieldDelegatedDurationField *new_OrgJodaTimeFieldDelegatedDurationFie
   return self;
 }
 
+OrgJodaTimeFieldDelegatedDurationField *create_OrgJodaTimeFieldDelegatedDurationField_initWithOrgJodaTimeDurationField_(OrgJodaTimeDurationField *field) {
+  OrgJodaTimeFieldDelegatedDurationField *self = [[OrgJodaTimeFieldDelegatedDurationField alloc] autorelease];
+  OrgJodaTimeFieldDelegatedDurationField_initWithOrgJodaTimeDurationField_(self, field);
+  return self;
+}
+
 void OrgJodaTimeFieldDelegatedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_(OrgJodaTimeFieldDelegatedDurationField *self, OrgJodaTimeDurationField *field, OrgJodaTimeDurationFieldType *type) {
   OrgJodaTimeDurationField_init(self);
   if (field == nil) {
@@ -212,6 +218,12 @@ void OrgJodaTimeFieldDelegatedDurationField_initWithOrgJodaTimeDurationField_wit
 
 OrgJodaTimeFieldDelegatedDurationField *new_OrgJodaTimeFieldDelegatedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationField *field, OrgJodaTimeDurationFieldType *type) {
   OrgJodaTimeFieldDelegatedDurationField *self = [OrgJodaTimeFieldDelegatedDurationField alloc];
+  OrgJodaTimeFieldDelegatedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_(self, field, type);
+  return self;
+}
+
+OrgJodaTimeFieldDelegatedDurationField *create_OrgJodaTimeFieldDelegatedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationField *field, OrgJodaTimeDurationFieldType *type) {
+  OrgJodaTimeFieldDelegatedDurationField *self = [[OrgJodaTimeFieldDelegatedDurationField alloc] autorelease];
   OrgJodaTimeFieldDelegatedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_(self, field, type);
   return self;
 }

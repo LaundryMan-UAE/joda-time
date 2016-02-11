@@ -95,6 +95,8 @@ FOUNDATION_EXPORT void OrgJodaTimeConvertLongConverter_init(OrgJodaTimeConvertLo
 
 FOUNDATION_EXPORT OrgJodaTimeConvertLongConverter *new_OrgJodaTimeConvertLongConverter_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeConvertLongConverter *create_OrgJodaTimeConvertLongConverter_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertLongConverter)
 
 #endif

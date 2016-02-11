@@ -155,4 +155,10 @@ OrgJodaTimeChronoBasicSingleEraDateTimeField *new_OrgJodaTimeChronoBasicSingleEr
   return self;
 }
 
+OrgJodaTimeChronoBasicSingleEraDateTimeField *create_OrgJodaTimeChronoBasicSingleEraDateTimeField_initWithNSString_(NSString *text) {
+  OrgJodaTimeChronoBasicSingleEraDateTimeField *self = [[OrgJodaTimeChronoBasicSingleEraDateTimeField alloc] autorelease];
+  OrgJodaTimeChronoBasicSingleEraDateTimeField_initWithNSString_(self, text);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicSingleEraDateTimeField)

@@ -144,6 +144,8 @@ FOUNDATION_EXPORT void OrgJodaTimeChronoJulianChronology_initWithOrgJodaTimeChro
 
 FOUNDATION_EXPORT OrgJodaTimeChronoJulianChronology *new_OrgJodaTimeChronoJulianChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronology *base, id param, jint minDaysInFirstWeek) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeChronoJulianChronology *create_OrgJodaTimeChronoJulianChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronology *base, id param, jint minDaysInFirstWeek);
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoJulianChronology)
 
 #endif

@@ -718,6 +718,12 @@ OrgJodaTimePeriodType *new_OrgJodaTimePeriodType_initWithNSString_withOrgJodaTim
   return self;
 }
 
+OrgJodaTimePeriodType *create_OrgJodaTimePeriodType_initWithNSString_withOrgJodaTimeDurationFieldTypeArray_withIntArray_(NSString *name, IOSObjectArray *types, IOSIntArray *indices) {
+  OrgJodaTimePeriodType *self = [[OrgJodaTimePeriodType alloc] autorelease];
+  OrgJodaTimePeriodType_initWithNSString_withOrgJodaTimeDurationFieldTypeArray_withIntArray_(self, name, types, indices);
+  return self;
+}
+
 OrgJodaTimePeriodType *OrgJodaTimePeriodType_withFieldRemovedWithInt_withNSString_(OrgJodaTimePeriodType *self, jint indicesIndex, NSString *name) {
   jint fieldIndex = IOSIntArray_Get(nil_chk(self->iIndices_), indicesIndex);
   if (fieldIndex == -1) {

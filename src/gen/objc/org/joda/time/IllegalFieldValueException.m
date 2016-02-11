@@ -301,6 +301,12 @@ OrgJodaTimeIllegalFieldValueException *new_OrgJodaTimeIllegalFieldValueException
   return self;
 }
 
+OrgJodaTimeIllegalFieldValueException *create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_(OrgJodaTimeDateTimeFieldType *fieldType, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound) {
+  OrgJodaTimeIllegalFieldValueException *self = [[OrgJodaTimeIllegalFieldValueException alloc] autorelease];
+  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_(self, fieldType, value, lowerBound, upperBound);
+  return self;
+}
+
 void OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSString_(OrgJodaTimeIllegalFieldValueException *self, OrgJodaTimeDateTimeFieldType *fieldType, NSNumber *value, NSString *explain) {
   JavaLangIllegalArgumentException_initWithNSString_(self, OrgJodaTimeIllegalFieldValueException_createMessageWithNSString_withNSNumber_withNSNumber_withNSNumber_withNSString_([((OrgJodaTimeDateTimeFieldType *) nil_chk(fieldType)) getName], value, nil, nil, explain));
   JreStrongAssign(&self->iDateTimeFieldType_, fieldType);
@@ -315,6 +321,12 @@ void OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_
 
 OrgJodaTimeIllegalFieldValueException *new_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSString_(OrgJodaTimeDateTimeFieldType *fieldType, NSNumber *value, NSString *explain) {
   OrgJodaTimeIllegalFieldValueException *self = [OrgJodaTimeIllegalFieldValueException alloc];
+  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSString_(self, fieldType, value, explain);
+  return self;
+}
+
+OrgJodaTimeIllegalFieldValueException *create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSString_(OrgJodaTimeDateTimeFieldType *fieldType, NSNumber *value, NSString *explain) {
+  OrgJodaTimeIllegalFieldValueException *self = [[OrgJodaTimeIllegalFieldValueException alloc] autorelease];
   OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSString_(self, fieldType, value, explain);
   return self;
 }
@@ -337,6 +349,12 @@ OrgJodaTimeIllegalFieldValueException *new_OrgJodaTimeIllegalFieldValueException
   return self;
 }
 
+OrgJodaTimeIllegalFieldValueException *create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSNumber_withNSNumber_withNSNumber_(OrgJodaTimeDurationFieldType *fieldType, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound) {
+  OrgJodaTimeIllegalFieldValueException *self = [[OrgJodaTimeIllegalFieldValueException alloc] autorelease];
+  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSNumber_withNSNumber_withNSNumber_(self, fieldType, value, lowerBound, upperBound);
+  return self;
+}
+
 void OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSNumber_withNSNumber_withNSNumber_(OrgJodaTimeIllegalFieldValueException *self, NSString *fieldName, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound) {
   JavaLangIllegalArgumentException_initWithNSString_(self, OrgJodaTimeIllegalFieldValueException_createMessageWithNSString_withNSNumber_withNSNumber_withNSNumber_withNSString_(fieldName, value, lowerBound, upperBound, nil));
   JreStrongAssign(&self->iDateTimeFieldType_, nil);
@@ -351,6 +369,12 @@ void OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSNumber_withNSN
 
 OrgJodaTimeIllegalFieldValueException *new_OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSNumber_withNSNumber_withNSNumber_(NSString *fieldName, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound) {
   OrgJodaTimeIllegalFieldValueException *self = [OrgJodaTimeIllegalFieldValueException alloc];
+  OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSNumber_withNSNumber_withNSNumber_(self, fieldName, value, lowerBound, upperBound);
+  return self;
+}
+
+OrgJodaTimeIllegalFieldValueException *create_OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSNumber_withNSNumber_withNSNumber_(NSString *fieldName, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound) {
+  OrgJodaTimeIllegalFieldValueException *self = [[OrgJodaTimeIllegalFieldValueException alloc] autorelease];
   OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSNumber_withNSNumber_withNSNumber_(self, fieldName, value, lowerBound, upperBound);
   return self;
 }
@@ -373,6 +397,12 @@ OrgJodaTimeIllegalFieldValueException *new_OrgJodaTimeIllegalFieldValueException
   return self;
 }
 
+OrgJodaTimeIllegalFieldValueException *create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSString_(OrgJodaTimeDateTimeFieldType *fieldType, NSString *value) {
+  OrgJodaTimeIllegalFieldValueException *self = [[OrgJodaTimeIllegalFieldValueException alloc] autorelease];
+  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSString_(self, fieldType, value);
+  return self;
+}
+
 void OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSString_(OrgJodaTimeIllegalFieldValueException *self, OrgJodaTimeDurationFieldType *fieldType, NSString *value) {
   JavaLangIllegalArgumentException_initWithNSString_(self, OrgJodaTimeIllegalFieldValueException_createMessageWithNSString_withNSString_([((OrgJodaTimeDurationFieldType *) nil_chk(fieldType)) getName], value));
   JreStrongAssign(&self->iDateTimeFieldType_, nil);
@@ -391,6 +421,12 @@ OrgJodaTimeIllegalFieldValueException *new_OrgJodaTimeIllegalFieldValueException
   return self;
 }
 
+OrgJodaTimeIllegalFieldValueException *create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSString_(OrgJodaTimeDurationFieldType *fieldType, NSString *value) {
+  OrgJodaTimeIllegalFieldValueException *self = [[OrgJodaTimeIllegalFieldValueException alloc] autorelease];
+  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSString_(self, fieldType, value);
+  return self;
+}
+
 void OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSString_(OrgJodaTimeIllegalFieldValueException *self, NSString *fieldName, NSString *value) {
   JavaLangIllegalArgumentException_initWithNSString_(self, OrgJodaTimeIllegalFieldValueException_createMessageWithNSString_withNSString_(fieldName, value));
   JreStrongAssign(&self->iDateTimeFieldType_, nil);
@@ -405,6 +441,12 @@ void OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSString_(OrgJod
 
 OrgJodaTimeIllegalFieldValueException *new_OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSString_(NSString *fieldName, NSString *value) {
   OrgJodaTimeIllegalFieldValueException *self = [OrgJodaTimeIllegalFieldValueException alloc];
+  OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSString_(self, fieldName, value);
+  return self;
+}
+
+OrgJodaTimeIllegalFieldValueException *create_OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSString_(NSString *fieldName, NSString *value) {
+  OrgJodaTimeIllegalFieldValueException *self = [[OrgJodaTimeIllegalFieldValueException alloc] autorelease];
   OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSString_(self, fieldName, value);
   return self;
 }

@@ -41,6 +41,8 @@ __attribute__((unused)) static void OrgJodaTimeChronoStrictChronology_initWithOr
 
 __attribute__((unused)) static OrgJodaTimeChronoStrictChronology *new_OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *base) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeChronoStrictChronology *create_OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *base);
+
 __attribute__((unused)) static OrgJodaTimeDateTimeField *OrgJodaTimeChronoStrictChronology_convertFieldWithOrgJodaTimeDateTimeField_(OrgJodaTimeDateTimeField *field);
 
 @implementation OrgJodaTimeChronoStrictChronology
@@ -169,6 +171,12 @@ void OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(OrgJodaTim
 
 OrgJodaTimeChronoStrictChronology *new_OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *base) {
   OrgJodaTimeChronoStrictChronology *self = [OrgJodaTimeChronoStrictChronology alloc];
+  OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(self, base);
+  return self;
+}
+
+OrgJodaTimeChronoStrictChronology *create_OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *base) {
+  OrgJodaTimeChronoStrictChronology *self = [[OrgJodaTimeChronoStrictChronology alloc] autorelease];
   OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(self, base);
   return self;
 }

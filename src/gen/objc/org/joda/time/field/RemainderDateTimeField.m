@@ -196,6 +196,12 @@ OrgJodaTimeFieldRemainderDateTimeField *new_OrgJodaTimeFieldRemainderDateTimeFie
   return self;
 }
 
+OrgJodaTimeFieldRemainderDateTimeField *create_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type, jint divisor) {
+  OrgJodaTimeFieldRemainderDateTimeField *self = [[OrgJodaTimeFieldRemainderDateTimeField alloc] autorelease];
+  OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(self, field, type, divisor);
+  return self;
+}
+
 void OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeFieldRemainderDateTimeField *self, OrgJodaTimeDateTimeField *field, OrgJodaTimeDurationField *rangeField, OrgJodaTimeDateTimeFieldType *type, jint divisor) {
   OrgJodaTimeFieldDecoratedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, field, type);
   if (divisor < 2) {
@@ -212,12 +218,24 @@ OrgJodaTimeFieldRemainderDateTimeField *new_OrgJodaTimeFieldRemainderDateTimeFie
   return self;
 }
 
+OrgJodaTimeFieldRemainderDateTimeField *create_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDurationField *rangeField, OrgJodaTimeDateTimeFieldType *type, jint divisor) {
+  OrgJodaTimeFieldRemainderDateTimeField *self = [[OrgJodaTimeFieldRemainderDateTimeField alloc] autorelease];
+  OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_withInt_(self, field, rangeField, type, divisor);
+  return self;
+}
+
 void OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_(OrgJodaTimeFieldRemainderDateTimeField *self, OrgJodaTimeFieldDividedDateTimeField *dividedField) {
   OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, dividedField, [((OrgJodaTimeFieldDividedDateTimeField *) nil_chk(dividedField)) getType]);
 }
 
 OrgJodaTimeFieldRemainderDateTimeField *new_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_(OrgJodaTimeFieldDividedDateTimeField *dividedField) {
   OrgJodaTimeFieldRemainderDateTimeField *self = [OrgJodaTimeFieldRemainderDateTimeField alloc];
+  OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_(self, dividedField);
+  return self;
+}
+
+OrgJodaTimeFieldRemainderDateTimeField *create_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_(OrgJodaTimeFieldDividedDateTimeField *dividedField) {
+  OrgJodaTimeFieldRemainderDateTimeField *self = [[OrgJodaTimeFieldRemainderDateTimeField alloc] autorelease];
   OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_(self, dividedField);
   return self;
 }
@@ -232,6 +250,12 @@ OrgJodaTimeFieldRemainderDateTimeField *new_OrgJodaTimeFieldRemainderDateTimeFie
   return self;
 }
 
+OrgJodaTimeFieldRemainderDateTimeField *create_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldDividedDateTimeField *dividedField, OrgJodaTimeDateTimeFieldType *type) {
+  OrgJodaTimeFieldRemainderDateTimeField *self = [[OrgJodaTimeFieldRemainderDateTimeField alloc] autorelease];
+  OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, dividedField, type);
+  return self;
+}
+
 void OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldRemainderDateTimeField *self, OrgJodaTimeFieldDividedDateTimeField *dividedField, OrgJodaTimeDurationField *durationField, OrgJodaTimeDateTimeFieldType *type) {
   OrgJodaTimeFieldDecoratedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, [((OrgJodaTimeFieldDividedDateTimeField *) nil_chk(dividedField)) getWrappedField], type);
   self->iDivisor_ = dividedField->iDivisor_;
@@ -241,6 +265,12 @@ void OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateT
 
 OrgJodaTimeFieldRemainderDateTimeField *new_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldDividedDateTimeField *dividedField, OrgJodaTimeDurationField *durationField, OrgJodaTimeDateTimeFieldType *type) {
   OrgJodaTimeFieldRemainderDateTimeField *self = [OrgJodaTimeFieldRemainderDateTimeField alloc];
+  OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(self, dividedField, durationField, type);
+  return self;
+}
+
+OrgJodaTimeFieldRemainderDateTimeField *create_OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldDividedDateTimeField *dividedField, OrgJodaTimeDurationField *durationField, OrgJodaTimeDateTimeFieldType *type) {
+  OrgJodaTimeFieldRemainderDateTimeField *self = [[OrgJodaTimeFieldRemainderDateTimeField alloc] autorelease];
   OrgJodaTimeFieldRemainderDateTimeField_initWithOrgJodaTimeFieldDividedDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(self, dividedField, durationField, type);
   return self;
 }

@@ -61,6 +61,8 @@ __attribute__((unused)) static void OrgJodaTimeYears_initWithInt_(OrgJodaTimeYea
 
 __attribute__((unused)) static OrgJodaTimeYears *new_OrgJodaTimeYears_initWithInt_(jint years) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeYears *create_OrgJodaTimeYears_initWithInt_(jint years);
+
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeYears)
 
 OrgJodaTimeYears *OrgJodaTimeYears_ZERO;
@@ -294,6 +296,12 @@ void OrgJodaTimeYears_initWithInt_(OrgJodaTimeYears *self, jint years) {
 
 OrgJodaTimeYears *new_OrgJodaTimeYears_initWithInt_(jint years) {
   OrgJodaTimeYears *self = [OrgJodaTimeYears alloc];
+  OrgJodaTimeYears_initWithInt_(self, years);
+  return self;
+}
+
+OrgJodaTimeYears *create_OrgJodaTimeYears_initWithInt_(jint years) {
+  OrgJodaTimeYears *self = [[OrgJodaTimeYears alloc] autorelease];
   OrgJodaTimeYears_initWithInt_(self, years);
   return self;
 }

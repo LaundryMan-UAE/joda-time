@@ -142,4 +142,10 @@ OrgJodaTimeChronoBasicDayOfMonthDateTimeField *new_OrgJodaTimeChronoBasicDayOfMo
   return self;
 }
 
+OrgJodaTimeChronoBasicDayOfMonthDateTimeField *create_OrgJodaTimeChronoBasicDayOfMonthDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(OrgJodaTimeChronoBasicChronology *chronology, OrgJodaTimeDurationField *days) {
+  OrgJodaTimeChronoBasicDayOfMonthDateTimeField *self = [[OrgJodaTimeChronoBasicDayOfMonthDateTimeField alloc] autorelease];
+  OrgJodaTimeChronoBasicDayOfMonthDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(self, chronology, days);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicDayOfMonthDateTimeField)

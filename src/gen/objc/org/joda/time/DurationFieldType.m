@@ -77,6 +77,8 @@ __attribute__((unused)) static void OrgJodaTimeDurationFieldType_StandardDuratio
 
 __attribute__((unused)) static OrgJodaTimeDurationFieldType_StandardDurationFieldType *new_OrgJodaTimeDurationFieldType_StandardDurationFieldType_initWithNSString_withByte_(NSString *name, jbyte ordinal) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeDurationFieldType_StandardDurationFieldType *create_OrgJodaTimeDurationFieldType_StandardDurationFieldType_initWithNSString_withByte_(NSString *name, jbyte ordinal);
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDurationFieldType_StandardDurationFieldType)
 
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDurationFieldType)
@@ -422,6 +424,12 @@ void OrgJodaTimeDurationFieldType_StandardDurationFieldType_initWithNSString_wit
 
 OrgJodaTimeDurationFieldType_StandardDurationFieldType *new_OrgJodaTimeDurationFieldType_StandardDurationFieldType_initWithNSString_withByte_(NSString *name, jbyte ordinal) {
   OrgJodaTimeDurationFieldType_StandardDurationFieldType *self = [OrgJodaTimeDurationFieldType_StandardDurationFieldType alloc];
+  OrgJodaTimeDurationFieldType_StandardDurationFieldType_initWithNSString_withByte_(self, name, ordinal);
+  return self;
+}
+
+OrgJodaTimeDurationFieldType_StandardDurationFieldType *create_OrgJodaTimeDurationFieldType_StandardDurationFieldType_initWithNSString_withByte_(NSString *name, jbyte ordinal) {
+  OrgJodaTimeDurationFieldType_StandardDurationFieldType *self = [[OrgJodaTimeDurationFieldType_StandardDurationFieldType alloc] autorelease];
   OrgJodaTimeDurationFieldType_StandardDurationFieldType_initWithNSString_withByte_(self, name, ordinal);
   return self;
 }

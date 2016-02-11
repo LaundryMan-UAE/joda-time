@@ -104,6 +104,8 @@ __attribute__((unused)) static void OrgJodaTimeTzZoneInfoCompiler_Rule_initWithJ
 
 __attribute__((unused)) static OrgJodaTimeTzZoneInfoCompiler_Rule *new_OrgJodaTimeTzZoneInfoCompiler_Rule_initWithJavaUtilStringTokenizer_(JavaUtilStringTokenizer *st) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeTzZoneInfoCompiler_Rule *create_OrgJodaTimeTzZoneInfoCompiler_Rule_initWithJavaUtilStringTokenizer_(JavaUtilStringTokenizer *st);
+
 __attribute__((unused)) static NSString *OrgJodaTimeTzZoneInfoCompiler_Rule_formatNameWithNSString_(OrgJodaTimeTzZoneInfoCompiler_Rule *self, NSString *nameFormat);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzZoneInfoCompiler_Rule)
@@ -132,6 +134,8 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeTzZoneInfoCompiler_RuleSet, iRules_, id<JavaUtilL
 __attribute__((unused)) static void OrgJodaTimeTzZoneInfoCompiler_RuleSet_initWithOrgJodaTimeTzZoneInfoCompiler_Rule_(OrgJodaTimeTzZoneInfoCompiler_RuleSet *self, OrgJodaTimeTzZoneInfoCompiler_Rule *rule);
 
 __attribute__((unused)) static OrgJodaTimeTzZoneInfoCompiler_RuleSet *new_OrgJodaTimeTzZoneInfoCompiler_RuleSet_initWithOrgJodaTimeTzZoneInfoCompiler_Rule_(OrgJodaTimeTzZoneInfoCompiler_Rule *rule) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static OrgJodaTimeTzZoneInfoCompiler_RuleSet *create_OrgJodaTimeTzZoneInfoCompiler_RuleSet_initWithOrgJodaTimeTzZoneInfoCompiler_Rule_(OrgJodaTimeTzZoneInfoCompiler_Rule *rule);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzZoneInfoCompiler_RuleSet)
 
@@ -179,9 +183,13 @@ __attribute__((unused)) static void OrgJodaTimeTzZoneInfoCompiler_Zone_initWithJ
 
 __attribute__((unused)) static OrgJodaTimeTzZoneInfoCompiler_Zone *new_OrgJodaTimeTzZoneInfoCompiler_Zone_initWithJavaUtilStringTokenizer_(JavaUtilStringTokenizer *st) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeTzZoneInfoCompiler_Zone *create_OrgJodaTimeTzZoneInfoCompiler_Zone_initWithJavaUtilStringTokenizer_(JavaUtilStringTokenizer *st);
+
 __attribute__((unused)) static void OrgJodaTimeTzZoneInfoCompiler_Zone_initWithNSString_withJavaUtilStringTokenizer_(OrgJodaTimeTzZoneInfoCompiler_Zone *self, NSString *name, JavaUtilStringTokenizer *st);
 
 __attribute__((unused)) static OrgJodaTimeTzZoneInfoCompiler_Zone *new_OrgJodaTimeTzZoneInfoCompiler_Zone_initWithNSString_withJavaUtilStringTokenizer_(NSString *name, JavaUtilStringTokenizer *st) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static OrgJodaTimeTzZoneInfoCompiler_Zone *create_OrgJodaTimeTzZoneInfoCompiler_Zone_initWithNSString_withJavaUtilStringTokenizer_(NSString *name, JavaUtilStringTokenizer *st);
 
 __attribute__((unused)) static void OrgJodaTimeTzZoneInfoCompiler_Zone_addToBuilderWithOrgJodaTimeTzZoneInfoCompiler_Zone_withOrgJodaTimeTzDateTimeZoneBuilder_withJavaUtilMap_(OrgJodaTimeTzZoneInfoCompiler_Zone *zone, OrgJodaTimeTzDateTimeZoneBuilder *builder, id<JavaUtilMap> ruleSets);
 
@@ -200,6 +208,8 @@ J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeTzZoneInfoCompiler_$1)
 __attribute__((unused)) static void OrgJodaTimeTzZoneInfoCompiler_$1_init(OrgJodaTimeTzZoneInfoCompiler_$1 *self);
 
 __attribute__((unused)) static OrgJodaTimeTzZoneInfoCompiler_$1 *new_OrgJodaTimeTzZoneInfoCompiler_$1_init() NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static OrgJodaTimeTzZoneInfoCompiler_$1 *create_OrgJodaTimeTzZoneInfoCompiler_$1_init();
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzZoneInfoCompiler_$1)
 
@@ -710,6 +720,12 @@ OrgJodaTimeTzZoneInfoCompiler *new_OrgJodaTimeTzZoneInfoCompiler_init() {
   return self;
 }
 
+OrgJodaTimeTzZoneInfoCompiler *create_OrgJodaTimeTzZoneInfoCompiler_init() {
+  OrgJodaTimeTzZoneInfoCompiler *self = [[OrgJodaTimeTzZoneInfoCompiler alloc] autorelease];
+  OrgJodaTimeTzZoneInfoCompiler_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzZoneInfoCompiler)
 
 @implementation OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear
@@ -777,6 +793,12 @@ void OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear_init(OrgJodaTimeTzZoneInfoComp
 
 OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *new_OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear_init() {
   OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *self = [OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear alloc];
+  OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear_init(self);
+  return self;
+}
+
+OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *create_OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear_init() {
+  OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *self = [[OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear alloc] autorelease];
   OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear_init(self);
   return self;
 }
@@ -856,6 +878,12 @@ OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *new_OrgJodaTimeTzZoneInfoCompiler_
   return self;
 }
 
+OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *create_OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear_initWithJavaUtilStringTokenizer_(JavaUtilStringTokenizer *st) {
+  OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear *self = [[OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear alloc] autorelease];
+  OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear_initWithJavaUtilStringTokenizer_(self, st);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear)
 
 @implementation OrgJodaTimeTzZoneInfoCompiler_Rule
@@ -925,6 +953,12 @@ void OrgJodaTimeTzZoneInfoCompiler_Rule_initWithJavaUtilStringTokenizer_(OrgJoda
 
 OrgJodaTimeTzZoneInfoCompiler_Rule *new_OrgJodaTimeTzZoneInfoCompiler_Rule_initWithJavaUtilStringTokenizer_(JavaUtilStringTokenizer *st) {
   OrgJodaTimeTzZoneInfoCompiler_Rule *self = [OrgJodaTimeTzZoneInfoCompiler_Rule alloc];
+  OrgJodaTimeTzZoneInfoCompiler_Rule_initWithJavaUtilStringTokenizer_(self, st);
+  return self;
+}
+
+OrgJodaTimeTzZoneInfoCompiler_Rule *create_OrgJodaTimeTzZoneInfoCompiler_Rule_initWithJavaUtilStringTokenizer_(JavaUtilStringTokenizer *st) {
+  OrgJodaTimeTzZoneInfoCompiler_Rule *self = [[OrgJodaTimeTzZoneInfoCompiler_Rule alloc] autorelease];
   OrgJodaTimeTzZoneInfoCompiler_Rule_initWithJavaUtilStringTokenizer_(self, st);
   return self;
 }
@@ -1007,6 +1041,12 @@ void OrgJodaTimeTzZoneInfoCompiler_RuleSet_initWithOrgJodaTimeTzZoneInfoCompiler
 
 OrgJodaTimeTzZoneInfoCompiler_RuleSet *new_OrgJodaTimeTzZoneInfoCompiler_RuleSet_initWithOrgJodaTimeTzZoneInfoCompiler_Rule_(OrgJodaTimeTzZoneInfoCompiler_Rule *rule) {
   OrgJodaTimeTzZoneInfoCompiler_RuleSet *self = [OrgJodaTimeTzZoneInfoCompiler_RuleSet alloc];
+  OrgJodaTimeTzZoneInfoCompiler_RuleSet_initWithOrgJodaTimeTzZoneInfoCompiler_Rule_(self, rule);
+  return self;
+}
+
+OrgJodaTimeTzZoneInfoCompiler_RuleSet *create_OrgJodaTimeTzZoneInfoCompiler_RuleSet_initWithOrgJodaTimeTzZoneInfoCompiler_Rule_(OrgJodaTimeTzZoneInfoCompiler_Rule *rule) {
+  OrgJodaTimeTzZoneInfoCompiler_RuleSet *self = [[OrgJodaTimeTzZoneInfoCompiler_RuleSet alloc] autorelease];
   OrgJodaTimeTzZoneInfoCompiler_RuleSet_initWithOrgJodaTimeTzZoneInfoCompiler_Rule_(self, rule);
   return self;
 }
@@ -1097,6 +1137,12 @@ OrgJodaTimeTzZoneInfoCompiler_Zone *new_OrgJodaTimeTzZoneInfoCompiler_Zone_initW
   return self;
 }
 
+OrgJodaTimeTzZoneInfoCompiler_Zone *create_OrgJodaTimeTzZoneInfoCompiler_Zone_initWithJavaUtilStringTokenizer_(JavaUtilStringTokenizer *st) {
+  OrgJodaTimeTzZoneInfoCompiler_Zone *self = [[OrgJodaTimeTzZoneInfoCompiler_Zone alloc] autorelease];
+  OrgJodaTimeTzZoneInfoCompiler_Zone_initWithJavaUtilStringTokenizer_(self, st);
+  return self;
+}
+
 void OrgJodaTimeTzZoneInfoCompiler_Zone_initWithNSString_withJavaUtilStringTokenizer_(OrgJodaTimeTzZoneInfoCompiler_Zone *self, NSString *name, JavaUtilStringTokenizer *st) {
   NSObject_init(self);
   JreStrongAssign(&self->iName_, [((NSString *) nil_chk(name)) intern]);
@@ -1117,6 +1163,12 @@ void OrgJodaTimeTzZoneInfoCompiler_Zone_initWithNSString_withJavaUtilStringToken
 
 OrgJodaTimeTzZoneInfoCompiler_Zone *new_OrgJodaTimeTzZoneInfoCompiler_Zone_initWithNSString_withJavaUtilStringTokenizer_(NSString *name, JavaUtilStringTokenizer *st) {
   OrgJodaTimeTzZoneInfoCompiler_Zone *self = [OrgJodaTimeTzZoneInfoCompiler_Zone alloc];
+  OrgJodaTimeTzZoneInfoCompiler_Zone_initWithNSString_withJavaUtilStringTokenizer_(self, name, st);
+  return self;
+}
+
+OrgJodaTimeTzZoneInfoCompiler_Zone *create_OrgJodaTimeTzZoneInfoCompiler_Zone_initWithNSString_withJavaUtilStringTokenizer_(NSString *name, JavaUtilStringTokenizer *st) {
+  OrgJodaTimeTzZoneInfoCompiler_Zone *self = [[OrgJodaTimeTzZoneInfoCompiler_Zone alloc] autorelease];
   OrgJodaTimeTzZoneInfoCompiler_Zone_initWithNSString_withJavaUtilStringTokenizer_(self, name, st);
   return self;
 }
@@ -1181,6 +1233,12 @@ void OrgJodaTimeTzZoneInfoCompiler_$1_init(OrgJodaTimeTzZoneInfoCompiler_$1 *sel
 
 OrgJodaTimeTzZoneInfoCompiler_$1 *new_OrgJodaTimeTzZoneInfoCompiler_$1_init() {
   OrgJodaTimeTzZoneInfoCompiler_$1 *self = [OrgJodaTimeTzZoneInfoCompiler_$1 alloc];
+  OrgJodaTimeTzZoneInfoCompiler_$1_init(self);
+  return self;
+}
+
+OrgJodaTimeTzZoneInfoCompiler_$1 *create_OrgJodaTimeTzZoneInfoCompiler_$1_init() {
+  OrgJodaTimeTzZoneInfoCompiler_$1 *self = [[OrgJodaTimeTzZoneInfoCompiler_$1 alloc] autorelease];
   OrgJodaTimeTzZoneInfoCompiler_$1_init(self);
   return self;
 }

@@ -68,6 +68,8 @@ __attribute__((unused)) static void OrgJodaTimeMinutes_initWithInt_(OrgJodaTimeM
 
 __attribute__((unused)) static OrgJodaTimeMinutes *new_OrgJodaTimeMinutes_initWithInt_(jint minutes) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeMinutes *create_OrgJodaTimeMinutes_initWithInt_(jint minutes);
+
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeMinutes)
 
 OrgJodaTimeMinutes *OrgJodaTimeMinutes_ZERO;
@@ -338,6 +340,12 @@ void OrgJodaTimeMinutes_initWithInt_(OrgJodaTimeMinutes *self, jint minutes) {
 
 OrgJodaTimeMinutes *new_OrgJodaTimeMinutes_initWithInt_(jint minutes) {
   OrgJodaTimeMinutes *self = [OrgJodaTimeMinutes alloc];
+  OrgJodaTimeMinutes_initWithInt_(self, minutes);
+  return self;
+}
+
+OrgJodaTimeMinutes *create_OrgJodaTimeMinutes_initWithInt_(jint minutes) {
+  OrgJodaTimeMinutes *self = [[OrgJodaTimeMinutes alloc] autorelease];
   OrgJodaTimeMinutes_initWithInt_(self, minutes);
   return self;
 }

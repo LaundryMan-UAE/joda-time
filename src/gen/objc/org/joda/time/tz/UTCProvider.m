@@ -51,4 +51,10 @@ OrgJodaTimeTzUTCProvider *new_OrgJodaTimeTzUTCProvider_init() {
   return self;
 }
 
+OrgJodaTimeTzUTCProvider *create_OrgJodaTimeTzUTCProvider_init() {
+  OrgJodaTimeTzUTCProvider *self = [[OrgJodaTimeTzUTCProvider alloc] autorelease];
+  OrgJodaTimeTzUTCProvider_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzUTCProvider)

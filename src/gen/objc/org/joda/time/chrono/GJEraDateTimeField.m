@@ -183,4 +183,10 @@ OrgJodaTimeChronoGJEraDateTimeField *new_OrgJodaTimeChronoGJEraDateTimeField_ini
   return self;
 }
 
+OrgJodaTimeChronoGJEraDateTimeField *create_OrgJodaTimeChronoGJEraDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(OrgJodaTimeChronoBasicChronology *chronology) {
+  OrgJodaTimeChronoGJEraDateTimeField *self = [[OrgJodaTimeChronoGJEraDateTimeField alloc] autorelease];
+  OrgJodaTimeChronoGJEraDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self, chronology);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJEraDateTimeField)

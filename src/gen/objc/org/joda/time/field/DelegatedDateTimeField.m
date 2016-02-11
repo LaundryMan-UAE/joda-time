@@ -393,12 +393,24 @@ OrgJodaTimeFieldDelegatedDateTimeField *new_OrgJodaTimeFieldDelegatedDateTimeFie
   return self;
 }
 
+OrgJodaTimeFieldDelegatedDateTimeField *create_OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_(OrgJodaTimeDateTimeField *field) {
+  OrgJodaTimeFieldDelegatedDateTimeField *self = [[OrgJodaTimeFieldDelegatedDateTimeField alloc] autorelease];
+  OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_(self, field);
+  return self;
+}
+
 void OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldDelegatedDateTimeField *self, OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type) {
   OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(self, field, nil, type);
 }
 
 OrgJodaTimeFieldDelegatedDateTimeField *new_OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type) {
   OrgJodaTimeFieldDelegatedDateTimeField *self = [OrgJodaTimeFieldDelegatedDateTimeField alloc];
+  OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, field, type);
+  return self;
+}
+
+OrgJodaTimeFieldDelegatedDateTimeField *create_OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type) {
+  OrgJodaTimeFieldDelegatedDateTimeField *self = [[OrgJodaTimeFieldDelegatedDateTimeField alloc] autorelease];
   OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, field, type);
   return self;
 }
@@ -415,6 +427,12 @@ void OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_wit
 
 OrgJodaTimeFieldDelegatedDateTimeField *new_OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDurationField *rangeField, OrgJodaTimeDateTimeFieldType *type) {
   OrgJodaTimeFieldDelegatedDateTimeField *self = [OrgJodaTimeFieldDelegatedDateTimeField alloc];
+  OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(self, field, rangeField, type);
+  return self;
+}
+
+OrgJodaTimeFieldDelegatedDateTimeField *create_OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDurationField *rangeField, OrgJodaTimeDateTimeFieldType *type) {
+  OrgJodaTimeFieldDelegatedDateTimeField *self = [[OrgJodaTimeFieldDelegatedDateTimeField alloc] autorelease];
   OrgJodaTimeFieldDelegatedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(self, field, rangeField, type);
   return self;
 }

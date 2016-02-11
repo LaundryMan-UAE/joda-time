@@ -81,6 +81,8 @@ FOUNDATION_EXPORT void OrgJodaTimeConvertDateConverter_init(OrgJodaTimeConvertDa
 
 FOUNDATION_EXPORT OrgJodaTimeConvertDateConverter *new_OrgJodaTimeConvertDateConverter_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeConvertDateConverter *create_OrgJodaTimeConvertDateConverter_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertDateConverter)
 
 #endif

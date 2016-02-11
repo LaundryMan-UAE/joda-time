@@ -107,4 +107,10 @@ OrgJodaTimeUTCDateTimeZone *new_OrgJodaTimeUTCDateTimeZone_init() {
   return self;
 }
 
+OrgJodaTimeUTCDateTimeZone *create_OrgJodaTimeUTCDateTimeZone_init() {
+  OrgJodaTimeUTCDateTimeZone *self = [[OrgJodaTimeUTCDateTimeZone alloc] autorelease];
+  OrgJodaTimeUTCDateTimeZone_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeUTCDateTimeZone)

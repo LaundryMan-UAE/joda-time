@@ -79,4 +79,10 @@ OrgJodaTimeConvertReadableDurationConverter *new_OrgJodaTimeConvertReadableDurat
   return self;
 }
 
+OrgJodaTimeConvertReadableDurationConverter *create_OrgJodaTimeConvertReadableDurationConverter_init() {
+  OrgJodaTimeConvertReadableDurationConverter *self = [[OrgJodaTimeConvertReadableDurationConverter alloc] autorelease];
+  OrgJodaTimeConvertReadableDurationConverter_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertReadableDurationConverter)

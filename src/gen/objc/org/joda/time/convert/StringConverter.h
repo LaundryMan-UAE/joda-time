@@ -148,6 +148,8 @@ FOUNDATION_EXPORT void OrgJodaTimeConvertStringConverter_init(OrgJodaTimeConvert
 
 FOUNDATION_EXPORT OrgJodaTimeConvertStringConverter *new_OrgJodaTimeConvertStringConverter_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeConvertStringConverter *create_OrgJodaTimeConvertStringConverter_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertStringConverter)
 
 #endif

@@ -297,6 +297,8 @@ FOUNDATION_EXPORT void OrgJodaTimeConvertConverterManager_init(OrgJodaTimeConver
 
 FOUNDATION_EXPORT OrgJodaTimeConvertConverterManager *new_OrgJodaTimeConvertConverterManager_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeConvertConverterManager *create_OrgJodaTimeConvertConverterManager_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertConverterManager)
 
 #endif

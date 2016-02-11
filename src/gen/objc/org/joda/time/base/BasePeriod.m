@@ -109,6 +109,8 @@ __attribute__((unused)) static void OrgJodaTimeBaseBasePeriod_$1_init(OrgJodaTim
 
 __attribute__((unused)) static OrgJodaTimeBaseBasePeriod_$1 *new_OrgJodaTimeBaseBasePeriod_$1_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeBaseBasePeriod_$1 *create_OrgJodaTimeBaseBasePeriod_$1_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseBasePeriod_$1)
 
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeBaseBasePeriod)
@@ -597,6 +599,12 @@ void OrgJodaTimeBaseBasePeriod_$1_init(OrgJodaTimeBaseBasePeriod_$1 *self) {
 
 OrgJodaTimeBaseBasePeriod_$1 *new_OrgJodaTimeBaseBasePeriod_$1_init() {
   OrgJodaTimeBaseBasePeriod_$1 *self = [OrgJodaTimeBaseBasePeriod_$1 alloc];
+  OrgJodaTimeBaseBasePeriod_$1_init(self);
+  return self;
+}
+
+OrgJodaTimeBaseBasePeriod_$1 *create_OrgJodaTimeBaseBasePeriod_$1_init() {
+  OrgJodaTimeBaseBasePeriod_$1 *self = [[OrgJodaTimeBaseBasePeriod_$1 alloc] autorelease];
   OrgJodaTimeBaseBasePeriod_$1_init(self);
   return self;
 }

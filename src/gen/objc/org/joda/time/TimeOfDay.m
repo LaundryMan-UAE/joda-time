@@ -509,12 +509,24 @@ OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_init() {
   return self;
 }
 
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_init() {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
+  OrgJodaTimeTimeOfDay_init(self);
+  return self;
+}
+
 void OrgJodaTimeTimeOfDay_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeTimeOfDay *self, OrgJodaTimeDateTimeZone *zone) {
   OrgJodaTimeBaseBasePartial_initWithOrgJodaTimeChronology_(self, OrgJodaTimeChronoISOChronology_getInstanceWithOrgJodaTimeDateTimeZone_(zone));
 }
 
 OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {
   OrgJodaTimeTimeOfDay *self = [OrgJodaTimeTimeOfDay alloc];
+  OrgJodaTimeTimeOfDay_initWithOrgJodaTimeDateTimeZone_(self, zone);
+  return self;
+}
+
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
   OrgJodaTimeTimeOfDay_initWithOrgJodaTimeDateTimeZone_(self, zone);
   return self;
 }
@@ -529,12 +541,24 @@ OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_initWithOrgJodaTimeChronology_(Or
   return self;
 }
 
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
+  OrgJodaTimeTimeOfDay_initWithOrgJodaTimeChronology_(self, chronology);
+  return self;
+}
+
 void OrgJodaTimeTimeOfDay_initWithLong_(OrgJodaTimeTimeOfDay *self, jlong instant) {
   OrgJodaTimeBaseBasePartial_initWithLong_(self, instant);
 }
 
 OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_initWithLong_(jlong instant) {
   OrgJodaTimeTimeOfDay *self = [OrgJodaTimeTimeOfDay alloc];
+  OrgJodaTimeTimeOfDay_initWithLong_(self, instant);
+  return self;
+}
+
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_initWithLong_(jlong instant) {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
   OrgJodaTimeTimeOfDay_initWithLong_(self, instant);
   return self;
 }
@@ -549,12 +573,24 @@ OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_initWithLong_withOrgJodaTimeChron
   return self;
 }
 
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_initWithLong_withOrgJodaTimeChronology_(jlong instant, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
+  OrgJodaTimeTimeOfDay_initWithLong_withOrgJodaTimeChronology_(self, instant, chronology);
+  return self;
+}
+
 void OrgJodaTimeTimeOfDay_initWithId_(OrgJodaTimeTimeOfDay *self, id instant) {
   OrgJodaTimeBaseBasePartial_initWithId_withOrgJodaTimeChronology_withOrgJodaTimeFormatDateTimeFormatter_(self, instant, nil, OrgJodaTimeFormatISODateTimeFormat_timeParser());
 }
 
 OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_initWithId_(id instant) {
   OrgJodaTimeTimeOfDay *self = [OrgJodaTimeTimeOfDay alloc];
+  OrgJodaTimeTimeOfDay_initWithId_(self, instant);
+  return self;
+}
+
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_initWithId_(id instant) {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
   OrgJodaTimeTimeOfDay_initWithId_(self, instant);
   return self;
 }
@@ -569,12 +605,24 @@ OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_initWithId_withOrgJodaTimeChronol
   return self;
 }
 
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_initWithId_withOrgJodaTimeChronology_(id instant, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
+  OrgJodaTimeTimeOfDay_initWithId_withOrgJodaTimeChronology_(self, instant, chronology);
+  return self;
+}
+
 void OrgJodaTimeTimeOfDay_initWithInt_withInt_(OrgJodaTimeTimeOfDay *self, jint hourOfDay, jint minuteOfHour) {
   OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(self, hourOfDay, minuteOfHour, 0, 0, nil);
 }
 
 OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_initWithInt_withInt_(jint hourOfDay, jint minuteOfHour) {
   OrgJodaTimeTimeOfDay *self = [OrgJodaTimeTimeOfDay alloc];
+  OrgJodaTimeTimeOfDay_initWithInt_withInt_(self, hourOfDay, minuteOfHour);
+  return self;
+}
+
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_initWithInt_withInt_(jint hourOfDay, jint minuteOfHour) {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
   OrgJodaTimeTimeOfDay_initWithInt_withInt_(self, hourOfDay, minuteOfHour);
   return self;
 }
@@ -589,12 +637,24 @@ OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_initWithInt_withInt_withOrgJodaTi
   return self;
 }
 
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_initWithInt_withInt_withOrgJodaTimeChronology_(jint hourOfDay, jint minuteOfHour, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
+  OrgJodaTimeTimeOfDay_initWithInt_withInt_withOrgJodaTimeChronology_(self, hourOfDay, minuteOfHour, chronology);
+  return self;
+}
+
 void OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_(OrgJodaTimeTimeOfDay *self, jint hourOfDay, jint minuteOfHour, jint secondOfMinute) {
   OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(self, hourOfDay, minuteOfHour, secondOfMinute, 0, nil);
 }
 
 OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_(jint hourOfDay, jint minuteOfHour, jint secondOfMinute) {
   OrgJodaTimeTimeOfDay *self = [OrgJodaTimeTimeOfDay alloc];
+  OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_(self, hourOfDay, minuteOfHour, secondOfMinute);
+  return self;
+}
+
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_(jint hourOfDay, jint minuteOfHour, jint secondOfMinute) {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
   OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_(self, hourOfDay, minuteOfHour, secondOfMinute);
   return self;
 }
@@ -609,12 +669,24 @@ OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withO
   return self;
 }
 
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withOrgJodaTimeChronology_(jint hourOfDay, jint minuteOfHour, jint secondOfMinute, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
+  OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withOrgJodaTimeChronology_(self, hourOfDay, minuteOfHour, secondOfMinute, chronology);
+  return self;
+}
+
 void OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withInt_(OrgJodaTimeTimeOfDay *self, jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond) {
   OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(self, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond, nil);
 }
 
 OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withInt_(jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond) {
   OrgJodaTimeTimeOfDay *self = [OrgJodaTimeTimeOfDay alloc];
+  OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withInt_(self, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
+  return self;
+}
+
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withInt_(jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond) {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
   OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withInt_(self, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond);
   return self;
 }
@@ -629,6 +701,12 @@ OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withI
   return self;
 }
 
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond, OrgJodaTimeChronology *chronology) {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
+  OrgJodaTimeTimeOfDay_initWithInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(self, hourOfDay, minuteOfHour, secondOfMinute, millisOfSecond, chronology);
+  return self;
+}
+
 void OrgJodaTimeTimeOfDay_initWithOrgJodaTimeTimeOfDay_withIntArray_(OrgJodaTimeTimeOfDay *self, OrgJodaTimeTimeOfDay *partial, IOSIntArray *values) {
   OrgJodaTimeBaseBasePartial_initWithOrgJodaTimeBaseBasePartial_withIntArray_(self, partial, values);
 }
@@ -639,12 +717,24 @@ OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_initWithOrgJodaTimeTimeOfDay_with
   return self;
 }
 
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_initWithOrgJodaTimeTimeOfDay_withIntArray_(OrgJodaTimeTimeOfDay *partial, IOSIntArray *values) {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
+  OrgJodaTimeTimeOfDay_initWithOrgJodaTimeTimeOfDay_withIntArray_(self, partial, values);
+  return self;
+}
+
 void OrgJodaTimeTimeOfDay_initWithOrgJodaTimeTimeOfDay_withOrgJodaTimeChronology_(OrgJodaTimeTimeOfDay *self, OrgJodaTimeTimeOfDay *partial, OrgJodaTimeChronology *chrono) {
   OrgJodaTimeBaseBasePartial_initWithOrgJodaTimeBaseBasePartial_withOrgJodaTimeChronology_(self, partial, chrono);
 }
 
 OrgJodaTimeTimeOfDay *new_OrgJodaTimeTimeOfDay_initWithOrgJodaTimeTimeOfDay_withOrgJodaTimeChronology_(OrgJodaTimeTimeOfDay *partial, OrgJodaTimeChronology *chrono) {
   OrgJodaTimeTimeOfDay *self = [OrgJodaTimeTimeOfDay alloc];
+  OrgJodaTimeTimeOfDay_initWithOrgJodaTimeTimeOfDay_withOrgJodaTimeChronology_(self, partial, chrono);
+  return self;
+}
+
+OrgJodaTimeTimeOfDay *create_OrgJodaTimeTimeOfDay_initWithOrgJodaTimeTimeOfDay_withOrgJodaTimeChronology_(OrgJodaTimeTimeOfDay *partial, OrgJodaTimeChronology *chrono) {
+  OrgJodaTimeTimeOfDay *self = [[OrgJodaTimeTimeOfDay alloc] autorelease];
   OrgJodaTimeTimeOfDay_initWithOrgJodaTimeTimeOfDay_withOrgJodaTimeChronology_(self, partial, chrono);
   return self;
 }
@@ -762,6 +852,12 @@ void OrgJodaTimeTimeOfDay_Property_initWithOrgJodaTimeTimeOfDay_withInt_(OrgJoda
 
 OrgJodaTimeTimeOfDay_Property *new_OrgJodaTimeTimeOfDay_Property_initWithOrgJodaTimeTimeOfDay_withInt_(OrgJodaTimeTimeOfDay *partial, jint fieldIndex) {
   OrgJodaTimeTimeOfDay_Property *self = [OrgJodaTimeTimeOfDay_Property alloc];
+  OrgJodaTimeTimeOfDay_Property_initWithOrgJodaTimeTimeOfDay_withInt_(self, partial, fieldIndex);
+  return self;
+}
+
+OrgJodaTimeTimeOfDay_Property *create_OrgJodaTimeTimeOfDay_Property_initWithOrgJodaTimeTimeOfDay_withInt_(OrgJodaTimeTimeOfDay *partial, jint fieldIndex) {
+  OrgJodaTimeTimeOfDay_Property *self = [[OrgJodaTimeTimeOfDay_Property alloc] autorelease];
   OrgJodaTimeTimeOfDay_Property_initWithOrgJodaTimeTimeOfDay_withInt_(self, partial, fieldIndex);
   return self;
 }

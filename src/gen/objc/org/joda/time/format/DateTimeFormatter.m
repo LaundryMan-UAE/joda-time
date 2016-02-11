@@ -123,6 +123,8 @@ __attribute__((unused)) static void OrgJodaTimeFormatDateTimeFormatter_initWithO
 
 __attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatter *new_OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_withJavaUtilLocale_withBoolean_withOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_withJavaLangInteger_withInt_(id<OrgJodaTimeFormatInternalPrinter> printer, id<OrgJodaTimeFormatInternalParser> parser, JavaUtilLocale *locale, jboolean offsetParsed, OrgJodaTimeChronology *chrono, OrgJodaTimeDateTimeZone *zone, JavaLangInteger *pivotYear, jint defaultYear) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeFormatDateTimeFormatter *create_OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_withJavaUtilLocale_withBoolean_withOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_withJavaLangInteger_withInt_(id<OrgJodaTimeFormatInternalPrinter> printer, id<OrgJodaTimeFormatInternalParser> parser, JavaUtilLocale *locale, jboolean offsetParsed, OrgJodaTimeChronology *chrono, OrgJodaTimeDateTimeZone *zone, JavaLangInteger *pivotYear, jint defaultYear);
+
 __attribute__((unused)) static void OrgJodaTimeFormatDateTimeFormatter_printToWithJavaLangAppendable_withLong_withOrgJodaTimeChronology_(OrgJodaTimeFormatDateTimeFormatter *self, id<JavaLangAppendable> appendable, jlong instant, OrgJodaTimeChronology *chrono);
 
 __attribute__((unused)) static id<OrgJodaTimeFormatInternalPrinter> OrgJodaTimeFormatDateTimeFormatter_requirePrinter(OrgJodaTimeFormatDateTimeFormatter *self);
@@ -585,6 +587,12 @@ OrgJodaTimeFormatDateTimeFormatter *new_OrgJodaTimeFormatDateTimeFormatter_initW
   return self;
 }
 
+OrgJodaTimeFormatDateTimeFormatter *create_OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatDateTimePrinter_withOrgJodaTimeFormatDateTimeParser_(id<OrgJodaTimeFormatDateTimePrinter> printer, id<OrgJodaTimeFormatDateTimeParser> parser) {
+  OrgJodaTimeFormatDateTimeFormatter *self = [[OrgJodaTimeFormatDateTimeFormatter alloc] autorelease];
+  OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatDateTimePrinter_withOrgJodaTimeFormatDateTimeParser_(self, printer, parser);
+  return self;
+}
+
 void OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(OrgJodaTimeFormatDateTimeFormatter *self, id<OrgJodaTimeFormatInternalPrinter> printer, id<OrgJodaTimeFormatInternalParser> parser) {
   NSObject_init(self);
   JreStrongAssign(&self->iPrinter_, printer);
@@ -603,6 +611,12 @@ OrgJodaTimeFormatDateTimeFormatter *new_OrgJodaTimeFormatDateTimeFormatter_initW
   return self;
 }
 
+OrgJodaTimeFormatDateTimeFormatter *create_OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(id<OrgJodaTimeFormatInternalPrinter> printer, id<OrgJodaTimeFormatInternalParser> parser) {
+  OrgJodaTimeFormatDateTimeFormatter *self = [[OrgJodaTimeFormatDateTimeFormatter alloc] autorelease];
+  OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_(self, printer, parser);
+  return self;
+}
+
 void OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_withJavaUtilLocale_withBoolean_withOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_withJavaLangInteger_withInt_(OrgJodaTimeFormatDateTimeFormatter *self, id<OrgJodaTimeFormatInternalPrinter> printer, id<OrgJodaTimeFormatInternalParser> parser, JavaUtilLocale *locale, jboolean offsetParsed, OrgJodaTimeChronology *chrono, OrgJodaTimeDateTimeZone *zone, JavaLangInteger *pivotYear, jint defaultYear) {
   NSObject_init(self);
   JreStrongAssign(&self->iPrinter_, printer);
@@ -617,6 +631,12 @@ void OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter
 
 OrgJodaTimeFormatDateTimeFormatter *new_OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_withJavaUtilLocale_withBoolean_withOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_withJavaLangInteger_withInt_(id<OrgJodaTimeFormatInternalPrinter> printer, id<OrgJodaTimeFormatInternalParser> parser, JavaUtilLocale *locale, jboolean offsetParsed, OrgJodaTimeChronology *chrono, OrgJodaTimeDateTimeZone *zone, JavaLangInteger *pivotYear, jint defaultYear) {
   OrgJodaTimeFormatDateTimeFormatter *self = [OrgJodaTimeFormatDateTimeFormatter alloc];
+  OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_withJavaUtilLocale_withBoolean_withOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_withJavaLangInteger_withInt_(self, printer, parser, locale, offsetParsed, chrono, zone, pivotYear, defaultYear);
+  return self;
+}
+
+OrgJodaTimeFormatDateTimeFormatter *create_OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_withJavaUtilLocale_withBoolean_withOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_withJavaLangInteger_withInt_(id<OrgJodaTimeFormatInternalPrinter> printer, id<OrgJodaTimeFormatInternalParser> parser, JavaUtilLocale *locale, jboolean offsetParsed, OrgJodaTimeChronology *chrono, OrgJodaTimeDateTimeZone *zone, JavaLangInteger *pivotYear, jint defaultYear) {
+  OrgJodaTimeFormatDateTimeFormatter *self = [[OrgJodaTimeFormatDateTimeFormatter alloc] autorelease];
   OrgJodaTimeFormatDateTimeFormatter_initWithOrgJodaTimeFormatInternalPrinter_withOrgJodaTimeFormatInternalParser_withJavaUtilLocale_withBoolean_withOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_withJavaLangInteger_withInt_(self, printer, parser, locale, offsetParsed, chrono, zone, pivotYear, defaultYear);
   return self;
 }

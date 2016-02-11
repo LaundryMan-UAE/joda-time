@@ -276,4 +276,10 @@ OrgJodaTimeChronoCopticChronology *new_OrgJodaTimeChronoCopticChronology_initWit
   return self;
 }
 
+OrgJodaTimeChronoCopticChronology *create_OrgJodaTimeChronoCopticChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronology *base, id param, jint minDaysInFirstWeek) {
+  OrgJodaTimeChronoCopticChronology *self = [[OrgJodaTimeChronoCopticChronology alloc] autorelease];
+  OrgJodaTimeChronoCopticChronology_initWithOrgJodaTimeChronology_withId_withInt_(self, base, param, minDaysInFirstWeek);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoCopticChronology)

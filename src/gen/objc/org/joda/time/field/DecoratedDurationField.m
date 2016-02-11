@@ -121,4 +121,10 @@ OrgJodaTimeFieldDecoratedDurationField *new_OrgJodaTimeFieldDecoratedDurationFie
   return self;
 }
 
+OrgJodaTimeFieldDecoratedDurationField *create_OrgJodaTimeFieldDecoratedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationField *field, OrgJodaTimeDurationFieldType *type) {
+  OrgJodaTimeFieldDecoratedDurationField *self = [[OrgJodaTimeFieldDecoratedDurationField alloc] autorelease];
+  OrgJodaTimeFieldDecoratedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_(self, field, type);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldDecoratedDurationField)

@@ -109,6 +109,12 @@ OrgJodaTimeFormatISOPeriodFormat *new_OrgJodaTimeFormatISOPeriodFormat_init() {
   return self;
 }
 
+OrgJodaTimeFormatISOPeriodFormat *create_OrgJodaTimeFormatISOPeriodFormat_init() {
+  OrgJodaTimeFormatISOPeriodFormat *self = [[OrgJodaTimeFormatISOPeriodFormat alloc] autorelease];
+  OrgJodaTimeFormatISOPeriodFormat_init(self);
+  return self;
+}
+
 OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_standard() {
   OrgJodaTimeFormatISOPeriodFormat_initialize();
   if (OrgJodaTimeFormatISOPeriodFormat_cStandard == nil) {

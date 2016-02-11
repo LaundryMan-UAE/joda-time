@@ -20,8 +20,6 @@
 #define JavaLangIllegalArgumentException_INCLUDE 1
 #include "java/lang/IllegalArgumentException.h"
 
-@class JavaLangThrowable;
-
 /*!
  @brief Exception thrown when attempting to create an instant or date-time that cannot exist.
  <p>
@@ -65,7 +63,10 @@
  @param ex  the exception to check
  @return true if an <code>IllegalInstantException</code>
  */
-+ (jboolean)isIllegalInstantWithJavaLangThrowable:(JavaLangThrowable *)ex;
++ (jboolean)isIllegalInstantWithNSException:(NSException *)ex;
+#ifdef J2OBJC_RENAME_ALIASES
+#define isIllegalInstantWithJavaLangThrowable isIllegalInstantWithNSException
+#endif // J2OBJC_RENAME_ALIASES
 
 @end
 
@@ -75,11 +76,15 @@ FOUNDATION_EXPORT void OrgJodaTimeIllegalInstantException_initWithNSString_(OrgJ
 
 FOUNDATION_EXPORT OrgJodaTimeIllegalInstantException *new_OrgJodaTimeIllegalInstantException_initWithNSString_(NSString *message) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeIllegalInstantException *create_OrgJodaTimeIllegalInstantException_initWithNSString_(NSString *message);
+
 FOUNDATION_EXPORT void OrgJodaTimeIllegalInstantException_initWithLong_withNSString_(OrgJodaTimeIllegalInstantException *self, jlong instantLocal, NSString *zoneId);
 
 FOUNDATION_EXPORT OrgJodaTimeIllegalInstantException *new_OrgJodaTimeIllegalInstantException_initWithLong_withNSString_(jlong instantLocal, NSString *zoneId) NS_RETURNS_RETAINED;
 
-FOUNDATION_EXPORT jboolean OrgJodaTimeIllegalInstantException_isIllegalInstantWithJavaLangThrowable_(JavaLangThrowable *ex);
+FOUNDATION_EXPORT OrgJodaTimeIllegalInstantException *create_OrgJodaTimeIllegalInstantException_initWithLong_withNSString_(jlong instantLocal, NSString *zoneId);
+
+FOUNDATION_EXPORT jboolean OrgJodaTimeIllegalInstantException_isIllegalInstantWithNSException_(NSException *ex);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeIllegalInstantException)
 

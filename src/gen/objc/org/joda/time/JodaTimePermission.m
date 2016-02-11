@@ -44,4 +44,10 @@ OrgJodaTimeJodaTimePermission *new_OrgJodaTimeJodaTimePermission_initWithNSStrin
   return self;
 }
 
+OrgJodaTimeJodaTimePermission *create_OrgJodaTimeJodaTimePermission_initWithNSString_(NSString *name) {
+  OrgJodaTimeJodaTimePermission *self = [[OrgJodaTimeJodaTimePermission alloc] autorelease];
+  OrgJodaTimeJodaTimePermission_initWithNSString_(self, name);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeJodaTimePermission)

@@ -299,4 +299,10 @@ OrgJodaTimeChronoBasicMonthOfYearDateTimeField *new_OrgJodaTimeChronoBasicMonthO
   return self;
 }
 
+OrgJodaTimeChronoBasicMonthOfYearDateTimeField *create_OrgJodaTimeChronoBasicMonthOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withInt_(OrgJodaTimeChronoBasicChronology *chronology, jint leapMonth) {
+  OrgJodaTimeChronoBasicMonthOfYearDateTimeField *self = [[OrgJodaTimeChronoBasicMonthOfYearDateTimeField alloc] autorelease];
+  OrgJodaTimeChronoBasicMonthOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withInt_(self, chronology, leapMonth);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicMonthOfYearDateTimeField)

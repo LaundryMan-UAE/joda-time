@@ -107,4 +107,10 @@ OrgJodaTimeChronoGJCacheKey *new_OrgJodaTimeChronoGJCacheKey_initWithOrgJodaTime
   return self;
 }
 
+OrgJodaTimeChronoGJCacheKey *create_OrgJodaTimeChronoGJCacheKey_initWithOrgJodaTimeDateTimeZone_withOrgJodaTimeInstant_withInt_(OrgJodaTimeDateTimeZone *zone, OrgJodaTimeInstant *cutoverInstant, jint minDaysInFirstWeek) {
+  OrgJodaTimeChronoGJCacheKey *self = [[OrgJodaTimeChronoGJCacheKey alloc] autorelease];
+  OrgJodaTimeChronoGJCacheKey_initWithOrgJodaTimeDateTimeZone_withOrgJodaTimeInstant_withInt_(self, zone, cutoverInstant, minDaysInFirstWeek);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJCacheKey)

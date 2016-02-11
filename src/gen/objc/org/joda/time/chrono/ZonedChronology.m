@@ -9,7 +9,6 @@
 #include "java/lang/ArithmeticException.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/Integer.h"
-#include "java/lang/Throwable.h"
 #include "java/util/HashMap.h"
 #include "java/util/Locale.h"
 #include "org/joda/time/Chronology.h"
@@ -61,6 +60,8 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeChronoZonedChronology, serialVersionUID,
 __attribute__((unused)) static void OrgJodaTimeChronoZonedChronology_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_(OrgJodaTimeChronoZonedChronology *self, OrgJodaTimeChronology *base, OrgJodaTimeDateTimeZone *zone);
 
 __attribute__((unused)) static OrgJodaTimeChronoZonedChronology *new_OrgJodaTimeChronoZonedChronology_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_(OrgJodaTimeChronology *base, OrgJodaTimeDateTimeZone *zone) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static OrgJodaTimeChronoZonedChronology *create_OrgJodaTimeChronoZonedChronology_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_(OrgJodaTimeChronology *base, OrgJodaTimeDateTimeZone *zone);
 
 __attribute__((unused)) static jlong OrgJodaTimeChronoZonedChronology_localToUTCWithLong_(OrgJodaTimeChronoZonedChronology *self, jlong localInstant);
 
@@ -294,6 +295,12 @@ OrgJodaTimeChronoZonedChronology *new_OrgJodaTimeChronoZonedChronology_initWithO
   return self;
 }
 
+OrgJodaTimeChronoZonedChronology *create_OrgJodaTimeChronoZonedChronology_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_(OrgJodaTimeChronology *base, OrgJodaTimeDateTimeZone *zone) {
+  OrgJodaTimeChronoZonedChronology *self = [[OrgJodaTimeChronoZonedChronology alloc] autorelease];
+  OrgJodaTimeChronoZonedChronology_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_(self, base, zone);
+  return self;
+}
+
 jlong OrgJodaTimeChronoZonedChronology_localToUTCWithLong_(OrgJodaTimeChronoZonedChronology *self, jlong localInstant) {
   OrgJodaTimeDateTimeZone *zone = [self getZone];
   jint offset = [((OrgJodaTimeDateTimeZone *) nil_chk(zone)) getOffsetFromLocalWithLong:localInstant];
@@ -473,6 +480,12 @@ OrgJodaTimeChronoZonedChronology_ZonedDurationField *new_OrgJodaTimeChronoZonedC
   return self;
 }
 
+OrgJodaTimeChronoZonedChronology_ZonedDurationField *create_OrgJodaTimeChronoZonedChronology_ZonedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDateTimeZone_(OrgJodaTimeDurationField *field, OrgJodaTimeDateTimeZone *zone) {
+  OrgJodaTimeChronoZonedChronology_ZonedDurationField *self = [[OrgJodaTimeChronoZonedChronology_ZonedDurationField alloc] autorelease];
+  OrgJodaTimeChronoZonedChronology_ZonedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDateTimeZone_(self, field, zone);
+  return self;
+}
+
 jint OrgJodaTimeChronoZonedChronology_ZonedDurationField_getOffsetToAddWithLong_(OrgJodaTimeChronoZonedChronology_ZonedDurationField *self, jlong instant) {
   jint offset = [((OrgJodaTimeDateTimeZone *) nil_chk(self->iZone_)) getOffsetWithLong:instant];
   jlong sum = instant + offset;
@@ -589,7 +602,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology_ZonedDurationF
   if ([self getWithLong:result] != value) {
     OrgJodaTimeIllegalInstantException *cause = [new_OrgJodaTimeIllegalInstantException_initWithLong_withNSString_(localInstant, [iZone_ getID]) autorelease];
     OrgJodaTimeIllegalFieldValueException *ex = [new_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSString_([iField_ getType], JavaLangInteger_valueOfWithInt_(value), [cause getMessage]) autorelease];
-    [ex initCauseWithJavaLangThrowable:cause];
+    [ex initCauseWithNSException:cause];
     @throw ex;
   }
   return result;
@@ -808,6 +821,12 @@ void OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_initWithOrgJodaTimeDate
 
 OrgJodaTimeChronoZonedChronology_ZonedDateTimeField *new_OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeZone_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeZone *zone, OrgJodaTimeDurationField *durationField, OrgJodaTimeDurationField *rangeDurationField, OrgJodaTimeDurationField *leapDurationField) {
   OrgJodaTimeChronoZonedChronology_ZonedDateTimeField *self = [OrgJodaTimeChronoZonedChronology_ZonedDateTimeField alloc];
+  OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeZone_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(self, field, zone, durationField, rangeDurationField, leapDurationField);
+  return self;
+}
+
+OrgJodaTimeChronoZonedChronology_ZonedDateTimeField *create_OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeZone_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeZone *zone, OrgJodaTimeDurationField *durationField, OrgJodaTimeDurationField *rangeDurationField, OrgJodaTimeDurationField *leapDurationField) {
+  OrgJodaTimeChronoZonedChronology_ZonedDateTimeField *self = [[OrgJodaTimeChronoZonedChronology_ZonedDateTimeField alloc] autorelease];
   OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeZone_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(self, field, zone, durationField, rangeDurationField, leapDurationField);
   return self;
 }

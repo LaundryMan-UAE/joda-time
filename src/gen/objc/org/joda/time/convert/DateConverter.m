@@ -65,4 +65,10 @@ OrgJodaTimeConvertDateConverter *new_OrgJodaTimeConvertDateConverter_init() {
   return self;
 }
 
+OrgJodaTimeConvertDateConverter *create_OrgJodaTimeConvertDateConverter_init() {
+  OrgJodaTimeConvertDateConverter *self = [[OrgJodaTimeConvertDateConverter alloc] autorelease];
+  OrgJodaTimeConvertDateConverter_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertDateConverter)

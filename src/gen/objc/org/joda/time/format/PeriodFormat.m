@@ -127,6 +127,12 @@ OrgJodaTimeFormatPeriodFormat *new_OrgJodaTimeFormatPeriodFormat_init() {
   return self;
 }
 
+OrgJodaTimeFormatPeriodFormat *create_OrgJodaTimeFormatPeriodFormat_init() {
+  OrgJodaTimeFormatPeriodFormat *self = [[OrgJodaTimeFormatPeriodFormat alloc] autorelease];
+  OrgJodaTimeFormatPeriodFormat_init(self);
+  return self;
+}
+
 OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormat_getDefault() {
   OrgJodaTimeFormatPeriodFormat_initialize();
   return OrgJodaTimeFormatPeriodFormat_wordBasedWithJavaUtilLocale_(JreLoadStatic(JavaUtilLocale, ENGLISH));

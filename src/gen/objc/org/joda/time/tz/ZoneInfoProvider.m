@@ -94,6 +94,8 @@ __attribute__((unused)) static void OrgJodaTimeTzZoneInfoProvider_initWithNSStri
 
 __attribute__((unused)) static OrgJodaTimeTzZoneInfoProvider *new_OrgJodaTimeTzZoneInfoProvider_initWithNSString_withJavaLangClassLoader_withBoolean_(NSString *resourcePath, JavaLangClassLoader *loader, jboolean favorSystemLoader) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeTzZoneInfoProvider *create_OrgJodaTimeTzZoneInfoProvider_initWithNSString_withJavaLangClassLoader_withBoolean_(NSString *resourcePath, JavaLangClassLoader *loader, jboolean favorSystemLoader);
+
 __attribute__((unused)) static JavaIoInputStream *OrgJodaTimeTzZoneInfoProvider_openResourceWithNSString_(OrgJodaTimeTzZoneInfoProvider *self, NSString *name);
 
 __attribute__((unused)) static OrgJodaTimeDateTimeZone *OrgJodaTimeTzZoneInfoProvider_loadZoneDataWithNSString_(OrgJodaTimeTzZoneInfoProvider *self, NSString *id_);
@@ -231,6 +233,12 @@ OrgJodaTimeTzZoneInfoProvider *new_OrgJodaTimeTzZoneInfoProvider_initWithJavaIoF
   return self;
 }
 
+OrgJodaTimeTzZoneInfoProvider *create_OrgJodaTimeTzZoneInfoProvider_initWithJavaIoFile_(JavaIoFile *fileDir) {
+  OrgJodaTimeTzZoneInfoProvider *self = [[OrgJodaTimeTzZoneInfoProvider alloc] autorelease];
+  OrgJodaTimeTzZoneInfoProvider_initWithJavaIoFile_(self, fileDir);
+  return self;
+}
+
 void OrgJodaTimeTzZoneInfoProvider_initWithNSString_(OrgJodaTimeTzZoneInfoProvider *self, NSString *resourcePath) {
   OrgJodaTimeTzZoneInfoProvider_initWithNSString_withJavaLangClassLoader_withBoolean_(self, resourcePath, nil, false);
 }
@@ -241,12 +249,24 @@ OrgJodaTimeTzZoneInfoProvider *new_OrgJodaTimeTzZoneInfoProvider_initWithNSStrin
   return self;
 }
 
+OrgJodaTimeTzZoneInfoProvider *create_OrgJodaTimeTzZoneInfoProvider_initWithNSString_(NSString *resourcePath) {
+  OrgJodaTimeTzZoneInfoProvider *self = [[OrgJodaTimeTzZoneInfoProvider alloc] autorelease];
+  OrgJodaTimeTzZoneInfoProvider_initWithNSString_(self, resourcePath);
+  return self;
+}
+
 void OrgJodaTimeTzZoneInfoProvider_initWithNSString_withJavaLangClassLoader_(OrgJodaTimeTzZoneInfoProvider *self, NSString *resourcePath, JavaLangClassLoader *loader) {
   OrgJodaTimeTzZoneInfoProvider_initWithNSString_withJavaLangClassLoader_withBoolean_(self, resourcePath, loader, true);
 }
 
 OrgJodaTimeTzZoneInfoProvider *new_OrgJodaTimeTzZoneInfoProvider_initWithNSString_withJavaLangClassLoader_(NSString *resourcePath, JavaLangClassLoader *loader) {
   OrgJodaTimeTzZoneInfoProvider *self = [OrgJodaTimeTzZoneInfoProvider alloc];
+  OrgJodaTimeTzZoneInfoProvider_initWithNSString_withJavaLangClassLoader_(self, resourcePath, loader);
+  return self;
+}
+
+OrgJodaTimeTzZoneInfoProvider *create_OrgJodaTimeTzZoneInfoProvider_initWithNSString_withJavaLangClassLoader_(NSString *resourcePath, JavaLangClassLoader *loader) {
+  OrgJodaTimeTzZoneInfoProvider *self = [[OrgJodaTimeTzZoneInfoProvider alloc] autorelease];
   OrgJodaTimeTzZoneInfoProvider_initWithNSString_withJavaLangClassLoader_(self, resourcePath, loader);
   return self;
 }
@@ -270,6 +290,12 @@ void OrgJodaTimeTzZoneInfoProvider_initWithNSString_withJavaLangClassLoader_with
 
 OrgJodaTimeTzZoneInfoProvider *new_OrgJodaTimeTzZoneInfoProvider_initWithNSString_withJavaLangClassLoader_withBoolean_(NSString *resourcePath, JavaLangClassLoader *loader, jboolean favorSystemLoader) {
   OrgJodaTimeTzZoneInfoProvider *self = [OrgJodaTimeTzZoneInfoProvider alloc];
+  OrgJodaTimeTzZoneInfoProvider_initWithNSString_withJavaLangClassLoader_withBoolean_(self, resourcePath, loader, favorSystemLoader);
+  return self;
+}
+
+OrgJodaTimeTzZoneInfoProvider *create_OrgJodaTimeTzZoneInfoProvider_initWithNSString_withJavaLangClassLoader_withBoolean_(NSString *resourcePath, JavaLangClassLoader *loader, jboolean favorSystemLoader) {
+  OrgJodaTimeTzZoneInfoProvider *self = [[OrgJodaTimeTzZoneInfoProvider alloc] autorelease];
   OrgJodaTimeTzZoneInfoProvider_initWithNSString_withJavaLangClassLoader_withBoolean_(self, resourcePath, loader, favorSystemLoader);
   return self;
 }

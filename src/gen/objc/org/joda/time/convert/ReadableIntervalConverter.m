@@ -101,4 +101,10 @@ OrgJodaTimeConvertReadableIntervalConverter *new_OrgJodaTimeConvertReadableInter
   return self;
 }
 
+OrgJodaTimeConvertReadableIntervalConverter *create_OrgJodaTimeConvertReadableIntervalConverter_init() {
+  OrgJodaTimeConvertReadableIntervalConverter *self = [[OrgJodaTimeConvertReadableIntervalConverter alloc] autorelease];
+  OrgJodaTimeConvertReadableIntervalConverter_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertReadableIntervalConverter)

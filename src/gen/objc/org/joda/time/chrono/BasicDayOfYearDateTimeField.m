@@ -134,4 +134,10 @@ OrgJodaTimeChronoBasicDayOfYearDateTimeField *new_OrgJodaTimeChronoBasicDayOfYea
   return self;
 }
 
+OrgJodaTimeChronoBasicDayOfYearDateTimeField *create_OrgJodaTimeChronoBasicDayOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(OrgJodaTimeChronoBasicChronology *chronology, OrgJodaTimeDurationField *days) {
+  OrgJodaTimeChronoBasicDayOfYearDateTimeField *self = [[OrgJodaTimeChronoBasicDayOfYearDateTimeField alloc] autorelease];
+  OrgJodaTimeChronoBasicDayOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(self, chronology, days);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicDayOfYearDateTimeField)

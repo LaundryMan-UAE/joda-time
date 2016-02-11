@@ -98,6 +98,12 @@ OrgJodaTimeTzDefaultNameProvider *new_OrgJodaTimeTzDefaultNameProvider_init() {
   return self;
 }
 
+OrgJodaTimeTzDefaultNameProvider *create_OrgJodaTimeTzDefaultNameProvider_init() {
+  OrgJodaTimeTzDefaultNameProvider *self = [[OrgJodaTimeTzDefaultNameProvider alloc] autorelease];
+  OrgJodaTimeTzDefaultNameProvider_init(self);
+  return self;
+}
+
 IOSObjectArray *OrgJodaTimeTzDefaultNameProvider_getNameSetWithJavaUtilLocale_withNSString_withNSString_(OrgJodaTimeTzDefaultNameProvider *self, JavaUtilLocale *locale, NSString *id_, NSString *nameKey) {
   @synchronized(self) {
     if (locale == nil || id_ == nil || nameKey == nil) {

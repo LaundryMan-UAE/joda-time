@@ -172,12 +172,24 @@ OrgJodaTimeFieldOffsetDateTimeField *new_OrgJodaTimeFieldOffsetDateTimeField_ini
   return self;
 }
 
+OrgJodaTimeFieldOffsetDateTimeField *create_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withInt_(OrgJodaTimeDateTimeField *field, jint offset) {
+  OrgJodaTimeFieldOffsetDateTimeField *self = [[OrgJodaTimeFieldOffsetDateTimeField alloc] autorelease];
+  OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withInt_(self, field, offset);
+  return self;
+}
+
 void OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeFieldOffsetDateTimeField *self, OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type, jint offset) {
   OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_withInt_withInt_(self, field, type, offset, JavaLangInteger_MIN_VALUE, JavaLangInteger_MAX_VALUE);
 }
 
 OrgJodaTimeFieldOffsetDateTimeField *new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type, jint offset) {
   OrgJodaTimeFieldOffsetDateTimeField *self = [OrgJodaTimeFieldOffsetDateTimeField alloc];
+  OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(self, field, type, offset);
+  return self;
+}
+
+OrgJodaTimeFieldOffsetDateTimeField *create_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type, jint offset) {
+  OrgJodaTimeFieldOffsetDateTimeField *self = [[OrgJodaTimeFieldOffsetDateTimeField alloc] autorelease];
   OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(self, field, type, offset);
   return self;
 }
@@ -204,6 +216,12 @@ void OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOr
 
 OrgJodaTimeFieldOffsetDateTimeField *new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_withInt_withInt_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type, jint offset, jint minValue, jint maxValue) {
   OrgJodaTimeFieldOffsetDateTimeField *self = [OrgJodaTimeFieldOffsetDateTimeField alloc];
+  OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_withInt_withInt_(self, field, type, offset, minValue, maxValue);
+  return self;
+}
+
+OrgJodaTimeFieldOffsetDateTimeField *create_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_withInt_withInt_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type, jint offset, jint minValue, jint maxValue) {
+  OrgJodaTimeFieldOffsetDateTimeField *self = [[OrgJodaTimeFieldOffsetDateTimeField alloc] autorelease];
   OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_withInt_withInt_(self, field, type, offset, minValue, maxValue);
   return self;
 }

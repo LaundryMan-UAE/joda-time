@@ -165,6 +165,8 @@ __attribute__((unused)) static void OrgJodaTimeChronoBasicChronology_HalfdayFiel
 
 __attribute__((unused)) static OrgJodaTimeChronoBasicChronology_HalfdayField *new_OrgJodaTimeChronoBasicChronology_HalfdayField_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeChronoBasicChronology_HalfdayField *create_OrgJodaTimeChronoBasicChronology_HalfdayField_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicChronology_HalfdayField)
 
 @interface OrgJodaTimeChronoBasicChronology_YearInfo : NSObject {
@@ -183,6 +185,8 @@ J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeChronoBasicChronology_YearInfo)
 __attribute__((unused)) static void OrgJodaTimeChronoBasicChronology_YearInfo_initWithInt_withLong_(OrgJodaTimeChronoBasicChronology_YearInfo *self, jint year, jlong firstDayMillis);
 
 __attribute__((unused)) static OrgJodaTimeChronoBasicChronology_YearInfo *new_OrgJodaTimeChronoBasicChronology_YearInfo_initWithInt_withLong_(jint year, jlong firstDayMillis) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static OrgJodaTimeChronoBasicChronology_YearInfo *create_OrgJodaTimeChronoBasicChronology_YearInfo_initWithInt_withLong_(jint year, jlong firstDayMillis);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicChronology_YearInfo)
 
@@ -790,6 +794,12 @@ OrgJodaTimeChronoBasicChronology_HalfdayField *new_OrgJodaTimeChronoBasicChronol
   return self;
 }
 
+OrgJodaTimeChronoBasicChronology_HalfdayField *create_OrgJodaTimeChronoBasicChronology_HalfdayField_init() {
+  OrgJodaTimeChronoBasicChronology_HalfdayField *self = [[OrgJodaTimeChronoBasicChronology_HalfdayField alloc] autorelease];
+  OrgJodaTimeChronoBasicChronology_HalfdayField_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicChronology_HalfdayField)
 
 @implementation OrgJodaTimeChronoBasicChronology_YearInfo
@@ -822,6 +832,12 @@ void OrgJodaTimeChronoBasicChronology_YearInfo_initWithInt_withLong_(OrgJodaTime
 
 OrgJodaTimeChronoBasicChronology_YearInfo *new_OrgJodaTimeChronoBasicChronology_YearInfo_initWithInt_withLong_(jint year, jlong firstDayMillis) {
   OrgJodaTimeChronoBasicChronology_YearInfo *self = [OrgJodaTimeChronoBasicChronology_YearInfo alloc];
+  OrgJodaTimeChronoBasicChronology_YearInfo_initWithInt_withLong_(self, year, firstDayMillis);
+  return self;
+}
+
+OrgJodaTimeChronoBasicChronology_YearInfo *create_OrgJodaTimeChronoBasicChronology_YearInfo_initWithInt_withLong_(jint year, jlong firstDayMillis) {
+  OrgJodaTimeChronoBasicChronology_YearInfo *self = [[OrgJodaTimeChronoBasicChronology_YearInfo alloc] autorelease];
   OrgJodaTimeChronoBasicChronology_YearInfo_initWithInt_withLong_(self, year, firstDayMillis);
   return self;
 }

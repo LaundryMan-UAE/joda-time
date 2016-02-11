@@ -85,6 +85,8 @@ __attribute__((unused)) static void OrgJodaTimeChronoGregorianChronology_initWit
 
 __attribute__((unused)) static OrgJodaTimeChronoGregorianChronology *new_OrgJodaTimeChronoGregorianChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronology *base, id param, jint minDaysInFirstWeek) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeChronoGregorianChronology *create_OrgJodaTimeChronoGregorianChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronology *base, id param, jint minDaysInFirstWeek);
+
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoGregorianChronology)
 
 @implementation OrgJodaTimeChronoGregorianChronology
@@ -287,6 +289,12 @@ void OrgJodaTimeChronoGregorianChronology_initWithOrgJodaTimeChronology_withId_w
 
 OrgJodaTimeChronoGregorianChronology *new_OrgJodaTimeChronoGregorianChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronology *base, id param, jint minDaysInFirstWeek) {
   OrgJodaTimeChronoGregorianChronology *self = [OrgJodaTimeChronoGregorianChronology alloc];
+  OrgJodaTimeChronoGregorianChronology_initWithOrgJodaTimeChronology_withId_withInt_(self, base, param, minDaysInFirstWeek);
+  return self;
+}
+
+OrgJodaTimeChronoGregorianChronology *create_OrgJodaTimeChronoGregorianChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronology *base, id param, jint minDaysInFirstWeek) {
+  OrgJodaTimeChronoGregorianChronology *self = [[OrgJodaTimeChronoGregorianChronology alloc] autorelease];
   OrgJodaTimeChronoGregorianChronology_initWithOrgJodaTimeChronology_withId_withInt_(self, base, param, minDaysInFirstWeek);
   return self;
 }

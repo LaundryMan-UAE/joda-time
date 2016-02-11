@@ -95,6 +95,8 @@ FOUNDATION_EXPORT void OrgJodaTimeConvertReadableDurationConverter_init(OrgJodaT
 
 FOUNDATION_EXPORT OrgJodaTimeConvertReadableDurationConverter *new_OrgJodaTimeConvertReadableDurationConverter_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeConvertReadableDurationConverter *create_OrgJodaTimeConvertReadableDurationConverter_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertReadableDurationConverter)
 
 #endif

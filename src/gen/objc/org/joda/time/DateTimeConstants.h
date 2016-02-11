@@ -350,6 +350,8 @@ FOUNDATION_EXPORT void OrgJodaTimeDateTimeConstants_init(OrgJodaTimeDateTimeCons
 
 FOUNDATION_EXPORT OrgJodaTimeDateTimeConstants *new_OrgJodaTimeDateTimeConstants_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeDateTimeConstants *create_OrgJodaTimeDateTimeConstants_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeConstants)
 
 #endif

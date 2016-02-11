@@ -104,6 +104,8 @@ FOUNDATION_EXPORT void OrgJodaTimeConvertReadablePartialConverter_init(OrgJodaTi
 
 FOUNDATION_EXPORT OrgJodaTimeConvertReadablePartialConverter *new_OrgJodaTimeConvertReadablePartialConverter_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeConvertReadablePartialConverter *create_OrgJodaTimeConvertReadablePartialConverter_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertReadablePartialConverter)
 
 #endif

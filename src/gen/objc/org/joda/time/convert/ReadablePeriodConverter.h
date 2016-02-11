@@ -91,6 +91,8 @@ FOUNDATION_EXPORT void OrgJodaTimeConvertReadablePeriodConverter_init(OrgJodaTim
 
 FOUNDATION_EXPORT OrgJodaTimeConvertReadablePeriodConverter *new_OrgJodaTimeConvertReadablePeriodConverter_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeConvertReadablePeriodConverter *create_OrgJodaTimeConvertReadablePeriodConverter_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertReadablePeriodConverter)
 
 #endif

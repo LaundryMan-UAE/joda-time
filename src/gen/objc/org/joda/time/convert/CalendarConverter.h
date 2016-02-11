@@ -112,6 +112,8 @@ FOUNDATION_EXPORT void OrgJodaTimeConvertCalendarConverter_init(OrgJodaTimeConve
 
 FOUNDATION_EXPORT OrgJodaTimeConvertCalendarConverter *new_OrgJodaTimeConvertCalendarConverter_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeConvertCalendarConverter *create_OrgJodaTimeConvertCalendarConverter_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertCalendarConverter)
 
 #endif

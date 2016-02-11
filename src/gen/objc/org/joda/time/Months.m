@@ -61,6 +61,8 @@ __attribute__((unused)) static void OrgJodaTimeMonths_initWithInt_(OrgJodaTimeMo
 
 __attribute__((unused)) static OrgJodaTimeMonths *new_OrgJodaTimeMonths_initWithInt_(jint months) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeMonths *create_OrgJodaTimeMonths_initWithInt_(jint months);
+
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeMonths)
 
 OrgJodaTimeMonths *OrgJodaTimeMonths_ZERO;
@@ -339,6 +341,12 @@ void OrgJodaTimeMonths_initWithInt_(OrgJodaTimeMonths *self, jint months) {
 
 OrgJodaTimeMonths *new_OrgJodaTimeMonths_initWithInt_(jint months) {
   OrgJodaTimeMonths *self = [OrgJodaTimeMonths alloc];
+  OrgJodaTimeMonths_initWithInt_(self, months);
+  return self;
+}
+
+OrgJodaTimeMonths *create_OrgJodaTimeMonths_initWithInt_(jint months) {
+  OrgJodaTimeMonths *self = [[OrgJodaTimeMonths alloc] autorelease];
   OrgJodaTimeMonths_initWithInt_(self, months);
   return self;
 }

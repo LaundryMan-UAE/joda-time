@@ -326,6 +326,8 @@ FOUNDATION_EXPORT void OrgJodaTimeDateTimeUtils_init(OrgJodaTimeDateTimeUtils *s
 
 FOUNDATION_EXPORT OrgJodaTimeDateTimeUtils *new_OrgJodaTimeDateTimeUtils_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeDateTimeUtils *create_OrgJodaTimeDateTimeUtils_init();
+
 FOUNDATION_EXPORT jlong OrgJodaTimeDateTimeUtils_currentTimeMillis();
 
 FOUNDATION_EXPORT void OrgJodaTimeDateTimeUtils_setCurrentMillisSystem();
@@ -426,6 +428,8 @@ FOUNDATION_EXPORT void OrgJodaTimeDateTimeUtils_SystemMillisProvider_init(OrgJod
 
 FOUNDATION_EXPORT OrgJodaTimeDateTimeUtils_SystemMillisProvider *new_OrgJodaTimeDateTimeUtils_SystemMillisProvider_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeDateTimeUtils_SystemMillisProvider *create_OrgJodaTimeDateTimeUtils_SystemMillisProvider_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeUtils_SystemMillisProvider)
 
 #endif
@@ -462,6 +466,8 @@ FOUNDATION_EXPORT void OrgJodaTimeDateTimeUtils_FixedMillisProvider_initWithLong
 
 FOUNDATION_EXPORT OrgJodaTimeDateTimeUtils_FixedMillisProvider *new_OrgJodaTimeDateTimeUtils_FixedMillisProvider_initWithLong_(jlong fixedMillis) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeDateTimeUtils_FixedMillisProvider *create_OrgJodaTimeDateTimeUtils_FixedMillisProvider_initWithLong_(jlong fixedMillis);
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeUtils_FixedMillisProvider)
 
 #endif
@@ -497,6 +503,8 @@ J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeDateTimeUtils_OffsetMillisProvider)
 FOUNDATION_EXPORT void OrgJodaTimeDateTimeUtils_OffsetMillisProvider_initWithLong_(OrgJodaTimeDateTimeUtils_OffsetMillisProvider *self, jlong offsetMillis);
 
 FOUNDATION_EXPORT OrgJodaTimeDateTimeUtils_OffsetMillisProvider *new_OrgJodaTimeDateTimeUtils_OffsetMillisProvider_initWithLong_(jlong offsetMillis) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeDateTimeUtils_OffsetMillisProvider *create_OrgJodaTimeDateTimeUtils_OffsetMillisProvider_initWithLong_(jlong offsetMillis);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeUtils_OffsetMillisProvider)
 

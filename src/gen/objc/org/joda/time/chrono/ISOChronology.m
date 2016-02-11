@@ -65,6 +65,8 @@ __attribute__((unused)) static void OrgJodaTimeChronoISOChronology_initWithOrgJo
 
 __attribute__((unused)) static OrgJodaTimeChronoISOChronology *new_OrgJodaTimeChronoISOChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *base) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeChronoISOChronology *create_OrgJodaTimeChronoISOChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *base);
+
 @interface OrgJodaTimeChronoISOChronology_Stub : NSObject < JavaIoSerializable > {
  @public
   OrgJodaTimeDateTimeZone *iZone_;
@@ -91,6 +93,8 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeChronoISOChronology_Stub, serialVersionU
 __attribute__((unused)) static void OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeChronoISOChronology_Stub *self, OrgJodaTimeDateTimeZone *zone);
 
 __attribute__((unused)) static OrgJodaTimeChronoISOChronology_Stub *new_OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static OrgJodaTimeChronoISOChronology_Stub *create_OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoISOChronology_Stub)
 
@@ -239,6 +243,12 @@ OrgJodaTimeChronoISOChronology *new_OrgJodaTimeChronoISOChronology_initWithOrgJo
   return self;
 }
 
+OrgJodaTimeChronoISOChronology *create_OrgJodaTimeChronoISOChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *base) {
+  OrgJodaTimeChronoISOChronology *self = [[OrgJodaTimeChronoISOChronology alloc] autorelease];
+  OrgJodaTimeChronoISOChronology_initWithOrgJodaTimeChronology_(self, base);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoISOChronology)
 
 @implementation OrgJodaTimeChronoISOChronology_Stub
@@ -289,6 +299,12 @@ void OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(OrgJod
 
 OrgJodaTimeChronoISOChronology_Stub *new_OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {
   OrgJodaTimeChronoISOChronology_Stub *self = [OrgJodaTimeChronoISOChronology_Stub alloc];
+  OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(self, zone);
+  return self;
+}
+
+OrgJodaTimeChronoISOChronology_Stub *create_OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {
+  OrgJodaTimeChronoISOChronology_Stub *self = [[OrgJodaTimeChronoISOChronology_Stub alloc] autorelease];
   OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(self, zone);
   return self;
 }

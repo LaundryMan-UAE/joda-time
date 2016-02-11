@@ -58,6 +58,8 @@ FOUNDATION_EXPORT void OrgJodaTimeTzUTCProvider_init(OrgJodaTimeTzUTCProvider *s
 
 FOUNDATION_EXPORT OrgJodaTimeTzUTCProvider *new_OrgJodaTimeTzUTCProvider_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeTzUTCProvider *create_OrgJodaTimeTzUTCProvider_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzUTCProvider)
 
 #endif

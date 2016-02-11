@@ -27,6 +27,8 @@ __attribute__((unused)) static void OrgJodaTimeFormatInternalParserDateTimeParse
 
 __attribute__((unused)) static OrgJodaTimeFormatInternalParserDateTimeParser *new_OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(id<OrgJodaTimeFormatInternalParser> underlying) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeFormatInternalParserDateTimeParser *create_OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(id<OrgJodaTimeFormatInternalParser> underlying);
+
 @implementation OrgJodaTimeFormatInternalParserDateTimeParser
 
 + (id<OrgJodaTimeFormatDateTimeParser>)ofWithOrgJodaTimeFormatInternalParser:(id<OrgJodaTimeFormatInternalParser>)underlying {
@@ -109,6 +111,12 @@ void OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInte
 
 OrgJodaTimeFormatInternalParserDateTimeParser *new_OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(id<OrgJodaTimeFormatInternalParser> underlying) {
   OrgJodaTimeFormatInternalParserDateTimeParser *self = [OrgJodaTimeFormatInternalParserDateTimeParser alloc];
+  OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(self, underlying);
+  return self;
+}
+
+OrgJodaTimeFormatInternalParserDateTimeParser *create_OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(id<OrgJodaTimeFormatInternalParser> underlying) {
+  OrgJodaTimeFormatInternalParserDateTimeParser *self = [[OrgJodaTimeFormatInternalParserDateTimeParser alloc] autorelease];
   OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(self, underlying);
   return self;
 }

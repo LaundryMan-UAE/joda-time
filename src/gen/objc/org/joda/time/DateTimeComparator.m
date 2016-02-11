@@ -245,4 +245,10 @@ OrgJodaTimeDateTimeComparator *new_OrgJodaTimeDateTimeComparator_initWithOrgJoda
   return self;
 }
 
+OrgJodaTimeDateTimeComparator *create_OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeFieldType *lowerLimit, OrgJodaTimeDateTimeFieldType *upperLimit) {
+  OrgJodaTimeDateTimeComparator *self = [[OrgJodaTimeDateTimeComparator alloc] autorelease];
+  OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(self, lowerLimit, upperLimit);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeComparator)

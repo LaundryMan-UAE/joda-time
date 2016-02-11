@@ -55,6 +55,8 @@ __attribute__((unused)) static void OrgJodaTimeFieldUnsupportedDurationField_ini
 
 __attribute__((unused)) static OrgJodaTimeFieldUnsupportedDurationField *new_OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationFieldType *type) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeFieldUnsupportedDurationField *create_OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationFieldType *type);
+
 __attribute__((unused)) static JavaLangUnsupportedOperationException *OrgJodaTimeFieldUnsupportedDurationField_unsupported(OrgJodaTimeFieldUnsupportedDurationField *self);
 
 @implementation OrgJodaTimeFieldUnsupportedDurationField
@@ -249,6 +251,12 @@ void OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldTy
 
 OrgJodaTimeFieldUnsupportedDurationField *new_OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationFieldType *type) {
   OrgJodaTimeFieldUnsupportedDurationField *self = [OrgJodaTimeFieldUnsupportedDurationField alloc];
+  OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldType_(self, type);
+  return self;
+}
+
+OrgJodaTimeFieldUnsupportedDurationField *create_OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationFieldType *type) {
+  OrgJodaTimeFieldUnsupportedDurationField *self = [[OrgJodaTimeFieldUnsupportedDurationField alloc] autorelease];
   OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldType_(self, type);
   return self;
 }

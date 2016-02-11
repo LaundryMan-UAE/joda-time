@@ -82,6 +82,8 @@ __attribute__((unused)) static void OrgJodaTimeFormatPeriodFormatter_initWithOrg
 
 __attribute__((unused)) static OrgJodaTimeFormatPeriodFormatter *new_OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withJavaUtilLocale_withOrgJodaTimePeriodType_(id<OrgJodaTimeFormatPeriodPrinter> printer, id<OrgJodaTimeFormatPeriodParser> parser, JavaUtilLocale *locale, OrgJodaTimePeriodType *type) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeFormatPeriodFormatter *create_OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withJavaUtilLocale_withOrgJodaTimePeriodType_(id<OrgJodaTimeFormatPeriodPrinter> printer, id<OrgJodaTimeFormatPeriodParser> parser, JavaUtilLocale *locale, OrgJodaTimePeriodType *type);
+
 __attribute__((unused)) static void OrgJodaTimeFormatPeriodFormatter_checkPrinter(OrgJodaTimeFormatPeriodFormatter *self);
 
 __attribute__((unused)) static void OrgJodaTimeFormatPeriodFormatter_checkPeriodWithOrgJodaTimeReadablePeriod_(OrgJodaTimeFormatPeriodFormatter *self, id<OrgJodaTimeReadablePeriod> period);
@@ -261,6 +263,12 @@ OrgJodaTimeFormatPeriodFormatter *new_OrgJodaTimeFormatPeriodFormatter_initWithO
   return self;
 }
 
+OrgJodaTimeFormatPeriodFormatter *create_OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_(id<OrgJodaTimeFormatPeriodPrinter> printer, id<OrgJodaTimeFormatPeriodParser> parser) {
+  OrgJodaTimeFormatPeriodFormatter *self = [[OrgJodaTimeFormatPeriodFormatter alloc] autorelease];
+  OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_(self, printer, parser);
+  return self;
+}
+
 void OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withJavaUtilLocale_withOrgJodaTimePeriodType_(OrgJodaTimeFormatPeriodFormatter *self, id<OrgJodaTimeFormatPeriodPrinter> printer, id<OrgJodaTimeFormatPeriodParser> parser, JavaUtilLocale *locale, OrgJodaTimePeriodType *type) {
   NSObject_init(self);
   JreStrongAssign(&self->iPrinter_, printer);
@@ -271,6 +279,12 @@ void OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_wit
 
 OrgJodaTimeFormatPeriodFormatter *new_OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withJavaUtilLocale_withOrgJodaTimePeriodType_(id<OrgJodaTimeFormatPeriodPrinter> printer, id<OrgJodaTimeFormatPeriodParser> parser, JavaUtilLocale *locale, OrgJodaTimePeriodType *type) {
   OrgJodaTimeFormatPeriodFormatter *self = [OrgJodaTimeFormatPeriodFormatter alloc];
+  OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withJavaUtilLocale_withOrgJodaTimePeriodType_(self, printer, parser, locale, type);
+  return self;
+}
+
+OrgJodaTimeFormatPeriodFormatter *create_OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withJavaUtilLocale_withOrgJodaTimePeriodType_(id<OrgJodaTimeFormatPeriodPrinter> printer, id<OrgJodaTimeFormatPeriodParser> parser, JavaUtilLocale *locale, OrgJodaTimePeriodType *type) {
+  OrgJodaTimeFormatPeriodFormatter *self = [[OrgJodaTimeFormatPeriodFormatter alloc] autorelease];
   OrgJodaTimeFormatPeriodFormatter_initWithOrgJodaTimeFormatPeriodPrinter_withOrgJodaTimeFormatPeriodParser_withJavaUtilLocale_withOrgJodaTimePeriodType_(self, printer, parser, locale, type);
   return self;
 }

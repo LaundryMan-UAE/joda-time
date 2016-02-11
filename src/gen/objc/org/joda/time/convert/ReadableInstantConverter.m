@@ -94,4 +94,10 @@ OrgJodaTimeConvertReadableInstantConverter *new_OrgJodaTimeConvertReadableInstan
   return self;
 }
 
+OrgJodaTimeConvertReadableInstantConverter *create_OrgJodaTimeConvertReadableInstantConverter_init() {
+  OrgJodaTimeConvertReadableInstantConverter *self = [[OrgJodaTimeConvertReadableInstantConverter alloc] autorelease];
+  OrgJodaTimeConvertReadableInstantConverter_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertReadableInstantConverter)

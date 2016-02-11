@@ -98,4 +98,10 @@ OrgJodaTimeFieldLenientDateTimeField *new_OrgJodaTimeFieldLenientDateTimeField_i
   return self;
 }
 
+OrgJodaTimeFieldLenientDateTimeField *create_OrgJodaTimeFieldLenientDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronology_(OrgJodaTimeDateTimeField *field, OrgJodaTimeChronology *base) {
+  OrgJodaTimeFieldLenientDateTimeField *self = [[OrgJodaTimeFieldLenientDateTimeField alloc] autorelease];
+  OrgJodaTimeFieldLenientDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronology_(self, field, base);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldLenientDateTimeField)

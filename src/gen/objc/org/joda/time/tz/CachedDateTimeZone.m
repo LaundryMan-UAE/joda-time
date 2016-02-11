@@ -42,6 +42,8 @@ __attribute__((unused)) static void OrgJodaTimeTzCachedDateTimeZone_initWithOrgJ
 
 __attribute__((unused)) static OrgJodaTimeTzCachedDateTimeZone *new_OrgJodaTimeTzCachedDateTimeZone_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeTzCachedDateTimeZone *create_OrgJodaTimeTzCachedDateTimeZone_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
+
 __attribute__((unused)) static OrgJodaTimeTzCachedDateTimeZone_Info *OrgJodaTimeTzCachedDateTimeZone_getInfoWithLong_(OrgJodaTimeTzCachedDateTimeZone *self, jlong millis);
 
 __attribute__((unused)) static OrgJodaTimeTzCachedDateTimeZone_Info *OrgJodaTimeTzCachedDateTimeZone_createInfoWithLong_(OrgJodaTimeTzCachedDateTimeZone *self, jlong millis);
@@ -76,6 +78,8 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeTzCachedDateTimeZone_Info, iNameKey_, NSString *)
 __attribute__((unused)) static void OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLong_(OrgJodaTimeTzCachedDateTimeZone_Info *self, OrgJodaTimeDateTimeZone *zone, jlong periodStart);
 
 __attribute__((unused)) static OrgJodaTimeTzCachedDateTimeZone_Info *new_OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLong_(OrgJodaTimeDateTimeZone *zone, jlong periodStart) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static OrgJodaTimeTzCachedDateTimeZone_Info *create_OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLong_(OrgJodaTimeDateTimeZone *zone, jlong periodStart);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzCachedDateTimeZone_Info)
 
@@ -227,6 +231,12 @@ OrgJodaTimeTzCachedDateTimeZone *new_OrgJodaTimeTzCachedDateTimeZone_initWithOrg
   return self;
 }
 
+OrgJodaTimeTzCachedDateTimeZone *create_OrgJodaTimeTzCachedDateTimeZone_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {
+  OrgJodaTimeTzCachedDateTimeZone *self = [[OrgJodaTimeTzCachedDateTimeZone alloc] autorelease];
+  OrgJodaTimeTzCachedDateTimeZone_initWithOrgJodaTimeDateTimeZone_(self, zone);
+  return self;
+}
+
 OrgJodaTimeTzCachedDateTimeZone_Info *OrgJodaTimeTzCachedDateTimeZone_getInfoWithLong_(OrgJodaTimeTzCachedDateTimeZone *self, jlong millis) {
   jint period = (jint) (JreRShift64(millis, 32));
   IOSObjectArray *cache = self->iInfoCache_;
@@ -333,6 +343,12 @@ void OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLo
 
 OrgJodaTimeTzCachedDateTimeZone_Info *new_OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLong_(OrgJodaTimeDateTimeZone *zone, jlong periodStart) {
   OrgJodaTimeTzCachedDateTimeZone_Info *self = [OrgJodaTimeTzCachedDateTimeZone_Info alloc];
+  OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLong_(self, zone, periodStart);
+  return self;
+}
+
+OrgJodaTimeTzCachedDateTimeZone_Info *create_OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLong_(OrgJodaTimeDateTimeZone *zone, jlong periodStart) {
+  OrgJodaTimeTzCachedDateTimeZone_Info *self = [[OrgJodaTimeTzCachedDateTimeZone_Info alloc] autorelease];
   OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLong_(self, zone, periodStart);
   return self;
 }

@@ -81,4 +81,10 @@ OrgJodaTimeConvertNullConverter *new_OrgJodaTimeConvertNullConverter_init() {
   return self;
 }
 
+OrgJodaTimeConvertNullConverter *create_OrgJodaTimeConvertNullConverter_init() {
+  OrgJodaTimeConvertNullConverter *self = [[OrgJodaTimeConvertNullConverter alloc] autorelease];
+  OrgJodaTimeConvertNullConverter_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertNullConverter)

@@ -129,4 +129,10 @@ OrgJodaTimeTzFixedDateTimeZone *new_OrgJodaTimeTzFixedDateTimeZone_initWithNSStr
   return self;
 }
 
+OrgJodaTimeTzFixedDateTimeZone *create_OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSString_withInt_withInt_(NSString *id_, NSString *nameKey, jint wallOffset, jint standardOffset) {
+  OrgJodaTimeTzFixedDateTimeZone *self = [[OrgJodaTimeTzFixedDateTimeZone alloc] autorelease];
+  OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSString_withInt_withInt_(self, id_, nameKey, wallOffset, standardOffset);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzFixedDateTimeZone)

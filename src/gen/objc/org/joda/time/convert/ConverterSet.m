@@ -205,6 +205,12 @@ OrgJodaTimeConvertConverterSet *new_OrgJodaTimeConvertConverterSet_initWithOrgJo
   return self;
 }
 
+OrgJodaTimeConvertConverterSet *create_OrgJodaTimeConvertConverterSet_initWithOrgJodaTimeConvertConverterArray_(IOSObjectArray *converters) {
+  OrgJodaTimeConvertConverterSet *self = [[OrgJodaTimeConvertConverterSet alloc] autorelease];
+  OrgJodaTimeConvertConverterSet_initWithOrgJodaTimeConvertConverterArray_(self, converters);
+  return self;
+}
+
 id<OrgJodaTimeConvertConverter> OrgJodaTimeConvertConverterSet_selectSlowWithOrgJodaTimeConvertConverterSet_withIOSClass_(OrgJodaTimeConvertConverterSet *set, IOSClass *type) {
   OrgJodaTimeConvertConverterSet_initialize();
   IOSObjectArray *converters = ((OrgJodaTimeConvertConverterSet *) nil_chk(set))->iConverters_;
@@ -296,6 +302,12 @@ void OrgJodaTimeConvertConverterSet_Entry_initWithIOSClass_withOrgJodaTimeConver
 
 OrgJodaTimeConvertConverterSet_Entry *new_OrgJodaTimeConvertConverterSet_Entry_initWithIOSClass_withOrgJodaTimeConvertConverter_(IOSClass *type, id<OrgJodaTimeConvertConverter> converter) {
   OrgJodaTimeConvertConverterSet_Entry *self = [OrgJodaTimeConvertConverterSet_Entry alloc];
+  OrgJodaTimeConvertConverterSet_Entry_initWithIOSClass_withOrgJodaTimeConvertConverter_(self, type, converter);
+  return self;
+}
+
+OrgJodaTimeConvertConverterSet_Entry *create_OrgJodaTimeConvertConverterSet_Entry_initWithIOSClass_withOrgJodaTimeConvertConverter_(IOSClass *type, id<OrgJodaTimeConvertConverter> converter) {
+  OrgJodaTimeConvertConverterSet_Entry *self = [[OrgJodaTimeConvertConverterSet_Entry alloc] autorelease];
   OrgJodaTimeConvertConverterSet_Entry_initWithIOSClass_withOrgJodaTimeConvertConverter_(self, type, converter);
   return self;
 }

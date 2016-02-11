@@ -32,6 +32,8 @@ __attribute__((unused)) static void OrgJodaTimeFormatFormatUtils_init(OrgJodaTim
 
 __attribute__((unused)) static OrgJodaTimeFormatFormatUtils *new_OrgJodaTimeFormatFormatUtils_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static OrgJodaTimeFormatFormatUtils *create_OrgJodaTimeFormatFormatUtils_init();
+
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatFormatUtils)
 
 @implementation OrgJodaTimeFormatFormatUtils
@@ -164,6 +166,12 @@ void OrgJodaTimeFormatFormatUtils_init(OrgJodaTimeFormatFormatUtils *self) {
 
 OrgJodaTimeFormatFormatUtils *new_OrgJodaTimeFormatFormatUtils_init() {
   OrgJodaTimeFormatFormatUtils *self = [OrgJodaTimeFormatFormatUtils alloc];
+  OrgJodaTimeFormatFormatUtils_init(self);
+  return self;
+}
+
+OrgJodaTimeFormatFormatUtils *create_OrgJodaTimeFormatFormatUtils_init() {
+  OrgJodaTimeFormatFormatUtils *self = [[OrgJodaTimeFormatFormatUtils alloc] autorelease];
   OrgJodaTimeFormatFormatUtils_init(self);
   return self;
 }

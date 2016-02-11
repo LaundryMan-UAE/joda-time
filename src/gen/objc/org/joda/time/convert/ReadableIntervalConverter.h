@@ -114,6 +114,8 @@ FOUNDATION_EXPORT void OrgJodaTimeConvertReadableIntervalConverter_init(OrgJodaT
 
 FOUNDATION_EXPORT OrgJodaTimeConvertReadableIntervalConverter *new_OrgJodaTimeConvertReadableIntervalConverter_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeConvertReadableIntervalConverter *create_OrgJodaTimeConvertReadableIntervalConverter_init();
+
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertReadableIntervalConverter)
 
 #endif

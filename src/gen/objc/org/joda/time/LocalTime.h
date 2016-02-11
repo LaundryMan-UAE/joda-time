@@ -941,53 +941,79 @@ FOUNDATION_EXPORT void OrgJodaTimeLocalTime_init(OrgJodaTimeLocalTime *self);
 
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeLocalTime *create_OrgJodaTimeLocalTime_init();
+
 FOUNDATION_EXPORT void OrgJodaTimeLocalTime_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeLocalTime *self, OrgJodaTimeDateTimeZone *zone);
 
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeLocalTime *create_OrgJodaTimeLocalTime_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone);
 
 FOUNDATION_EXPORT void OrgJodaTimeLocalTime_initWithOrgJodaTimeChronology_(OrgJodaTimeLocalTime *self, OrgJodaTimeChronology *chronology);
 
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chronology) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeLocalTime *create_OrgJodaTimeLocalTime_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *chronology);
+
 FOUNDATION_EXPORT void OrgJodaTimeLocalTime_initWithLong_(OrgJodaTimeLocalTime *self, jlong instant);
 
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_initWithLong_(jlong instant) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeLocalTime *create_OrgJodaTimeLocalTime_initWithLong_(jlong instant);
 
 FOUNDATION_EXPORT void OrgJodaTimeLocalTime_initWithLong_withOrgJodaTimeDateTimeZone_(OrgJodaTimeLocalTime *self, jlong instant, OrgJodaTimeDateTimeZone *zone);
 
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_initWithLong_withOrgJodaTimeDateTimeZone_(jlong instant, OrgJodaTimeDateTimeZone *zone) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeLocalTime *create_OrgJodaTimeLocalTime_initWithLong_withOrgJodaTimeDateTimeZone_(jlong instant, OrgJodaTimeDateTimeZone *zone);
+
 FOUNDATION_EXPORT void OrgJodaTimeLocalTime_initWithLong_withOrgJodaTimeChronology_(OrgJodaTimeLocalTime *self, jlong instant, OrgJodaTimeChronology *chronology);
 
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_initWithLong_withOrgJodaTimeChronology_(jlong instant, OrgJodaTimeChronology *chronology) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeLocalTime *create_OrgJodaTimeLocalTime_initWithLong_withOrgJodaTimeChronology_(jlong instant, OrgJodaTimeChronology *chronology);
 
 FOUNDATION_EXPORT void OrgJodaTimeLocalTime_initWithId_(OrgJodaTimeLocalTime *self, id instant);
 
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_initWithId_(id instant) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeLocalTime *create_OrgJodaTimeLocalTime_initWithId_(id instant);
+
 FOUNDATION_EXPORT void OrgJodaTimeLocalTime_initWithId_withOrgJodaTimeDateTimeZone_(OrgJodaTimeLocalTime *self, id instant, OrgJodaTimeDateTimeZone *zone);
 
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_initWithId_withOrgJodaTimeDateTimeZone_(id instant, OrgJodaTimeDateTimeZone *zone) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeLocalTime *create_OrgJodaTimeLocalTime_initWithId_withOrgJodaTimeDateTimeZone_(id instant, OrgJodaTimeDateTimeZone *zone);
 
 FOUNDATION_EXPORT void OrgJodaTimeLocalTime_initWithId_withOrgJodaTimeChronology_(OrgJodaTimeLocalTime *self, id instant, OrgJodaTimeChronology *chronology);
 
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_initWithId_withOrgJodaTimeChronology_(id instant, OrgJodaTimeChronology *chronology) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeLocalTime *create_OrgJodaTimeLocalTime_initWithId_withOrgJodaTimeChronology_(id instant, OrgJodaTimeChronology *chronology);
+
 FOUNDATION_EXPORT void OrgJodaTimeLocalTime_initWithInt_withInt_(OrgJodaTimeLocalTime *self, jint hourOfDay, jint minuteOfHour);
 
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_initWithInt_withInt_(jint hourOfDay, jint minuteOfHour) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeLocalTime *create_OrgJodaTimeLocalTime_initWithInt_withInt_(jint hourOfDay, jint minuteOfHour);
 
 FOUNDATION_EXPORT void OrgJodaTimeLocalTime_initWithInt_withInt_withInt_(OrgJodaTimeLocalTime *self, jint hourOfDay, jint minuteOfHour, jint secondOfMinute);
 
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_initWithInt_withInt_withInt_(jint hourOfDay, jint minuteOfHour, jint secondOfMinute) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeLocalTime *create_OrgJodaTimeLocalTime_initWithInt_withInt_withInt_(jint hourOfDay, jint minuteOfHour, jint secondOfMinute);
+
 FOUNDATION_EXPORT void OrgJodaTimeLocalTime_initWithInt_withInt_withInt_withInt_(OrgJodaTimeLocalTime *self, jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond);
 
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_initWithInt_withInt_withInt_withInt_(jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT OrgJodaTimeLocalTime *create_OrgJodaTimeLocalTime_initWithInt_withInt_withInt_withInt_(jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond);
+
 FOUNDATION_EXPORT void OrgJodaTimeLocalTime_initWithInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(OrgJodaTimeLocalTime *self, jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond, OrgJodaTimeChronology *chronology);
 
 FOUNDATION_EXPORT OrgJodaTimeLocalTime *new_OrgJodaTimeLocalTime_initWithInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond, OrgJodaTimeChronology *chronology) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeLocalTime *create_OrgJodaTimeLocalTime_initWithInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(jint hourOfDay, jint minuteOfHour, jint secondOfMinute, jint millisOfSecond, OrgJodaTimeChronology *chronology);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeLocalTime)
 
@@ -1222,6 +1248,8 @@ J2OBJC_EMPTY_STATIC_INIT(OrgJodaTimeLocalTime_Property)
 FOUNDATION_EXPORT void OrgJodaTimeLocalTime_Property_initWithOrgJodaTimeLocalTime_withOrgJodaTimeDateTimeField_(OrgJodaTimeLocalTime_Property *self, OrgJodaTimeLocalTime *instant, OrgJodaTimeDateTimeField *field);
 
 FOUNDATION_EXPORT OrgJodaTimeLocalTime_Property *new_OrgJodaTimeLocalTime_Property_initWithOrgJodaTimeLocalTime_withOrgJodaTimeDateTimeField_(OrgJodaTimeLocalTime *instant, OrgJodaTimeDateTimeField *field) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT OrgJodaTimeLocalTime_Property *create_OrgJodaTimeLocalTime_Property_initWithOrgJodaTimeLocalTime_withOrgJodaTimeDateTimeField_(OrgJodaTimeLocalTime *instant, OrgJodaTimeDateTimeField *field);
 
 J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeLocalTime_Property)
 

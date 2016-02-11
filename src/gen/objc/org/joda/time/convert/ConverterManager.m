@@ -384,6 +384,12 @@ OrgJodaTimeConvertConverterManager *new_OrgJodaTimeConvertConverterManager_init(
   return self;
 }
 
+OrgJodaTimeConvertConverterManager *create_OrgJodaTimeConvertConverterManager_init() {
+  OrgJodaTimeConvertConverterManager *self = [[OrgJodaTimeConvertConverterManager alloc] autorelease];
+  OrgJodaTimeConvertConverterManager_init(self);
+  return self;
+}
+
 void OrgJodaTimeConvertConverterManager_checkAlterInstantConverters(OrgJodaTimeConvertConverterManager *self) {
   JavaLangSecurityManager *sm = JavaLangSystem_getSecurityManager();
   if (sm != nil) {

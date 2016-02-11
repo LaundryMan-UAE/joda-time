@@ -165,4 +165,10 @@ OrgJodaTimeFieldScaledDurationField *new_OrgJodaTimeFieldScaledDurationField_ini
   return self;
 }
 
+OrgJodaTimeFieldScaledDurationField *create_OrgJodaTimeFieldScaledDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_withInt_(OrgJodaTimeDurationField *field, OrgJodaTimeDurationFieldType *type, jint scalar) {
+  OrgJodaTimeFieldScaledDurationField *self = [[OrgJodaTimeFieldScaledDurationField alloc] autorelease];
+  OrgJodaTimeFieldScaledDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_withInt_(self, field, type, scalar);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldScaledDurationField)
