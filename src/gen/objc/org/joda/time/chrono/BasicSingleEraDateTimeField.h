@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronoBasicSingleEraDateTimeField_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronoBasicSingleEraDateTimeField_RESTRICT
-#define OrgJodaTimeChronoBasicSingleEraDateTimeField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronoBasicSingleEraDateTimeField")
+#ifdef RESTRICT_OrgJodaTimeChronoBasicSingleEraDateTimeField
+#define INCLUDE_ALL_OrgJodaTimeChronoBasicSingleEraDateTimeField 0
 #else
-#define OrgJodaTimeChronoBasicSingleEraDateTimeField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronoBasicSingleEraDateTimeField 1
 #endif
-#undef OrgJodaTimeChronoBasicSingleEraDateTimeField_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronoBasicSingleEraDateTimeField
 
-#if !defined (OrgJodaTimeChronoBasicSingleEraDateTimeField_) && (OrgJodaTimeChronoBasicSingleEraDateTimeField_INCLUDE_ALL || defined(OrgJodaTimeChronoBasicSingleEraDateTimeField_INCLUDE))
+#if !defined (OrgJodaTimeChronoBasicSingleEraDateTimeField_) && (INCLUDE_ALL_OrgJodaTimeChronoBasicSingleEraDateTimeField || defined(INCLUDE_OrgJodaTimeChronoBasicSingleEraDateTimeField))
 #define OrgJodaTimeChronoBasicSingleEraDateTimeField_
 
-#define OrgJodaTimeFieldBaseDateTimeField_RESTRICT 1
-#define OrgJodaTimeFieldBaseDateTimeField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldBaseDateTimeField 1
+#define INCLUDE_OrgJodaTimeFieldBaseDateTimeField 1
 #include "org/joda/time/field/BaseDateTimeField.h"
 
 @class JavaUtilLocale;
@@ -133,4 +133,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicSingleEraDateTimeField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronoBasicSingleEraDateTimeField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronoBasicSingleEraDateTimeField")

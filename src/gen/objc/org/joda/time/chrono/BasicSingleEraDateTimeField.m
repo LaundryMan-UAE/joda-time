@@ -60,7 +60,7 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeChronoBasicSingleEraDateTimeField, ERA_V
         withNSString:(NSString *)text
   withJavaUtilLocale:(JavaUtilLocale *)locale {
   if ([((NSString *) nil_chk(iEraText_)) isEqual:text] == false && [@"1" isEqual:text] == false) {
-    @throw [new_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSString_(OrgJodaTimeDateTimeFieldType_era(), text) autorelease];
+    @throw create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSString_(OrgJodaTimeDateTimeFieldType_era(), text);
   }
   return instant;
 }
@@ -116,29 +116,49 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeChronoBasicSingleEraDateTimeField, ERA_V
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:", "BasicSingleEraDateTimeField", NULL, 0x0, NULL, NULL },
-    { "isLenient", NULL, "Z", 0x1, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x1, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
-    { "setWithLong:withNSString:withJavaUtilLocale:", "set", "J", 0x1, NULL, NULL },
-    { "roundFloorWithLong:", "roundFloor", "J", 0x1, NULL, NULL },
-    { "roundCeilingWithLong:", "roundCeiling", "J", 0x1, NULL, NULL },
-    { "roundHalfFloorWithLong:", "roundHalfFloor", "J", 0x1, NULL, NULL },
-    { "roundHalfCeilingWithLong:", "roundHalfCeiling", "J", 0x1, NULL, NULL },
-    { "roundHalfEvenWithLong:", "roundHalfEven", "J", 0x1, NULL, NULL },
-    { "getDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getRangeDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getAsTextWithInt:withJavaUtilLocale:", "getAsText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getMaximumTextLengthWithJavaUtilLocale:", "getMaximumTextLength", "I", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 7, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 8, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 10, 2, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 11, 12, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 13, 14, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithNSString:);
+  methods[1].selector = @selector(isLenient);
+  methods[2].selector = @selector(getWithLong:);
+  methods[3].selector = @selector(setWithLong:withInt:);
+  methods[4].selector = @selector(setWithLong:withNSString:withJavaUtilLocale:);
+  methods[5].selector = @selector(roundFloorWithLong:);
+  methods[6].selector = @selector(roundCeilingWithLong:);
+  methods[7].selector = @selector(roundHalfFloorWithLong:);
+  methods[8].selector = @selector(roundHalfCeilingWithLong:);
+  methods[9].selector = @selector(roundHalfEvenWithLong:);
+  methods[10].selector = @selector(getDurationField);
+  methods[11].selector = @selector(getRangeDurationField);
+  methods[12].selector = @selector(getMinimumValue);
+  methods[13].selector = @selector(getMaximumValue);
+  methods[14].selector = @selector(getAsTextWithInt:withJavaUtilLocale:);
+  methods[15].selector = @selector(getMaximumTextLengthWithJavaUtilLocale:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "ERA_VALUE", "ERA_VALUE", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoBasicSingleEraDateTimeField_ERA_VALUE },
-    { "iEraText_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
+    { "ERA_VALUE", "I", .constantValue.asInt = OrgJodaTimeChronoBasicSingleEraDateTimeField_ERA_VALUE, 0x1a, -1, -1, -1, -1 },
+    { "iEraText_", "LNSString;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicSingleEraDateTimeField = { 2, "BasicSingleEraDateTimeField", "org.joda.time.chrono", NULL, 0x10, 16, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LNSString;", "get", "J", "set", "JI", "JLNSString;LJavaUtilLocale;", "roundFloor", "roundCeiling", "roundHalfFloor", "roundHalfCeiling", "roundHalfEven", "getAsText", "ILJavaUtilLocale;", "getMaximumTextLength", "LJavaUtilLocale;" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicSingleEraDateTimeField = { "BasicSingleEraDateTimeField", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x10, 16, 2, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeChronoBasicSingleEraDateTimeField;
 }
 
@@ -150,15 +170,11 @@ void OrgJodaTimeChronoBasicSingleEraDateTimeField_initWithNSString_(OrgJodaTimeC
 }
 
 OrgJodaTimeChronoBasicSingleEraDateTimeField *new_OrgJodaTimeChronoBasicSingleEraDateTimeField_initWithNSString_(NSString *text) {
-  OrgJodaTimeChronoBasicSingleEraDateTimeField *self = [OrgJodaTimeChronoBasicSingleEraDateTimeField alloc];
-  OrgJodaTimeChronoBasicSingleEraDateTimeField_initWithNSString_(self, text);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoBasicSingleEraDateTimeField, initWithNSString_, text)
 }
 
 OrgJodaTimeChronoBasicSingleEraDateTimeField *create_OrgJodaTimeChronoBasicSingleEraDateTimeField_initWithNSString_(NSString *text) {
-  OrgJodaTimeChronoBasicSingleEraDateTimeField *self = [[OrgJodaTimeChronoBasicSingleEraDateTimeField alloc] autorelease];
-  OrgJodaTimeChronoBasicSingleEraDateTimeField_initWithNSString_(self, text);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoBasicSingleEraDateTimeField, initWithNSString_, text)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicSingleEraDateTimeField)

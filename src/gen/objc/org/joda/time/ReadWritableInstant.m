@@ -4,14 +4,7 @@
 //
 
 #include "J2ObjC_source.h"
-#include "org/joda/time/Chronology.h"
-#include "org/joda/time/DateTimeFieldType.h"
-#include "org/joda/time/DateTimeZone.h"
-#include "org/joda/time/DurationFieldType.h"
 #include "org/joda/time/ReadWritableInstant.h"
-#include "org/joda/time/ReadableDuration.h"
-#include "org/joda/time/ReadableInstant.h"
-#include "org/joda/time/ReadablePeriod.h"
 
 @interface OrgJodaTimeReadWritableInstant : NSObject
 
@@ -20,21 +13,37 @@
 @implementation OrgJodaTimeReadWritableInstant
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "setMillisWithLong:", "setMillis", "V", 0x401, NULL, NULL },
-    { "setMillisWithOrgJodaTimeReadableInstant:", "setMillis", "V", 0x401, NULL, NULL },
-    { "setChronologyWithOrgJodaTimeChronology:", "setChronology", "V", 0x401, NULL, NULL },
-    { "setZoneWithOrgJodaTimeDateTimeZone:", "setZone", "V", 0x401, NULL, NULL },
-    { "setZoneRetainFieldsWithOrgJodaTimeDateTimeZone:", "setZoneRetainFields", "V", 0x401, NULL, NULL },
-    { "addWithLong:", "add", "V", 0x401, NULL, NULL },
-    { "addWithOrgJodaTimeReadableDuration:", "add", "V", 0x401, NULL, NULL },
-    { "addWithOrgJodaTimeReadableDuration:withInt:", "add", "V", 0x401, NULL, NULL },
-    { "addWithOrgJodaTimeReadablePeriod:", "add", "V", 0x401, NULL, NULL },
-    { "addWithOrgJodaTimeReadablePeriod:withInt:", "add", "V", 0x401, NULL, NULL },
-    { "setWithOrgJodaTimeDateTimeFieldType:withInt:", "set", "V", 0x401, NULL, NULL },
-    { "addWithOrgJodaTimeDurationFieldType:withInt:", "add", "V", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "V", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 0, 2, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 3, 4, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 5, 6, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 7, 6, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 8, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 8, 9, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 8, 10, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 8, 11, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 8, 12, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 13, 14, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 8, 15, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadWritableInstant = { 2, "ReadWritableInstant", "org.joda.time", NULL, 0x609, 12, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(setMillisWithLong:);
+  methods[1].selector = @selector(setMillisWithOrgJodaTimeReadableInstant:);
+  methods[2].selector = @selector(setChronologyWithOrgJodaTimeChronology:);
+  methods[3].selector = @selector(setZoneWithOrgJodaTimeDateTimeZone:);
+  methods[4].selector = @selector(setZoneRetainFieldsWithOrgJodaTimeDateTimeZone:);
+  methods[5].selector = @selector(addWithLong:);
+  methods[6].selector = @selector(addWithOrgJodaTimeReadableDuration:);
+  methods[7].selector = @selector(addWithOrgJodaTimeReadableDuration:withInt:);
+  methods[8].selector = @selector(addWithOrgJodaTimeReadablePeriod:);
+  methods[9].selector = @selector(addWithOrgJodaTimeReadablePeriod:withInt:);
+  methods[10].selector = @selector(setWithOrgJodaTimeDateTimeFieldType:withInt:);
+  methods[11].selector = @selector(addWithOrgJodaTimeDurationFieldType:withInt:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "setMillis", "J", "LOrgJodaTimeReadableInstant;", "setChronology", "LOrgJodaTimeChronology;", "setZone", "LOrgJodaTimeDateTimeZone;", "setZoneRetainFields", "add", "LOrgJodaTimeReadableDuration;", "LOrgJodaTimeReadableDuration;I", "LOrgJodaTimeReadablePeriod;", "LOrgJodaTimeReadablePeriod;I", "set", "LOrgJodaTimeDateTimeFieldType;I", "LOrgJodaTimeDurationFieldType;I" };
+  static const J2ObjcClassInfo _OrgJodaTimeReadWritableInstant = { "ReadWritableInstant", "org.joda.time", ptrTable, methods, NULL, 7, 0x609, 12, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeReadWritableInstant;
 }
 

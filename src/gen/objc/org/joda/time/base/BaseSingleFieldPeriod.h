@@ -5,27 +5,27 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeBaseBaseSingleFieldPeriod_INCLUDE_ALL")
-#ifdef OrgJodaTimeBaseBaseSingleFieldPeriod_RESTRICT
-#define OrgJodaTimeBaseBaseSingleFieldPeriod_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeBaseBaseSingleFieldPeriod")
+#ifdef RESTRICT_OrgJodaTimeBaseBaseSingleFieldPeriod
+#define INCLUDE_ALL_OrgJodaTimeBaseBaseSingleFieldPeriod 0
 #else
-#define OrgJodaTimeBaseBaseSingleFieldPeriod_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeBaseBaseSingleFieldPeriod 1
 #endif
-#undef OrgJodaTimeBaseBaseSingleFieldPeriod_RESTRICT
+#undef RESTRICT_OrgJodaTimeBaseBaseSingleFieldPeriod
 
-#if !defined (OrgJodaTimeBaseBaseSingleFieldPeriod_) && (OrgJodaTimeBaseBaseSingleFieldPeriod_INCLUDE_ALL || defined(OrgJodaTimeBaseBaseSingleFieldPeriod_INCLUDE))
+#if !defined (OrgJodaTimeBaseBaseSingleFieldPeriod_) && (INCLUDE_ALL_OrgJodaTimeBaseBaseSingleFieldPeriod || defined(INCLUDE_OrgJodaTimeBaseBaseSingleFieldPeriod))
 #define OrgJodaTimeBaseBaseSingleFieldPeriod_
 
-#define OrgJodaTimeReadablePeriod_RESTRICT 1
-#define OrgJodaTimeReadablePeriod_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadablePeriod 1
+#define INCLUDE_OrgJodaTimeReadablePeriod 1
 #include "org/joda/time/ReadablePeriod.h"
 
-#define JavaLangComparable_RESTRICT 1
-#define JavaLangComparable_INCLUDE 1
+#define RESTRICT_JavaLangComparable 1
+#define INCLUDE_JavaLangComparable 1
 #include "java/lang/Comparable.h"
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class OrgJodaTimeDurationFieldType;
@@ -235,4 +235,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseBaseSingleFieldPeriod)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeBaseBaseSingleFieldPeriod_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeBaseBaseSingleFieldPeriod")

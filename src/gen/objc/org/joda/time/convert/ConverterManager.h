@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertConverterManager_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertConverterManager_RESTRICT
-#define OrgJodaTimeConvertConverterManager_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertConverterManager")
+#ifdef RESTRICT_OrgJodaTimeConvertConverterManager
+#define INCLUDE_ALL_OrgJodaTimeConvertConverterManager 0
 #else
-#define OrgJodaTimeConvertConverterManager_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertConverterManager 1
 #endif
-#undef OrgJodaTimeConvertConverterManager_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertConverterManager
 
-#if !defined (OrgJodaTimeConvertConverterManager_) && (OrgJodaTimeConvertConverterManager_INCLUDE_ALL || defined(OrgJodaTimeConvertConverterManager_INCLUDE))
+#if !defined (OrgJodaTimeConvertConverterManager_) && (INCLUDE_ALL_OrgJodaTimeConvertConverterManager || defined(INCLUDE_OrgJodaTimeConvertConverterManager))
 #define OrgJodaTimeConvertConverterManager_
 
 @class IOSObjectArray;
@@ -303,4 +303,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertConverterManager)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertConverterManager_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertConverterManager")

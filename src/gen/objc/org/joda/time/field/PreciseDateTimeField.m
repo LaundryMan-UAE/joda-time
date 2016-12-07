@@ -77,21 +77,32 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldPreciseDateTimeField, serialVersion
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDurationField:withOrgJodaTimeDurationField:", "PreciseDateTimeField", NULL, 0x1, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x1, NULL, NULL },
-    { "addWrapFieldWithLong:withInt:", "addWrapField", "J", 0x1, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
-    { "getRangeDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getMaximumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getRange", NULL, "I", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDurationField:withOrgJodaTimeDurationField:);
+  methods[1].selector = @selector(getWithLong:);
+  methods[2].selector = @selector(addWrapFieldWithLong:withInt:);
+  methods[3].selector = @selector(setWithLong:withInt:);
+  methods[4].selector = @selector(getRangeDurationField);
+  methods[5].selector = @selector(getMaximumValue);
+  methods[6].selector = @selector(getRange);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldPreciseDateTimeField_serialVersionUID },
-    { "iRange_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iRangeField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldPreciseDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iRange_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iRangeField_", "LOrgJodaTimeDurationField;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldPreciseDateTimeField = { 2, "PreciseDateTimeField", "org.joda.time.field", NULL, 0x1, 7, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeDateTimeFieldType;LOrgJodaTimeDurationField;LOrgJodaTimeDurationField;", "get", "J", "addWrapField", "JI", "set" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldPreciseDateTimeField = { "PreciseDateTimeField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x1, 7, 3, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldPreciseDateTimeField;
 }
 
@@ -100,26 +111,22 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldPreciseDateTimeField, serialVersion
 void OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeFieldPreciseDateTimeField *self, OrgJodaTimeDateTimeFieldType *type, OrgJodaTimeDurationField *unit, OrgJodaTimeDurationField *range) {
   OrgJodaTimeFieldPreciseDurationDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_(self, type, unit);
   if (![((OrgJodaTimeDurationField *) nil_chk(range)) isPrecise]) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Range duration field must be precise") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"Range duration field must be precise");
   }
   jlong rangeMillis = [range getUnitMillis];
   self->iRange_ = (jint) (rangeMillis / [self getUnitMillis]);
   if (self->iRange_ < 2) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The effective range must be at least 2") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The effective range must be at least 2");
   }
   JreStrongAssign(&self->iRangeField_, range);
 }
 
 OrgJodaTimeFieldPreciseDateTimeField *new_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType *type, OrgJodaTimeDurationField *unit, OrgJodaTimeDurationField *range) {
-  OrgJodaTimeFieldPreciseDateTimeField *self = [OrgJodaTimeFieldPreciseDateTimeField alloc];
-  OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(self, type, unit, range);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldPreciseDateTimeField, initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_, type, unit, range)
 }
 
 OrgJodaTimeFieldPreciseDateTimeField *create_OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType *type, OrgJodaTimeDurationField *unit, OrgJodaTimeDurationField *range) {
-  OrgJodaTimeFieldPreciseDateTimeField *self = [[OrgJodaTimeFieldPreciseDateTimeField alloc] autorelease];
-  OrgJodaTimeFieldPreciseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(self, type, unit, range);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldPreciseDateTimeField, initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_, type, unit, range)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldPreciseDateTimeField)

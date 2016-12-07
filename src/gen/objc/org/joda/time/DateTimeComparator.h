@@ -5,26 +5,30 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeDateTimeComparator_INCLUDE_ALL")
-#ifdef OrgJodaTimeDateTimeComparator_RESTRICT
-#define OrgJodaTimeDateTimeComparator_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeDateTimeComparator")
+#ifdef RESTRICT_OrgJodaTimeDateTimeComparator
+#define INCLUDE_ALL_OrgJodaTimeDateTimeComparator 0
 #else
-#define OrgJodaTimeDateTimeComparator_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeDateTimeComparator 1
 #endif
-#undef OrgJodaTimeDateTimeComparator_RESTRICT
+#undef RESTRICT_OrgJodaTimeDateTimeComparator
 
-#if !defined (OrgJodaTimeDateTimeComparator_) && (OrgJodaTimeDateTimeComparator_INCLUDE_ALL || defined(OrgJodaTimeDateTimeComparator_INCLUDE))
+#if !defined (OrgJodaTimeDateTimeComparator_) && (INCLUDE_ALL_OrgJodaTimeDateTimeComparator || defined(INCLUDE_OrgJodaTimeDateTimeComparator))
 #define OrgJodaTimeDateTimeComparator_
 
-#define JavaUtilComparator_RESTRICT 1
-#define JavaUtilComparator_INCLUDE 1
+#define RESTRICT_JavaUtilComparator 1
+#define INCLUDE_JavaUtilComparator 1
 #include "java/util/Comparator.h"
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class OrgJodaTimeDateTimeFieldType;
+@protocol JavaUtilFunctionFunction;
+@protocol JavaUtilFunctionToDoubleFunction;
+@protocol JavaUtilFunctionToIntFunction;
+@protocol JavaUtilFunctionToLongFunction;
 
 /*!
  @brief DateTimeComparator provides comparators to compare one date with another.
@@ -192,4 +196,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeComparator)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeDateTimeComparator_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeDateTimeComparator")

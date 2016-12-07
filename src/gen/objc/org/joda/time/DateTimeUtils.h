@@ -5,24 +5,24 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeDateTimeUtils_INCLUDE_ALL")
-#ifdef OrgJodaTimeDateTimeUtils_RESTRICT
-#define OrgJodaTimeDateTimeUtils_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeDateTimeUtils")
+#ifdef RESTRICT_OrgJodaTimeDateTimeUtils
+#define INCLUDE_ALL_OrgJodaTimeDateTimeUtils 0
 #else
-#define OrgJodaTimeDateTimeUtils_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeDateTimeUtils 1
 #endif
-#undef OrgJodaTimeDateTimeUtils_RESTRICT
-#ifdef OrgJodaTimeDateTimeUtils_OffsetMillisProvider_INCLUDE
-#define OrgJodaTimeDateTimeUtils_MillisProvider_INCLUDE 1
+#undef RESTRICT_OrgJodaTimeDateTimeUtils
+#ifdef INCLUDE_OrgJodaTimeDateTimeUtils_OffsetMillisProvider
+#define INCLUDE_OrgJodaTimeDateTimeUtils_MillisProvider 1
 #endif
-#ifdef OrgJodaTimeDateTimeUtils_FixedMillisProvider_INCLUDE
-#define OrgJodaTimeDateTimeUtils_MillisProvider_INCLUDE 1
+#ifdef INCLUDE_OrgJodaTimeDateTimeUtils_FixedMillisProvider
+#define INCLUDE_OrgJodaTimeDateTimeUtils_MillisProvider 1
 #endif
-#ifdef OrgJodaTimeDateTimeUtils_SystemMillisProvider_INCLUDE
-#define OrgJodaTimeDateTimeUtils_MillisProvider_INCLUDE 1
+#ifdef INCLUDE_OrgJodaTimeDateTimeUtils_SystemMillisProvider
+#define INCLUDE_OrgJodaTimeDateTimeUtils_MillisProvider 1
 #endif
 
-#if !defined (OrgJodaTimeDateTimeUtils_) && (OrgJodaTimeDateTimeUtils_INCLUDE_ALL || defined(OrgJodaTimeDateTimeUtils_INCLUDE))
+#if !defined (OrgJodaTimeDateTimeUtils_) && (INCLUDE_ALL_OrgJodaTimeDateTimeUtils || defined(INCLUDE_OrgJodaTimeDateTimeUtils))
 #define OrgJodaTimeDateTimeUtils_
 
 @class JavaTextDateFormatSymbols;
@@ -374,7 +374,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeUtils)
 
 #endif
 
-#if !defined (OrgJodaTimeDateTimeUtils_MillisProvider_) && (OrgJodaTimeDateTimeUtils_INCLUDE_ALL || defined(OrgJodaTimeDateTimeUtils_MillisProvider_INCLUDE))
+#if !defined (OrgJodaTimeDateTimeUtils_MillisProvider_) && (INCLUDE_ALL_OrgJodaTimeDateTimeUtils || defined(INCLUDE_OrgJodaTimeDateTimeUtils_MillisProvider))
 #define OrgJodaTimeDateTimeUtils_MillisProvider_
 
 /*!
@@ -382,7 +382,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeUtils)
  @author Stephen Colebourne
  @since 2.0 (previously private)
  */
-@protocol OrgJodaTimeDateTimeUtils_MillisProvider < NSObject, JavaObject >
+@protocol OrgJodaTimeDateTimeUtils_MillisProvider < JavaObject >
 
 /*!
  @brief Gets the current time.
@@ -400,7 +400,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeUtils_MillisProvider)
 
 #endif
 
-#if !defined (OrgJodaTimeDateTimeUtils_SystemMillisProvider_) && (OrgJodaTimeDateTimeUtils_INCLUDE_ALL || defined(OrgJodaTimeDateTimeUtils_SystemMillisProvider_INCLUDE))
+#if !defined (OrgJodaTimeDateTimeUtils_SystemMillisProvider_) && (INCLUDE_ALL_OrgJodaTimeDateTimeUtils || defined(INCLUDE_OrgJodaTimeDateTimeUtils_SystemMillisProvider))
 #define OrgJodaTimeDateTimeUtils_SystemMillisProvider_
 
 /*!
@@ -434,7 +434,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeUtils_SystemMillisProvider)
 
 #endif
 
-#if !defined (OrgJodaTimeDateTimeUtils_FixedMillisProvider_) && (OrgJodaTimeDateTimeUtils_INCLUDE_ALL || defined(OrgJodaTimeDateTimeUtils_FixedMillisProvider_INCLUDE))
+#if !defined (OrgJodaTimeDateTimeUtils_FixedMillisProvider_) && (INCLUDE_ALL_OrgJodaTimeDateTimeUtils || defined(INCLUDE_OrgJodaTimeDateTimeUtils_FixedMillisProvider))
 #define OrgJodaTimeDateTimeUtils_FixedMillisProvider_
 
 /*!
@@ -472,7 +472,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeUtils_FixedMillisProvider)
 
 #endif
 
-#if !defined (OrgJodaTimeDateTimeUtils_OffsetMillisProvider_) && (OrgJodaTimeDateTimeUtils_INCLUDE_ALL || defined(OrgJodaTimeDateTimeUtils_OffsetMillisProvider_INCLUDE))
+#if !defined (OrgJodaTimeDateTimeUtils_OffsetMillisProvider_) && (INCLUDE_ALL_OrgJodaTimeDateTimeUtils || defined(INCLUDE_OrgJodaTimeDateTimeUtils_OffsetMillisProvider))
 #define OrgJodaTimeDateTimeUtils_OffsetMillisProvider_
 
 /*!
@@ -510,4 +510,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeUtils_OffsetMillisProvider)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeDateTimeUtils_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeDateTimeUtils")

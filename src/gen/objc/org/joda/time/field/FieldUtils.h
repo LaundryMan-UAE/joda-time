@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFieldFieldUtils_INCLUDE_ALL")
-#ifdef OrgJodaTimeFieldFieldUtils_RESTRICT
-#define OrgJodaTimeFieldFieldUtils_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFieldFieldUtils")
+#ifdef RESTRICT_OrgJodaTimeFieldFieldUtils
+#define INCLUDE_ALL_OrgJodaTimeFieldFieldUtils 0
 #else
-#define OrgJodaTimeFieldFieldUtils_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFieldFieldUtils 1
 #endif
-#undef OrgJodaTimeFieldFieldUtils_RESTRICT
+#undef RESTRICT_OrgJodaTimeFieldFieldUtils
 
-#if !defined (OrgJodaTimeFieldFieldUtils_) && (OrgJodaTimeFieldFieldUtils_INCLUDE_ALL || defined(OrgJodaTimeFieldFieldUtils_INCLUDE))
+#if !defined (OrgJodaTimeFieldFieldUtils_) && (INCLUDE_ALL_OrgJodaTimeFieldFieldUtils || defined(INCLUDE_OrgJodaTimeFieldFieldUtils))
 #define OrgJodaTimeFieldFieldUtils_
 
 @class OrgJodaTimeDateTimeField;
@@ -251,4 +251,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldFieldUtils)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFieldFieldUtils_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFieldFieldUtils")

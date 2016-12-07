@@ -16,52 +16,56 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "DateTimeConstants", NULL, 0x4, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "JANUARY", "JANUARY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_JANUARY },
-    { "FEBRUARY", "FEBRUARY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_FEBRUARY },
-    { "MARCH", "MARCH", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_MARCH },
-    { "APRIL", "APRIL", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_APRIL },
-    { "MAY", "MAY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_MAY },
-    { "JUNE", "JUNE", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_JUNE },
-    { "JULY", "JULY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_JULY },
-    { "AUGUST", "AUGUST", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_AUGUST },
-    { "SEPTEMBER", "SEPTEMBER", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_SEPTEMBER },
-    { "OCTOBER", "OCTOBER", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_OCTOBER },
-    { "NOVEMBER", "NOVEMBER", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_NOVEMBER },
-    { "DECEMBER", "DECEMBER", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_DECEMBER },
-    { "MONDAY", "MONDAY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_MONDAY },
-    { "TUESDAY", "TUESDAY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_TUESDAY },
-    { "WEDNESDAY", "WEDNESDAY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_WEDNESDAY },
-    { "THURSDAY", "THURSDAY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_THURSDAY },
-    { "FRIDAY", "FRIDAY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_FRIDAY },
-    { "SATURDAY", "SATURDAY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_SATURDAY },
-    { "SUNDAY", "SUNDAY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_SUNDAY },
-    { "AM", "AM", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_AM },
-    { "PM", "PM", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_PM },
-    { "BC", "BC", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_BC },
-    { "BCE", "BCE", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_BCE },
-    { "AD", "AD", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_AD },
-    { "CE", "CE", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_CE },
-    { "MILLIS_PER_SECOND", "MILLIS_PER_SECOND", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_MILLIS_PER_SECOND },
-    { "SECONDS_PER_MINUTE", "SECONDS_PER_MINUTE", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_SECONDS_PER_MINUTE },
-    { "MILLIS_PER_MINUTE", "MILLIS_PER_MINUTE", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_MILLIS_PER_MINUTE },
-    { "MINUTES_PER_HOUR", "MINUTES_PER_HOUR", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_MINUTES_PER_HOUR },
-    { "SECONDS_PER_HOUR", "SECONDS_PER_HOUR", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_SECONDS_PER_HOUR },
-    { "MILLIS_PER_HOUR", "MILLIS_PER_HOUR", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_MILLIS_PER_HOUR },
-    { "HOURS_PER_DAY", "HOURS_PER_DAY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_HOURS_PER_DAY },
-    { "MINUTES_PER_DAY", "MINUTES_PER_DAY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_MINUTES_PER_DAY },
-    { "SECONDS_PER_DAY", "SECONDS_PER_DAY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_SECONDS_PER_DAY },
-    { "MILLIS_PER_DAY", "MILLIS_PER_DAY", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_MILLIS_PER_DAY },
-    { "DAYS_PER_WEEK", "DAYS_PER_WEEK", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_DAYS_PER_WEEK },
-    { "HOURS_PER_WEEK", "HOURS_PER_WEEK", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_HOURS_PER_WEEK },
-    { "MINUTES_PER_WEEK", "MINUTES_PER_WEEK", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_MINUTES_PER_WEEK },
-    { "SECONDS_PER_WEEK", "SECONDS_PER_WEEK", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_SECONDS_PER_WEEK },
-    { "MILLIS_PER_WEEK", "MILLIS_PER_WEEK", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeDateTimeConstants_MILLIS_PER_WEEK },
+    { "JANUARY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_JANUARY, 0x19, -1, -1, -1, -1 },
+    { "FEBRUARY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_FEBRUARY, 0x19, -1, -1, -1, -1 },
+    { "MARCH", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_MARCH, 0x19, -1, -1, -1, -1 },
+    { "APRIL", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_APRIL, 0x19, -1, -1, -1, -1 },
+    { "MAY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_MAY, 0x19, -1, -1, -1, -1 },
+    { "JUNE", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_JUNE, 0x19, -1, -1, -1, -1 },
+    { "JULY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_JULY, 0x19, -1, -1, -1, -1 },
+    { "AUGUST", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_AUGUST, 0x19, -1, -1, -1, -1 },
+    { "SEPTEMBER", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_SEPTEMBER, 0x19, -1, -1, -1, -1 },
+    { "OCTOBER", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_OCTOBER, 0x19, -1, -1, -1, -1 },
+    { "NOVEMBER", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_NOVEMBER, 0x19, -1, -1, -1, -1 },
+    { "DECEMBER", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_DECEMBER, 0x19, -1, -1, -1, -1 },
+    { "MONDAY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_MONDAY, 0x19, -1, -1, -1, -1 },
+    { "TUESDAY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_TUESDAY, 0x19, -1, -1, -1, -1 },
+    { "WEDNESDAY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_WEDNESDAY, 0x19, -1, -1, -1, -1 },
+    { "THURSDAY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_THURSDAY, 0x19, -1, -1, -1, -1 },
+    { "FRIDAY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_FRIDAY, 0x19, -1, -1, -1, -1 },
+    { "SATURDAY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_SATURDAY, 0x19, -1, -1, -1, -1 },
+    { "SUNDAY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_SUNDAY, 0x19, -1, -1, -1, -1 },
+    { "AM", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_AM, 0x19, -1, -1, -1, -1 },
+    { "PM", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_PM, 0x19, -1, -1, -1, -1 },
+    { "BC", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_BC, 0x19, -1, -1, -1, -1 },
+    { "BCE", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_BCE, 0x19, -1, -1, -1, -1 },
+    { "AD", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_AD, 0x19, -1, -1, -1, -1 },
+    { "CE", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_CE, 0x19, -1, -1, -1, -1 },
+    { "MILLIS_PER_SECOND", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_MILLIS_PER_SECOND, 0x19, -1, -1, -1, -1 },
+    { "SECONDS_PER_MINUTE", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_SECONDS_PER_MINUTE, 0x19, -1, -1, -1, -1 },
+    { "MILLIS_PER_MINUTE", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_MILLIS_PER_MINUTE, 0x19, -1, -1, -1, -1 },
+    { "MINUTES_PER_HOUR", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_MINUTES_PER_HOUR, 0x19, -1, -1, -1, -1 },
+    { "SECONDS_PER_HOUR", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_SECONDS_PER_HOUR, 0x19, -1, -1, -1, -1 },
+    { "MILLIS_PER_HOUR", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_MILLIS_PER_HOUR, 0x19, -1, -1, -1, -1 },
+    { "HOURS_PER_DAY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_HOURS_PER_DAY, 0x19, -1, -1, -1, -1 },
+    { "MINUTES_PER_DAY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_MINUTES_PER_DAY, 0x19, -1, -1, -1, -1 },
+    { "SECONDS_PER_DAY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_SECONDS_PER_DAY, 0x19, -1, -1, -1, -1 },
+    { "MILLIS_PER_DAY", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_MILLIS_PER_DAY, 0x19, -1, -1, -1, -1 },
+    { "DAYS_PER_WEEK", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_DAYS_PER_WEEK, 0x19, -1, -1, -1, -1 },
+    { "HOURS_PER_WEEK", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_HOURS_PER_WEEK, 0x19, -1, -1, -1, -1 },
+    { "MINUTES_PER_WEEK", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_MINUTES_PER_WEEK, 0x19, -1, -1, -1, -1 },
+    { "SECONDS_PER_WEEK", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_SECONDS_PER_WEEK, 0x19, -1, -1, -1, -1 },
+    { "MILLIS_PER_WEEK", "I", .constantValue.asInt = OrgJodaTimeDateTimeConstants_MILLIS_PER_WEEK, 0x19, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeConstants = { 2, "DateTimeConstants", "org.joda.time", NULL, 0x1, 1, methods, 40, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeConstants = { "DateTimeConstants", "org.joda.time", NULL, methods, fields, 7, 0x1, 1, 40, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeDateTimeConstants;
 }
 
@@ -72,15 +76,11 @@ void OrgJodaTimeDateTimeConstants_init(OrgJodaTimeDateTimeConstants *self) {
 }
 
 OrgJodaTimeDateTimeConstants *new_OrgJodaTimeDateTimeConstants_init() {
-  OrgJodaTimeDateTimeConstants *self = [OrgJodaTimeDateTimeConstants alloc];
-  OrgJodaTimeDateTimeConstants_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeDateTimeConstants, init)
 }
 
 OrgJodaTimeDateTimeConstants *create_OrgJodaTimeDateTimeConstants_init() {
-  OrgJodaTimeDateTimeConstants *self = [[OrgJodaTimeDateTimeConstants alloc] autorelease];
-  OrgJodaTimeDateTimeConstants_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeDateTimeConstants, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeConstants)

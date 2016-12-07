@@ -3,15 +3,7 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/Joda-Time/src/main/java/org/joda/time/format/DateTimePrinter.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
-#include "java/io/IOException.h"
-#include "java/io/Writer.h"
-#include "java/lang/StringBuffer.h"
-#include "java/util/Locale.h"
-#include "org/joda/time/Chronology.h"
-#include "org/joda/time/DateTimeZone.h"
-#include "org/joda/time/ReadablePartial.h"
 #include "org/joda/time/format/DateTimePrinter.h"
 
 @interface OrgJodaTimeFormatDateTimePrinter : NSObject
@@ -21,14 +13,23 @@
 @implementation OrgJodaTimeFormatDateTimePrinter
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "estimatePrintedLength", NULL, "I", 0x401, NULL, NULL },
-    { "printToWithJavaLangStringBuffer:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:", "printTo", "V", 0x401, NULL, NULL },
-    { "printToWithJavaIoWriter:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:", "printTo", "V", 0x401, "Ljava.io.IOException;", NULL },
-    { "printToWithJavaLangStringBuffer:withOrgJodaTimeReadablePartial:withJavaUtilLocale:", "printTo", "V", 0x401, NULL, NULL },
-    { "printToWithJavaIoWriter:withOrgJodaTimeReadablePartial:withJavaUtilLocale:", "printTo", "V", 0x401, "Ljava.io.IOException;", NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 0, 2, 3, -1, -1, -1 },
+    { NULL, "V", 0x401, 0, 4, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 0, 5, 3, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimePrinter = { 2, "DateTimePrinter", "org.joda.time.format", NULL, 0x609, 5, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(estimatePrintedLength);
+  methods[1].selector = @selector(printToWithJavaLangStringBuffer:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
+  methods[2].selector = @selector(printToWithJavaIoWriter:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
+  methods[3].selector = @selector(printToWithJavaLangStringBuffer:withOrgJodaTimeReadablePartial:withJavaUtilLocale:);
+  methods[4].selector = @selector(printToWithJavaIoWriter:withOrgJodaTimeReadablePartial:withJavaUtilLocale:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "printTo", "LJavaLangStringBuffer;JLOrgJodaTimeChronology;ILOrgJodaTimeDateTimeZone;LJavaUtilLocale;", "LJavaIoWriter;JLOrgJodaTimeChronology;ILOrgJodaTimeDateTimeZone;LJavaUtilLocale;", "LJavaIoIOException;", "LJavaLangStringBuffer;LOrgJodaTimeReadablePartial;LJavaUtilLocale;", "LJavaIoWriter;LOrgJodaTimeReadablePartial;LJavaUtilLocale;" };
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimePrinter = { "DateTimePrinter", "org.joda.time.format", ptrTable, methods, NULL, 7, 0x609, 5, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFormatDateTimePrinter;
 }
 

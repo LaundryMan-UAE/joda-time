@@ -5,27 +5,27 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertDateConverter_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertDateConverter_RESTRICT
-#define OrgJodaTimeConvertDateConverter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertDateConverter")
+#ifdef RESTRICT_OrgJodaTimeConvertDateConverter
+#define INCLUDE_ALL_OrgJodaTimeConvertDateConverter 0
 #else
-#define OrgJodaTimeConvertDateConverter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertDateConverter 1
 #endif
-#undef OrgJodaTimeConvertDateConverter_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertDateConverter
 
-#if !defined (OrgJodaTimeConvertDateConverter_) && (OrgJodaTimeConvertDateConverter_INCLUDE_ALL || defined(OrgJodaTimeConvertDateConverter_INCLUDE))
+#if !defined (OrgJodaTimeConvertDateConverter_) && (INCLUDE_ALL_OrgJodaTimeConvertDateConverter || defined(INCLUDE_OrgJodaTimeConvertDateConverter))
 #define OrgJodaTimeConvertDateConverter_
 
-#define OrgJodaTimeConvertAbstractConverter_RESTRICT 1
-#define OrgJodaTimeConvertAbstractConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertAbstractConverter 1
+#define INCLUDE_OrgJodaTimeConvertAbstractConverter 1
 #include "org/joda/time/convert/AbstractConverter.h"
 
-#define OrgJodaTimeConvertInstantConverter_RESTRICT 1
-#define OrgJodaTimeConvertInstantConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertInstantConverter 1
+#define INCLUDE_OrgJodaTimeConvertInstantConverter 1
 #include "org/joda/time/convert/InstantConverter.h"
 
-#define OrgJodaTimeConvertPartialConverter_RESTRICT 1
-#define OrgJodaTimeConvertPartialConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertPartialConverter 1
+#define INCLUDE_OrgJodaTimeConvertPartialConverter 1
 #include "org/joda/time/convert/PartialConverter.h"
 
 @class IOSClass;
@@ -87,4 +87,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertDateConverter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertDateConverter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertDateConverter")

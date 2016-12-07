@@ -113,37 +113,52 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeBaseBaseInterval, serialVersionUID, jlon
   JreVolatileStrongAssign(&iChronology_, OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_(chrono));
 }
 
-- (void)dealloc {
-  JreReleaseVolatile(&iChronology_);
-  [super dealloc];
-}
-
 - (void)__javaClone:(OrgJodaTimeBaseBaseInterval *)original {
   [super __javaClone:original];
   JreCloneVolatileStrong(&iChronology_, &original->iChronology_);
 }
 
+- (void)dealloc {
+  JreReleaseVolatile(&iChronology_);
+  [super dealloc];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithLong:withLong:withOrgJodaTimeChronology:", "BaseInterval", NULL, 0x4, NULL, NULL },
-    { "initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:", "BaseInterval", NULL, 0x4, NULL, NULL },
-    { "initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableDuration:", "BaseInterval", NULL, 0x4, NULL, NULL },
-    { "initWithOrgJodaTimeReadableDuration:withOrgJodaTimeReadableInstant:", "BaseInterval", NULL, 0x4, NULL, NULL },
-    { "initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadablePeriod:", "BaseInterval", NULL, 0x4, NULL, NULL },
-    { "initWithOrgJodaTimeReadablePeriod:withOrgJodaTimeReadableInstant:", "BaseInterval", NULL, 0x4, NULL, NULL },
-    { "initWithId:withOrgJodaTimeChronology:", "BaseInterval", NULL, 0x4, NULL, NULL },
-    { "getChronology", NULL, "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "getStartMillis", NULL, "J", 0x1, NULL, NULL },
-    { "getEndMillis", NULL, "J", 0x1, NULL, NULL },
-    { "setIntervalWithLong:withLong:withOrgJodaTimeChronology:", "setInterval", "V", 0x4, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, 0, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 2, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 3, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 4, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 5, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 6, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 7, 0, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithLong:withLong:withOrgJodaTimeChronology:);
+  methods[1].selector = @selector(initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:);
+  methods[2].selector = @selector(initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableDuration:);
+  methods[3].selector = @selector(initWithOrgJodaTimeReadableDuration:withOrgJodaTimeReadableInstant:);
+  methods[4].selector = @selector(initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadablePeriod:);
+  methods[5].selector = @selector(initWithOrgJodaTimeReadablePeriod:withOrgJodaTimeReadableInstant:);
+  methods[6].selector = @selector(initWithId:withOrgJodaTimeChronology:);
+  methods[7].selector = @selector(getChronology);
+  methods[8].selector = @selector(getStartMillis);
+  methods[9].selector = @selector(getEndMillis);
+  methods[10].selector = @selector(setIntervalWithLong:withLong:withOrgJodaTimeChronology:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeBaseBaseInterval_serialVersionUID },
-    { "iChronology_", NULL, 0x42, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iStartMillis_", NULL, 0x42, "J", NULL, NULL, .constantValue.asLong = 0 },
-    { "iEndMillis_", NULL, 0x42, "J", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeBaseBaseInterval_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iChronology_", "LOrgJodaTimeChronology;", .constantValue.asLong = 0, 0x42, -1, -1, -1, -1 },
+    { "iStartMillis_", "J", .constantValue.asLong = 0, 0x42, -1, -1, -1, -1 },
+    { "iEndMillis_", "J", .constantValue.asLong = 0, 0x42, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseInterval = { 2, "BaseInterval", "org.joda.time.base", NULL, 0x401, 11, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "JJLOrgJodaTimeChronology;", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableInstant;", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableDuration;", "LOrgJodaTimeReadableDuration;LOrgJodaTimeReadableInstant;", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadablePeriod;", "LOrgJodaTimeReadablePeriod;LOrgJodaTimeReadableInstant;", "LNSObject;LOrgJodaTimeChronology;", "setInterval" };
+  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseInterval = { "BaseInterval", "org.joda.time.base", ptrTable, methods, fields, 7, 0x401, 11, 4, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeBaseBaseInterval;
 }
 
@@ -230,7 +245,7 @@ void OrgJodaTimeBaseBaseInterval_initWithId_withOrgJodaTimeChronology_(OrgJodaTi
     [converter setIntoWithOrgJodaTimeReadWritableInterval:(id<OrgJodaTimeReadWritableInterval>) cast_check(self, OrgJodaTimeReadWritableInterval_class_()) withId:interval withOrgJodaTimeChronology:chrono];
   }
   else {
-    OrgJodaTimeMutableInterval *mi = [new_OrgJodaTimeMutableInterval_init() autorelease];
+    OrgJodaTimeMutableInterval *mi = create_OrgJodaTimeMutableInterval_init();
     [converter setIntoWithOrgJodaTimeReadWritableInterval:mi withId:interval withOrgJodaTimeChronology:chrono];
     JreVolatileStrongAssign(&self->iChronology_, [mi getChronology]);
     JreAssignVolatileLong(&self->iStartMillis_, [mi getStartMillis]);

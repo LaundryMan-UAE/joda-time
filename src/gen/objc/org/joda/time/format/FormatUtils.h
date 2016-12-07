@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatFormatUtils_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatFormatUtils_RESTRICT
-#define OrgJodaTimeFormatFormatUtils_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatFormatUtils")
+#ifdef RESTRICT_OrgJodaTimeFormatFormatUtils
+#define INCLUDE_ALL_OrgJodaTimeFormatFormatUtils 0
 #else
-#define OrgJodaTimeFormatFormatUtils_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatFormatUtils 1
 #endif
-#undef OrgJodaTimeFormatFormatUtils_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatFormatUtils
 
-#if !defined (OrgJodaTimeFormatFormatUtils_) && (OrgJodaTimeFormatFormatUtils_INCLUDE_ALL || defined(OrgJodaTimeFormatFormatUtils_INCLUDE))
+#if !defined (OrgJodaTimeFormatFormatUtils_) && (INCLUDE_ALL_OrgJodaTimeFormatFormatUtils || defined(INCLUDE_OrgJodaTimeFormatFormatUtils))
 #define OrgJodaTimeFormatFormatUtils_
 
 @class JavaIoWriter;
@@ -213,4 +213,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatFormatUtils)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatFormatUtils_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatFormatUtils")

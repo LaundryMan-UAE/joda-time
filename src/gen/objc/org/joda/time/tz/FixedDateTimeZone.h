@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeTzFixedDateTimeZone_INCLUDE_ALL")
-#ifdef OrgJodaTimeTzFixedDateTimeZone_RESTRICT
-#define OrgJodaTimeTzFixedDateTimeZone_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeTzFixedDateTimeZone")
+#ifdef RESTRICT_OrgJodaTimeTzFixedDateTimeZone
+#define INCLUDE_ALL_OrgJodaTimeTzFixedDateTimeZone 0
 #else
-#define OrgJodaTimeTzFixedDateTimeZone_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeTzFixedDateTimeZone 1
 #endif
-#undef OrgJodaTimeTzFixedDateTimeZone_RESTRICT
+#undef RESTRICT_OrgJodaTimeTzFixedDateTimeZone
 
-#if !defined (OrgJodaTimeTzFixedDateTimeZone_) && (OrgJodaTimeTzFixedDateTimeZone_INCLUDE_ALL || defined(OrgJodaTimeTzFixedDateTimeZone_INCLUDE))
+#if !defined (OrgJodaTimeTzFixedDateTimeZone_) && (INCLUDE_ALL_OrgJodaTimeTzFixedDateTimeZone || defined(INCLUDE_OrgJodaTimeTzFixedDateTimeZone))
 #define OrgJodaTimeTzFixedDateTimeZone_
 
-#define OrgJodaTimeDateTimeZone_RESTRICT 1
-#define OrgJodaTimeDateTimeZone_INCLUDE 1
+#define RESTRICT_OrgJodaTimeDateTimeZone 1
+#define INCLUDE_OrgJodaTimeDateTimeZone 1
 #include "org/joda/time/DateTimeZone.h"
 
 @class JavaUtilTimeZone;
@@ -76,4 +76,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzFixedDateTimeZone)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeTzFixedDateTimeZone_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeTzFixedDateTimeZone")

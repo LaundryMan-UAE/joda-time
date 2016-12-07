@@ -13,10 +13,15 @@
 @implementation OrgJodaTimeConvertDurationConverter
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getDurationMillisWithId:", "getDurationMillis", "J", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "J", 0x401, 0, 1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertDurationConverter = { 2, "DurationConverter", "org.joda.time.convert", NULL, 0x609, 1, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getDurationMillisWithId:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "getDurationMillis", "LNSObject;" };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertDurationConverter = { "DurationConverter", "org.joda.time.convert", ptrTable, methods, NULL, 7, 0x609, 1, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeConvertDurationConverter;
 }
 

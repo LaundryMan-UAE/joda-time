@@ -36,16 +36,16 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (void)checkIntervalWithLong:(jlong)start
                      withLong:(jlong)end {
   if (end < start) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The end instant must be greater or equal to the start") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The end instant must be greater or equal to the start");
   }
 }
 
 - (OrgJodaTimeDateTime *)getStart {
-  return [new_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_([self getStartMillis], [self getChronology]) autorelease];
+  return create_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_([self getStartMillis], [self getChronology]);
 }
 
 - (OrgJodaTimeDateTime *)getEnd {
-  return [new_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_([self getEndMillis], [self getChronology]) autorelease];
+  return create_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_([self getEndMillis], [self getChronology]);
 }
 
 - (jboolean)containsWithLong:(jlong)millisInstant {
@@ -62,14 +62,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (instant == nil) {
     return [self containsNow];
   }
-  return [self containsWithLong:[((id<OrgJodaTimeReadableInstant>) nil_chk(instant)) getMillis]];
+  return [self containsWithLong:[instant getMillis]];
 }
 
 - (jboolean)containsWithOrgJodaTimeReadableInterval:(id<OrgJodaTimeReadableInterval>)interval {
   if (interval == nil) {
     return [self containsNow];
   }
-  jlong otherStart = [((id<OrgJodaTimeReadableInterval>) nil_chk(interval)) getStartMillis];
+  jlong otherStart = [interval getStartMillis];
   jlong otherEnd = [interval getEndMillis];
   jlong thisStart = [self getStartMillis];
   jlong thisEnd = [self getEndMillis];
@@ -106,14 +106,14 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (instant == nil) {
     return [self isBeforeNow];
   }
-  return [self isBeforeWithLong:[((id<OrgJodaTimeReadableInstant>) nil_chk(instant)) getMillis]];
+  return [self isBeforeWithLong:[instant getMillis]];
 }
 
 - (jboolean)isBeforeWithOrgJodaTimeReadableInterval:(id<OrgJodaTimeReadableInterval>)interval {
   if (interval == nil) {
     return [self isBeforeNow];
   }
-  return [self isBeforeWithLong:[((id<OrgJodaTimeReadableInterval>) nil_chk(interval)) getStartMillis]];
+  return [self isBeforeWithLong:[interval getStartMillis]];
 }
 
 - (jboolean)isAfterWithLong:(jlong)millisInstant {
@@ -128,7 +128,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (instant == nil) {
     return [self isAfterNow];
   }
-  return [self isAfterWithLong:[((id<OrgJodaTimeReadableInstant>) nil_chk(instant)) getMillis]];
+  return [self isAfterWithLong:[instant getMillis]];
 }
 
 - (jboolean)isAfterWithOrgJodaTimeReadableInterval:(id<OrgJodaTimeReadableInterval>)interval {
@@ -143,11 +143,11 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (OrgJodaTimeInterval *)toInterval {
-  return [new_OrgJodaTimeInterval_initWithLong_withLong_withOrgJodaTimeChronology_([self getStartMillis], [self getEndMillis], [self getChronology]) autorelease];
+  return create_OrgJodaTimeInterval_initWithLong_withLong_withOrgJodaTimeChronology_([self getStartMillis], [self getEndMillis], [self getChronology]);
 }
 
 - (OrgJodaTimeMutableInterval *)toMutableInterval {
-  return [new_OrgJodaTimeMutableInterval_initWithLong_withLong_withOrgJodaTimeChronology_([self getStartMillis], [self getEndMillis], [self getChronology]) autorelease];
+  return create_OrgJodaTimeMutableInterval_initWithLong_withLong_withOrgJodaTimeChronology_([self getStartMillis], [self getEndMillis], [self getChronology]);
 }
 
 - (jlong)toDurationMillis {
@@ -160,16 +160,16 @@ J2OBJC_IGNORE_DESIGNATED_END
     return JreLoadStatic(OrgJodaTimeDuration, ZERO);
   }
   else {
-    return [new_OrgJodaTimeDuration_initWithLong_(durMillis) autorelease];
+    return create_OrgJodaTimeDuration_initWithLong_(durMillis);
   }
 }
 
 - (OrgJodaTimePeriod *)toPeriod {
-  return [new_OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimeChronology_([self getStartMillis], [self getEndMillis], [self getChronology]) autorelease];
+  return create_OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimeChronology_([self getStartMillis], [self getEndMillis], [self getChronology]);
 }
 
 - (OrgJodaTimePeriod *)toPeriodWithOrgJodaTimePeriodType:(OrgJodaTimePeriodType *)type {
-  return [new_OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_([self getStartMillis], [self getEndMillis], type, [self getChronology]) autorelease];
+  return create_OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_([self getStartMillis], [self getEndMillis], type, [self getChronology]);
 }
 
 - (jboolean)isEqual:(id)readableInterval {
@@ -196,7 +196,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (NSString *)description {
   OrgJodaTimeFormatDateTimeFormatter *printer = OrgJodaTimeFormatISODateTimeFormat_dateTime();
   printer = [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(printer)) withChronologyWithOrgJodaTimeChronology:[self getChronology]];
-  JavaLangStringBuffer *buf = [new_JavaLangStringBuffer_initWithInt_(48) autorelease];
+  JavaLangStringBuffer *buf = create_JavaLangStringBuffer_initWithInt_(48);
   [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(printer)) printToWithJavaLangStringBuffer:buf withLong:[self getStartMillis]];
   [buf appendWithChar:'/'];
   [printer printToWithJavaLangStringBuffer:buf withLong:[self getEndMillis]];
@@ -204,36 +204,67 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "AbstractInterval", NULL, 0x4, NULL, NULL },
-    { "checkIntervalWithLong:withLong:", "checkInterval", "V", 0x4, NULL, NULL },
-    { "getStart", NULL, "Lorg.joda.time.DateTime;", 0x1, NULL, NULL },
-    { "getEnd", NULL, "Lorg.joda.time.DateTime;", 0x1, NULL, NULL },
-    { "containsWithLong:", "contains", "Z", 0x1, NULL, NULL },
-    { "containsNow", NULL, "Z", 0x1, NULL, NULL },
-    { "containsWithOrgJodaTimeReadableInstant:", "contains", "Z", 0x1, NULL, NULL },
-    { "containsWithOrgJodaTimeReadableInterval:", "contains", "Z", 0x1, NULL, NULL },
-    { "overlapsWithOrgJodaTimeReadableInterval:", "overlaps", "Z", 0x1, NULL, NULL },
-    { "isEqualWithOrgJodaTimeReadableInterval:", "isEqual", "Z", 0x1, NULL, NULL },
-    { "isBeforeWithLong:", "isBefore", "Z", 0x1, NULL, NULL },
-    { "isBeforeNow", NULL, "Z", 0x1, NULL, NULL },
-    { "isBeforeWithOrgJodaTimeReadableInstant:", "isBefore", "Z", 0x1, NULL, NULL },
-    { "isBeforeWithOrgJodaTimeReadableInterval:", "isBefore", "Z", 0x1, NULL, NULL },
-    { "isAfterWithLong:", "isAfter", "Z", 0x1, NULL, NULL },
-    { "isAfterNow", NULL, "Z", 0x1, NULL, NULL },
-    { "isAfterWithOrgJodaTimeReadableInstant:", "isAfter", "Z", 0x1, NULL, NULL },
-    { "isAfterWithOrgJodaTimeReadableInterval:", "isAfter", "Z", 0x1, NULL, NULL },
-    { "toInterval", NULL, "Lorg.joda.time.Interval;", 0x1, NULL, NULL },
-    { "toMutableInterval", NULL, "Lorg.joda.time.MutableInterval;", 0x1, NULL, NULL },
-    { "toDurationMillis", NULL, "J", 0x1, NULL, NULL },
-    { "toDuration", NULL, "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-    { "toPeriod", NULL, "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "toPeriodWithOrgJodaTimePeriodType:", "toPeriod", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 2, 4, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 2, 5, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 6, 5, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 7, 5, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 8, 3, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 8, 4, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 8, 5, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 9, 3, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 9, 4, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 9, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeInterval;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMutableInterval;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 10, 11, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 12, 13, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 14, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 15, -1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractInterval = { 2, "AbstractInterval", "org.joda.time.base", NULL, 0x401, 27, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(checkIntervalWithLong:withLong:);
+  methods[2].selector = @selector(getStart);
+  methods[3].selector = @selector(getEnd);
+  methods[4].selector = @selector(containsWithLong:);
+  methods[5].selector = @selector(containsNow);
+  methods[6].selector = @selector(containsWithOrgJodaTimeReadableInstant:);
+  methods[7].selector = @selector(containsWithOrgJodaTimeReadableInterval:);
+  methods[8].selector = @selector(overlapsWithOrgJodaTimeReadableInterval:);
+  methods[9].selector = @selector(isEqualWithOrgJodaTimeReadableInterval:);
+  methods[10].selector = @selector(isBeforeWithLong:);
+  methods[11].selector = @selector(isBeforeNow);
+  methods[12].selector = @selector(isBeforeWithOrgJodaTimeReadableInstant:);
+  methods[13].selector = @selector(isBeforeWithOrgJodaTimeReadableInterval:);
+  methods[14].selector = @selector(isAfterWithLong:);
+  methods[15].selector = @selector(isAfterNow);
+  methods[16].selector = @selector(isAfterWithOrgJodaTimeReadableInstant:);
+  methods[17].selector = @selector(isAfterWithOrgJodaTimeReadableInterval:);
+  methods[18].selector = @selector(toInterval);
+  methods[19].selector = @selector(toMutableInterval);
+  methods[20].selector = @selector(toDurationMillis);
+  methods[21].selector = @selector(toDuration);
+  methods[22].selector = @selector(toPeriod);
+  methods[23].selector = @selector(toPeriodWithOrgJodaTimePeriodType:);
+  methods[24].selector = @selector(isEqual:);
+  methods[25].selector = @selector(hash);
+  methods[26].selector = @selector(description);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "checkInterval", "JJ", "contains", "J", "LOrgJodaTimeReadableInstant;", "LOrgJodaTimeReadableInterval;", "overlaps", "isEqual", "isBefore", "isAfter", "toPeriod", "LOrgJodaTimePeriodType;", "equals", "LNSObject;", "hashCode", "toString" };
+  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractInterval = { "AbstractInterval", "org.joda.time.base", ptrTable, methods, NULL, 7, 0x401, 27, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeBaseAbstractInterval;
 }
 

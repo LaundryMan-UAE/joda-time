@@ -7,7 +7,6 @@
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "java/lang/IllegalArgumentException.h"
-#include "java/lang/SecurityException.h"
 #include "java/lang/SecurityManager.h"
 #include "java/lang/System.h"
 #include "org/joda/time/JodaTimePermission.h"
@@ -113,7 +112,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (converter != nil) {
     return converter;
   }
-  @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"No instant converter found for type: ", (object == nil ? @"null" : [[object getClass] getName]))) autorelease];
+  @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"No instant converter found for type: ", (object == nil ? @"null" : [[object getClass] getName])));
 }
 
 - (IOSObjectArray *)getInstantConverters {
@@ -152,7 +151,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (converter != nil) {
     return converter;
   }
-  @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"No partial converter found for type: ", (object == nil ? @"null" : [[object getClass] getName]))) autorelease];
+  @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"No partial converter found for type: ", (object == nil ? @"null" : [[object getClass] getName])));
 }
 
 - (IOSObjectArray *)getPartialConverters {
@@ -191,7 +190,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (converter != nil) {
     return converter;
   }
-  @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"No duration converter found for type: ", (object == nil ? @"null" : [[object getClass] getName]))) autorelease];
+  @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"No duration converter found for type: ", (object == nil ? @"null" : [[object getClass] getName])));
 }
 
 - (IOSObjectArray *)getDurationConverters {
@@ -230,7 +229,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (converter != nil) {
     return converter;
   }
-  @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"No period converter found for type: ", (object == nil ? @"null" : [[object getClass] getName]))) autorelease];
+  @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"No period converter found for type: ", (object == nil ? @"null" : [[object getClass] getName])));
 }
 
 - (IOSObjectArray *)getPeriodConverters {
@@ -269,7 +268,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (converter != nil) {
     return converter;
   }
-  @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"No interval converter found for type: ", (object == nil ? @"null" : [[object getClass] getName]))) autorelease];
+  @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"No interval converter found for type: ", (object == nil ? @"null" : [[object getClass] getName])));
 }
 
 - (IOSObjectArray *)getIntervalConverters {
@@ -317,45 +316,77 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getInstance", NULL, "Lorg.joda.time.convert.ConverterManager;", 0x9, NULL, NULL },
-    { "init", "ConverterManager", NULL, 0x4, NULL, NULL },
-    { "getInstantConverterWithId:", "getInstantConverter", "Lorg.joda.time.convert.InstantConverter;", 0x1, NULL, NULL },
-    { "getInstantConverters", NULL, "[Lorg.joda.time.convert.InstantConverter;", 0x1, NULL, NULL },
-    { "addInstantConverterWithOrgJodaTimeConvertInstantConverter:", "addInstantConverter", "Lorg.joda.time.convert.InstantConverter;", 0x1, "Ljava.lang.SecurityException;", NULL },
-    { "removeInstantConverterWithOrgJodaTimeConvertInstantConverter:", "removeInstantConverter", "Lorg.joda.time.convert.InstantConverter;", 0x1, "Ljava.lang.SecurityException;", NULL },
-    { "checkAlterInstantConverters", NULL, "V", 0x2, "Ljava.lang.SecurityException;", NULL },
-    { "getPartialConverterWithId:", "getPartialConverter", "Lorg.joda.time.convert.PartialConverter;", 0x1, NULL, NULL },
-    { "getPartialConverters", NULL, "[Lorg.joda.time.convert.PartialConverter;", 0x1, NULL, NULL },
-    { "addPartialConverterWithOrgJodaTimeConvertPartialConverter:", "addPartialConverter", "Lorg.joda.time.convert.PartialConverter;", 0x1, "Ljava.lang.SecurityException;", NULL },
-    { "removePartialConverterWithOrgJodaTimeConvertPartialConverter:", "removePartialConverter", "Lorg.joda.time.convert.PartialConverter;", 0x1, "Ljava.lang.SecurityException;", NULL },
-    { "checkAlterPartialConverters", NULL, "V", 0x2, "Ljava.lang.SecurityException;", NULL },
-    { "getDurationConverterWithId:", "getDurationConverter", "Lorg.joda.time.convert.DurationConverter;", 0x1, NULL, NULL },
-    { "getDurationConverters", NULL, "[Lorg.joda.time.convert.DurationConverter;", 0x1, NULL, NULL },
-    { "addDurationConverterWithOrgJodaTimeConvertDurationConverter:", "addDurationConverter", "Lorg.joda.time.convert.DurationConverter;", 0x1, "Ljava.lang.SecurityException;", NULL },
-    { "removeDurationConverterWithOrgJodaTimeConvertDurationConverter:", "removeDurationConverter", "Lorg.joda.time.convert.DurationConverter;", 0x1, "Ljava.lang.SecurityException;", NULL },
-    { "checkAlterDurationConverters", NULL, "V", 0x2, "Ljava.lang.SecurityException;", NULL },
-    { "getPeriodConverterWithId:", "getPeriodConverter", "Lorg.joda.time.convert.PeriodConverter;", 0x1, NULL, NULL },
-    { "getPeriodConverters", NULL, "[Lorg.joda.time.convert.PeriodConverter;", 0x1, NULL, NULL },
-    { "addPeriodConverterWithOrgJodaTimeConvertPeriodConverter:", "addPeriodConverter", "Lorg.joda.time.convert.PeriodConverter;", 0x1, "Ljava.lang.SecurityException;", NULL },
-    { "removePeriodConverterWithOrgJodaTimeConvertPeriodConverter:", "removePeriodConverter", "Lorg.joda.time.convert.PeriodConverter;", 0x1, "Ljava.lang.SecurityException;", NULL },
-    { "checkAlterPeriodConverters", NULL, "V", 0x2, "Ljava.lang.SecurityException;", NULL },
-    { "getIntervalConverterWithId:", "getIntervalConverter", "Lorg.joda.time.convert.IntervalConverter;", 0x1, NULL, NULL },
-    { "getIntervalConverters", NULL, "[Lorg.joda.time.convert.IntervalConverter;", 0x1, NULL, NULL },
-    { "addIntervalConverterWithOrgJodaTimeConvertIntervalConverter:", "addIntervalConverter", "Lorg.joda.time.convert.IntervalConverter;", 0x1, "Ljava.lang.SecurityException;", NULL },
-    { "removeIntervalConverterWithOrgJodaTimeConvertIntervalConverter:", "removeIntervalConverter", "Lorg.joda.time.convert.IntervalConverter;", 0x1, "Ljava.lang.SecurityException;", NULL },
-    { "checkAlterIntervalConverters", NULL, "V", 0x2, "Ljava.lang.SecurityException;", NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeConvertConverterManager;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertInstantConverter;", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "[LOrgJodaTimeConvertInstantConverter;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertInstantConverter;", 0x1, 2, 3, 4, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertInstantConverter;", 0x1, 5, 3, 4, -1, -1, -1 },
+    { NULL, "V", 0x2, -1, -1, 4, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertPartialConverter;", 0x1, 6, 1, -1, -1, -1, -1 },
+    { NULL, "[LOrgJodaTimeConvertPartialConverter;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertPartialConverter;", 0x1, 7, 8, 4, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertPartialConverter;", 0x1, 9, 8, 4, -1, -1, -1 },
+    { NULL, "V", 0x2, -1, -1, 4, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertDurationConverter;", 0x1, 10, 1, -1, -1, -1, -1 },
+    { NULL, "[LOrgJodaTimeConvertDurationConverter;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertDurationConverter;", 0x1, 11, 12, 4, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertDurationConverter;", 0x1, 13, 12, 4, -1, -1, -1 },
+    { NULL, "V", 0x2, -1, -1, 4, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertPeriodConverter;", 0x1, 14, 1, -1, -1, -1, -1 },
+    { NULL, "[LOrgJodaTimeConvertPeriodConverter;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertPeriodConverter;", 0x1, 15, 16, 4, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertPeriodConverter;", 0x1, 17, 16, 4, -1, -1, -1 },
+    { NULL, "V", 0x2, -1, -1, 4, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertIntervalConverter;", 0x1, 18, 1, -1, -1, -1, -1 },
+    { NULL, "[LOrgJodaTimeConvertIntervalConverter;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertIntervalConverter;", 0x1, 19, 20, 4, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeConvertIntervalConverter;", 0x1, 21, 20, 4, -1, -1, -1 },
+    { NULL, "V", 0x2, -1, -1, 4, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 22, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getInstance);
+  methods[1].selector = @selector(init);
+  methods[2].selector = @selector(getInstantConverterWithId:);
+  methods[3].selector = @selector(getInstantConverters);
+  methods[4].selector = @selector(addInstantConverterWithOrgJodaTimeConvertInstantConverter:);
+  methods[5].selector = @selector(removeInstantConverterWithOrgJodaTimeConvertInstantConverter:);
+  methods[6].selector = @selector(checkAlterInstantConverters);
+  methods[7].selector = @selector(getPartialConverterWithId:);
+  methods[8].selector = @selector(getPartialConverters);
+  methods[9].selector = @selector(addPartialConverterWithOrgJodaTimeConvertPartialConverter:);
+  methods[10].selector = @selector(removePartialConverterWithOrgJodaTimeConvertPartialConverter:);
+  methods[11].selector = @selector(checkAlterPartialConverters);
+  methods[12].selector = @selector(getDurationConverterWithId:);
+  methods[13].selector = @selector(getDurationConverters);
+  methods[14].selector = @selector(addDurationConverterWithOrgJodaTimeConvertDurationConverter:);
+  methods[15].selector = @selector(removeDurationConverterWithOrgJodaTimeConvertDurationConverter:);
+  methods[16].selector = @selector(checkAlterDurationConverters);
+  methods[17].selector = @selector(getPeriodConverterWithId:);
+  methods[18].selector = @selector(getPeriodConverters);
+  methods[19].selector = @selector(addPeriodConverterWithOrgJodaTimeConvertPeriodConverter:);
+  methods[20].selector = @selector(removePeriodConverterWithOrgJodaTimeConvertPeriodConverter:);
+  methods[21].selector = @selector(checkAlterPeriodConverters);
+  methods[22].selector = @selector(getIntervalConverterWithId:);
+  methods[23].selector = @selector(getIntervalConverters);
+  methods[24].selector = @selector(addIntervalConverterWithOrgJodaTimeConvertIntervalConverter:);
+  methods[25].selector = @selector(removeIntervalConverterWithOrgJodaTimeConvertIntervalConverter:);
+  methods[26].selector = @selector(checkAlterIntervalConverters);
+  methods[27].selector = @selector(description);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE", "INSTANCE", 0xa, "Lorg.joda.time.convert.ConverterManager;", &OrgJodaTimeConvertConverterManager_INSTANCE, NULL, .constantValue.asLong = 0 },
-    { "iInstantConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iPartialConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iDurationConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iPeriodConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iIntervalConverters_", NULL, 0x2, "Lorg.joda.time.convert.ConverterSet;", NULL, NULL, .constantValue.asLong = 0 },
+    { "INSTANCE", "LOrgJodaTimeConvertConverterManager;", .constantValue.asLong = 0, 0xa, -1, 23, -1, -1 },
+    { "iInstantConverters_", "LOrgJodaTimeConvertConverterSet;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "iPartialConverters_", "LOrgJodaTimeConvertConverterSet;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "iDurationConverters_", "LOrgJodaTimeConvertConverterSet;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "iPeriodConverters_", "LOrgJodaTimeConvertConverterSet;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "iIntervalConverters_", "LOrgJodaTimeConvertConverterSet;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertConverterManager = { 2, "ConverterManager", "org.joda.time.convert", NULL, 0x11, 28, methods, 6, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "getInstantConverter", "LNSObject;", "addInstantConverter", "LOrgJodaTimeConvertInstantConverter;", "LJavaLangSecurityException;", "removeInstantConverter", "getPartialConverter", "addPartialConverter", "LOrgJodaTimeConvertPartialConverter;", "removePartialConverter", "getDurationConverter", "addDurationConverter", "LOrgJodaTimeConvertDurationConverter;", "removeDurationConverter", "getPeriodConverter", "addPeriodConverter", "LOrgJodaTimeConvertPeriodConverter;", "removePeriodConverter", "getIntervalConverter", "addIntervalConverter", "LOrgJodaTimeConvertIntervalConverter;", "removeIntervalConverter", "toString", &OrgJodaTimeConvertConverterManager_INSTANCE };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertConverterManager = { "ConverterManager", "org.joda.time.convert", ptrTable, methods, fields, 7, 0x11, 28, 6, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeConvertConverterManager;
 }
 
@@ -379,49 +410,45 @@ void OrgJodaTimeConvertConverterManager_init(OrgJodaTimeConvertConverterManager 
 }
 
 OrgJodaTimeConvertConverterManager *new_OrgJodaTimeConvertConverterManager_init() {
-  OrgJodaTimeConvertConverterManager *self = [OrgJodaTimeConvertConverterManager alloc];
-  OrgJodaTimeConvertConverterManager_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeConvertConverterManager, init)
 }
 
 OrgJodaTimeConvertConverterManager *create_OrgJodaTimeConvertConverterManager_init() {
-  OrgJodaTimeConvertConverterManager *self = [[OrgJodaTimeConvertConverterManager alloc] autorelease];
-  OrgJodaTimeConvertConverterManager_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeConvertConverterManager, init)
 }
 
 void OrgJodaTimeConvertConverterManager_checkAlterInstantConverters(OrgJodaTimeConvertConverterManager *self) {
   JavaLangSecurityManager *sm = JavaLangSystem_getSecurityManager();
   if (sm != nil) {
-    [sm checkPermissionWithJavaSecurityPermission:[new_OrgJodaTimeJodaTimePermission_initWithNSString_(@"ConverterManager.alterInstantConverters") autorelease]];
+    [sm checkPermissionWithJavaSecurityPermission:create_OrgJodaTimeJodaTimePermission_initWithNSString_(@"ConverterManager.alterInstantConverters")];
   }
 }
 
 void OrgJodaTimeConvertConverterManager_checkAlterPartialConverters(OrgJodaTimeConvertConverterManager *self) {
   JavaLangSecurityManager *sm = JavaLangSystem_getSecurityManager();
   if (sm != nil) {
-    [sm checkPermissionWithJavaSecurityPermission:[new_OrgJodaTimeJodaTimePermission_initWithNSString_(@"ConverterManager.alterPartialConverters") autorelease]];
+    [sm checkPermissionWithJavaSecurityPermission:create_OrgJodaTimeJodaTimePermission_initWithNSString_(@"ConverterManager.alterPartialConverters")];
   }
 }
 
 void OrgJodaTimeConvertConverterManager_checkAlterDurationConverters(OrgJodaTimeConvertConverterManager *self) {
   JavaLangSecurityManager *sm = JavaLangSystem_getSecurityManager();
   if (sm != nil) {
-    [sm checkPermissionWithJavaSecurityPermission:[new_OrgJodaTimeJodaTimePermission_initWithNSString_(@"ConverterManager.alterDurationConverters") autorelease]];
+    [sm checkPermissionWithJavaSecurityPermission:create_OrgJodaTimeJodaTimePermission_initWithNSString_(@"ConverterManager.alterDurationConverters")];
   }
 }
 
 void OrgJodaTimeConvertConverterManager_checkAlterPeriodConverters(OrgJodaTimeConvertConverterManager *self) {
   JavaLangSecurityManager *sm = JavaLangSystem_getSecurityManager();
   if (sm != nil) {
-    [sm checkPermissionWithJavaSecurityPermission:[new_OrgJodaTimeJodaTimePermission_initWithNSString_(@"ConverterManager.alterPeriodConverters") autorelease]];
+    [sm checkPermissionWithJavaSecurityPermission:create_OrgJodaTimeJodaTimePermission_initWithNSString_(@"ConverterManager.alterPeriodConverters")];
   }
 }
 
 void OrgJodaTimeConvertConverterManager_checkAlterIntervalConverters(OrgJodaTimeConvertConverterManager *self) {
   JavaLangSecurityManager *sm = JavaLangSystem_getSecurityManager();
   if (sm != nil) {
-    [sm checkPermissionWithJavaSecurityPermission:[new_OrgJodaTimeJodaTimePermission_initWithNSString_(@"ConverterManager.alterIntervalConverters") autorelease]];
+    [sm checkPermissionWithJavaSecurityPermission:create_OrgJodaTimeJodaTimePermission_initWithNSString_(@"ConverterManager.alterIntervalConverters")];
   }
 }
 

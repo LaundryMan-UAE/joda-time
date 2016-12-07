@@ -187,39 +187,68 @@ __attribute__((unused)) static JavaLangUnsupportedOperationException *OrgJodaTim
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getInstanceWithOrgJodaTimeDurationFieldType:", "getInstance", "Lorg.joda.time.field.UnsupportedDurationField;", 0x29, NULL, NULL },
-    { "initWithOrgJodaTimeDurationFieldType:", "UnsupportedDurationField", NULL, 0x2, NULL, NULL },
-    { "getType", NULL, "Lorg.joda.time.DurationFieldType;", 0x11, NULL, NULL },
-    { "getName", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "isSupported", NULL, "Z", 0x1, NULL, NULL },
-    { "isPrecise", NULL, "Z", 0x1, NULL, NULL },
-    { "getValueWithLong:", "getValue", "I", 0x1, NULL, NULL },
-    { "getValueAsLongWithLong:", "getValueAsLong", "J", 0x1, NULL, NULL },
-    { "getValueWithLong:withLong:", "getValue", "I", 0x1, NULL, NULL },
-    { "getValueAsLongWithLong:withLong:", "getValueAsLong", "J", 0x1, NULL, NULL },
-    { "getMillisWithInt:", "getMillis", "J", 0x1, NULL, NULL },
-    { "getMillisWithLong:", "getMillis", "J", 0x1, NULL, NULL },
-    { "getMillisWithInt:withLong:", "getMillis", "J", 0x1, NULL, NULL },
-    { "getMillisWithLong:withLong:", "getMillis", "J", 0x1, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x1, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x1, NULL, NULL },
-    { "getDifferenceWithLong:withLong:", "getDifference", "I", 0x1, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x1, NULL, NULL },
-    { "getUnitMillis", NULL, "J", 0x1, NULL, NULL },
-    { "compareToWithId:", "compareTo", "I", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
-    { "unsupported", NULL, "Ljava.lang.UnsupportedOperationException;", 0x2, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeFieldUnsupportedDurationField;", 0x29, 0, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x2, -1, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x11, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 4, 3, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 2, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 7, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 8, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 10, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 11, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 12, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 13, 14, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 15, 16, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 17, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 18, -1, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LJavaLangUnsupportedOperationException;", 0x2, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getInstanceWithOrgJodaTimeDurationFieldType:);
+  methods[1].selector = @selector(initWithOrgJodaTimeDurationFieldType:);
+  methods[2].selector = @selector(getType);
+  methods[3].selector = @selector(getName);
+  methods[4].selector = @selector(isSupported);
+  methods[5].selector = @selector(isPrecise);
+  methods[6].selector = @selector(getValueWithLong:);
+  methods[7].selector = @selector(getValueAsLongWithLong:);
+  methods[8].selector = @selector(getValueWithLong:withLong:);
+  methods[9].selector = @selector(getValueAsLongWithLong:withLong:);
+  methods[10].selector = @selector(getMillisWithInt:);
+  methods[11].selector = @selector(getMillisWithLong:);
+  methods[12].selector = @selector(getMillisWithInt:withLong:);
+  methods[13].selector = @selector(getMillisWithLong:withLong:);
+  methods[14].selector = @selector(addWithLong:withInt:);
+  methods[15].selector = @selector(addWithLong:withLong:);
+  methods[16].selector = @selector(getDifferenceWithLong:withLong:);
+  methods[17].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  methods[18].selector = @selector(getUnitMillis);
+  methods[19].selector = @selector(compareToWithId:);
+  methods[20].selector = @selector(isEqual:);
+  methods[21].selector = @selector(hash);
+  methods[22].selector = @selector(description);
+  methods[23].selector = @selector(readResolve);
+  methods[24].selector = @selector(unsupported);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldUnsupportedDurationField_serialVersionUID },
-    { "cCache", "cCache", 0xa, "Ljava.util.HashMap;", &OrgJodaTimeFieldUnsupportedDurationField_cCache, "Ljava/util/HashMap<Lorg/joda/time/DurationFieldType;Lorg/joda/time/field/UnsupportedDurationField;>;", .constantValue.asLong = 0 },
-    { "iType_", NULL, 0x12, "Lorg.joda.time.DurationFieldType;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldUnsupportedDurationField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "cCache", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0xa, -1, 19, 20, -1 },
+    { "iType_", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldUnsupportedDurationField = { 2, "UnsupportedDurationField", "org.joda.time.field", NULL, 0x11, 25, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "getInstance", "LOrgJodaTimeDurationFieldType;", "getValue", "J", "getValueAsLong", "JJ", "getMillis", "I", "IJ", "add", "JI", "getDifference", "getDifferenceAsLong", "compareTo", "LOrgJodaTimeDurationField;", "equals", "LNSObject;", "hashCode", "toString", &OrgJodaTimeFieldUnsupportedDurationField_cCache, "Ljava/util/HashMap<Lorg/joda/time/DurationFieldType;Lorg/joda/time/field/UnsupportedDurationField;>;" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldUnsupportedDurationField = { "UnsupportedDurationField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x11, 25, 3, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldUnsupportedDurationField;
 }
 
@@ -237,7 +266,7 @@ OrgJodaTimeFieldUnsupportedDurationField *OrgJodaTimeFieldUnsupportedDurationFie
       field = [OrgJodaTimeFieldUnsupportedDurationField_cCache getWithId:type];
     }
     if (field == nil) {
-      field = [new_OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldType_(type) autorelease];
+      field = create_OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldType_(type);
       [((JavaUtilHashMap *) nil_chk(OrgJodaTimeFieldUnsupportedDurationField_cCache)) putWithId:type withId:field];
     }
     return field;
@@ -250,19 +279,15 @@ void OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldTy
 }
 
 OrgJodaTimeFieldUnsupportedDurationField *new_OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationFieldType *type) {
-  OrgJodaTimeFieldUnsupportedDurationField *self = [OrgJodaTimeFieldUnsupportedDurationField alloc];
-  OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldType_(self, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldUnsupportedDurationField, initWithOrgJodaTimeDurationFieldType_, type)
 }
 
 OrgJodaTimeFieldUnsupportedDurationField *create_OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldType_(OrgJodaTimeDurationFieldType *type) {
-  OrgJodaTimeFieldUnsupportedDurationField *self = [[OrgJodaTimeFieldUnsupportedDurationField alloc] autorelease];
-  OrgJodaTimeFieldUnsupportedDurationField_initWithOrgJodaTimeDurationFieldType_(self, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldUnsupportedDurationField, initWithOrgJodaTimeDurationFieldType_, type)
 }
 
 JavaLangUnsupportedOperationException *OrgJodaTimeFieldUnsupportedDurationField_unsupported(OrgJodaTimeFieldUnsupportedDurationField *self) {
-  return [new_JavaLangUnsupportedOperationException_initWithNSString_(JreStrcat("@$", self->iType_, @" field is unsupported")) autorelease];
+  return create_JavaLangUnsupportedOperationException_initWithNSString_(JreStrcat("@$", self->iType_, @" field is unsupported"));
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldUnsupportedDurationField)

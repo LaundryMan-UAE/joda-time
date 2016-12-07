@@ -5,31 +5,31 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertReadableIntervalConverter_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertReadableIntervalConverter_RESTRICT
-#define OrgJodaTimeConvertReadableIntervalConverter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertReadableIntervalConverter")
+#ifdef RESTRICT_OrgJodaTimeConvertReadableIntervalConverter
+#define INCLUDE_ALL_OrgJodaTimeConvertReadableIntervalConverter 0
 #else
-#define OrgJodaTimeConvertReadableIntervalConverter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertReadableIntervalConverter 1
 #endif
-#undef OrgJodaTimeConvertReadableIntervalConverter_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertReadableIntervalConverter
 
-#if !defined (OrgJodaTimeConvertReadableIntervalConverter_) && (OrgJodaTimeConvertReadableIntervalConverter_INCLUDE_ALL || defined(OrgJodaTimeConvertReadableIntervalConverter_INCLUDE))
+#if !defined (OrgJodaTimeConvertReadableIntervalConverter_) && (INCLUDE_ALL_OrgJodaTimeConvertReadableIntervalConverter || defined(INCLUDE_OrgJodaTimeConvertReadableIntervalConverter))
 #define OrgJodaTimeConvertReadableIntervalConverter_
 
-#define OrgJodaTimeConvertAbstractConverter_RESTRICT 1
-#define OrgJodaTimeConvertAbstractConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertAbstractConverter 1
+#define INCLUDE_OrgJodaTimeConvertAbstractConverter 1
 #include "org/joda/time/convert/AbstractConverter.h"
 
-#define OrgJodaTimeConvertIntervalConverter_RESTRICT 1
-#define OrgJodaTimeConvertIntervalConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertIntervalConverter 1
+#define INCLUDE_OrgJodaTimeConvertIntervalConverter 1
 #include "org/joda/time/convert/IntervalConverter.h"
 
-#define OrgJodaTimeConvertDurationConverter_RESTRICT 1
-#define OrgJodaTimeConvertDurationConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertDurationConverter 1
+#define INCLUDE_OrgJodaTimeConvertDurationConverter 1
 #include "org/joda/time/convert/DurationConverter.h"
 
-#define OrgJodaTimeConvertPeriodConverter_RESTRICT 1
-#define OrgJodaTimeConvertPeriodConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertPeriodConverter 1
+#define INCLUDE_OrgJodaTimeConvertPeriodConverter 1
 #include "org/joda/time/convert/PeriodConverter.h"
 
 @class IOSClass;
@@ -120,4 +120,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertReadableIntervalConverter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertReadableIntervalConverter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertReadableIntervalConverter")

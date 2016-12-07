@@ -5,23 +5,23 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatInternalParserDateTimeParser_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatInternalParserDateTimeParser_RESTRICT
-#define OrgJodaTimeFormatInternalParserDateTimeParser_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatInternalParserDateTimeParser")
+#ifdef RESTRICT_OrgJodaTimeFormatInternalParserDateTimeParser
+#define INCLUDE_ALL_OrgJodaTimeFormatInternalParserDateTimeParser 0
 #else
-#define OrgJodaTimeFormatInternalParserDateTimeParser_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatInternalParserDateTimeParser 1
 #endif
-#undef OrgJodaTimeFormatInternalParserDateTimeParser_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatInternalParserDateTimeParser
 
-#if !defined (OrgJodaTimeFormatInternalParserDateTimeParser_) && (OrgJodaTimeFormatInternalParserDateTimeParser_INCLUDE_ALL || defined(OrgJodaTimeFormatInternalParserDateTimeParser_INCLUDE))
+#if !defined (OrgJodaTimeFormatInternalParserDateTimeParser_) && (INCLUDE_ALL_OrgJodaTimeFormatInternalParserDateTimeParser || defined(INCLUDE_OrgJodaTimeFormatInternalParserDateTimeParser))
 #define OrgJodaTimeFormatInternalParserDateTimeParser_
 
-#define OrgJodaTimeFormatDateTimeParser_RESTRICT 1
-#define OrgJodaTimeFormatDateTimeParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatDateTimeParser 1
+#define INCLUDE_OrgJodaTimeFormatDateTimeParser 1
 #include "org/joda/time/format/DateTimeParser.h"
 
-#define OrgJodaTimeFormatInternalParser_RESTRICT 1
-#define OrgJodaTimeFormatInternalParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalParser 1
+#define INCLUDE_OrgJodaTimeFormatInternalParser 1
 #include "org/joda/time/format/InternalParser.h"
 
 @class OrgJodaTimeFormatDateTimeParserBucket;
@@ -62,4 +62,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatInternalParserDateTimeParser)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatInternalParserDateTimeParser_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatInternalParserDateTimeParser")

@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeIllegalInstantException_INCLUDE_ALL")
-#ifdef OrgJodaTimeIllegalInstantException_RESTRICT
-#define OrgJodaTimeIllegalInstantException_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeIllegalInstantException")
+#ifdef RESTRICT_OrgJodaTimeIllegalInstantException
+#define INCLUDE_ALL_OrgJodaTimeIllegalInstantException 0
 #else
-#define OrgJodaTimeIllegalInstantException_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeIllegalInstantException 1
 #endif
-#undef OrgJodaTimeIllegalInstantException_RESTRICT
+#undef RESTRICT_OrgJodaTimeIllegalInstantException
 
-#if !defined (OrgJodaTimeIllegalInstantException_) && (OrgJodaTimeIllegalInstantException_INCLUDE_ALL || defined(OrgJodaTimeIllegalInstantException_INCLUDE))
+#if !defined (OrgJodaTimeIllegalInstantException_) && (INCLUDE_ALL_OrgJodaTimeIllegalInstantException || defined(INCLUDE_OrgJodaTimeIllegalInstantException))
 #define OrgJodaTimeIllegalInstantException_
 
-#define JavaLangIllegalArgumentException_RESTRICT 1
-#define JavaLangIllegalArgumentException_INCLUDE 1
+#define RESTRICT_JavaLangIllegalArgumentException 1
+#define INCLUDE_JavaLangIllegalArgumentException 1
 #include "java/lang/IllegalArgumentException.h"
 
 /*!
@@ -64,9 +64,6 @@
  @return true if an <code>IllegalInstantException</code>
  */
 + (jboolean)isIllegalInstantWithNSException:(NSException *)ex;
-#ifdef J2OBJC_RENAME_ALIASES
-#define isIllegalInstantWithJavaLangThrowable isIllegalInstantWithNSException
-#endif // J2OBJC_RENAME_ALIASES
 
 @end
 
@@ -90,4 +87,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeIllegalInstantException)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeIllegalInstantException_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeIllegalInstantException")

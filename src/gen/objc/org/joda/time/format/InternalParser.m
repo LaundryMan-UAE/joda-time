@@ -4,8 +4,6 @@
 //
 
 #include "J2ObjC_source.h"
-#include "java/lang/CharSequence.h"
-#include "org/joda/time/format/DateTimeParserBucket.h"
 #include "org/joda/time/format/InternalParser.h"
 
 @interface OrgJodaTimeFormatInternalParser : NSObject
@@ -15,11 +13,17 @@
 @implementation OrgJodaTimeFormatInternalParser
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "estimateParsedLength", NULL, "I", 0x401, NULL, NULL },
-    { "parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withJavaLangCharSequence:withInt:", "parseInto", "I", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 0, 1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatInternalParser = { 2, "InternalParser", "org.joda.time.format", NULL, 0x608, 2, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(estimateParsedLength);
+  methods[1].selector = @selector(parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withJavaLangCharSequence:withInt:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "parseInto", "LOrgJodaTimeFormatDateTimeParserBucket;LJavaLangCharSequence;I" };
+  static const J2ObjcClassInfo _OrgJodaTimeFormatInternalParser = { "InternalParser", "org.joda.time.format", ptrTable, methods, NULL, 7, 0x608, 2, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFormatInternalParser;
 }
 

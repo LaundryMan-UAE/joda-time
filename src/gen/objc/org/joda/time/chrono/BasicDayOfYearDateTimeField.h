@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronoBasicDayOfYearDateTimeField_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronoBasicDayOfYearDateTimeField_RESTRICT
-#define OrgJodaTimeChronoBasicDayOfYearDateTimeField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronoBasicDayOfYearDateTimeField")
+#ifdef RESTRICT_OrgJodaTimeChronoBasicDayOfYearDateTimeField
+#define INCLUDE_ALL_OrgJodaTimeChronoBasicDayOfYearDateTimeField 0
 #else
-#define OrgJodaTimeChronoBasicDayOfYearDateTimeField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronoBasicDayOfYearDateTimeField 1
 #endif
-#undef OrgJodaTimeChronoBasicDayOfYearDateTimeField_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronoBasicDayOfYearDateTimeField
 
-#if !defined (OrgJodaTimeChronoBasicDayOfYearDateTimeField_) && (OrgJodaTimeChronoBasicDayOfYearDateTimeField_INCLUDE_ALL || defined(OrgJodaTimeChronoBasicDayOfYearDateTimeField_INCLUDE))
+#if !defined (OrgJodaTimeChronoBasicDayOfYearDateTimeField_) && (INCLUDE_ALL_OrgJodaTimeChronoBasicDayOfYearDateTimeField || defined(INCLUDE_OrgJodaTimeChronoBasicDayOfYearDateTimeField))
 #define OrgJodaTimeChronoBasicDayOfYearDateTimeField_
 
-#define OrgJodaTimeFieldPreciseDurationDateTimeField_RESTRICT 1
-#define OrgJodaTimeFieldPreciseDurationDateTimeField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldPreciseDurationDateTimeField 1
+#define INCLUDE_OrgJodaTimeFieldPreciseDurationDateTimeField 1
 #include "org/joda/time/field/PreciseDurationDateTimeField.h"
 
 @class IOSIntArray;
@@ -85,4 +85,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicDayOfYearDateTimeField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronoBasicDayOfYearDateTimeField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronoBasicDayOfYearDateTimeField")

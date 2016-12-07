@@ -4,8 +4,10 @@
 //
 
 #include "IOSClass.h"
+#include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "java/lang/IllegalArgumentException.h"
+#include "java/lang/annotation/Annotation.h"
 #include "java/util/Date.h"
 #include "org/joda/convert/ToString.h"
 #include "org/joda/time/Chronology.h"
@@ -25,6 +27,8 @@
 
 #pragma clang diagnostic ignored "-Wprotocol"
 
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeBaseAbstractInstant__Annotations$0();
+
 @implementation OrgJodaTimeBaseAbstractInstant
 
 J2OBJC_IGNORE_DESIGNATED_BEGIN
@@ -40,67 +44,67 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type {
   if (type == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The DateTimeFieldType must not be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The DateTimeFieldType must not be null");
   }
-  return [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getFieldWithOrgJodaTimeChronology:[self getChronology]])) getWithLong:[self getMillis]];
+  return [((OrgJodaTimeDateTimeField *) nil_chk([type getFieldWithOrgJodaTimeChronology:[self getChronology]])) getWithLong:[self getMillis]];
 }
 
 - (jboolean)isSupportedWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type {
   if (type == nil) {
     return false;
   }
-  return [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getFieldWithOrgJodaTimeChronology:[self getChronology]])) isSupported];
+  return [((OrgJodaTimeDateTimeField *) nil_chk([type getFieldWithOrgJodaTimeChronology:[self getChronology]])) isSupported];
 }
 
 - (jint)getWithOrgJodaTimeDateTimeField:(OrgJodaTimeDateTimeField *)field {
   if (field == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The DateTimeField must not be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The DateTimeField must not be null");
   }
-  return [((OrgJodaTimeDateTimeField *) nil_chk(field)) getWithLong:[self getMillis]];
+  return [field getWithLong:[self getMillis]];
 }
 
 - (OrgJodaTimeInstant *)toInstant {
-  return [new_OrgJodaTimeInstant_initWithLong_([self getMillis]) autorelease];
+  return create_OrgJodaTimeInstant_initWithLong_([self getMillis]);
 }
 
 - (OrgJodaTimeDateTime *)toDateTime {
-  return [new_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeDateTimeZone_([self getMillis], [self getZone]) autorelease];
+  return create_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeDateTimeZone_([self getMillis], [self getZone]);
 }
 
 - (OrgJodaTimeDateTime *)toDateTimeISO {
-  return [new_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], OrgJodaTimeChronoISOChronology_getInstanceWithOrgJodaTimeDateTimeZone_([self getZone])) autorelease];
+  return create_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], OrgJodaTimeChronoISOChronology_getInstanceWithOrgJodaTimeDateTimeZone_([self getZone]));
 }
 
 - (OrgJodaTimeDateTime *)toDateTimeWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   OrgJodaTimeChronology *chrono = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_([self getChronology]);
   chrono = [((OrgJodaTimeChronology *) nil_chk(chrono)) withZoneWithOrgJodaTimeDateTimeZone:zone];
-  return [new_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], chrono) autorelease];
+  return create_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], chrono);
 }
 
 - (OrgJodaTimeDateTime *)toDateTimeWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology {
-  return [new_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], chronology) autorelease];
+  return create_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], chronology);
 }
 
 - (OrgJodaTimeMutableDateTime *)toMutableDateTime {
-  return [new_OrgJodaTimeMutableDateTime_initWithLong_withOrgJodaTimeDateTimeZone_([self getMillis], [self getZone]) autorelease];
+  return create_OrgJodaTimeMutableDateTime_initWithLong_withOrgJodaTimeDateTimeZone_([self getMillis], [self getZone]);
 }
 
 - (OrgJodaTimeMutableDateTime *)toMutableDateTimeISO {
-  return [new_OrgJodaTimeMutableDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], OrgJodaTimeChronoISOChronology_getInstanceWithOrgJodaTimeDateTimeZone_([self getZone])) autorelease];
+  return create_OrgJodaTimeMutableDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], OrgJodaTimeChronoISOChronology_getInstanceWithOrgJodaTimeDateTimeZone_([self getZone]));
 }
 
 - (OrgJodaTimeMutableDateTime *)toMutableDateTimeWithOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   OrgJodaTimeChronology *chrono = OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_([self getChronology]);
   chrono = [((OrgJodaTimeChronology *) nil_chk(chrono)) withZoneWithOrgJodaTimeDateTimeZone:zone];
-  return [new_OrgJodaTimeMutableDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], chrono) autorelease];
+  return create_OrgJodaTimeMutableDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], chrono);
 }
 
 - (OrgJodaTimeMutableDateTime *)toMutableDateTimeWithOrgJodaTimeChronology:(OrgJodaTimeChronology *)chronology {
-  return [new_OrgJodaTimeMutableDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], chronology) autorelease];
+  return create_OrgJodaTimeMutableDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], chronology);
 }
 
 - (JavaUtilDate *)toDate {
-  return [new_JavaUtilDate_initWithLong_([self getMillis]) autorelease];
+  return create_JavaUtilDate_initWithLong_([self getMillis]);
 }
 
 - (jboolean)isEqual:(id)readableInstant {
@@ -183,46 +187,75 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (formatter == nil) {
     return [self description];
   }
-  return [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(formatter)) printWithOrgJodaTimeReadableInstant:self];
-}
-
-+ (IOSObjectArray *)__annotations_toString {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [formatter printWithOrgJodaTimeReadableInstant:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "AbstractInstant", NULL, 0x4, NULL, NULL },
-    { "getZone", NULL, "Lorg.joda.time.DateTimeZone;", 0x1, NULL, NULL },
-    { "getWithOrgJodaTimeDateTimeFieldType:", "get", "I", 0x1, NULL, NULL },
-    { "isSupportedWithOrgJodaTimeDateTimeFieldType:", "isSupported", "Z", 0x1, NULL, NULL },
-    { "getWithOrgJodaTimeDateTimeField:", "get", "I", 0x1, NULL, NULL },
-    { "toInstant", NULL, "Lorg.joda.time.Instant;", 0x1, NULL, NULL },
-    { "toDateTime", NULL, "Lorg.joda.time.DateTime;", 0x1, NULL, NULL },
-    { "toDateTimeISO", NULL, "Lorg.joda.time.DateTime;", 0x1, NULL, NULL },
-    { "toDateTimeWithOrgJodaTimeDateTimeZone:", "toDateTime", "Lorg.joda.time.DateTime;", 0x1, NULL, NULL },
-    { "toDateTimeWithOrgJodaTimeChronology:", "toDateTime", "Lorg.joda.time.DateTime;", 0x1, NULL, NULL },
-    { "toMutableDateTime", NULL, "Lorg.joda.time.MutableDateTime;", 0x1, NULL, NULL },
-    { "toMutableDateTimeISO", NULL, "Lorg.joda.time.MutableDateTime;", 0x1, NULL, NULL },
-    { "toMutableDateTimeWithOrgJodaTimeDateTimeZone:", "toMutableDateTime", "Lorg.joda.time.MutableDateTime;", 0x1, NULL, NULL },
-    { "toMutableDateTimeWithOrgJodaTimeChronology:", "toMutableDateTime", "Lorg.joda.time.MutableDateTime;", 0x1, NULL, NULL },
-    { "toDate", NULL, "Ljava.util.Date;", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "compareToWithId:", "compareTo", "I", 0x1, NULL, NULL },
-    { "isAfterWithLong:", "isAfter", "Z", 0x1, NULL, NULL },
-    { "isAfterNow", NULL, "Z", 0x1, NULL, NULL },
-    { "isAfterWithOrgJodaTimeReadableInstant:", "isAfter", "Z", 0x1, NULL, NULL },
-    { "isBeforeWithLong:", "isBefore", "Z", 0x1, NULL, NULL },
-    { "isBeforeNow", NULL, "Z", 0x1, NULL, NULL },
-    { "isBeforeWithOrgJodaTimeReadableInstant:", "isBefore", "Z", 0x1, NULL, NULL },
-    { "isEqualWithLong:", "isEqual", "Z", 0x1, NULL, NULL },
-    { "isEqualNow", NULL, "Z", 0x1, NULL, NULL },
-    { "isEqualWithOrgJodaTimeReadableInstant:", "isEqual", "Z", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "toStringWithOrgJodaTimeFormatDateTimeFormatter:", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeZone;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 2, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 0, 3, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeInstant;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x1, 4, 6, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMutableDateTime;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMutableDateTime;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMutableDateTime;", 0x1, 7, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMutableDateTime;", 0x1, 7, 6, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilDate;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 8, 9, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 10, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 11, 12, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 13, 14, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 13, 12, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 15, 14, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 15, 12, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 16, 14, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 16, 12, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 17, -1, -1, -1, 18, -1 },
+    { NULL, "LNSString;", 0x1, 17, 19, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractInstant = { 2, "AbstractInstant", "org.joda.time.base", NULL, 0x401, 29, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getZone);
+  methods[2].selector = @selector(getWithOrgJodaTimeDateTimeFieldType:);
+  methods[3].selector = @selector(isSupportedWithOrgJodaTimeDateTimeFieldType:);
+  methods[4].selector = @selector(getWithOrgJodaTimeDateTimeField:);
+  methods[5].selector = @selector(toInstant);
+  methods[6].selector = @selector(toDateTime);
+  methods[7].selector = @selector(toDateTimeISO);
+  methods[8].selector = @selector(toDateTimeWithOrgJodaTimeDateTimeZone:);
+  methods[9].selector = @selector(toDateTimeWithOrgJodaTimeChronology:);
+  methods[10].selector = @selector(toMutableDateTime);
+  methods[11].selector = @selector(toMutableDateTimeISO);
+  methods[12].selector = @selector(toMutableDateTimeWithOrgJodaTimeDateTimeZone:);
+  methods[13].selector = @selector(toMutableDateTimeWithOrgJodaTimeChronology:);
+  methods[14].selector = @selector(toDate);
+  methods[15].selector = @selector(isEqual:);
+  methods[16].selector = @selector(hash);
+  methods[17].selector = @selector(compareToWithId:);
+  methods[18].selector = @selector(isAfterWithLong:);
+  methods[19].selector = @selector(isAfterNow);
+  methods[20].selector = @selector(isAfterWithOrgJodaTimeReadableInstant:);
+  methods[21].selector = @selector(isBeforeWithLong:);
+  methods[22].selector = @selector(isBeforeNow);
+  methods[23].selector = @selector(isBeforeWithOrgJodaTimeReadableInstant:);
+  methods[24].selector = @selector(isEqualWithLong:);
+  methods[25].selector = @selector(isEqualNow);
+  methods[26].selector = @selector(isEqualWithOrgJodaTimeReadableInstant:);
+  methods[27].selector = @selector(description);
+  methods[28].selector = @selector(toStringWithOrgJodaTimeFormatDateTimeFormatter:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "get", "LOrgJodaTimeDateTimeFieldType;", "isSupported", "LOrgJodaTimeDateTimeField;", "toDateTime", "LOrgJodaTimeDateTimeZone;", "LOrgJodaTimeChronology;", "toMutableDateTime", "equals", "LNSObject;", "hashCode", "compareTo", "LOrgJodaTimeReadableInstant;", "isAfter", "J", "isBefore", "isEqual", "toString", (void *)&OrgJodaTimeBaseAbstractInstant__Annotations$0, "LOrgJodaTimeFormatDateTimeFormatter;" };
+  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractInstant = { "AbstractInstant", "org.joda.time.base", ptrTable, methods, NULL, 7, 0x401, 29, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeBaseAbstractInstant;
 }
 
@@ -230,6 +263,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 void OrgJodaTimeBaseAbstractInstant_init(OrgJodaTimeBaseAbstractInstant *self) {
   NSObject_init(self);
+}
+
+IOSObjectArray *OrgJodaTimeBaseAbstractInstant__Annotations$0() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_OrgJodaConvertToString() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseAbstractInstant)

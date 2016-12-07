@@ -5,23 +5,23 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeBaseAbstractDateTime_INCLUDE_ALL")
-#ifdef OrgJodaTimeBaseAbstractDateTime_RESTRICT
-#define OrgJodaTimeBaseAbstractDateTime_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeBaseAbstractDateTime")
+#ifdef RESTRICT_OrgJodaTimeBaseAbstractDateTime
+#define INCLUDE_ALL_OrgJodaTimeBaseAbstractDateTime 0
 #else
-#define OrgJodaTimeBaseAbstractDateTime_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeBaseAbstractDateTime 1
 #endif
-#undef OrgJodaTimeBaseAbstractDateTime_RESTRICT
+#undef RESTRICT_OrgJodaTimeBaseAbstractDateTime
 
-#if !defined (OrgJodaTimeBaseAbstractDateTime_) && (OrgJodaTimeBaseAbstractDateTime_INCLUDE_ALL || defined(OrgJodaTimeBaseAbstractDateTime_INCLUDE))
+#if !defined (OrgJodaTimeBaseAbstractDateTime_) && (INCLUDE_ALL_OrgJodaTimeBaseAbstractDateTime || defined(INCLUDE_OrgJodaTimeBaseAbstractDateTime))
 #define OrgJodaTimeBaseAbstractDateTime_
 
-#define OrgJodaTimeBaseAbstractInstant_RESTRICT 1
-#define OrgJodaTimeBaseAbstractInstant_INCLUDE 1
+#define RESTRICT_OrgJodaTimeBaseAbstractInstant 1
+#define INCLUDE_OrgJodaTimeBaseAbstractInstant 1
 #include "org/joda/time/base/AbstractInstant.h"
 
-#define OrgJodaTimeReadableDateTime_RESTRICT 1
-#define OrgJodaTimeReadableDateTime_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadableDateTime 1
+#define INCLUDE_OrgJodaTimeReadableDateTime 1
 #include "org/joda/time/ReadableDateTime.h"
 
 @class JavaUtilCalendar;
@@ -261,4 +261,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseAbstractDateTime)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeBaseAbstractDateTime_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeBaseAbstractDateTime")

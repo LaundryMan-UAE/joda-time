@@ -36,25 +36,33 @@ J2OBJC_IGNORE_DESIGNATED_END
   return JavaLangLong_class_();
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LIOSClass;", 0x1, -1, -1, -1, 4, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getInstantMillisWithId:withOrgJodaTimeChronology:);
+  methods[2].selector = @selector(getDurationMillisWithId:);
+  methods[3].selector = @selector(getSupportedType);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "INSTANCE", "LOrgJodaTimeConvertLongConverter;", .constantValue.asLong = 0, 0x18, -1, 5, -1, -1 },
+  };
+  static const void *ptrTable[] = { "getInstantMillis", "LNSObject;LOrgJodaTimeChronology;", "getDurationMillis", "LNSObject;", "()Ljava/lang/Class<*>;", &OrgJodaTimeConvertLongConverter_INSTANCE };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertLongConverter = { "LongConverter", "org.joda.time.convert", ptrTable, methods, fields, 7, 0x0, 4, 1, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeConvertLongConverter;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeConvertLongConverter class]) {
     JreStrongAssignAndConsume(&OrgJodaTimeConvertLongConverter_INSTANCE, new_OrgJodaTimeConvertLongConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertLongConverter)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "LongConverter", NULL, 0x4, NULL, NULL },
-    { "getInstantMillisWithId:withOrgJodaTimeChronology:", "getInstantMillis", "J", 0x1, NULL, NULL },
-    { "getDurationMillisWithId:", "getDurationMillis", "J", 0x1, NULL, NULL },
-    { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, "()Ljava/lang/Class<*>;" },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE", "INSTANCE", 0x18, "Lorg.joda.time.convert.LongConverter;", &OrgJodaTimeConvertLongConverter_INSTANCE, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertLongConverter = { 2, "LongConverter", "org.joda.time.convert", NULL, 0x0, 4, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeConvertLongConverter;
 }
 
 @end
@@ -64,15 +72,11 @@ void OrgJodaTimeConvertLongConverter_init(OrgJodaTimeConvertLongConverter *self)
 }
 
 OrgJodaTimeConvertLongConverter *new_OrgJodaTimeConvertLongConverter_init() {
-  OrgJodaTimeConvertLongConverter *self = [OrgJodaTimeConvertLongConverter alloc];
-  OrgJodaTimeConvertLongConverter_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeConvertLongConverter, init)
 }
 
 OrgJodaTimeConvertLongConverter *create_OrgJodaTimeConvertLongConverter_init() {
-  OrgJodaTimeConvertLongConverter *self = [[OrgJodaTimeConvertLongConverter alloc] autorelease];
-  OrgJodaTimeConvertLongConverter_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeConvertLongConverter, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertLongConverter)

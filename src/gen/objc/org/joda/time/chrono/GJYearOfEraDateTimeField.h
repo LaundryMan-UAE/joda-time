@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronoGJYearOfEraDateTimeField_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronoGJYearOfEraDateTimeField_RESTRICT
-#define OrgJodaTimeChronoGJYearOfEraDateTimeField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronoGJYearOfEraDateTimeField")
+#ifdef RESTRICT_OrgJodaTimeChronoGJYearOfEraDateTimeField
+#define INCLUDE_ALL_OrgJodaTimeChronoGJYearOfEraDateTimeField 0
 #else
-#define OrgJodaTimeChronoGJYearOfEraDateTimeField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronoGJYearOfEraDateTimeField 1
 #endif
-#undef OrgJodaTimeChronoGJYearOfEraDateTimeField_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronoGJYearOfEraDateTimeField
 
-#if !defined (OrgJodaTimeChronoGJYearOfEraDateTimeField_) && (OrgJodaTimeChronoGJYearOfEraDateTimeField_INCLUDE_ALL || defined(OrgJodaTimeChronoGJYearOfEraDateTimeField_INCLUDE))
+#if !defined (OrgJodaTimeChronoGJYearOfEraDateTimeField_) && (INCLUDE_ALL_OrgJodaTimeChronoGJYearOfEraDateTimeField || defined(INCLUDE_OrgJodaTimeChronoGJYearOfEraDateTimeField))
 #define OrgJodaTimeChronoGJYearOfEraDateTimeField_
 
-#define OrgJodaTimeFieldDecoratedDateTimeField_RESTRICT 1
-#define OrgJodaTimeFieldDecoratedDateTimeField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldDecoratedDateTimeField 1
+#define INCLUDE_OrgJodaTimeFieldDecoratedDateTimeField 1
 #include "org/joda/time/field/DecoratedDateTimeField.h"
 
 @class IOSIntArray;
@@ -101,4 +101,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJYearOfEraDateTimeField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronoGJYearOfEraDateTimeField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronoGJYearOfEraDateTimeField")

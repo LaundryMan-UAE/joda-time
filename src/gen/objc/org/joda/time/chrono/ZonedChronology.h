@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronoZonedChronology_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronoZonedChronology_RESTRICT
-#define OrgJodaTimeChronoZonedChronology_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronoZonedChronology")
+#ifdef RESTRICT_OrgJodaTimeChronoZonedChronology
+#define INCLUDE_ALL_OrgJodaTimeChronoZonedChronology 0
 #else
-#define OrgJodaTimeChronoZonedChronology_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronoZonedChronology 1
 #endif
-#undef OrgJodaTimeChronoZonedChronology_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronoZonedChronology
 
-#if !defined (OrgJodaTimeChronoZonedChronology_) && (OrgJodaTimeChronoZonedChronology_INCLUDE_ALL || defined(OrgJodaTimeChronoZonedChronology_INCLUDE))
+#if !defined (OrgJodaTimeChronoZonedChronology_) && (INCLUDE_ALL_OrgJodaTimeChronoZonedChronology || defined(INCLUDE_OrgJodaTimeChronoZonedChronology))
 #define OrgJodaTimeChronoZonedChronology_
 
-#define OrgJodaTimeChronoAssembledChronology_RESTRICT 1
-#define OrgJodaTimeChronoAssembledChronology_INCLUDE 1
+#define RESTRICT_OrgJodaTimeChronoAssembledChronology 1
+#define INCLUDE_OrgJodaTimeChronoAssembledChronology 1
 #include "org/joda/time/chrono/AssembledChronology.h"
 
 @class OrgJodaTimeChronoAssembledChronology_Fields;
@@ -114,11 +114,11 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoZonedChronology)
 
 #endif
 
-#if !defined (OrgJodaTimeChronoZonedChronology_ZonedDurationField_) && (OrgJodaTimeChronoZonedChronology_INCLUDE_ALL || defined(OrgJodaTimeChronoZonedChronology_ZonedDurationField_INCLUDE))
+#if !defined (OrgJodaTimeChronoZonedChronology_ZonedDurationField_) && (INCLUDE_ALL_OrgJodaTimeChronoZonedChronology || defined(INCLUDE_OrgJodaTimeChronoZonedChronology_ZonedDurationField))
 #define OrgJodaTimeChronoZonedChronology_ZonedDurationField_
 
-#define OrgJodaTimeFieldBaseDurationField_RESTRICT 1
-#define OrgJodaTimeFieldBaseDurationField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldBaseDurationField 1
+#define INCLUDE_OrgJodaTimeFieldBaseDurationField 1
 #include "org/joda/time/field/BaseDurationField.h"
 
 @class OrgJodaTimeDateTimeZone;
@@ -187,11 +187,11 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoZonedChronology_ZonedDurationField)
 
 #endif
 
-#if !defined (OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_) && (OrgJodaTimeChronoZonedChronology_INCLUDE_ALL || defined(OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_INCLUDE))
+#if !defined (OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_) && (INCLUDE_ALL_OrgJodaTimeChronoZonedChronology || defined(INCLUDE_OrgJodaTimeChronoZonedChronology_ZonedDateTimeField))
 #define OrgJodaTimeChronoZonedChronology_ZonedDateTimeField_
 
-#define OrgJodaTimeFieldBaseDateTimeField_RESTRICT 1
-#define OrgJodaTimeFieldBaseDateTimeField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldBaseDateTimeField 1
+#define INCLUDE_OrgJodaTimeFieldBaseDateTimeField 1
 #include "org/joda/time/field/BaseDateTimeField.h"
 
 @class IOSIntArray;
@@ -327,4 +327,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoZonedChronology_ZonedDateTimeField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronoZonedChronology_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronoZonedChronology")

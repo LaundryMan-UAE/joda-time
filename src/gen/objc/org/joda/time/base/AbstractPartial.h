@@ -5,23 +5,23 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeBaseAbstractPartial_INCLUDE_ALL")
-#ifdef OrgJodaTimeBaseAbstractPartial_RESTRICT
-#define OrgJodaTimeBaseAbstractPartial_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeBaseAbstractPartial")
+#ifdef RESTRICT_OrgJodaTimeBaseAbstractPartial
+#define INCLUDE_ALL_OrgJodaTimeBaseAbstractPartial 0
 #else
-#define OrgJodaTimeBaseAbstractPartial_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeBaseAbstractPartial 1
 #endif
-#undef OrgJodaTimeBaseAbstractPartial_RESTRICT
+#undef RESTRICT_OrgJodaTimeBaseAbstractPartial
 
-#if !defined (OrgJodaTimeBaseAbstractPartial_) && (OrgJodaTimeBaseAbstractPartial_INCLUDE_ALL || defined(OrgJodaTimeBaseAbstractPartial_INCLUDE))
+#if !defined (OrgJodaTimeBaseAbstractPartial_) && (INCLUDE_ALL_OrgJodaTimeBaseAbstractPartial || defined(INCLUDE_OrgJodaTimeBaseAbstractPartial))
 #define OrgJodaTimeBaseAbstractPartial_
 
-#define OrgJodaTimeReadablePartial_RESTRICT 1
-#define OrgJodaTimeReadablePartial_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadablePartial 1
+#define INCLUDE_OrgJodaTimeReadablePartial 1
 #include "org/joda/time/ReadablePartial.h"
 
-#define JavaLangComparable_RESTRICT 1
-#define JavaLangComparable_INCLUDE 1
+#define RESTRICT_JavaLangComparable 1
+#define INCLUDE_JavaLangComparable 1
 #include "java/lang/Comparable.h"
 
 @class IOSIntArray;
@@ -280,4 +280,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseAbstractPartial)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeBaseAbstractPartial_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeBaseAbstractPartial")

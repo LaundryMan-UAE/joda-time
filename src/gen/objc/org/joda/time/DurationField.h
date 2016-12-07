@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeDurationField_INCLUDE_ALL")
-#ifdef OrgJodaTimeDurationField_RESTRICT
-#define OrgJodaTimeDurationField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeDurationField")
+#ifdef RESTRICT_OrgJodaTimeDurationField
+#define INCLUDE_ALL_OrgJodaTimeDurationField 0
 #else
-#define OrgJodaTimeDurationField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeDurationField 1
 #endif
-#undef OrgJodaTimeDurationField_RESTRICT
+#undef RESTRICT_OrgJodaTimeDurationField
 
-#if !defined (OrgJodaTimeDurationField_) && (OrgJodaTimeDurationField_INCLUDE_ALL || defined(OrgJodaTimeDurationField_INCLUDE))
+#if !defined (OrgJodaTimeDurationField_) && (INCLUDE_ALL_OrgJodaTimeDurationField || defined(INCLUDE_OrgJodaTimeDurationField))
 #define OrgJodaTimeDurationField_
 
-#define JavaLangComparable_RESTRICT 1
-#define JavaLangComparable_INCLUDE 1
+#define RESTRICT_JavaLangComparable 1
+#define INCLUDE_JavaLangComparable 1
 #include "java/lang/Comparable.h"
 
 @class OrgJodaTimeDurationFieldType;
@@ -282,4 +282,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDurationField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeDurationField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeDurationField")

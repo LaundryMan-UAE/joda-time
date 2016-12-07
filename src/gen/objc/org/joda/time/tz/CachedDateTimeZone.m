@@ -152,6 +152,49 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeTzCachedDateTimeZone)
   [super dealloc];
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeTzCachedDateTimeZone;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x2, -1, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeZone;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 4, 3, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 5, 3, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 7, 3, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 8, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 9, 10, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzCachedDateTimeZone_Info;", 0x2, 11, 3, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzCachedDateTimeZone_Info;", 0x2, 12, 3, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(forZoneWithOrgJodaTimeDateTimeZone:);
+  methods[1].selector = @selector(initWithOrgJodaTimeDateTimeZone:);
+  methods[2].selector = @selector(getUncachedZone);
+  methods[3].selector = @selector(getNameKeyWithLong:);
+  methods[4].selector = @selector(getOffsetWithLong:);
+  methods[5].selector = @selector(getStandardOffsetWithLong:);
+  methods[6].selector = @selector(isFixed);
+  methods[7].selector = @selector(nextTransitionWithLong:);
+  methods[8].selector = @selector(previousTransitionWithLong:);
+  methods[9].selector = @selector(hash);
+  methods[10].selector = @selector(isEqual:);
+  methods[11].selector = @selector(getInfoWithLong:);
+  methods[12].selector = @selector(createInfoWithLong:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeTzCachedDateTimeZone_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "cInfoCacheMask", "I", .constantValue.asLong = 0, 0x1a, -1, 13, -1, -1 },
+    { "iZone_", "LOrgJodaTimeDateTimeZone;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iInfoCache_", "[LOrgJodaTimeTzCachedDateTimeZone_Info;", .constantValue.asLong = 0, 0x92, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "forZone", "LOrgJodaTimeDateTimeZone;", "getNameKey", "J", "getOffset", "getStandardOffset", "nextTransition", "previousTransition", "hashCode", "equals", "LNSObject;", "getInfo", "createInfo", &OrgJodaTimeTzCachedDateTimeZone_cInfoCacheMask, "LOrgJodaTimeTzCachedDateTimeZone_Info;" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzCachedDateTimeZone = { "CachedDateTimeZone", "org.joda.time.tz", ptrTable, methods, fields, 7, 0x1, 13, 4, -1, 14, -1, -1, -1 };
+  return &_OrgJodaTimeTzCachedDateTimeZone;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeTzCachedDateTimeZone class]) {
     {
@@ -182,33 +225,6 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeTzCachedDateTimeZone)
   }
 }
 
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "forZoneWithOrgJodaTimeDateTimeZone:", "forZone", "Lorg.joda.time.tz.CachedDateTimeZone;", 0x9, NULL, NULL },
-    { "initWithOrgJodaTimeDateTimeZone:", "CachedDateTimeZone", NULL, 0x2, NULL, NULL },
-    { "getUncachedZone", NULL, "Lorg.joda.time.DateTimeZone;", 0x1, NULL, NULL },
-    { "getNameKeyWithLong:", "getNameKey", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getOffsetWithLong:", "getOffset", "I", 0x1, NULL, NULL },
-    { "getStandardOffsetWithLong:", "getStandardOffset", "I", 0x1, NULL, NULL },
-    { "isFixed", NULL, "Z", 0x1, NULL, NULL },
-    { "nextTransitionWithLong:", "nextTransition", "J", 0x1, NULL, NULL },
-    { "previousTransitionWithLong:", "previousTransition", "J", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "getInfoWithLong:", "getInfo", "Lorg.joda.time.tz.CachedDateTimeZone$Info;", 0x2, NULL, NULL },
-    { "createInfoWithLong:", "createInfo", "Lorg.joda.time.tz.CachedDateTimeZone$Info;", 0x2, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeTzCachedDateTimeZone_serialVersionUID },
-    { "cInfoCacheMask", "cInfoCacheMask", 0x1a, "I", &OrgJodaTimeTzCachedDateTimeZone_cInfoCacheMask, NULL, .constantValue.asLong = 0 },
-    { "iZone_", NULL, 0x12, "Lorg.joda.time.DateTimeZone;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iInfoCache_", NULL, 0x92, "[Lorg.joda.time.tz.CachedDateTimeZone$Info;", NULL, NULL, .constantValue.asLong = 0 },
-  };
-  static const char *inner_classes[] = {"Lorg.joda.time.tz.CachedDateTimeZone$Info;"};
-  static const J2ObjcClassInfo _OrgJodaTimeTzCachedDateTimeZone = { 2, "CachedDateTimeZone", "org.joda.time.tz", NULL, 0x1, 13, methods, 4, fields, 0, NULL, 1, inner_classes, NULL, NULL };
-  return &_OrgJodaTimeTzCachedDateTimeZone;
-}
-
 @end
 
 OrgJodaTimeTzCachedDateTimeZone *OrgJodaTimeTzCachedDateTimeZone_forZoneWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {
@@ -216,7 +232,7 @@ OrgJodaTimeTzCachedDateTimeZone *OrgJodaTimeTzCachedDateTimeZone_forZoneWithOrgJ
   if ([zone isKindOfClass:[OrgJodaTimeTzCachedDateTimeZone class]]) {
     return (OrgJodaTimeTzCachedDateTimeZone *) cast_chk(zone, [OrgJodaTimeTzCachedDateTimeZone class]);
   }
-  return [new_OrgJodaTimeTzCachedDateTimeZone_initWithOrgJodaTimeDateTimeZone_(zone) autorelease];
+  return create_OrgJodaTimeTzCachedDateTimeZone_initWithOrgJodaTimeDateTimeZone_(zone);
 }
 
 void OrgJodaTimeTzCachedDateTimeZone_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeTzCachedDateTimeZone *self, OrgJodaTimeDateTimeZone *zone) {
@@ -226,15 +242,11 @@ void OrgJodaTimeTzCachedDateTimeZone_initWithOrgJodaTimeDateTimeZone_(OrgJodaTim
 }
 
 OrgJodaTimeTzCachedDateTimeZone *new_OrgJodaTimeTzCachedDateTimeZone_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {
-  OrgJodaTimeTzCachedDateTimeZone *self = [OrgJodaTimeTzCachedDateTimeZone alloc];
-  OrgJodaTimeTzCachedDateTimeZone_initWithOrgJodaTimeDateTimeZone_(self, zone);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzCachedDateTimeZone, initWithOrgJodaTimeDateTimeZone_, zone)
 }
 
 OrgJodaTimeTzCachedDateTimeZone *create_OrgJodaTimeTzCachedDateTimeZone_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {
-  OrgJodaTimeTzCachedDateTimeZone *self = [[OrgJodaTimeTzCachedDateTimeZone alloc] autorelease];
-  OrgJodaTimeTzCachedDateTimeZone_initWithOrgJodaTimeDateTimeZone_(self, zone);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzCachedDateTimeZone, initWithOrgJodaTimeDateTimeZone_, zone)
 }
 
 OrgJodaTimeTzCachedDateTimeZone_Info *OrgJodaTimeTzCachedDateTimeZone_getInfoWithLong_(OrgJodaTimeTzCachedDateTimeZone *self, jlong millis) {
@@ -251,7 +263,7 @@ OrgJodaTimeTzCachedDateTimeZone_Info *OrgJodaTimeTzCachedDateTimeZone_getInfoWit
 
 OrgJodaTimeTzCachedDateTimeZone_Info *OrgJodaTimeTzCachedDateTimeZone_createInfoWithLong_(OrgJodaTimeTzCachedDateTimeZone *self, jlong millis) {
   jlong periodStart = millis & (JreLShift64((jlong) 0xffffffffLL, 32));
-  OrgJodaTimeTzCachedDateTimeZone_Info *info = [new_OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLong_(self->iZone_, periodStart) autorelease];
+  OrgJodaTimeTzCachedDateTimeZone_Info *info = create_OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLong_(self->iZone_, periodStart);
   jlong end = periodStart | (jlong) 0xffffffffLL;
   OrgJodaTimeTzCachedDateTimeZone_Info *chain = info;
   while (true) {
@@ -282,7 +294,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzCachedDateTimeZone)
     }
     return iNameKey_;
   }
-  return [((OrgJodaTimeTzCachedDateTimeZone_Info *) nil_chk(iNextInfo_)) getNameKeyWithLong:millis];
+  return [iNextInfo_ getNameKeyWithLong:millis];
 }
 
 - (jint)getOffsetWithLong:(jlong)millis {
@@ -292,7 +304,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzCachedDateTimeZone)
     }
     return iOffset_;
   }
-  return [((OrgJodaTimeTzCachedDateTimeZone_Info *) nil_chk(iNextInfo_)) getOffsetWithLong:millis];
+  return [iNextInfo_ getOffsetWithLong:millis];
 }
 
 - (jint)getStandardOffsetWithLong:(jlong)millis {
@@ -302,7 +314,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzCachedDateTimeZone)
     }
     return iStandardOffset_;
   }
-  return [((OrgJodaTimeTzCachedDateTimeZone_Info *) nil_chk(iNextInfo_)) getStandardOffsetWithLong:millis];
+  return [iNextInfo_ getStandardOffsetWithLong:millis];
 }
 
 - (void)dealloc {
@@ -313,21 +325,29 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzCachedDateTimeZone)
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeDateTimeZone:withLong:", "Info", NULL, 0x0, NULL, NULL },
-    { "getNameKeyWithLong:", "getNameKey", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getOffsetWithLong:", "getOffset", "I", 0x1, NULL, NULL },
-    { "getStandardOffsetWithLong:", "getStandardOffset", "I", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 3, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 4, 2, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeDateTimeZone:withLong:);
+  methods[1].selector = @selector(getNameKeyWithLong:);
+  methods[2].selector = @selector(getOffsetWithLong:);
+  methods[3].selector = @selector(getStandardOffsetWithLong:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "iPeriodStart_", NULL, 0x11, "J", NULL, NULL, .constantValue.asLong = 0 },
-    { "iZoneRef_", NULL, 0x11, "Lorg.joda.time.DateTimeZone;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iNextInfo_", NULL, 0x0, "Lorg.joda.time.tz.CachedDateTimeZone$Info;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iNameKey_", NULL, 0x2, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iOffset_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iStandardOffset_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iPeriodStart_", "J", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
+    { "iZoneRef_", "LOrgJodaTimeDateTimeZone;", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
+    { "iNextInfo_", "LOrgJodaTimeTzCachedDateTimeZone_Info;", .constantValue.asLong = 0, 0x0, -1, -1, -1, -1 },
+    { "iNameKey_", "LNSString;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "iOffset_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "iStandardOffset_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzCachedDateTimeZone_Info = { 2, "Info", "org.joda.time.tz", "CachedDateTimeZone", 0x1a, 4, methods, 6, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeDateTimeZone;J", "getNameKey", "J", "getOffset", "getStandardOffset", "LOrgJodaTimeTzCachedDateTimeZone;" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzCachedDateTimeZone_Info = { "Info", "org.joda.time.tz", ptrTable, methods, fields, 7, 0x1a, 4, 6, 5, -1, -1, -1, -1 };
   return &_OrgJodaTimeTzCachedDateTimeZone_Info;
 }
 
@@ -342,15 +362,11 @@ void OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLo
 }
 
 OrgJodaTimeTzCachedDateTimeZone_Info *new_OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLong_(OrgJodaTimeDateTimeZone *zone, jlong periodStart) {
-  OrgJodaTimeTzCachedDateTimeZone_Info *self = [OrgJodaTimeTzCachedDateTimeZone_Info alloc];
-  OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLong_(self, zone, periodStart);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzCachedDateTimeZone_Info, initWithOrgJodaTimeDateTimeZone_withLong_, zone, periodStart)
 }
 
 OrgJodaTimeTzCachedDateTimeZone_Info *create_OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLong_(OrgJodaTimeDateTimeZone *zone, jlong periodStart) {
-  OrgJodaTimeTzCachedDateTimeZone_Info *self = [[OrgJodaTimeTzCachedDateTimeZone_Info alloc] autorelease];
-  OrgJodaTimeTzCachedDateTimeZone_Info_initWithOrgJodaTimeDateTimeZone_withLong_(self, zone, periodStart);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzCachedDateTimeZone_Info, initWithOrgJodaTimeDateTimeZone_withLong_, zone, periodStart)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzCachedDateTimeZone_Info)

@@ -123,11 +123,11 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeChronoBasicWeekyearDateTimeField, WEEK_5
 }
 
 - (jboolean)isLeapWithLong:(jlong)instant {
-  return [iChronology_ getWeeksInYearWithInt:[((OrgJodaTimeChronoBasicChronology *) nil_chk(iChronology_)) getWeekyearWithLong:instant]] > 52;
+  return [((OrgJodaTimeChronoBasicChronology *) nil_chk(iChronology_)) getWeeksInYearWithInt:[iChronology_ getWeekyearWithLong:instant]] > 52;
 }
 
 - (jint)getLeapAmountWithLong:(jlong)instant {
-  return [iChronology_ getWeeksInYearWithInt:[((OrgJodaTimeChronoBasicChronology *) nil_chk(iChronology_)) getWeekyearWithLong:instant]] - 52;
+  return [((OrgJodaTimeChronoBasicChronology *) nil_chk(iChronology_)) getWeeksInYearWithInt:[iChronology_ getWeekyearWithLong:instant]] - 52;
 }
 
 - (OrgJodaTimeDurationField *)getLeapDurationField {
@@ -165,31 +165,52 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeChronoBasicWeekyearDateTimeField, WEEK_5
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeChronoBasicChronology:", "BasicWeekyearDateTimeField", NULL, 0x0, NULL, NULL },
-    { "isLenient", NULL, "Z", 0x1, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x1, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x1, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x1, NULL, NULL },
-    { "addWrapFieldWithLong:withInt:", "addWrapField", "J", 0x1, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x1, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
-    { "getRangeDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "isLeapWithLong:", "isLeap", "Z", 0x1, NULL, NULL },
-    { "getLeapAmountWithLong:", "getLeapAmount", "I", 0x1, NULL, NULL },
-    { "getLeapDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumValue", NULL, "I", 0x1, NULL, NULL },
-    { "roundFloorWithLong:", "roundFloor", "J", 0x1, NULL, NULL },
-    { "remainderWithLong:", "remainder", "J", 0x1, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 7, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 8, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 9, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 10, 2, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 11, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 12, 2, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeChronoBasicChronology:);
+  methods[1].selector = @selector(isLenient);
+  methods[2].selector = @selector(getWithLong:);
+  methods[3].selector = @selector(addWithLong:withInt:);
+  methods[4].selector = @selector(addWithLong:withLong:);
+  methods[5].selector = @selector(addWrapFieldWithLong:withInt:);
+  methods[6].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  methods[7].selector = @selector(setWithLong:withInt:);
+  methods[8].selector = @selector(getRangeDurationField);
+  methods[9].selector = @selector(isLeapWithLong:);
+  methods[10].selector = @selector(getLeapAmountWithLong:);
+  methods[11].selector = @selector(getLeapDurationField);
+  methods[12].selector = @selector(getMinimumValue);
+  methods[13].selector = @selector(getMaximumValue);
+  methods[14].selector = @selector(roundFloorWithLong:);
+  methods[15].selector = @selector(remainderWithLong:);
+  methods[16].selector = @selector(readResolve);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoBasicWeekyearDateTimeField_serialVersionUID },
-    { "WEEK_53", "WEEK_53", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoBasicWeekyearDateTimeField_WEEK_53 },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoBasicWeekyearDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "WEEK_53", "J", .constantValue.asLong = OrgJodaTimeChronoBasicWeekyearDateTimeField_WEEK_53, 0x1a, -1, -1, -1, -1 },
+    { "iChronology_", "LOrgJodaTimeChronoBasicChronology;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicWeekyearDateTimeField = { 2, "BasicWeekyearDateTimeField", "org.joda.time.chrono", NULL, 0x10, 17, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeChronoBasicChronology;", "get", "J", "add", "JI", "JJ", "addWrapField", "getDifferenceAsLong", "set", "isLeap", "getLeapAmount", "roundFloor", "remainder" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicWeekyearDateTimeField = { "BasicWeekyearDateTimeField", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x10, 17, 3, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeChronoBasicWeekyearDateTimeField;
 }
 
@@ -201,15 +222,11 @@ void OrgJodaTimeChronoBasicWeekyearDateTimeField_initWithOrgJodaTimeChronoBasicC
 }
 
 OrgJodaTimeChronoBasicWeekyearDateTimeField *new_OrgJodaTimeChronoBasicWeekyearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(OrgJodaTimeChronoBasicChronology *chronology) {
-  OrgJodaTimeChronoBasicWeekyearDateTimeField *self = [OrgJodaTimeChronoBasicWeekyearDateTimeField alloc];
-  OrgJodaTimeChronoBasicWeekyearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self, chronology);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoBasicWeekyearDateTimeField, initWithOrgJodaTimeChronoBasicChronology_, chronology)
 }
 
 OrgJodaTimeChronoBasicWeekyearDateTimeField *create_OrgJodaTimeChronoBasicWeekyearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(OrgJodaTimeChronoBasicChronology *chronology) {
-  OrgJodaTimeChronoBasicWeekyearDateTimeField *self = [[OrgJodaTimeChronoBasicWeekyearDateTimeField alloc] autorelease];
-  OrgJodaTimeChronoBasicWeekyearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self, chronology);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoBasicWeekyearDateTimeField, initWithOrgJodaTimeChronoBasicChronology_, chronology)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicWeekyearDateTimeField)

@@ -120,22 +120,36 @@ __attribute__((unused)) static OrgJodaTimeFormatInternalPrinterDateTimePrinter *
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "ofWithOrgJodaTimeFormatInternalPrinter:", "of", "Lorg.joda.time.format.DateTimePrinter;", 0x8, NULL, NULL },
-    { "initWithOrgJodaTimeFormatInternalPrinter:", "InternalPrinterDateTimePrinter", NULL, 0x2, NULL, NULL },
-    { "estimatePrintedLength", NULL, "I", 0x1, NULL, NULL },
-    { "printToWithJavaLangStringBuffer:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:", "printTo", "V", 0x1, NULL, NULL },
-    { "printToWithJavaIoWriter:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:", "printTo", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:", "printTo", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "printToWithJavaLangStringBuffer:withOrgJodaTimeReadablePartial:withJavaUtilLocale:", "printTo", "V", 0x1, NULL, NULL },
-    { "printToWithJavaIoWriter:withOrgJodaTimeReadablePartial:withJavaUtilLocale:", "printTo", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "printToWithJavaLangAppendable:withOrgJodaTimeReadablePartial:withJavaUtilLocale:", "printTo", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeFormatDateTimePrinter;", 0x8, 0, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x2, -1, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 2, 4, 5, -1, -1, -1 },
+    { NULL, "V", 0x1, 2, 6, 5, -1, -1, -1 },
+    { NULL, "V", 0x1, 2, 7, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 2, 8, 5, -1, -1, -1 },
+    { NULL, "V", 0x1, 2, 9, 5, -1, -1, -1 },
+    { NULL, "Z", 0x1, 10, 11, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(ofWithOrgJodaTimeFormatInternalPrinter:);
+  methods[1].selector = @selector(initWithOrgJodaTimeFormatInternalPrinter:);
+  methods[2].selector = @selector(estimatePrintedLength);
+  methods[3].selector = @selector(printToWithJavaLangStringBuffer:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
+  methods[4].selector = @selector(printToWithJavaIoWriter:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
+  methods[5].selector = @selector(printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
+  methods[6].selector = @selector(printToWithJavaLangStringBuffer:withOrgJodaTimeReadablePartial:withJavaUtilLocale:);
+  methods[7].selector = @selector(printToWithJavaIoWriter:withOrgJodaTimeReadablePartial:withJavaUtilLocale:);
+  methods[8].selector = @selector(printToWithJavaLangAppendable:withOrgJodaTimeReadablePartial:withJavaUtilLocale:);
+  methods[9].selector = @selector(isEqual:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "underlying_", NULL, 0x12, "Lorg.joda.time.format.InternalPrinter;", NULL, NULL, .constantValue.asLong = 0 },
+    { "underlying_", "LOrgJodaTimeFormatInternalPrinter;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatInternalPrinterDateTimePrinter = { 2, "InternalPrinterDateTimePrinter", "org.joda.time.format", NULL, 0x0, 10, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "of", "LOrgJodaTimeFormatInternalPrinter;", "printTo", "LJavaLangStringBuffer;JLOrgJodaTimeChronology;ILOrgJodaTimeDateTimeZone;LJavaUtilLocale;", "LJavaIoWriter;JLOrgJodaTimeChronology;ILOrgJodaTimeDateTimeZone;LJavaUtilLocale;", "LJavaIoIOException;", "LJavaLangAppendable;JLOrgJodaTimeChronology;ILOrgJodaTimeDateTimeZone;LJavaUtilLocale;", "LJavaLangStringBuffer;LOrgJodaTimeReadablePartial;LJavaUtilLocale;", "LJavaIoWriter;LOrgJodaTimeReadablePartial;LJavaUtilLocale;", "LJavaLangAppendable;LOrgJodaTimeReadablePartial;LJavaUtilLocale;", "equals", "LNSObject;" };
+  static const J2ObjcClassInfo _OrgJodaTimeFormatInternalPrinterDateTimePrinter = { "InternalPrinterDateTimePrinter", "org.joda.time.format", ptrTable, methods, fields, 7, 0x0, 10, 1, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFormatInternalPrinterDateTimePrinter;
 }
 
@@ -152,7 +166,7 @@ id<OrgJodaTimeFormatDateTimePrinter> OrgJodaTimeFormatInternalPrinterDateTimePri
   if (underlying == nil) {
     return nil;
   }
-  return [new_OrgJodaTimeFormatInternalPrinterDateTimePrinter_initWithOrgJodaTimeFormatInternalPrinter_(underlying) autorelease];
+  return create_OrgJodaTimeFormatInternalPrinterDateTimePrinter_initWithOrgJodaTimeFormatInternalPrinter_(underlying);
 }
 
 void OrgJodaTimeFormatInternalPrinterDateTimePrinter_initWithOrgJodaTimeFormatInternalPrinter_(OrgJodaTimeFormatInternalPrinterDateTimePrinter *self, id<OrgJodaTimeFormatInternalPrinter> underlying) {
@@ -161,15 +175,11 @@ void OrgJodaTimeFormatInternalPrinterDateTimePrinter_initWithOrgJodaTimeFormatIn
 }
 
 OrgJodaTimeFormatInternalPrinterDateTimePrinter *new_OrgJodaTimeFormatInternalPrinterDateTimePrinter_initWithOrgJodaTimeFormatInternalPrinter_(id<OrgJodaTimeFormatInternalPrinter> underlying) {
-  OrgJodaTimeFormatInternalPrinterDateTimePrinter *self = [OrgJodaTimeFormatInternalPrinterDateTimePrinter alloc];
-  OrgJodaTimeFormatInternalPrinterDateTimePrinter_initWithOrgJodaTimeFormatInternalPrinter_(self, underlying);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFormatInternalPrinterDateTimePrinter, initWithOrgJodaTimeFormatInternalPrinter_, underlying)
 }
 
 OrgJodaTimeFormatInternalPrinterDateTimePrinter *create_OrgJodaTimeFormatInternalPrinterDateTimePrinter_initWithOrgJodaTimeFormatInternalPrinter_(id<OrgJodaTimeFormatInternalPrinter> underlying) {
-  OrgJodaTimeFormatInternalPrinterDateTimePrinter *self = [[OrgJodaTimeFormatInternalPrinterDateTimePrinter alloc] autorelease];
-  OrgJodaTimeFormatInternalPrinterDateTimePrinter_initWithOrgJodaTimeFormatInternalPrinter_(self, underlying);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFormatInternalPrinterDateTimePrinter, initWithOrgJodaTimeFormatInternalPrinter_, underlying)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatInternalPrinterDateTimePrinter)

@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFieldBaseDateTimeField_INCLUDE_ALL")
-#ifdef OrgJodaTimeFieldBaseDateTimeField_RESTRICT
-#define OrgJodaTimeFieldBaseDateTimeField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFieldBaseDateTimeField")
+#ifdef RESTRICT_OrgJodaTimeFieldBaseDateTimeField
+#define INCLUDE_ALL_OrgJodaTimeFieldBaseDateTimeField 0
 #else
-#define OrgJodaTimeFieldBaseDateTimeField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFieldBaseDateTimeField 1
 #endif
-#undef OrgJodaTimeFieldBaseDateTimeField_RESTRICT
+#undef RESTRICT_OrgJodaTimeFieldBaseDateTimeField
 
-#if !defined (OrgJodaTimeFieldBaseDateTimeField_) && (OrgJodaTimeFieldBaseDateTimeField_INCLUDE_ALL || defined(OrgJodaTimeFieldBaseDateTimeField_INCLUDE))
+#if !defined (OrgJodaTimeFieldBaseDateTimeField_) && (INCLUDE_ALL_OrgJodaTimeFieldBaseDateTimeField || defined(INCLUDE_OrgJodaTimeFieldBaseDateTimeField))
 #define OrgJodaTimeFieldBaseDateTimeField_
 
-#define OrgJodaTimeDateTimeField_RESTRICT 1
-#define OrgJodaTimeDateTimeField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeDateTimeField 1
+#define INCLUDE_OrgJodaTimeDateTimeField 1
 #include "org/joda/time/DateTimeField.h"
 
 @class IOSIntArray;
@@ -736,4 +736,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldBaseDateTimeField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFieldBaseDateTimeField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFieldBaseDateTimeField")

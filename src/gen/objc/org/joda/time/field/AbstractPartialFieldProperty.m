@@ -106,10 +106,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)compareToWithOrgJodaTimeReadableInstant:(id<OrgJodaTimeReadableInstant>)instant {
   if (instant == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The instant must not be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The instant must not be null");
   }
   jint thisValue = [self get];
-  jint otherValue = [((id<OrgJodaTimeReadableInstant>) nil_chk(instant)) getWithOrgJodaTimeDateTimeFieldType:[self getFieldType]];
+  jint otherValue = [instant getWithOrgJodaTimeDateTimeFieldType:[self getFieldType]];
   if (thisValue < otherValue) {
     return -1;
   }
@@ -123,10 +123,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)compareToWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial {
   if (partial == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The instant must not be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The instant must not be null");
   }
   jint thisValue = [self get];
-  jint otherValue = [((id<OrgJodaTimeReadablePartial>) nil_chk(partial)) getWithOrgJodaTimeDateTimeFieldType:[self getFieldType]];
+  jint otherValue = [partial getWithOrgJodaTimeDateTimeFieldType:[self getFieldType]];
   if (thisValue < otherValue) {
     return -1;
   }
@@ -162,33 +162,61 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "AbstractPartialFieldProperty", NULL, 0x4, NULL, NULL },
-    { "getField", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "getFieldType", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x1, NULL, NULL },
-    { "getName", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getReadablePartial", NULL, "Lorg.joda.time.ReadablePartial;", 0x404, NULL, NULL },
-    { "get", NULL, "I", 0x401, NULL, NULL },
-    { "getAsString", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsText", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsTextWithJavaUtilLocale:", "getAsText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsShortText", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsShortTextWithJavaUtilLocale:", "getAsShortText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getRangeDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getMinimumValueOverall", NULL, "I", 0x1, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumValueOverall", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumTextLengthWithJavaUtilLocale:", "getMaximumTextLength", "I", 0x1, NULL, NULL },
-    { "getMaximumShortTextLengthWithJavaUtilLocale:", "getMaximumShortTextLength", "I", 0x1, NULL, NULL },
-    { "compareToWithOrgJodaTimeReadableInstant:", "compareTo", "I", 0x1, NULL, NULL },
-    { "compareToWithOrgJodaTimeReadablePartial:", "compareTo", "I", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeReadablePartial;", 0x404, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 2, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 3, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 4, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 5, 7, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 8, 9, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 10, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 11, -1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldAbstractPartialFieldProperty = { 2, "AbstractPartialFieldProperty", "org.joda.time.field", NULL, 0x401, 24, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getField);
+  methods[2].selector = @selector(getFieldType);
+  methods[3].selector = @selector(getName);
+  methods[4].selector = @selector(getReadablePartial);
+  methods[5].selector = @selector(get);
+  methods[6].selector = @selector(getAsString);
+  methods[7].selector = @selector(getAsText);
+  methods[8].selector = @selector(getAsTextWithJavaUtilLocale:);
+  methods[9].selector = @selector(getAsShortText);
+  methods[10].selector = @selector(getAsShortTextWithJavaUtilLocale:);
+  methods[11].selector = @selector(getDurationField);
+  methods[12].selector = @selector(getRangeDurationField);
+  methods[13].selector = @selector(getMinimumValueOverall);
+  methods[14].selector = @selector(getMinimumValue);
+  methods[15].selector = @selector(getMaximumValueOverall);
+  methods[16].selector = @selector(getMaximumValue);
+  methods[17].selector = @selector(getMaximumTextLengthWithJavaUtilLocale:);
+  methods[18].selector = @selector(getMaximumShortTextLengthWithJavaUtilLocale:);
+  methods[19].selector = @selector(compareToWithOrgJodaTimeReadableInstant:);
+  methods[20].selector = @selector(compareToWithOrgJodaTimeReadablePartial:);
+  methods[21].selector = @selector(isEqual:);
+  methods[22].selector = @selector(hash);
+  methods[23].selector = @selector(description);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "getAsText", "LJavaUtilLocale;", "getAsShortText", "getMaximumTextLength", "getMaximumShortTextLength", "compareTo", "LOrgJodaTimeReadableInstant;", "LOrgJodaTimeReadablePartial;", "equals", "LNSObject;", "hashCode", "toString" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldAbstractPartialFieldProperty = { "AbstractPartialFieldProperty", "org.joda.time.field", ptrTable, methods, NULL, 7, 0x401, 24, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldAbstractPartialFieldProperty;
 }
 

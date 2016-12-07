@@ -125,38 +125,58 @@ J2OBJC_IGNORE_DESIGNATED_END
   return OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE;
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 2, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 3, -1, -1, -1, -1 },
+    { NULL, "[I", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 7, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 8, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 3, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 10, 1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 11, 1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 12, 1, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getRangeDurationField);
+  methods[2].selector = @selector(getWithLong:);
+  methods[3].selector = @selector(addWithLong:withInt:);
+  methods[4].selector = @selector(addWithLong:withLong:);
+  methods[5].selector = @selector(addWrapFieldWithLong:withInt:);
+  methods[6].selector = @selector(addWrapFieldWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:);
+  methods[7].selector = @selector(getDifferenceWithLong:withLong:);
+  methods[8].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  methods[9].selector = @selector(setWithLong:withInt:);
+  methods[10].selector = @selector(getMinimumValue);
+  methods[11].selector = @selector(getMaximumValue);
+  methods[12].selector = @selector(roundFloorWithLong:);
+  methods[13].selector = @selector(roundCeilingWithLong:);
+  methods[14].selector = @selector(remainderWithLong:);
+  methods[15].selector = @selector(readResolve);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoISOYearOfEraDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "INSTANCE", "LOrgJodaTimeDateTimeField;", .constantValue.asLong = 0, 0x18, -1, 13, -1, -1 },
+  };
+  static const void *ptrTable[] = { "get", "J", "add", "JI", "JJ", "addWrapField", "LOrgJodaTimeReadablePartial;I[II", "getDifference", "getDifferenceAsLong", "set", "roundFloor", "roundCeiling", "remainder", &OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoISOYearOfEraDateTimeField = { "ISOYearOfEraDateTimeField", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x0, 16, 2, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeChronoISOYearOfEraDateTimeField;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeChronoISOYearOfEraDateTimeField class]) {
     JreStrongAssignAndConsume(&OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE, new_OrgJodaTimeChronoISOYearOfEraDateTimeField_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeChronoISOYearOfEraDateTimeField)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "ISOYearOfEraDateTimeField", NULL, 0x2, NULL, NULL },
-    { "getRangeDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x1, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x1, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x1, NULL, NULL },
-    { "addWrapFieldWithLong:withInt:", "addWrapField", "J", 0x1, NULL, NULL },
-    { "addWrapFieldWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:", "addWrapField", "[I", 0x1, NULL, NULL },
-    { "getDifferenceWithLong:withLong:", "getDifference", "I", 0x1, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x1, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumValue", NULL, "I", 0x1, NULL, NULL },
-    { "roundFloorWithLong:", "roundFloor", "J", 0x1, NULL, NULL },
-    { "roundCeilingWithLong:", "roundCeiling", "J", 0x1, NULL, NULL },
-    { "remainderWithLong:", "remainder", "J", 0x1, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoISOYearOfEraDateTimeField_serialVersionUID },
-    { "INSTANCE", "INSTANCE", 0x18, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoISOYearOfEraDateTimeField_INSTANCE, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoISOYearOfEraDateTimeField = { 2, "ISOYearOfEraDateTimeField", "org.joda.time.chrono", NULL, 0x0, 16, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeChronoISOYearOfEraDateTimeField;
 }
 
 @end
@@ -166,15 +186,11 @@ void OrgJodaTimeChronoISOYearOfEraDateTimeField_init(OrgJodaTimeChronoISOYearOfE
 }
 
 OrgJodaTimeChronoISOYearOfEraDateTimeField *new_OrgJodaTimeChronoISOYearOfEraDateTimeField_init() {
-  OrgJodaTimeChronoISOYearOfEraDateTimeField *self = [OrgJodaTimeChronoISOYearOfEraDateTimeField alloc];
-  OrgJodaTimeChronoISOYearOfEraDateTimeField_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoISOYearOfEraDateTimeField, init)
 }
 
 OrgJodaTimeChronoISOYearOfEraDateTimeField *create_OrgJodaTimeChronoISOYearOfEraDateTimeField_init() {
-  OrgJodaTimeChronoISOYearOfEraDateTimeField *self = [[OrgJodaTimeChronoISOYearOfEraDateTimeField alloc] autorelease];
-  OrgJodaTimeChronoISOYearOfEraDateTimeField_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoISOYearOfEraDateTimeField, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoISOYearOfEraDateTimeField)

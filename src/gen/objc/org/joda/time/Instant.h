@@ -5,27 +5,27 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeInstant_INCLUDE_ALL")
-#ifdef OrgJodaTimeInstant_RESTRICT
-#define OrgJodaTimeInstant_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeInstant")
+#ifdef RESTRICT_OrgJodaTimeInstant
+#define INCLUDE_ALL_OrgJodaTimeInstant 0
 #else
-#define OrgJodaTimeInstant_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeInstant 1
 #endif
-#undef OrgJodaTimeInstant_RESTRICT
+#undef RESTRICT_OrgJodaTimeInstant
 
-#if !defined (OrgJodaTimeInstant_) && (OrgJodaTimeInstant_INCLUDE_ALL || defined(OrgJodaTimeInstant_INCLUDE))
+#if !defined (OrgJodaTimeInstant_) && (INCLUDE_ALL_OrgJodaTimeInstant || defined(INCLUDE_OrgJodaTimeInstant))
 #define OrgJodaTimeInstant_
 
-#define OrgJodaTimeBaseAbstractInstant_RESTRICT 1
-#define OrgJodaTimeBaseAbstractInstant_INCLUDE 1
+#define RESTRICT_OrgJodaTimeBaseAbstractInstant 1
+#define INCLUDE_OrgJodaTimeBaseAbstractInstant 1
 #include "org/joda/time/base/AbstractInstant.h"
 
-#define OrgJodaTimeReadableInstant_RESTRICT 1
-#define OrgJodaTimeReadableInstant_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadableInstant 1
+#define INCLUDE_OrgJodaTimeReadableInstant 1
 #include "org/joda/time/ReadableInstant.h"
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class OrgJodaTimeChronology;
@@ -317,4 +317,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeInstant)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeInstant_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeInstant")

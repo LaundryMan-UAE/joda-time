@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeBaseAbstractInstant_INCLUDE_ALL")
-#ifdef OrgJodaTimeBaseAbstractInstant_RESTRICT
-#define OrgJodaTimeBaseAbstractInstant_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeBaseAbstractInstant")
+#ifdef RESTRICT_OrgJodaTimeBaseAbstractInstant
+#define INCLUDE_ALL_OrgJodaTimeBaseAbstractInstant 0
 #else
-#define OrgJodaTimeBaseAbstractInstant_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeBaseAbstractInstant 1
 #endif
-#undef OrgJodaTimeBaseAbstractInstant_RESTRICT
+#undef RESTRICT_OrgJodaTimeBaseAbstractInstant
 
-#if !defined (OrgJodaTimeBaseAbstractInstant_) && (OrgJodaTimeBaseAbstractInstant_INCLUDE_ALL || defined(OrgJodaTimeBaseAbstractInstant_INCLUDE))
+#if !defined (OrgJodaTimeBaseAbstractInstant_) && (INCLUDE_ALL_OrgJodaTimeBaseAbstractInstant || defined(INCLUDE_OrgJodaTimeBaseAbstractInstant))
 #define OrgJodaTimeBaseAbstractInstant_
 
-#define OrgJodaTimeReadableInstant_RESTRICT 1
-#define OrgJodaTimeReadableInstant_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadableInstant 1
+#define INCLUDE_OrgJodaTimeReadableInstant 1
 #include "org/joda/time/ReadableInstant.h"
 
 @class JavaUtilDate;
@@ -307,4 +307,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseAbstractInstant)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeBaseAbstractInstant_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeBaseAbstractInstant")

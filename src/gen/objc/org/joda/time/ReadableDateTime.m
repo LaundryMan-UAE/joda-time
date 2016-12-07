@@ -3,12 +3,7 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/Joda-Time/src/main/java/org/joda/time/ReadableDateTime.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
-#include "java/lang/IllegalArgumentException.h"
-#include "java/util/Locale.h"
-#include "org/joda/time/DateTime.h"
-#include "org/joda/time/MutableDateTime.h"
 #include "org/joda/time/ReadableDateTime.h"
 
 @interface OrgJodaTimeReadableDateTime : NSObject
@@ -18,31 +13,57 @@
 @implementation OrgJodaTimeReadableDateTime
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getDayOfWeek", NULL, "I", 0x401, NULL, NULL },
-    { "getDayOfMonth", NULL, "I", 0x401, NULL, NULL },
-    { "getDayOfYear", NULL, "I", 0x401, NULL, NULL },
-    { "getWeekOfWeekyear", NULL, "I", 0x401, NULL, NULL },
-    { "getWeekyear", NULL, "I", 0x401, NULL, NULL },
-    { "getMonthOfYear", NULL, "I", 0x401, NULL, NULL },
-    { "getYear", NULL, "I", 0x401, NULL, NULL },
-    { "getYearOfEra", NULL, "I", 0x401, NULL, NULL },
-    { "getYearOfCentury", NULL, "I", 0x401, NULL, NULL },
-    { "getCenturyOfEra", NULL, "I", 0x401, NULL, NULL },
-    { "getEra", NULL, "I", 0x401, NULL, NULL },
-    { "getMillisOfSecond", NULL, "I", 0x401, NULL, NULL },
-    { "getMillisOfDay", NULL, "I", 0x401, NULL, NULL },
-    { "getSecondOfMinute", NULL, "I", 0x401, NULL, NULL },
-    { "getSecondOfDay", NULL, "I", 0x401, NULL, NULL },
-    { "getMinuteOfHour", NULL, "I", 0x401, NULL, NULL },
-    { "getMinuteOfDay", NULL, "I", 0x401, NULL, NULL },
-    { "getHourOfDay", NULL, "I", 0x401, NULL, NULL },
-    { "toDateTime", NULL, "Lorg.joda.time.DateTime;", 0x401, NULL, NULL },
-    { "toMutableDateTime", NULL, "Lorg.joda.time.MutableDateTime;", 0x401, NULL, NULL },
-    { "toStringWithNSString:", "toString", "Ljava.lang.String;", 0x401, "Ljava.lang.IllegalArgumentException;", NULL },
-    { "toStringWithNSString:withJavaUtilLocale:", "toString", "Ljava.lang.String;", 0x401, "Ljava.lang.IllegalArgumentException;", NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMutableDateTime;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 0, 1, 2, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 0, 3, 2, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadableDateTime = { 2, "ReadableDateTime", "org.joda.time", NULL, 0x609, 22, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getDayOfWeek);
+  methods[1].selector = @selector(getDayOfMonth);
+  methods[2].selector = @selector(getDayOfYear);
+  methods[3].selector = @selector(getWeekOfWeekyear);
+  methods[4].selector = @selector(getWeekyear);
+  methods[5].selector = @selector(getMonthOfYear);
+  methods[6].selector = @selector(getYear);
+  methods[7].selector = @selector(getYearOfEra);
+  methods[8].selector = @selector(getYearOfCentury);
+  methods[9].selector = @selector(getCenturyOfEra);
+  methods[10].selector = @selector(getEra);
+  methods[11].selector = @selector(getMillisOfSecond);
+  methods[12].selector = @selector(getMillisOfDay);
+  methods[13].selector = @selector(getSecondOfMinute);
+  methods[14].selector = @selector(getSecondOfDay);
+  methods[15].selector = @selector(getMinuteOfHour);
+  methods[16].selector = @selector(getMinuteOfDay);
+  methods[17].selector = @selector(getHourOfDay);
+  methods[18].selector = @selector(toDateTime);
+  methods[19].selector = @selector(toMutableDateTime);
+  methods[20].selector = @selector(toStringWithNSString:);
+  methods[21].selector = @selector(toStringWithNSString:withJavaUtilLocale:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "toString", "LNSString;", "LJavaLangIllegalArgumentException;", "LNSString;LJavaUtilLocale;" };
+  static const J2ObjcClassInfo _OrgJodaTimeReadableDateTime = { "ReadableDateTime", "org.joda.time", ptrTable, methods, NULL, 7, 0x609, 22, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeReadableDateTime;
 }
 

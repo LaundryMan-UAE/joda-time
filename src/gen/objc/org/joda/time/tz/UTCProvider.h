@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeTzUTCProvider_INCLUDE_ALL")
-#ifdef OrgJodaTimeTzUTCProvider_RESTRICT
-#define OrgJodaTimeTzUTCProvider_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeTzUTCProvider")
+#ifdef RESTRICT_OrgJodaTimeTzUTCProvider
+#define INCLUDE_ALL_OrgJodaTimeTzUTCProvider 0
 #else
-#define OrgJodaTimeTzUTCProvider_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeTzUTCProvider 1
 #endif
-#undef OrgJodaTimeTzUTCProvider_RESTRICT
+#undef RESTRICT_OrgJodaTimeTzUTCProvider
 
-#if !defined (OrgJodaTimeTzUTCProvider_) && (OrgJodaTimeTzUTCProvider_INCLUDE_ALL || defined(OrgJodaTimeTzUTCProvider_INCLUDE))
+#if !defined (OrgJodaTimeTzUTCProvider_) && (INCLUDE_ALL_OrgJodaTimeTzUTCProvider || defined(INCLUDE_OrgJodaTimeTzUTCProvider))
 #define OrgJodaTimeTzUTCProvider_
 
-#define OrgJodaTimeTzProvider_RESTRICT 1
-#define OrgJodaTimeTzProvider_INCLUDE 1
+#define RESTRICT_OrgJodaTimeTzProvider 1
+#define INCLUDE_OrgJodaTimeTzProvider 1
 #include "org/joda/time/tz/Provider.h"
 
 @class OrgJodaTimeDateTimeZone;
@@ -64,4 +64,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzUTCProvider)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeTzUTCProvider_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeTzUTCProvider")

@@ -91,24 +91,39 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldPreciseDurationField, serialVersion
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeDurationFieldType:withLong:", "PreciseDurationField", NULL, 0x1, NULL, NULL },
-    { "isPrecise", NULL, "Z", 0x11, NULL, NULL },
-    { "getUnitMillis", NULL, "J", 0x11, NULL, NULL },
-    { "getValueAsLongWithLong:withLong:", "getValueAsLong", "J", 0x1, NULL, NULL },
-    { "getMillisWithInt:withLong:", "getMillis", "J", 0x1, NULL, NULL },
-    { "getMillisWithLong:withLong:", "getMillis", "J", 0x1, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x1, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x1, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, "Z", 0x11, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x11, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 7, 2, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 8, 9, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 10, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeDurationFieldType:withLong:);
+  methods[1].selector = @selector(isPrecise);
+  methods[2].selector = @selector(getUnitMillis);
+  methods[3].selector = @selector(getValueAsLongWithLong:withLong:);
+  methods[4].selector = @selector(getMillisWithInt:withLong:);
+  methods[5].selector = @selector(getMillisWithLong:withLong:);
+  methods[6].selector = @selector(addWithLong:withInt:);
+  methods[7].selector = @selector(addWithLong:withLong:);
+  methods[8].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  methods[9].selector = @selector(isEqual:);
+  methods[10].selector = @selector(hash);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldPreciseDurationField_serialVersionUID },
-    { "iUnitMillis_", NULL, 0x12, "J", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldPreciseDurationField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iUnitMillis_", "J", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldPreciseDurationField = { 2, "PreciseDurationField", "org.joda.time.field", NULL, 0x1, 11, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeDurationFieldType;J", "getValueAsLong", "JJ", "getMillis", "IJ", "add", "JI", "getDifferenceAsLong", "equals", "LNSObject;", "hashCode" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldPreciseDurationField = { "PreciseDurationField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x1, 11, 2, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldPreciseDurationField;
 }
 
@@ -120,15 +135,11 @@ void OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_w
 }
 
 OrgJodaTimeFieldPreciseDurationField *new_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType *type, jlong unitMillis) {
-  OrgJodaTimeFieldPreciseDurationField *self = [OrgJodaTimeFieldPreciseDurationField alloc];
-  OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(self, type, unitMillis);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldPreciseDurationField, initWithOrgJodaTimeDurationFieldType_withLong_, type, unitMillis)
 }
 
 OrgJodaTimeFieldPreciseDurationField *create_OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(OrgJodaTimeDurationFieldType *type, jlong unitMillis) {
-  OrgJodaTimeFieldPreciseDurationField *self = [[OrgJodaTimeFieldPreciseDurationField alloc] autorelease];
-  OrgJodaTimeFieldPreciseDurationField_initWithOrgJodaTimeDurationFieldType_withLong_(self, type, unitMillis);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldPreciseDurationField, initWithOrgJodaTimeDurationFieldType_withLong_, type, unitMillis)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldPreciseDurationField)

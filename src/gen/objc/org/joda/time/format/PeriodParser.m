@@ -4,8 +4,6 @@
 //
 
 #include "J2ObjC_source.h"
-#include "java/util/Locale.h"
-#include "org/joda/time/ReadWritablePeriod.h"
 #include "org/joda/time/format/PeriodParser.h"
 
 @interface OrgJodaTimeFormatPeriodParser : NSObject
@@ -15,10 +13,15 @@
 @implementation OrgJodaTimeFormatPeriodParser
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "parseIntoWithOrgJodaTimeReadWritablePeriod:withNSString:withInt:withJavaUtilLocale:", "parseInto", "I", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "I", 0x401, 0, 1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodParser = { 2, "PeriodParser", "org.joda.time.format", NULL, 0x609, 1, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(parseIntoWithOrgJodaTimeReadWritablePeriod:withNSString:withInt:withJavaUtilLocale:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "parseInto", "LOrgJodaTimeReadWritablePeriod;LNSString;ILJavaUtilLocale;" };
+  static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodParser = { "PeriodParser", "org.joda.time.format", ptrTable, methods, NULL, 7, 0x609, 1, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFormatPeriodParser;
 }
 

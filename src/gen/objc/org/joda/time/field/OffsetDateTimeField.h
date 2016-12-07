@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFieldOffsetDateTimeField_INCLUDE_ALL")
-#ifdef OrgJodaTimeFieldOffsetDateTimeField_RESTRICT
-#define OrgJodaTimeFieldOffsetDateTimeField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFieldOffsetDateTimeField")
+#ifdef RESTRICT_OrgJodaTimeFieldOffsetDateTimeField
+#define INCLUDE_ALL_OrgJodaTimeFieldOffsetDateTimeField 0
 #else
-#define OrgJodaTimeFieldOffsetDateTimeField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFieldOffsetDateTimeField 1
 #endif
-#undef OrgJodaTimeFieldOffsetDateTimeField_RESTRICT
+#undef RESTRICT_OrgJodaTimeFieldOffsetDateTimeField
 
-#if !defined (OrgJodaTimeFieldOffsetDateTimeField_) && (OrgJodaTimeFieldOffsetDateTimeField_INCLUDE_ALL || defined(OrgJodaTimeFieldOffsetDateTimeField_INCLUDE))
+#if !defined (OrgJodaTimeFieldOffsetDateTimeField_) && (INCLUDE_ALL_OrgJodaTimeFieldOffsetDateTimeField || defined(INCLUDE_OrgJodaTimeFieldOffsetDateTimeField))
 #define OrgJodaTimeFieldOffsetDateTimeField_
 
-#define OrgJodaTimeFieldDecoratedDateTimeField_RESTRICT 1
-#define OrgJodaTimeFieldDecoratedDateTimeField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldDecoratedDateTimeField 1
+#define INCLUDE_OrgJodaTimeFieldDecoratedDateTimeField 1
 #include "org/joda/time/field/DecoratedDateTimeField.h"
 
 @class OrgJodaTimeDateTimeField;
@@ -181,4 +181,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldOffsetDateTimeField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFieldOffsetDateTimeField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFieldOffsetDateTimeField")

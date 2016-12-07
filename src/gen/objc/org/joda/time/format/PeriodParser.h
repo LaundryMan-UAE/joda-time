@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatPeriodParser_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatPeriodParser_RESTRICT
-#define OrgJodaTimeFormatPeriodParser_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatPeriodParser")
+#ifdef RESTRICT_OrgJodaTimeFormatPeriodParser
+#define INCLUDE_ALL_OrgJodaTimeFormatPeriodParser 0
 #else
-#define OrgJodaTimeFormatPeriodParser_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatPeriodParser 1
 #endif
-#undef OrgJodaTimeFormatPeriodParser_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatPeriodParser
 
-#if !defined (OrgJodaTimeFormatPeriodParser_) && (OrgJodaTimeFormatPeriodParser_INCLUDE_ALL || defined(OrgJodaTimeFormatPeriodParser_INCLUDE))
+#if !defined (OrgJodaTimeFormatPeriodParser_) && (INCLUDE_ALL_OrgJodaTimeFormatPeriodParser || defined(INCLUDE_OrgJodaTimeFormatPeriodParser))
 #define OrgJodaTimeFormatPeriodParser_
 
 @class JavaUtilLocale;
@@ -36,7 +36,7 @@
  - seealso: PeriodFormatterBuilder
  - seealso: PeriodFormat
  */
-@protocol OrgJodaTimeFormatPeriodParser < NSObject, JavaObject >
+@protocol OrgJodaTimeFormatPeriodParser < JavaObject >
 
 /*!
  @brief Parses a period from the given text, at the given position, saving the
@@ -69,4 +69,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodParser)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatPeriodParser_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatPeriodParser")

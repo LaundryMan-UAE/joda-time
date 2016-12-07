@@ -9,6 +9,7 @@
 #include "J2ObjC_source.h"
 #include "java/lang/IllegalArgumentException.h"
 #include "java/lang/UnsupportedOperationException.h"
+#include "java/lang/annotation/Annotation.h"
 #include "org/joda/convert/FromString.h"
 #include "org/joda/time/Chronology.h"
 #include "org/joda/time/DateTimeConstants.h"
@@ -27,7 +28,6 @@
 #include "org/joda/time/ReadablePeriod.h"
 #include "org/joda/time/Seconds.h"
 #include "org/joda/time/Weeks.h"
-#include "org/joda/time/base/AbstractPeriod.h"
 #include "org/joda/time/base/BasePeriod.h"
 #include "org/joda/time/chrono/ISOChronology.h"
 #include "org/joda/time/field/FieldUtils.h"
@@ -67,6 +67,8 @@ __attribute__((unused)) static OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWith
 __attribute__((unused)) static OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(IOSIntArray *values, OrgJodaTimePeriodType *type);
 
 __attribute__((unused)) static void OrgJodaTimePeriod_checkYearsAndMonthsWithNSString_(OrgJodaTimePeriod *self, NSString *destintionType);
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimePeriod__Annotations$0();
 
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimePeriod)
 
@@ -335,7 +337,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if ([((OrgJodaTimePeriodType *) nil_chk(type)) isEqual:[self getPeriodType]]) {
     return self;
   }
-  return [new_OrgJodaTimePeriod_initWithId_withOrgJodaTimePeriodType_(self, type) autorelease];
+  return create_OrgJodaTimePeriod_initWithId_withOrgJodaTimePeriodType_(self, type);
 }
 
 - (OrgJodaTimePeriod *)withFieldsWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period {
@@ -344,78 +346,78 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   IOSIntArray *newValues = [self getValues];
   newValues = [super mergePeriodIntoWithIntArray:newValues withOrgJodaTimeReadablePeriod:period];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(newValues, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(newValues, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)withFieldWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)field
                                                          withInt:(jint)value {
   if (field == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Field must not be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"Field must not be null");
   }
   IOSIntArray *newValues = [self getValues];
   [super setFieldIntoWithIntArray:newValues withOrgJodaTimeDurationFieldType:field withInt:value];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(newValues, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(newValues, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)withFieldAddedWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)field
                                                               withInt:(jint)value {
   if (field == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Field must not be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"Field must not be null");
   }
   if (value == 0) {
     return self;
   }
   IOSIntArray *newValues = [self getValues];
   [super addFieldIntoWithIntArray:newValues withOrgJodaTimeDurationFieldType:field withInt:value];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(newValues, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(newValues, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)withYearsWithInt:(jint)years {
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, YEAR_INDEX) withIntArray:values withInt:years];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)withMonthsWithInt:(jint)months {
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MONTH_INDEX) withIntArray:values withInt:months];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)withWeeksWithInt:(jint)weeks {
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, WEEK_INDEX) withIntArray:values withInt:weeks];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)withDaysWithInt:(jint)days {
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, DAY_INDEX) withIntArray:values withInt:days];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)withHoursWithInt:(jint)hours {
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, HOUR_INDEX) withIntArray:values withInt:hours];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)withMinutesWithInt:(jint)minutes {
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MINUTE_INDEX) withIntArray:values withInt:minutes];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)withSecondsWithInt:(jint)seconds {
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, SECOND_INDEX) withIntArray:values withInt:seconds];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)withMillisWithInt:(jint)millis {
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) setIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MILLI_INDEX) withIntArray:values withInt:millis];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)plusWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period {
@@ -423,7 +425,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     return self;
   }
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, YEAR_INDEX) withIntArray:values withInt:[((id<OrgJodaTimeReadablePeriod>) nil_chk(period)) getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, YEARS_TYPE)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, YEAR_INDEX) withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, YEARS_TYPE)]];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MONTH_INDEX) withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, MONTHS_TYPE)]];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, WEEK_INDEX) withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, WEEKS_TYPE)]];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, DAY_INDEX) withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, DAYS_TYPE)]];
@@ -431,7 +433,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MINUTE_INDEX) withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, MINUTES_TYPE)]];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, SECOND_INDEX) withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, SECONDS_TYPE)]];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MILLI_INDEX) withIntArray:values withInt:[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, MILLIS_TYPE)]];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)plusYearsWithInt:(jint)years {
@@ -440,7 +442,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, YEAR_INDEX) withIntArray:values withInt:years];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)plusMonthsWithInt:(jint)months {
@@ -449,7 +451,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MONTH_INDEX) withIntArray:values withInt:months];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)plusWeeksWithInt:(jint)weeks {
@@ -458,7 +460,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, WEEK_INDEX) withIntArray:values withInt:weeks];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)plusDaysWithInt:(jint)days {
@@ -467,7 +469,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, DAY_INDEX) withIntArray:values withInt:days];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)plusHoursWithInt:(jint)hours {
@@ -476,7 +478,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, HOUR_INDEX) withIntArray:values withInt:hours];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)plusMinutesWithInt:(jint)minutes {
@@ -485,7 +487,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MINUTE_INDEX) withIntArray:values withInt:minutes];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)plusSecondsWithInt:(jint)seconds {
@@ -494,7 +496,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, SECOND_INDEX) withIntArray:values withInt:seconds];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)plusMillisWithInt:(jint)millis {
@@ -503,7 +505,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   IOSIntArray *values = [self getValues];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MILLI_INDEX) withIntArray:values withInt:millis];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)minusWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period {
@@ -511,7 +513,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     return self;
   }
   IOSIntArray *values = [self getValues];
-  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, YEAR_INDEX) withIntArray:values withInt:-[((id<OrgJodaTimeReadablePeriod>) nil_chk(period)) getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, YEARS_TYPE)]];
+  [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, YEAR_INDEX) withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, YEARS_TYPE)]];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MONTH_INDEX) withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, MONTHS_TYPE)]];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, WEEK_INDEX) withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, WEEKS_TYPE)]];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, DAY_INDEX) withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, DAYS_TYPE)]];
@@ -519,7 +521,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MINUTE_INDEX) withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, MINUTES_TYPE)]];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, SECOND_INDEX) withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, SECONDS_TYPE)]];
   [((OrgJodaTimePeriodType *) nil_chk([self getPeriodType])) addIndexedFieldWithOrgJodaTimeReadablePeriod:self withInt:JreLoadStatic(OrgJodaTimePeriodType, MILLI_INDEX) withIntArray:values withInt:-[period getWithOrgJodaTimeDurationFieldType:JreLoadStatic(OrgJodaTimeDurationFieldType, MILLIS_TYPE)]];
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)minusYearsWithInt:(jint)years {
@@ -562,7 +564,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   for (jint i = 0; i < ((IOSIntArray *) nil_chk(values))->size_; i++) {
     *IOSIntArray_GetRef(values, i) = OrgJodaTimeFieldFieldUtils_safeMultiplyWithInt_withInt_(IOSIntArray_Get(values, i), scalar);
   }
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, [self getPeriodType]);
 }
 
 - (OrgJodaTimePeriod *)negated {
@@ -635,7 +637,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   millis += (((jlong) [self getHours]) * ((jlong) OrgJodaTimeDateTimeConstants_MILLIS_PER_HOUR));
   millis += (((jlong) [self getDays]) * ((jlong) OrgJodaTimeDateTimeConstants_MILLIS_PER_DAY));
   millis += (((jlong) [self getWeeks]) * ((jlong) OrgJodaTimeDateTimeConstants_MILLIS_PER_WEEK));
-  return [new_OrgJodaTimeDuration_initWithLong_(millis) autorelease];
+  return create_OrgJodaTimeDuration_initWithLong_(millis);
 }
 
 - (void)checkYearsAndMonthsWithNSString:(NSString *)destintionType {
@@ -654,7 +656,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   millis += (((jlong) [self getHours]) * ((jlong) OrgJodaTimeDateTimeConstants_MILLIS_PER_HOUR));
   millis += (((jlong) [self getDays]) * ((jlong) OrgJodaTimeDateTimeConstants_MILLIS_PER_DAY));
   millis += (((jlong) [self getWeeks]) * ((jlong) OrgJodaTimeDateTimeConstants_MILLIS_PER_WEEK));
-  OrgJodaTimePeriod *result = [new_OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(millis, type, OrgJodaTimeChronoISOChronology_getInstanceUTC()) autorelease];
+  OrgJodaTimePeriod *result = create_OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(millis, type, OrgJodaTimeChronoISOChronology_getInstanceUTC());
   jint years = [self getYears];
   jint months = [self getMonths];
   if (years != 0 || months != 0) {
@@ -670,10 +672,197 @@ J2OBJC_IGNORE_DESIGNATED_END
       totalMonths = totalMonths - normalizedMonths;
     }
     if (totalMonths != 0) {
-      @throw [new_JavaLangUnsupportedOperationException_initWithNSString_(JreStrcat("$$", @"Unable to normalize as PeriodType is missing either years or months but period has a month/year amount: ", [self description])) autorelease];
+      @throw create_JavaLangUnsupportedOperationException_initWithNSString_(JreStrcat("$$", @"Unable to normalize as PeriodType is missing either years or months but period has a month/year amount: ", [self description]));
     }
   }
   return result;
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimePeriod;", 0x9, 0, 1, -1, -1, 2, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x9, 0, 3, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x9, 4, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x9, 6, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x9, 7, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x9, 8, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x9, 9, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x9, 10, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x9, 11, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x9, 12, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x9, 13, 14, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 15, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 16, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 17, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 18, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 19, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 20, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 21, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 22, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 23, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 24, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 25, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 26, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 27, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 14, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 28, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 29, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 30, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 31, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 32, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 33, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 34, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 35, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 36, -1, -1, -1, -1 },
+    { NULL, NULL, 0x2, -1, 37, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 38, 39, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 40, 41, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 42, 43, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 44, 43, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 45, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 46, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 47, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 48, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 49, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 50, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 51, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 52, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 53, 41, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 54, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 55, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 56, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 57, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 58, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 59, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 60, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 61, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 62, 41, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 63, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 64, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 65, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 66, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 67, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 68, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 69, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 70, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 71, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeWeeks;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDays;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeHours;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMinutes;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeSeconds;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 72, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, 73, 39, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(parseWithNSString:);
+  methods[1].selector = @selector(parseWithNSString:withOrgJodaTimeFormatPeriodFormatter:);
+  methods[2].selector = @selector(yearsWithInt:);
+  methods[3].selector = @selector(monthsWithInt:);
+  methods[4].selector = @selector(weeksWithInt:);
+  methods[5].selector = @selector(daysWithInt:);
+  methods[6].selector = @selector(hoursWithInt:);
+  methods[7].selector = @selector(minutesWithInt:);
+  methods[8].selector = @selector(secondsWithInt:);
+  methods[9].selector = @selector(millisWithInt:);
+  methods[10].selector = @selector(fieldDifferenceWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:);
+  methods[11].selector = @selector(init);
+  methods[12].selector = @selector(initWithInt:withInt:withInt:withInt:);
+  methods[13].selector = @selector(initWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withInt:);
+  methods[14].selector = @selector(initWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withInt:withOrgJodaTimePeriodType:);
+  methods[15].selector = @selector(initWithLong:);
+  methods[16].selector = @selector(initWithLong:withOrgJodaTimePeriodType:);
+  methods[17].selector = @selector(initWithLong:withOrgJodaTimeChronology:);
+  methods[18].selector = @selector(initWithLong:withOrgJodaTimePeriodType:withOrgJodaTimeChronology:);
+  methods[19].selector = @selector(initWithLong:withLong:);
+  methods[20].selector = @selector(initWithLong:withLong:withOrgJodaTimePeriodType:);
+  methods[21].selector = @selector(initWithLong:withLong:withOrgJodaTimeChronology:);
+  methods[22].selector = @selector(initWithLong:withLong:withOrgJodaTimePeriodType:withOrgJodaTimeChronology:);
+  methods[23].selector = @selector(initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:);
+  methods[24].selector = @selector(initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:withOrgJodaTimePeriodType:);
+  methods[25].selector = @selector(initWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:);
+  methods[26].selector = @selector(initWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:withOrgJodaTimePeriodType:);
+  methods[27].selector = @selector(initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableDuration:);
+  methods[28].selector = @selector(initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableDuration:withOrgJodaTimePeriodType:);
+  methods[29].selector = @selector(initWithOrgJodaTimeReadableDuration:withOrgJodaTimeReadableInstant:);
+  methods[30].selector = @selector(initWithOrgJodaTimeReadableDuration:withOrgJodaTimeReadableInstant:withOrgJodaTimePeriodType:);
+  methods[31].selector = @selector(initWithId:);
+  methods[32].selector = @selector(initWithId:withOrgJodaTimePeriodType:);
+  methods[33].selector = @selector(initWithId:withOrgJodaTimeChronology:);
+  methods[34].selector = @selector(initWithId:withOrgJodaTimePeriodType:withOrgJodaTimeChronology:);
+  methods[35].selector = @selector(initWithIntArray:withOrgJodaTimePeriodType:);
+  methods[36].selector = @selector(toPeriod);
+  methods[37].selector = @selector(getYears);
+  methods[38].selector = @selector(getMonths);
+  methods[39].selector = @selector(getWeeks);
+  methods[40].selector = @selector(getDays);
+  methods[41].selector = @selector(getHours);
+  methods[42].selector = @selector(getMinutes);
+  methods[43].selector = @selector(getSeconds);
+  methods[44].selector = @selector(getMillis);
+  methods[45].selector = @selector(withPeriodTypeWithOrgJodaTimePeriodType:);
+  methods[46].selector = @selector(withFieldsWithOrgJodaTimeReadablePeriod:);
+  methods[47].selector = @selector(withFieldWithOrgJodaTimeDurationFieldType:withInt:);
+  methods[48].selector = @selector(withFieldAddedWithOrgJodaTimeDurationFieldType:withInt:);
+  methods[49].selector = @selector(withYearsWithInt:);
+  methods[50].selector = @selector(withMonthsWithInt:);
+  methods[51].selector = @selector(withWeeksWithInt:);
+  methods[52].selector = @selector(withDaysWithInt:);
+  methods[53].selector = @selector(withHoursWithInt:);
+  methods[54].selector = @selector(withMinutesWithInt:);
+  methods[55].selector = @selector(withSecondsWithInt:);
+  methods[56].selector = @selector(withMillisWithInt:);
+  methods[57].selector = @selector(plusWithOrgJodaTimeReadablePeriod:);
+  methods[58].selector = @selector(plusYearsWithInt:);
+  methods[59].selector = @selector(plusMonthsWithInt:);
+  methods[60].selector = @selector(plusWeeksWithInt:);
+  methods[61].selector = @selector(plusDaysWithInt:);
+  methods[62].selector = @selector(plusHoursWithInt:);
+  methods[63].selector = @selector(plusMinutesWithInt:);
+  methods[64].selector = @selector(plusSecondsWithInt:);
+  methods[65].selector = @selector(plusMillisWithInt:);
+  methods[66].selector = @selector(minusWithOrgJodaTimeReadablePeriod:);
+  methods[67].selector = @selector(minusYearsWithInt:);
+  methods[68].selector = @selector(minusMonthsWithInt:);
+  methods[69].selector = @selector(minusWeeksWithInt:);
+  methods[70].selector = @selector(minusDaysWithInt:);
+  methods[71].selector = @selector(minusHoursWithInt:);
+  methods[72].selector = @selector(minusMinutesWithInt:);
+  methods[73].selector = @selector(minusSecondsWithInt:);
+  methods[74].selector = @selector(minusMillisWithInt:);
+  methods[75].selector = @selector(multipliedByWithInt:);
+  methods[76].selector = @selector(negated);
+  methods[77].selector = @selector(toStandardWeeks);
+  methods[78].selector = @selector(toStandardDays);
+  methods[79].selector = @selector(toStandardHours);
+  methods[80].selector = @selector(toStandardMinutes);
+  methods[81].selector = @selector(toStandardSeconds);
+  methods[82].selector = @selector(toStandardDuration);
+  methods[83].selector = @selector(checkYearsAndMonthsWithNSString:);
+  methods[84].selector = @selector(normalizedStandard);
+  methods[85].selector = @selector(normalizedStandardWithOrgJodaTimePeriodType:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "ZERO", "LOrgJodaTimePeriod;", .constantValue.asLong = 0, 0x19, -1, 74, -1, -1 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimePeriod_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "parse", "LNSString;", (void *)&OrgJodaTimePeriod__Annotations$0, "LNSString;LOrgJodaTimeFormatPeriodFormatter;", "years", "I", "months", "weeks", "days", "hours", "minutes", "seconds", "millis", "fieldDifference", "LOrgJodaTimeReadablePartial;LOrgJodaTimeReadablePartial;", "IIII", "IIIIIIII", "IIIIIIIILOrgJodaTimePeriodType;", "J", "JLOrgJodaTimePeriodType;", "JLOrgJodaTimeChronology;", "JLOrgJodaTimePeriodType;LOrgJodaTimeChronology;", "JJ", "JJLOrgJodaTimePeriodType;", "JJLOrgJodaTimeChronology;", "JJLOrgJodaTimePeriodType;LOrgJodaTimeChronology;", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableInstant;", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableInstant;LOrgJodaTimePeriodType;", "LOrgJodaTimeReadablePartial;LOrgJodaTimeReadablePartial;LOrgJodaTimePeriodType;", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableDuration;", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableDuration;LOrgJodaTimePeriodType;", "LOrgJodaTimeReadableDuration;LOrgJodaTimeReadableInstant;", "LOrgJodaTimeReadableDuration;LOrgJodaTimeReadableInstant;LOrgJodaTimePeriodType;", "LNSObject;", "LNSObject;LOrgJodaTimePeriodType;", "LNSObject;LOrgJodaTimeChronology;", "LNSObject;LOrgJodaTimePeriodType;LOrgJodaTimeChronology;", "[ILOrgJodaTimePeriodType;", "withPeriodType", "LOrgJodaTimePeriodType;", "withFields", "LOrgJodaTimeReadablePeriod;", "withField", "LOrgJodaTimeDurationFieldType;I", "withFieldAdded", "withYears", "withMonths", "withWeeks", "withDays", "withHours", "withMinutes", "withSeconds", "withMillis", "plus", "plusYears", "plusMonths", "plusWeeks", "plusDays", "plusHours", "plusMinutes", "plusSeconds", "plusMillis", "minus", "minusYears", "minusMonths", "minusWeeks", "minusDays", "minusHours", "minusMinutes", "minusSeconds", "minusMillis", "multipliedBy", "checkYearsAndMonths", "normalizedStandard", &OrgJodaTimePeriod_ZERO };
+  static const J2ObjcClassInfo _OrgJodaTimePeriod = { "Period", "org.joda.time", ptrTable, methods, fields, 7, 0x11, 86, 2, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimePeriod;
 }
 
 + (void)initialize {
@@ -681,107 +870,6 @@ J2OBJC_IGNORE_DESIGNATED_END
     JreStrongAssignAndConsume(&OrgJodaTimePeriod_ZERO, new_OrgJodaTimePeriod_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimePeriod)
   }
-}
-
-+ (IOSObjectArray *)__annotations_parseWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "parseWithNSString:", "parse", "Lorg.joda.time.Period;", 0x9, NULL, NULL },
-    { "parseWithNSString:withOrgJodaTimeFormatPeriodFormatter:", "parse", "Lorg.joda.time.Period;", 0x9, NULL, NULL },
-    { "yearsWithInt:", "years", "Lorg.joda.time.Period;", 0x9, NULL, NULL },
-    { "monthsWithInt:", "months", "Lorg.joda.time.Period;", 0x9, NULL, NULL },
-    { "weeksWithInt:", "weeks", "Lorg.joda.time.Period;", 0x9, NULL, NULL },
-    { "daysWithInt:", "days", "Lorg.joda.time.Period;", 0x9, NULL, NULL },
-    { "hoursWithInt:", "hours", "Lorg.joda.time.Period;", 0x9, NULL, NULL },
-    { "minutesWithInt:", "minutes", "Lorg.joda.time.Period;", 0x9, NULL, NULL },
-    { "secondsWithInt:", "seconds", "Lorg.joda.time.Period;", 0x9, NULL, NULL },
-    { "millisWithInt:", "millis", "Lorg.joda.time.Period;", 0x9, NULL, NULL },
-    { "fieldDifferenceWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:", "fieldDifference", "Lorg.joda.time.Period;", 0x9, NULL, NULL },
-    { "init", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithInt:withInt:withInt:withInt:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withInt:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withInt:withOrgJodaTimePeriodType:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithLong:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withOrgJodaTimePeriodType:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withOrgJodaTimeChronology:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withOrgJodaTimePeriodType:withOrgJodaTimeChronology:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withLong:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withLong:withOrgJodaTimePeriodType:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withLong:withOrgJodaTimeChronology:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withLong:withOrgJodaTimePeriodType:withOrgJodaTimeChronology:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:withOrgJodaTimePeriodType:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:withOrgJodaTimePeriodType:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableDuration:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableDuration:withOrgJodaTimePeriodType:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadableDuration:withOrgJodaTimeReadableInstant:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadableDuration:withOrgJodaTimeReadableInstant:withOrgJodaTimePeriodType:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithId:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithId:withOrgJodaTimePeriodType:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithId:withOrgJodaTimeChronology:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithId:withOrgJodaTimePeriodType:withOrgJodaTimeChronology:", "Period", NULL, 0x1, NULL, NULL },
-    { "initWithIntArray:withOrgJodaTimePeriodType:", "Period", NULL, 0x2, NULL, NULL },
-    { "toPeriod", NULL, "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "getYears", NULL, "I", 0x1, NULL, NULL },
-    { "getMonths", NULL, "I", 0x1, NULL, NULL },
-    { "getWeeks", NULL, "I", 0x1, NULL, NULL },
-    { "getDays", NULL, "I", 0x1, NULL, NULL },
-    { "getHours", NULL, "I", 0x1, NULL, NULL },
-    { "getMinutes", NULL, "I", 0x1, NULL, NULL },
-    { "getSeconds", NULL, "I", 0x1, NULL, NULL },
-    { "getMillis", NULL, "I", 0x1, NULL, NULL },
-    { "withPeriodTypeWithOrgJodaTimePeriodType:", "withPeriodType", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "withFieldsWithOrgJodaTimeReadablePeriod:", "withFields", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "withFieldWithOrgJodaTimeDurationFieldType:withInt:", "withField", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "withFieldAddedWithOrgJodaTimeDurationFieldType:withInt:", "withFieldAdded", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "withYearsWithInt:", "withYears", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "withMonthsWithInt:", "withMonths", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "withWeeksWithInt:", "withWeeks", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "withDaysWithInt:", "withDays", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "withHoursWithInt:", "withHours", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "withMinutesWithInt:", "withMinutes", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "withSecondsWithInt:", "withSeconds", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "withMillisWithInt:", "withMillis", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "plusWithOrgJodaTimeReadablePeriod:", "plus", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "plusYearsWithInt:", "plusYears", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "plusMonthsWithInt:", "plusMonths", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "plusWeeksWithInt:", "plusWeeks", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "plusDaysWithInt:", "plusDays", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "plusHoursWithInt:", "plusHours", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "plusMinutesWithInt:", "plusMinutes", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "plusSecondsWithInt:", "plusSeconds", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "plusMillisWithInt:", "plusMillis", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "minusWithOrgJodaTimeReadablePeriod:", "minus", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "minusYearsWithInt:", "minusYears", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "minusMonthsWithInt:", "minusMonths", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "minusWeeksWithInt:", "minusWeeks", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "minusDaysWithInt:", "minusDays", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "minusHoursWithInt:", "minusHours", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "minusMinutesWithInt:", "minusMinutes", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "minusSecondsWithInt:", "minusSeconds", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "minusMillisWithInt:", "minusMillis", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "multipliedByWithInt:", "multipliedBy", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "negated", NULL, "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "toStandardWeeks", NULL, "Lorg.joda.time.Weeks;", 0x1, NULL, NULL },
-    { "toStandardDays", NULL, "Lorg.joda.time.Days;", 0x1, NULL, NULL },
-    { "toStandardHours", NULL, "Lorg.joda.time.Hours;", 0x1, NULL, NULL },
-    { "toStandardMinutes", NULL, "Lorg.joda.time.Minutes;", 0x1, NULL, NULL },
-    { "toStandardSeconds", NULL, "Lorg.joda.time.Seconds;", 0x1, NULL, NULL },
-    { "toStandardDuration", NULL, "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-    { "checkYearsAndMonthsWithNSString:", "checkYearsAndMonths", "V", 0x2, NULL, NULL },
-    { "normalizedStandard", NULL, "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "normalizedStandardWithOrgJodaTimePeriodType:", "normalizedStandard", "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "ZERO", "ZERO", 0x19, "Lorg.joda.time.Period;", &OrgJodaTimePeriod_ZERO, NULL, .constantValue.asLong = 0 },
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimePeriod_serialVersionUID },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimePeriod = { 2, "Period", "org.joda.time", NULL, 0x11, 86, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimePeriod;
 }
 
 @end
@@ -798,65 +886,65 @@ OrgJodaTimePeriod *OrgJodaTimePeriod_parseWithNSString_withOrgJodaTimeFormatPeri
 
 OrgJodaTimePeriod *OrgJodaTimePeriod_yearsWithInt_(jint years) {
   OrgJodaTimePeriod_initialize();
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ years, 0, 0, 0, 0, 0, 0, 0, 0 } count:9], OrgJodaTimePeriodType_standard()) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ years, 0, 0, 0, 0, 0, 0, 0, 0 } count:9], OrgJodaTimePeriodType_standard());
 }
 
 OrgJodaTimePeriod *OrgJodaTimePeriod_monthsWithInt_(jint months) {
   OrgJodaTimePeriod_initialize();
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ 0, months, 0, 0, 0, 0, 0, 0 } count:8], OrgJodaTimePeriodType_standard()) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ 0, months, 0, 0, 0, 0, 0, 0 } count:8], OrgJodaTimePeriodType_standard());
 }
 
 OrgJodaTimePeriod *OrgJodaTimePeriod_weeksWithInt_(jint weeks) {
   OrgJodaTimePeriod_initialize();
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ 0, 0, weeks, 0, 0, 0, 0, 0 } count:8], OrgJodaTimePeriodType_standard()) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ 0, 0, weeks, 0, 0, 0, 0, 0 } count:8], OrgJodaTimePeriodType_standard());
 }
 
 OrgJodaTimePeriod *OrgJodaTimePeriod_daysWithInt_(jint days) {
   OrgJodaTimePeriod_initialize();
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ 0, 0, 0, days, 0, 0, 0, 0 } count:8], OrgJodaTimePeriodType_standard()) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ 0, 0, 0, days, 0, 0, 0, 0 } count:8], OrgJodaTimePeriodType_standard());
 }
 
 OrgJodaTimePeriod *OrgJodaTimePeriod_hoursWithInt_(jint hours) {
   OrgJodaTimePeriod_initialize();
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ 0, 0, 0, 0, hours, 0, 0, 0 } count:8], OrgJodaTimePeriodType_standard()) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ 0, 0, 0, 0, hours, 0, 0, 0 } count:8], OrgJodaTimePeriodType_standard());
 }
 
 OrgJodaTimePeriod *OrgJodaTimePeriod_minutesWithInt_(jint minutes) {
   OrgJodaTimePeriod_initialize();
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ 0, 0, 0, 0, 0, minutes, 0, 0 } count:8], OrgJodaTimePeriodType_standard()) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ 0, 0, 0, 0, 0, minutes, 0, 0 } count:8], OrgJodaTimePeriodType_standard());
 }
 
 OrgJodaTimePeriod *OrgJodaTimePeriod_secondsWithInt_(jint seconds) {
   OrgJodaTimePeriod_initialize();
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ 0, 0, 0, 0, 0, 0, seconds, 0 } count:8], OrgJodaTimePeriodType_standard()) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ 0, 0, 0, 0, 0, 0, seconds, 0 } count:8], OrgJodaTimePeriodType_standard());
 }
 
 OrgJodaTimePeriod *OrgJodaTimePeriod_millisWithInt_(jint millis) {
   OrgJodaTimePeriod_initialize();
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ 0, 0, 0, 0, 0, 0, 0, millis } count:8], OrgJodaTimePeriodType_standard()) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_([IOSIntArray arrayWithInts:(jint[]){ 0, 0, 0, 0, 0, 0, 0, millis } count:8], OrgJodaTimePeriodType_standard());
 }
 
 OrgJodaTimePeriod *OrgJodaTimePeriod_fieldDifferenceWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end) {
   OrgJodaTimePeriod_initialize();
   if (start == nil || end == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must not be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must not be null");
   }
-  if ([((id<OrgJodaTimeReadablePartial>) nil_chk(start)) size] != [((id<OrgJodaTimeReadablePartial>) nil_chk(end)) size]) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must have the same set of fields") autorelease];
+  if ([start size] != [end size]) {
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must have the same set of fields");
   }
   IOSObjectArray *types = [IOSObjectArray arrayWithLength:[start size] type:OrgJodaTimeDurationFieldType_class_()];
   IOSIntArray *values = [IOSIntArray arrayWithLength:[start size]];
   for (jint i = 0, isize = [start size]; i < isize; i++) {
     if ([start getFieldTypeWithInt:i] != [end getFieldTypeWithInt:i]) {
-      @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must have the same set of fields") autorelease];
+      @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must have the same set of fields");
     }
     IOSObjectArray_Set(types, i, [((OrgJodaTimeDateTimeFieldType *) nil_chk([start getFieldTypeWithInt:i])) getDurationType]);
     if (i > 0 && IOSObjectArray_Get(types, i - 1) == IOSObjectArray_Get(types, i)) {
-      @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must not have overlapping fields") autorelease];
+      @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must not have overlapping fields");
     }
     *IOSIntArray_GetRef(values, i) = [end getValueWithInt:i] - [start getValueWithInt:i];
   }
-  return [new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, OrgJodaTimePeriodType_forFieldsWithOrgJodaTimeDurationFieldTypeArray_(types)) autorelease];
+  return create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(values, OrgJodaTimePeriodType_forFieldsWithOrgJodaTimeDurationFieldTypeArray_(types));
 }
 
 void OrgJodaTimePeriod_init(OrgJodaTimePeriod *self) {
@@ -864,15 +952,11 @@ void OrgJodaTimePeriod_init(OrgJodaTimePeriod *self) {
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_init() {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, init)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_init() {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, init)
 }
 
 void OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_(OrgJodaTimePeriod *self, jint hours, jint minutes, jint seconds, jint millis) {
@@ -880,15 +964,11 @@ void OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_(OrgJodaTimePeriod *s
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_(jint hours, jint minutes, jint seconds, jint millis) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_(self, hours, minutes, seconds, millis);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithInt_withInt_withInt_withInt_, hours, minutes, seconds, millis)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_(jint hours, jint minutes, jint seconds, jint millis) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_(self, hours, minutes, seconds, millis);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithInt_withInt_withInt_withInt_, hours, minutes, seconds, millis)
 }
 
 void OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(OrgJodaTimePeriod *self, jint years, jint months, jint weeks, jint days, jint hours, jint minutes, jint seconds, jint millis) {
@@ -896,15 +976,11 @@ void OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withI
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(jint years, jint months, jint weeks, jint days, jint hours, jint minutes, jint seconds, jint millis) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(self, years, months, weeks, days, hours, minutes, seconds, millis);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_, years, months, weeks, days, hours, minutes, seconds, millis)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(jint years, jint months, jint weeks, jint days, jint hours, jint minutes, jint seconds, jint millis) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(self, years, months, weeks, days, hours, minutes, seconds, millis);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_, years, months, weeks, days, hours, minutes, seconds, millis)
 }
 
 void OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimePeriodType_(OrgJodaTimePeriod *self, jint years, jint months, jint weeks, jint days, jint hours, jint minutes, jint seconds, jint millis, OrgJodaTimePeriodType *type) {
@@ -912,15 +988,11 @@ void OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withI
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimePeriodType_(jint years, jint months, jint weeks, jint days, jint hours, jint minutes, jint seconds, jint millis, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimePeriodType_(self, years, months, weeks, days, hours, minutes, seconds, millis, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimePeriodType_, years, months, weeks, days, hours, minutes, seconds, millis, type)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimePeriodType_(jint years, jint months, jint weeks, jint days, jint hours, jint minutes, jint seconds, jint millis, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimePeriodType_(self, years, months, weeks, days, hours, minutes, seconds, millis, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimePeriodType_, years, months, weeks, days, hours, minutes, seconds, millis, type)
 }
 
 void OrgJodaTimePeriod_initWithLong_(OrgJodaTimePeriod *self, jlong duration) {
@@ -928,15 +1000,11 @@ void OrgJodaTimePeriod_initWithLong_(OrgJodaTimePeriod *self, jlong duration) {
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithLong_(jlong duration) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithLong_(self, duration);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithLong_, duration)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithLong_(jlong duration) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithLong_(self, duration);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithLong_, duration)
 }
 
 void OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_(OrgJodaTimePeriod *self, jlong duration, OrgJodaTimePeriodType *type) {
@@ -944,15 +1012,11 @@ void OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_(OrgJodaTimePeriod
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_(jlong duration, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_(self, duration, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithLong_withOrgJodaTimePeriodType_, duration, type)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_(jlong duration, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_(self, duration, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithLong_withOrgJodaTimePeriodType_, duration, type)
 }
 
 void OrgJodaTimePeriod_initWithLong_withOrgJodaTimeChronology_(OrgJodaTimePeriod *self, jlong duration, OrgJodaTimeChronology *chronology) {
@@ -960,15 +1024,11 @@ void OrgJodaTimePeriod_initWithLong_withOrgJodaTimeChronology_(OrgJodaTimePeriod
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithLong_withOrgJodaTimeChronology_(jlong duration, OrgJodaTimeChronology *chronology) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithLong_withOrgJodaTimeChronology_(self, duration, chronology);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithLong_withOrgJodaTimeChronology_, duration, chronology)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithLong_withOrgJodaTimeChronology_(jlong duration, OrgJodaTimeChronology *chronology) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithLong_withOrgJodaTimeChronology_(self, duration, chronology);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithLong_withOrgJodaTimeChronology_, duration, chronology)
 }
 
 void OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(OrgJodaTimePeriod *self, jlong duration, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chronology) {
@@ -976,15 +1036,11 @@ void OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChr
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(jlong duration, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chronology) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(self, duration, type, chronology);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_, duration, type, chronology)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(jlong duration, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chronology) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(self, duration, type, chronology);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_, duration, type, chronology)
 }
 
 void OrgJodaTimePeriod_initWithLong_withLong_(OrgJodaTimePeriod *self, jlong startInstant, jlong endInstant) {
@@ -992,15 +1048,11 @@ void OrgJodaTimePeriod_initWithLong_withLong_(OrgJodaTimePeriod *self, jlong sta
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithLong_withLong_(jlong startInstant, jlong endInstant) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithLong_withLong_(self, startInstant, endInstant);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithLong_withLong_, startInstant, endInstant)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithLong_withLong_(jlong startInstant, jlong endInstant) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithLong_withLong_(self, startInstant, endInstant);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithLong_withLong_, startInstant, endInstant)
 }
 
 void OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_(OrgJodaTimePeriod *self, jlong startInstant, jlong endInstant, OrgJodaTimePeriodType *type) {
@@ -1008,15 +1060,11 @@ void OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_(OrgJodaT
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_(jlong startInstant, jlong endInstant, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_(self, startInstant, endInstant, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithLong_withLong_withOrgJodaTimePeriodType_, startInstant, endInstant, type)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_(jlong startInstant, jlong endInstant, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_(self, startInstant, endInstant, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithLong_withLong_withOrgJodaTimePeriodType_, startInstant, endInstant, type)
 }
 
 void OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimeChronology_(OrgJodaTimePeriod *self, jlong startInstant, jlong endInstant, OrgJodaTimeChronology *chrono) {
@@ -1024,15 +1072,11 @@ void OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimeChronology_(OrgJodaT
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimeChronology_(jlong startInstant, jlong endInstant, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimeChronology_(self, startInstant, endInstant, chrono);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithLong_withLong_withOrgJodaTimeChronology_, startInstant, endInstant, chrono)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimeChronology_(jlong startInstant, jlong endInstant, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimeChronology_(self, startInstant, endInstant, chrono);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithLong_withLong_withOrgJodaTimeChronology_, startInstant, endInstant, chrono)
 }
 
 void OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(OrgJodaTimePeriod *self, jlong startInstant, jlong endInstant, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chrono) {
@@ -1040,15 +1084,11 @@ void OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJo
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(jlong startInstant, jlong endInstant, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(self, startInstant, endInstant, type, chrono);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_, startInstant, endInstant, type, chrono)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(jlong startInstant, jlong endInstant, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(self, startInstant, endInstant, type, chrono);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_, startInstant, endInstant, type, chrono)
 }
 
 void OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(OrgJodaTimePeriod *self, id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableInstant> endInstant) {
@@ -1056,15 +1096,11 @@ void OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadabl
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableInstant> endInstant) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(self, startInstant, endInstant);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_, startInstant, endInstant)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableInstant> endInstant) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(self, startInstant, endInstant);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_, startInstant, endInstant)
 }
 
 void OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(OrgJodaTimePeriod *self, id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableInstant> endInstant, OrgJodaTimePeriodType *type) {
@@ -1072,15 +1108,11 @@ void OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadabl
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableInstant> endInstant, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(self, startInstant, endInstant, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_, startInstant, endInstant, type)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableInstant> endInstant, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(self, startInstant, endInstant, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_, startInstant, endInstant, type)
 }
 
 void OrgJodaTimePeriod_initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(OrgJodaTimePeriod *self, id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end) {
@@ -1088,15 +1120,11 @@ void OrgJodaTimePeriod_initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadabl
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(self, start, end);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_, start, end)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_(self, start, end);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_, start, end)
 }
 
 void OrgJodaTimePeriod_initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_withOrgJodaTimePeriodType_(OrgJodaTimePeriod *self, id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end, OrgJodaTimePeriodType *type) {
@@ -1104,15 +1132,11 @@ void OrgJodaTimePeriod_initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadabl
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_withOrgJodaTimePeriodType_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_withOrgJodaTimePeriodType_(self, start, end, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_withOrgJodaTimePeriodType_, start, end, type)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_withOrgJodaTimePeriodType_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_withOrgJodaTimePeriodType_(self, start, end, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_withOrgJodaTimePeriodType_, start, end, type)
 }
 
 void OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_(OrgJodaTimePeriod *self, id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableDuration> duration) {
@@ -1120,15 +1144,11 @@ void OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadabl
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableDuration> duration) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_(self, startInstant, duration);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_, startInstant, duration)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableDuration> duration) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_(self, startInstant, duration);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_, startInstant, duration)
 }
 
 void OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_withOrgJodaTimePeriodType_(OrgJodaTimePeriod *self, id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableDuration> duration, OrgJodaTimePeriodType *type) {
@@ -1136,15 +1156,11 @@ void OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadabl
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_withOrgJodaTimePeriodType_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableDuration> duration, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_withOrgJodaTimePeriodType_(self, startInstant, duration, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_withOrgJodaTimePeriodType_, startInstant, duration, type)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_withOrgJodaTimePeriodType_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableDuration> duration, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_withOrgJodaTimePeriodType_(self, startInstant, duration, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_withOrgJodaTimePeriodType_, startInstant, duration, type)
 }
 
 void OrgJodaTimePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(OrgJodaTimePeriod *self, id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> endInstant) {
@@ -1152,15 +1168,11 @@ void OrgJodaTimePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadab
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> endInstant) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(self, duration, endInstant);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_, duration, endInstant)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> endInstant) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(self, duration, endInstant);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_, duration, endInstant)
 }
 
 void OrgJodaTimePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(OrgJodaTimePeriod *self, id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> endInstant, OrgJodaTimePeriodType *type) {
@@ -1168,15 +1180,11 @@ void OrgJodaTimePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadab
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> endInstant, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(self, duration, endInstant, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_, duration, endInstant, type)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> endInstant, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(self, duration, endInstant, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_, duration, endInstant, type)
 }
 
 void OrgJodaTimePeriod_initWithId_(OrgJodaTimePeriod *self, id period) {
@@ -1184,15 +1192,11 @@ void OrgJodaTimePeriod_initWithId_(OrgJodaTimePeriod *self, id period) {
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithId_(id period) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithId_(self, period);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithId_, period)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithId_(id period) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithId_(self, period);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithId_, period)
 }
 
 void OrgJodaTimePeriod_initWithId_withOrgJodaTimePeriodType_(OrgJodaTimePeriod *self, id period, OrgJodaTimePeriodType *type) {
@@ -1200,15 +1204,11 @@ void OrgJodaTimePeriod_initWithId_withOrgJodaTimePeriodType_(OrgJodaTimePeriod *
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithId_withOrgJodaTimePeriodType_(id period, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithId_withOrgJodaTimePeriodType_(self, period, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithId_withOrgJodaTimePeriodType_, period, type)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithId_withOrgJodaTimePeriodType_(id period, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithId_withOrgJodaTimePeriodType_(self, period, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithId_withOrgJodaTimePeriodType_, period, type)
 }
 
 void OrgJodaTimePeriod_initWithId_withOrgJodaTimeChronology_(OrgJodaTimePeriod *self, id period, OrgJodaTimeChronology *chrono) {
@@ -1216,15 +1216,11 @@ void OrgJodaTimePeriod_initWithId_withOrgJodaTimeChronology_(OrgJodaTimePeriod *
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithId_withOrgJodaTimeChronology_(id period, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithId_withOrgJodaTimeChronology_(self, period, chrono);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithId_withOrgJodaTimeChronology_, period, chrono)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithId_withOrgJodaTimeChronology_(id period, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithId_withOrgJodaTimeChronology_(self, period, chrono);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithId_withOrgJodaTimeChronology_, period, chrono)
 }
 
 void OrgJodaTimePeriod_initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(OrgJodaTimePeriod *self, id period, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chrono) {
@@ -1232,15 +1228,11 @@ void OrgJodaTimePeriod_initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChron
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(id period, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(self, period, type, chrono);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_, period, type, chrono)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(id period, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(self, period, type, chrono);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_, period, type, chrono)
 }
 
 void OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(OrgJodaTimePeriod *self, IOSIntArray *values, OrgJodaTimePeriodType *type) {
@@ -1248,24 +1240,24 @@ void OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(OrgJodaTimePe
 }
 
 OrgJodaTimePeriod *new_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(IOSIntArray *values, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [OrgJodaTimePeriod alloc];
-  OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(self, values, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimePeriod, initWithIntArray_withOrgJodaTimePeriodType_, values, type)
 }
 
 OrgJodaTimePeriod *create_OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(IOSIntArray *values, OrgJodaTimePeriodType *type) {
-  OrgJodaTimePeriod *self = [[OrgJodaTimePeriod alloc] autorelease];
-  OrgJodaTimePeriod_initWithIntArray_withOrgJodaTimePeriodType_(self, values, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimePeriod, initWithIntArray_withOrgJodaTimePeriodType_, values, type)
 }
 
 void OrgJodaTimePeriod_checkYearsAndMonthsWithNSString_(OrgJodaTimePeriod *self, NSString *destintionType) {
   if ([self getMonths] != 0) {
-    @throw [new_JavaLangUnsupportedOperationException_initWithNSString_(JreStrcat("$$$", @"Cannot convert to ", destintionType, @" as this period contains months and months vary in length")) autorelease];
+    @throw create_JavaLangUnsupportedOperationException_initWithNSString_(JreStrcat("$$$", @"Cannot convert to ", destintionType, @" as this period contains months and months vary in length"));
   }
   if ([self getYears] != 0) {
-    @throw [new_JavaLangUnsupportedOperationException_initWithNSString_(JreStrcat("$$$", @"Cannot convert to ", destintionType, @" as this period contains years and years vary in length")) autorelease];
+    @throw create_JavaLangUnsupportedOperationException_initWithNSString_(JreStrcat("$$$", @"Cannot convert to ", destintionType, @" as this period contains years and years vary in length"));
   }
+}
+
+IOSObjectArray *OrgJodaTimePeriod__Annotations$0() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_OrgJodaConvertFromString() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimePeriod)

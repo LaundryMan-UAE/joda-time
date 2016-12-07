@@ -5,39 +5,39 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertNullConverter_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertNullConverter_RESTRICT
-#define OrgJodaTimeConvertNullConverter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertNullConverter")
+#ifdef RESTRICT_OrgJodaTimeConvertNullConverter
+#define INCLUDE_ALL_OrgJodaTimeConvertNullConverter 0
 #else
-#define OrgJodaTimeConvertNullConverter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertNullConverter 1
 #endif
-#undef OrgJodaTimeConvertNullConverter_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertNullConverter
 
-#if !defined (OrgJodaTimeConvertNullConverter_) && (OrgJodaTimeConvertNullConverter_INCLUDE_ALL || defined(OrgJodaTimeConvertNullConverter_INCLUDE))
+#if !defined (OrgJodaTimeConvertNullConverter_) && (INCLUDE_ALL_OrgJodaTimeConvertNullConverter || defined(INCLUDE_OrgJodaTimeConvertNullConverter))
 #define OrgJodaTimeConvertNullConverter_
 
-#define OrgJodaTimeConvertAbstractConverter_RESTRICT 1
-#define OrgJodaTimeConvertAbstractConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertAbstractConverter 1
+#define INCLUDE_OrgJodaTimeConvertAbstractConverter 1
 #include "org/joda/time/convert/AbstractConverter.h"
 
-#define OrgJodaTimeConvertInstantConverter_RESTRICT 1
-#define OrgJodaTimeConvertInstantConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertInstantConverter 1
+#define INCLUDE_OrgJodaTimeConvertInstantConverter 1
 #include "org/joda/time/convert/InstantConverter.h"
 
-#define OrgJodaTimeConvertPartialConverter_RESTRICT 1
-#define OrgJodaTimeConvertPartialConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertPartialConverter 1
+#define INCLUDE_OrgJodaTimeConvertPartialConverter 1
 #include "org/joda/time/convert/PartialConverter.h"
 
-#define OrgJodaTimeConvertDurationConverter_RESTRICT 1
-#define OrgJodaTimeConvertDurationConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertDurationConverter 1
+#define INCLUDE_OrgJodaTimeConvertDurationConverter 1
 #include "org/joda/time/convert/DurationConverter.h"
 
-#define OrgJodaTimeConvertPeriodConverter_RESTRICT 1
-#define OrgJodaTimeConvertPeriodConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertPeriodConverter 1
+#define INCLUDE_OrgJodaTimeConvertPeriodConverter 1
 #include "org/joda/time/convert/PeriodConverter.h"
 
-#define OrgJodaTimeConvertIntervalConverter_RESTRICT 1
-#define OrgJodaTimeConvertIntervalConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertIntervalConverter 1
+#define INCLUDE_OrgJodaTimeConvertIntervalConverter 1
 #include "org/joda/time/convert/IntervalConverter.h"
 
 @class IOSClass;
@@ -123,4 +123,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertNullConverter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertNullConverter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertNullConverter")

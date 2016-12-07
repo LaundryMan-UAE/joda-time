@@ -78,22 +78,32 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "ISOPeriodFormat", NULL, 0x4, NULL, NULL },
-    { "standard", NULL, "Lorg.joda.time.format.PeriodFormatter;", 0x9, NULL, NULL },
-    { "alternate", NULL, "Lorg.joda.time.format.PeriodFormatter;", 0x9, NULL, NULL },
-    { "alternateExtended", NULL, "Lorg.joda.time.format.PeriodFormatter;", 0x9, NULL, NULL },
-    { "alternateWithWeeks", NULL, "Lorg.joda.time.format.PeriodFormatter;", 0x9, NULL, NULL },
-    { "alternateExtendedWithWeeks", NULL, "Lorg.joda.time.format.PeriodFormatter;", 0x9, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatPeriodFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatPeriodFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatPeriodFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatPeriodFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatPeriodFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(standard);
+  methods[2].selector = @selector(alternate);
+  methods[3].selector = @selector(alternateExtended);
+  methods[4].selector = @selector(alternateWithWeeks);
+  methods[5].selector = @selector(alternateExtendedWithWeeks);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "cStandard", "cStandard", 0xa, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeFormatISOPeriodFormat_cStandard, NULL, .constantValue.asLong = 0 },
-    { "cAlternate", "cAlternate", 0xa, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeFormatISOPeriodFormat_cAlternate, NULL, .constantValue.asLong = 0 },
-    { "cAlternateExtended", "cAlternateExtended", 0xa, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeFormatISOPeriodFormat_cAlternateExtended, NULL, .constantValue.asLong = 0 },
-    { "cAlternateWithWeeks", "cAlternateWithWeeks", 0xa, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeFormatISOPeriodFormat_cAlternateWithWeeks, NULL, .constantValue.asLong = 0 },
-    { "cAlternateExtendedWihWeeks", "cAlternateExtendedWihWeeks", 0xa, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeFormatISOPeriodFormat_cAlternateExtendedWihWeeks, NULL, .constantValue.asLong = 0 },
+    { "cStandard", "LOrgJodaTimeFormatPeriodFormatter;", .constantValue.asLong = 0, 0xa, -1, 0, -1, -1 },
+    { "cAlternate", "LOrgJodaTimeFormatPeriodFormatter;", .constantValue.asLong = 0, 0xa, -1, 1, -1, -1 },
+    { "cAlternateExtended", "LOrgJodaTimeFormatPeriodFormatter;", .constantValue.asLong = 0, 0xa, -1, 2, -1, -1 },
+    { "cAlternateWithWeeks", "LOrgJodaTimeFormatPeriodFormatter;", .constantValue.asLong = 0, 0xa, -1, 3, -1, -1 },
+    { "cAlternateExtendedWihWeeks", "LOrgJodaTimeFormatPeriodFormatter;", .constantValue.asLong = 0, 0xa, -1, 4, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatISOPeriodFormat = { 2, "ISOPeriodFormat", "org.joda.time.format", NULL, 0x1, 6, methods, 5, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { &OrgJodaTimeFormatISOPeriodFormat_cStandard, &OrgJodaTimeFormatISOPeriodFormat_cAlternate, &OrgJodaTimeFormatISOPeriodFormat_cAlternateExtended, &OrgJodaTimeFormatISOPeriodFormat_cAlternateWithWeeks, &OrgJodaTimeFormatISOPeriodFormat_cAlternateExtendedWihWeeks };
+  static const J2ObjcClassInfo _OrgJodaTimeFormatISOPeriodFormat = { "ISOPeriodFormat", "org.joda.time.format", ptrTable, methods, fields, 7, 0x1, 6, 5, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFormatISOPeriodFormat;
 }
 
@@ -104,21 +114,17 @@ void OrgJodaTimeFormatISOPeriodFormat_init(OrgJodaTimeFormatISOPeriodFormat *sel
 }
 
 OrgJodaTimeFormatISOPeriodFormat *new_OrgJodaTimeFormatISOPeriodFormat_init() {
-  OrgJodaTimeFormatISOPeriodFormat *self = [OrgJodaTimeFormatISOPeriodFormat alloc];
-  OrgJodaTimeFormatISOPeriodFormat_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFormatISOPeriodFormat, init)
 }
 
 OrgJodaTimeFormatISOPeriodFormat *create_OrgJodaTimeFormatISOPeriodFormat_init() {
-  OrgJodaTimeFormatISOPeriodFormat *self = [[OrgJodaTimeFormatISOPeriodFormat alloc] autorelease];
-  OrgJodaTimeFormatISOPeriodFormat_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFormatISOPeriodFormat, init)
 }
 
 OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_standard() {
   OrgJodaTimeFormatISOPeriodFormat_initialize();
   if (OrgJodaTimeFormatISOPeriodFormat_cStandard == nil) {
-    JreStrongAssign(&OrgJodaTimeFormatISOPeriodFormat_cStandard, [((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) [new_OrgJodaTimeFormatPeriodFormatterBuilder_init() autorelease]) appendLiteralWithNSString:@"P"])) appendYears])) appendSuffixWithNSString:@"Y"])) appendMonths])) appendSuffixWithNSString:@"M"])) appendWeeks])) appendSuffixWithNSString:@"W"])) appendDays])) appendSuffixWithNSString:@"D"])) appendSeparatorIfFieldsAfterWithNSString:@"T"])) appendHours])) appendSuffixWithNSString:@"H"])) appendMinutes])) appendSuffixWithNSString:@"M"])) appendSecondsWithOptionalMillis])) appendSuffixWithNSString:@"S"])) toFormatter]);
+    JreStrongAssign(&OrgJodaTimeFormatISOPeriodFormat_cStandard, [((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatPeriodFormatterBuilder_init() appendLiteralWithNSString:@"P"])) appendYears])) appendSuffixWithNSString:@"Y"])) appendMonths])) appendSuffixWithNSString:@"M"])) appendWeeks])) appendSuffixWithNSString:@"W"])) appendDays])) appendSuffixWithNSString:@"D"])) appendSeparatorIfFieldsAfterWithNSString:@"T"])) appendHours])) appendSuffixWithNSString:@"H"])) appendMinutes])) appendSuffixWithNSString:@"M"])) appendSecondsWithOptionalMillis])) appendSuffixWithNSString:@"S"])) toFormatter]);
   }
   return OrgJodaTimeFormatISOPeriodFormat_cStandard;
 }
@@ -126,7 +132,7 @@ OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_standard() {
 OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_alternate() {
   OrgJodaTimeFormatISOPeriodFormat_initialize();
   if (OrgJodaTimeFormatISOPeriodFormat_cAlternate == nil) {
-    JreStrongAssign(&OrgJodaTimeFormatISOPeriodFormat_cAlternate, [((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) [new_OrgJodaTimeFormatPeriodFormatterBuilder_init() autorelease]) appendLiteralWithNSString:@"P"])) printZeroAlways])) minimumPrintedDigitsWithInt:4])) appendYears])) minimumPrintedDigitsWithInt:2])) appendMonths])) appendDays])) appendSeparatorIfFieldsAfterWithNSString:@"T"])) appendHours])) appendMinutes])) appendSecondsWithOptionalMillis])) toFormatter]);
+    JreStrongAssign(&OrgJodaTimeFormatISOPeriodFormat_cAlternate, [((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatPeriodFormatterBuilder_init() appendLiteralWithNSString:@"P"])) printZeroAlways])) minimumPrintedDigitsWithInt:4])) appendYears])) minimumPrintedDigitsWithInt:2])) appendMonths])) appendDays])) appendSeparatorIfFieldsAfterWithNSString:@"T"])) appendHours])) appendMinutes])) appendSecondsWithOptionalMillis])) toFormatter]);
   }
   return OrgJodaTimeFormatISOPeriodFormat_cAlternate;
 }
@@ -134,7 +140,7 @@ OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_alternate() {
 OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_alternateExtended() {
   OrgJodaTimeFormatISOPeriodFormat_initialize();
   if (OrgJodaTimeFormatISOPeriodFormat_cAlternateExtended == nil) {
-    JreStrongAssign(&OrgJodaTimeFormatISOPeriodFormat_cAlternateExtended, [((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) [new_OrgJodaTimeFormatPeriodFormatterBuilder_init() autorelease]) appendLiteralWithNSString:@"P"])) printZeroAlways])) minimumPrintedDigitsWithInt:4])) appendYears])) appendSeparatorWithNSString:@"-"])) minimumPrintedDigitsWithInt:2])) appendMonths])) appendSeparatorWithNSString:@"-"])) appendDays])) appendSeparatorIfFieldsAfterWithNSString:@"T"])) appendHours])) appendSeparatorWithNSString:@":"])) appendMinutes])) appendSeparatorWithNSString:@":"])) appendSecondsWithOptionalMillis])) toFormatter]);
+    JreStrongAssign(&OrgJodaTimeFormatISOPeriodFormat_cAlternateExtended, [((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatPeriodFormatterBuilder_init() appendLiteralWithNSString:@"P"])) printZeroAlways])) minimumPrintedDigitsWithInt:4])) appendYears])) appendSeparatorWithNSString:@"-"])) minimumPrintedDigitsWithInt:2])) appendMonths])) appendSeparatorWithNSString:@"-"])) appendDays])) appendSeparatorIfFieldsAfterWithNSString:@"T"])) appendHours])) appendSeparatorWithNSString:@":"])) appendMinutes])) appendSeparatorWithNSString:@":"])) appendSecondsWithOptionalMillis])) toFormatter]);
   }
   return OrgJodaTimeFormatISOPeriodFormat_cAlternateExtended;
 }
@@ -142,7 +148,7 @@ OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_alternateExte
 OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_alternateWithWeeks() {
   OrgJodaTimeFormatISOPeriodFormat_initialize();
   if (OrgJodaTimeFormatISOPeriodFormat_cAlternateWithWeeks == nil) {
-    JreStrongAssign(&OrgJodaTimeFormatISOPeriodFormat_cAlternateWithWeeks, [((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) [new_OrgJodaTimeFormatPeriodFormatterBuilder_init() autorelease]) appendLiteralWithNSString:@"P"])) printZeroAlways])) minimumPrintedDigitsWithInt:4])) appendYears])) minimumPrintedDigitsWithInt:2])) appendPrefixWithNSString:@"W"])) appendWeeks])) appendDays])) appendSeparatorIfFieldsAfterWithNSString:@"T"])) appendHours])) appendMinutes])) appendSecondsWithOptionalMillis])) toFormatter]);
+    JreStrongAssign(&OrgJodaTimeFormatISOPeriodFormat_cAlternateWithWeeks, [((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatPeriodFormatterBuilder_init() appendLiteralWithNSString:@"P"])) printZeroAlways])) minimumPrintedDigitsWithInt:4])) appendYears])) minimumPrintedDigitsWithInt:2])) appendPrefixWithNSString:@"W"])) appendWeeks])) appendDays])) appendSeparatorIfFieldsAfterWithNSString:@"T"])) appendHours])) appendMinutes])) appendSecondsWithOptionalMillis])) toFormatter]);
   }
   return OrgJodaTimeFormatISOPeriodFormat_cAlternateWithWeeks;
 }
@@ -150,7 +156,7 @@ OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_alternateWith
 OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatISOPeriodFormat_alternateExtendedWithWeeks() {
   OrgJodaTimeFormatISOPeriodFormat_initialize();
   if (OrgJodaTimeFormatISOPeriodFormat_cAlternateExtendedWihWeeks == nil) {
-    JreStrongAssign(&OrgJodaTimeFormatISOPeriodFormat_cAlternateExtendedWihWeeks, [((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) [new_OrgJodaTimeFormatPeriodFormatterBuilder_init() autorelease]) appendLiteralWithNSString:@"P"])) printZeroAlways])) minimumPrintedDigitsWithInt:4])) appendYears])) appendSeparatorWithNSString:@"-"])) minimumPrintedDigitsWithInt:2])) appendPrefixWithNSString:@"W"])) appendWeeks])) appendSeparatorWithNSString:@"-"])) appendDays])) appendSeparatorIfFieldsAfterWithNSString:@"T"])) appendHours])) appendSeparatorWithNSString:@":"])) appendMinutes])) appendSeparatorWithNSString:@":"])) appendSecondsWithOptionalMillis])) toFormatter]);
+    JreStrongAssign(&OrgJodaTimeFormatISOPeriodFormat_cAlternateExtendedWihWeeks, [((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatPeriodFormatterBuilder_init() appendLiteralWithNSString:@"P"])) printZeroAlways])) minimumPrintedDigitsWithInt:4])) appendYears])) appendSeparatorWithNSString:@"-"])) minimumPrintedDigitsWithInt:2])) appendPrefixWithNSString:@"W"])) appendWeeks])) appendSeparatorWithNSString:@"-"])) appendDays])) appendSeparatorIfFieldsAfterWithNSString:@"T"])) appendHours])) appendSeparatorWithNSString:@":"])) appendMinutes])) appendSeparatorWithNSString:@":"])) appendSecondsWithOptionalMillis])) toFormatter]);
   }
   return OrgJodaTimeFormatISOPeriodFormat_cAlternateExtendedWihWeeks;
 }

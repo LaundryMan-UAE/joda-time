@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeReadablePeriod_INCLUDE_ALL")
-#ifdef OrgJodaTimeReadablePeriod_RESTRICT
-#define OrgJodaTimeReadablePeriod_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeReadablePeriod")
+#ifdef RESTRICT_OrgJodaTimeReadablePeriod
+#define INCLUDE_ALL_OrgJodaTimeReadablePeriod 0
 #else
-#define OrgJodaTimeReadablePeriod_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeReadablePeriod 1
 #endif
-#undef OrgJodaTimeReadablePeriod_RESTRICT
+#undef RESTRICT_OrgJodaTimeReadablePeriod
 
-#if !defined (OrgJodaTimeReadablePeriod_) && (OrgJodaTimeReadablePeriod_INCLUDE_ALL || defined(OrgJodaTimeReadablePeriod_INCLUDE))
+#if !defined (OrgJodaTimeReadablePeriod_) && (INCLUDE_ALL_OrgJodaTimeReadablePeriod || defined(INCLUDE_OrgJodaTimeReadablePeriod))
 #define OrgJodaTimeReadablePeriod_
 
 @class OrgJodaTimeDurationFieldType;
@@ -46,7 +46,7 @@
  @author Stephen Colebourne
  @since 1.0
  */
-@protocol OrgJodaTimeReadablePeriod < NSObject, JavaObject >
+@protocol OrgJodaTimeReadablePeriod < JavaObject >
 
 /*!
  @brief Gets the period type that defines which fields are included in the period.
@@ -165,4 +165,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadablePeriod)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeReadablePeriod_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeReadablePeriod")

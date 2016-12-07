@@ -4,8 +4,10 @@
 //
 
 #include "IOSClass.h"
+#include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "java/lang/Integer.h"
+#include "java/lang/annotation/Annotation.h"
 #include "org/joda/convert/FromString.h"
 #include "org/joda/convert/ToString.h"
 #include "org/joda/time/Chronology.h"
@@ -62,6 +64,10 @@ __attribute__((unused)) static void OrgJodaTimeMonths_initWithInt_(OrgJodaTimeMo
 __attribute__((unused)) static OrgJodaTimeMonths *new_OrgJodaTimeMonths_initWithInt_(jint months) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static OrgJodaTimeMonths *create_OrgJodaTimeMonths_initWithInt_(jint months);
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeMonths__Annotations$0();
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeMonths__Annotations$1();
 
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeMonths)
 
@@ -137,7 +143,7 @@ OrgJodaTimeMonths *OrgJodaTimeMonths_MIN_VALUE;
   if (months == nil) {
     return self;
   }
-  return [self plusWithInt:[((OrgJodaTimeMonths *) nil_chk(months)) getValue]];
+  return [self plusWithInt:[months getValue]];
 }
 
 - (OrgJodaTimeMonths *)minusWithInt:(jint)months {
@@ -148,7 +154,7 @@ OrgJodaTimeMonths *OrgJodaTimeMonths_MIN_VALUE;
   if (months == nil) {
     return self;
   }
-  return [self minusWithInt:[((OrgJodaTimeMonths *) nil_chk(months)) getValue]];
+  return [self minusWithInt:[months getValue]];
 }
 
 - (OrgJodaTimeMonths *)multipliedByWithInt:(jint)scalar {
@@ -170,18 +176,88 @@ OrgJodaTimeMonths *OrgJodaTimeMonths_MIN_VALUE;
   if (other == nil) {
     return [self getValue] > 0;
   }
-  return [self getValue] > [((OrgJodaTimeMonths *) nil_chk(other)) getValue];
+  return [self getValue] > [other getValue];
 }
 
 - (jboolean)isLessThanWithOrgJodaTimeMonths:(OrgJodaTimeMonths *)other {
   if (other == nil) {
     return [self getValue] < 0;
   }
-  return [self getValue] < [((OrgJodaTimeMonths *) nil_chk(other)) getValue];
+  return [self getValue] < [other getValue];
 }
 
 - (NSString *)description {
   return JreStrcat("C$C", 'P', NSString_valueOfInt_([self getValue]), 'M');
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeMonths;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMonths;", 0x9, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMonths;", 0x9, 2, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMonths;", 0x9, 5, 6, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMonths;", 0x9, 7, 8, -1, -1, 9, -1 },
+    { NULL, NULL, 0x2, -1, 1, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriodType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMonths;", 0x1, 10, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMonths;", 0x1, 10, 11, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMonths;", 0x1, 12, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMonths;", 0x1, 12, 11, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMonths;", 0x1, 13, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMonths;", 0x1, 14, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMonths;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 15, 11, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 16, 11, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 17, -1, -1, -1, 18, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(monthsWithInt:);
+  methods[1].selector = @selector(monthsBetweenWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:);
+  methods[2].selector = @selector(monthsBetweenWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:);
+  methods[3].selector = @selector(monthsInWithOrgJodaTimeReadableInterval:);
+  methods[4].selector = @selector(parseMonthsWithNSString:);
+  methods[5].selector = @selector(initWithInt:);
+  methods[6].selector = @selector(readResolve);
+  methods[7].selector = @selector(getFieldType);
+  methods[8].selector = @selector(getPeriodType);
+  methods[9].selector = @selector(getMonths);
+  methods[10].selector = @selector(plusWithInt:);
+  methods[11].selector = @selector(plusWithOrgJodaTimeMonths:);
+  methods[12].selector = @selector(minusWithInt:);
+  methods[13].selector = @selector(minusWithOrgJodaTimeMonths:);
+  methods[14].selector = @selector(multipliedByWithInt:);
+  methods[15].selector = @selector(dividedByWithInt:);
+  methods[16].selector = @selector(negated);
+  methods[17].selector = @selector(isGreaterThanWithOrgJodaTimeMonths:);
+  methods[18].selector = @selector(isLessThanWithOrgJodaTimeMonths:);
+  methods[19].selector = @selector(description);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "ZERO", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 19, -1, -1 },
+    { "ONE", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 20, -1, -1 },
+    { "TWO", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 21, -1, -1 },
+    { "THREE", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 22, -1, -1 },
+    { "FOUR", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 23, -1, -1 },
+    { "FIVE", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 24, -1, -1 },
+    { "SIX", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 25, -1, -1 },
+    { "SEVEN", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 26, -1, -1 },
+    { "EIGHT", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 27, -1, -1 },
+    { "NINE", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 28, -1, -1 },
+    { "TEN", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 29, -1, -1 },
+    { "ELEVEN", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 30, -1, -1 },
+    { "TWELVE", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 31, -1, -1 },
+    { "MAX_VALUE", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 32, -1, -1 },
+    { "MIN_VALUE", "LOrgJodaTimeMonths;", .constantValue.asLong = 0, 0x19, -1, 33, -1, -1 },
+    { "PARSER", "LOrgJodaTimeFormatPeriodFormatter;", .constantValue.asLong = 0, 0x1a, -1, 34, -1, -1 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeMonths_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "months", "I", "monthsBetween", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableInstant;", "LOrgJodaTimeReadablePartial;LOrgJodaTimeReadablePartial;", "monthsIn", "LOrgJodaTimeReadableInterval;", "parseMonths", "LNSString;", (void *)&OrgJodaTimeMonths__Annotations$0, "plus", "LOrgJodaTimeMonths;", "minus", "multipliedBy", "dividedBy", "isGreaterThan", "isLessThan", "toString", (void *)&OrgJodaTimeMonths__Annotations$1, &OrgJodaTimeMonths_ZERO, &OrgJodaTimeMonths_ONE, &OrgJodaTimeMonths_TWO, &OrgJodaTimeMonths_THREE, &OrgJodaTimeMonths_FOUR, &OrgJodaTimeMonths_FIVE, &OrgJodaTimeMonths_SIX, &OrgJodaTimeMonths_SEVEN, &OrgJodaTimeMonths_EIGHT, &OrgJodaTimeMonths_NINE, &OrgJodaTimeMonths_TEN, &OrgJodaTimeMonths_ELEVEN, &OrgJodaTimeMonths_TWELVE, &OrgJodaTimeMonths_MAX_VALUE, &OrgJodaTimeMonths_MIN_VALUE, &OrgJodaTimeMonths_PARSER };
+  static const J2ObjcClassInfo _OrgJodaTimeMonths = { "Months", "org.joda.time", ptrTable, methods, fields, 7, 0x11, 20, 17, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeMonths;
 }
 
 + (void)initialize {
@@ -204,60 +280,6 @@ OrgJodaTimeMonths *OrgJodaTimeMonths_MIN_VALUE;
     JreStrongAssign(&OrgJodaTimeMonths_PARSER, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_months()]);
     J2OBJC_SET_INITIALIZED(OrgJodaTimeMonths)
   }
-}
-
-+ (IOSObjectArray *)__annotations_parseMonthsWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
-+ (IOSObjectArray *)__annotations_toString {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "monthsWithInt:", "months", "Lorg.joda.time.Months;", 0x9, NULL, NULL },
-    { "monthsBetweenWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:", "monthsBetween", "Lorg.joda.time.Months;", 0x9, NULL, NULL },
-    { "monthsBetweenWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:", "monthsBetween", "Lorg.joda.time.Months;", 0x9, NULL, NULL },
-    { "monthsInWithOrgJodaTimeReadableInterval:", "monthsIn", "Lorg.joda.time.Months;", 0x9, NULL, NULL },
-    { "parseMonthsWithNSString:", "parseMonths", "Lorg.joda.time.Months;", 0x9, NULL, NULL },
-    { "initWithInt:", "Months", NULL, 0x2, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
-    { "getFieldType", NULL, "Lorg.joda.time.DurationFieldType;", 0x1, NULL, NULL },
-    { "getPeriodType", NULL, "Lorg.joda.time.PeriodType;", 0x1, NULL, NULL },
-    { "getMonths", NULL, "I", 0x1, NULL, NULL },
-    { "plusWithInt:", "plus", "Lorg.joda.time.Months;", 0x1, NULL, NULL },
-    { "plusWithOrgJodaTimeMonths:", "plus", "Lorg.joda.time.Months;", 0x1, NULL, NULL },
-    { "minusWithInt:", "minus", "Lorg.joda.time.Months;", 0x1, NULL, NULL },
-    { "minusWithOrgJodaTimeMonths:", "minus", "Lorg.joda.time.Months;", 0x1, NULL, NULL },
-    { "multipliedByWithInt:", "multipliedBy", "Lorg.joda.time.Months;", 0x1, NULL, NULL },
-    { "dividedByWithInt:", "dividedBy", "Lorg.joda.time.Months;", 0x1, NULL, NULL },
-    { "negated", NULL, "Lorg.joda.time.Months;", 0x1, NULL, NULL },
-    { "isGreaterThanWithOrgJodaTimeMonths:", "isGreaterThan", "Z", 0x1, NULL, NULL },
-    { "isLessThanWithOrgJodaTimeMonths:", "isLessThan", "Z", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "ZERO", "ZERO", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_ZERO, NULL, .constantValue.asLong = 0 },
-    { "ONE", "ONE", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_ONE, NULL, .constantValue.asLong = 0 },
-    { "TWO", "TWO", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_TWO, NULL, .constantValue.asLong = 0 },
-    { "THREE", "THREE", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_THREE, NULL, .constantValue.asLong = 0 },
-    { "FOUR", "FOUR", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_FOUR, NULL, .constantValue.asLong = 0 },
-    { "FIVE", "FIVE", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_FIVE, NULL, .constantValue.asLong = 0 },
-    { "SIX", "SIX", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_SIX, NULL, .constantValue.asLong = 0 },
-    { "SEVEN", "SEVEN", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_SEVEN, NULL, .constantValue.asLong = 0 },
-    { "EIGHT", "EIGHT", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_EIGHT, NULL, .constantValue.asLong = 0 },
-    { "NINE", "NINE", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_NINE, NULL, .constantValue.asLong = 0 },
-    { "TEN", "TEN", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_TEN, NULL, .constantValue.asLong = 0 },
-    { "ELEVEN", "ELEVEN", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_ELEVEN, NULL, .constantValue.asLong = 0 },
-    { "TWELVE", "TWELVE", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_TWELVE, NULL, .constantValue.asLong = 0 },
-    { "MAX_VALUE", "MAX_VALUE", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_MAX_VALUE, NULL, .constantValue.asLong = 0 },
-    { "MIN_VALUE", "MIN_VALUE", 0x19, "Lorg.joda.time.Months;", &OrgJodaTimeMonths_MIN_VALUE, NULL, .constantValue.asLong = 0 },
-    { "PARSER", "PARSER", 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeMonths_PARSER, NULL, .constantValue.asLong = 0 },
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeMonths_serialVersionUID },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeMonths = { 2, "Months", "org.joda.time", NULL, 0x11, 20, methods, 17, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeMonths;
 }
 
 @end
@@ -296,7 +318,7 @@ OrgJodaTimeMonths *OrgJodaTimeMonths_monthsWithInt_(jint months) {
     case JavaLangInteger_MIN_VALUE:
     return OrgJodaTimeMonths_MIN_VALUE;
     default:
-    return [new_OrgJodaTimeMonths_initWithInt_(months) autorelease];
+    return create_OrgJodaTimeMonths_initWithInt_(months);
   }
 }
 
@@ -322,7 +344,7 @@ OrgJodaTimeMonths *OrgJodaTimeMonths_monthsInWithOrgJodaTimeReadableInterval_(id
   if (interval == nil) {
     return OrgJodaTimeMonths_ZERO;
   }
-  jint amount = OrgJodaTimeBaseBaseSingleFieldPeriod_betweenWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimeDurationFieldType_([((id<OrgJodaTimeReadableInterval>) nil_chk(interval)) getStart], [interval getEnd], OrgJodaTimeDurationFieldType_months());
+  jint amount = OrgJodaTimeBaseBaseSingleFieldPeriod_betweenWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimeDurationFieldType_([interval getStart], [interval getEnd], OrgJodaTimeDurationFieldType_months());
   return OrgJodaTimeMonths_monthsWithInt_(amount);
 }
 
@@ -340,15 +362,19 @@ void OrgJodaTimeMonths_initWithInt_(OrgJodaTimeMonths *self, jint months) {
 }
 
 OrgJodaTimeMonths *new_OrgJodaTimeMonths_initWithInt_(jint months) {
-  OrgJodaTimeMonths *self = [OrgJodaTimeMonths alloc];
-  OrgJodaTimeMonths_initWithInt_(self, months);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMonths, initWithInt_, months)
 }
 
 OrgJodaTimeMonths *create_OrgJodaTimeMonths_initWithInt_(jint months) {
-  OrgJodaTimeMonths *self = [[OrgJodaTimeMonths alloc] autorelease];
-  OrgJodaTimeMonths_initWithInt_(self, months);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMonths, initWithInt_, months)
+}
+
+IOSObjectArray *OrgJodaTimeMonths__Annotations$0() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_OrgJodaConvertFromString() } count:1 type:JavaLangAnnotationAnnotation_class_()];
+}
+
+IOSObjectArray *OrgJodaTimeMonths__Annotations$1() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_OrgJodaConvertToString() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeMonths)

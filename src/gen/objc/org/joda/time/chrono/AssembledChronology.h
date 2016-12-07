@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronoAssembledChronology_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronoAssembledChronology_RESTRICT
-#define OrgJodaTimeChronoAssembledChronology_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronoAssembledChronology")
+#ifdef RESTRICT_OrgJodaTimeChronoAssembledChronology
+#define INCLUDE_ALL_OrgJodaTimeChronoAssembledChronology 0
 #else
-#define OrgJodaTimeChronoAssembledChronology_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronoAssembledChronology 1
 #endif
-#undef OrgJodaTimeChronoAssembledChronology_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronoAssembledChronology
 
-#if !defined (OrgJodaTimeChronoAssembledChronology_) && (OrgJodaTimeChronoAssembledChronology_INCLUDE_ALL || defined(OrgJodaTimeChronoAssembledChronology_INCLUDE))
+#if !defined (OrgJodaTimeChronoAssembledChronology_) && (INCLUDE_ALL_OrgJodaTimeChronoAssembledChronology || defined(INCLUDE_OrgJodaTimeChronoAssembledChronology))
 #define OrgJodaTimeChronoAssembledChronology_
 
-#define OrgJodaTimeChronoBaseChronology_RESTRICT 1
-#define OrgJodaTimeChronoBaseChronology_INCLUDE 1
+#define RESTRICT_OrgJodaTimeChronoBaseChronology 1
+#define INCLUDE_OrgJodaTimeChronoBaseChronology 1
 #include "org/joda/time/chrono/BaseChronology.h"
 
 @class OrgJodaTimeChronoAssembledChronology_Fields;
@@ -175,7 +175,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoAssembledChronology)
 
 #endif
 
-#if !defined (OrgJodaTimeChronoAssembledChronology_Fields_) && (OrgJodaTimeChronoAssembledChronology_INCLUDE_ALL || defined(OrgJodaTimeChronoAssembledChronology_Fields_INCLUDE))
+#if !defined (OrgJodaTimeChronoAssembledChronology_Fields_) && (INCLUDE_ALL_OrgJodaTimeChronoAssembledChronology || defined(INCLUDE_OrgJodaTimeChronoAssembledChronology_Fields))
 #define OrgJodaTimeChronoAssembledChronology_Fields_
 
 @class OrgJodaTimeChronology;
@@ -285,4 +285,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoAssembledChronology_Fields)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronoAssembledChronology_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronoAssembledChronology")

@@ -46,25 +46,33 @@ J2OBJC_IGNORE_DESIGNATED_END
   return OrgJodaTimeReadableDuration_class_();
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LIOSClass;", 0x1, -1, -1, -1, 4, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getDurationMillisWithId:);
+  methods[2].selector = @selector(setIntoWithOrgJodaTimeReadWritablePeriod:withId:withOrgJodaTimeChronology:);
+  methods[3].selector = @selector(getSupportedType);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "INSTANCE", "LOrgJodaTimeConvertReadableDurationConverter;", .constantValue.asLong = 0, 0x18, -1, 5, -1, -1 },
+  };
+  static const void *ptrTable[] = { "getDurationMillis", "LNSObject;", "setInto", "LOrgJodaTimeReadWritablePeriod;LNSObject;LOrgJodaTimeChronology;", "()Ljava/lang/Class<*>;", &OrgJodaTimeConvertReadableDurationConverter_INSTANCE };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertReadableDurationConverter = { "ReadableDurationConverter", "org.joda.time.convert", ptrTable, methods, fields, 7, 0x0, 4, 1, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeConvertReadableDurationConverter;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeConvertReadableDurationConverter class]) {
     JreStrongAssignAndConsume(&OrgJodaTimeConvertReadableDurationConverter_INSTANCE, new_OrgJodaTimeConvertReadableDurationConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertReadableDurationConverter)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "ReadableDurationConverter", NULL, 0x4, NULL, NULL },
-    { "getDurationMillisWithId:", "getDurationMillis", "J", 0x1, NULL, NULL },
-    { "setIntoWithOrgJodaTimeReadWritablePeriod:withId:withOrgJodaTimeChronology:", "setInto", "V", 0x1, NULL, NULL },
-    { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, "()Ljava/lang/Class<*>;" },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE", "INSTANCE", 0x18, "Lorg.joda.time.convert.ReadableDurationConverter;", &OrgJodaTimeConvertReadableDurationConverter_INSTANCE, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertReadableDurationConverter = { 2, "ReadableDurationConverter", "org.joda.time.convert", NULL, 0x0, 4, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeConvertReadableDurationConverter;
 }
 
 @end
@@ -74,15 +82,11 @@ void OrgJodaTimeConvertReadableDurationConverter_init(OrgJodaTimeConvertReadable
 }
 
 OrgJodaTimeConvertReadableDurationConverter *new_OrgJodaTimeConvertReadableDurationConverter_init() {
-  OrgJodaTimeConvertReadableDurationConverter *self = [OrgJodaTimeConvertReadableDurationConverter alloc];
-  OrgJodaTimeConvertReadableDurationConverter_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeConvertReadableDurationConverter, init)
 }
 
 OrgJodaTimeConvertReadableDurationConverter *create_OrgJodaTimeConvertReadableDurationConverter_init() {
-  OrgJodaTimeConvertReadableDurationConverter *self = [[OrgJodaTimeConvertReadableDurationConverter alloc] autorelease];
-  OrgJodaTimeConvertReadableDurationConverter_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeConvertReadableDurationConverter, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertReadableDurationConverter)

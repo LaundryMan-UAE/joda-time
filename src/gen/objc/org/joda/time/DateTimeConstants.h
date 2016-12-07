@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeDateTimeConstants_INCLUDE_ALL")
-#ifdef OrgJodaTimeDateTimeConstants_RESTRICT
-#define OrgJodaTimeDateTimeConstants_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeDateTimeConstants")
+#ifdef RESTRICT_OrgJodaTimeDateTimeConstants
+#define INCLUDE_ALL_OrgJodaTimeDateTimeConstants 0
 #else
-#define OrgJodaTimeDateTimeConstants_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeDateTimeConstants 1
 #endif
-#undef OrgJodaTimeDateTimeConstants_RESTRICT
+#undef RESTRICT_OrgJodaTimeDateTimeConstants
 
-#if !defined (OrgJodaTimeDateTimeConstants_) && (OrgJodaTimeDateTimeConstants_INCLUDE_ALL || defined(OrgJodaTimeDateTimeConstants_INCLUDE))
+#if !defined (OrgJodaTimeDateTimeConstants_) && (INCLUDE_ALL_OrgJodaTimeDateTimeConstants || defined(INCLUDE_OrgJodaTimeDateTimeConstants))
 #define OrgJodaTimeDateTimeConstants_
 
 /*!
@@ -356,4 +356,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeConstants)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeDateTimeConstants_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeDateTimeConstants")

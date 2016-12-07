@@ -32,7 +32,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (chrono == nil) {
     return OrgJodaTimeChronoISOChronology_getInstanceWithOrgJodaTimeDateTimeZone_(zone);
   }
-  OrgJodaTimeDateTimeZone *chronoZone = [((OrgJodaTimeChronology *) nil_chk(chrono)) getZone];
+  OrgJodaTimeDateTimeZone *chronoZone = [chrono getZone];
   if (chronoZone != zone) {
     chrono = [chrono withZoneWithOrgJodaTimeDateTimeZone:zone];
     if (chrono == nil) {
@@ -60,26 +60,35 @@ J2OBJC_IGNORE_DESIGNATED_END
   return OrgJodaTimeReadableInstant_class_();
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, 0, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 2, -1, -1, -1, -1 },
+    { NULL, "LIOSClass;", 0x1, -1, -1, -1, 4, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getChronologyWithId:withOrgJodaTimeDateTimeZone:);
+  methods[2].selector = @selector(getChronologyWithId:withOrgJodaTimeChronology:);
+  methods[3].selector = @selector(getInstantMillisWithId:withOrgJodaTimeChronology:);
+  methods[4].selector = @selector(getSupportedType);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "INSTANCE", "LOrgJodaTimeConvertReadableInstantConverter;", .constantValue.asLong = 0, 0x18, -1, 5, -1, -1 },
+  };
+  static const void *ptrTable[] = { "getChronology", "LNSObject;LOrgJodaTimeDateTimeZone;", "LNSObject;LOrgJodaTimeChronology;", "getInstantMillis", "()Ljava/lang/Class<*>;", &OrgJodaTimeConvertReadableInstantConverter_INSTANCE };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertReadableInstantConverter = { "ReadableInstantConverter", "org.joda.time.convert", ptrTable, methods, fields, 7, 0x0, 5, 1, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeConvertReadableInstantConverter;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeConvertReadableInstantConverter class]) {
     JreStrongAssignAndConsume(&OrgJodaTimeConvertReadableInstantConverter_INSTANCE, new_OrgJodaTimeConvertReadableInstantConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertReadableInstantConverter)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "ReadableInstantConverter", NULL, 0x4, NULL, NULL },
-    { "getChronologyWithId:withOrgJodaTimeDateTimeZone:", "getChronology", "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "getChronologyWithId:withOrgJodaTimeChronology:", "getChronology", "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "getInstantMillisWithId:withOrgJodaTimeChronology:", "getInstantMillis", "J", 0x1, NULL, NULL },
-    { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, "()Ljava/lang/Class<*>;" },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE", "INSTANCE", 0x18, "Lorg.joda.time.convert.ReadableInstantConverter;", &OrgJodaTimeConvertReadableInstantConverter_INSTANCE, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertReadableInstantConverter = { 2, "ReadableInstantConverter", "org.joda.time.convert", NULL, 0x0, 5, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeConvertReadableInstantConverter;
 }
 
 @end
@@ -89,15 +98,11 @@ void OrgJodaTimeConvertReadableInstantConverter_init(OrgJodaTimeConvertReadableI
 }
 
 OrgJodaTimeConvertReadableInstantConverter *new_OrgJodaTimeConvertReadableInstantConverter_init() {
-  OrgJodaTimeConvertReadableInstantConverter *self = [OrgJodaTimeConvertReadableInstantConverter alloc];
-  OrgJodaTimeConvertReadableInstantConverter_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeConvertReadableInstantConverter, init)
 }
 
 OrgJodaTimeConvertReadableInstantConverter *create_OrgJodaTimeConvertReadableInstantConverter_init() {
-  OrgJodaTimeConvertReadableInstantConverter *self = [[OrgJodaTimeConvertReadableInstantConverter alloc] autorelease];
-  OrgJodaTimeConvertReadableInstantConverter_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeConvertReadableInstantConverter, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertReadableInstantConverter)

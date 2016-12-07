@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertPeriodConverter_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertPeriodConverter_RESTRICT
-#define OrgJodaTimeConvertPeriodConverter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertPeriodConverter")
+#ifdef RESTRICT_OrgJodaTimeConvertPeriodConverter
+#define INCLUDE_ALL_OrgJodaTimeConvertPeriodConverter 0
 #else
-#define OrgJodaTimeConvertPeriodConverter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertPeriodConverter 1
 #endif
-#undef OrgJodaTimeConvertPeriodConverter_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertPeriodConverter
 
-#if !defined (OrgJodaTimeConvertPeriodConverter_) && (OrgJodaTimeConvertPeriodConverter_INCLUDE_ALL || defined(OrgJodaTimeConvertPeriodConverter_INCLUDE))
+#if !defined (OrgJodaTimeConvertPeriodConverter_) && (INCLUDE_ALL_OrgJodaTimeConvertPeriodConverter || defined(INCLUDE_OrgJodaTimeConvertPeriodConverter))
 #define OrgJodaTimeConvertPeriodConverter_
 
-#define OrgJodaTimeConvertConverter_RESTRICT 1
-#define OrgJodaTimeConvertConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertConverter 1
+#define INCLUDE_OrgJodaTimeConvertConverter 1
 #include "org/joda/time/convert/Converter.h"
 
 @class OrgJodaTimeChronology;
@@ -30,7 +30,7 @@
  @author Brian S O'Neill
  @since 1.0
  */
-@protocol OrgJodaTimeConvertPeriodConverter < OrgJodaTimeConvertConverter, NSObject, JavaObject >
+@protocol OrgJodaTimeConvertPeriodConverter < OrgJodaTimeConvertConverter, JavaObject >
 
 /*!
  @brief Extracts duration values from an object of this converter's type, and
@@ -60,4 +60,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertPeriodConverter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertPeriodConverter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertPeriodConverter")

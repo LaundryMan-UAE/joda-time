@@ -5,23 +5,23 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeReadWritableDateTime_INCLUDE_ALL")
-#ifdef OrgJodaTimeReadWritableDateTime_RESTRICT
-#define OrgJodaTimeReadWritableDateTime_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeReadWritableDateTime")
+#ifdef RESTRICT_OrgJodaTimeReadWritableDateTime
+#define INCLUDE_ALL_OrgJodaTimeReadWritableDateTime 0
 #else
-#define OrgJodaTimeReadWritableDateTime_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeReadWritableDateTime 1
 #endif
-#undef OrgJodaTimeReadWritableDateTime_RESTRICT
+#undef RESTRICT_OrgJodaTimeReadWritableDateTime
 
-#if !defined (OrgJodaTimeReadWritableDateTime_) && (OrgJodaTimeReadWritableDateTime_INCLUDE_ALL || defined(OrgJodaTimeReadWritableDateTime_INCLUDE))
+#if !defined (OrgJodaTimeReadWritableDateTime_) && (INCLUDE_ALL_OrgJodaTimeReadWritableDateTime || defined(INCLUDE_OrgJodaTimeReadWritableDateTime))
 #define OrgJodaTimeReadWritableDateTime_
 
-#define OrgJodaTimeReadableDateTime_RESTRICT 1
-#define OrgJodaTimeReadableDateTime_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadableDateTime 1
+#define INCLUDE_OrgJodaTimeReadableDateTime 1
 #include "org/joda/time/ReadableDateTime.h"
 
-#define OrgJodaTimeReadWritableInstant_RESTRICT 1
-#define OrgJodaTimeReadWritableInstant_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadWritableInstant 1
+#define INCLUDE_OrgJodaTimeReadWritableInstant 1
 #include "org/joda/time/ReadWritableInstant.h"
 
 /*!
@@ -36,7 +36,7 @@
  @author Brian S O'Neill
  @since 1.0
  */
-@protocol OrgJodaTimeReadWritableDateTime < OrgJodaTimeReadableDateTime, OrgJodaTimeReadWritableInstant, NSObject, JavaObject >
+@protocol OrgJodaTimeReadWritableDateTime < OrgJodaTimeReadableDateTime, OrgJodaTimeReadWritableInstant, JavaObject >
 
 /*!
  @brief Set the year to the specified value.
@@ -255,4 +255,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadWritableDateTime)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeReadWritableDateTime_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeReadWritableDateTime")

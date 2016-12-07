@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronology_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronology_RESTRICT
-#define OrgJodaTimeChronology_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronology")
+#ifdef RESTRICT_OrgJodaTimeChronology
+#define INCLUDE_ALL_OrgJodaTimeChronology 0
 #else
-#define OrgJodaTimeChronology_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronology 1
 #endif
-#undef OrgJodaTimeChronology_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronology
 
-#if !defined (OrgJodaTimeChronology_) && (OrgJodaTimeChronology_INCLUDE_ALL || defined(OrgJodaTimeChronology_INCLUDE))
+#if !defined (OrgJodaTimeChronology_) && (INCLUDE_ALL_OrgJodaTimeChronology || defined(INCLUDE_OrgJodaTimeChronology))
 #define OrgJodaTimeChronology_
 
 @class IOSIntArray;
@@ -467,4 +467,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronology)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronology_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronology")

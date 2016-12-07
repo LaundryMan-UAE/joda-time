@@ -101,25 +101,41 @@ __attribute__((unused)) static NSString *OrgJodaTimeFieldBaseDurationField_getNa
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeDurationFieldType:", "BaseDurationField", NULL, 0x4, NULL, NULL },
-    { "getType", NULL, "Lorg.joda.time.DurationFieldType;", 0x11, NULL, NULL },
-    { "getName", NULL, "Ljava.lang.String;", 0x11, NULL, NULL },
-    { "isSupported", NULL, "Z", 0x11, NULL, NULL },
-    { "getValueWithLong:", "getValue", "I", 0x1, NULL, NULL },
-    { "getValueAsLongWithLong:", "getValueAsLong", "J", 0x1, NULL, NULL },
-    { "getValueWithLong:withLong:", "getValue", "I", 0x1, NULL, NULL },
-    { "getMillisWithInt:", "getMillis", "J", 0x1, NULL, NULL },
-    { "getMillisWithLong:", "getMillis", "J", 0x1, NULL, NULL },
-    { "getDifferenceWithLong:withLong:", "getDifference", "I", 0x1, NULL, NULL },
-    { "compareToWithId:", "compareTo", "I", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x11, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x11, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x11, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 7, 4, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 8, 9, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 10, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeDurationFieldType:);
+  methods[1].selector = @selector(getType);
+  methods[2].selector = @selector(getName);
+  methods[3].selector = @selector(isSupported);
+  methods[4].selector = @selector(getValueWithLong:);
+  methods[5].selector = @selector(getValueAsLongWithLong:);
+  methods[6].selector = @selector(getValueWithLong:withLong:);
+  methods[7].selector = @selector(getMillisWithInt:);
+  methods[8].selector = @selector(getMillisWithLong:);
+  methods[9].selector = @selector(getDifferenceWithLong:withLong:);
+  methods[10].selector = @selector(compareToWithId:);
+  methods[11].selector = @selector(description);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldBaseDurationField_serialVersionUID },
-    { "iType_", NULL, 0x12, "Lorg.joda.time.DurationFieldType;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldBaseDurationField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iType_", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldBaseDurationField = { 2, "BaseDurationField", "org.joda.time.field", NULL, 0x401, 12, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeDurationFieldType;", "getValue", "J", "getValueAsLong", "JJ", "getMillis", "I", "getDifference", "compareTo", "LOrgJodaTimeDurationField;", "toString" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldBaseDurationField = { "BaseDurationField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x401, 12, 2, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldBaseDurationField;
 }
 
@@ -128,7 +144,7 @@ __attribute__((unused)) static NSString *OrgJodaTimeFieldBaseDurationField_getNa
 void OrgJodaTimeFieldBaseDurationField_initWithOrgJodaTimeDurationFieldType_(OrgJodaTimeFieldBaseDurationField *self, OrgJodaTimeDurationFieldType *type) {
   OrgJodaTimeDurationField_init(self);
   if (type == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The type must not be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The type must not be null");
   }
   JreStrongAssign(&self->iType_, type);
 }

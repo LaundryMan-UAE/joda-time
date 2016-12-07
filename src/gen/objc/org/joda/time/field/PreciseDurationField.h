@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFieldPreciseDurationField_INCLUDE_ALL")
-#ifdef OrgJodaTimeFieldPreciseDurationField_RESTRICT
-#define OrgJodaTimeFieldPreciseDurationField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFieldPreciseDurationField")
+#ifdef RESTRICT_OrgJodaTimeFieldPreciseDurationField
+#define INCLUDE_ALL_OrgJodaTimeFieldPreciseDurationField 0
 #else
-#define OrgJodaTimeFieldPreciseDurationField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFieldPreciseDurationField 1
 #endif
-#undef OrgJodaTimeFieldPreciseDurationField_RESTRICT
+#undef RESTRICT_OrgJodaTimeFieldPreciseDurationField
 
-#if !defined (OrgJodaTimeFieldPreciseDurationField_) && (OrgJodaTimeFieldPreciseDurationField_INCLUDE_ALL || defined(OrgJodaTimeFieldPreciseDurationField_INCLUDE))
+#if !defined (OrgJodaTimeFieldPreciseDurationField_) && (INCLUDE_ALL_OrgJodaTimeFieldPreciseDurationField || defined(INCLUDE_OrgJodaTimeFieldPreciseDurationField))
 #define OrgJodaTimeFieldPreciseDurationField_
 
-#define OrgJodaTimeFieldBaseDurationField_RESTRICT 1
-#define OrgJodaTimeFieldBaseDurationField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldBaseDurationField 1
+#define INCLUDE_OrgJodaTimeFieldBaseDurationField 1
 #include "org/joda/time/field/BaseDurationField.h"
 
 @class OrgJodaTimeDurationFieldType;
@@ -121,4 +121,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldPreciseDurationField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFieldPreciseDurationField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFieldPreciseDurationField")

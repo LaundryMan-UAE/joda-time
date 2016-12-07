@@ -123,29 +123,49 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeChronoGJYearOfEraDateTimeField, serialVe
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeDateTimeField:withOrgJodaTimeChronoBasicChronology:", "GJYearOfEraDateTimeField", NULL, 0x0, NULL, NULL },
-    { "getRangeDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x1, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x1, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x1, NULL, NULL },
-    { "addWrapFieldWithLong:withInt:", "addWrapField", "J", 0x1, NULL, NULL },
-    { "addWrapFieldWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:", "addWrapField", "[I", 0x1, NULL, NULL },
-    { "getDifferenceWithLong:withLong:", "getDifference", "I", 0x1, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x1, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumValue", NULL, "I", 0x1, NULL, NULL },
-    { "roundFloorWithLong:", "roundFloor", "J", 0x1, NULL, NULL },
-    { "roundCeilingWithLong:", "roundCeiling", "J", 0x1, NULL, NULL },
-    { "remainderWithLong:", "remainder", "J", 0x1, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 4, -1, -1, -1, -1 },
+    { NULL, "[I", 0x1, 6, 7, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 8, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 10, 4, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 11, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 12, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 13, 2, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeDateTimeField:withOrgJodaTimeChronoBasicChronology:);
+  methods[1].selector = @selector(getRangeDurationField);
+  methods[2].selector = @selector(getWithLong:);
+  methods[3].selector = @selector(addWithLong:withInt:);
+  methods[4].selector = @selector(addWithLong:withLong:);
+  methods[5].selector = @selector(addWrapFieldWithLong:withInt:);
+  methods[6].selector = @selector(addWrapFieldWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:);
+  methods[7].selector = @selector(getDifferenceWithLong:withLong:);
+  methods[8].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  methods[9].selector = @selector(setWithLong:withInt:);
+  methods[10].selector = @selector(getMinimumValue);
+  methods[11].selector = @selector(getMaximumValue);
+  methods[12].selector = @selector(roundFloorWithLong:);
+  methods[13].selector = @selector(roundCeilingWithLong:);
+  methods[14].selector = @selector(remainderWithLong:);
+  methods[15].selector = @selector(readResolve);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoGJYearOfEraDateTimeField_serialVersionUID },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoGJYearOfEraDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iChronology_", "LOrgJodaTimeChronoBasicChronology;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoGJYearOfEraDateTimeField = { 2, "GJYearOfEraDateTimeField", "org.joda.time.chrono", NULL, 0x10, 16, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeDateTimeField;LOrgJodaTimeChronoBasicChronology;", "get", "J", "add", "JI", "JJ", "addWrapField", "LOrgJodaTimeReadablePartial;I[II", "getDifference", "getDifferenceAsLong", "set", "roundFloor", "roundCeiling", "remainder" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoGJYearOfEraDateTimeField = { "GJYearOfEraDateTimeField", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x10, 16, 2, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeChronoGJYearOfEraDateTimeField;
 }
 
@@ -157,15 +177,11 @@ void OrgJodaTimeChronoGJYearOfEraDateTimeField_initWithOrgJodaTimeDateTimeField_
 }
 
 OrgJodaTimeChronoGJYearOfEraDateTimeField *new_OrgJodaTimeChronoGJYearOfEraDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronoBasicChronology_(OrgJodaTimeDateTimeField *yearField, OrgJodaTimeChronoBasicChronology *chronology) {
-  OrgJodaTimeChronoGJYearOfEraDateTimeField *self = [OrgJodaTimeChronoGJYearOfEraDateTimeField alloc];
-  OrgJodaTimeChronoGJYearOfEraDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronoBasicChronology_(self, yearField, chronology);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoGJYearOfEraDateTimeField, initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronoBasicChronology_, yearField, chronology)
 }
 
 OrgJodaTimeChronoGJYearOfEraDateTimeField *create_OrgJodaTimeChronoGJYearOfEraDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronoBasicChronology_(OrgJodaTimeDateTimeField *yearField, OrgJodaTimeChronoBasicChronology *chronology) {
-  OrgJodaTimeChronoGJYearOfEraDateTimeField *self = [[OrgJodaTimeChronoGJYearOfEraDateTimeField alloc] autorelease];
-  OrgJodaTimeChronoGJYearOfEraDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronoBasicChronology_(self, yearField, chronology);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoGJYearOfEraDateTimeField, initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronoBasicChronology_, yearField, chronology)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJYearOfEraDateTimeField)

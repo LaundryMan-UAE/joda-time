@@ -849,69 +849,131 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "ISODateTimeFormat", NULL, 0x4, NULL, NULL },
-    { "forFieldsWithJavaUtilCollection:withBoolean:withBoolean:", "forFields", "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, "(Ljava/util/Collection<Lorg/joda/time/DateTimeFieldType;>;ZZ)Lorg/joda/time/format/DateTimeFormatter;" },
-    { "dateByMonthWithOrgJodaTimeFormatDateTimeFormatterBuilder:withJavaUtilCollection:withBoolean:withBoolean:", "dateByMonth", "Z", 0xa, NULL, "(Lorg/joda/time/format/DateTimeFormatterBuilder;Ljava/util/Collection<Lorg/joda/time/DateTimeFieldType;>;ZZ)Z" },
-    { "dateByOrdinalWithOrgJodaTimeFormatDateTimeFormatterBuilder:withJavaUtilCollection:withBoolean:withBoolean:", "dateByOrdinal", "Z", 0xa, NULL, "(Lorg/joda/time/format/DateTimeFormatterBuilder;Ljava/util/Collection<Lorg/joda/time/DateTimeFieldType;>;ZZ)Z" },
-    { "dateByWeekWithOrgJodaTimeFormatDateTimeFormatterBuilder:withJavaUtilCollection:withBoolean:withBoolean:", "dateByWeek", "Z", 0xa, NULL, "(Lorg/joda/time/format/DateTimeFormatterBuilder;Ljava/util/Collection<Lorg/joda/time/DateTimeFieldType;>;ZZ)Z" },
-    { "timeWithOrgJodaTimeFormatDateTimeFormatterBuilder:withJavaUtilCollection:withBoolean:withBoolean:withBoolean:withBoolean:", "time", "V", 0xa, NULL, "(Lorg/joda/time/format/DateTimeFormatterBuilder;Ljava/util/Collection<Lorg/joda/time/DateTimeFieldType;>;ZZZZ)V" },
-    { "checkNotStrictISOWithJavaUtilCollection:withBoolean:", "checkNotStrictISO", "V", 0xa, NULL, "(Ljava/util/Collection<Lorg/joda/time/DateTimeFieldType;>;Z)V" },
-    { "appendSeparatorWithOrgJodaTimeFormatDateTimeFormatterBuilder:withBoolean:", "appendSeparator", "V", 0xa, NULL, NULL },
-    { "dateParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "localDateParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "dateElementParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "timeParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "localTimeParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "timeElementParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "dateTimeParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "dateOptionalTimeParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "localDateOptionalTimeParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "date", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "time", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "timeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "tTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "tTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "dateTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "dateTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "ordinalDate", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "ordinalDateTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "ordinalDateTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "weekDate", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "weekDateTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "weekDateTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "basicDate", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "basicTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "basicTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "basicTTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "basicTTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "basicDateTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "basicDateTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "basicOrdinalDate", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "basicOrdinalDateTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "basicOrdinalDateTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "basicWeekDate", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "basicWeekDateTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "basicWeekDateTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "year", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "yearMonth", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "yearMonthDay", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "weekyear", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "weekyearWeek", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "weekyearWeekDay", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "hour", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "hourMinute", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "hourMinuteSecond", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "hourMinuteSecondMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "hourMinuteSecondFraction", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "dateHour", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "dateHourMinute", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "dateHourMinuteSecond", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "dateHourMinuteSecondMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
-    { "dateHourMinuteSecondFraction", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0x9, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, 0, 1, -1, 2, -1, -1 },
+    { NULL, "Z", 0xa, 3, 4, -1, 5, -1, -1 },
+    { NULL, "Z", 0xa, 6, 4, -1, 5, -1, -1 },
+    { NULL, "Z", 0xa, 7, 4, -1, 5, -1, -1 },
+    { NULL, "V", 0xa, 8, 9, -1, 10, -1, -1 },
+    { NULL, "V", 0xa, 11, 12, -1, 13, -1, -1 },
+    { NULL, "V", 0xa, 14, 15, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
   };
-  static const char *inner_classes[] = {"Lorg.joda.time.format.ISODateTimeFormat$Constants;"};
-  static const J2ObjcClassInfo _OrgJodaTimeFormatISODateTimeFormat = { 2, "ISODateTimeFormat", "org.joda.time.format", NULL, 0x1, 59, methods, 0, NULL, 0, NULL, 1, inner_classes, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(forFieldsWithJavaUtilCollection:withBoolean:withBoolean:);
+  methods[2].selector = @selector(dateByMonthWithOrgJodaTimeFormatDateTimeFormatterBuilder:withJavaUtilCollection:withBoolean:withBoolean:);
+  methods[3].selector = @selector(dateByOrdinalWithOrgJodaTimeFormatDateTimeFormatterBuilder:withJavaUtilCollection:withBoolean:withBoolean:);
+  methods[4].selector = @selector(dateByWeekWithOrgJodaTimeFormatDateTimeFormatterBuilder:withJavaUtilCollection:withBoolean:withBoolean:);
+  methods[5].selector = @selector(timeWithOrgJodaTimeFormatDateTimeFormatterBuilder:withJavaUtilCollection:withBoolean:withBoolean:withBoolean:withBoolean:);
+  methods[6].selector = @selector(checkNotStrictISOWithJavaUtilCollection:withBoolean:);
+  methods[7].selector = @selector(appendSeparatorWithOrgJodaTimeFormatDateTimeFormatterBuilder:withBoolean:);
+  methods[8].selector = @selector(dateParser);
+  methods[9].selector = @selector(localDateParser);
+  methods[10].selector = @selector(dateElementParser);
+  methods[11].selector = @selector(timeParser);
+  methods[12].selector = @selector(localTimeParser);
+  methods[13].selector = @selector(timeElementParser);
+  methods[14].selector = @selector(dateTimeParser);
+  methods[15].selector = @selector(dateOptionalTimeParser);
+  methods[16].selector = @selector(localDateOptionalTimeParser);
+  methods[17].selector = @selector(date);
+  methods[18].selector = @selector(time);
+  methods[19].selector = @selector(timeNoMillis);
+  methods[20].selector = @selector(tTime);
+  methods[21].selector = @selector(tTimeNoMillis);
+  methods[22].selector = @selector(dateTime);
+  methods[23].selector = @selector(dateTimeNoMillis);
+  methods[24].selector = @selector(ordinalDate);
+  methods[25].selector = @selector(ordinalDateTime);
+  methods[26].selector = @selector(ordinalDateTimeNoMillis);
+  methods[27].selector = @selector(weekDate);
+  methods[28].selector = @selector(weekDateTime);
+  methods[29].selector = @selector(weekDateTimeNoMillis);
+  methods[30].selector = @selector(basicDate);
+  methods[31].selector = @selector(basicTime);
+  methods[32].selector = @selector(basicTimeNoMillis);
+  methods[33].selector = @selector(basicTTime);
+  methods[34].selector = @selector(basicTTimeNoMillis);
+  methods[35].selector = @selector(basicDateTime);
+  methods[36].selector = @selector(basicDateTimeNoMillis);
+  methods[37].selector = @selector(basicOrdinalDate);
+  methods[38].selector = @selector(basicOrdinalDateTime);
+  methods[39].selector = @selector(basicOrdinalDateTimeNoMillis);
+  methods[40].selector = @selector(basicWeekDate);
+  methods[41].selector = @selector(basicWeekDateTime);
+  methods[42].selector = @selector(basicWeekDateTimeNoMillis);
+  methods[43].selector = @selector(year);
+  methods[44].selector = @selector(yearMonth);
+  methods[45].selector = @selector(yearMonthDay);
+  methods[46].selector = @selector(weekyear);
+  methods[47].selector = @selector(weekyearWeek);
+  methods[48].selector = @selector(weekyearWeekDay);
+  methods[49].selector = @selector(hour);
+  methods[50].selector = @selector(hourMinute);
+  methods[51].selector = @selector(hourMinuteSecond);
+  methods[52].selector = @selector(hourMinuteSecondMillis);
+  methods[53].selector = @selector(hourMinuteSecondFraction);
+  methods[54].selector = @selector(dateHour);
+  methods[55].selector = @selector(dateHourMinute);
+  methods[56].selector = @selector(dateHourMinuteSecond);
+  methods[57].selector = @selector(dateHourMinuteSecondMillis);
+  methods[58].selector = @selector(dateHourMinuteSecondFraction);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "forFields", "LJavaUtilCollection;ZZ", "(Ljava/util/Collection<Lorg/joda/time/DateTimeFieldType;>;ZZ)Lorg/joda/time/format/DateTimeFormatter;", "dateByMonth", "LOrgJodaTimeFormatDateTimeFormatterBuilder;LJavaUtilCollection;ZZ", "(Lorg/joda/time/format/DateTimeFormatterBuilder;Ljava/util/Collection<Lorg/joda/time/DateTimeFieldType;>;ZZ)Z", "dateByOrdinal", "dateByWeek", "time", "LOrgJodaTimeFormatDateTimeFormatterBuilder;LJavaUtilCollection;ZZZZ", "(Lorg/joda/time/format/DateTimeFormatterBuilder;Ljava/util/Collection<Lorg/joda/time/DateTimeFieldType;>;ZZZZ)V", "checkNotStrictISO", "LJavaUtilCollection;Z", "(Ljava/util/Collection<Lorg/joda/time/DateTimeFieldType;>;Z)V", "appendSeparator", "LOrgJodaTimeFormatDateTimeFormatterBuilder;Z", "LOrgJodaTimeFormatISODateTimeFormat_Constants;" };
+  static const J2ObjcClassInfo _OrgJodaTimeFormatISODateTimeFormat = { "ISODateTimeFormat", "org.joda.time.format", ptrTable, methods, NULL, 7, 0x1, 59, 0, -1, 16, -1, -1, -1 };
   return &_OrgJodaTimeFormatISODateTimeFormat;
 }
 
@@ -922,26 +984,22 @@ void OrgJodaTimeFormatISODateTimeFormat_init(OrgJodaTimeFormatISODateTimeFormat 
 }
 
 OrgJodaTimeFormatISODateTimeFormat *new_OrgJodaTimeFormatISODateTimeFormat_init() {
-  OrgJodaTimeFormatISODateTimeFormat *self = [OrgJodaTimeFormatISODateTimeFormat alloc];
-  OrgJodaTimeFormatISODateTimeFormat_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFormatISODateTimeFormat, init)
 }
 
 OrgJodaTimeFormatISODateTimeFormat *create_OrgJodaTimeFormatISODateTimeFormat_init() {
-  OrgJodaTimeFormatISODateTimeFormat *self = [[OrgJodaTimeFormatISODateTimeFormat alloc] autorelease];
-  OrgJodaTimeFormatISODateTimeFormat_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFormatISODateTimeFormat, init)
 }
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_forFieldsWithJavaUtilCollection_withBoolean_withBoolean_(id<JavaUtilCollection> fields, jboolean extended, jboolean strictISO) {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
   if (fields == nil || [fields size] == 0) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The fields must not be null or empty") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The fields must not be null or empty");
   }
-  id<JavaUtilSet> workingFields = [new_JavaUtilHashSet_initWithJavaUtilCollection_(fields) autorelease];
+  id<JavaUtilSet> workingFields = create_JavaUtilHashSet_initWithJavaUtilCollection_(fields);
   jint inputSize = [workingFields size];
   jboolean reducedPrec = false;
-  OrgJodaTimeFormatDateTimeFormatterBuilder *bld = [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease];
+  OrgJodaTimeFormatDateTimeFormatterBuilder *bld = create_OrgJodaTimeFormatDateTimeFormatterBuilder_init();
   if ([workingFields containsWithId:OrgJodaTimeDateTimeFieldType_monthOfYear()]) {
     reducedPrec = OrgJodaTimeFormatISODateTimeFormat_dateByMonthWithOrgJodaTimeFormatDateTimeFormatterBuilder_withJavaUtilCollection_withBoolean_withBoolean_(bld, workingFields, extended, strictISO);
   }
@@ -968,10 +1026,10 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_forFields
   jboolean datePresent = ([workingFields size] < inputSize);
   OrgJodaTimeFormatISODateTimeFormat_timeWithOrgJodaTimeFormatDateTimeFormatterBuilder_withJavaUtilCollection_withBoolean_withBoolean_withBoolean_withBoolean_(bld, workingFields, extended, strictISO, reducedPrec, datePresent);
   if ([bld canBuildFormatter] == false) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@", @"No valid format for fields: ", fields)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@", @"No valid format for fields: ", fields));
   }
   @try {
-    [((id<JavaUtilCollection>) nil_chk(fields)) retainAllWithJavaUtilCollection:workingFields];
+    [fields retainAllWithJavaUtilCollection:workingFields];
   }
   @catch (JavaLangUnsupportedOperationException *ex) {
   }
@@ -1111,7 +1169,7 @@ void OrgJodaTimeFormatISODateTimeFormat_timeWithOrgJodaTimeFormatDateTimeFormatt
   }
   if (hour || minute || second || milli) {
     if (strictISO && reducedPrec) {
-      @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@", @"No valid ISO8601 format for fields because Date was reduced precision: ", fields)) autorelease];
+      @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@", @"No valid ISO8601 format for fields because Date was reduced precision: ", fields));
     }
     if (datePresent) {
       [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk(bld)) appendLiteralWithChar:'T'];
@@ -1121,13 +1179,13 @@ void OrgJodaTimeFormatISODateTimeFormat_timeWithOrgJodaTimeFormatDateTimeFormatt
   }
   else {
     if (strictISO && datePresent) {
-      @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@", @"No valid ISO8601 format for fields because Time was truncated: ", fields)) autorelease];
+      @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@", @"No valid ISO8601 format for fields because Time was truncated: ", fields));
     }
     if (!hour && ((minute && second) || (minute && !milli) || second)) {
     }
     else {
       if (strictISO) {
-        @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@", @"No valid ISO8601 format for fields: ", fields)) autorelease];
+        @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@", @"No valid ISO8601 format for fields: ", fields));
       }
     }
   }
@@ -1164,7 +1222,7 @@ void OrgJodaTimeFormatISODateTimeFormat_timeWithOrgJodaTimeFormatDateTimeFormatt
 void OrgJodaTimeFormatISODateTimeFormat_checkNotStrictISOWithJavaUtilCollection_withBoolean_(id<JavaUtilCollection> fields, jboolean strictISO) {
   OrgJodaTimeFormatISODateTimeFormat_initialize();
   if (strictISO) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@", @"No valid ISO8601 format for fields: ", fields)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@", @"No valid ISO8601 format for fields: ", fields));
   }
 }
 
@@ -1679,6 +1737,198 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatDateTimeFormatter;", 0xa, -1, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(dateParser);
+  methods[1].selector = @selector(localDateParser);
+  methods[2].selector = @selector(dateElementParser);
+  methods[3].selector = @selector(timeParser);
+  methods[4].selector = @selector(localTimeParser);
+  methods[5].selector = @selector(timeElementParser);
+  methods[6].selector = @selector(dateTimeParser);
+  methods[7].selector = @selector(dateOptionalTimeParser);
+  methods[8].selector = @selector(localDateOptionalTimeParser);
+  methods[9].selector = @selector(time);
+  methods[10].selector = @selector(timeNoMillis);
+  methods[11].selector = @selector(tTime);
+  methods[12].selector = @selector(tTimeNoMillis);
+  methods[13].selector = @selector(dateTime);
+  methods[14].selector = @selector(dateTimeNoMillis);
+  methods[15].selector = @selector(ordinalDate);
+  methods[16].selector = @selector(ordinalDateTime);
+  methods[17].selector = @selector(ordinalDateTimeNoMillis);
+  methods[18].selector = @selector(weekDateTime);
+  methods[19].selector = @selector(weekDateTimeNoMillis);
+  methods[20].selector = @selector(basicDate);
+  methods[21].selector = @selector(basicTime);
+  methods[22].selector = @selector(basicTimeNoMillis);
+  methods[23].selector = @selector(basicTTime);
+  methods[24].selector = @selector(basicTTimeNoMillis);
+  methods[25].selector = @selector(basicDateTime);
+  methods[26].selector = @selector(basicDateTimeNoMillis);
+  methods[27].selector = @selector(basicOrdinalDate);
+  methods[28].selector = @selector(basicOrdinalDateTime);
+  methods[29].selector = @selector(basicOrdinalDateTimeNoMillis);
+  methods[30].selector = @selector(basicWeekDate);
+  methods[31].selector = @selector(basicWeekDateTime);
+  methods[32].selector = @selector(basicWeekDateTimeNoMillis);
+  methods[33].selector = @selector(yearMonth);
+  methods[34].selector = @selector(yearMonthDay);
+  methods[35].selector = @selector(weekyearWeek);
+  methods[36].selector = @selector(weekyearWeekDay);
+  methods[37].selector = @selector(hourMinute);
+  methods[38].selector = @selector(hourMinuteSecond);
+  methods[39].selector = @selector(hourMinuteSecondMillis);
+  methods[40].selector = @selector(hourMinuteSecondFraction);
+  methods[41].selector = @selector(dateHour);
+  methods[42].selector = @selector(dateHourMinute);
+  methods[43].selector = @selector(dateHourMinuteSecond);
+  methods[44].selector = @selector(dateHourMinuteSecondMillis);
+  methods[45].selector = @selector(dateHourMinuteSecondFraction);
+  methods[46].selector = @selector(yearElement);
+  methods[47].selector = @selector(monthElement);
+  methods[48].selector = @selector(dayOfMonthElement);
+  methods[49].selector = @selector(weekyearElement);
+  methods[50].selector = @selector(weekElement);
+  methods[51].selector = @selector(dayOfWeekElement);
+  methods[52].selector = @selector(dayOfYearElement);
+  methods[53].selector = @selector(literalTElement);
+  methods[54].selector = @selector(hourElement);
+  methods[55].selector = @selector(minuteElement);
+  methods[56].selector = @selector(secondElement);
+  methods[57].selector = @selector(fractionElement);
+  methods[58].selector = @selector(offsetElement);
+  methods[59].selector = @selector(init);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "ye", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 0, -1, -1 },
+    { "mye", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 1, -1, -1 },
+    { "dme", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 2, -1, -1 },
+    { "we", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 3, -1, -1 },
+    { "wwe", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 4, -1, -1 },
+    { "dwe", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 5, -1, -1 },
+    { "dye", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 6, -1, -1 },
+    { "hde", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 7, -1, -1 },
+    { "mhe", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 8, -1, -1 },
+    { "sme", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 9, -1, -1 },
+    { "fse", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 10, -1, -1 },
+    { "ze", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 11, -1, -1 },
+    { "lte", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 12, -1, -1 },
+    { "ym", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 13, -1, -1 },
+    { "ymd", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 14, -1, -1 },
+    { "ww", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 15, -1, -1 },
+    { "wwd", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 16, -1, -1 },
+    { "hm", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 17, -1, -1 },
+    { "hms", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 18, -1, -1 },
+    { "hmsl", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 19, -1, -1 },
+    { "hmsf", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 20, -1, -1 },
+    { "dh", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 21, -1, -1 },
+    { "dhm", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 22, -1, -1 },
+    { "dhms", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 23, -1, -1 },
+    { "dhmsl", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 24, -1, -1 },
+    { "dhmsf", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 25, -1, -1 },
+    { "t", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 26, -1, -1 },
+    { "tx", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 27, -1, -1 },
+    { "tt", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 28, -1, -1 },
+    { "ttx", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 29, -1, -1 },
+    { "dt", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 30, -1, -1 },
+    { "dtx", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 31, -1, -1 },
+    { "wdt", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 32, -1, -1 },
+    { "wdtx", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 33, -1, -1 },
+    { "od", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 34, -1, -1 },
+    { "odt", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 35, -1, -1 },
+    { "odtx", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 36, -1, -1 },
+    { "bd", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 37, -1, -1 },
+    { "bt", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 38, -1, -1 },
+    { "btx", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 39, -1, -1 },
+    { "btt", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 40, -1, -1 },
+    { "bttx", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 41, -1, -1 },
+    { "bdt", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 42, -1, -1 },
+    { "bdtx", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 43, -1, -1 },
+    { "bod", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 44, -1, -1 },
+    { "bodt", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 45, -1, -1 },
+    { "bodtx", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 46, -1, -1 },
+    { "bwd", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 47, -1, -1 },
+    { "bwdt", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 48, -1, -1 },
+    { "bwdtx", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 49, -1, -1 },
+    { "dpe", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 50, -1, -1 },
+    { "tpe", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 51, -1, -1 },
+    { "dp", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 52, -1, -1 },
+    { "ldp", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 53, -1, -1 },
+    { "tp", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 54, -1, -1 },
+    { "ltp", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 55, -1, -1 },
+    { "dtp", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 56, -1, -1 },
+    { "dotp", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 57, -1, -1 },
+    { "ldotp", "LOrgJodaTimeFormatDateTimeFormatter;", .constantValue.asLong = 0, 0x1a, -1, 58, -1, -1 },
+  };
+  static const void *ptrTable[] = { &OrgJodaTimeFormatISODateTimeFormat_Constants_ye, &OrgJodaTimeFormatISODateTimeFormat_Constants_mye, &OrgJodaTimeFormatISODateTimeFormat_Constants_dme, &OrgJodaTimeFormatISODateTimeFormat_Constants_we, &OrgJodaTimeFormatISODateTimeFormat_Constants_wwe, &OrgJodaTimeFormatISODateTimeFormat_Constants_dwe, &OrgJodaTimeFormatISODateTimeFormat_Constants_dye, &OrgJodaTimeFormatISODateTimeFormat_Constants_hde, &OrgJodaTimeFormatISODateTimeFormat_Constants_mhe, &OrgJodaTimeFormatISODateTimeFormat_Constants_sme, &OrgJodaTimeFormatISODateTimeFormat_Constants_fse, &OrgJodaTimeFormatISODateTimeFormat_Constants_ze, &OrgJodaTimeFormatISODateTimeFormat_Constants_lte, &OrgJodaTimeFormatISODateTimeFormat_Constants_ym, &OrgJodaTimeFormatISODateTimeFormat_Constants_ymd, &OrgJodaTimeFormatISODateTimeFormat_Constants_ww, &OrgJodaTimeFormatISODateTimeFormat_Constants_wwd, &OrgJodaTimeFormatISODateTimeFormat_Constants_hm, &OrgJodaTimeFormatISODateTimeFormat_Constants_hms, &OrgJodaTimeFormatISODateTimeFormat_Constants_hmsl, &OrgJodaTimeFormatISODateTimeFormat_Constants_hmsf, &OrgJodaTimeFormatISODateTimeFormat_Constants_dh, &OrgJodaTimeFormatISODateTimeFormat_Constants_dhm, &OrgJodaTimeFormatISODateTimeFormat_Constants_dhms, &OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsl, &OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsf, &OrgJodaTimeFormatISODateTimeFormat_Constants_t, &OrgJodaTimeFormatISODateTimeFormat_Constants_tx, &OrgJodaTimeFormatISODateTimeFormat_Constants_tt, &OrgJodaTimeFormatISODateTimeFormat_Constants_ttx, &OrgJodaTimeFormatISODateTimeFormat_Constants_dt, &OrgJodaTimeFormatISODateTimeFormat_Constants_dtx, &OrgJodaTimeFormatISODateTimeFormat_Constants_wdt, &OrgJodaTimeFormatISODateTimeFormat_Constants_wdtx, &OrgJodaTimeFormatISODateTimeFormat_Constants_od, &OrgJodaTimeFormatISODateTimeFormat_Constants_odt, &OrgJodaTimeFormatISODateTimeFormat_Constants_odtx, &OrgJodaTimeFormatISODateTimeFormat_Constants_bd, &OrgJodaTimeFormatISODateTimeFormat_Constants_bt, &OrgJodaTimeFormatISODateTimeFormat_Constants_btx, &OrgJodaTimeFormatISODateTimeFormat_Constants_btt, &OrgJodaTimeFormatISODateTimeFormat_Constants_bttx, &OrgJodaTimeFormatISODateTimeFormat_Constants_bdt, &OrgJodaTimeFormatISODateTimeFormat_Constants_bdtx, &OrgJodaTimeFormatISODateTimeFormat_Constants_bod, &OrgJodaTimeFormatISODateTimeFormat_Constants_bodt, &OrgJodaTimeFormatISODateTimeFormat_Constants_bodtx, &OrgJodaTimeFormatISODateTimeFormat_Constants_bwd, &OrgJodaTimeFormatISODateTimeFormat_Constants_bwdt, &OrgJodaTimeFormatISODateTimeFormat_Constants_bwdtx, &OrgJodaTimeFormatISODateTimeFormat_Constants_dpe, &OrgJodaTimeFormatISODateTimeFormat_Constants_tpe, &OrgJodaTimeFormatISODateTimeFormat_Constants_dp, &OrgJodaTimeFormatISODateTimeFormat_Constants_ldp, &OrgJodaTimeFormatISODateTimeFormat_Constants_tp, &OrgJodaTimeFormatISODateTimeFormat_Constants_ltp, &OrgJodaTimeFormatISODateTimeFormat_Constants_dtp, &OrgJodaTimeFormatISODateTimeFormat_Constants_dotp, &OrgJodaTimeFormatISODateTimeFormat_Constants_ldotp, "LOrgJodaTimeFormatISODateTimeFormat;" };
+  static const J2ObjcClassInfo _OrgJodaTimeFormatISODateTimeFormat_Constants = { "Constants", "org.joda.time.format", ptrTable, methods, fields, 7, 0x18, 60, 59, 59, -1, -1, -1, -1 };
+  return &_OrgJodaTimeFormatISODateTimeFormat_Constants;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeFormatISODateTimeFormat_Constants class]) {
     JreStrongAssign(&OrgJodaTimeFormatISODateTimeFormat_Constants_ye, OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement());
@@ -1744,141 +1994,13 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "dateParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "localDateParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "dateElementParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "timeParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "localTimeParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "timeElementParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "dateTimeParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "dateOptionalTimeParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "localDateOptionalTimeParser", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "time", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "timeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "tTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "tTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "dateTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "dateTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "ordinalDate", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "ordinalDateTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "ordinalDateTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "weekDateTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "weekDateTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "basicDate", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "basicTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "basicTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "basicTTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "basicTTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "basicDateTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "basicDateTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "basicOrdinalDate", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "basicOrdinalDateTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "basicOrdinalDateTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "basicWeekDate", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "basicWeekDateTime", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "basicWeekDateTimeNoMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "yearMonth", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "yearMonthDay", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "weekyearWeek", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "weekyearWeekDay", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "hourMinute", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "hourMinuteSecond", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "hourMinuteSecondMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "hourMinuteSecondFraction", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "dateHour", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "dateHourMinute", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "dateHourMinuteSecond", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "dateHourMinuteSecondMillis", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "dateHourMinuteSecondFraction", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "yearElement", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "monthElement", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "dayOfMonthElement", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "weekyearElement", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "weekElement", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "dayOfWeekElement", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "dayOfYearElement", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "literalTElement", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "hourElement", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "minuteElement", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "secondElement", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "fractionElement", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "offsetElement", NULL, "Lorg.joda.time.format.DateTimeFormatter;", 0xa, NULL, NULL },
-    { "init", NULL, NULL, 0x0, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "ye", "ye", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ye, NULL, .constantValue.asLong = 0 },
-    { "mye", "mye", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_mye, NULL, .constantValue.asLong = 0 },
-    { "dme", "dme", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dme, NULL, .constantValue.asLong = 0 },
-    { "we", "we", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_we, NULL, .constantValue.asLong = 0 },
-    { "wwe", "wwe", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_wwe, NULL, .constantValue.asLong = 0 },
-    { "dwe", "dwe", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dwe, NULL, .constantValue.asLong = 0 },
-    { "dye", "dye", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dye, NULL, .constantValue.asLong = 0 },
-    { "hde", "hde", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hde, NULL, .constantValue.asLong = 0 },
-    { "mhe", "mhe", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_mhe, NULL, .constantValue.asLong = 0 },
-    { "sme", "sme", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_sme, NULL, .constantValue.asLong = 0 },
-    { "fse", "fse", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_fse, NULL, .constantValue.asLong = 0 },
-    { "ze", "ze", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ze, NULL, .constantValue.asLong = 0 },
-    { "lte", "lte", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_lte, NULL, .constantValue.asLong = 0 },
-    { "ym", "ym", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ym, NULL, .constantValue.asLong = 0 },
-    { "ymd", "ymd", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ymd, NULL, .constantValue.asLong = 0 },
-    { "ww", "ww", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ww, NULL, .constantValue.asLong = 0 },
-    { "wwd", "wwd", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_wwd, NULL, .constantValue.asLong = 0 },
-    { "hm", "hm", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hm, NULL, .constantValue.asLong = 0 },
-    { "hms", "hms", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hms, NULL, .constantValue.asLong = 0 },
-    { "hmsl", "hmsl", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hmsl, NULL, .constantValue.asLong = 0 },
-    { "hmsf", "hmsf", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_hmsf, NULL, .constantValue.asLong = 0 },
-    { "dh", "dh", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dh, NULL, .constantValue.asLong = 0 },
-    { "dhm", "dhm", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dhm, NULL, .constantValue.asLong = 0 },
-    { "dhms", "dhms", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dhms, NULL, .constantValue.asLong = 0 },
-    { "dhmsl", "dhmsl", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsl, NULL, .constantValue.asLong = 0 },
-    { "dhmsf", "dhmsf", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsf, NULL, .constantValue.asLong = 0 },
-    { "t", "t", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_t, NULL, .constantValue.asLong = 0 },
-    { "tx", "tx", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_tx, NULL, .constantValue.asLong = 0 },
-    { "tt", "tt", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_tt, NULL, .constantValue.asLong = 0 },
-    { "ttx", "ttx", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ttx, NULL, .constantValue.asLong = 0 },
-    { "dt", "dt", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dt, NULL, .constantValue.asLong = 0 },
-    { "dtx", "dtx", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dtx, NULL, .constantValue.asLong = 0 },
-    { "wdt", "wdt", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_wdt, NULL, .constantValue.asLong = 0 },
-    { "wdtx", "wdtx", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_wdtx, NULL, .constantValue.asLong = 0 },
-    { "od", "od", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_od, NULL, .constantValue.asLong = 0 },
-    { "odt", "odt", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_odt, NULL, .constantValue.asLong = 0 },
-    { "odtx", "odtx", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_odtx, NULL, .constantValue.asLong = 0 },
-    { "bd", "bd", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bd, NULL, .constantValue.asLong = 0 },
-    { "bt", "bt", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bt, NULL, .constantValue.asLong = 0 },
-    { "btx", "btx", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_btx, NULL, .constantValue.asLong = 0 },
-    { "btt", "btt", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_btt, NULL, .constantValue.asLong = 0 },
-    { "bttx", "bttx", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bttx, NULL, .constantValue.asLong = 0 },
-    { "bdt", "bdt", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bdt, NULL, .constantValue.asLong = 0 },
-    { "bdtx", "bdtx", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bdtx, NULL, .constantValue.asLong = 0 },
-    { "bod", "bod", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bod, NULL, .constantValue.asLong = 0 },
-    { "bodt", "bodt", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bodt, NULL, .constantValue.asLong = 0 },
-    { "bodtx", "bodtx", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bodtx, NULL, .constantValue.asLong = 0 },
-    { "bwd", "bwd", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bwd, NULL, .constantValue.asLong = 0 },
-    { "bwdt", "bwdt", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bwdt, NULL, .constantValue.asLong = 0 },
-    { "bwdtx", "bwdtx", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_bwdtx, NULL, .constantValue.asLong = 0 },
-    { "dpe", "dpe", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dpe, NULL, .constantValue.asLong = 0 },
-    { "tpe", "tpe", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_tpe, NULL, .constantValue.asLong = 0 },
-    { "dp", "dp", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dp, NULL, .constantValue.asLong = 0 },
-    { "ldp", "ldp", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ldp, NULL, .constantValue.asLong = 0 },
-    { "tp", "tp", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_tp, NULL, .constantValue.asLong = 0 },
-    { "ltp", "ltp", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ltp, NULL, .constantValue.asLong = 0 },
-    { "dtp", "dtp", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dtp, NULL, .constantValue.asLong = 0 },
-    { "dotp", "dotp", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_dotp, NULL, .constantValue.asLong = 0 },
-    { "ldotp", "ldotp", 0x1a, "Lorg.joda.time.format.DateTimeFormatter;", &OrgJodaTimeFormatISODateTimeFormat_Constants_ldotp, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatISODateTimeFormat_Constants = { 2, "Constants", "org.joda.time.format", "ISODateTimeFormat", 0x18, 60, methods, 59, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeFormatISODateTimeFormat_Constants;
-}
-
 @end
 
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dateParser() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dp == nil) {
-    id<OrgJodaTimeFormatDateTimeParser> tOffset = [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithChar:'T'])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement()])) toParser];
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dateElementParser()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:tOffset])) toFormatter];
+    id<OrgJodaTimeFormatDateTimeParser> tOffset = [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithChar:'T'])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement()])) toParser];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dateElementParser()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:tOffset])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dp;
 }
@@ -1894,7 +2016,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dateElementParser() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dpe == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_monthElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfMonthElement())) getParser]])) toParser]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfWeekElement())) getParser]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfYearElement()])) toParser] } count:3 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_monthElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfMonthElement())) getParser]])) toParser]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfWeekElement())) getParser]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfYearElement()])) toParser] } count:3 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dpe;
 }
@@ -1902,7 +2024,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_timeParser() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_tp == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement())) getParser]])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement())) getParser]])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement())) getParser]])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement())) getParser]])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_tp;
 }
@@ -1910,7 +2032,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_localTimeParser() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_ltp == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement())) getParser]])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser()])) toFormatter])) withZoneUTC];
+    return [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement())) getParser]])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser()])) toFormatter])) withZoneUTC];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_ltp;
 }
@@ -1918,8 +2040,8 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_tpe == nil) {
-    id<OrgJodaTimeFormatDateTimeParser> decimalPoint = [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithChar:'.'])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithChar:','])) toParser] } count:2 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toParser];
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement()])) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement()])) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_secondElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeParser:decimalPoint])) appendFractionOfSecondWithInt:1 withInt:9])) toParser]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeParser:decimalPoint])) appendFractionOfMinuteWithInt:1 withInt:9])) toParser], nil } count:3 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeParser:decimalPoint])) appendFractionOfHourWithInt:1 withInt:9])) toParser], nil } count:3 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toFormatter];
+    id<OrgJodaTimeFormatDateTimeParser> decimalPoint = [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithChar:'.'])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithChar:','])) toParser] } count:2 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toParser];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement()])) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement()])) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_secondElement()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeParser:decimalPoint])) appendFractionOfSecondWithInt:1 withInt:9])) toParser]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeParser:decimalPoint])) appendFractionOfMinuteWithInt:1 withInt:9])) toParser], nil } count:3 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toParser], [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeParser:decimalPoint])) appendFractionOfHourWithInt:1 withInt:9])) toParser], nil } count:3 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_tpe;
 }
@@ -1927,8 +2049,8 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dateTimeParser() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dtp == nil) {
-    id<OrgJodaTimeFormatDateTimeParser> time = [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithChar:'T'])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement())) getParser]])) toParser];
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ time, [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_dateOptionalTimeParser())) getParser] } count:2 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toFormatter];
+    id<OrgJodaTimeFormatDateTimeParser> time = [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithChar:'T'])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement())) getParser]])) toParser];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimePrinter:nil withOrgJodaTimeFormatDateTimeParserArray:[IOSObjectArray arrayWithObjects:(id[]){ time, [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_dateOptionalTimeParser())) getParser] } count:2 type:OrgJodaTimeFormatDateTimeParser_class_()]])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dtp;
 }
@@ -1936,8 +2058,8 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dateOptionalTimeParser() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dotp == nil) {
-    id<OrgJodaTimeFormatDateTimeParser> timeOrOffset = [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithChar:'T'])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser())) getParser]])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement())) getParser]])) toParser];
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dateElementParser()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:timeOrOffset])) toFormatter];
+    id<OrgJodaTimeFormatDateTimeParser> timeOrOffset = [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithChar:'T'])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser())) getParser]])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:[((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement())) getParser]])) toParser];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dateElementParser()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:timeOrOffset])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dotp;
 }
@@ -1945,8 +2067,8 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_localDateOptionalTimeParser() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_ldotp == nil) {
-    id<OrgJodaTimeFormatDateTimeParser> time = [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithChar:'T'])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser()])) toParser];
-    return [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dateElementParser()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:time])) toFormatter])) withZoneUTC];
+    id<OrgJodaTimeFormatDateTimeParser> time = [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithChar:'T'])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_timeElementParser()])) toParser];
+    return [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dateElementParser()])) appendOptionalWithOrgJodaTimeFormatDateTimeParser:time])) toFormatter])) withZoneUTC];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_ldotp;
 }
@@ -1954,7 +2076,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_time() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_t == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecondFraction()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecondFraction()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_t;
 }
@@ -1962,7 +2084,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_timeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_tx == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecond()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecond()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_tx;
 }
@@ -1970,7 +2092,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_tTime() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_tt == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_time()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_time()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_tt;
 }
@@ -1978,7 +2100,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_tTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_ttx == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_timeNoMillis()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_timeNoMillis()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_ttx;
 }
@@ -1986,7 +2108,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dateTime() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dt == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_date()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_tTime()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_date()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_tTime()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dt;
 }
@@ -1994,7 +2116,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dateTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dtx == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_date()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_tTimeNoMillis()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_date()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_tTimeNoMillis()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dtx;
 }
@@ -2002,7 +2124,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_ordinalDate() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_od == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfYearElement()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfYearElement()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_od;
 }
@@ -2010,7 +2132,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_ordinalDateTime() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_odt == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_ordinalDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_tTime()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_ordinalDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_tTime()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_odt;
 }
@@ -2018,7 +2140,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_ordinalDateTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_odtx == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_ordinalDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_tTimeNoMillis()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_ordinalDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_tTimeNoMillis()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_odtx;
 }
@@ -2026,7 +2148,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_weekDateTime() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_wdt == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_weekDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_tTime()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_weekDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_tTime()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_wdt;
 }
@@ -2034,7 +2156,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_weekDateTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_wdtx == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_weekDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_tTimeNoMillis()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_weekDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_tTimeNoMillis()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_wdtx;
 }
@@ -2042,7 +2164,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicDate() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_bd == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendYearWithInt:4 withInt:4])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_monthOfYear() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_dayOfMonth() withInt:2])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendYearWithInt:4 withInt:4])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_monthOfYear() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_dayOfMonth() withInt:2])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_bd;
 }
@@ -2050,7 +2172,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicTime() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_bt == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_hourOfDay() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_minuteOfHour() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_secondOfMinute() withInt:2])) appendLiteralWithChar:'.'])) appendFractionOfSecondWithInt:3 withInt:9])) appendTimeZoneOffsetWithNSString:@"Z" withBoolean:false withInt:2 withInt:2])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_hourOfDay() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_minuteOfHour() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_secondOfMinute() withInt:2])) appendLiteralWithChar:'.'])) appendFractionOfSecondWithInt:3 withInt:9])) appendTimeZoneOffsetWithNSString:@"Z" withBoolean:false withInt:2 withInt:2])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_bt;
 }
@@ -2058,7 +2180,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_btx == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_hourOfDay() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_minuteOfHour() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_secondOfMinute() withInt:2])) appendTimeZoneOffsetWithNSString:@"Z" withBoolean:false withInt:2 withInt:2])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_hourOfDay() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_minuteOfHour() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_secondOfMinute() withInt:2])) appendTimeZoneOffsetWithNSString:@"Z" withBoolean:false withInt:2 withInt:2])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_btx;
 }
@@ -2066,7 +2188,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTime() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_btt == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTime()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTime()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_btt;
 }
@@ -2074,7 +2196,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_bttx == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTimeNoMillis()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTimeNoMillis()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_bttx;
 }
@@ -2082,7 +2204,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicDateTime() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_bdt == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTime()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTime()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_bdt;
 }
@@ -2090,7 +2212,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicDateTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_bdtx == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTimeNoMillis()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTimeNoMillis()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_bdtx;
 }
@@ -2098,7 +2220,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicOrdinalDate() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_bod == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendYearWithInt:4 withInt:4])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_dayOfYear() withInt:3])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendYearWithInt:4 withInt:4])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_dayOfYear() withInt:3])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_bod;
 }
@@ -2106,7 +2228,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicOrdinalDateTime() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_bodt == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicOrdinalDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTime()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicOrdinalDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTime()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_bodt;
 }
@@ -2114,7 +2236,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicOrdinalDateTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_bodtx == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicOrdinalDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTimeNoMillis()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicOrdinalDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTimeNoMillis()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_bodtx;
 }
@@ -2122,7 +2244,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicWeekDate() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_bwd == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWeekyearWithInt:4 withInt:4])) appendLiteralWithChar:'W'])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_weekOfWeekyear() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_dayOfWeek() withInt:1])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWeekyearWithInt:4 withInt:4])) appendLiteralWithChar:'W'])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_weekOfWeekyear() withInt:2])) appendFixedDecimalWithOrgJodaTimeDateTimeFieldType:OrgJodaTimeDateTimeFieldType_dayOfWeek() withInt:1])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_bwd;
 }
@@ -2130,7 +2252,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicWeekDateTime() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_bwdt == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicWeekDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTime()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicWeekDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTime()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_bwdt;
 }
@@ -2138,7 +2260,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_basicWeekDateTimeNoMillis() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_bwdtx == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicWeekDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTimeNoMillis()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicWeekDate()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_basicTTimeNoMillis()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_bwdtx;
 }
@@ -2146,7 +2268,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_yearMonth() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_ym == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_monthElement()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_monthElement()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_ym;
 }
@@ -2154,7 +2276,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_yearMonthDay() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_ymd == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_monthElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfMonthElement()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_monthElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfMonthElement()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_ymd;
 }
@@ -2162,7 +2284,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearWeek() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_ww == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekElement()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekElement()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_ww;
 }
@@ -2170,7 +2292,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearWeekDay() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_wwd == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfWeekElement()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_weekElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfWeekElement()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_wwd;
 }
@@ -2178,7 +2300,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinute() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_hm == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_hm;
 }
@@ -2186,7 +2308,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecond() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_hms == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_secondElement()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_secondElement()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_hms;
 }
@@ -2194,7 +2316,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecondMillis() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_hmsl == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_secondElement()])) appendLiteralWithChar:'.'])) appendFractionOfSecondWithInt:3 withInt:3])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_secondElement()])) appendLiteralWithChar:'.'])) appendFractionOfSecondWithInt:3 withInt:3])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_hmsl;
 }
@@ -2202,7 +2324,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecondFraction() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_hmsf == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_secondElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_fractionElement()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_secondElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_fractionElement()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_hmsf;
 }
@@ -2210,7 +2332,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dateHour() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dh == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_date()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_hour()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_date()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_hour()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dh;
 }
@@ -2218,7 +2340,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dateHourMinute() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dhm == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_date()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinute()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_date()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinute()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dhm;
 }
@@ -2226,7 +2348,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dateHourMinuteSecond() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dhms == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_date()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecond()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_date()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecond()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dhms;
 }
@@ -2234,7 +2356,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dateHourMinuteSecondMillis() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsl == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_date()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecondMillis()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_date()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecondMillis()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsl;
 }
@@ -2242,7 +2364,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dateHourMinuteSecondFraction() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsf == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_date()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecondFraction()])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_date()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement()])) appendWithOrgJodaTimeFormatDateTimeFormatter:OrgJodaTimeFormatISODateTimeFormat_Constants_hourMinuteSecondFraction()])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dhmsf;
 }
@@ -2250,7 +2372,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_yearElement() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_ye == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendYearWithInt:4 withInt:9])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendYearWithInt:4 withInt:9])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_ye;
 }
@@ -2258,7 +2380,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_monthElement() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_mye == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithChar:'-'])) appendMonthOfYearWithInt:2])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithChar:'-'])) appendMonthOfYearWithInt:2])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_mye;
 }
@@ -2266,7 +2388,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfMonthElement() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dme == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithChar:'-'])) appendDayOfMonthWithInt:2])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithChar:'-'])) appendDayOfMonthWithInt:2])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dme;
 }
@@ -2274,7 +2396,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_weekyearElement() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_we == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendWeekyearWithInt:4 withInt:9])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendWeekyearWithInt:4 withInt:9])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_we;
 }
@@ -2282,7 +2404,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_weekElement() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_wwe == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithNSString:@"-W"])) appendWeekOfWeekyearWithInt:2])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithNSString:@"-W"])) appendWeekOfWeekyearWithInt:2])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_wwe;
 }
@@ -2290,7 +2412,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfWeekElement() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dwe == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithChar:'-'])) appendDayOfWeekWithInt:1])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithChar:'-'])) appendDayOfWeekWithInt:1])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dwe;
 }
@@ -2298,7 +2420,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_dayOfYearElement() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_dye == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithChar:'-'])) appendDayOfYearWithInt:3])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithChar:'-'])) appendDayOfYearWithInt:3])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_dye;
 }
@@ -2306,7 +2428,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_literalTElement() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_lte == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithChar:'T'])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithChar:'T'])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_lte;
 }
@@ -2314,7 +2436,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_hourElement() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_hde == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendHourOfDayWithInt:2])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendHourOfDayWithInt:2])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_hde;
 }
@@ -2322,7 +2444,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_minuteElement() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_mhe == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithChar:':'])) appendMinuteOfHourWithInt:2])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithChar:':'])) appendMinuteOfHourWithInt:2])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_mhe;
 }
@@ -2330,7 +2452,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_secondElement() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_sme == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithChar:':'])) appendSecondOfMinuteWithInt:2])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithChar:':'])) appendSecondOfMinuteWithInt:2])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_sme;
 }
@@ -2338,7 +2460,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_fractionElement() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_fse == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendLiteralWithChar:'.'])) appendFractionOfSecondWithInt:3 withInt:9])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendLiteralWithChar:'.'])) appendFractionOfSecondWithInt:3 withInt:9])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_fse;
 }
@@ -2346,7 +2468,7 @@ OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants
 OrgJodaTimeFormatDateTimeFormatter *OrgJodaTimeFormatISODateTimeFormat_Constants_offsetElement() {
   OrgJodaTimeFormatISODateTimeFormat_Constants_initialize();
   if (OrgJodaTimeFormatISODateTimeFormat_Constants_ze == nil) {
-    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([((OrgJodaTimeFormatDateTimeFormatterBuilder *) [new_OrgJodaTimeFormatDateTimeFormatterBuilder_init() autorelease]) appendTimeZoneOffsetWithNSString:@"Z" withBoolean:true withInt:2 withInt:4])) toFormatter];
+    return [((OrgJodaTimeFormatDateTimeFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatDateTimeFormatterBuilder_init() appendTimeZoneOffsetWithNSString:@"Z" withBoolean:true withInt:2 withInt:4])) toFormatter];
   }
   return OrgJodaTimeFormatISODateTimeFormat_Constants_ze;
 }
@@ -2356,15 +2478,11 @@ void OrgJodaTimeFormatISODateTimeFormat_Constants_init(OrgJodaTimeFormatISODateT
 }
 
 OrgJodaTimeFormatISODateTimeFormat_Constants *new_OrgJodaTimeFormatISODateTimeFormat_Constants_init() {
-  OrgJodaTimeFormatISODateTimeFormat_Constants *self = [OrgJodaTimeFormatISODateTimeFormat_Constants alloc];
-  OrgJodaTimeFormatISODateTimeFormat_Constants_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFormatISODateTimeFormat_Constants, init)
 }
 
 OrgJodaTimeFormatISODateTimeFormat_Constants *create_OrgJodaTimeFormatISODateTimeFormat_Constants_init() {
-  OrgJodaTimeFormatISODateTimeFormat_Constants *self = [[OrgJodaTimeFormatISODateTimeFormat_Constants alloc] autorelease];
-  OrgJodaTimeFormatISODateTimeFormat_Constants_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFormatISODateTimeFormat_Constants, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatISODateTimeFormat_Constants)

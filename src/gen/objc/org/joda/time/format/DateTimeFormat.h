@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatDateTimeFormat_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatDateTimeFormat_RESTRICT
-#define OrgJodaTimeFormatDateTimeFormat_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormat")
+#ifdef RESTRICT_OrgJodaTimeFormatDateTimeFormat
+#define INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormat 0
 #else
-#define OrgJodaTimeFormatDateTimeFormat_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormat 1
 #endif
-#undef OrgJodaTimeFormatDateTimeFormat_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatDateTimeFormat
 
-#if !defined (OrgJodaTimeFormatDateTimeFormat_) && (OrgJodaTimeFormatDateTimeFormat_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormat_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormat_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormat || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormat))
 #define OrgJodaTimeFormatDateTimeFormat_
 
 @class JavaUtilLocale;
@@ -409,15 +409,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormat)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormat_StyleFormatter_) && (OrgJodaTimeFormatDateTimeFormat_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormat_StyleFormatter_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormat_StyleFormatter_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormat || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormat_StyleFormatter))
 #define OrgJodaTimeFormatDateTimeFormat_StyleFormatter_
 
-#define OrgJodaTimeFormatInternalPrinter_RESTRICT 1
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalPrinter 1
+#define INCLUDE_OrgJodaTimeFormatInternalPrinter 1
 #include "org/joda/time/format/InternalPrinter.h"
 
-#define OrgJodaTimeFormatInternalParser_RESTRICT 1
-#define OrgJodaTimeFormatInternalParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalParser 1
+#define INCLUDE_OrgJodaTimeFormatInternalParser 1
 #include "org/joda/time/format/InternalParser.h"
 
 @class JavaUtilLocale;
@@ -473,7 +473,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormat_StyleFormatter)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey_) && (OrgJodaTimeFormatDateTimeFormat_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormat || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey))
 #define OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKey_
 
 @class JavaUtilLocale;
@@ -505,4 +505,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormat_StyleFormatterCacheKe
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatDateTimeFormat_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormat")

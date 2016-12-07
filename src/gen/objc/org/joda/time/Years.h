@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeYears_INCLUDE_ALL")
-#ifdef OrgJodaTimeYears_RESTRICT
-#define OrgJodaTimeYears_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeYears")
+#ifdef RESTRICT_OrgJodaTimeYears
+#define INCLUDE_ALL_OrgJodaTimeYears 0
 #else
-#define OrgJodaTimeYears_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeYears 1
 #endif
-#undef OrgJodaTimeYears_RESTRICT
+#undef RESTRICT_OrgJodaTimeYears
 
-#if !defined (OrgJodaTimeYears_) && (OrgJodaTimeYears_INCLUDE_ALL || defined(OrgJodaTimeYears_INCLUDE))
+#if !defined (OrgJodaTimeYears_) && (INCLUDE_ALL_OrgJodaTimeYears || defined(INCLUDE_OrgJodaTimeYears))
 #define OrgJodaTimeYears_
 
-#define OrgJodaTimeBaseBaseSingleFieldPeriod_RESTRICT 1
-#define OrgJodaTimeBaseBaseSingleFieldPeriod_INCLUDE 1
+#define RESTRICT_OrgJodaTimeBaseBaseSingleFieldPeriod 1
+#define INCLUDE_OrgJodaTimeBaseBaseSingleFieldPeriod 1
 #include "org/joda/time/base/BaseSingleFieldPeriod.h"
 
 @class OrgJodaTimeDurationFieldType;
@@ -279,4 +279,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeYears)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeYears_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeYears")

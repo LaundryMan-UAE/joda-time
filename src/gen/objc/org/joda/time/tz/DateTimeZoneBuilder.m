@@ -585,11 +585,11 @@ J2OBJC_IGNORE_DESIGNATED_END
                                             withBoolean:(jboolean)advanceDayOfWeek
                                                 withInt:(jint)millisOfDay {
   if ([((JavaUtilArrayList *) nil_chk(iRuleSets_)) size] > 0) {
-    OrgJodaTimeTzDateTimeZoneBuilder_OfYear *ofYear = [new_OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_(mode, monthOfYear, dayOfMonth, dayOfWeek, advanceDayOfWeek, millisOfDay) autorelease];
+    OrgJodaTimeTzDateTimeZoneBuilder_OfYear *ofYear = create_OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_(mode, monthOfYear, dayOfMonth, dayOfWeek, advanceDayOfWeek, millisOfDay);
     OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *lastRuleSet = [iRuleSets_ getWithInt:[iRuleSets_ size] - 1];
     [((OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *) nil_chk(lastRuleSet)) setUpperLimitWithInt:year withOrgJodaTimeTzDateTimeZoneBuilder_OfYear:ofYear];
   }
-  [iRuleSets_ addWithId:[new_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_init() autorelease]];
+  [iRuleSets_ addWithId:create_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_init()];
   return self;
 }
 
@@ -615,9 +615,9 @@ J2OBJC_IGNORE_DESIGNATED_END
                                                           withBoolean:(jboolean)advanceDayOfWeek
                                                               withInt:(jint)millisOfDay {
   if (fromYear <= toYear) {
-    OrgJodaTimeTzDateTimeZoneBuilder_OfYear *ofYear = [new_OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_(mode, monthOfYear, dayOfMonth, dayOfWeek, advanceDayOfWeek, millisOfDay) autorelease];
-    OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *recurrence = [new_OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(ofYear, nameKey, saveMillis) autorelease];
-    OrgJodaTimeTzDateTimeZoneBuilder_Rule *rule = [new_OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_(recurrence, fromYear, toYear) autorelease];
+    OrgJodaTimeTzDateTimeZoneBuilder_OfYear *ofYear = create_OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_(mode, monthOfYear, dayOfMonth, dayOfWeek, advanceDayOfWeek, millisOfDay);
+    OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *recurrence = create_OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(ofYear, nameKey, saveMillis);
+    OrgJodaTimeTzDateTimeZoneBuilder_Rule *rule = create_OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_(recurrence, fromYear, toYear);
     [((OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *) nil_chk(OrgJodaTimeTzDateTimeZoneBuilder_getLastRuleSet(self))) addRuleWithOrgJodaTimeTzDateTimeZoneBuilder_Rule:rule];
   }
   return self;
@@ -630,9 +630,9 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (OrgJodaTimeDateTimeZone *)toDateTimeZoneWithNSString:(NSString *)id_
                                             withBoolean:(jboolean)outputID {
   if (id_ == nil) {
-    @throw [new_JavaLangIllegalArgumentException_init() autorelease];
+    @throw create_JavaLangIllegalArgumentException_init();
   }
-  JavaUtilArrayList *transitions = [new_JavaUtilArrayList_init() autorelease];
+  JavaUtilArrayList *transitions = create_JavaUtilArrayList_init();
   OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *tailZone = nil;
   jlong millis = JavaLangLong_MIN_VALUE;
   jint saveMillis = 0;
@@ -644,9 +644,9 @@ J2OBJC_IGNORE_DESIGNATED_END
       continue;
     }
     OrgJodaTimeTzDateTimeZoneBuilder_addTransitionWithJavaUtilArrayList_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_(self, transitions, next);
-    millis = [((OrgJodaTimeTzDateTimeZoneBuilder_Transition *) nil_chk(next)) getMillis];
+    millis = [next getMillis];
     saveMillis = [next getSaveMillis];
-    rs = [new_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(rs) autorelease];
+    rs = create_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(rs);
     while ((next = [rs nextTransitionWithLong:millis withInt:saveMillis]) != nil) {
       if (OrgJodaTimeTzDateTimeZoneBuilder_addTransitionWithJavaUtilArrayList_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_(self, transitions, next)) {
         if (tailZone != nil) {
@@ -689,7 +689,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_Transition:(OrgJodaTimeTzDateTimeZoneBuilde
     [self writeToWithNSString:zoneID withJavaIoDataOutput:(id<JavaIoDataOutput>) cast_check(outArg, JavaIoDataOutput_class_())];
   }
   else {
-    [self writeToWithNSString:zoneID withJavaIoDataOutput:[new_JavaIoDataOutputStream_initWithJavaIoOutputStream_(outArg) autorelease]];
+    [self writeToWithNSString:zoneID withJavaIoDataOutput:create_JavaIoDataOutputStream_initWithJavaIoOutputStream_(outArg)];
   }
 }
 
@@ -720,28 +720,46 @@ withOrgJodaTimeTzDateTimeZoneBuilder_Transition:(OrgJodaTimeTzDateTimeZoneBuilde
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "readFromWithJavaIoInputStream:withNSString:", "readFrom", "Lorg.joda.time.DateTimeZone;", 0x9, "Ljava.io.IOException;", NULL },
-    { "readFromWithJavaIoDataInput:withNSString:", "readFrom", "Lorg.joda.time.DateTimeZone;", 0x9, "Ljava.io.IOException;", NULL },
-    { "writeMillisWithJavaIoDataOutput:withLong:", "writeMillis", "V", 0x8, "Ljava.io.IOException;", NULL },
-    { "readMillisWithJavaIoDataInput:", "readMillis", "J", 0x8, "Ljava.io.IOException;", NULL },
-    { "buildFixedZoneWithNSString:withNSString:withInt:withInt:", "buildFixedZone", "Lorg.joda.time.DateTimeZone;", 0xa, NULL, NULL },
-    { "init", "DateTimeZoneBuilder", NULL, 0x1, NULL, NULL },
-    { "addCutoverWithInt:withChar:withInt:withInt:withInt:withBoolean:withInt:", "addCutover", "Lorg.joda.time.tz.DateTimeZoneBuilder;", 0x1, NULL, NULL },
-    { "setStandardOffsetWithInt:", "setStandardOffset", "Lorg.joda.time.tz.DateTimeZoneBuilder;", 0x1, NULL, NULL },
-    { "setFixedSavingsWithNSString:withInt:", "setFixedSavings", "Lorg.joda.time.tz.DateTimeZoneBuilder;", 0x1, NULL, NULL },
-    { "addRecurringSavingsWithNSString:withInt:withInt:withInt:withChar:withInt:withInt:withInt:withBoolean:withInt:", "addRecurringSavings", "Lorg.joda.time.tz.DateTimeZoneBuilder;", 0x1, NULL, NULL },
-    { "getLastRuleSet", NULL, "Lorg.joda.time.tz.DateTimeZoneBuilder$RuleSet;", 0x2, NULL, NULL },
-    { "toDateTimeZoneWithNSString:withBoolean:", "toDateTimeZone", "Lorg.joda.time.DateTimeZone;", 0x1, NULL, NULL },
-    { "addTransitionWithJavaUtilArrayList:withOrgJodaTimeTzDateTimeZoneBuilder_Transition:", "addTransition", "Z", 0x2, NULL, "(Ljava/util/ArrayList<Lorg/joda/time/tz/DateTimeZoneBuilder$Transition;>;Lorg/joda/time/tz/DateTimeZoneBuilder$Transition;)Z" },
-    { "writeToWithNSString:withJavaIoOutputStream:", "writeTo", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeToWithNSString:withJavaIoDataOutput:", "writeTo", "V", 0x1, "Ljava.io.IOException;", NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeDateTimeZone;", 0x9, 0, 1, 2, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeZone;", 0x9, 0, 3, 2, -1, -1, -1 },
+    { NULL, "V", 0x8, 4, 5, 2, -1, -1, -1 },
+    { NULL, "J", 0x8, 6, 7, 2, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeZone;", 0xa, 8, 9, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder;", 0x1, 10, 11, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder;", 0x1, 12, 13, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder;", 0x1, 14, 15, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder;", 0x1, 16, 17, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder_RuleSet;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeZone;", 0x1, 18, 19, -1, -1, -1, -1 },
+    { NULL, "Z", 0x2, 20, 21, -1, 22, -1, -1 },
+    { NULL, "V", 0x1, 23, 24, 2, -1, -1, -1 },
+    { NULL, "V", 0x1, 23, 25, 2, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(readFromWithJavaIoInputStream:withNSString:);
+  methods[1].selector = @selector(readFromWithJavaIoDataInput:withNSString:);
+  methods[2].selector = @selector(writeMillisWithJavaIoDataOutput:withLong:);
+  methods[3].selector = @selector(readMillisWithJavaIoDataInput:);
+  methods[4].selector = @selector(buildFixedZoneWithNSString:withNSString:withInt:withInt:);
+  methods[5].selector = @selector(init);
+  methods[6].selector = @selector(addCutoverWithInt:withChar:withInt:withInt:withInt:withBoolean:withInt:);
+  methods[7].selector = @selector(setStandardOffsetWithInt:);
+  methods[8].selector = @selector(setFixedSavingsWithNSString:withInt:);
+  methods[9].selector = @selector(addRecurringSavingsWithNSString:withInt:withInt:withInt:withChar:withInt:withInt:withInt:withBoolean:withInt:);
+  methods[10].selector = @selector(getLastRuleSet);
+  methods[11].selector = @selector(toDateTimeZoneWithNSString:withBoolean:);
+  methods[12].selector = @selector(addTransitionWithJavaUtilArrayList:withOrgJodaTimeTzDateTimeZoneBuilder_Transition:);
+  methods[13].selector = @selector(writeToWithNSString:withJavaIoOutputStream:);
+  methods[14].selector = @selector(writeToWithNSString:withJavaIoDataOutput:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "iRuleSets_", NULL, 0x12, "Ljava.util.ArrayList;", NULL, "Ljava/util/ArrayList<Lorg/joda/time/tz/DateTimeZoneBuilder$RuleSet;>;", .constantValue.asLong = 0 },
+    { "iRuleSets_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x12, -1, -1, 26, -1 },
   };
-  static const char *inner_classes[] = {"Lorg.joda.time.tz.DateTimeZoneBuilder$OfYear;", "Lorg.joda.time.tz.DateTimeZoneBuilder$Recurrence;", "Lorg.joda.time.tz.DateTimeZoneBuilder$Rule;", "Lorg.joda.time.tz.DateTimeZoneBuilder$Transition;", "Lorg.joda.time.tz.DateTimeZoneBuilder$RuleSet;", "Lorg.joda.time.tz.DateTimeZoneBuilder$DSTZone;", "Lorg.joda.time.tz.DateTimeZoneBuilder$PrecalculatedZone;"};
-  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder = { 2, "DateTimeZoneBuilder", "org.joda.time.tz", NULL, 0x1, 15, methods, 1, fields, 0, NULL, 7, inner_classes, NULL, NULL };
+  static const void *ptrTable[] = { "readFrom", "LJavaIoInputStream;LNSString;", "LJavaIoIOException;", "LJavaIoDataInput;LNSString;", "writeMillis", "LJavaIoDataOutput;J", "readMillis", "LJavaIoDataInput;", "buildFixedZone", "LNSString;LNSString;II", "addCutover", "ICIIIZI", "setStandardOffset", "I", "setFixedSavings", "LNSString;I", "addRecurringSavings", "LNSString;IIICIIIZI", "toDateTimeZone", "LNSString;Z", "addTransition", "LJavaUtilArrayList;LOrgJodaTimeTzDateTimeZoneBuilder_Transition;", "(Ljava/util/ArrayList<Lorg/joda/time/tz/DateTimeZoneBuilder$Transition;>;Lorg/joda/time/tz/DateTimeZoneBuilder$Transition;)Z", "writeTo", "LNSString;LJavaIoOutputStream;", "LNSString;LJavaIoDataOutput;", "Ljava/util/ArrayList<Lorg/joda/time/tz/DateTimeZoneBuilder$RuleSet;>;", "LOrgJodaTimeTzDateTimeZoneBuilder_OfYear;LOrgJodaTimeTzDateTimeZoneBuilder_Recurrence;LOrgJodaTimeTzDateTimeZoneBuilder_Rule;LOrgJodaTimeTzDateTimeZoneBuilder_Transition;LOrgJodaTimeTzDateTimeZoneBuilder_RuleSet;LOrgJodaTimeTzDateTimeZoneBuilder_DSTZone;LOrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone;" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder = { "DateTimeZoneBuilder", "org.joda.time.tz", ptrTable, methods, fields, 7, 0x1, 15, 1, -1, 27, -1, -1, -1 };
   return &_OrgJodaTimeTzDateTimeZoneBuilder;
 }
 
@@ -753,7 +771,7 @@ OrgJodaTimeDateTimeZone *OrgJodaTimeTzDateTimeZoneBuilder_readFromWithJavaIoInpu
     return OrgJodaTimeTzDateTimeZoneBuilder_readFromWithJavaIoDataInput_withNSString_((id<JavaIoDataInput>) cast_check(inArg, JavaIoDataInput_class_()), id_);
   }
   else {
-    return OrgJodaTimeTzDateTimeZoneBuilder_readFromWithJavaIoDataInput_withNSString_([new_JavaIoDataInputStream_initWithJavaIoInputStream_(inArg) autorelease], id_);
+    return OrgJodaTimeTzDateTimeZoneBuilder_readFromWithJavaIoDataInput_withNSString_(create_JavaIoDataInputStream_initWithJavaIoInputStream_(inArg), id_);
   }
 }
 
@@ -763,7 +781,7 @@ OrgJodaTimeDateTimeZone *OrgJodaTimeTzDateTimeZoneBuilder_readFromWithJavaIoData
     OrgJodaTimeDateTimeZone *fixed;
     switch ([((id<JavaIoDataInput>) nil_chk(inArg)) readUnsignedByte]) {
       case 'F':
-      fixed = [new_OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSString_withInt_withInt_(id_, [inArg readUTF], (jint) OrgJodaTimeTzDateTimeZoneBuilder_readMillisWithJavaIoDataInput_(inArg), (jint) OrgJodaTimeTzDateTimeZoneBuilder_readMillisWithJavaIoDataInput_(inArg)) autorelease];
+      fixed = create_OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSString_withInt_withInt_(id_, [inArg readUTF], (jint) OrgJodaTimeTzDateTimeZoneBuilder_readMillisWithJavaIoDataInput_(inArg), (jint) OrgJodaTimeTzDateTimeZoneBuilder_readMillisWithJavaIoDataInput_(inArg));
       if ([fixed isEqual:JreLoadStatic(OrgJodaTimeDateTimeZone, UTC)]) {
         fixed = JreLoadStatic(OrgJodaTimeDateTimeZone, UTC);
       }
@@ -773,7 +791,7 @@ OrgJodaTimeDateTimeZone *OrgJodaTimeTzDateTimeZoneBuilder_readFromWithJavaIoData
       case 'P':
       return OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_readFromWithJavaIoDataInput_withNSString_(inArg, id_);
       default:
-      @throw [new_JavaIoIOException_initWithNSString_(@"Invalid encoding") autorelease];
+      @throw create_JavaIoIOException_initWithNSString_(@"Invalid encoding");
     }
   }
 }
@@ -840,7 +858,7 @@ OrgJodaTimeDateTimeZone *OrgJodaTimeTzDateTimeZoneBuilder_buildFixedZoneWithNSSt
   if ([@"UTC" isEqual:id_] && [((NSString *) nil_chk(id_)) isEqual:nameKey] && wallOffset == 0 && standardOffset == 0) {
     return JreLoadStatic(OrgJodaTimeDateTimeZone, UTC);
   }
-  return [new_OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSString_withInt_withInt_(id_, nameKey, wallOffset, standardOffset) autorelease];
+  return create_OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSString_withInt_withInt_(id_, nameKey, wallOffset, standardOffset);
 }
 
 void OrgJodaTimeTzDateTimeZoneBuilder_init(OrgJodaTimeTzDateTimeZoneBuilder *self) {
@@ -849,15 +867,11 @@ void OrgJodaTimeTzDateTimeZoneBuilder_init(OrgJodaTimeTzDateTimeZoneBuilder *sel
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder *new_OrgJodaTimeTzDateTimeZoneBuilder_init() {
-  OrgJodaTimeTzDateTimeZoneBuilder *self = [OrgJodaTimeTzDateTimeZoneBuilder alloc];
-  OrgJodaTimeTzDateTimeZoneBuilder_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzDateTimeZoneBuilder, init)
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder *create_OrgJodaTimeTzDateTimeZoneBuilder_init() {
-  OrgJodaTimeTzDateTimeZoneBuilder *self = [[OrgJodaTimeTzDateTimeZoneBuilder alloc] autorelease];
-  OrgJodaTimeTzDateTimeZoneBuilder_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzDateTimeZoneBuilder, init)
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *OrgJodaTimeTzDateTimeZoneBuilder_getLastRuleSet(OrgJodaTimeTzDateTimeZoneBuilder *self) {
@@ -1049,28 +1063,43 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder)
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "readFromWithJavaIoDataInput:", "readFrom", "Lorg.joda.time.tz.DateTimeZoneBuilder$OfYear;", 0x8, "Ljava.io.IOException;", NULL },
-    { "initWithChar:withInt:withInt:withInt:withBoolean:withInt:", "OfYear", NULL, 0x0, NULL, NULL },
-    { "setInstantWithInt:withInt:withInt:", "setInstant", "J", 0x1, NULL, NULL },
-    { "nextWithLong:withInt:withInt:", "next", "J", 0x1, NULL, NULL },
-    { "previousWithLong:withInt:withInt:", "previous", "J", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "writeToWithJavaIoDataOutput:", "writeTo", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "setDayOfMonthNextWithOrgJodaTimeChronology:withLong:", "setDayOfMonthNext", "J", 0x2, NULL, NULL },
-    { "setDayOfMonthPreviousWithOrgJodaTimeChronology:withLong:", "setDayOfMonthPrevious", "J", 0x2, NULL, NULL },
-    { "setDayOfMonthWithOrgJodaTimeChronology:withLong:", "setDayOfMonth", "J", 0x2, NULL, NULL },
-    { "setDayOfWeekWithOrgJodaTimeChronology:withLong:", "setDayOfWeek", "J", 0x2, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder_OfYear;", 0x8, 0, 1, 2, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 7, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 8, 7, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 9, 10, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 11, 12, 2, -1, -1, -1 },
+    { NULL, "J", 0x2, 13, 14, -1, -1, -1, -1 },
+    { NULL, "J", 0x2, 15, 14, -1, -1, -1, -1 },
+    { NULL, "J", 0x2, 16, 14, -1, -1, -1, -1 },
+    { NULL, "J", 0x2, 17, 14, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(readFromWithJavaIoDataInput:);
+  methods[1].selector = @selector(initWithChar:withInt:withInt:withInt:withBoolean:withInt:);
+  methods[2].selector = @selector(setInstantWithInt:withInt:withInt:);
+  methods[3].selector = @selector(nextWithLong:withInt:withInt:);
+  methods[4].selector = @selector(previousWithLong:withInt:withInt:);
+  methods[5].selector = @selector(isEqual:);
+  methods[6].selector = @selector(writeToWithJavaIoDataOutput:);
+  methods[7].selector = @selector(setDayOfMonthNextWithOrgJodaTimeChronology:withLong:);
+  methods[8].selector = @selector(setDayOfMonthPreviousWithOrgJodaTimeChronology:withLong:);
+  methods[9].selector = @selector(setDayOfMonthWithOrgJodaTimeChronology:withLong:);
+  methods[10].selector = @selector(setDayOfWeekWithOrgJodaTimeChronology:withLong:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "iMode_", NULL, 0x10, "C", NULL, NULL, .constantValue.asLong = 0 },
-    { "iMonthOfYear_", NULL, 0x10, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iDayOfMonth_", NULL, 0x10, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iDayOfWeek_", NULL, 0x10, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iAdvance_", NULL, 0x10, "Z", NULL, NULL, .constantValue.asLong = 0 },
-    { "iMillisOfDay_", NULL, 0x10, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMode_", "C", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iMonthOfYear_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iDayOfMonth_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iDayOfWeek_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iAdvance_", "Z", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iMillisOfDay_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder_OfYear = { 2, "OfYear", "org.joda.time.tz", "DateTimeZoneBuilder", 0x1a, 11, methods, 6, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "readFrom", "LJavaIoDataInput;", "LJavaIoIOException;", "CIIIZI", "setInstant", "III", "next", "JII", "previous", "equals", "LNSObject;", "writeTo", "LJavaIoDataOutput;", "setDayOfMonthNext", "LOrgJodaTimeChronology;J", "setDayOfMonthPrevious", "setDayOfMonth", "setDayOfWeek", "LOrgJodaTimeTzDateTimeZoneBuilder;" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder_OfYear = { "OfYear", "org.joda.time.tz", ptrTable, methods, fields, 7, 0x1a, 11, 6, 18, -1, -1, -1, -1 };
   return &_OrgJodaTimeTzDateTimeZoneBuilder_OfYear;
 }
 
@@ -1078,13 +1107,13 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder)
 
 OrgJodaTimeTzDateTimeZoneBuilder_OfYear *OrgJodaTimeTzDateTimeZoneBuilder_OfYear_readFromWithJavaIoDataInput_(id<JavaIoDataInput> inArg) {
   OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initialize();
-  return [new_OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_((jchar) [((id<JavaIoDataInput>) nil_chk(inArg)) readUnsignedByte], (jint) [inArg readUnsignedByte], (jint) [inArg readByte], (jint) [inArg readUnsignedByte], [inArg readBoolean], (jint) OrgJodaTimeTzDateTimeZoneBuilder_readMillisWithJavaIoDataInput_(inArg)) autorelease];
+  return create_OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_((jchar) [((id<JavaIoDataInput>) nil_chk(inArg)) readUnsignedByte], (jint) [inArg readUnsignedByte], (jint) [inArg readByte], (jint) [inArg readUnsignedByte], [inArg readBoolean], (jint) OrgJodaTimeTzDateTimeZoneBuilder_readMillisWithJavaIoDataInput_(inArg));
 }
 
 void OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_OfYear *self, jchar mode, jint monthOfYear, jint dayOfMonth, jint dayOfWeek, jboolean advanceDayOfWeek, jint millisOfDay) {
   NSObject_init(self);
   if (mode != 'u' && mode != 'w' && mode != 's') {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$C", @"Unknown mode: ", mode)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$C", @"Unknown mode: ", mode));
   }
   self->iMode_ = mode;
   self->iMonthOfYear_ = monthOfYear;
@@ -1095,15 +1124,11 @@ void OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withIn
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_OfYear *new_OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_(jchar mode, jint monthOfYear, jint dayOfMonth, jint dayOfWeek, jboolean advanceDayOfWeek, jint millisOfDay) {
-  OrgJodaTimeTzDateTimeZoneBuilder_OfYear *self = [OrgJodaTimeTzDateTimeZoneBuilder_OfYear alloc];
-  OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_(self, mode, monthOfYear, dayOfMonth, dayOfWeek, advanceDayOfWeek, millisOfDay);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_OfYear, initWithChar_withInt_withInt_withInt_withBoolean_withInt_, mode, monthOfYear, dayOfMonth, dayOfWeek, advanceDayOfWeek, millisOfDay)
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_OfYear *create_OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_(jchar mode, jint monthOfYear, jint dayOfMonth, jint dayOfWeek, jboolean advanceDayOfWeek, jint millisOfDay) {
-  OrgJodaTimeTzDateTimeZoneBuilder_OfYear *self = [[OrgJodaTimeTzDateTimeZoneBuilder_OfYear alloc] autorelease];
-  OrgJodaTimeTzDateTimeZoneBuilder_OfYear_initWithChar_withInt_withInt_withInt_withBoolean_withInt_(self, mode, monthOfYear, dayOfMonth, dayOfWeek, advanceDayOfWeek, millisOfDay);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_OfYear, initWithChar_withInt_withInt_withInt_withBoolean_withInt_, mode, monthOfYear, dayOfMonth, dayOfWeek, advanceDayOfWeek, millisOfDay)
 }
 
 jlong OrgJodaTimeTzDateTimeZoneBuilder_OfYear_setDayOfMonthNextWithOrgJodaTimeChronology_withLong_(OrgJodaTimeTzDateTimeZoneBuilder_OfYear *self, OrgJodaTimeChronology *chrono, jlong next) {
@@ -1230,7 +1255,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder_OfYear)
 }
 
 - (OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *)renameWithNSString:(NSString *)nameKey {
-  return [new_OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(iOfYear_, nameKey, iSaveMillis_) autorelease];
+  return create_OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(iOfYear_, nameKey, iSaveMillis_);
 }
 
 - (OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *)renameAppendWithNSString:(NSString *)appendNameKey {
@@ -1244,25 +1269,40 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder_OfYear)
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "readFromWithJavaIoDataInput:", "readFrom", "Lorg.joda.time.tz.DateTimeZoneBuilder$Recurrence;", 0x8, "Ljava.io.IOException;", NULL },
-    { "initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear:withNSString:withInt:", "Recurrence", NULL, 0x0, NULL, NULL },
-    { "getOfYear", NULL, "Lorg.joda.time.tz.DateTimeZoneBuilder$OfYear;", 0x1, NULL, NULL },
-    { "nextWithLong:withInt:withInt:", "next", "J", 0x1, NULL, NULL },
-    { "previousWithLong:withInt:withInt:", "previous", "J", 0x1, NULL, NULL },
-    { "getNameKey", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getSaveMillis", NULL, "I", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "writeToWithJavaIoDataOutput:", "writeTo", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "renameWithNSString:", "rename", "Lorg.joda.time.tz.DateTimeZoneBuilder$Recurrence;", 0x0, NULL, NULL },
-    { "renameAppendWithNSString:", "renameAppend", "Lorg.joda.time.tz.DateTimeZoneBuilder$Recurrence;", 0x0, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder_Recurrence;", 0x8, 0, 1, 2, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, 3, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder_OfYear;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 5, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 7, 8, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 9, 10, 2, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder_Recurrence;", 0x0, 11, 12, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder_Recurrence;", 0x0, 13, 12, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(readFromWithJavaIoDataInput:);
+  methods[1].selector = @selector(initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear:withNSString:withInt:);
+  methods[2].selector = @selector(getOfYear);
+  methods[3].selector = @selector(nextWithLong:withInt:withInt:);
+  methods[4].selector = @selector(previousWithLong:withInt:withInt:);
+  methods[5].selector = @selector(getNameKey);
+  methods[6].selector = @selector(getSaveMillis);
+  methods[7].selector = @selector(isEqual:);
+  methods[8].selector = @selector(writeToWithJavaIoDataOutput:);
+  methods[9].selector = @selector(renameWithNSString:);
+  methods[10].selector = @selector(renameAppendWithNSString:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "iOfYear_", NULL, 0x10, "Lorg.joda.time.tz.DateTimeZoneBuilder$OfYear;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iNameKey_", NULL, 0x10, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iSaveMillis_", NULL, 0x10, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iOfYear_", "LOrgJodaTimeTzDateTimeZoneBuilder_OfYear;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iNameKey_", "LNSString;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iSaveMillis_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder_Recurrence = { 2, "Recurrence", "org.joda.time.tz", "DateTimeZoneBuilder", 0x1a, 11, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "readFrom", "LJavaIoDataInput;", "LJavaIoIOException;", "LOrgJodaTimeTzDateTimeZoneBuilder_OfYear;LNSString;I", "next", "JII", "previous", "equals", "LNSObject;", "writeTo", "LJavaIoDataOutput;", "rename", "LNSString;", "renameAppend", "LOrgJodaTimeTzDateTimeZoneBuilder;" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder_Recurrence = { "Recurrence", "org.joda.time.tz", ptrTable, methods, fields, 7, 0x1a, 11, 3, 14, -1, -1, -1, -1 };
   return &_OrgJodaTimeTzDateTimeZoneBuilder_Recurrence;
 }
 
@@ -1270,7 +1310,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder_OfYear)
 
 OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_readFromWithJavaIoDataInput_(id<JavaIoDataInput> inArg) {
   OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initialize();
-  return [new_OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_OfYear_readFromWithJavaIoDataInput_(inArg), [((id<JavaIoDataInput>) nil_chk(inArg)) readUTF], (jint) OrgJodaTimeTzDateTimeZoneBuilder_readMillisWithJavaIoDataInput_(inArg)) autorelease];
+  return create_OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_OfYear_readFromWithJavaIoDataInput_(inArg), [((id<JavaIoDataInput>) nil_chk(inArg)) readUTF], (jint) OrgJodaTimeTzDateTimeZoneBuilder_readMillisWithJavaIoDataInput_(inArg));
 }
 
 void OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *self, OrgJodaTimeTzDateTimeZoneBuilder_OfYear *ofYear, NSString *nameKey, jint saveMillis) {
@@ -1281,15 +1321,11 @@ void OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZo
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *new_OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_OfYear *ofYear, NSString *nameKey, jint saveMillis) {
-  OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *self = [OrgJodaTimeTzDateTimeZoneBuilder_Recurrence alloc];
-  OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(self, ofYear, nameKey, saveMillis);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_Recurrence, initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_, ofYear, nameKey, saveMillis)
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *create_OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_OfYear *ofYear, NSString *nameKey, jint saveMillis) {
-  OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *self = [[OrgJodaTimeTzDateTimeZoneBuilder_Recurrence alloc] autorelease];
-  OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_(self, ofYear, nameKey, saveMillis);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_Recurrence, initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear_withNSString_withInt_, ofYear, nameKey, saveMillis)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder_Recurrence)
@@ -1356,21 +1392,32 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder_Recurrence)
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence:withInt:withInt:", "Rule", NULL, 0x0, NULL, NULL },
-    { "getFromYear", NULL, "I", 0x1, NULL, NULL },
-    { "getToYear", NULL, "I", 0x1, NULL, NULL },
-    { "getOfYear", NULL, "Lorg.joda.time.tz.DateTimeZoneBuilder$OfYear;", 0x1, NULL, NULL },
-    { "getNameKey", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getSaveMillis", NULL, "I", 0x1, NULL, NULL },
-    { "nextWithLong:withInt:withInt:", "next", "J", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder_OfYear;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 1, 2, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence:withInt:withInt:);
+  methods[1].selector = @selector(getFromYear);
+  methods[2].selector = @selector(getToYear);
+  methods[3].selector = @selector(getOfYear);
+  methods[4].selector = @selector(getNameKey);
+  methods[5].selector = @selector(getSaveMillis);
+  methods[6].selector = @selector(nextWithLong:withInt:withInt:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "iRecurrence_", NULL, 0x10, "Lorg.joda.time.tz.DateTimeZoneBuilder$Recurrence;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iFromYear_", NULL, 0x10, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iToYear_", NULL, 0x10, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iRecurrence_", "LOrgJodaTimeTzDateTimeZoneBuilder_Recurrence;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iFromYear_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iToYear_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder_Rule = { 2, "Rule", "org.joda.time.tz", "DateTimeZoneBuilder", 0x1a, 7, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeTzDateTimeZoneBuilder_Recurrence;II", "next", "JII", "LOrgJodaTimeTzDateTimeZoneBuilder;" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder_Rule = { "Rule", "org.joda.time.tz", ptrTable, methods, fields, 7, 0x1a, 7, 3, 3, -1, -1, -1, -1 };
   return &_OrgJodaTimeTzDateTimeZoneBuilder_Rule;
 }
 
@@ -1384,15 +1431,11 @@ void OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuil
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_Rule *new_OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *recurrence, jint fromYear, jint toYear) {
-  OrgJodaTimeTzDateTimeZoneBuilder_Rule *self = [OrgJodaTimeTzDateTimeZoneBuilder_Rule alloc];
-  OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_(self, recurrence, fromYear, toYear);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_Rule, initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_, recurrence, fromYear, toYear)
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_Rule *create_OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *recurrence, jint fromYear, jint toYear) {
-  OrgJodaTimeTzDateTimeZoneBuilder_Rule *self = [[OrgJodaTimeTzDateTimeZoneBuilder_Rule alloc] autorelease];
-  OrgJodaTimeTzDateTimeZoneBuilder_Rule_initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_(self, recurrence, fromYear, toYear);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_Rule, initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withInt_withInt_, recurrence, fromYear, toYear)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder_Rule)
@@ -1444,7 +1487,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_Rule:(OrgJodaTimeTzDateTimeZoneBuilder_Rule
   if (other == nil) {
     return true;
   }
-  return iMillis_ > ((OrgJodaTimeTzDateTimeZoneBuilder_Transition *) nil_chk(other))->iMillis_ && (iWallOffset_ != other->iWallOffset_ || !([((NSString *) nil_chk(iNameKey_)) isEqual:other->iNameKey_]));
+  return iMillis_ > other->iMillis_ && (iWallOffset_ != other->iWallOffset_ || !([((NSString *) nil_chk(iNameKey_)) isEqual:other->iNameKey_]));
 }
 
 - (void)dealloc {
@@ -1453,24 +1496,37 @@ withOrgJodaTimeTzDateTimeZoneBuilder_Rule:(OrgJodaTimeTzDateTimeZoneBuilder_Rule
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithLong:withOrgJodaTimeTzDateTimeZoneBuilder_Transition:", "Transition", NULL, 0x0, NULL, NULL },
-    { "initWithLong:withOrgJodaTimeTzDateTimeZoneBuilder_Rule:withInt:", "Transition", NULL, 0x0, NULL, NULL },
-    { "initWithLong:withNSString:withInt:withInt:", "Transition", NULL, 0x0, NULL, NULL },
-    { "getMillis", NULL, "J", 0x1, NULL, NULL },
-    { "getNameKey", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getWallOffset", NULL, "I", 0x1, NULL, NULL },
-    { "getStandardOffset", NULL, "I", 0x1, NULL, NULL },
-    { "getSaveMillis", NULL, "I", 0x1, NULL, NULL },
-    { "isTransitionFromWithOrgJodaTimeTzDateTimeZoneBuilder_Transition:", "isTransitionFrom", "Z", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 3, 4, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithLong:withOrgJodaTimeTzDateTimeZoneBuilder_Transition:);
+  methods[1].selector = @selector(initWithLong:withOrgJodaTimeTzDateTimeZoneBuilder_Rule:withInt:);
+  methods[2].selector = @selector(initWithLong:withNSString:withInt:withInt:);
+  methods[3].selector = @selector(getMillis);
+  methods[4].selector = @selector(getNameKey);
+  methods[5].selector = @selector(getWallOffset);
+  methods[6].selector = @selector(getStandardOffset);
+  methods[7].selector = @selector(getSaveMillis);
+  methods[8].selector = @selector(isTransitionFromWithOrgJodaTimeTzDateTimeZoneBuilder_Transition:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "iMillis_", NULL, 0x12, "J", NULL, NULL, .constantValue.asLong = 0 },
-    { "iNameKey_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iWallOffset_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iStandardOffset_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "iMillis_", "J", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iNameKey_", "LNSString;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iWallOffset_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iStandardOffset_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder_Transition = { 2, "Transition", "org.joda.time.tz", "DateTimeZoneBuilder", 0x1a, 9, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "JLOrgJodaTimeTzDateTimeZoneBuilder_Transition;", "JLOrgJodaTimeTzDateTimeZoneBuilder_Rule;I", "JLNSString;II", "isTransitionFrom", "LOrgJodaTimeTzDateTimeZoneBuilder_Transition;", "LOrgJodaTimeTzDateTimeZoneBuilder;" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder_Transition = { "Transition", "org.joda.time.tz", ptrTable, methods, fields, 7, 0x1a, 9, 4, 5, -1, -1, -1, -1 };
   return &_OrgJodaTimeTzDateTimeZoneBuilder_Transition;
 }
 
@@ -1485,15 +1541,11 @@ void OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzD
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_Transition *new_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_(jlong millis, OrgJodaTimeTzDateTimeZoneBuilder_Transition *tr) {
-  OrgJodaTimeTzDateTimeZoneBuilder_Transition *self = [OrgJodaTimeTzDateTimeZoneBuilder_Transition alloc];
-  OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_(self, millis, tr);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_Transition, initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_, millis, tr)
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_Transition *create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_(jlong millis, OrgJodaTimeTzDateTimeZoneBuilder_Transition *tr) {
-  OrgJodaTimeTzDateTimeZoneBuilder_Transition *self = [[OrgJodaTimeTzDateTimeZoneBuilder_Transition alloc] autorelease];
-  OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_(self, millis, tr);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_Transition, initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_, millis, tr)
 }
 
 void OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_Transition *self, jlong millis, OrgJodaTimeTzDateTimeZoneBuilder_Rule *rule, jint standardOffset) {
@@ -1505,15 +1557,11 @@ void OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzD
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_Transition *new_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(jlong millis, OrgJodaTimeTzDateTimeZoneBuilder_Rule *rule, jint standardOffset) {
-  OrgJodaTimeTzDateTimeZoneBuilder_Transition *self = [OrgJodaTimeTzDateTimeZoneBuilder_Transition alloc];
-  OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(self, millis, rule, standardOffset);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_Transition, initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_, millis, rule, standardOffset)
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_Transition *create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(jlong millis, OrgJodaTimeTzDateTimeZoneBuilder_Rule *rule, jint standardOffset) {
-  OrgJodaTimeTzDateTimeZoneBuilder_Transition *self = [[OrgJodaTimeTzDateTimeZoneBuilder_Transition alloc] autorelease];
-  OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(self, millis, rule, standardOffset);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_Transition, initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_, millis, rule, standardOffset)
 }
 
 void OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(OrgJodaTimeTzDateTimeZoneBuilder_Transition *self, jlong millis, NSString *nameKey, jint wallOffset, jint standardOffset) {
@@ -1525,15 +1573,11 @@ void OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withI
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_Transition *new_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(jlong millis, NSString *nameKey, jint wallOffset, jint standardOffset) {
-  OrgJodaTimeTzDateTimeZoneBuilder_Transition *self = [OrgJodaTimeTzDateTimeZoneBuilder_Transition alloc];
-  OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(self, millis, nameKey, wallOffset, standardOffset);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_Transition, initWithLong_withNSString_withInt_withInt_, millis, nameKey, wallOffset, standardOffset)
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_Transition *create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(jlong millis, NSString *nameKey, jint wallOffset, jint standardOffset) {
-  OrgJodaTimeTzDateTimeZoneBuilder_Transition *self = [[OrgJodaTimeTzDateTimeZoneBuilder_Transition alloc] autorelease];
-  OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(self, millis, nameKey, wallOffset, standardOffset);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_Transition, initWithLong_withNSString_withInt_withInt_, millis, nameKey, wallOffset, standardOffset)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder_Transition)
@@ -1570,7 +1614,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)addRuleWithOrgJodaTimeTzDateTimeZoneBuilder_Rule:(OrgJodaTimeTzDateTimeZoneBuilder_Rule *)rule {
   if (![((JavaUtilArrayList *) nil_chk(iRules_)) containsWithId:rule]) {
-    [iRules_ addWithId:rule];
+    [((JavaUtilArrayList *) nil_chk(iRules_)) addWithId:rule];
   }
 }
 
@@ -1582,9 +1626,9 @@ withOrgJodaTimeTzDateTimeZoneBuilder_OfYear:(OrgJodaTimeTzDateTimeZoneBuilder_Of
 
 - (OrgJodaTimeTzDateTimeZoneBuilder_Transition *)firstTransitionWithLong:(jlong)firstMillis {
   if (iInitialNameKey_ != nil) {
-    return [new_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(firstMillis, iInitialNameKey_, iStandardOffset_ + iInitialSaveMillis_, iStandardOffset_) autorelease];
+    return create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(firstMillis, iInitialNameKey_, iStandardOffset_ + iInitialSaveMillis_, iStandardOffset_);
   }
-  JavaUtilArrayList *copy_ = [new_JavaUtilArrayList_initWithJavaUtilCollection_(iRules_) autorelease];
+  JavaUtilArrayList *copy_ = create_JavaUtilArrayList_initWithJavaUtilCollection_(iRules_);
   jlong millis = JavaLangLong_MIN_VALUE;
   jint saveMillis = 0;
   OrgJodaTimeTzDateTimeZoneBuilder_Transition *first = nil;
@@ -1592,24 +1636,24 @@ withOrgJodaTimeTzDateTimeZoneBuilder_OfYear:(OrgJodaTimeTzDateTimeZoneBuilder_Of
   while ((next = [self nextTransitionWithLong:millis withInt:saveMillis]) != nil) {
     millis = [((OrgJodaTimeTzDateTimeZoneBuilder_Transition *) nil_chk(next)) getMillis];
     if (millis == firstMillis) {
-      first = [new_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_(firstMillis, next) autorelease];
+      first = create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_(firstMillis, next);
       break;
     }
     if (millis > firstMillis) {
       if (first == nil) {
         for (OrgJodaTimeTzDateTimeZoneBuilder_Rule * __strong rule in copy_) {
           if ([((OrgJodaTimeTzDateTimeZoneBuilder_Rule *) nil_chk(rule)) getSaveMillis] == 0) {
-            first = [new_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(firstMillis, rule, iStandardOffset_) autorelease];
+            first = create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(firstMillis, rule, iStandardOffset_);
             break;
           }
         }
       }
       if (first == nil) {
-        first = [new_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(firstMillis, [next getNameKey], iStandardOffset_, iStandardOffset_) autorelease];
+        first = create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withNSString_withInt_withInt_(firstMillis, [next getNameKey], iStandardOffset_, iStandardOffset_);
       }
       break;
     }
-    first = [new_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_(firstMillis, next) autorelease];
+    first = create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Transition_(firstMillis, next);
     saveMillis = [next getSaveMillis];
   }
   JreStrongAssign(&iRules_, copy_);
@@ -1646,7 +1690,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_OfYear:(OrgJodaTimeTzDateTimeZoneBuilder_Of
       return nil;
     }
   }
-  return [new_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(nextMillis, nextRule, iStandardOffset_) autorelease];
+  return create_OrgJodaTimeTzDateTimeZoneBuilder_Transition_initWithLong_withOrgJodaTimeTzDateTimeZoneBuilder_Rule_withInt_(nextMillis, nextRule, iStandardOffset_);
 }
 
 - (jlong)getUpperLimitWithInt:(jint)saveMillis {
@@ -1658,10 +1702,10 @@ withOrgJodaTimeTzDateTimeZoneBuilder_OfYear:(OrgJodaTimeTzDateTimeZoneBuilder_Of
 
 - (OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *)buildTailZoneWithNSString:(NSString *)id_ {
   if ([((JavaUtilArrayList *) nil_chk(iRules_)) size] == 2) {
-    OrgJodaTimeTzDateTimeZoneBuilder_Rule *startRule = [iRules_ getWithInt:0];
-    OrgJodaTimeTzDateTimeZoneBuilder_Rule *endRule = [iRules_ getWithInt:1];
+    OrgJodaTimeTzDateTimeZoneBuilder_Rule *startRule = [((JavaUtilArrayList *) nil_chk(iRules_)) getWithInt:0];
+    OrgJodaTimeTzDateTimeZoneBuilder_Rule *endRule = [((JavaUtilArrayList *) nil_chk(iRules_)) getWithInt:1];
     if ([((OrgJodaTimeTzDateTimeZoneBuilder_Rule *) nil_chk(startRule)) getToYear] == JavaLangInteger_MAX_VALUE && [((OrgJodaTimeTzDateTimeZoneBuilder_Rule *) nil_chk(endRule)) getToYear] == JavaLangInteger_MAX_VALUE) {
-      return [new_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(id_, iStandardOffset_, startRule->iRecurrence_, endRule->iRecurrence_) autorelease];
+      return create_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(id_, iStandardOffset_, startRule->iRecurrence_, ((OrgJodaTimeTzDateTimeZoneBuilder_Rule *) nil_chk(endRule))->iRecurrence_);
     }
   }
   return nil;
@@ -1674,6 +1718,48 @@ withOrgJodaTimeTzDateTimeZoneBuilder_OfYear:(OrgJodaTimeTzDateTimeZoneBuilder_Of
   [super dealloc];
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 7, 8, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder_Transition;", 0x1, 9, 10, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder_Transition;", 0x1, 11, 12, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 13, 2, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder_DSTZone;", 0x1, 14, 15, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet:);
+  methods[2].selector = @selector(getStandardOffset);
+  methods[3].selector = @selector(setStandardOffsetWithInt:);
+  methods[4].selector = @selector(setFixedSavingsWithNSString:withInt:);
+  methods[5].selector = @selector(addRuleWithOrgJodaTimeTzDateTimeZoneBuilder_Rule:);
+  methods[6].selector = @selector(setUpperLimitWithInt:withOrgJodaTimeTzDateTimeZoneBuilder_OfYear:);
+  methods[7].selector = @selector(firstTransitionWithLong:);
+  methods[8].selector = @selector(nextTransitionWithLong:withInt:);
+  methods[9].selector = @selector(getUpperLimitWithInt:);
+  methods[10].selector = @selector(buildTailZoneWithNSString:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "YEAR_LIMIT", "I", .constantValue.asLong = 0, 0x1a, -1, 16, -1, -1 },
+    { "iStandardOffset_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "iRules_", "LJavaUtilArrayList;", .constantValue.asLong = 0, 0x2, -1, -1, 17, -1 },
+    { "iInitialNameKey_", "LNSString;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "iInitialSaveMillis_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "iUpperYear_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "iUpperOfYear_", "LOrgJodaTimeTzDateTimeZoneBuilder_OfYear;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "LOrgJodaTimeTzDateTimeZoneBuilder_RuleSet;", "setStandardOffset", "I", "setFixedSavings", "LNSString;I", "addRule", "LOrgJodaTimeTzDateTimeZoneBuilder_Rule;", "setUpperLimit", "ILOrgJodaTimeTzDateTimeZoneBuilder_OfYear;", "firstTransition", "J", "nextTransition", "JI", "getUpperLimit", "buildTailZone", "LNSString;", &OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_YEAR_LIMIT, "Ljava/util/ArrayList<Lorg/joda/time/tz/DateTimeZoneBuilder$Rule;>;", "LOrgJodaTimeTzDateTimeZoneBuilder;" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder_RuleSet = { "RuleSet", "org.joda.time.tz", ptrTable, methods, fields, 7, 0x1a, 11, 7, 18, -1, -1, -1, -1 };
+  return &_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeTzDateTimeZoneBuilder_RuleSet class]) {
     {
@@ -1682,33 +1768,6 @@ withOrgJodaTimeTzDateTimeZoneBuilder_OfYear:(OrgJodaTimeTzDateTimeZoneBuilder_Of
     }
     J2OBJC_SET_INITIALIZED(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "RuleSet", NULL, 0x0, NULL, NULL },
-    { "initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet:", "RuleSet", NULL, 0x0, NULL, NULL },
-    { "getStandardOffset", NULL, "I", 0x1, NULL, NULL },
-    { "setStandardOffsetWithInt:", "setStandardOffset", "V", 0x1, NULL, NULL },
-    { "setFixedSavingsWithNSString:withInt:", "setFixedSavings", "V", 0x1, NULL, NULL },
-    { "addRuleWithOrgJodaTimeTzDateTimeZoneBuilder_Rule:", "addRule", "V", 0x1, NULL, NULL },
-    { "setUpperLimitWithInt:withOrgJodaTimeTzDateTimeZoneBuilder_OfYear:", "setUpperLimit", "V", 0x1, NULL, NULL },
-    { "firstTransitionWithLong:", "firstTransition", "Lorg.joda.time.tz.DateTimeZoneBuilder$Transition;", 0x1, NULL, NULL },
-    { "nextTransitionWithLong:withInt:", "nextTransition", "Lorg.joda.time.tz.DateTimeZoneBuilder$Transition;", 0x1, NULL, NULL },
-    { "getUpperLimitWithInt:", "getUpperLimit", "J", 0x1, NULL, NULL },
-    { "buildTailZoneWithNSString:", "buildTailZone", "Lorg.joda.time.tz.DateTimeZoneBuilder$DSTZone;", 0x1, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "YEAR_LIMIT", "YEAR_LIMIT", 0x1a, "I", &OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_YEAR_LIMIT, NULL, .constantValue.asLong = 0 },
-    { "iStandardOffset_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iRules_", NULL, 0x2, "Ljava.util.ArrayList;", NULL, "Ljava/util/ArrayList<Lorg/joda/time/tz/DateTimeZoneBuilder$Rule;>;", .constantValue.asLong = 0 },
-    { "iInitialNameKey_", NULL, 0x2, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iInitialSaveMillis_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iUpperYear_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iUpperOfYear_", NULL, 0x2, "Lorg.joda.time.tz.DateTimeZoneBuilder$OfYear;", NULL, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder_RuleSet = { 2, "RuleSet", "org.joda.time.tz", "DateTimeZoneBuilder", 0x1a, 11, methods, 7, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet;
 }
 
 @end
@@ -1720,15 +1779,11 @@ void OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_init(OrgJodaTimeTzDateTimeZoneBuil
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *new_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_init() {
-  OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *self = [OrgJodaTimeTzDateTimeZoneBuilder_RuleSet alloc];
-  OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet, init)
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *create_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_init() {
-  OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *self = [[OrgJodaTimeTzDateTimeZoneBuilder_RuleSet alloc] autorelease];
-  OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet, init)
 }
 
 void OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *self, OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *rs) {
@@ -1742,15 +1797,11 @@ void OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneB
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *new_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *rs) {
-  OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *self = [OrgJodaTimeTzDateTimeZoneBuilder_RuleSet alloc];
-  OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(self, rs);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet, initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_, rs)
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *create_OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *rs) {
-  OrgJodaTimeTzDateTimeZoneBuilder_RuleSet *self = [[OrgJodaTimeTzDateTimeZoneBuilder_RuleSet alloc] autorelease];
-  OrgJodaTimeTzDateTimeZoneBuilder_RuleSet_initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_(self, rs);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet, initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet_, rs)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder_RuleSet)
@@ -1804,7 +1855,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence:(OrgJodaTimeTzDateTimeZoneBuilde
     start = instant;
   }
   @try {
-    end = [((OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *) nil_chk(endRecurrence)) nextWithLong:instant withInt:standardOffset withInt:[((OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *) nil_chk(startRecurrence)) getSaveMillis]];
+    end = [endRecurrence nextWithLong:instant withInt:standardOffset withInt:[startRecurrence getSaveMillis]];
     if (instant > 0 && end < 0) {
       end = instant;
     }
@@ -1837,7 +1888,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence:(OrgJodaTimeTzDateTimeZoneBuilde
     start = instant;
   }
   @try {
-    end = [((OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *) nil_chk(endRecurrence)) previousWithLong:instant withInt:standardOffset withInt:[((OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *) nil_chk(startRecurrence)) getSaveMillis]];
+    end = [endRecurrence previousWithLong:instant withInt:standardOffset withInt:[startRecurrence getSaveMillis]];
     if (instant < 0 && end > 0) {
       end = instant;
     }
@@ -1879,26 +1930,41 @@ withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence:(OrgJodaTimeTzDateTimeZoneBuilde
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "readFromWithJavaIoDataInput:withNSString:", "readFrom", "Lorg.joda.time.tz.DateTimeZoneBuilder$DSTZone;", 0x8, "Ljava.io.IOException;", NULL },
-    { "initWithNSString:withInt:withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence:withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence:", "DSTZone", NULL, 0x0, NULL, NULL },
-    { "getNameKeyWithLong:", "getNameKey", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getOffsetWithLong:", "getOffset", "I", 0x1, NULL, NULL },
-    { "getStandardOffsetWithLong:", "getStandardOffset", "I", 0x1, NULL, NULL },
-    { "isFixed", NULL, "Z", 0x1, NULL, NULL },
-    { "nextTransitionWithLong:", "nextTransition", "J", 0x1, NULL, NULL },
-    { "previousTransitionWithLong:", "previousTransition", "J", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "writeToWithJavaIoDataOutput:", "writeTo", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "findMatchingRecurrenceWithLong:", "findMatchingRecurrence", "Lorg.joda.time.tz.DateTimeZoneBuilder$Recurrence;", 0x2, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder_DSTZone;", 0x8, 0, 1, 2, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, 3, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 6, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 7, 5, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 8, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 5, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 10, 11, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 12, 13, 2, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder_Recurrence;", 0x2, 14, 5, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(readFromWithJavaIoDataInput:withNSString:);
+  methods[1].selector = @selector(initWithNSString:withInt:withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence:withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence:);
+  methods[2].selector = @selector(getNameKeyWithLong:);
+  methods[3].selector = @selector(getOffsetWithLong:);
+  methods[4].selector = @selector(getStandardOffsetWithLong:);
+  methods[5].selector = @selector(isFixed);
+  methods[6].selector = @selector(nextTransitionWithLong:);
+  methods[7].selector = @selector(previousTransitionWithLong:);
+  methods[8].selector = @selector(isEqual:);
+  methods[9].selector = @selector(writeToWithJavaIoDataOutput:);
+  methods[10].selector = @selector(findMatchingRecurrenceWithLong:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_serialVersionUID },
-    { "iStandardOffset_", NULL, 0x10, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iStartRecurrence_", NULL, 0x10, "Lorg.joda.time.tz.DateTimeZoneBuilder$Recurrence;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iEndRecurrence_", NULL, 0x10, "Lorg.joda.time.tz.DateTimeZoneBuilder$Recurrence;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iStandardOffset_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iStartRecurrence_", "LOrgJodaTimeTzDateTimeZoneBuilder_Recurrence;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iEndRecurrence_", "LOrgJodaTimeTzDateTimeZoneBuilder_Recurrence;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder_DSTZone = { 2, "DSTZone", "org.joda.time.tz", "DateTimeZoneBuilder", 0x1a, 11, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "readFrom", "LJavaIoDataInput;LNSString;", "LJavaIoIOException;", "LNSString;ILOrgJodaTimeTzDateTimeZoneBuilder_Recurrence;LOrgJodaTimeTzDateTimeZoneBuilder_Recurrence;", "getNameKey", "J", "getOffset", "getStandardOffset", "nextTransition", "previousTransition", "equals", "LNSObject;", "writeTo", "LJavaIoDataOutput;", "findMatchingRecurrence", "LOrgJodaTimeTzDateTimeZoneBuilder;" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder_DSTZone = { "DSTZone", "org.joda.time.tz", ptrTable, methods, fields, 7, 0x1a, 11, 4, 15, -1, -1, -1, -1 };
   return &_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone;
 }
 
@@ -1906,7 +1972,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence:(OrgJodaTimeTzDateTimeZoneBuilde
 
 OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_readFromWithJavaIoDataInput_withNSString_(id<JavaIoDataInput> inArg, NSString *id_) {
   OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initialize();
-  return [new_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(id_, (jint) OrgJodaTimeTzDateTimeZoneBuilder_readMillisWithJavaIoDataInput_(inArg), OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_readFromWithJavaIoDataInput_(inArg), OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_readFromWithJavaIoDataInput_(inArg)) autorelease];
+  return create_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(id_, (jint) OrgJodaTimeTzDateTimeZoneBuilder_readMillisWithJavaIoDataInput_(inArg), OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_readFromWithJavaIoDataInput_(inArg), OrgJodaTimeTzDateTimeZoneBuilder_Recurrence_readFromWithJavaIoDataInput_(inArg));
 }
 
 void OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *self, NSString *id_, jint standardOffset, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *startRecurrence, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *endRecurrence) {
@@ -1917,15 +1983,11 @@ void OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJo
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *new_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(NSString *id_, jint standardOffset, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *startRecurrence, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *endRecurrence) {
-  OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *self = [OrgJodaTimeTzDateTimeZoneBuilder_DSTZone alloc];
-  OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(self, id_, standardOffset, startRecurrence, endRecurrence);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_DSTZone, initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_, id_, standardOffset, startRecurrence, endRecurrence)
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *create_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(NSString *id_, jint standardOffset, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *startRecurrence, OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *endRecurrence) {
-  OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *self = [[OrgJodaTimeTzDateTimeZoneBuilder_DSTZone alloc] autorelease];
-  OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_(self, id_, standardOffset, startRecurrence, endRecurrence);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_DSTZone, initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_, id_, standardOffset, startRecurrence, endRecurrence)
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_findMatchingRecurrenceWithLong_(OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *self, jlong instant) {
@@ -1943,7 +2005,7 @@ OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *OrgJodaTimeTzDateTimeZoneBuilder_DS
     start = instant;
   }
   @try {
-    end = [((OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *) nil_chk(endRecurrence)) nextWithLong:instant withInt:standardOffset withInt:[((OrgJodaTimeTzDateTimeZoneBuilder_Recurrence *) nil_chk(startRecurrence)) getSaveMillis]];
+    end = [endRecurrence nextWithLong:instant withInt:standardOffset withInt:[startRecurrence getSaveMillis]];
   }
   @catch (JavaLangIllegalArgumentException *e) {
     end = instant;
@@ -1996,7 +2058,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone:(OrgJodaTimeTzDateTimeZoneBuilder_D
   if (iTailZone_ == nil) {
     return IOSObjectArray_Get(nil_chk(iNameKeys_), i - 1);
   }
-  return [((OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *) nil_chk(iTailZone_)) getNameKeyWithLong:instant];
+  return [iTailZone_ getNameKeyWithLong:instant];
 }
 
 - (jint)getOffsetWithLong:(jlong)instant {
@@ -2015,7 +2077,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone:(OrgJodaTimeTzDateTimeZoneBuilder_D
   if (iTailZone_ == nil) {
     return IOSIntArray_Get(nil_chk(iWallOffsets_), i - 1);
   }
-  return [((OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *) nil_chk(iTailZone_)) getOffsetWithLong:instant];
+  return [iTailZone_ getOffsetWithLong:instant];
 }
 
 - (jint)getStandardOffsetWithLong:(jlong)instant {
@@ -2034,7 +2096,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone:(OrgJodaTimeTzDateTimeZoneBuilder_D
   if (iTailZone_ == nil) {
     return IOSIntArray_Get(nil_chk(iStandardOffsets_), i - 1);
   }
-  return [((OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *) nil_chk(iTailZone_)) getStandardOffsetWithLong:instant];
+  return [iTailZone_ getStandardOffsetWithLong:instant];
 }
 
 - (jboolean)isFixed {
@@ -2055,7 +2117,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone:(OrgJodaTimeTzDateTimeZoneBuilder_D
   if (instant < end) {
     instant = end;
   }
-  return [((OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *) nil_chk(iTailZone_)) nextTransitionWithLong:instant];
+  return [iTailZone_ nextTransitionWithLong:instant];
 }
 
 - (jlong)previousTransitionWithLong:(jlong)instant {
@@ -2096,20 +2158,20 @@ withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone:(OrgJodaTimeTzDateTimeZoneBuilder_D
   }
   if ([obj isKindOfClass:[OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone class]]) {
     OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *other = (OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *) cast_chk(obj, [OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone class]);
-    return [((NSString *) nil_chk([self getID])) isEqual:[((OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *) nil_chk(other)) getID]] && JavaUtilArrays_equalsWithLongArray_withLongArray_(iTransitions_, other->iTransitions_) && JavaUtilArrays_equalsWithNSObjectArray_withNSObjectArray_(iNameKeys_, other->iNameKeys_) && JavaUtilArrays_equalsWithIntArray_withIntArray_(iWallOffsets_, other->iWallOffsets_) && JavaUtilArrays_equalsWithIntArray_withIntArray_(iStandardOffsets_, other->iStandardOffsets_) && ((iTailZone_ == nil) ? (nil == other->iTailZone_) : ([iTailZone_ isEqual:other->iTailZone_]));
+    return [((NSString *) nil_chk([self getID])) isEqual:[((OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *) nil_chk(other)) getID]] && JavaUtilArrays_equalsWithLongArray_withLongArray_(iTransitions_, other->iTransitions_) && JavaUtilArrays_equalsWithNSObjectArray_withNSObjectArray_(iNameKeys_, other->iNameKeys_) && JavaUtilArrays_equalsWithIntArray_withIntArray_(iWallOffsets_, other->iWallOffsets_) && JavaUtilArrays_equalsWithIntArray_withIntArray_(iStandardOffsets_, other->iStandardOffsets_) && ((iTailZone_ == nil) ? (nil == other->iTailZone_) : ([((OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *) nil_chk(iTailZone_)) isEqual:other->iTailZone_]));
   }
   return false;
 }
 
 - (void)writeToWithJavaIoDataOutput:(id<JavaIoDataOutput>)outArg {
   jint size = ((IOSLongArray *) nil_chk(iTransitions_))->size_;
-  id<JavaUtilSet> poolSet = [new_JavaUtilHashSet_init() autorelease];
+  id<JavaUtilSet> poolSet = create_JavaUtilHashSet_init();
   for (jint i = 0; i < size; i++) {
     [poolSet addWithId:IOSObjectArray_Get(nil_chk(iNameKeys_), i)];
   }
   jint poolSize = [poolSet size];
   if (poolSize > 65535) {
-    @throw [new_JavaLangUnsupportedOperationException_initWithNSString_(@"String pool is too large") autorelease];
+    @throw create_JavaLangUnsupportedOperationException_initWithNSString_(@"String pool is too large");
   }
   IOSObjectArray *pool = [IOSObjectArray arrayWithLength:poolSize type:NSString_class_()];
   id<JavaUtilIterator> it = [poolSet iterator];
@@ -2181,29 +2243,45 @@ withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone:(OrgJodaTimeTzDateTimeZoneBuilder_D
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "readFromWithJavaIoDataInput:withNSString:", "readFrom", "Lorg.joda.time.tz.DateTimeZoneBuilder$PrecalculatedZone;", 0x8, "Ljava.io.IOException;", NULL },
-    { "createWithNSString:withBoolean:withJavaUtilArrayList:withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone:", "create", "Lorg.joda.time.tz.DateTimeZoneBuilder$PrecalculatedZone;", 0x8, NULL, "(Ljava/lang/String;ZLjava/util/ArrayList<Lorg/joda/time/tz/DateTimeZoneBuilder$Transition;>;Lorg/joda/time/tz/DateTimeZoneBuilder$DSTZone;)Lorg/joda/time/tz/DateTimeZoneBuilder$PrecalculatedZone;" },
-    { "initWithNSString:withLongArray:withIntArray:withIntArray:withNSStringArray:withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone:", "PrecalculatedZone", NULL, 0x2, NULL, NULL },
-    { "getNameKeyWithLong:", "getNameKey", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getOffsetWithLong:", "getOffset", "I", 0x1, NULL, NULL },
-    { "getStandardOffsetWithLong:", "getStandardOffset", "I", 0x1, NULL, NULL },
-    { "isFixed", NULL, "Z", 0x1, NULL, NULL },
-    { "nextTransitionWithLong:", "nextTransition", "J", 0x1, NULL, NULL },
-    { "previousTransitionWithLong:", "previousTransition", "J", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "writeToWithJavaIoDataOutput:", "writeTo", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "isCachable", NULL, "Z", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone;", 0x8, 0, 1, 2, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone;", 0x8, 3, 4, -1, 5, -1, -1 },
+    { NULL, NULL, 0x2, -1, 6, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 7, 8, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 9, 8, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 10, 8, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 11, 8, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 12, 8, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 13, 14, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 15, 16, 2, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(readFromWithJavaIoDataInput:withNSString:);
+  methods[1].selector = @selector(createWithNSString:withBoolean:withJavaUtilArrayList:withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone:);
+  methods[2].selector = @selector(initWithNSString:withLongArray:withIntArray:withIntArray:withNSStringArray:withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone:);
+  methods[3].selector = @selector(getNameKeyWithLong:);
+  methods[4].selector = @selector(getOffsetWithLong:);
+  methods[5].selector = @selector(getStandardOffsetWithLong:);
+  methods[6].selector = @selector(isFixed);
+  methods[7].selector = @selector(nextTransitionWithLong:);
+  methods[8].selector = @selector(previousTransitionWithLong:);
+  methods[9].selector = @selector(isEqual:);
+  methods[10].selector = @selector(writeToWithJavaIoDataOutput:);
+  methods[11].selector = @selector(isCachable);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_serialVersionUID },
-    { "iTransitions_", NULL, 0x12, "[J", NULL, NULL, .constantValue.asLong = 0 },
-    { "iWallOffsets_", NULL, 0x12, "[I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iStandardOffsets_", NULL, 0x12, "[I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iNameKeys_", NULL, 0x12, "[Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iTailZone_", NULL, 0x12, "Lorg.joda.time.tz.DateTimeZoneBuilder$DSTZone;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iTransitions_", "[J", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iWallOffsets_", "[I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iStandardOffsets_", "[I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iNameKeys_", "[LNSString;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iTailZone_", "LOrgJodaTimeTzDateTimeZoneBuilder_DSTZone;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone = { 2, "PrecalculatedZone", "org.joda.time.tz", "DateTimeZoneBuilder", 0x1a, 12, methods, 6, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "readFrom", "LJavaIoDataInput;LNSString;", "LJavaIoIOException;", "create", "LNSString;ZLJavaUtilArrayList;LOrgJodaTimeTzDateTimeZoneBuilder_DSTZone;", "(Ljava/lang/String;ZLjava/util/ArrayList<Lorg/joda/time/tz/DateTimeZoneBuilder$Transition;>;Lorg/joda/time/tz/DateTimeZoneBuilder$DSTZone;)Lorg/joda/time/tz/DateTimeZoneBuilder$PrecalculatedZone;", "LNSString;[J[I[I[LNSString;LOrgJodaTimeTzDateTimeZoneBuilder_DSTZone;", "getNameKey", "J", "getOffset", "getStandardOffset", "nextTransition", "previousTransition", "equals", "LNSObject;", "writeTo", "LJavaIoDataOutput;", "LOrgJodaTimeTzDateTimeZoneBuilder;" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone = { "PrecalculatedZone", "org.joda.time.tz", ptrTable, methods, fields, 7, 0x1a, 12, 6, 17, -1, -1, -1, -1 };
   return &_OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone;
 }
 
@@ -2236,21 +2314,21 @@ OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *OrgJodaTimeTzDateTimeZoneBui
       IOSObjectArray_Set(nameKeys, i, IOSObjectArray_Get(pool, index));
     }
     @catch (JavaLangArrayIndexOutOfBoundsException *e) {
-      @throw [new_JavaIoIOException_initWithNSString_(@"Invalid encoding") autorelease];
+      @throw create_JavaIoIOException_initWithNSString_(@"Invalid encoding");
     }
   }
   OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *tailZone = nil;
   if ([inArg readBoolean]) {
     tailZone = OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_readFromWithJavaIoDataInput_withNSString_(inArg, id_);
   }
-  return [new_OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(id_, transitions, wallOffsets, standardOffsets, nameKeys, tailZone) autorelease];
+  return create_OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(id_, transitions, wallOffsets, standardOffsets, nameKeys, tailZone);
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_createWithNSString_withBoolean_withJavaUtilArrayList_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(NSString *id_, jboolean outputID, JavaUtilArrayList *transitions, OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *tailZone) {
   OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initialize();
   jint size = [((JavaUtilArrayList *) nil_chk(transitions)) size];
   if (size == 0) {
-    @throw [new_JavaLangIllegalArgumentException_init() autorelease];
+    @throw create_JavaLangIllegalArgumentException_init();
   }
   IOSLongArray *trans = [IOSLongArray arrayWithLength:size];
   IOSIntArray *wallOffsets = [IOSIntArray arrayWithLength:size];
@@ -2260,7 +2338,7 @@ OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *OrgJodaTimeTzDateTimeZoneBui
   for (jint i = 0; i < size; i++) {
     OrgJodaTimeTzDateTimeZoneBuilder_Transition *tr = [transitions getWithInt:i];
     if (![((OrgJodaTimeTzDateTimeZoneBuilder_Transition *) nil_chk(tr)) isTransitionFromWithOrgJodaTimeTzDateTimeZoneBuilder_Transition:last]) {
-      @throw [new_JavaLangIllegalArgumentException_initWithNSString_(id_) autorelease];
+      @throw create_JavaLangIllegalArgumentException_initWithNSString_(id_);
     }
     *IOSLongArray_GetRef(trans, i) = [tr getMillis];
     *IOSIntArray_GetRef(wallOffsets, i) = [tr getWallOffset];
@@ -2269,7 +2347,7 @@ OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *OrgJodaTimeTzDateTimeZoneBui
     last = tr;
   }
   IOSObjectArray *zoneNameData = [IOSObjectArray arrayWithLength:5 type:NSString_class_()];
-  IOSObjectArray *zoneStrings = [((JavaTextDateFormatSymbols *) [new_JavaTextDateFormatSymbols_initWithJavaUtilLocale_(JreLoadStatic(JavaUtilLocale, ENGLISH)) autorelease]) getZoneStrings];
+  IOSObjectArray *zoneStrings = [create_JavaTextDateFormatSymbols_initWithJavaUtilLocale_(JreLoadStatic(JavaUtilLocale, ENGLISH)) getZoneStrings];
   for (jint j = 0; j < ((IOSObjectArray *) nil_chk(zoneStrings))->size_; j++) {
     IOSObjectArray *set = IOSObjectArray_Get(zoneStrings, j);
     if (set != nil && set->size_ == 5 && [((NSString *) nil_chk(id_)) isEqual:IOSObjectArray_Get(set, 0)]) {
@@ -2284,11 +2362,11 @@ OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *OrgJodaTimeTzDateTimeZoneBui
     jlong nextOffset = IOSIntArray_Get(wallOffsets, i + 1);
     jlong curStdOffset = IOSIntArray_Get(standardOffsets, i);
     jlong nextStdOffset = IOSIntArray_Get(standardOffsets, i + 1);
-    OrgJodaTimePeriod *p = [new_OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(IOSLongArray_Get(trans, i), IOSLongArray_Get(trans, i + 1), OrgJodaTimePeriodType_yearMonthDay(), chrono) autorelease];
+    OrgJodaTimePeriod *p = create_OrgJodaTimePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(IOSLongArray_Get(trans, i), IOSLongArray_Get(trans, i + 1), OrgJodaTimePeriodType_yearMonthDay(), chrono);
     if (curOffset != nextOffset && curStdOffset == nextStdOffset && [((NSString *) nil_chk(curNameKey)) isEqual:nextNameKey] && [p getYears] == 0 && [p getMonths] > 4 && [p getMonths] < 8 && [curNameKey isEqual:IOSObjectArray_Get(zoneNameData, 2)] && [curNameKey isEqual:IOSObjectArray_Get(zoneNameData, 4)]) {
       if (OrgJodaTimeTzZoneInfoCompiler_verbose()) {
         [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$$", @"Fixing duplicate name key - ", nextNameKey)];
-        [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("$@$@", @"     - ", [new_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_(IOSLongArray_Get(trans, i), chrono) autorelease], @" - ", [new_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_(IOSLongArray_Get(trans, i + 1), chrono) autorelease])];
+        [JreLoadStatic(JavaLangSystem, out) printlnWithNSString:JreStrcat("$@$@", @"     - ", create_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_(IOSLongArray_Get(trans, i), chrono), @" - ", create_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_(IOSLongArray_Get(trans, i + 1), chrono))];
       }
       if (curOffset > nextOffset) {
         IOSObjectArray_Set(nameKeys, i, [(JreStrcat("$$", curNameKey, @"-Summer")) intern]);
@@ -2305,14 +2383,14 @@ OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *OrgJodaTimeTzDateTimeZoneBui
         [((JavaIoPrintStream *) nil_chk(JreLoadStatic(JavaLangSystem, out))) printlnWithNSString:JreStrcat("$$", @"Fixing duplicate recurrent name key - ", [tailZone->iStartRecurrence_ getNameKey])];
       }
       if ([tailZone->iStartRecurrence_ getSaveMillis] > 0) {
-        tailZone = [new_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_([tailZone getID], tailZone->iStandardOffset_, [tailZone->iStartRecurrence_ renameAppendWithNSString:@"-Summer"], tailZone->iEndRecurrence_) autorelease];
+        tailZone = create_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_([tailZone getID], tailZone->iStandardOffset_, [tailZone->iStartRecurrence_ renameAppendWithNSString:@"-Summer"], tailZone->iEndRecurrence_);
       }
       else {
-        tailZone = [new_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_([tailZone getID], tailZone->iStandardOffset_, tailZone->iStartRecurrence_, [tailZone->iEndRecurrence_ renameAppendWithNSString:@"-Summer"]) autorelease];
+        tailZone = create_OrgJodaTimeTzDateTimeZoneBuilder_DSTZone_initWithNSString_withInt_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence_([tailZone getID], tailZone->iStandardOffset_, tailZone->iStartRecurrence_, [tailZone->iEndRecurrence_ renameAppendWithNSString:@"-Summer"]);
       }
     }
   }
-  return [new_OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_((outputID ? id_ : @""), trans, wallOffsets, standardOffsets, nameKeys, tailZone) autorelease];
+  return create_OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_((outputID ? id_ : @""), trans, wallOffsets, standardOffsets, nameKeys, tailZone);
 }
 
 void OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *self, NSString *id_, IOSLongArray *transitions, IOSIntArray *wallOffsets, IOSIntArray *standardOffsets, IOSObjectArray *nameKeys, OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *tailZone) {
@@ -2325,15 +2403,11 @@ void OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLon
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *new_OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(NSString *id_, IOSLongArray *transitions, IOSIntArray *wallOffsets, IOSIntArray *standardOffsets, IOSObjectArray *nameKeys, OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *tailZone) {
-  OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *self = [OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone alloc];
-  OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(self, id_, transitions, wallOffsets, standardOffsets, nameKeys, tailZone);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone, initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_, id_, transitions, wallOffsets, standardOffsets, nameKeys, tailZone)
 }
 
 OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *create_OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(NSString *id_, IOSLongArray *transitions, IOSIntArray *wallOffsets, IOSIntArray *standardOffsets, IOSObjectArray *nameKeys, OrgJodaTimeTzDateTimeZoneBuilder_DSTZone *tailZone) {
-  OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone *self = [[OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone alloc] autorelease];
-  OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone_initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_(self, id_, transitions, wallOffsets, standardOffsets, nameKeys, tailZone);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone, initWithNSString_withLongArray_withIntArray_withIntArray_withNSStringArray_withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone_, id_, transitions, wallOffsets, standardOffsets, nameKeys, tailZone)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder_PrecalculatedZone)

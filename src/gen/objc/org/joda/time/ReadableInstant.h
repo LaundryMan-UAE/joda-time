@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeReadableInstant_INCLUDE_ALL")
-#ifdef OrgJodaTimeReadableInstant_RESTRICT
-#define OrgJodaTimeReadableInstant_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeReadableInstant")
+#ifdef RESTRICT_OrgJodaTimeReadableInstant
+#define INCLUDE_ALL_OrgJodaTimeReadableInstant 0
 #else
-#define OrgJodaTimeReadableInstant_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeReadableInstant 1
 #endif
-#undef OrgJodaTimeReadableInstant_RESTRICT
+#undef RESTRICT_OrgJodaTimeReadableInstant
 
-#if !defined (OrgJodaTimeReadableInstant_) && (OrgJodaTimeReadableInstant_INCLUDE_ALL || defined(OrgJodaTimeReadableInstant_INCLUDE))
+#if !defined (OrgJodaTimeReadableInstant_) && (INCLUDE_ALL_OrgJodaTimeReadableInstant || defined(INCLUDE_OrgJodaTimeReadableInstant))
 #define OrgJodaTimeReadableInstant_
 
-#define JavaLangComparable_RESTRICT 1
-#define JavaLangComparable_INCLUDE 1
+#define RESTRICT_JavaLangComparable 1
+#define INCLUDE_JavaLangComparable 1
 #include "java/lang/Comparable.h"
 
 @class OrgJodaTimeChronology;
@@ -44,7 +44,7 @@
  @author Stephen Colebourne
  @since 1.0
  */
-@protocol OrgJodaTimeReadableInstant < JavaLangComparable, NSObject, JavaObject >
+@protocol OrgJodaTimeReadableInstant < JavaLangComparable, JavaObject >
 
 /*!
  @brief Get the value as the number of milliseconds since
@@ -166,4 +166,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadableInstant)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeReadableInstant_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeReadableInstant")

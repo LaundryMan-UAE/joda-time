@@ -167,26 +167,40 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDuration
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeDateTimeFieldType:withLong:", "ImpreciseDateTimeField", NULL, 0x1, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x401, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x401, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x401, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x401, NULL, NULL },
-    { "getDifferenceWithLong:withLong:", "getDifference", "I", 0x1, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x1, NULL, NULL },
-    { "getDurationField", NULL, "Lorg.joda.time.DurationField;", 0x11, NULL, NULL },
-    { "getRangeDurationField", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "roundFloorWithLong:", "roundFloor", "J", 0x401, NULL, NULL },
-    { "getDurationUnitMillis", NULL, "J", 0x14, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 3, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 5, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 5, 6, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 7, 6, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 8, 6, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x11, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 9, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x14, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withLong:);
+  methods[1].selector = @selector(getWithLong:);
+  methods[2].selector = @selector(setWithLong:withInt:);
+  methods[3].selector = @selector(addWithLong:withInt:);
+  methods[4].selector = @selector(addWithLong:withLong:);
+  methods[5].selector = @selector(getDifferenceWithLong:withLong:);
+  methods[6].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  methods[7].selector = @selector(getDurationField);
+  methods[8].selector = @selector(getRangeDurationField);
+  methods[9].selector = @selector(roundFloorWithLong:);
+  methods[10].selector = @selector(getDurationUnitMillis);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldImpreciseDateTimeField_serialVersionUID },
-    { "iUnitMillis_", NULL, 0x10, "J", NULL, NULL, .constantValue.asLong = 0 },
-    { "iDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldImpreciseDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iUnitMillis_", "J", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iDurationField_", "LOrgJodaTimeDurationField;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const char *inner_classes[] = {"Lorg.joda.time.field.ImpreciseDateTimeField$LinkedDurationField;"};
-  static const J2ObjcClassInfo _OrgJodaTimeFieldImpreciseDateTimeField = { 2, "ImpreciseDateTimeField", "org.joda.time.field", NULL, 0x401, 11, methods, 3, fields, 0, NULL, 1, inner_classes, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeDateTimeFieldType;J", "get", "J", "set", "JI", "add", "JJ", "getDifference", "getDifferenceAsLong", "roundFloor", "LOrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField;" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldImpreciseDateTimeField = { "ImpreciseDateTimeField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x401, 11, 3, -1, 10, -1, -1, -1 };
   return &_OrgJodaTimeFieldImpreciseDateTimeField;
 }
 
@@ -262,24 +276,39 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldImpreciseDateTimeField)
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeFieldImpreciseDateTimeField:withOrgJodaTimeDurationFieldType:", "LinkedDurationField", NULL, 0x0, NULL, NULL },
-    { "isPrecise", NULL, "Z", 0x1, NULL, NULL },
-    { "getUnitMillis", NULL, "J", 0x1, NULL, NULL },
-    { "getValueWithLong:withLong:", "getValue", "I", 0x1, NULL, NULL },
-    { "getValueAsLongWithLong:withLong:", "getValueAsLong", "J", 0x1, NULL, NULL },
-    { "getMillisWithInt:withLong:", "getMillis", "J", 0x1, NULL, NULL },
-    { "getMillisWithLong:withLong:", "getMillis", "J", 0x1, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x1, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x1, NULL, NULL },
-    { "getDifferenceWithLong:withLong:", "getDifference", "I", 0x1, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 4, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 7, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 8, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 2, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeFieldImpreciseDateTimeField:withOrgJodaTimeDurationFieldType:);
+  methods[1].selector = @selector(isPrecise);
+  methods[2].selector = @selector(getUnitMillis);
+  methods[3].selector = @selector(getValueWithLong:withLong:);
+  methods[4].selector = @selector(getValueAsLongWithLong:withLong:);
+  methods[5].selector = @selector(getMillisWithInt:withLong:);
+  methods[6].selector = @selector(getMillisWithLong:withLong:);
+  methods[7].selector = @selector(addWithLong:withInt:);
+  methods[8].selector = @selector(addWithLong:withLong:);
+  methods[9].selector = @selector(getDifferenceWithLong:withLong:);
+  methods[10].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", NULL, 0x1012, "Lorg.joda.time.field.ImpreciseDateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_serialVersionUID },
+    { "this$0_", "LOrgJodaTimeFieldImpreciseDateTimeField;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField = { 2, "LinkedDurationField", "org.joda.time.field", "ImpreciseDateTimeField", 0x12, 11, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeFieldImpreciseDateTimeField;LOrgJodaTimeDurationFieldType;", "getValue", "JJ", "getValueAsLong", "getMillis", "IJ", "add", "JI", "getDifference", "getDifferenceAsLong", "LOrgJodaTimeFieldImpreciseDateTimeField;" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField = { "LinkedDurationField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x12, 11, 2, 10, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField;
 }
 
@@ -291,15 +320,11 @@ void OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_initWithOrgJodaT
 }
 
 OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField *new_OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_initWithOrgJodaTimeFieldImpreciseDateTimeField_withOrgJodaTimeDurationFieldType_(OrgJodaTimeFieldImpreciseDateTimeField *outer$, OrgJodaTimeDurationFieldType *type) {
-  OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField *self = [OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField alloc];
-  OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_initWithOrgJodaTimeFieldImpreciseDateTimeField_withOrgJodaTimeDurationFieldType_(self, outer$, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField, initWithOrgJodaTimeFieldImpreciseDateTimeField_withOrgJodaTimeDurationFieldType_, outer$, type)
 }
 
 OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField *create_OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_initWithOrgJodaTimeFieldImpreciseDateTimeField_withOrgJodaTimeDurationFieldType_(OrgJodaTimeFieldImpreciseDateTimeField *outer$, OrgJodaTimeDurationFieldType *type) {
-  OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField *self = [[OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField alloc] autorelease];
-  OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField_initWithOrgJodaTimeFieldImpreciseDateTimeField_withOrgJodaTimeDurationFieldType_(self, outer$, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField, initWithOrgJodaTimeFieldImpreciseDateTimeField_withOrgJodaTimeDurationFieldType_, outer$, type)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDurationField)

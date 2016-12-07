@@ -4,10 +4,6 @@
 //
 
 #include "J2ObjC_source.h"
-#include "org/joda/time/DurationFieldType.h"
-#include "org/joda/time/MutablePeriod.h"
-#include "org/joda/time/Period.h"
-#include "org/joda/time/PeriodType.h"
 #include "org/joda/time/ReadablePeriod.h"
 
 @interface OrgJodaTimeReadablePeriod : NSObject
@@ -17,20 +13,35 @@
 @implementation OrgJodaTimeReadablePeriod
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getPeriodType", NULL, "Lorg.joda.time.PeriodType;", 0x401, NULL, NULL },
-    { "size", NULL, "I", 0x401, NULL, NULL },
-    { "getFieldTypeWithInt:", "getFieldType", "Lorg.joda.time.DurationFieldType;", 0x401, NULL, NULL },
-    { "getValueWithInt:", "getValue", "I", 0x401, NULL, NULL },
-    { "getWithOrgJodaTimeDurationFieldType:", "get", "I", 0x401, NULL, NULL },
-    { "isSupportedWithOrgJodaTimeDurationFieldType:", "isSupported", "Z", 0x401, NULL, NULL },
-    { "toPeriod", NULL, "Lorg.joda.time.Period;", 0x401, NULL, NULL },
-    { "toMutablePeriod", NULL, "Lorg.joda.time.MutablePeriod;", 0x401, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x401, NULL, NULL },
-    { "hash", "hashCode", "I", 0x401, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimePeriodType;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 2, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 3, 4, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 5, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMutablePeriod;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 6, 7, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 8, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 9, -1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadablePeriod = { 2, "ReadablePeriod", "org.joda.time", NULL, 0x609, 11, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getPeriodType);
+  methods[1].selector = @selector(size);
+  methods[2].selector = @selector(getFieldTypeWithInt:);
+  methods[3].selector = @selector(getValueWithInt:);
+  methods[4].selector = @selector(getWithOrgJodaTimeDurationFieldType:);
+  methods[5].selector = @selector(isSupportedWithOrgJodaTimeDurationFieldType:);
+  methods[6].selector = @selector(toPeriod);
+  methods[7].selector = @selector(toMutablePeriod);
+  methods[8].selector = @selector(isEqual:);
+  methods[9].selector = @selector(hash);
+  methods[10].selector = @selector(description);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "getFieldType", "I", "getValue", "get", "LOrgJodaTimeDurationFieldType;", "isSupported", "equals", "LNSObject;", "hashCode", "toString" };
+  static const J2ObjcClassInfo _OrgJodaTimeReadablePeriod = { "ReadablePeriod", "org.joda.time", ptrTable, methods, NULL, 7, 0x609, 11, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeReadablePeriod;
 }
 

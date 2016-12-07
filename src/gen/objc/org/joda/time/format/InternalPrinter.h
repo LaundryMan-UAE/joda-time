@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatInternalPrinter_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatInternalPrinter_RESTRICT
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatInternalPrinter")
+#ifdef RESTRICT_OrgJodaTimeFormatInternalPrinter
+#define INCLUDE_ALL_OrgJodaTimeFormatInternalPrinter 0
 #else
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatInternalPrinter 1
 #endif
-#undef OrgJodaTimeFormatInternalPrinter_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatInternalPrinter
 
-#if !defined (OrgJodaTimeFormatInternalPrinter_) && (OrgJodaTimeFormatInternalPrinter_INCLUDE_ALL || defined(OrgJodaTimeFormatInternalPrinter_INCLUDE))
+#if !defined (OrgJodaTimeFormatInternalPrinter_) && (INCLUDE_ALL_OrgJodaTimeFormatInternalPrinter || defined(INCLUDE_OrgJodaTimeFormatInternalPrinter))
 #define OrgJodaTimeFormatInternalPrinter_
 
 @class JavaUtilLocale;
@@ -29,7 +29,7 @@
  @author Stephen Colebourne
  @since 2.4
  */
-@protocol OrgJodaTimeFormatInternalPrinter < NSObject, JavaObject >
+@protocol OrgJodaTimeFormatInternalPrinter < JavaObject >
 
 /*!
  @brief Returns the expected maximum number of characters produced.
@@ -74,4 +74,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatInternalPrinter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatInternalPrinter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatInternalPrinter")

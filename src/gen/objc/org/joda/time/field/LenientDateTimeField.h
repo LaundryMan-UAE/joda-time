@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFieldLenientDateTimeField_INCLUDE_ALL")
-#ifdef OrgJodaTimeFieldLenientDateTimeField_RESTRICT
-#define OrgJodaTimeFieldLenientDateTimeField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFieldLenientDateTimeField")
+#ifdef RESTRICT_OrgJodaTimeFieldLenientDateTimeField
+#define INCLUDE_ALL_OrgJodaTimeFieldLenientDateTimeField 0
 #else
-#define OrgJodaTimeFieldLenientDateTimeField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFieldLenientDateTimeField 1
 #endif
-#undef OrgJodaTimeFieldLenientDateTimeField_RESTRICT
+#undef RESTRICT_OrgJodaTimeFieldLenientDateTimeField
 
-#if !defined (OrgJodaTimeFieldLenientDateTimeField_) && (OrgJodaTimeFieldLenientDateTimeField_INCLUDE_ALL || defined(OrgJodaTimeFieldLenientDateTimeField_INCLUDE))
+#if !defined (OrgJodaTimeFieldLenientDateTimeField_) && (INCLUDE_ALL_OrgJodaTimeFieldLenientDateTimeField || defined(INCLUDE_OrgJodaTimeFieldLenientDateTimeField))
 #define OrgJodaTimeFieldLenientDateTimeField_
 
-#define OrgJodaTimeFieldDelegatedDateTimeField_RESTRICT 1
-#define OrgJodaTimeFieldDelegatedDateTimeField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldDelegatedDateTimeField 1
+#define INCLUDE_OrgJodaTimeFieldDelegatedDateTimeField 1
 #include "org/joda/time/field/DelegatedDateTimeField.h"
 
 @class OrgJodaTimeChronology;
@@ -77,4 +77,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldLenientDateTimeField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFieldLenientDateTimeField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFieldLenientDateTimeField")

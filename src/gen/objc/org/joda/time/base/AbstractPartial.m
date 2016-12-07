@@ -91,7 +91,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (jint)indexOfSupportedWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type {
   jint index = [self indexOfWithOrgJodaTimeDateTimeFieldType:type];
   if (index == -1) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@$", @"Field '", type, @"' is not supported")) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@$", @"Field '", type, @"' is not supported"));
   }
   return index;
 }
@@ -108,7 +108,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 - (jint)indexOfSupportedWithOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)type {
   jint index = [self indexOfWithOrgJodaTimeDurationFieldType:type];
   if (index == -1) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@$", @"Field '", type, @"' is not supported")) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$@$", @"Field '", type, @"' is not supported"));
   }
   return index;
 }
@@ -117,7 +117,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   OrgJodaTimeChronology *chrono = OrgJodaTimeDateTimeUtils_getInstantChronologyWithOrgJodaTimeReadableInstant_(baseInstant);
   jlong instantMillis = OrgJodaTimeDateTimeUtils_getInstantMillisWithOrgJodaTimeReadableInstant_(baseInstant);
   jlong resolved = [((OrgJodaTimeChronology *) nil_chk(chrono)) setWithOrgJodaTimeReadablePartial:self withLong:instantMillis];
-  return [new_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_(resolved, chrono) autorelease];
+  return create_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_(resolved, chrono);
 }
 
 - (jboolean)isEqual:(id)partial {
@@ -155,11 +155,11 @@ J2OBJC_IGNORE_DESIGNATED_END
     return 0;
   }
   if ([self size] != [((id<OrgJodaTimeReadablePartial>) nil_chk(other)) size]) {
-    @throw [new_JavaLangClassCastException_initWithNSString_(@"ReadablePartial objects must have matching field types") autorelease];
+    @throw create_JavaLangClassCastException_initWithNSString_(@"ReadablePartial objects must have matching field types");
   }
   for (jint i = 0, isize = [self size]; i < isize; i++) {
     if ([self getFieldTypeWithInt:i] != [other getFieldTypeWithInt:i]) {
-      @throw [new_JavaLangClassCastException_initWithNSString_(@"ReadablePartial objects must have matching field types") autorelease];
+      @throw create_JavaLangClassCastException_initWithNSString_(@"ReadablePartial objects must have matching field types");
     }
   }
   for (jint i = 0, isize = [self size]; i < isize; i++) {
@@ -175,21 +175,21 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jboolean)isAfterWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial {
   if (partial == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Partial cannot be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"Partial cannot be null");
   }
   return [self compareToWithId:partial] > 0;
 }
 
 - (jboolean)isBeforeWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial {
   if (partial == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Partial cannot be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"Partial cannot be null");
   }
   return [self compareToWithId:partial] < 0;
 }
 
 - (jboolean)isEqualWithOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial {
   if (partial == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Partial cannot be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"Partial cannot be null");
   }
   return [self compareToWithId:partial] == 0;
 }
@@ -198,34 +198,59 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (formatter == nil) {
     return [self description];
   }
-  return [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(formatter)) printWithOrgJodaTimeReadablePartial:self];
+  return [formatter printWithOrgJodaTimeReadablePartial:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "AbstractPartial", NULL, 0x4, NULL, NULL },
-    { "getFieldWithInt:withOrgJodaTimeChronology:", "getField", "Lorg.joda.time.DateTimeField;", 0x404, NULL, NULL },
-    { "getFieldTypeWithInt:", "getFieldType", "Lorg.joda.time.DateTimeFieldType;", 0x1, NULL, NULL },
-    { "getFieldTypes", NULL, "[Lorg.joda.time.DateTimeFieldType;", 0x1, NULL, NULL },
-    { "getFieldWithInt:", "getField", "Lorg.joda.time.DateTimeField;", 0x1, NULL, NULL },
-    { "getFields", NULL, "[Lorg.joda.time.DateTimeField;", 0x1, NULL, NULL },
-    { "getValues", NULL, "[I", 0x1, NULL, NULL },
-    { "getWithOrgJodaTimeDateTimeFieldType:", "get", "I", 0x1, NULL, NULL },
-    { "isSupportedWithOrgJodaTimeDateTimeFieldType:", "isSupported", "Z", 0x1, NULL, NULL },
-    { "indexOfWithOrgJodaTimeDateTimeFieldType:", "indexOf", "I", 0x1, NULL, NULL },
-    { "indexOfSupportedWithOrgJodaTimeDateTimeFieldType:", "indexOfSupported", "I", 0x4, NULL, NULL },
-    { "indexOfWithOrgJodaTimeDurationFieldType:", "indexOf", "I", 0x4, NULL, NULL },
-    { "indexOfSupportedWithOrgJodaTimeDurationFieldType:", "indexOfSupported", "I", 0x4, NULL, NULL },
-    { "toDateTimeWithOrgJodaTimeReadableInstant:", "toDateTime", "Lorg.joda.time.DateTime;", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "compareToWithId:", "compareTo", "I", 0x1, NULL, NULL },
-    { "isAfterWithOrgJodaTimeReadablePartial:", "isAfter", "Z", 0x1, NULL, NULL },
-    { "isBeforeWithOrgJodaTimeReadablePartial:", "isBefore", "Z", 0x1, NULL, NULL },
-    { "isEqualWithOrgJodaTimeReadablePartial:", "isEqual", "Z", 0x1, NULL, NULL },
-    { "toStringWithOrgJodaTimeFormatDateTimeFormatter:", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x404, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "[LOrgJodaTimeDateTimeFieldType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x1, 0, 3, -1, -1, -1, -1 },
+    { NULL, "[LOrgJodaTimeDateTimeField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "[I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 6, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 7, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x4, 8, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x4, 7, 9, -1, -1, -1, -1 },
+    { NULL, "I", 0x4, 8, 9, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x1, 10, 11, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 12, 13, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 14, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 15, 16, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 17, 16, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 18, 16, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 19, 16, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 20, 21, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractPartial = { 2, "AbstractPartial", "org.joda.time.base", NULL, 0x401, 21, methods, 0, NULL, 0, NULL, 0, NULL, NULL, "Ljava/lang/Object;Lorg/joda/time/ReadablePartial;Ljava/lang/Comparable<Lorg/joda/time/ReadablePartial;>;" };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getFieldWithInt:withOrgJodaTimeChronology:);
+  methods[2].selector = @selector(getFieldTypeWithInt:);
+  methods[3].selector = @selector(getFieldTypes);
+  methods[4].selector = @selector(getFieldWithInt:);
+  methods[5].selector = @selector(getFields);
+  methods[6].selector = @selector(getValues);
+  methods[7].selector = @selector(getWithOrgJodaTimeDateTimeFieldType:);
+  methods[8].selector = @selector(isSupportedWithOrgJodaTimeDateTimeFieldType:);
+  methods[9].selector = @selector(indexOfWithOrgJodaTimeDateTimeFieldType:);
+  methods[10].selector = @selector(indexOfSupportedWithOrgJodaTimeDateTimeFieldType:);
+  methods[11].selector = @selector(indexOfWithOrgJodaTimeDurationFieldType:);
+  methods[12].selector = @selector(indexOfSupportedWithOrgJodaTimeDurationFieldType:);
+  methods[13].selector = @selector(toDateTimeWithOrgJodaTimeReadableInstant:);
+  methods[14].selector = @selector(isEqual:);
+  methods[15].selector = @selector(hash);
+  methods[16].selector = @selector(compareToWithId:);
+  methods[17].selector = @selector(isAfterWithOrgJodaTimeReadablePartial:);
+  methods[18].selector = @selector(isBeforeWithOrgJodaTimeReadablePartial:);
+  methods[19].selector = @selector(isEqualWithOrgJodaTimeReadablePartial:);
+  methods[20].selector = @selector(toStringWithOrgJodaTimeFormatDateTimeFormatter:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "getField", "ILOrgJodaTimeChronology;", "getFieldType", "I", "get", "LOrgJodaTimeDateTimeFieldType;", "isSupported", "indexOf", "indexOfSupported", "LOrgJodaTimeDurationFieldType;", "toDateTime", "LOrgJodaTimeReadableInstant;", "equals", "LNSObject;", "hashCode", "compareTo", "LOrgJodaTimeReadablePartial;", "isAfter", "isBefore", "isEqual", "toString", "LOrgJodaTimeFormatDateTimeFormatter;", "Ljava/lang/Object;Lorg/joda/time/ReadablePartial;Ljava/lang/Comparable<Lorg/joda/time/ReadablePartial;>;" };
+  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractPartial = { "AbstractPartial", "org.joda.time.base", ptrTable, methods, NULL, 7, 0x401, 21, 0, -1, -1, -1, 22, -1 };
   return &_OrgJodaTimeBaseAbstractPartial;
 }
 

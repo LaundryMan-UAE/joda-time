@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeMonths_INCLUDE_ALL")
-#ifdef OrgJodaTimeMonths_RESTRICT
-#define OrgJodaTimeMonths_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeMonths")
+#ifdef RESTRICT_OrgJodaTimeMonths
+#define INCLUDE_ALL_OrgJodaTimeMonths 0
 #else
-#define OrgJodaTimeMonths_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeMonths 1
 #endif
-#undef OrgJodaTimeMonths_RESTRICT
+#undef RESTRICT_OrgJodaTimeMonths
 
-#if !defined (OrgJodaTimeMonths_) && (OrgJodaTimeMonths_INCLUDE_ALL || defined(OrgJodaTimeMonths_INCLUDE))
+#if !defined (OrgJodaTimeMonths_) && (INCLUDE_ALL_OrgJodaTimeMonths || defined(INCLUDE_OrgJodaTimeMonths))
 #define OrgJodaTimeMonths_
 
-#define OrgJodaTimeBaseBaseSingleFieldPeriod_RESTRICT 1
-#define OrgJodaTimeBaseBaseSingleFieldPeriod_INCLUDE 1
+#define RESTRICT_OrgJodaTimeBaseBaseSingleFieldPeriod 1
+#define INCLUDE_OrgJodaTimeBaseBaseSingleFieldPeriod 1
 #include "org/joda/time/base/BaseSingleFieldPeriod.h"
 
 @class OrgJodaTimeDurationFieldType;
@@ -351,4 +351,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeMonths)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeMonths_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeMonths")

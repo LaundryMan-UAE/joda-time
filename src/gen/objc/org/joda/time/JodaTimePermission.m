@@ -22,13 +22,18 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeJodaTimePermission, serialVersionUID, jl
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:", "JodaTimePermission", NULL, 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithNSString:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeJodaTimePermission_serialVersionUID },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeJodaTimePermission_serialVersionUID, 0x1a, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeJodaTimePermission = { 2, "JodaTimePermission", "org.joda.time", NULL, 0x1, 1, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LNSString;" };
+  static const J2ObjcClassInfo _OrgJodaTimeJodaTimePermission = { "JodaTimePermission", "org.joda.time", ptrTable, methods, fields, 7, 0x1, 1, 1, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeJodaTimePermission;
 }
 
@@ -39,15 +44,11 @@ void OrgJodaTimeJodaTimePermission_initWithNSString_(OrgJodaTimeJodaTimePermissi
 }
 
 OrgJodaTimeJodaTimePermission *new_OrgJodaTimeJodaTimePermission_initWithNSString_(NSString *name) {
-  OrgJodaTimeJodaTimePermission *self = [OrgJodaTimeJodaTimePermission alloc];
-  OrgJodaTimeJodaTimePermission_initWithNSString_(self, name);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeJodaTimePermission, initWithNSString_, name)
 }
 
 OrgJodaTimeJodaTimePermission *create_OrgJodaTimeJodaTimePermission_initWithNSString_(NSString *name) {
-  OrgJodaTimeJodaTimePermission *self = [[OrgJodaTimeJodaTimePermission alloc] autorelease];
-  OrgJodaTimeJodaTimePermission_initWithNSString_(self, name);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeJodaTimePermission, initWithNSString_, name)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeJodaTimePermission)

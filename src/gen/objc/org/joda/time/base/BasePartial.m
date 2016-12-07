@@ -6,7 +6,6 @@
 #include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
-#include "java/lang/IllegalArgumentException.h"
 #include "java/lang/System.h"
 #include "java/util/Locale.h"
 #include "org/joda/time/Chronology.h"
@@ -147,30 +146,50 @@ withOrgJodaTimeFormatDateTimeFormatter:(OrgJodaTimeFormatDateTimeFormatter *)par
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "BasePartial", NULL, 0x4, NULL, NULL },
-    { "initWithOrgJodaTimeChronology:", "BasePartial", NULL, 0x4, NULL, NULL },
-    { "initWithLong:", "BasePartial", NULL, 0x4, NULL, NULL },
-    { "initWithLong:withOrgJodaTimeChronology:", "BasePartial", NULL, 0x4, NULL, NULL },
-    { "initWithId:withOrgJodaTimeChronology:", "BasePartial", NULL, 0x4, NULL, NULL },
-    { "initWithId:withOrgJodaTimeChronology:withOrgJodaTimeFormatDateTimeFormatter:", "BasePartial", NULL, 0x4, NULL, NULL },
-    { "initWithIntArray:withOrgJodaTimeChronology:", "BasePartial", NULL, 0x4, NULL, NULL },
-    { "initWithOrgJodaTimeBaseBasePartial:withIntArray:", "BasePartial", NULL, 0x4, NULL, NULL },
-    { "initWithOrgJodaTimeBaseBasePartial:withOrgJodaTimeChronology:", "BasePartial", NULL, 0x4, NULL, NULL },
-    { "getValueWithInt:", "getValue", "I", 0x1, NULL, NULL },
-    { "getValues", NULL, "[I", 0x1, NULL, NULL },
-    { "getChronology", NULL, "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "setValueWithInt:withInt:", "setValue", "V", 0x4, NULL, NULL },
-    { "setValuesWithIntArray:", "setValues", "V", 0x4, NULL, NULL },
-    { "toStringWithNSString:", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "toStringWithNSString:withJavaUtilLocale:", "toString", "Ljava.lang.String;", 0x1, "Ljava.lang.IllegalArgumentException;", NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 0, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 2, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 3, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 4, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 5, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 6, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 7, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 8, 9, -1, -1, -1, -1 },
+    { NULL, "[I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 10, 11, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 12, 13, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 14, 15, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 14, 16, 17, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(initWithOrgJodaTimeChronology:);
+  methods[2].selector = @selector(initWithLong:);
+  methods[3].selector = @selector(initWithLong:withOrgJodaTimeChronology:);
+  methods[4].selector = @selector(initWithId:withOrgJodaTimeChronology:);
+  methods[5].selector = @selector(initWithId:withOrgJodaTimeChronology:withOrgJodaTimeFormatDateTimeFormatter:);
+  methods[6].selector = @selector(initWithIntArray:withOrgJodaTimeChronology:);
+  methods[7].selector = @selector(initWithOrgJodaTimeBaseBasePartial:withIntArray:);
+  methods[8].selector = @selector(initWithOrgJodaTimeBaseBasePartial:withOrgJodaTimeChronology:);
+  methods[9].selector = @selector(getValueWithInt:);
+  methods[10].selector = @selector(getValues);
+  methods[11].selector = @selector(getChronology);
+  methods[12].selector = @selector(setValueWithInt:withInt:);
+  methods[13].selector = @selector(setValuesWithIntArray:);
+  methods[14].selector = @selector(toStringWithNSString:);
+  methods[15].selector = @selector(toStringWithNSString:withJavaUtilLocale:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeBaseBasePartial_serialVersionUID },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iValues_", NULL, 0x12, "[I", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeBaseBasePartial_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iChronology_", "LOrgJodaTimeChronology;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iValues_", "[I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseBasePartial = { 2, "BasePartial", "org.joda.time.base", NULL, 0x401, 16, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeChronology;", "J", "JLOrgJodaTimeChronology;", "LNSObject;LOrgJodaTimeChronology;", "LNSObject;LOrgJodaTimeChronology;LOrgJodaTimeFormatDateTimeFormatter;", "[ILOrgJodaTimeChronology;", "LOrgJodaTimeBaseBasePartial;[I", "LOrgJodaTimeBaseBasePartial;LOrgJodaTimeChronology;", "getValue", "I", "setValue", "II", "setValues", "[I", "toString", "LNSString;", "LNSString;LJavaUtilLocale;", "LJavaLangIllegalArgumentException;" };
+  static const J2ObjcClassInfo _OrgJodaTimeBaseBasePartial = { "BasePartial", "org.joda.time.base", ptrTable, methods, fields, 7, 0x401, 16, 3, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeBaseBasePartial;
 }
 

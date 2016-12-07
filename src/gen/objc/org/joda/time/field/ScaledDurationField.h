@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFieldScaledDurationField_INCLUDE_ALL")
-#ifdef OrgJodaTimeFieldScaledDurationField_RESTRICT
-#define OrgJodaTimeFieldScaledDurationField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFieldScaledDurationField")
+#ifdef RESTRICT_OrgJodaTimeFieldScaledDurationField
+#define INCLUDE_ALL_OrgJodaTimeFieldScaledDurationField 0
 #else
-#define OrgJodaTimeFieldScaledDurationField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFieldScaledDurationField 1
 #endif
-#undef OrgJodaTimeFieldScaledDurationField_RESTRICT
+#undef RESTRICT_OrgJodaTimeFieldScaledDurationField
 
-#if !defined (OrgJodaTimeFieldScaledDurationField_) && (OrgJodaTimeFieldScaledDurationField_INCLUDE_ALL || defined(OrgJodaTimeFieldScaledDurationField_INCLUDE))
+#if !defined (OrgJodaTimeFieldScaledDurationField_) && (INCLUDE_ALL_OrgJodaTimeFieldScaledDurationField || defined(INCLUDE_OrgJodaTimeFieldScaledDurationField))
 #define OrgJodaTimeFieldScaledDurationField_
 
-#define OrgJodaTimeFieldDecoratedDurationField_RESTRICT 1
-#define OrgJodaTimeFieldDecoratedDurationField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldDecoratedDurationField 1
+#define INCLUDE_OrgJodaTimeFieldDecoratedDurationField 1
 #include "org/joda/time/field/DecoratedDurationField.h"
 
 @class OrgJodaTimeDurationField;
@@ -115,4 +115,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldScaledDurationField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFieldScaledDurationField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFieldScaledDurationField")

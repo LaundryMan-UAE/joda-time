@@ -4,8 +4,10 @@
 //
 
 #include "IOSClass.h"
+#include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "java/lang/Integer.h"
+#include "java/lang/annotation/Annotation.h"
 #include "org/joda/convert/FromString.h"
 #include "org/joda/convert/ToString.h"
 #include "org/joda/time/Chronology.h"
@@ -62,6 +64,10 @@ __attribute__((unused)) static void OrgJodaTimeYears_initWithInt_(OrgJodaTimeYea
 __attribute__((unused)) static OrgJodaTimeYears *new_OrgJodaTimeYears_initWithInt_(jint years) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static OrgJodaTimeYears *create_OrgJodaTimeYears_initWithInt_(jint years);
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeYears__Annotations$0();
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeYears__Annotations$1();
 
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeYears)
 
@@ -128,7 +134,7 @@ OrgJodaTimeYears *OrgJodaTimeYears_MIN_VALUE;
   if (years == nil) {
     return self;
   }
-  return [self plusWithInt:[((OrgJodaTimeYears *) nil_chk(years)) getValue]];
+  return [self plusWithInt:[years getValue]];
 }
 
 - (OrgJodaTimeYears *)minusWithInt:(jint)years {
@@ -139,7 +145,7 @@ OrgJodaTimeYears *OrgJodaTimeYears_MIN_VALUE;
   if (years == nil) {
     return self;
   }
-  return [self minusWithInt:[((OrgJodaTimeYears *) nil_chk(years)) getValue]];
+  return [self minusWithInt:[years getValue]];
 }
 
 - (OrgJodaTimeYears *)multipliedByWithInt:(jint)scalar {
@@ -161,18 +167,79 @@ OrgJodaTimeYears *OrgJodaTimeYears_MIN_VALUE;
   if (other == nil) {
     return [self getValue] > 0;
   }
-  return [self getValue] > [((OrgJodaTimeYears *) nil_chk(other)) getValue];
+  return [self getValue] > [other getValue];
 }
 
 - (jboolean)isLessThanWithOrgJodaTimeYears:(OrgJodaTimeYears *)other {
   if (other == nil) {
     return [self getValue] < 0;
   }
-  return [self getValue] < [((OrgJodaTimeYears *) nil_chk(other)) getValue];
+  return [self getValue] < [other getValue];
 }
 
 - (NSString *)description {
   return JreStrcat("C$C", 'P', NSString_valueOfInt_([self getValue]), 'Y');
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeYears;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeYears;", 0x9, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeYears;", 0x9, 2, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeYears;", 0x9, 5, 6, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeYears;", 0x9, 7, 8, -1, -1, 9, -1 },
+    { NULL, NULL, 0x2, -1, 1, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriodType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeYears;", 0x1, 10, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeYears;", 0x1, 10, 11, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeYears;", 0x1, 12, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeYears;", 0x1, 12, 11, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeYears;", 0x1, 13, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeYears;", 0x1, 14, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeYears;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 15, 11, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 16, 11, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 17, -1, -1, -1, 18, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(yearsWithInt:);
+  methods[1].selector = @selector(yearsBetweenWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:);
+  methods[2].selector = @selector(yearsBetweenWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:);
+  methods[3].selector = @selector(yearsInWithOrgJodaTimeReadableInterval:);
+  methods[4].selector = @selector(parseYearsWithNSString:);
+  methods[5].selector = @selector(initWithInt:);
+  methods[6].selector = @selector(readResolve);
+  methods[7].selector = @selector(getFieldType);
+  methods[8].selector = @selector(getPeriodType);
+  methods[9].selector = @selector(getYears);
+  methods[10].selector = @selector(plusWithInt:);
+  methods[11].selector = @selector(plusWithOrgJodaTimeYears:);
+  methods[12].selector = @selector(minusWithInt:);
+  methods[13].selector = @selector(minusWithOrgJodaTimeYears:);
+  methods[14].selector = @selector(multipliedByWithInt:);
+  methods[15].selector = @selector(dividedByWithInt:);
+  methods[16].selector = @selector(negated);
+  methods[17].selector = @selector(isGreaterThanWithOrgJodaTimeYears:);
+  methods[18].selector = @selector(isLessThanWithOrgJodaTimeYears:);
+  methods[19].selector = @selector(description);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "ZERO", "LOrgJodaTimeYears;", .constantValue.asLong = 0, 0x19, -1, 19, -1, -1 },
+    { "ONE", "LOrgJodaTimeYears;", .constantValue.asLong = 0, 0x19, -1, 20, -1, -1 },
+    { "TWO", "LOrgJodaTimeYears;", .constantValue.asLong = 0, 0x19, -1, 21, -1, -1 },
+    { "THREE", "LOrgJodaTimeYears;", .constantValue.asLong = 0, 0x19, -1, 22, -1, -1 },
+    { "MAX_VALUE", "LOrgJodaTimeYears;", .constantValue.asLong = 0, 0x19, -1, 23, -1, -1 },
+    { "MIN_VALUE", "LOrgJodaTimeYears;", .constantValue.asLong = 0, 0x19, -1, 24, -1, -1 },
+    { "PARSER", "LOrgJodaTimeFormatPeriodFormatter;", .constantValue.asLong = 0, 0x1a, -1, 25, -1, -1 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeYears_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "years", "I", "yearsBetween", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableInstant;", "LOrgJodaTimeReadablePartial;LOrgJodaTimeReadablePartial;", "yearsIn", "LOrgJodaTimeReadableInterval;", "parseYears", "LNSString;", (void *)&OrgJodaTimeYears__Annotations$0, "plus", "LOrgJodaTimeYears;", "minus", "multipliedBy", "dividedBy", "isGreaterThan", "isLessThan", "toString", (void *)&OrgJodaTimeYears__Annotations$1, &OrgJodaTimeYears_ZERO, &OrgJodaTimeYears_ONE, &OrgJodaTimeYears_TWO, &OrgJodaTimeYears_THREE, &OrgJodaTimeYears_MAX_VALUE, &OrgJodaTimeYears_MIN_VALUE, &OrgJodaTimeYears_PARSER };
+  static const J2ObjcClassInfo _OrgJodaTimeYears = { "Years", "org.joda.time", ptrTable, methods, fields, 7, 0x11, 20, 8, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeYears;
 }
 
 + (void)initialize {
@@ -186,51 +253,6 @@ OrgJodaTimeYears *OrgJodaTimeYears_MIN_VALUE;
     JreStrongAssign(&OrgJodaTimeYears_PARSER, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_years()]);
     J2OBJC_SET_INITIALIZED(OrgJodaTimeYears)
   }
-}
-
-+ (IOSObjectArray *)__annotations_parseYearsWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
-+ (IOSObjectArray *)__annotations_toString {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "yearsWithInt:", "years", "Lorg.joda.time.Years;", 0x9, NULL, NULL },
-    { "yearsBetweenWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:", "yearsBetween", "Lorg.joda.time.Years;", 0x9, NULL, NULL },
-    { "yearsBetweenWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:", "yearsBetween", "Lorg.joda.time.Years;", 0x9, NULL, NULL },
-    { "yearsInWithOrgJodaTimeReadableInterval:", "yearsIn", "Lorg.joda.time.Years;", 0x9, NULL, NULL },
-    { "parseYearsWithNSString:", "parseYears", "Lorg.joda.time.Years;", 0x9, NULL, NULL },
-    { "initWithInt:", "Years", NULL, 0x2, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
-    { "getFieldType", NULL, "Lorg.joda.time.DurationFieldType;", 0x1, NULL, NULL },
-    { "getPeriodType", NULL, "Lorg.joda.time.PeriodType;", 0x1, NULL, NULL },
-    { "getYears", NULL, "I", 0x1, NULL, NULL },
-    { "plusWithInt:", "plus", "Lorg.joda.time.Years;", 0x1, NULL, NULL },
-    { "plusWithOrgJodaTimeYears:", "plus", "Lorg.joda.time.Years;", 0x1, NULL, NULL },
-    { "minusWithInt:", "minus", "Lorg.joda.time.Years;", 0x1, NULL, NULL },
-    { "minusWithOrgJodaTimeYears:", "minus", "Lorg.joda.time.Years;", 0x1, NULL, NULL },
-    { "multipliedByWithInt:", "multipliedBy", "Lorg.joda.time.Years;", 0x1, NULL, NULL },
-    { "dividedByWithInt:", "dividedBy", "Lorg.joda.time.Years;", 0x1, NULL, NULL },
-    { "negated", NULL, "Lorg.joda.time.Years;", 0x1, NULL, NULL },
-    { "isGreaterThanWithOrgJodaTimeYears:", "isGreaterThan", "Z", 0x1, NULL, NULL },
-    { "isLessThanWithOrgJodaTimeYears:", "isLessThan", "Z", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "ZERO", "ZERO", 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_ZERO, NULL, .constantValue.asLong = 0 },
-    { "ONE", "ONE", 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_ONE, NULL, .constantValue.asLong = 0 },
-    { "TWO", "TWO", 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_TWO, NULL, .constantValue.asLong = 0 },
-    { "THREE", "THREE", 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_THREE, NULL, .constantValue.asLong = 0 },
-    { "MAX_VALUE", "MAX_VALUE", 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_MAX_VALUE, NULL, .constantValue.asLong = 0 },
-    { "MIN_VALUE", "MIN_VALUE", 0x19, "Lorg.joda.time.Years;", &OrgJodaTimeYears_MIN_VALUE, NULL, .constantValue.asLong = 0 },
-    { "PARSER", "PARSER", 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeYears_PARSER, NULL, .constantValue.asLong = 0 },
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeYears_serialVersionUID },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeYears = { 2, "Years", "org.joda.time", NULL, 0x11, 20, methods, 8, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeYears;
 }
 
 @end
@@ -251,7 +273,7 @@ OrgJodaTimeYears *OrgJodaTimeYears_yearsWithInt_(jint years) {
     case JavaLangInteger_MIN_VALUE:
     return OrgJodaTimeYears_MIN_VALUE;
     default:
-    return [new_OrgJodaTimeYears_initWithInt_(years) autorelease];
+    return create_OrgJodaTimeYears_initWithInt_(years);
   }
 }
 
@@ -277,7 +299,7 @@ OrgJodaTimeYears *OrgJodaTimeYears_yearsInWithOrgJodaTimeReadableInterval_(id<Or
   if (interval == nil) {
     return OrgJodaTimeYears_ZERO;
   }
-  jint amount = OrgJodaTimeBaseBaseSingleFieldPeriod_betweenWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimeDurationFieldType_([((id<OrgJodaTimeReadableInterval>) nil_chk(interval)) getStart], [interval getEnd], OrgJodaTimeDurationFieldType_years());
+  jint amount = OrgJodaTimeBaseBaseSingleFieldPeriod_betweenWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimeDurationFieldType_([interval getStart], [interval getEnd], OrgJodaTimeDurationFieldType_years());
   return OrgJodaTimeYears_yearsWithInt_(amount);
 }
 
@@ -295,15 +317,19 @@ void OrgJodaTimeYears_initWithInt_(OrgJodaTimeYears *self, jint years) {
 }
 
 OrgJodaTimeYears *new_OrgJodaTimeYears_initWithInt_(jint years) {
-  OrgJodaTimeYears *self = [OrgJodaTimeYears alloc];
-  OrgJodaTimeYears_initWithInt_(self, years);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeYears, initWithInt_, years)
 }
 
 OrgJodaTimeYears *create_OrgJodaTimeYears_initWithInt_(jint years) {
-  OrgJodaTimeYears *self = [[OrgJodaTimeYears alloc] autorelease];
-  OrgJodaTimeYears_initWithInt_(self, years);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeYears, initWithInt_, years)
+}
+
+IOSObjectArray *OrgJodaTimeYears__Annotations$0() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_OrgJodaConvertFromString() } count:1 type:JavaLangAnnotationAnnotation_class_()];
+}
+
+IOSObjectArray *OrgJodaTimeYears__Annotations$1() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_OrgJodaConvertToString() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeYears)

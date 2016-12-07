@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeBaseAbstractInterval_INCLUDE_ALL")
-#ifdef OrgJodaTimeBaseAbstractInterval_RESTRICT
-#define OrgJodaTimeBaseAbstractInterval_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeBaseAbstractInterval")
+#ifdef RESTRICT_OrgJodaTimeBaseAbstractInterval
+#define INCLUDE_ALL_OrgJodaTimeBaseAbstractInterval 0
 #else
-#define OrgJodaTimeBaseAbstractInterval_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeBaseAbstractInterval 1
 #endif
-#undef OrgJodaTimeBaseAbstractInterval_RESTRICT
+#undef RESTRICT_OrgJodaTimeBaseAbstractInterval
 
-#if !defined (OrgJodaTimeBaseAbstractInterval_) && (OrgJodaTimeBaseAbstractInterval_INCLUDE_ALL || defined(OrgJodaTimeBaseAbstractInterval_INCLUDE))
+#if !defined (OrgJodaTimeBaseAbstractInterval_) && (INCLUDE_ALL_OrgJodaTimeBaseAbstractInterval || defined(INCLUDE_OrgJodaTimeBaseAbstractInterval))
 #define OrgJodaTimeBaseAbstractInterval_
 
-#define OrgJodaTimeReadableInterval_RESTRICT 1
-#define OrgJodaTimeReadableInterval_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadableInterval 1
+#define INCLUDE_OrgJodaTimeReadableInterval 1
 #include "org/joda/time/ReadableInterval.h"
 
 @class OrgJodaTimeDateTime;
@@ -363,4 +363,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseAbstractInterval)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeBaseAbstractInterval_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeBaseAbstractInterval")

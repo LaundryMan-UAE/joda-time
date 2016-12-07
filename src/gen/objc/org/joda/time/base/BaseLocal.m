@@ -30,14 +30,19 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "BaseLocal", NULL, 0x4, NULL, NULL },
-    { "getLocalMillis", NULL, "J", 0x404, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x404, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getLocalMillis);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeBaseBaseLocal_serialVersionUID },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeBaseBaseLocal_serialVersionUID, 0x1a, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseLocal = { 2, "BaseLocal", "org.joda.time.base", NULL, 0x401, 2, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseLocal = { "BaseLocal", "org.joda.time.base", NULL, methods, fields, 7, 0x401, 2, 1, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeBaseBaseLocal;
 }
 

@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeTzCachedDateTimeZone_INCLUDE_ALL")
-#ifdef OrgJodaTimeTzCachedDateTimeZone_RESTRICT
-#define OrgJodaTimeTzCachedDateTimeZone_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeTzCachedDateTimeZone")
+#ifdef RESTRICT_OrgJodaTimeTzCachedDateTimeZone
+#define INCLUDE_ALL_OrgJodaTimeTzCachedDateTimeZone 0
 #else
-#define OrgJodaTimeTzCachedDateTimeZone_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeTzCachedDateTimeZone 1
 #endif
-#undef OrgJodaTimeTzCachedDateTimeZone_RESTRICT
+#undef RESTRICT_OrgJodaTimeTzCachedDateTimeZone
 
-#if !defined (OrgJodaTimeTzCachedDateTimeZone_) && (OrgJodaTimeTzCachedDateTimeZone_INCLUDE_ALL || defined(OrgJodaTimeTzCachedDateTimeZone_INCLUDE))
+#if !defined (OrgJodaTimeTzCachedDateTimeZone_) && (INCLUDE_ALL_OrgJodaTimeTzCachedDateTimeZone || defined(INCLUDE_OrgJodaTimeTzCachedDateTimeZone))
 #define OrgJodaTimeTzCachedDateTimeZone_
 
-#define OrgJodaTimeDateTimeZone_RESTRICT 1
-#define OrgJodaTimeDateTimeZone_INCLUDE 1
+#define RESTRICT_OrgJodaTimeDateTimeZone 1
+#define INCLUDE_OrgJodaTimeDateTimeZone 1
 #include "org/joda/time/DateTimeZone.h"
 
 /*!
@@ -70,4 +70,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzCachedDateTimeZone)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeTzCachedDateTimeZone_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeTzCachedDateTimeZone")

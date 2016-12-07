@@ -5,27 +5,27 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeYearMonthDay_INCLUDE_ALL")
-#ifdef OrgJodaTimeYearMonthDay_RESTRICT
-#define OrgJodaTimeYearMonthDay_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeYearMonthDay")
+#ifdef RESTRICT_OrgJodaTimeYearMonthDay
+#define INCLUDE_ALL_OrgJodaTimeYearMonthDay 0
 #else
-#define OrgJodaTimeYearMonthDay_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeYearMonthDay 1
 #endif
-#undef OrgJodaTimeYearMonthDay_RESTRICT
+#undef RESTRICT_OrgJodaTimeYearMonthDay
 
-#if !defined (OrgJodaTimeYearMonthDay_) && (OrgJodaTimeYearMonthDay_INCLUDE_ALL || defined(OrgJodaTimeYearMonthDay_INCLUDE))
+#if !defined (OrgJodaTimeYearMonthDay_) && (INCLUDE_ALL_OrgJodaTimeYearMonthDay || defined(INCLUDE_OrgJodaTimeYearMonthDay))
 #define OrgJodaTimeYearMonthDay_
 
-#define OrgJodaTimeBaseBasePartial_RESTRICT 1
-#define OrgJodaTimeBaseBasePartial_INCLUDE 1
+#define RESTRICT_OrgJodaTimeBaseBasePartial 1
+#define INCLUDE_OrgJodaTimeBaseBasePartial 1
 #include "org/joda/time/base/BasePartial.h"
 
-#define OrgJodaTimeReadablePartial_RESTRICT 1
-#define OrgJodaTimeReadablePartial_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadablePartial 1
+#define INCLUDE_OrgJodaTimeReadablePartial 1
 #include "org/joda/time/ReadablePartial.h"
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class IOSIntArray;
@@ -807,15 +807,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeYearMonthDay)
 
 #endif
 
-#if !defined (OrgJodaTimeYearMonthDay_Property_) && (OrgJodaTimeYearMonthDay_INCLUDE_ALL || defined(OrgJodaTimeYearMonthDay_Property_INCLUDE))
+#if !defined (OrgJodaTimeYearMonthDay_Property_) && (INCLUDE_ALL_OrgJodaTimeYearMonthDay || defined(INCLUDE_OrgJodaTimeYearMonthDay_Property))
 #define OrgJodaTimeYearMonthDay_Property_
 
-#define OrgJodaTimeFieldAbstractPartialFieldProperty_RESTRICT 1
-#define OrgJodaTimeFieldAbstractPartialFieldProperty_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldAbstractPartialFieldProperty 1
+#define INCLUDE_OrgJodaTimeFieldAbstractPartialFieldProperty 1
 #include "org/joda/time/field/AbstractPartialFieldProperty.h"
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class JavaUtilLocale;
@@ -984,4 +984,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeYearMonthDay_Property)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeYearMonthDay_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeYearMonthDay")

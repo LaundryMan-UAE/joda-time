@@ -5,11 +5,9 @@
 
 #include "IOSClass.h"
 #include "J2ObjC_source.h"
-#include "java/io/IOException.h"
 #include "java/io/ObjectInputStream.h"
 #include "java/io/ObjectOutputStream.h"
 #include "java/io/Serializable.h"
-#include "java/lang/ClassNotFoundException.h"
 #include "java/util/concurrent/ConcurrentHashMap.h"
 #include "org/joda/time/Chronology.h"
 #include "org/joda/time/DateTimeField.h"
@@ -167,7 +165,45 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoISOChronology)
 }
 
 - (id)writeReplace {
-  return [new_OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_([self getZone]) autorelease];
+  return create_OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_([self getZone]);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeChronoISOChronology;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronoISOChronology;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronoISOChronology;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x2, -1, 2, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, 3, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 5, 6, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 7, 8, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 9, -1, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getInstanceUTC);
+  methods[1].selector = @selector(getInstance);
+  methods[2].selector = @selector(getInstanceWithOrgJodaTimeDateTimeZone:);
+  methods[3].selector = @selector(initWithOrgJodaTimeChronology:);
+  methods[4].selector = @selector(withUTC);
+  methods[5].selector = @selector(withZoneWithOrgJodaTimeDateTimeZone:);
+  methods[6].selector = @selector(description);
+  methods[7].selector = @selector(assembleWithOrgJodaTimeChronoAssembledChronology_Fields:);
+  methods[8].selector = @selector(isEqual:);
+  methods[9].selector = @selector(hash);
+  methods[10].selector = @selector(writeReplace);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoISOChronology_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "INSTANCE_UTC", "LOrgJodaTimeChronoISOChronology;", .constantValue.asLong = 0, 0x1a, -1, 10, -1, -1 },
+    { "cCache", "LJavaUtilConcurrentConcurrentHashMap;", .constantValue.asLong = 0, 0x1a, -1, 11, 12, -1 },
+  };
+  static const void *ptrTable[] = { "getInstance", "LOrgJodaTimeDateTimeZone;", "LOrgJodaTimeChronology;", "withZone", "toString", "assemble", "LOrgJodaTimeChronoAssembledChronology_Fields;", "equals", "LNSObject;", "hashCode", &OrgJodaTimeChronoISOChronology_INSTANCE_UTC, &OrgJodaTimeChronoISOChronology_cCache, "Ljava/util/concurrent/ConcurrentHashMap<Lorg/joda/time/DateTimeZone;Lorg/joda/time/chrono/ISOChronology;>;", "LOrgJodaTimeChronoISOChronology_Stub;" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoISOChronology = { "ISOChronology", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x11, 11, 3, -1, 13, -1, -1, -1 };
+  return &_OrgJodaTimeChronoISOChronology;
 }
 
 + (void)initialize {
@@ -179,30 +215,6 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoISOChronology)
     }
     J2OBJC_SET_INITIALIZED(OrgJodaTimeChronoISOChronology)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getInstanceUTC", NULL, "Lorg.joda.time.chrono.ISOChronology;", 0x9, NULL, NULL },
-    { "getInstance", NULL, "Lorg.joda.time.chrono.ISOChronology;", 0x9, NULL, NULL },
-    { "getInstanceWithOrgJodaTimeDateTimeZone:", "getInstance", "Lorg.joda.time.chrono.ISOChronology;", 0x9, NULL, NULL },
-    { "initWithOrgJodaTimeChronology:", "ISOChronology", NULL, 0x2, NULL, NULL },
-    { "withUTC", NULL, "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "withZoneWithOrgJodaTimeDateTimeZone:", "withZone", "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "assembleWithOrgJodaTimeChronoAssembledChronology_Fields:", "assemble", "V", 0x4, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "writeReplace", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoISOChronology_serialVersionUID },
-    { "INSTANCE_UTC", "INSTANCE_UTC", 0x1a, "Lorg.joda.time.chrono.ISOChronology;", &OrgJodaTimeChronoISOChronology_INSTANCE_UTC, NULL, .constantValue.asLong = 0 },
-    { "cCache", "cCache", 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoISOChronology_cCache, "Ljava/util/concurrent/ConcurrentHashMap<Lorg/joda/time/DateTimeZone;Lorg/joda/time/chrono/ISOChronology;>;", .constantValue.asLong = 0 },
-  };
-  static const char *inner_classes[] = {"Lorg.joda.time.chrono.ISOChronology$Stub;"};
-  static const J2ObjcClassInfo _OrgJodaTimeChronoISOChronology = { 2, "ISOChronology", "org.joda.time.chrono", NULL, 0x11, 11, methods, 3, fields, 0, NULL, 1, inner_classes, NULL, NULL };
-  return &_OrgJodaTimeChronoISOChronology;
 }
 
 @end
@@ -224,7 +236,7 @@ OrgJodaTimeChronoISOChronology *OrgJodaTimeChronoISOChronology_getInstanceWithOr
   }
   OrgJodaTimeChronoISOChronology *chrono = [((JavaUtilConcurrentConcurrentHashMap *) nil_chk(OrgJodaTimeChronoISOChronology_cCache)) getWithId:zone];
   if (chrono == nil) {
-    chrono = [new_OrgJodaTimeChronoISOChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronoZonedChronology_getInstanceWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_(OrgJodaTimeChronoISOChronology_INSTANCE_UTC, zone)) autorelease];
+    chrono = create_OrgJodaTimeChronoISOChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronoZonedChronology_getInstanceWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_(OrgJodaTimeChronoISOChronology_INSTANCE_UTC, zone));
     OrgJodaTimeChronoISOChronology *oldChrono = [OrgJodaTimeChronoISOChronology_cCache putIfAbsentWithId:zone withId:chrono];
     if (oldChrono != nil) {
       chrono = oldChrono;
@@ -238,15 +250,11 @@ void OrgJodaTimeChronoISOChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeCh
 }
 
 OrgJodaTimeChronoISOChronology *new_OrgJodaTimeChronoISOChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *base) {
-  OrgJodaTimeChronoISOChronology *self = [OrgJodaTimeChronoISOChronology alloc];
-  OrgJodaTimeChronoISOChronology_initWithOrgJodaTimeChronology_(self, base);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoISOChronology, initWithOrgJodaTimeChronology_, base)
 }
 
 OrgJodaTimeChronoISOChronology *create_OrgJodaTimeChronoISOChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *base) {
-  OrgJodaTimeChronoISOChronology *self = [[OrgJodaTimeChronoISOChronology alloc] autorelease];
-  OrgJodaTimeChronoISOChronology_initWithOrgJodaTimeChronology_(self, base);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoISOChronology, initWithOrgJodaTimeChronology_, base)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoISOChronology)
@@ -276,17 +284,25 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoISOChronology)
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeDateTimeZone:", "Stub", NULL, 0x0, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
-    { "writeObjectWithJavaIoObjectOutputStream:", "writeObject", "V", 0x2, "Ljava.io.IOException;", NULL },
-    { "readObjectWithJavaIoObjectInputStream:", "readObject", "V", 0x2, "Ljava.io.IOException;Ljava.lang.ClassNotFoundException;", NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x2, 1, 2, 3, -1, -1, -1 },
+    { NULL, "V", 0x2, 4, 5, 6, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeDateTimeZone:);
+  methods[1].selector = @selector(readResolve);
+  methods[2].selector = @selector(writeObjectWithJavaIoObjectOutputStream:);
+  methods[3].selector = @selector(readObjectWithJavaIoObjectInputStream:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoISOChronology_Stub_serialVersionUID },
-    { "iZone_", NULL, 0x82, "Lorg.joda.time.DateTimeZone;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoISOChronology_Stub_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iZone_", "LOrgJodaTimeDateTimeZone;", .constantValue.asLong = 0, 0x82, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoISOChronology_Stub = { 2, "Stub", "org.joda.time.chrono", "ISOChronology", 0x1a, 4, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeDateTimeZone;", "writeObject", "LJavaIoObjectOutputStream;", "LJavaIoIOException;", "readObject", "LJavaIoObjectInputStream;", "LJavaIoIOException;LJavaLangClassNotFoundException;", "LOrgJodaTimeChronoISOChronology;" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoISOChronology_Stub = { "Stub", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x1a, 4, 2, 7, -1, -1, -1, -1 };
   return &_OrgJodaTimeChronoISOChronology_Stub;
 }
 
@@ -298,15 +314,11 @@ void OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(OrgJod
 }
 
 OrgJodaTimeChronoISOChronology_Stub *new_OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {
-  OrgJodaTimeChronoISOChronology_Stub *self = [OrgJodaTimeChronoISOChronology_Stub alloc];
-  OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(self, zone);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoISOChronology_Stub, initWithOrgJodaTimeDateTimeZone_, zone)
 }
 
 OrgJodaTimeChronoISOChronology_Stub *create_OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(OrgJodaTimeDateTimeZone *zone) {
-  OrgJodaTimeChronoISOChronology_Stub *self = [[OrgJodaTimeChronoISOChronology_Stub alloc] autorelease];
-  OrgJodaTimeChronoISOChronology_Stub_initWithOrgJodaTimeDateTimeZone_(self, zone);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoISOChronology_Stub, initWithOrgJodaTimeDateTimeZone_, zone)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoISOChronology_Stub)

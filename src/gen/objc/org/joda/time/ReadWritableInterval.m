@@ -4,12 +4,7 @@
 //
 
 #include "J2ObjC_source.h"
-#include "org/joda/time/Chronology.h"
 #include "org/joda/time/ReadWritableInterval.h"
-#include "org/joda/time/ReadableDuration.h"
-#include "org/joda/time/ReadableInstant.h"
-#include "org/joda/time/ReadableInterval.h"
-#include "org/joda/time/ReadablePeriod.h"
 
 @interface OrgJodaTimeReadWritableInterval : NSObject
 
@@ -18,21 +13,37 @@
 @implementation OrgJodaTimeReadWritableInterval
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "setIntervalWithLong:withLong:", "setInterval", "V", 0x401, NULL, NULL },
-    { "setIntervalWithOrgJodaTimeReadableInterval:", "setInterval", "V", 0x401, NULL, NULL },
-    { "setIntervalWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:", "setInterval", "V", 0x401, NULL, NULL },
-    { "setChronologyWithOrgJodaTimeChronology:", "setChronology", "V", 0x401, NULL, NULL },
-    { "setStartMillisWithLong:", "setStartMillis", "V", 0x401, NULL, NULL },
-    { "setStartWithOrgJodaTimeReadableInstant:", "setStart", "V", 0x401, NULL, NULL },
-    { "setEndMillisWithLong:", "setEndMillis", "V", 0x401, NULL, NULL },
-    { "setEndWithOrgJodaTimeReadableInstant:", "setEnd", "V", 0x401, NULL, NULL },
-    { "setDurationAfterStartWithOrgJodaTimeReadableDuration:", "setDurationAfterStart", "V", 0x401, NULL, NULL },
-    { "setDurationBeforeEndWithOrgJodaTimeReadableDuration:", "setDurationBeforeEnd", "V", 0x401, NULL, NULL },
-    { "setPeriodAfterStartWithOrgJodaTimeReadablePeriod:", "setPeriodAfterStart", "V", 0x401, NULL, NULL },
-    { "setPeriodBeforeEndWithOrgJodaTimeReadablePeriod:", "setPeriodBeforeEnd", "V", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "V", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 0, 2, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 0, 3, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 4, 5, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 6, 7, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 8, 9, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 10, 7, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 11, 9, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 12, 13, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 14, 13, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 15, 16, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 17, 16, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadWritableInterval = { 2, "ReadWritableInterval", "org.joda.time", NULL, 0x609, 12, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(setIntervalWithLong:withLong:);
+  methods[1].selector = @selector(setIntervalWithOrgJodaTimeReadableInterval:);
+  methods[2].selector = @selector(setIntervalWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:);
+  methods[3].selector = @selector(setChronologyWithOrgJodaTimeChronology:);
+  methods[4].selector = @selector(setStartMillisWithLong:);
+  methods[5].selector = @selector(setStartWithOrgJodaTimeReadableInstant:);
+  methods[6].selector = @selector(setEndMillisWithLong:);
+  methods[7].selector = @selector(setEndWithOrgJodaTimeReadableInstant:);
+  methods[8].selector = @selector(setDurationAfterStartWithOrgJodaTimeReadableDuration:);
+  methods[9].selector = @selector(setDurationBeforeEndWithOrgJodaTimeReadableDuration:);
+  methods[10].selector = @selector(setPeriodAfterStartWithOrgJodaTimeReadablePeriod:);
+  methods[11].selector = @selector(setPeriodBeforeEndWithOrgJodaTimeReadablePeriod:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "setInterval", "JJ", "LOrgJodaTimeReadableInterval;", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableInstant;", "setChronology", "LOrgJodaTimeChronology;", "setStartMillis", "J", "setStart", "LOrgJodaTimeReadableInstant;", "setEndMillis", "setEnd", "setDurationAfterStart", "LOrgJodaTimeReadableDuration;", "setDurationBeforeEnd", "setPeriodAfterStart", "LOrgJodaTimeReadablePeriod;", "setPeriodBeforeEnd" };
+  static const J2ObjcClassInfo _OrgJodaTimeReadWritableInterval = { "ReadWritableInterval", "org.joda.time", ptrTable, methods, NULL, 7, 0x609, 12, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeReadWritableInterval;
 }
 

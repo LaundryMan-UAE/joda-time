@@ -5,27 +5,27 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimePartial_INCLUDE_ALL")
-#ifdef OrgJodaTimePartial_RESTRICT
-#define OrgJodaTimePartial_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimePartial")
+#ifdef RESTRICT_OrgJodaTimePartial
+#define INCLUDE_ALL_OrgJodaTimePartial 0
 #else
-#define OrgJodaTimePartial_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimePartial 1
 #endif
-#undef OrgJodaTimePartial_RESTRICT
+#undef RESTRICT_OrgJodaTimePartial
 
-#if !defined (OrgJodaTimePartial_) && (OrgJodaTimePartial_INCLUDE_ALL || defined(OrgJodaTimePartial_INCLUDE))
+#if !defined (OrgJodaTimePartial_) && (INCLUDE_ALL_OrgJodaTimePartial || defined(INCLUDE_OrgJodaTimePartial))
 #define OrgJodaTimePartial_
 
-#define OrgJodaTimeBaseAbstractPartial_RESTRICT 1
-#define OrgJodaTimeBaseAbstractPartial_INCLUDE 1
+#define RESTRICT_OrgJodaTimeBaseAbstractPartial 1
+#define INCLUDE_OrgJodaTimeBaseAbstractPartial 1
 #include "org/joda/time/base/AbstractPartial.h"
 
-#define OrgJodaTimeReadablePartial_RESTRICT 1
-#define OrgJodaTimeReadablePartial_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadablePartial 1
+#define INCLUDE_OrgJodaTimeReadablePartial 1
 #include "org/joda/time/ReadablePartial.h"
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class IOSIntArray;
@@ -540,15 +540,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimePartial)
 
 #endif
 
-#if !defined (OrgJodaTimePartial_Property_) && (OrgJodaTimePartial_INCLUDE_ALL || defined(OrgJodaTimePartial_Property_INCLUDE))
+#if !defined (OrgJodaTimePartial_Property_) && (INCLUDE_ALL_OrgJodaTimePartial || defined(INCLUDE_OrgJodaTimePartial_Property))
 #define OrgJodaTimePartial_Property_
 
-#define OrgJodaTimeFieldAbstractPartialFieldProperty_RESTRICT 1
-#define OrgJodaTimeFieldAbstractPartialFieldProperty_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldAbstractPartialFieldProperty 1
+#define INCLUDE_OrgJodaTimeFieldAbstractPartialFieldProperty 1
 #include "org/joda/time/field/AbstractPartialFieldProperty.h"
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class JavaUtilLocale;
@@ -709,4 +709,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimePartial_Property)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimePartial_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimePartial")

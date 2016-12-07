@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronoGJLocaleSymbols_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronoGJLocaleSymbols_RESTRICT
-#define OrgJodaTimeChronoGJLocaleSymbols_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronoGJLocaleSymbols")
+#ifdef RESTRICT_OrgJodaTimeChronoGJLocaleSymbols
+#define INCLUDE_ALL_OrgJodaTimeChronoGJLocaleSymbols 0
 #else
-#define OrgJodaTimeChronoGJLocaleSymbols_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronoGJLocaleSymbols 1
 #endif
-#undef OrgJodaTimeChronoGJLocaleSymbols_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronoGJLocaleSymbols
 
-#if !defined (OrgJodaTimeChronoGJLocaleSymbols_) && (OrgJodaTimeChronoGJLocaleSymbols_INCLUDE_ALL || defined(OrgJodaTimeChronoGJLocaleSymbols_INCLUDE))
+#if !defined (OrgJodaTimeChronoGJLocaleSymbols_) && (INCLUDE_ALL_OrgJodaTimeChronoGJLocaleSymbols || defined(INCLUDE_OrgJodaTimeChronoGJLocaleSymbols))
 #define OrgJodaTimeChronoGJLocaleSymbols_
 
 @class JavaUtilLocale;
@@ -78,4 +78,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJLocaleSymbols)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronoGJLocaleSymbols_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronoGJLocaleSymbols")

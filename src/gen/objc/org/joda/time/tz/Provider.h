@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeTzProvider_INCLUDE_ALL")
-#ifdef OrgJodaTimeTzProvider_RESTRICT
-#define OrgJodaTimeTzProvider_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeTzProvider")
+#ifdef RESTRICT_OrgJodaTimeTzProvider
+#define INCLUDE_ALL_OrgJodaTimeTzProvider 0
 #else
-#define OrgJodaTimeTzProvider_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeTzProvider 1
 #endif
-#undef OrgJodaTimeTzProvider_RESTRICT
+#undef RESTRICT_OrgJodaTimeTzProvider
 
-#if !defined (OrgJodaTimeTzProvider_) && (OrgJodaTimeTzProvider_INCLUDE_ALL || defined(OrgJodaTimeTzProvider_INCLUDE))
+#if !defined (OrgJodaTimeTzProvider_) && (INCLUDE_ALL_OrgJodaTimeTzProvider || defined(INCLUDE_OrgJodaTimeTzProvider))
 #define OrgJodaTimeTzProvider_
 
 @class OrgJodaTimeDateTimeZone;
@@ -24,7 +24,7 @@
  @author Brian S O'Neill
  @since 1.0
  */
-@protocol OrgJodaTimeTzProvider < NSObject, JavaObject >
+@protocol OrgJodaTimeTzProvider < JavaObject >
 
 /*!
  @brief Retrieves a DateTimeZone for the given id.
@@ -49,4 +49,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzProvider)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeTzProvider_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeTzProvider")

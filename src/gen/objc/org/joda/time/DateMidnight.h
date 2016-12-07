@@ -5,27 +5,27 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeDateMidnight_INCLUDE_ALL")
-#ifdef OrgJodaTimeDateMidnight_RESTRICT
-#define OrgJodaTimeDateMidnight_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeDateMidnight")
+#ifdef RESTRICT_OrgJodaTimeDateMidnight
+#define INCLUDE_ALL_OrgJodaTimeDateMidnight 0
 #else
-#define OrgJodaTimeDateMidnight_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeDateMidnight 1
 #endif
-#undef OrgJodaTimeDateMidnight_RESTRICT
+#undef RESTRICT_OrgJodaTimeDateMidnight
 
-#if !defined (OrgJodaTimeDateMidnight_) && (OrgJodaTimeDateMidnight_INCLUDE_ALL || defined(OrgJodaTimeDateMidnight_INCLUDE))
+#if !defined (OrgJodaTimeDateMidnight_) && (INCLUDE_ALL_OrgJodaTimeDateMidnight || defined(INCLUDE_OrgJodaTimeDateMidnight))
 #define OrgJodaTimeDateMidnight_
 
-#define OrgJodaTimeBaseBaseDateTime_RESTRICT 1
-#define OrgJodaTimeBaseBaseDateTime_INCLUDE 1
+#define RESTRICT_OrgJodaTimeBaseBaseDateTime 1
+#define INCLUDE_OrgJodaTimeBaseBaseDateTime 1
 #include "org/joda/time/base/BaseDateTime.h"
 
-#define OrgJodaTimeReadableDateTime_RESTRICT 1
-#define OrgJodaTimeReadableDateTime_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadableDateTime 1
+#define INCLUDE_OrgJodaTimeReadableDateTime 1
 #include "org/joda/time/ReadableDateTime.h"
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class OrgJodaTimeChronology;
@@ -1015,11 +1015,11 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateMidnight)
 
 #endif
 
-#if !defined (OrgJodaTimeDateMidnight_Property_) && (OrgJodaTimeDateMidnight_INCLUDE_ALL || defined(OrgJodaTimeDateMidnight_Property_INCLUDE))
+#if !defined (OrgJodaTimeDateMidnight_Property_) && (INCLUDE_ALL_OrgJodaTimeDateMidnight || defined(INCLUDE_OrgJodaTimeDateMidnight_Property))
 #define OrgJodaTimeDateMidnight_Property_
 
-#define OrgJodaTimeFieldAbstractReadableInstantFieldProperty_RESTRICT 1
-#define OrgJodaTimeFieldAbstractReadableInstantFieldProperty_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldAbstractReadableInstantFieldProperty 1
+#define INCLUDE_OrgJodaTimeFieldAbstractReadableInstantFieldProperty 1
 #include "org/joda/time/field/AbstractReadableInstantFieldProperty.h"
 
 @class JavaUtilLocale;
@@ -1256,4 +1256,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateMidnight_Property)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeDateMidnight_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeDateMidnight")

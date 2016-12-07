@@ -81,23 +81,37 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldDecoratedDateTimeField, serialVersi
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeFieldType:", "DecoratedDateTimeField", NULL, 0x4, NULL, NULL },
-    { "getWrappedField", NULL, "Lorg.joda.time.DateTimeField;", 0x11, NULL, NULL },
-    { "isLenient", NULL, "Z", 0x1, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x1, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
-    { "getDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getRangeDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumValue", NULL, "I", 0x1, NULL, NULL },
-    { "roundFloorWithLong:", "roundFloor", "J", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x11, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 2, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeFieldType:);
+  methods[1].selector = @selector(getWrappedField);
+  methods[2].selector = @selector(isLenient);
+  methods[3].selector = @selector(getWithLong:);
+  methods[4].selector = @selector(setWithLong:withInt:);
+  methods[5].selector = @selector(getDurationField);
+  methods[6].selector = @selector(getRangeDurationField);
+  methods[7].selector = @selector(getMinimumValue);
+  methods[8].selector = @selector(getMaximumValue);
+  methods[9].selector = @selector(roundFloorWithLong:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldDecoratedDateTimeField_serialVersionUID },
-    { "iField_", NULL, 0x12, "Lorg.joda.time.DateTimeField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldDecoratedDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iField_", "LOrgJodaTimeDateTimeField;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldDecoratedDateTimeField = { 2, "DecoratedDateTimeField", "org.joda.time.field", NULL, 0x401, 10, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeDateTimeField;LOrgJodaTimeDateTimeFieldType;", "get", "J", "set", "JI", "roundFloor" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldDecoratedDateTimeField = { "DecoratedDateTimeField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x401, 10, 2, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldDecoratedDateTimeField;
 }
 
@@ -106,10 +120,10 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldDecoratedDateTimeField, serialVersi
 void OrgJodaTimeFieldDecoratedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldDecoratedDateTimeField *self, OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type) {
   OrgJodaTimeFieldBaseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_(self, type);
   if (field == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The field must not be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The field must not be null");
   }
-  if (![((OrgJodaTimeDateTimeField *) nil_chk(field)) isSupported]) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The field must be supported") autorelease];
+  if (![field isSupported]) {
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The field must be supported");
   }
   JreStrongAssign(&self->iField_, field);
 }

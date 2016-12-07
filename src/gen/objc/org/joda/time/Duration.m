@@ -4,9 +4,11 @@
 //
 
 #include "IOSClass.h"
+#include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "java/lang/ArithmeticException.h"
 #include "java/lang/Long.h"
+#include "java/lang/annotation/Annotation.h"
 #include "org/joda/convert/FromString.h"
 #include "org/joda/time/DateTimeConstants.h"
 #include "org/joda/time/Days.h"
@@ -25,6 +27,8 @@
 inline jlong OrgJodaTimeDuration_get_serialVersionUID();
 #define OrgJodaTimeDuration_serialVersionUID 2471658376918LL
 J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeDuration, serialVersionUID, jlong)
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeDuration__Annotations$0();
 
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDuration)
 
@@ -122,7 +126,7 @@ OrgJodaTimeDuration *OrgJodaTimeDuration_ZERO;
   if (duration == [self getMillis]) {
     return self;
   }
-  return [new_OrgJodaTimeDuration_initWithLong_(duration) autorelease];
+  return create_OrgJodaTimeDuration_initWithLong_(duration);
 }
 
 - (OrgJodaTimeDuration *)withDurationAddedWithLong:(jlong)durationToAdd
@@ -132,7 +136,7 @@ OrgJodaTimeDuration *OrgJodaTimeDuration_ZERO;
   }
   jlong add = OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withInt_(durationToAdd, scalar);
   jlong duration = OrgJodaTimeFieldFieldUtils_safeAddWithLong_withLong_([self getMillis], add);
-  return [new_OrgJodaTimeDuration_initWithLong_(duration) autorelease];
+  return create_OrgJodaTimeDuration_initWithLong_(duration);
 }
 
 - (OrgJodaTimeDuration *)withDurationAddedWithOrgJodaTimeReadableDuration:(id<OrgJodaTimeReadableDuration>)durationToAdd
@@ -140,7 +144,7 @@ OrgJodaTimeDuration *OrgJodaTimeDuration_ZERO;
   if (durationToAdd == nil || scalar == 0) {
     return self;
   }
-  return [self withDurationAddedWithLong:[((id<OrgJodaTimeReadableDuration>) nil_chk(durationToAdd)) getMillis] withInt:scalar];
+  return [self withDurationAddedWithLong:[durationToAdd getMillis] withInt:scalar];
 }
 
 - (OrgJodaTimeDuration *)plusWithLong:(jlong)amount {
@@ -151,7 +155,7 @@ OrgJodaTimeDuration *OrgJodaTimeDuration_ZERO;
   if (amount == nil) {
     return self;
   }
-  return [self withDurationAddedWithLong:[((id<OrgJodaTimeReadableDuration>) nil_chk(amount)) getMillis] withInt:1];
+  return [self withDurationAddedWithLong:[amount getMillis] withInt:1];
 }
 
 - (OrgJodaTimeDuration *)minusWithLong:(jlong)amount {
@@ -162,28 +166,101 @@ OrgJodaTimeDuration *OrgJodaTimeDuration_ZERO;
   if (amount == nil) {
     return self;
   }
-  return [self withDurationAddedWithLong:[((id<OrgJodaTimeReadableDuration>) nil_chk(amount)) getMillis] withInt:-1];
+  return [self withDurationAddedWithLong:[amount getMillis] withInt:-1];
 }
 
 - (OrgJodaTimeDuration *)multipliedByWithLong:(jlong)multiplicand {
   if (multiplicand == 1) {
     return self;
   }
-  return [new_OrgJodaTimeDuration_initWithLong_(OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withLong_([self getMillis], multiplicand)) autorelease];
+  return create_OrgJodaTimeDuration_initWithLong_(OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withLong_([self getMillis], multiplicand));
 }
 
 - (OrgJodaTimeDuration *)dividedByWithLong:(jlong)divisor {
   if (divisor == 1) {
     return self;
   }
-  return [new_OrgJodaTimeDuration_initWithLong_(OrgJodaTimeFieldFieldUtils_safeDivideWithLong_withLong_([self getMillis], divisor)) autorelease];
+  return create_OrgJodaTimeDuration_initWithLong_(OrgJodaTimeFieldFieldUtils_safeDivideWithLong_withLong_([self getMillis], divisor));
 }
 
 - (OrgJodaTimeDuration *)negated {
   if ([self getMillis] == JavaLangLong_MIN_VALUE) {
-    @throw [new_JavaLangArithmeticException_initWithNSString_(@"Negation of this duration would overflow") autorelease];
+    @throw create_JavaLangArithmeticException_initWithNSString_(@"Negation of this duration would overflow");
   }
-  return [new_OrgJodaTimeDuration_initWithLong_(-[self getMillis]) autorelease];
+  return create_OrgJodaTimeDuration_initWithLong_(-[self getMillis]);
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeDuration;", 0x9, 0, 1, -1, -1, 2, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x9, 3, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x9, 5, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x9, 6, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x9, 7, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x9, 8, 4, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 4, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 9, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 10, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 11, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDays;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeHours;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMinutes;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeSeconds;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, 12, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, 13, 14, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, 13, 15, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, 16, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, 16, 17, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, 18, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, 18, 17, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, 19, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, 20, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, -1, -1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(parseWithNSString:);
+  methods[1].selector = @selector(standardDaysWithLong:);
+  methods[2].selector = @selector(standardHoursWithLong:);
+  methods[3].selector = @selector(standardMinutesWithLong:);
+  methods[4].selector = @selector(standardSecondsWithLong:);
+  methods[5].selector = @selector(millisWithLong:);
+  methods[6].selector = @selector(initWithLong:);
+  methods[7].selector = @selector(initWithLong:withLong:);
+  methods[8].selector = @selector(initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:);
+  methods[9].selector = @selector(initWithId:);
+  methods[10].selector = @selector(getStandardDays);
+  methods[11].selector = @selector(getStandardHours);
+  methods[12].selector = @selector(getStandardMinutes);
+  methods[13].selector = @selector(getStandardSeconds);
+  methods[14].selector = @selector(toDuration);
+  methods[15].selector = @selector(toStandardDays);
+  methods[16].selector = @selector(toStandardHours);
+  methods[17].selector = @selector(toStandardMinutes);
+  methods[18].selector = @selector(toStandardSeconds);
+  methods[19].selector = @selector(withMillisWithLong:);
+  methods[20].selector = @selector(withDurationAddedWithLong:withInt:);
+  methods[21].selector = @selector(withDurationAddedWithOrgJodaTimeReadableDuration:withInt:);
+  methods[22].selector = @selector(plusWithLong:);
+  methods[23].selector = @selector(plusWithOrgJodaTimeReadableDuration:);
+  methods[24].selector = @selector(minusWithLong:);
+  methods[25].selector = @selector(minusWithOrgJodaTimeReadableDuration:);
+  methods[26].selector = @selector(multipliedByWithLong:);
+  methods[27].selector = @selector(dividedByWithLong:);
+  methods[28].selector = @selector(negated);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "ZERO", "LOrgJodaTimeDuration;", .constantValue.asLong = 0, 0x19, -1, 21, -1, -1 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeDuration_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "parse", "LNSString;", (void *)&OrgJodaTimeDuration__Annotations$0, "standardDays", "J", "standardHours", "standardMinutes", "standardSeconds", "millis", "JJ", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableInstant;", "LNSObject;", "withMillis", "withDurationAdded", "JI", "LOrgJodaTimeReadableDuration;I", "plus", "LOrgJodaTimeReadableDuration;", "minus", "multipliedBy", "dividedBy", &OrgJodaTimeDuration_ZERO };
+  static const J2ObjcClassInfo _OrgJodaTimeDuration = { "Duration", "org.joda.time", ptrTable, methods, fields, 7, 0x11, 29, 2, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeDuration;
 }
 
 + (void)initialize {
@@ -193,55 +270,11 @@ OrgJodaTimeDuration *OrgJodaTimeDuration_ZERO;
   }
 }
 
-+ (IOSObjectArray *)__annotations_parseWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "parseWithNSString:", "parse", "Lorg.joda.time.Duration;", 0x9, NULL, NULL },
-    { "standardDaysWithLong:", "standardDays", "Lorg.joda.time.Duration;", 0x9, NULL, NULL },
-    { "standardHoursWithLong:", "standardHours", "Lorg.joda.time.Duration;", 0x9, NULL, NULL },
-    { "standardMinutesWithLong:", "standardMinutes", "Lorg.joda.time.Duration;", 0x9, NULL, NULL },
-    { "standardSecondsWithLong:", "standardSeconds", "Lorg.joda.time.Duration;", 0x9, NULL, NULL },
-    { "millisWithLong:", "millis", "Lorg.joda.time.Duration;", 0x9, NULL, NULL },
-    { "initWithLong:", "Duration", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withLong:", "Duration", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:", "Duration", NULL, 0x1, NULL, NULL },
-    { "initWithId:", "Duration", NULL, 0x1, NULL, NULL },
-    { "getStandardDays", NULL, "J", 0x1, NULL, NULL },
-    { "getStandardHours", NULL, "J", 0x1, NULL, NULL },
-    { "getStandardMinutes", NULL, "J", 0x1, NULL, NULL },
-    { "getStandardSeconds", NULL, "J", 0x1, NULL, NULL },
-    { "toDuration", NULL, "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-    { "toStandardDays", NULL, "Lorg.joda.time.Days;", 0x1, NULL, NULL },
-    { "toStandardHours", NULL, "Lorg.joda.time.Hours;", 0x1, NULL, NULL },
-    { "toStandardMinutes", NULL, "Lorg.joda.time.Minutes;", 0x1, NULL, NULL },
-    { "toStandardSeconds", NULL, "Lorg.joda.time.Seconds;", 0x1, NULL, NULL },
-    { "withMillisWithLong:", "withMillis", "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-    { "withDurationAddedWithLong:withInt:", "withDurationAdded", "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-    { "withDurationAddedWithOrgJodaTimeReadableDuration:withInt:", "withDurationAdded", "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-    { "plusWithLong:", "plus", "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-    { "plusWithOrgJodaTimeReadableDuration:", "plus", "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-    { "minusWithLong:", "minus", "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-    { "minusWithOrgJodaTimeReadableDuration:", "minus", "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-    { "multipliedByWithLong:", "multipliedBy", "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-    { "dividedByWithLong:", "dividedBy", "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-    { "negated", NULL, "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "ZERO", "ZERO", 0x19, "Lorg.joda.time.Duration;", &OrgJodaTimeDuration_ZERO, NULL, .constantValue.asLong = 0 },
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeDuration_serialVersionUID },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeDuration = { 2, "Duration", "org.joda.time", NULL, 0x11, 29, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeDuration;
-}
-
 @end
 
 OrgJodaTimeDuration *OrgJodaTimeDuration_parseWithNSString_(NSString *str) {
   OrgJodaTimeDuration_initialize();
-  return [new_OrgJodaTimeDuration_initWithId_(str) autorelease];
+  return create_OrgJodaTimeDuration_initWithId_(str);
 }
 
 OrgJodaTimeDuration *OrgJodaTimeDuration_standardDaysWithLong_(jlong days) {
@@ -249,7 +282,7 @@ OrgJodaTimeDuration *OrgJodaTimeDuration_standardDaysWithLong_(jlong days) {
   if (days == 0) {
     return OrgJodaTimeDuration_ZERO;
   }
-  return [new_OrgJodaTimeDuration_initWithLong_(OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withInt_(days, OrgJodaTimeDateTimeConstants_MILLIS_PER_DAY)) autorelease];
+  return create_OrgJodaTimeDuration_initWithLong_(OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withInt_(days, OrgJodaTimeDateTimeConstants_MILLIS_PER_DAY));
 }
 
 OrgJodaTimeDuration *OrgJodaTimeDuration_standardHoursWithLong_(jlong hours) {
@@ -257,7 +290,7 @@ OrgJodaTimeDuration *OrgJodaTimeDuration_standardHoursWithLong_(jlong hours) {
   if (hours == 0) {
     return OrgJodaTimeDuration_ZERO;
   }
-  return [new_OrgJodaTimeDuration_initWithLong_(OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withInt_(hours, OrgJodaTimeDateTimeConstants_MILLIS_PER_HOUR)) autorelease];
+  return create_OrgJodaTimeDuration_initWithLong_(OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withInt_(hours, OrgJodaTimeDateTimeConstants_MILLIS_PER_HOUR));
 }
 
 OrgJodaTimeDuration *OrgJodaTimeDuration_standardMinutesWithLong_(jlong minutes) {
@@ -265,7 +298,7 @@ OrgJodaTimeDuration *OrgJodaTimeDuration_standardMinutesWithLong_(jlong minutes)
   if (minutes == 0) {
     return OrgJodaTimeDuration_ZERO;
   }
-  return [new_OrgJodaTimeDuration_initWithLong_(OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withInt_(minutes, OrgJodaTimeDateTimeConstants_MILLIS_PER_MINUTE)) autorelease];
+  return create_OrgJodaTimeDuration_initWithLong_(OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withInt_(minutes, OrgJodaTimeDateTimeConstants_MILLIS_PER_MINUTE));
 }
 
 OrgJodaTimeDuration *OrgJodaTimeDuration_standardSecondsWithLong_(jlong seconds) {
@@ -273,7 +306,7 @@ OrgJodaTimeDuration *OrgJodaTimeDuration_standardSecondsWithLong_(jlong seconds)
   if (seconds == 0) {
     return OrgJodaTimeDuration_ZERO;
   }
-  return [new_OrgJodaTimeDuration_initWithLong_(OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withInt_(seconds, OrgJodaTimeDateTimeConstants_MILLIS_PER_SECOND)) autorelease];
+  return create_OrgJodaTimeDuration_initWithLong_(OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withInt_(seconds, OrgJodaTimeDateTimeConstants_MILLIS_PER_SECOND));
 }
 
 OrgJodaTimeDuration *OrgJodaTimeDuration_millisWithLong_(jlong millis) {
@@ -281,7 +314,7 @@ OrgJodaTimeDuration *OrgJodaTimeDuration_millisWithLong_(jlong millis) {
   if (millis == 0) {
     return OrgJodaTimeDuration_ZERO;
   }
-  return [new_OrgJodaTimeDuration_initWithLong_(millis) autorelease];
+  return create_OrgJodaTimeDuration_initWithLong_(millis);
 }
 
 void OrgJodaTimeDuration_initWithLong_(OrgJodaTimeDuration *self, jlong duration) {
@@ -289,15 +322,11 @@ void OrgJodaTimeDuration_initWithLong_(OrgJodaTimeDuration *self, jlong duration
 }
 
 OrgJodaTimeDuration *new_OrgJodaTimeDuration_initWithLong_(jlong duration) {
-  OrgJodaTimeDuration *self = [OrgJodaTimeDuration alloc];
-  OrgJodaTimeDuration_initWithLong_(self, duration);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeDuration, initWithLong_, duration)
 }
 
 OrgJodaTimeDuration *create_OrgJodaTimeDuration_initWithLong_(jlong duration) {
-  OrgJodaTimeDuration *self = [[OrgJodaTimeDuration alloc] autorelease];
-  OrgJodaTimeDuration_initWithLong_(self, duration);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeDuration, initWithLong_, duration)
 }
 
 void OrgJodaTimeDuration_initWithLong_withLong_(OrgJodaTimeDuration *self, jlong startInstant, jlong endInstant) {
@@ -305,15 +334,11 @@ void OrgJodaTimeDuration_initWithLong_withLong_(OrgJodaTimeDuration *self, jlong
 }
 
 OrgJodaTimeDuration *new_OrgJodaTimeDuration_initWithLong_withLong_(jlong startInstant, jlong endInstant) {
-  OrgJodaTimeDuration *self = [OrgJodaTimeDuration alloc];
-  OrgJodaTimeDuration_initWithLong_withLong_(self, startInstant, endInstant);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeDuration, initWithLong_withLong_, startInstant, endInstant)
 }
 
 OrgJodaTimeDuration *create_OrgJodaTimeDuration_initWithLong_withLong_(jlong startInstant, jlong endInstant) {
-  OrgJodaTimeDuration *self = [[OrgJodaTimeDuration alloc] autorelease];
-  OrgJodaTimeDuration_initWithLong_withLong_(self, startInstant, endInstant);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeDuration, initWithLong_withLong_, startInstant, endInstant)
 }
 
 void OrgJodaTimeDuration_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(OrgJodaTimeDuration *self, id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end) {
@@ -321,15 +346,11 @@ void OrgJodaTimeDuration_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReada
 }
 
 OrgJodaTimeDuration *new_OrgJodaTimeDuration_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end) {
-  OrgJodaTimeDuration *self = [OrgJodaTimeDuration alloc];
-  OrgJodaTimeDuration_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(self, start, end);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeDuration, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_, start, end)
 }
 
 OrgJodaTimeDuration *create_OrgJodaTimeDuration_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end) {
-  OrgJodaTimeDuration *self = [[OrgJodaTimeDuration alloc] autorelease];
-  OrgJodaTimeDuration_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(self, start, end);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeDuration, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_, start, end)
 }
 
 void OrgJodaTimeDuration_initWithId_(OrgJodaTimeDuration *self, id duration) {
@@ -337,15 +358,15 @@ void OrgJodaTimeDuration_initWithId_(OrgJodaTimeDuration *self, id duration) {
 }
 
 OrgJodaTimeDuration *new_OrgJodaTimeDuration_initWithId_(id duration) {
-  OrgJodaTimeDuration *self = [OrgJodaTimeDuration alloc];
-  OrgJodaTimeDuration_initWithId_(self, duration);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeDuration, initWithId_, duration)
 }
 
 OrgJodaTimeDuration *create_OrgJodaTimeDuration_initWithId_(id duration) {
-  OrgJodaTimeDuration *self = [[OrgJodaTimeDuration alloc] autorelease];
-  OrgJodaTimeDuration_initWithId_(self, duration);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeDuration, initWithId_, duration)
+}
+
+IOSObjectArray *OrgJodaTimeDuration__Annotations$0() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_OrgJodaConvertFromString() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDuration)

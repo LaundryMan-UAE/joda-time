@@ -4,8 +4,10 @@
 //
 
 #include "IOSClass.h"
+#include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "java/lang/StringBuffer.h"
+#include "java/lang/annotation/Annotation.h"
 #include "org/joda/convert/ToString.h"
 #include "org/joda/time/Duration.h"
 #include "org/joda/time/Period.h"
@@ -14,6 +16,8 @@
 #include "org/joda/time/format/FormatUtils.h"
 
 #pragma clang diagnostic ignored "-Wprotocol"
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeBaseAbstractDuration__Annotations$0();
 
 @implementation OrgJodaTimeBaseAbstractDuration
 
@@ -25,11 +29,11 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 - (OrgJodaTimeDuration *)toDuration {
-  return [new_OrgJodaTimeDuration_initWithLong_([self getMillis]) autorelease];
+  return create_OrgJodaTimeDuration_initWithLong_([self getMillis]);
 }
 
 - (OrgJodaTimePeriod *)toPeriod {
-  return [new_OrgJodaTimePeriod_initWithLong_([self getMillis]) autorelease];
+  return create_OrgJodaTimePeriod_initWithLong_([self getMillis]);
 }
 
 - (jint)compareToWithId:(id<OrgJodaTimeReadableDuration>)other {
@@ -84,7 +88,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (NSString *)description {
   jlong millis = [self getMillis];
-  JavaLangStringBuffer *buf = [new_JavaLangStringBuffer_init() autorelease];
+  JavaLangStringBuffer *buf = create_JavaLangStringBuffer_init();
   [buf appendWithNSString:@"PT"];
   jboolean negative = (millis < 0);
   OrgJodaTimeFormatFormatUtils_appendUnpaddedIntegerWithJavaLangStringBuffer_withLong_(buf, millis);
@@ -101,24 +105,34 @@ J2OBJC_IGNORE_DESIGNATED_END
   return [buf description];
 }
 
-+ (IOSObjectArray *)__annotations_toString {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "AbstractDuration", NULL, 0x4, NULL, NULL },
-    { "toDuration", NULL, "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-    { "toPeriod", NULL, "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "compareToWithId:", "compareTo", "I", 0x1, NULL, NULL },
-    { "isEqualWithOrgJodaTimeReadableDuration:", "isEqual", "Z", 0x1, NULL, NULL },
-    { "isLongerThanWithOrgJodaTimeReadableDuration:", "isLongerThan", "Z", 0x1, NULL, NULL },
-    { "isShorterThanWithOrgJodaTimeReadableDuration:", "isShorterThan", "Z", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 2, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 3, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 4, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 7, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 8, -1, -1, -1, 9, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractDuration = { 2, "AbstractDuration", "org.joda.time.base", NULL, 0x401, 10, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(toDuration);
+  methods[2].selector = @selector(toPeriod);
+  methods[3].selector = @selector(compareToWithId:);
+  methods[4].selector = @selector(isEqualWithOrgJodaTimeReadableDuration:);
+  methods[5].selector = @selector(isLongerThanWithOrgJodaTimeReadableDuration:);
+  methods[6].selector = @selector(isShorterThanWithOrgJodaTimeReadableDuration:);
+  methods[7].selector = @selector(isEqual:);
+  methods[8].selector = @selector(hash);
+  methods[9].selector = @selector(description);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "compareTo", "LOrgJodaTimeReadableDuration;", "isEqual", "isLongerThan", "isShorterThan", "equals", "LNSObject;", "hashCode", "toString", (void *)&OrgJodaTimeBaseAbstractDuration__Annotations$0 };
+  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractDuration = { "AbstractDuration", "org.joda.time.base", ptrTable, methods, NULL, 7, 0x401, 10, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeBaseAbstractDuration;
 }
 
@@ -126,6 +140,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 void OrgJodaTimeBaseAbstractDuration_init(OrgJodaTimeBaseAbstractDuration *self) {
   NSObject_init(self);
+}
+
+IOSObjectArray *OrgJodaTimeBaseAbstractDuration__Annotations$0() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_OrgJodaConvertToString() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseAbstractDuration)

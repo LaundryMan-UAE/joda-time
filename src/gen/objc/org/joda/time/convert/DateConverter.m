@@ -33,24 +33,31 @@ J2OBJC_IGNORE_DESIGNATED_END
   return JavaUtilDate_class_();
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LIOSClass;", 0x1, -1, -1, -1, 2, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getInstantMillisWithId:withOrgJodaTimeChronology:);
+  methods[2].selector = @selector(getSupportedType);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "INSTANCE", "LOrgJodaTimeConvertDateConverter;", .constantValue.asLong = 0, 0x18, -1, 3, -1, -1 },
+  };
+  static const void *ptrTable[] = { "getInstantMillis", "LNSObject;LOrgJodaTimeChronology;", "()Ljava/lang/Class<*>;", &OrgJodaTimeConvertDateConverter_INSTANCE };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertDateConverter = { "DateConverter", "org.joda.time.convert", ptrTable, methods, fields, 7, 0x10, 3, 1, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeConvertDateConverter;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeConvertDateConverter class]) {
     JreStrongAssignAndConsume(&OrgJodaTimeConvertDateConverter_INSTANCE, new_OrgJodaTimeConvertDateConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertDateConverter)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "DateConverter", NULL, 0x4, NULL, NULL },
-    { "getInstantMillisWithId:withOrgJodaTimeChronology:", "getInstantMillis", "J", 0x1, NULL, NULL },
-    { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, "()Ljava/lang/Class<*>;" },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE", "INSTANCE", 0x18, "Lorg.joda.time.convert.DateConverter;", &OrgJodaTimeConvertDateConverter_INSTANCE, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertDateConverter = { 2, "DateConverter", "org.joda.time.convert", NULL, 0x10, 3, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeConvertDateConverter;
 }
 
 @end
@@ -60,15 +67,11 @@ void OrgJodaTimeConvertDateConverter_init(OrgJodaTimeConvertDateConverter *self)
 }
 
 OrgJodaTimeConvertDateConverter *new_OrgJodaTimeConvertDateConverter_init() {
-  OrgJodaTimeConvertDateConverter *self = [OrgJodaTimeConvertDateConverter alloc];
-  OrgJodaTimeConvertDateConverter_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeConvertDateConverter, init)
 }
 
 OrgJodaTimeConvertDateConverter *create_OrgJodaTimeConvertDateConverter_init() {
-  OrgJodaTimeConvertDateConverter *self = [[OrgJodaTimeConvertDateConverter alloc] autorelease];
-  OrgJodaTimeConvertDateConverter_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeConvertDateConverter, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertDateConverter)

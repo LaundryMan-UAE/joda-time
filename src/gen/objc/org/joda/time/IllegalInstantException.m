@@ -49,16 +49,24 @@ __attribute__((unused)) static NSString *OrgJodaTimeIllegalInstantException_crea
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:", "IllegalInstantException", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withNSString:", "IllegalInstantException", NULL, 0x1, NULL, NULL },
-    { "createMessageWithLong:withNSString:", "createMessage", "Ljava.lang.String;", 0xa, NULL, NULL },
-    { "isIllegalInstantWithNSException:", "isIllegalInstant", "Z", 0x9, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0xa, 2, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x9, 3, 4, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithNSString:);
+  methods[1].selector = @selector(initWithLong:withNSString:);
+  methods[2].selector = @selector(createMessageWithLong:withNSString:);
+  methods[3].selector = @selector(isIllegalInstantWithNSException:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeIllegalInstantException_serialVersionUID },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeIllegalInstantException_serialVersionUID, 0x1a, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeIllegalInstantException = { 2, "IllegalInstantException", "org.joda.time", NULL, 0x1, 4, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LNSString;", "JLNSString;", "createMessage", "isIllegalInstant", "LNSException;" };
+  static const J2ObjcClassInfo _OrgJodaTimeIllegalInstantException = { "IllegalInstantException", "org.joda.time", ptrTable, methods, fields, 7, 0x1, 4, 1, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeIllegalInstantException;
 }
 
@@ -69,15 +77,11 @@ void OrgJodaTimeIllegalInstantException_initWithNSString_(OrgJodaTimeIllegalInst
 }
 
 OrgJodaTimeIllegalInstantException *new_OrgJodaTimeIllegalInstantException_initWithNSString_(NSString *message) {
-  OrgJodaTimeIllegalInstantException *self = [OrgJodaTimeIllegalInstantException alloc];
-  OrgJodaTimeIllegalInstantException_initWithNSString_(self, message);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeIllegalInstantException, initWithNSString_, message)
 }
 
 OrgJodaTimeIllegalInstantException *create_OrgJodaTimeIllegalInstantException_initWithNSString_(NSString *message) {
-  OrgJodaTimeIllegalInstantException *self = [[OrgJodaTimeIllegalInstantException alloc] autorelease];
-  OrgJodaTimeIllegalInstantException_initWithNSString_(self, message);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeIllegalInstantException, initWithNSString_, message)
 }
 
 void OrgJodaTimeIllegalInstantException_initWithLong_withNSString_(OrgJodaTimeIllegalInstantException *self, jlong instantLocal, NSString *zoneId) {
@@ -85,20 +89,16 @@ void OrgJodaTimeIllegalInstantException_initWithLong_withNSString_(OrgJodaTimeIl
 }
 
 OrgJodaTimeIllegalInstantException *new_OrgJodaTimeIllegalInstantException_initWithLong_withNSString_(jlong instantLocal, NSString *zoneId) {
-  OrgJodaTimeIllegalInstantException *self = [OrgJodaTimeIllegalInstantException alloc];
-  OrgJodaTimeIllegalInstantException_initWithLong_withNSString_(self, instantLocal, zoneId);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeIllegalInstantException, initWithLong_withNSString_, instantLocal, zoneId)
 }
 
 OrgJodaTimeIllegalInstantException *create_OrgJodaTimeIllegalInstantException_initWithLong_withNSString_(jlong instantLocal, NSString *zoneId) {
-  OrgJodaTimeIllegalInstantException *self = [[OrgJodaTimeIllegalInstantException alloc] autorelease];
-  OrgJodaTimeIllegalInstantException_initWithLong_withNSString_(self, instantLocal, zoneId);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeIllegalInstantException, initWithLong_withNSString_, instantLocal, zoneId)
 }
 
 NSString *OrgJodaTimeIllegalInstantException_createMessageWithLong_withNSString_(jlong instantLocal, NSString *zoneId) {
   OrgJodaTimeIllegalInstantException_initialize();
-  NSString *localDateTime = [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatDateTimeFormat_forPatternWithNSString_(@"yyyy-MM-dd'T'HH:mm:ss.SSS"))) printWithOrgJodaTimeReadableInstant:[new_OrgJodaTimeInstant_initWithLong_(instantLocal) autorelease]];
+  NSString *localDateTime = [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatDateTimeFormat_forPatternWithNSString_(@"yyyy-MM-dd'T'HH:mm:ss.SSS"))) printWithOrgJodaTimeReadableInstant:create_OrgJodaTimeInstant_initWithLong_(instantLocal)];
   NSString *zone = (zoneId != nil ? JreStrcat("$$C", @" (", zoneId, ')') : @"");
   return JreStrcat("$$$", @"Illegal instant due to time zone offset transition (daylight savings time 'gap'): ", localDateTime, zone);
 }

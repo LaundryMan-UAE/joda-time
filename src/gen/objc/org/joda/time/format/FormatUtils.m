@@ -3,7 +3,6 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/Joda-Time/src/main/java/org/joda/time/format/FormatUtils.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "java/io/IOException.h"
 #include "java/io/Writer.h"
@@ -125,37 +124,57 @@ J2OBJC_IGNORE_DESIGNATED_END
   return OrgJodaTimeFormatFormatUtils_createErrorMessageWithNSString_withInt_(text, errorPos);
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 0, 2, 3, -1, -1, -1 },
+    { NULL, "V", 0x9, 0, 4, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 0, 5, 3, -1, -1, -1 },
+    { NULL, "V", 0x9, 6, 7, 3, -1, -1, -1 },
+    { NULL, "V", 0x9, 6, 8, 3, -1, -1, -1 },
+    { NULL, "V", 0x9, 9, 10, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 9, 11, 3, -1, -1, -1 },
+    { NULL, "V", 0x9, 9, 12, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 9, 13, 3, -1, -1, -1 },
+    { NULL, "V", 0x9, 14, 15, 3, -1, -1, -1 },
+    { NULL, "V", 0x9, 14, 16, 3, -1, -1, -1 },
+    { NULL, "I", 0x9, 17, 18, -1, -1, -1, -1 },
+    { NULL, "I", 0x8, 19, 20, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x8, 21, 22, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(appendPaddedIntegerWithJavaLangStringBuffer:withInt:withInt:);
+  methods[2].selector = @selector(appendPaddedIntegerWithJavaLangAppendable:withInt:withInt:);
+  methods[3].selector = @selector(appendPaddedIntegerWithJavaLangStringBuffer:withLong:withInt:);
+  methods[4].selector = @selector(appendPaddedIntegerWithJavaLangAppendable:withLong:withInt:);
+  methods[5].selector = @selector(writePaddedIntegerWithJavaIoWriter:withInt:withInt:);
+  methods[6].selector = @selector(writePaddedIntegerWithJavaIoWriter:withLong:withInt:);
+  methods[7].selector = @selector(appendUnpaddedIntegerWithJavaLangStringBuffer:withInt:);
+  methods[8].selector = @selector(appendUnpaddedIntegerWithJavaLangAppendable:withInt:);
+  methods[9].selector = @selector(appendUnpaddedIntegerWithJavaLangStringBuffer:withLong:);
+  methods[10].selector = @selector(appendUnpaddedIntegerWithJavaLangAppendable:withLong:);
+  methods[11].selector = @selector(writeUnpaddedIntegerWithJavaIoWriter:withInt:);
+  methods[12].selector = @selector(writeUnpaddedIntegerWithJavaIoWriter:withLong:);
+  methods[13].selector = @selector(calculateDigitCountWithLong:);
+  methods[14].selector = @selector(parseTwoDigitsWithJavaLangCharSequence:withInt:);
+  methods[15].selector = @selector(createErrorMessageWithNSString:withInt:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "LOG_10", "D", .constantValue.asLong = 0, 0x1a, -1, 23, -1, -1 },
+  };
+  static const void *ptrTable[] = { "appendPaddedInteger", "LJavaLangStringBuffer;II", "LJavaLangAppendable;II", "LJavaIoIOException;", "LJavaLangStringBuffer;JI", "LJavaLangAppendable;JI", "writePaddedInteger", "LJavaIoWriter;II", "LJavaIoWriter;JI", "appendUnpaddedInteger", "LJavaLangStringBuffer;I", "LJavaLangAppendable;I", "LJavaLangStringBuffer;J", "LJavaLangAppendable;J", "writeUnpaddedInteger", "LJavaIoWriter;I", "LJavaIoWriter;J", "calculateDigitCount", "J", "parseTwoDigits", "LJavaLangCharSequence;I", "createErrorMessage", "LNSString;I", &OrgJodaTimeFormatFormatUtils_LOG_10 };
+  static const J2ObjcClassInfo _OrgJodaTimeFormatFormatUtils = { "FormatUtils", "org.joda.time.format", ptrTable, methods, fields, 7, 0x1, 16, 1, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeFormatFormatUtils;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeFormatFormatUtils class]) {
     OrgJodaTimeFormatFormatUtils_LOG_10 = JavaLangMath_logWithDouble_(10);
     J2OBJC_SET_INITIALIZED(OrgJodaTimeFormatFormatUtils)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "FormatUtils", NULL, 0x2, NULL, NULL },
-    { "appendPaddedIntegerWithJavaLangStringBuffer:withInt:withInt:", "appendPaddedInteger", "V", 0x9, NULL, NULL },
-    { "appendPaddedIntegerWithJavaLangAppendable:withInt:withInt:", "appendPaddedInteger", "V", 0x9, "Ljava.io.IOException;", NULL },
-    { "appendPaddedIntegerWithJavaLangStringBuffer:withLong:withInt:", "appendPaddedInteger", "V", 0x9, NULL, NULL },
-    { "appendPaddedIntegerWithJavaLangAppendable:withLong:withInt:", "appendPaddedInteger", "V", 0x9, "Ljava.io.IOException;", NULL },
-    { "writePaddedIntegerWithJavaIoWriter:withInt:withInt:", "writePaddedInteger", "V", 0x9, "Ljava.io.IOException;", NULL },
-    { "writePaddedIntegerWithJavaIoWriter:withLong:withInt:", "writePaddedInteger", "V", 0x9, "Ljava.io.IOException;", NULL },
-    { "appendUnpaddedIntegerWithJavaLangStringBuffer:withInt:", "appendUnpaddedInteger", "V", 0x9, NULL, NULL },
-    { "appendUnpaddedIntegerWithJavaLangAppendable:withInt:", "appendUnpaddedInteger", "V", 0x9, "Ljava.io.IOException;", NULL },
-    { "appendUnpaddedIntegerWithJavaLangStringBuffer:withLong:", "appendUnpaddedInteger", "V", 0x9, NULL, NULL },
-    { "appendUnpaddedIntegerWithJavaLangAppendable:withLong:", "appendUnpaddedInteger", "V", 0x9, "Ljava.io.IOException;", NULL },
-    { "writeUnpaddedIntegerWithJavaIoWriter:withInt:", "writeUnpaddedInteger", "V", 0x9, "Ljava.io.IOException;", NULL },
-    { "writeUnpaddedIntegerWithJavaIoWriter:withLong:", "writeUnpaddedInteger", "V", 0x9, "Ljava.io.IOException;", NULL },
-    { "calculateDigitCountWithLong:", "calculateDigitCount", "I", 0x9, NULL, NULL },
-    { "parseTwoDigitsWithJavaLangCharSequence:withInt:", "parseTwoDigits", "I", 0x8, NULL, NULL },
-    { "createErrorMessageWithNSString:withInt:", "createErrorMessage", "Ljava.lang.String;", 0x8, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "LOG_10", "LOG_10", 0x1a, "D", &OrgJodaTimeFormatFormatUtils_LOG_10, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatFormatUtils = { 2, "FormatUtils", "org.joda.time.format", NULL, 0x1, 16, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeFormatFormatUtils;
 }
 
 @end
@@ -165,15 +184,11 @@ void OrgJodaTimeFormatFormatUtils_init(OrgJodaTimeFormatFormatUtils *self) {
 }
 
 OrgJodaTimeFormatFormatUtils *new_OrgJodaTimeFormatFormatUtils_init() {
-  OrgJodaTimeFormatFormatUtils *self = [OrgJodaTimeFormatFormatUtils alloc];
-  OrgJodaTimeFormatFormatUtils_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFormatFormatUtils, init)
 }
 
 OrgJodaTimeFormatFormatUtils *create_OrgJodaTimeFormatFormatUtils_init() {
-  OrgJodaTimeFormatFormatUtils *self = [[OrgJodaTimeFormatFormatUtils alloc] autorelease];
-  OrgJodaTimeFormatFormatUtils_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFormatFormatUtils, init)
 }
 
 void OrgJodaTimeFormatFormatUtils_appendPaddedIntegerWithJavaLangStringBuffer_withInt_withInt_(JavaLangStringBuffer *buf, jint value, jint size) {

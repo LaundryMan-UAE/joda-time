@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatISODateTimeFormat_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatISODateTimeFormat_RESTRICT
-#define OrgJodaTimeFormatISODateTimeFormat_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatISODateTimeFormat")
+#ifdef RESTRICT_OrgJodaTimeFormatISODateTimeFormat
+#define INCLUDE_ALL_OrgJodaTimeFormatISODateTimeFormat 0
 #else
-#define OrgJodaTimeFormatISODateTimeFormat_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatISODateTimeFormat 1
 #endif
-#undef OrgJodaTimeFormatISODateTimeFormat_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatISODateTimeFormat
 
-#if !defined (OrgJodaTimeFormatISODateTimeFormat_) && (OrgJodaTimeFormatISODateTimeFormat_INCLUDE_ALL || defined(OrgJodaTimeFormatISODateTimeFormat_INCLUDE))
+#if !defined (OrgJodaTimeFormatISODateTimeFormat_) && (INCLUDE_ALL_OrgJodaTimeFormatISODateTimeFormat || defined(INCLUDE_OrgJodaTimeFormatISODateTimeFormat))
 #define OrgJodaTimeFormatISODateTimeFormat_
 
 @class OrgJodaTimeFormatDateTimeFormatter;
@@ -921,7 +921,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatISODateTimeFormat)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatISODateTimeFormat_Constants_) && (OrgJodaTimeFormatISODateTimeFormat_INCLUDE_ALL || defined(OrgJodaTimeFormatISODateTimeFormat_Constants_INCLUDE))
+#if !defined (OrgJodaTimeFormatISODateTimeFormat_Constants_) && (INCLUDE_ALL_OrgJodaTimeFormatISODateTimeFormat || defined(INCLUDE_OrgJodaTimeFormatISODateTimeFormat_Constants))
 #define OrgJodaTimeFormatISODateTimeFormat_Constants_
 
 @interface OrgJodaTimeFormatISODateTimeFormat_Constants : NSObject
@@ -944,4 +944,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatISODateTimeFormat_Constants)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatISODateTimeFormat_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatISODateTimeFormat")

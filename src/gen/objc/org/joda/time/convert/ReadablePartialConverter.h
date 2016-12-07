@@ -5,23 +5,23 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertReadablePartialConverter_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertReadablePartialConverter_RESTRICT
-#define OrgJodaTimeConvertReadablePartialConverter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertReadablePartialConverter")
+#ifdef RESTRICT_OrgJodaTimeConvertReadablePartialConverter
+#define INCLUDE_ALL_OrgJodaTimeConvertReadablePartialConverter 0
 #else
-#define OrgJodaTimeConvertReadablePartialConverter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertReadablePartialConverter 1
 #endif
-#undef OrgJodaTimeConvertReadablePartialConverter_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertReadablePartialConverter
 
-#if !defined (OrgJodaTimeConvertReadablePartialConverter_) && (OrgJodaTimeConvertReadablePartialConverter_INCLUDE_ALL || defined(OrgJodaTimeConvertReadablePartialConverter_INCLUDE))
+#if !defined (OrgJodaTimeConvertReadablePartialConverter_) && (INCLUDE_ALL_OrgJodaTimeConvertReadablePartialConverter || defined(INCLUDE_OrgJodaTimeConvertReadablePartialConverter))
 #define OrgJodaTimeConvertReadablePartialConverter_
 
-#define OrgJodaTimeConvertAbstractConverter_RESTRICT 1
-#define OrgJodaTimeConvertAbstractConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertAbstractConverter 1
+#define INCLUDE_OrgJodaTimeConvertAbstractConverter 1
 #include "org/joda/time/convert/AbstractConverter.h"
 
-#define OrgJodaTimeConvertPartialConverter_RESTRICT 1
-#define OrgJodaTimeConvertPartialConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertPartialConverter 1
+#define INCLUDE_OrgJodaTimeConvertPartialConverter 1
 #include "org/joda/time/convert/PartialConverter.h"
 
 @class IOSClass;
@@ -110,4 +110,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertReadablePartialConverter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertReadablePartialConverter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertReadablePartialConverter")

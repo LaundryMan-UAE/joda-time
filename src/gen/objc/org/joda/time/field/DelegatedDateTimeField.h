@@ -5,23 +5,23 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFieldDelegatedDateTimeField_INCLUDE_ALL")
-#ifdef OrgJodaTimeFieldDelegatedDateTimeField_RESTRICT
-#define OrgJodaTimeFieldDelegatedDateTimeField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFieldDelegatedDateTimeField")
+#ifdef RESTRICT_OrgJodaTimeFieldDelegatedDateTimeField
+#define INCLUDE_ALL_OrgJodaTimeFieldDelegatedDateTimeField 0
 #else
-#define OrgJodaTimeFieldDelegatedDateTimeField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFieldDelegatedDateTimeField 1
 #endif
-#undef OrgJodaTimeFieldDelegatedDateTimeField_RESTRICT
+#undef RESTRICT_OrgJodaTimeFieldDelegatedDateTimeField
 
-#if !defined (OrgJodaTimeFieldDelegatedDateTimeField_) && (OrgJodaTimeFieldDelegatedDateTimeField_INCLUDE_ALL || defined(OrgJodaTimeFieldDelegatedDateTimeField_INCLUDE))
+#if !defined (OrgJodaTimeFieldDelegatedDateTimeField_) && (INCLUDE_ALL_OrgJodaTimeFieldDelegatedDateTimeField || defined(INCLUDE_OrgJodaTimeFieldDelegatedDateTimeField))
 #define OrgJodaTimeFieldDelegatedDateTimeField_
 
-#define OrgJodaTimeDateTimeField_RESTRICT 1
-#define OrgJodaTimeDateTimeField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeDateTimeField 1
+#define INCLUDE_OrgJodaTimeDateTimeField 1
 #include "org/joda/time/DateTimeField.h"
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class IOSIntArray;
@@ -237,4 +237,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldDelegatedDateTimeField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFieldDelegatedDateTimeField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFieldDelegatedDateTimeField")

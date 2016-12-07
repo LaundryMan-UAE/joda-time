@@ -94,24 +94,38 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldPreciseDurationDateTimeField, seria
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDurationField:", "PreciseDurationDateTimeField", NULL, 0x1, NULL, NULL },
-    { "isLenient", NULL, "Z", 0x1, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
-    { "roundFloorWithLong:", "roundFloor", "J", 0x1, NULL, NULL },
-    { "roundCeilingWithLong:", "roundCeiling", "J", 0x1, NULL, NULL },
-    { "remainderWithLong:", "remainder", "J", 0x1, NULL, NULL },
-    { "getDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getUnitMillis", NULL, "J", 0x11, NULL, NULL },
-    { "getMaximumValueForSetWithLong:withInt:", "getMaximumValueForSet", "I", 0x4, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x11, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x4, 7, 2, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDurationField:);
+  methods[1].selector = @selector(isLenient);
+  methods[2].selector = @selector(setWithLong:withInt:);
+  methods[3].selector = @selector(roundFloorWithLong:);
+  methods[4].selector = @selector(roundCeilingWithLong:);
+  methods[5].selector = @selector(remainderWithLong:);
+  methods[6].selector = @selector(getDurationField);
+  methods[7].selector = @selector(getMinimumValue);
+  methods[8].selector = @selector(getUnitMillis);
+  methods[9].selector = @selector(getMaximumValueForSetWithLong:withInt:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldPreciseDurationDateTimeField_serialVersionUID },
-    { "iUnitMillis_", NULL, 0x10, "J", NULL, NULL, .constantValue.asLong = 0 },
-    { "iUnitField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldPreciseDurationDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iUnitMillis_", "J", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iUnitField_", "LOrgJodaTimeDurationField;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldPreciseDurationDateTimeField = { 2, "PreciseDurationDateTimeField", "org.joda.time.field", NULL, 0x401, 10, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeDateTimeFieldType;LOrgJodaTimeDurationField;", "set", "JI", "roundFloor", "J", "roundCeiling", "remainder", "getMaximumValueForSet" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldPreciseDurationDateTimeField = { "PreciseDurationDateTimeField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x401, 10, 3, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldPreciseDurationDateTimeField;
 }
 
@@ -120,11 +134,11 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldPreciseDurationDateTimeField, seria
 void OrgJodaTimeFieldPreciseDurationDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_(OrgJodaTimeFieldPreciseDurationDateTimeField *self, OrgJodaTimeDateTimeFieldType *type, OrgJodaTimeDurationField *unit) {
   OrgJodaTimeFieldBaseDateTimeField_initWithOrgJodaTimeDateTimeFieldType_(self, type);
   if (![((OrgJodaTimeDurationField *) nil_chk(unit)) isPrecise]) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Unit duration field must be precise") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"Unit duration field must be precise");
   }
   self->iUnitMillis_ = [unit getUnitMillis];
   if (self->iUnitMillis_ < 1) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The unit milliseconds must be at least 1") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The unit milliseconds must be at least 1");
   }
   JreStrongAssign(&self->iUnitField_, unit);
 }

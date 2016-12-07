@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatPeriodPrinter_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatPeriodPrinter_RESTRICT
-#define OrgJodaTimeFormatPeriodPrinter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatPeriodPrinter")
+#ifdef RESTRICT_OrgJodaTimeFormatPeriodPrinter
+#define INCLUDE_ALL_OrgJodaTimeFormatPeriodPrinter 0
 #else
-#define OrgJodaTimeFormatPeriodPrinter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatPeriodPrinter 1
 #endif
-#undef OrgJodaTimeFormatPeriodPrinter_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatPeriodPrinter
 
-#if !defined (OrgJodaTimeFormatPeriodPrinter_) && (OrgJodaTimeFormatPeriodPrinter_INCLUDE_ALL || defined(OrgJodaTimeFormatPeriodPrinter_INCLUDE))
+#if !defined (OrgJodaTimeFormatPeriodPrinter_) && (INCLUDE_ALL_OrgJodaTimeFormatPeriodPrinter || defined(INCLUDE_OrgJodaTimeFormatPeriodPrinter))
 #define OrgJodaTimeFormatPeriodPrinter_
 
 @class JavaIoWriter;
@@ -38,7 +38,7 @@
  - seealso: PeriodFormatterBuilder
  - seealso: PeriodFormat
  */
-@protocol OrgJodaTimeFormatPeriodPrinter < NSObject, JavaObject >
+@protocol OrgJodaTimeFormatPeriodPrinter < JavaObject >
 
 /*!
  @brief Returns the exact number of characters produced for the given period.
@@ -89,4 +89,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodPrinter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatPeriodPrinter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatPeriodPrinter")

@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeDateTimeZone_INCLUDE_ALL")
-#ifdef OrgJodaTimeDateTimeZone_RESTRICT
-#define OrgJodaTimeDateTimeZone_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeDateTimeZone")
+#ifdef RESTRICT_OrgJodaTimeDateTimeZone
+#define INCLUDE_ALL_OrgJodaTimeDateTimeZone 0
 #else
-#define OrgJodaTimeDateTimeZone_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeDateTimeZone 1
 #endif
-#undef OrgJodaTimeDateTimeZone_RESTRICT
+#undef RESTRICT_OrgJodaTimeDateTimeZone
 
-#if !defined (OrgJodaTimeDateTimeZone_) && (OrgJodaTimeDateTimeZone_INCLUDE_ALL || defined(OrgJodaTimeDateTimeZone_INCLUDE))
+#if !defined (OrgJodaTimeDateTimeZone_) && (INCLUDE_ALL_OrgJodaTimeDateTimeZone || defined(INCLUDE_OrgJodaTimeDateTimeZone))
 #define OrgJodaTimeDateTimeZone_
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class JavaUtilLocale;
@@ -552,4 +552,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDateTimeZone)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeDateTimeZone_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeDateTimeZone")

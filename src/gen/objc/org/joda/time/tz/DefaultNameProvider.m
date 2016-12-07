@@ -71,17 +71,26 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "DefaultNameProvider", NULL, 0x1, NULL, NULL },
-    { "getShortNameWithJavaUtilLocale:withNSString:withNSString:", "getShortName", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getNameWithJavaUtilLocale:withNSString:withNSString:", "getName", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getNameSetWithJavaUtilLocale:withNSString:withNSString:", "getNameSet", "[Ljava.lang.String;", 0x22, NULL, NULL },
-    { "createCache", NULL, "Ljava.util.HashMap;", 0x2, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 2, 1, -1, -1, -1, -1 },
+    { NULL, "[LNSString;", 0x22, 3, 1, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilHashMap;", 0x2, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getShortNameWithJavaUtilLocale:withNSString:withNSString:);
+  methods[2].selector = @selector(getNameWithJavaUtilLocale:withNSString:withNSString:);
+  methods[3].selector = @selector(getNameSetWithJavaUtilLocale:withNSString:withNSString:);
+  methods[4].selector = @selector(createCache);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "iByLocaleCache_", NULL, 0x2, "Ljava.util.HashMap;", NULL, "Ljava/util/HashMap<Ljava/util/Locale;Ljava/util/Map<Ljava/lang/String;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;>;>;", .constantValue.asLong = 0 },
+    { "iByLocaleCache_", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0x2, -1, -1, 4, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzDefaultNameProvider = { 2, "DefaultNameProvider", "org.joda.time.tz", NULL, 0x1, 5, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "getShortName", "LJavaUtilLocale;LNSString;LNSString;", "getName", "getNameSet", "Ljava/util/HashMap<Ljava/util/Locale;Ljava/util/Map<Ljava/lang/String;Ljava/util/Map<Ljava/lang/String;Ljava/lang/Object;>;>;>;" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzDefaultNameProvider = { "DefaultNameProvider", "org.joda.time.tz", ptrTable, methods, fields, 7, 0x1, 5, 1, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeTzDefaultNameProvider;
 }
 
@@ -93,15 +102,11 @@ void OrgJodaTimeTzDefaultNameProvider_init(OrgJodaTimeTzDefaultNameProvider *sel
 }
 
 OrgJodaTimeTzDefaultNameProvider *new_OrgJodaTimeTzDefaultNameProvider_init() {
-  OrgJodaTimeTzDefaultNameProvider *self = [OrgJodaTimeTzDefaultNameProvider alloc];
-  OrgJodaTimeTzDefaultNameProvider_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzDefaultNameProvider, init)
 }
 
 OrgJodaTimeTzDefaultNameProvider *create_OrgJodaTimeTzDefaultNameProvider_init() {
-  OrgJodaTimeTzDefaultNameProvider *self = [[OrgJodaTimeTzDefaultNameProvider alloc] autorelease];
-  OrgJodaTimeTzDefaultNameProvider_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzDefaultNameProvider, init)
 }
 
 IOSObjectArray *OrgJodaTimeTzDefaultNameProvider_getNameSetWithJavaUtilLocale_withNSString_withNSString_(OrgJodaTimeTzDefaultNameProvider *self, JavaUtilLocale *locale, NSString *id_, NSString *nameKey) {
@@ -111,7 +116,7 @@ IOSObjectArray *OrgJodaTimeTzDefaultNameProvider_getNameSetWithJavaUtilLocale_wi
     }
     id<JavaUtilMap> byIdCache = [((JavaUtilHashMap *) nil_chk(self->iByLocaleCache_)) getWithId:locale];
     if (byIdCache == nil) {
-      [self->iByLocaleCache_ putWithId:locale withId:byIdCache = OrgJodaTimeTzDefaultNameProvider_createCache(self)];
+      [((JavaUtilHashMap *) nil_chk(self->iByLocaleCache_)) putWithId:locale withId:byIdCache = OrgJodaTimeTzDefaultNameProvider_createCache(self)];
     }
     id<JavaUtilMap> byNameKeyCache = [((id<JavaUtilMap>) nil_chk(byIdCache)) getWithId:id_];
     if (byNameKeyCache == nil) {
@@ -124,7 +129,7 @@ IOSObjectArray *OrgJodaTimeTzDefaultNameProvider_getNameSetWithJavaUtilLocale_wi
         IOSObjectArray * const *e__ = b__ + a__->size_;
         while (b__ < e__) {
           IOSObjectArray *strings = *b__++;
-          if (strings != nil && strings->size_ == 5 && [((NSString *) nil_chk(id_)) isEqual:IOSObjectArray_Get(strings, 0)]) {
+          if (strings != nil && strings->size_ == 5 && [id_ isEqual:IOSObjectArray_Get(strings, 0)]) {
             setEn = strings;
             break;
           }
@@ -138,7 +143,7 @@ IOSObjectArray *OrgJodaTimeTzDefaultNameProvider_getNameSetWithJavaUtilLocale_wi
         IOSObjectArray * const *e__ = b__ + a__->size_;
         while (b__ < e__) {
           IOSObjectArray *strings = *b__++;
-          if (strings != nil && strings->size_ == 5 && [((NSString *) nil_chk(id_)) isEqual:IOSObjectArray_Get(strings, 0)]) {
+          if (strings != nil && strings->size_ == 5 && [id_ isEqual:IOSObjectArray_Get(strings, 0)]) {
             setLoc = strings;
             break;
           }
@@ -159,7 +164,7 @@ IOSObjectArray *OrgJodaTimeTzDefaultNameProvider_getNameSetWithJavaUtilLocale_wi
 }
 
 JavaUtilHashMap *OrgJodaTimeTzDefaultNameProvider_createCache(OrgJodaTimeTzDefaultNameProvider *self) {
-  return [new_JavaUtilHashMap_initWithInt_(7) autorelease];
+  return create_JavaUtilHashMap_initWithInt_(7);
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDefaultNameProvider)

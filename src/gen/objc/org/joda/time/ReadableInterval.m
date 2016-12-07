@@ -4,14 +4,6 @@
 //
 
 #include "J2ObjC_source.h"
-#include "org/joda/time/Chronology.h"
-#include "org/joda/time/DateTime.h"
-#include "org/joda/time/Duration.h"
-#include "org/joda/time/Interval.h"
-#include "org/joda/time/MutableInterval.h"
-#include "org/joda/time/Period.h"
-#include "org/joda/time/PeriodType.h"
-#include "org/joda/time/ReadableInstant.h"
 #include "org/joda/time/ReadableInterval.h"
 
 @interface OrgJodaTimeReadableInterval : NSObject
@@ -21,30 +13,55 @@
 @implementation OrgJodaTimeReadableInterval
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getChronology", NULL, "Lorg.joda.time.Chronology;", 0x401, NULL, NULL },
-    { "getStartMillis", NULL, "J", 0x401, NULL, NULL },
-    { "getStart", NULL, "Lorg.joda.time.DateTime;", 0x401, NULL, NULL },
-    { "getEndMillis", NULL, "J", 0x401, NULL, NULL },
-    { "getEnd", NULL, "Lorg.joda.time.DateTime;", 0x401, NULL, NULL },
-    { "containsWithOrgJodaTimeReadableInstant:", "contains", "Z", 0x401, NULL, NULL },
-    { "containsWithOrgJodaTimeReadableInterval:", "contains", "Z", 0x401, NULL, NULL },
-    { "overlapsWithOrgJodaTimeReadableInterval:", "overlaps", "Z", 0x401, NULL, NULL },
-    { "isAfterWithOrgJodaTimeReadableInstant:", "isAfter", "Z", 0x401, NULL, NULL },
-    { "isAfterWithOrgJodaTimeReadableInterval:", "isAfter", "Z", 0x401, NULL, NULL },
-    { "isBeforeWithOrgJodaTimeReadableInstant:", "isBefore", "Z", 0x401, NULL, NULL },
-    { "isBeforeWithOrgJodaTimeReadableInterval:", "isBefore", "Z", 0x401, NULL, NULL },
-    { "toInterval", NULL, "Lorg.joda.time.Interval;", 0x401, NULL, NULL },
-    { "toMutableInterval", NULL, "Lorg.joda.time.MutableInterval;", 0x401, NULL, NULL },
-    { "toDuration", NULL, "Lorg.joda.time.Duration;", 0x401, NULL, NULL },
-    { "toDurationMillis", NULL, "J", 0x401, NULL, NULL },
-    { "toPeriod", NULL, "Lorg.joda.time.Period;", 0x401, NULL, NULL },
-    { "toPeriodWithOrgJodaTimePeriodType:", "toPeriod", "Lorg.joda.time.Period;", 0x401, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x401, NULL, NULL },
-    { "hash", "hashCode", "I", 0x401, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeChronology;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 0, 2, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 3, 2, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 4, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 4, 2, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 5, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 5, 2, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeInterval;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMutableInterval;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x401, 6, 7, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 8, 9, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 10, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 11, -1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadableInterval = { 2, "ReadableInterval", "org.joda.time", NULL, 0x609, 21, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getChronology);
+  methods[1].selector = @selector(getStartMillis);
+  methods[2].selector = @selector(getStart);
+  methods[3].selector = @selector(getEndMillis);
+  methods[4].selector = @selector(getEnd);
+  methods[5].selector = @selector(containsWithOrgJodaTimeReadableInstant:);
+  methods[6].selector = @selector(containsWithOrgJodaTimeReadableInterval:);
+  methods[7].selector = @selector(overlapsWithOrgJodaTimeReadableInterval:);
+  methods[8].selector = @selector(isAfterWithOrgJodaTimeReadableInstant:);
+  methods[9].selector = @selector(isAfterWithOrgJodaTimeReadableInterval:);
+  methods[10].selector = @selector(isBeforeWithOrgJodaTimeReadableInstant:);
+  methods[11].selector = @selector(isBeforeWithOrgJodaTimeReadableInterval:);
+  methods[12].selector = @selector(toInterval);
+  methods[13].selector = @selector(toMutableInterval);
+  methods[14].selector = @selector(toDuration);
+  methods[15].selector = @selector(toDurationMillis);
+  methods[16].selector = @selector(toPeriod);
+  methods[17].selector = @selector(toPeriodWithOrgJodaTimePeriodType:);
+  methods[18].selector = @selector(isEqual:);
+  methods[19].selector = @selector(hash);
+  methods[20].selector = @selector(description);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "contains", "LOrgJodaTimeReadableInstant;", "LOrgJodaTimeReadableInterval;", "overlaps", "isAfter", "isBefore", "toPeriod", "LOrgJodaTimePeriodType;", "equals", "LNSObject;", "hashCode", "toString" };
+  static const J2ObjcClassInfo _OrgJodaTimeReadableInterval = { "ReadableInterval", "org.joda.time", ptrTable, methods, NULL, 7, 0x609, 21, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeReadableInterval;
 }
 

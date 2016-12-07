@@ -5,27 +5,27 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertCalendarConverter_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertCalendarConverter_RESTRICT
-#define OrgJodaTimeConvertCalendarConverter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertCalendarConverter")
+#ifdef RESTRICT_OrgJodaTimeConvertCalendarConverter
+#define INCLUDE_ALL_OrgJodaTimeConvertCalendarConverter 0
 #else
-#define OrgJodaTimeConvertCalendarConverter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertCalendarConverter 1
 #endif
-#undef OrgJodaTimeConvertCalendarConverter_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertCalendarConverter
 
-#if !defined (OrgJodaTimeConvertCalendarConverter_) && (OrgJodaTimeConvertCalendarConverter_INCLUDE_ALL || defined(OrgJodaTimeConvertCalendarConverter_INCLUDE))
+#if !defined (OrgJodaTimeConvertCalendarConverter_) && (INCLUDE_ALL_OrgJodaTimeConvertCalendarConverter || defined(INCLUDE_OrgJodaTimeConvertCalendarConverter))
 #define OrgJodaTimeConvertCalendarConverter_
 
-#define OrgJodaTimeConvertAbstractConverter_RESTRICT 1
-#define OrgJodaTimeConvertAbstractConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertAbstractConverter 1
+#define INCLUDE_OrgJodaTimeConvertAbstractConverter 1
 #include "org/joda/time/convert/AbstractConverter.h"
 
-#define OrgJodaTimeConvertInstantConverter_RESTRICT 1
-#define OrgJodaTimeConvertInstantConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertInstantConverter 1
+#define INCLUDE_OrgJodaTimeConvertInstantConverter 1
 #include "org/joda/time/convert/InstantConverter.h"
 
-#define OrgJodaTimeConvertPartialConverter_RESTRICT 1
-#define OrgJodaTimeConvertPartialConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertPartialConverter 1
+#define INCLUDE_OrgJodaTimeConvertPartialConverter 1
 #include "org/joda/time/convert/PartialConverter.h"
 
 @class IOSClass;
@@ -118,4 +118,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertCalendarConverter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertCalendarConverter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertCalendarConverter")

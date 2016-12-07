@@ -336,69 +336,127 @@ __attribute__((unused)) static JavaLangUnsupportedOperationException *OrgJodaTim
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getInstanceWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDurationField:", "getInstance", "Lorg.joda.time.field.UnsupportedDateTimeField;", 0x29, NULL, NULL },
-    { "initWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDurationField:", "UnsupportedDateTimeField", NULL, 0x2, NULL, NULL },
-    { "getType", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x1, NULL, NULL },
-    { "getName", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "isSupported", NULL, "Z", 0x1, NULL, NULL },
-    { "isLenient", NULL, "Z", 0x1, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x1, NULL, NULL },
-    { "getAsTextWithLong:withJavaUtilLocale:", "getAsText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsTextWithLong:", "getAsText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsTextWithOrgJodaTimeReadablePartial:withInt:withJavaUtilLocale:", "getAsText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsTextWithOrgJodaTimeReadablePartial:withJavaUtilLocale:", "getAsText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsTextWithInt:withJavaUtilLocale:", "getAsText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsShortTextWithLong:withJavaUtilLocale:", "getAsShortText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsShortTextWithLong:", "getAsShortText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsShortTextWithOrgJodaTimeReadablePartial:withInt:withJavaUtilLocale:", "getAsShortText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsShortTextWithOrgJodaTimeReadablePartial:withJavaUtilLocale:", "getAsShortText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsShortTextWithInt:withJavaUtilLocale:", "getAsShortText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x1, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x1, NULL, NULL },
-    { "addWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:", "add", "[I", 0x1, NULL, NULL },
-    { "addWrapPartialWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:", "addWrapPartial", "[I", 0x1, NULL, NULL },
-    { "addWrapFieldWithLong:withInt:", "addWrapField", "J", 0x1, NULL, NULL },
-    { "addWrapFieldWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:", "addWrapField", "[I", 0x1, NULL, NULL },
-    { "getDifferenceWithLong:withLong:", "getDifference", "I", 0x1, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x1, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
-    { "setWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:", "set", "[I", 0x1, NULL, NULL },
-    { "setWithLong:withNSString:withJavaUtilLocale:", "set", "J", 0x1, NULL, NULL },
-    { "setWithLong:withNSString:", "set", "J", 0x1, NULL, NULL },
-    { "setWithOrgJodaTimeReadablePartial:withInt:withIntArray:withNSString:withJavaUtilLocale:", "set", "[I", 0x1, NULL, NULL },
-    { "getDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getRangeDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "isLeapWithLong:", "isLeap", "Z", 0x1, NULL, NULL },
-    { "getLeapAmountWithLong:", "getLeapAmount", "I", 0x1, NULL, NULL },
-    { "getLeapDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMinimumValueWithLong:", "getMinimumValue", "I", 0x1, NULL, NULL },
-    { "getMinimumValueWithOrgJodaTimeReadablePartial:", "getMinimumValue", "I", 0x1, NULL, NULL },
-    { "getMinimumValueWithOrgJodaTimeReadablePartial:withIntArray:", "getMinimumValue", "I", 0x1, NULL, NULL },
-    { "getMaximumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumValueWithLong:", "getMaximumValue", "I", 0x1, NULL, NULL },
-    { "getMaximumValueWithOrgJodaTimeReadablePartial:", "getMaximumValue", "I", 0x1, NULL, NULL },
-    { "getMaximumValueWithOrgJodaTimeReadablePartial:withIntArray:", "getMaximumValue", "I", 0x1, NULL, NULL },
-    { "getMaximumTextLengthWithJavaUtilLocale:", "getMaximumTextLength", "I", 0x1, NULL, NULL },
-    { "getMaximumShortTextLengthWithJavaUtilLocale:", "getMaximumShortTextLength", "I", 0x1, NULL, NULL },
-    { "roundFloorWithLong:", "roundFloor", "J", 0x1, NULL, NULL },
-    { "roundCeilingWithLong:", "roundCeiling", "J", 0x1, NULL, NULL },
-    { "roundHalfFloorWithLong:", "roundHalfFloor", "J", 0x1, NULL, NULL },
-    { "roundHalfCeilingWithLong:", "roundHalfCeiling", "J", 0x1, NULL, NULL },
-    { "roundHalfEvenWithLong:", "roundHalfEven", "J", 0x1, NULL, NULL },
-    { "remainderWithLong:", "remainder", "J", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
-    { "unsupported", NULL, "Ljava.lang.UnsupportedOperationException;", 0x2, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeFieldUnsupportedDateTimeField;", 0x29, 0, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x2, -1, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 3, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 6, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 7, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 8, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 9, 5, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 9, 3, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 9, 6, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 9, 7, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 9, 8, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 10, 11, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 10, 12, -1, -1, -1, -1 },
+    { NULL, "[I", 0x1, 10, 13, -1, -1, -1, -1 },
+    { NULL, "[I", 0x1, 14, 13, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 15, 11, -1, -1, -1, -1 },
+    { NULL, "[I", 0x1, 15, 13, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 16, 12, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 17, 12, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 18, 11, -1, -1, -1, -1 },
+    { NULL, "[I", 0x1, 18, 13, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 18, 19, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 18, 20, -1, -1, -1, -1 },
+    { NULL, "[I", 0x1, 18, 21, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 22, 3, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 23, 3, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 24, 3, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 24, 25, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 24, 26, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 27, 3, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 27, 25, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 27, 26, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 28, 29, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 30, 29, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 31, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 32, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 33, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 34, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 35, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 36, 3, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 37, -1, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LJavaLangUnsupportedOperationException;", 0x2, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getInstanceWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDurationField:);
+  methods[1].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDurationField:);
+  methods[2].selector = @selector(getType);
+  methods[3].selector = @selector(getName);
+  methods[4].selector = @selector(isSupported);
+  methods[5].selector = @selector(isLenient);
+  methods[6].selector = @selector(getWithLong:);
+  methods[7].selector = @selector(getAsTextWithLong:withJavaUtilLocale:);
+  methods[8].selector = @selector(getAsTextWithLong:);
+  methods[9].selector = @selector(getAsTextWithOrgJodaTimeReadablePartial:withInt:withJavaUtilLocale:);
+  methods[10].selector = @selector(getAsTextWithOrgJodaTimeReadablePartial:withJavaUtilLocale:);
+  methods[11].selector = @selector(getAsTextWithInt:withJavaUtilLocale:);
+  methods[12].selector = @selector(getAsShortTextWithLong:withJavaUtilLocale:);
+  methods[13].selector = @selector(getAsShortTextWithLong:);
+  methods[14].selector = @selector(getAsShortTextWithOrgJodaTimeReadablePartial:withInt:withJavaUtilLocale:);
+  methods[15].selector = @selector(getAsShortTextWithOrgJodaTimeReadablePartial:withJavaUtilLocale:);
+  methods[16].selector = @selector(getAsShortTextWithInt:withJavaUtilLocale:);
+  methods[17].selector = @selector(addWithLong:withInt:);
+  methods[18].selector = @selector(addWithLong:withLong:);
+  methods[19].selector = @selector(addWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:);
+  methods[20].selector = @selector(addWrapPartialWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:);
+  methods[21].selector = @selector(addWrapFieldWithLong:withInt:);
+  methods[22].selector = @selector(addWrapFieldWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:);
+  methods[23].selector = @selector(getDifferenceWithLong:withLong:);
+  methods[24].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  methods[25].selector = @selector(setWithLong:withInt:);
+  methods[26].selector = @selector(setWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:);
+  methods[27].selector = @selector(setWithLong:withNSString:withJavaUtilLocale:);
+  methods[28].selector = @selector(setWithLong:withNSString:);
+  methods[29].selector = @selector(setWithOrgJodaTimeReadablePartial:withInt:withIntArray:withNSString:withJavaUtilLocale:);
+  methods[30].selector = @selector(getDurationField);
+  methods[31].selector = @selector(getRangeDurationField);
+  methods[32].selector = @selector(isLeapWithLong:);
+  methods[33].selector = @selector(getLeapAmountWithLong:);
+  methods[34].selector = @selector(getLeapDurationField);
+  methods[35].selector = @selector(getMinimumValue);
+  methods[36].selector = @selector(getMinimumValueWithLong:);
+  methods[37].selector = @selector(getMinimumValueWithOrgJodaTimeReadablePartial:);
+  methods[38].selector = @selector(getMinimumValueWithOrgJodaTimeReadablePartial:withIntArray:);
+  methods[39].selector = @selector(getMaximumValue);
+  methods[40].selector = @selector(getMaximumValueWithLong:);
+  methods[41].selector = @selector(getMaximumValueWithOrgJodaTimeReadablePartial:);
+  methods[42].selector = @selector(getMaximumValueWithOrgJodaTimeReadablePartial:withIntArray:);
+  methods[43].selector = @selector(getMaximumTextLengthWithJavaUtilLocale:);
+  methods[44].selector = @selector(getMaximumShortTextLengthWithJavaUtilLocale:);
+  methods[45].selector = @selector(roundFloorWithLong:);
+  methods[46].selector = @selector(roundCeilingWithLong:);
+  methods[47].selector = @selector(roundHalfFloorWithLong:);
+  methods[48].selector = @selector(roundHalfCeilingWithLong:);
+  methods[49].selector = @selector(roundHalfEvenWithLong:);
+  methods[50].selector = @selector(remainderWithLong:);
+  methods[51].selector = @selector(description);
+  methods[52].selector = @selector(readResolve);
+  methods[53].selector = @selector(unsupported);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldUnsupportedDateTimeField_serialVersionUID },
-    { "cCache", "cCache", 0xa, "Ljava.util.HashMap;", &OrgJodaTimeFieldUnsupportedDateTimeField_cCache, "Ljava/util/HashMap<Lorg/joda/time/DateTimeFieldType;Lorg/joda/time/field/UnsupportedDateTimeField;>;", .constantValue.asLong = 0 },
-    { "iType_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldUnsupportedDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "cCache", "LJavaUtilHashMap;", .constantValue.asLong = 0, 0xa, -1, 38, 39, -1 },
+    { "iType_", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iDurationField_", "LOrgJodaTimeDurationField;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldUnsupportedDateTimeField = { 2, "UnsupportedDateTimeField", "org.joda.time.field", NULL, 0x11, 54, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "getInstance", "LOrgJodaTimeDateTimeFieldType;LOrgJodaTimeDurationField;", "get", "J", "getAsText", "JLJavaUtilLocale;", "LOrgJodaTimeReadablePartial;ILJavaUtilLocale;", "LOrgJodaTimeReadablePartial;LJavaUtilLocale;", "ILJavaUtilLocale;", "getAsShortText", "add", "JI", "JJ", "LOrgJodaTimeReadablePartial;I[II", "addWrapPartial", "addWrapField", "getDifference", "getDifferenceAsLong", "set", "JLNSString;LJavaUtilLocale;", "JLNSString;", "LOrgJodaTimeReadablePartial;I[ILNSString;LJavaUtilLocale;", "isLeap", "getLeapAmount", "getMinimumValue", "LOrgJodaTimeReadablePartial;", "LOrgJodaTimeReadablePartial;[I", "getMaximumValue", "getMaximumTextLength", "LJavaUtilLocale;", "getMaximumShortTextLength", "roundFloor", "roundCeiling", "roundHalfFloor", "roundHalfCeiling", "roundHalfEven", "remainder", "toString", &OrgJodaTimeFieldUnsupportedDateTimeField_cCache, "Ljava/util/HashMap<Lorg/joda/time/DateTimeFieldType;Lorg/joda/time/field/UnsupportedDateTimeField;>;" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldUnsupportedDateTimeField = { "UnsupportedDateTimeField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x11, 54, 4, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldUnsupportedDateTimeField;
 }
 
@@ -419,7 +477,7 @@ OrgJodaTimeFieldUnsupportedDateTimeField *OrgJodaTimeFieldUnsupportedDateTimeFie
       }
     }
     if (field == nil) {
-      field = [new_OrgJodaTimeFieldUnsupportedDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_(type, durationField) autorelease];
+      field = create_OrgJodaTimeFieldUnsupportedDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_(type, durationField);
       [((JavaUtilHashMap *) nil_chk(OrgJodaTimeFieldUnsupportedDateTimeField_cCache)) putWithId:type withId:field];
     }
     return field;
@@ -429,26 +487,22 @@ OrgJodaTimeFieldUnsupportedDateTimeField *OrgJodaTimeFieldUnsupportedDateTimeFie
 void OrgJodaTimeFieldUnsupportedDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_(OrgJodaTimeFieldUnsupportedDateTimeField *self, OrgJodaTimeDateTimeFieldType *type, OrgJodaTimeDurationField *durationField) {
   OrgJodaTimeDateTimeField_init(self);
   if (type == nil || durationField == nil) {
-    @throw [new_JavaLangIllegalArgumentException_init() autorelease];
+    @throw create_JavaLangIllegalArgumentException_init();
   }
   JreStrongAssign(&self->iType_, type);
   JreStrongAssign(&self->iDurationField_, durationField);
 }
 
 OrgJodaTimeFieldUnsupportedDateTimeField *new_OrgJodaTimeFieldUnsupportedDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType *type, OrgJodaTimeDurationField *durationField) {
-  OrgJodaTimeFieldUnsupportedDateTimeField *self = [OrgJodaTimeFieldUnsupportedDateTimeField alloc];
-  OrgJodaTimeFieldUnsupportedDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_(self, type, durationField);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldUnsupportedDateTimeField, initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_, type, durationField)
 }
 
 OrgJodaTimeFieldUnsupportedDateTimeField *create_OrgJodaTimeFieldUnsupportedDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_(OrgJodaTimeDateTimeFieldType *type, OrgJodaTimeDurationField *durationField) {
-  OrgJodaTimeFieldUnsupportedDateTimeField *self = [[OrgJodaTimeFieldUnsupportedDateTimeField alloc] autorelease];
-  OrgJodaTimeFieldUnsupportedDateTimeField_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_(self, type, durationField);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldUnsupportedDateTimeField, initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDurationField_, type, durationField)
 }
 
 JavaLangUnsupportedOperationException *OrgJodaTimeFieldUnsupportedDateTimeField_unsupported(OrgJodaTimeFieldUnsupportedDateTimeField *self) {
-  return [new_JavaLangUnsupportedOperationException_initWithNSString_(JreStrcat("@$", self->iType_, @" field is unsupported")) autorelease];
+  return create_JavaLangUnsupportedOperationException_initWithNSString_(JreStrcat("@$", self->iType_, @" field is unsupported"));
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldUnsupportedDateTimeField)

@@ -409,6 +409,127 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeFieldType)
   [super dealloc];
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, 1, 2, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 3, 2, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, -1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithNSString:);
+  methods[1].selector = @selector(millisOfSecond);
+  methods[2].selector = @selector(millisOfDay);
+  methods[3].selector = @selector(secondOfMinute);
+  methods[4].selector = @selector(secondOfDay);
+  methods[5].selector = @selector(minuteOfHour);
+  methods[6].selector = @selector(minuteOfDay);
+  methods[7].selector = @selector(hourOfDay);
+  methods[8].selector = @selector(clockhourOfDay);
+  methods[9].selector = @selector(hourOfHalfday);
+  methods[10].selector = @selector(clockhourOfHalfday);
+  methods[11].selector = @selector(halfdayOfDay);
+  methods[12].selector = @selector(dayOfWeek);
+  methods[13].selector = @selector(dayOfMonth);
+  methods[14].selector = @selector(dayOfYear);
+  methods[15].selector = @selector(weekOfWeekyear);
+  methods[16].selector = @selector(weekyear);
+  methods[17].selector = @selector(weekyearOfCentury);
+  methods[18].selector = @selector(monthOfYear);
+  methods[19].selector = @selector(year);
+  methods[20].selector = @selector(yearOfEra);
+  methods[21].selector = @selector(yearOfCentury);
+  methods[22].selector = @selector(centuryOfEra);
+  methods[23].selector = @selector(era);
+  methods[24].selector = @selector(getName);
+  methods[25].selector = @selector(getDurationType);
+  methods[26].selector = @selector(getRangeDurationType);
+  methods[27].selector = @selector(getFieldWithOrgJodaTimeChronology:);
+  methods[28].selector = @selector(isSupportedWithOrgJodaTimeChronology:);
+  methods[29].selector = @selector(description);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeDateTimeFieldType_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "ERA", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_ERA, 0x18, -1, -1, -1, -1 },
+    { "YEAR_OF_ERA", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_YEAR_OF_ERA, 0x18, -1, -1, -1, -1 },
+    { "CENTURY_OF_ERA", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_CENTURY_OF_ERA, 0x18, -1, -1, -1, -1 },
+    { "YEAR_OF_CENTURY", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_YEAR_OF_CENTURY, 0x18, -1, -1, -1, -1 },
+    { "YEAR", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_YEAR, 0x18, -1, -1, -1, -1 },
+    { "DAY_OF_YEAR", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_DAY_OF_YEAR, 0x18, -1, -1, -1, -1 },
+    { "MONTH_OF_YEAR", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_MONTH_OF_YEAR, 0x18, -1, -1, -1, -1 },
+    { "DAY_OF_MONTH", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_DAY_OF_MONTH, 0x18, -1, -1, -1, -1 },
+    { "WEEKYEAR_OF_CENTURY", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_WEEKYEAR_OF_CENTURY, 0x18, -1, -1, -1, -1 },
+    { "WEEKYEAR", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_WEEKYEAR, 0x18, -1, -1, -1, -1 },
+    { "WEEK_OF_WEEKYEAR", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_WEEK_OF_WEEKYEAR, 0x18, -1, -1, -1, -1 },
+    { "DAY_OF_WEEK", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_DAY_OF_WEEK, 0x18, -1, -1, -1, -1 },
+    { "HALFDAY_OF_DAY", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_HALFDAY_OF_DAY, 0x18, -1, -1, -1, -1 },
+    { "HOUR_OF_HALFDAY", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_HOUR_OF_HALFDAY, 0x18, -1, -1, -1, -1 },
+    { "CLOCKHOUR_OF_HALFDAY", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_HALFDAY, 0x18, -1, -1, -1, -1 },
+    { "CLOCKHOUR_OF_DAY", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_DAY, 0x18, -1, -1, -1, -1 },
+    { "HOUR_OF_DAY", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_HOUR_OF_DAY, 0x18, -1, -1, -1, -1 },
+    { "MINUTE_OF_DAY", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_MINUTE_OF_DAY, 0x18, -1, -1, -1, -1 },
+    { "MINUTE_OF_HOUR", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_MINUTE_OF_HOUR, 0x18, -1, -1, -1, -1 },
+    { "SECOND_OF_DAY", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_SECOND_OF_DAY, 0x18, -1, -1, -1, -1 },
+    { "SECOND_OF_MINUTE", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_SECOND_OF_MINUTE, 0x18, -1, -1, -1, -1 },
+    { "MILLIS_OF_DAY", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_MILLIS_OF_DAY, 0x18, -1, -1, -1, -1 },
+    { "MILLIS_OF_SECOND", "B", .constantValue.asChar = OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND, 0x18, -1, -1, -1, -1 },
+    { "ERA_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 5, -1, -1 },
+    { "YEAR_OF_ERA_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 6, -1, -1 },
+    { "CENTURY_OF_ERA_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 7, -1, -1 },
+    { "YEAR_OF_CENTURY_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 8, -1, -1 },
+    { "YEAR_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 9, -1, -1 },
+    { "DAY_OF_YEAR_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 10, -1, -1 },
+    { "MONTH_OF_YEAR_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 11, -1, -1 },
+    { "DAY_OF_MONTH_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 12, -1, -1 },
+    { "WEEKYEAR_OF_CENTURY_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 13, -1, -1 },
+    { "WEEKYEAR_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 14, -1, -1 },
+    { "WEEK_OF_WEEKYEAR_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 15, -1, -1 },
+    { "DAY_OF_WEEK_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 16, -1, -1 },
+    { "HALFDAY_OF_DAY_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 17, -1, -1 },
+    { "HOUR_OF_HALFDAY_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 18, -1, -1 },
+    { "CLOCKHOUR_OF_HALFDAY_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 19, -1, -1 },
+    { "CLOCKHOUR_OF_DAY_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 20, -1, -1 },
+    { "HOUR_OF_DAY_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 21, -1, -1 },
+    { "MINUTE_OF_DAY_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 22, -1, -1 },
+    { "MINUTE_OF_HOUR_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 23, -1, -1 },
+    { "SECOND_OF_DAY_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 24, -1, -1 },
+    { "SECOND_OF_MINUTE_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 25, -1, -1 },
+    { "MILLIS_OF_DAY_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 26, -1, -1 },
+    { "MILLIS_OF_SECOND_TYPE", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x1a, -1, 27, -1, -1 },
+    { "iName_", "LNSString;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "LNSString;", "getField", "LOrgJodaTimeChronology;", "isSupported", "toString", &OrgJodaTimeDateTimeFieldType_ERA_TYPE, &OrgJodaTimeDateTimeFieldType_YEAR_OF_ERA_TYPE, &OrgJodaTimeDateTimeFieldType_CENTURY_OF_ERA_TYPE, &OrgJodaTimeDateTimeFieldType_YEAR_OF_CENTURY_TYPE, &OrgJodaTimeDateTimeFieldType_YEAR_TYPE, &OrgJodaTimeDateTimeFieldType_DAY_OF_YEAR_TYPE, &OrgJodaTimeDateTimeFieldType_MONTH_OF_YEAR_TYPE, &OrgJodaTimeDateTimeFieldType_DAY_OF_MONTH_TYPE, &OrgJodaTimeDateTimeFieldType_WEEKYEAR_OF_CENTURY_TYPE, &OrgJodaTimeDateTimeFieldType_WEEKYEAR_TYPE, &OrgJodaTimeDateTimeFieldType_WEEK_OF_WEEKYEAR_TYPE, &OrgJodaTimeDateTimeFieldType_DAY_OF_WEEK_TYPE, &OrgJodaTimeDateTimeFieldType_HALFDAY_OF_DAY_TYPE, &OrgJodaTimeDateTimeFieldType_HOUR_OF_HALFDAY_TYPE, &OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_HALFDAY_TYPE, &OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_DAY_TYPE, &OrgJodaTimeDateTimeFieldType_HOUR_OF_DAY_TYPE, &OrgJodaTimeDateTimeFieldType_MINUTE_OF_DAY_TYPE, &OrgJodaTimeDateTimeFieldType_MINUTE_OF_HOUR_TYPE, &OrgJodaTimeDateTimeFieldType_SECOND_OF_DAY_TYPE, &OrgJodaTimeDateTimeFieldType_SECOND_OF_MINUTE_TYPE, &OrgJodaTimeDateTimeFieldType_MILLIS_OF_DAY_TYPE, &OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND_TYPE, "LOrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType;" };
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeFieldType = { "DateTimeFieldType", "org.joda.time", ptrTable, methods, fields, 7, 0x401, 30, 48, -1, 28, -1, -1, -1 };
+  return &_OrgJodaTimeDateTimeFieldType;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeDateTimeFieldType class]) {
     JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_ERA_TYPE, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"era", OrgJodaTimeDateTimeFieldType_ERA, OrgJodaTimeDurationFieldType_eras(), nil));
@@ -436,94 +557,6 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeFieldType)
     JreStrongAssignAndConsume(&OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND_TYPE, new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(@"millisOfSecond", OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND, OrgJodaTimeDurationFieldType_millis(), OrgJodaTimeDurationFieldType_seconds()));
     J2OBJC_SET_INITIALIZED(OrgJodaTimeDateTimeFieldType)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:", "DateTimeFieldType", NULL, 0x4, NULL, NULL },
-    { "millisOfSecond", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "millisOfDay", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "secondOfMinute", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "secondOfDay", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "minuteOfHour", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "minuteOfDay", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "hourOfDay", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "clockhourOfDay", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "hourOfHalfday", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "clockhourOfHalfday", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "halfdayOfDay", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "dayOfWeek", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "dayOfMonth", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "dayOfYear", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "weekOfWeekyear", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "weekyear", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "weekyearOfCentury", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "monthOfYear", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "year", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "yearOfEra", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "yearOfCentury", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "centuryOfEra", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "era", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x9, NULL, NULL },
-    { "getName", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getDurationType", NULL, "Lorg.joda.time.DurationFieldType;", 0x401, NULL, NULL },
-    { "getRangeDurationType", NULL, "Lorg.joda.time.DurationFieldType;", 0x401, NULL, NULL },
-    { "getFieldWithOrgJodaTimeChronology:", "getField", "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "isSupportedWithOrgJodaTimeChronology:", "isSupported", "Z", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeDateTimeFieldType_serialVersionUID },
-    { "ERA", "ERA", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_ERA },
-    { "YEAR_OF_ERA", "YEAR_OF_ERA", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_YEAR_OF_ERA },
-    { "CENTURY_OF_ERA", "CENTURY_OF_ERA", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_CENTURY_OF_ERA },
-    { "YEAR_OF_CENTURY", "YEAR_OF_CENTURY", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_YEAR_OF_CENTURY },
-    { "YEAR", "YEAR", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_YEAR },
-    { "DAY_OF_YEAR", "DAY_OF_YEAR", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_DAY_OF_YEAR },
-    { "MONTH_OF_YEAR", "MONTH_OF_YEAR", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_MONTH_OF_YEAR },
-    { "DAY_OF_MONTH", "DAY_OF_MONTH", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_DAY_OF_MONTH },
-    { "WEEKYEAR_OF_CENTURY", "WEEKYEAR_OF_CENTURY", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_WEEKYEAR_OF_CENTURY },
-    { "WEEKYEAR", "WEEKYEAR", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_WEEKYEAR },
-    { "WEEK_OF_WEEKYEAR", "WEEK_OF_WEEKYEAR", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_WEEK_OF_WEEKYEAR },
-    { "DAY_OF_WEEK", "DAY_OF_WEEK", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_DAY_OF_WEEK },
-    { "HALFDAY_OF_DAY", "HALFDAY_OF_DAY", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_HALFDAY_OF_DAY },
-    { "HOUR_OF_HALFDAY", "HOUR_OF_HALFDAY", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_HOUR_OF_HALFDAY },
-    { "CLOCKHOUR_OF_HALFDAY", "CLOCKHOUR_OF_HALFDAY", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_HALFDAY },
-    { "CLOCKHOUR_OF_DAY", "CLOCKHOUR_OF_DAY", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_DAY },
-    { "HOUR_OF_DAY", "HOUR_OF_DAY", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_HOUR_OF_DAY },
-    { "MINUTE_OF_DAY", "MINUTE_OF_DAY", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_MINUTE_OF_DAY },
-    { "MINUTE_OF_HOUR", "MINUTE_OF_HOUR", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_MINUTE_OF_HOUR },
-    { "SECOND_OF_DAY", "SECOND_OF_DAY", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_SECOND_OF_DAY },
-    { "SECOND_OF_MINUTE", "SECOND_OF_MINUTE", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_SECOND_OF_MINUTE },
-    { "MILLIS_OF_DAY", "MILLIS_OF_DAY", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_MILLIS_OF_DAY },
-    { "MILLIS_OF_SECOND", "MILLIS_OF_SECOND", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND },
-    { "ERA_TYPE", "ERA_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_ERA_TYPE, NULL, .constantValue.asLong = 0 },
-    { "YEAR_OF_ERA_TYPE", "YEAR_OF_ERA_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_YEAR_OF_ERA_TYPE, NULL, .constantValue.asLong = 0 },
-    { "CENTURY_OF_ERA_TYPE", "CENTURY_OF_ERA_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_CENTURY_OF_ERA_TYPE, NULL, .constantValue.asLong = 0 },
-    { "YEAR_OF_CENTURY_TYPE", "YEAR_OF_CENTURY_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_YEAR_OF_CENTURY_TYPE, NULL, .constantValue.asLong = 0 },
-    { "YEAR_TYPE", "YEAR_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_YEAR_TYPE, NULL, .constantValue.asLong = 0 },
-    { "DAY_OF_YEAR_TYPE", "DAY_OF_YEAR_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_DAY_OF_YEAR_TYPE, NULL, .constantValue.asLong = 0 },
-    { "MONTH_OF_YEAR_TYPE", "MONTH_OF_YEAR_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MONTH_OF_YEAR_TYPE, NULL, .constantValue.asLong = 0 },
-    { "DAY_OF_MONTH_TYPE", "DAY_OF_MONTH_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_DAY_OF_MONTH_TYPE, NULL, .constantValue.asLong = 0 },
-    { "WEEKYEAR_OF_CENTURY_TYPE", "WEEKYEAR_OF_CENTURY_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_WEEKYEAR_OF_CENTURY_TYPE, NULL, .constantValue.asLong = 0 },
-    { "WEEKYEAR_TYPE", "WEEKYEAR_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_WEEKYEAR_TYPE, NULL, .constantValue.asLong = 0 },
-    { "WEEK_OF_WEEKYEAR_TYPE", "WEEK_OF_WEEKYEAR_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_WEEK_OF_WEEKYEAR_TYPE, NULL, .constantValue.asLong = 0 },
-    { "DAY_OF_WEEK_TYPE", "DAY_OF_WEEK_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_DAY_OF_WEEK_TYPE, NULL, .constantValue.asLong = 0 },
-    { "HALFDAY_OF_DAY_TYPE", "HALFDAY_OF_DAY_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_HALFDAY_OF_DAY_TYPE, NULL, .constantValue.asLong = 0 },
-    { "HOUR_OF_HALFDAY_TYPE", "HOUR_OF_HALFDAY_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_HOUR_OF_HALFDAY_TYPE, NULL, .constantValue.asLong = 0 },
-    { "CLOCKHOUR_OF_HALFDAY_TYPE", "CLOCKHOUR_OF_HALFDAY_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_HALFDAY_TYPE, NULL, .constantValue.asLong = 0 },
-    { "CLOCKHOUR_OF_DAY_TYPE", "CLOCKHOUR_OF_DAY_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_CLOCKHOUR_OF_DAY_TYPE, NULL, .constantValue.asLong = 0 },
-    { "HOUR_OF_DAY_TYPE", "HOUR_OF_DAY_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_HOUR_OF_DAY_TYPE, NULL, .constantValue.asLong = 0 },
-    { "MINUTE_OF_DAY_TYPE", "MINUTE_OF_DAY_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MINUTE_OF_DAY_TYPE, NULL, .constantValue.asLong = 0 },
-    { "MINUTE_OF_HOUR_TYPE", "MINUTE_OF_HOUR_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MINUTE_OF_HOUR_TYPE, NULL, .constantValue.asLong = 0 },
-    { "SECOND_OF_DAY_TYPE", "SECOND_OF_DAY_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_SECOND_OF_DAY_TYPE, NULL, .constantValue.asLong = 0 },
-    { "SECOND_OF_MINUTE_TYPE", "SECOND_OF_MINUTE_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_SECOND_OF_MINUTE_TYPE, NULL, .constantValue.asLong = 0 },
-    { "MILLIS_OF_DAY_TYPE", "MILLIS_OF_DAY_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MILLIS_OF_DAY_TYPE, NULL, .constantValue.asLong = 0 },
-    { "MILLIS_OF_SECOND_TYPE", "MILLIS_OF_SECOND_TYPE", 0x1a, "Lorg.joda.time.DateTimeFieldType;", &OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND_TYPE, NULL, .constantValue.asLong = 0 },
-    { "iName_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-  };
-  static const char *inner_classes[] = {"Lorg.joda.time.DateTimeFieldType$StandardDateTimeFieldType;"};
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeFieldType = { 2, "DateTimeFieldType", "org.joda.time", NULL, 0x401, 30, methods, 48, fields, 0, NULL, 1, inner_classes, NULL, NULL };
-  return &_OrgJodaTimeDateTimeFieldType;
 }
 
 @end
@@ -732,7 +765,7 @@ withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)rangeType {
     case OrgJodaTimeDateTimeFieldType_MILLIS_OF_SECOND:
     return [((OrgJodaTimeChronology *) nil_chk(chronology)) millisOfSecond];
     default:
-    @throw [new_JavaLangInternalError_init() autorelease];
+    @throw create_JavaLangInternalError_init();
   }
 }
 
@@ -796,22 +829,33 @@ withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)rangeType {
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:withByte:withOrgJodaTimeDurationFieldType:withOrgJodaTimeDurationFieldType:", "StandardDateTimeFieldType", NULL, 0x0, NULL, NULL },
-    { "getDurationType", NULL, "Lorg.joda.time.DurationFieldType;", 0x1, NULL, NULL },
-    { "getRangeDurationType", NULL, "Lorg.joda.time.DurationFieldType;", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "getFieldWithOrgJodaTimeChronology:", "getField", "Lorg.joda.time.DateTimeField;", 0x1, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 3, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithNSString:withByte:withOrgJodaTimeDurationFieldType:withOrgJodaTimeDurationFieldType:);
+  methods[1].selector = @selector(getDurationType);
+  methods[2].selector = @selector(getRangeDurationType);
+  methods[3].selector = @selector(isEqual:);
+  methods[4].selector = @selector(hash);
+  methods[5].selector = @selector(getFieldWithOrgJodaTimeChronology:);
+  methods[6].selector = @selector(readResolve);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_serialVersionUID },
-    { "iOrdinal_", NULL, 0x12, "B", NULL, NULL, .constantValue.asLong = 0 },
-    { "iUnitType_", NULL, 0x92, "Lorg.joda.time.DurationFieldType;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iRangeType_", NULL, 0x92, "Lorg.joda.time.DurationFieldType;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iOrdinal_", "B", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iUnitType_", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x92, -1, -1, -1, -1 },
+    { "iRangeType_", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x92, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType = { 2, "StandardDateTimeFieldType", "org.joda.time", "DateTimeFieldType", 0xa, 7, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LNSString;BLOrgJodaTimeDurationFieldType;LOrgJodaTimeDurationFieldType;", "equals", "LNSObject;", "hashCode", "getField", "LOrgJodaTimeChronology;", "LOrgJodaTimeDateTimeFieldType;" };
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType = { "StandardDateTimeFieldType", "org.joda.time", ptrTable, methods, fields, 7, 0xa, 7, 4, 6, -1, -1, -1, -1 };
   return &_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType;
 }
 
@@ -825,15 +869,11 @@ void OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_wit
 }
 
 OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType *new_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(NSString *name, jbyte ordinal, OrgJodaTimeDurationFieldType *unitType, OrgJodaTimeDurationFieldType *rangeType) {
-  OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType *self = [OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType alloc];
-  OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(self, name, ordinal, unitType, rangeType);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType, initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_, name, ordinal, unitType, rangeType)
 }
 
 OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType *create_OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(NSString *name, jbyte ordinal, OrgJodaTimeDurationFieldType *unitType, OrgJodaTimeDurationFieldType *rangeType) {
-  OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType *self = [[OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType alloc] autorelease];
-  OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType_initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_(self, name, ordinal, unitType, rangeType);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType, initWithNSString_withByte_withOrgJodaTimeDurationFieldType_withOrgJodaTimeDurationFieldType_, name, ordinal, unitType, rangeType)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeFieldType_StandardDateTimeFieldType)

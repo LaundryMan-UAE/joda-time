@@ -358,60 +358,115 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getType", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x401, NULL, NULL },
-    { "getName", NULL, "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "isSupported", NULL, "Z", 0x401, NULL, NULL },
-    { "isLenient", NULL, "Z", 0x401, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x401, NULL, NULL },
-    { "getAsTextWithLong:withJavaUtilLocale:", "getAsText", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "getAsTextWithLong:", "getAsText", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "getAsTextWithOrgJodaTimeReadablePartial:withInt:withJavaUtilLocale:", "getAsText", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "getAsTextWithOrgJodaTimeReadablePartial:withJavaUtilLocale:", "getAsText", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "getAsTextWithInt:withJavaUtilLocale:", "getAsText", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "getAsShortTextWithLong:withJavaUtilLocale:", "getAsShortText", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "getAsShortTextWithLong:", "getAsShortText", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "getAsShortTextWithOrgJodaTimeReadablePartial:withInt:withJavaUtilLocale:", "getAsShortText", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "getAsShortTextWithOrgJodaTimeReadablePartial:withJavaUtilLocale:", "getAsShortText", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "getAsShortTextWithInt:withJavaUtilLocale:", "getAsShortText", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x401, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x401, NULL, NULL },
-    { "addWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:", "add", "[I", 0x401, NULL, NULL },
-    { "addWrapPartialWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:", "addWrapPartial", "[I", 0x401, NULL, NULL },
-    { "addWrapFieldWithLong:withInt:", "addWrapField", "J", 0x401, NULL, NULL },
-    { "addWrapFieldWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:", "addWrapField", "[I", 0x401, NULL, NULL },
-    { "getDifferenceWithLong:withLong:", "getDifference", "I", 0x401, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x401, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x401, NULL, NULL },
-    { "setWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:", "set", "[I", 0x401, NULL, NULL },
-    { "setWithLong:withNSString:withJavaUtilLocale:", "set", "J", 0x401, NULL, NULL },
-    { "setWithLong:withNSString:", "set", "J", 0x401, NULL, NULL },
-    { "setWithOrgJodaTimeReadablePartial:withInt:withIntArray:withNSString:withJavaUtilLocale:", "set", "[I", 0x401, NULL, NULL },
-    { "getDurationField", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "getRangeDurationField", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "isLeapWithLong:", "isLeap", "Z", 0x401, NULL, NULL },
-    { "getLeapAmountWithLong:", "getLeapAmount", "I", 0x401, NULL, NULL },
-    { "getLeapDurationField", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x401, NULL, NULL },
-    { "getMinimumValueWithLong:", "getMinimumValue", "I", 0x401, NULL, NULL },
-    { "getMinimumValueWithOrgJodaTimeReadablePartial:", "getMinimumValue", "I", 0x401, NULL, NULL },
-    { "getMinimumValueWithOrgJodaTimeReadablePartial:withIntArray:", "getMinimumValue", "I", 0x401, NULL, NULL },
-    { "getMaximumValue", NULL, "I", 0x401, NULL, NULL },
-    { "getMaximumValueWithLong:", "getMaximumValue", "I", 0x401, NULL, NULL },
-    { "getMaximumValueWithOrgJodaTimeReadablePartial:", "getMaximumValue", "I", 0x401, NULL, NULL },
-    { "getMaximumValueWithOrgJodaTimeReadablePartial:withIntArray:", "getMaximumValue", "I", 0x401, NULL, NULL },
-    { "getMaximumTextLengthWithJavaUtilLocale:", "getMaximumTextLength", "I", 0x401, NULL, NULL },
-    { "getMaximumShortTextLengthWithJavaUtilLocale:", "getMaximumShortTextLength", "I", 0x401, NULL, NULL },
-    { "roundFloorWithLong:", "roundFloor", "J", 0x401, NULL, NULL },
-    { "roundCeilingWithLong:", "roundCeiling", "J", 0x401, NULL, NULL },
-    { "roundHalfFloorWithLong:", "roundHalfFloor", "J", 0x401, NULL, NULL },
-    { "roundHalfCeilingWithLong:", "roundHalfCeiling", "J", 0x401, NULL, NULL },
-    { "roundHalfEvenWithLong:", "roundHalfEven", "J", 0x401, NULL, NULL },
-    { "remainderWithLong:", "remainder", "J", 0x401, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "init", NULL, NULL, 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 2, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 2, 4, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 2, 5, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 2, 6, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 7, 3, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 7, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 7, 4, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 7, 5, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 7, 6, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 8, 9, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 8, 10, -1, -1, -1, -1 },
+    { NULL, "[I", 0x401, 8, 11, -1, -1, -1, -1 },
+    { NULL, "[I", 0x401, 12, 11, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 13, 9, -1, -1, -1, -1 },
+    { NULL, "[I", 0x401, 13, 11, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 14, 10, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 15, 10, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 16, 9, -1, -1, -1, -1 },
+    { NULL, "[I", 0x401, 16, 11, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 16, 17, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 16, 18, -1, -1, -1, -1 },
+    { NULL, "[I", 0x401, 16, 19, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 20, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 21, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 22, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 22, 23, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 22, 24, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 25, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 25, 23, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 25, 24, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 26, 27, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 28, 27, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 29, 1, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 30, 1, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 31, 1, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 32, 1, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 33, 1, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 34, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 35, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeField = { 2, "DateTimeField", "org.joda.time", NULL, 0x401, 51, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getType);
+  methods[1].selector = @selector(getName);
+  methods[2].selector = @selector(isSupported);
+  methods[3].selector = @selector(isLenient);
+  methods[4].selector = @selector(getWithLong:);
+  methods[5].selector = @selector(getAsTextWithLong:withJavaUtilLocale:);
+  methods[6].selector = @selector(getAsTextWithLong:);
+  methods[7].selector = @selector(getAsTextWithOrgJodaTimeReadablePartial:withInt:withJavaUtilLocale:);
+  methods[8].selector = @selector(getAsTextWithOrgJodaTimeReadablePartial:withJavaUtilLocale:);
+  methods[9].selector = @selector(getAsTextWithInt:withJavaUtilLocale:);
+  methods[10].selector = @selector(getAsShortTextWithLong:withJavaUtilLocale:);
+  methods[11].selector = @selector(getAsShortTextWithLong:);
+  methods[12].selector = @selector(getAsShortTextWithOrgJodaTimeReadablePartial:withInt:withJavaUtilLocale:);
+  methods[13].selector = @selector(getAsShortTextWithOrgJodaTimeReadablePartial:withJavaUtilLocale:);
+  methods[14].selector = @selector(getAsShortTextWithInt:withJavaUtilLocale:);
+  methods[15].selector = @selector(addWithLong:withInt:);
+  methods[16].selector = @selector(addWithLong:withLong:);
+  methods[17].selector = @selector(addWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:);
+  methods[18].selector = @selector(addWrapPartialWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:);
+  methods[19].selector = @selector(addWrapFieldWithLong:withInt:);
+  methods[20].selector = @selector(addWrapFieldWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:);
+  methods[21].selector = @selector(getDifferenceWithLong:withLong:);
+  methods[22].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  methods[23].selector = @selector(setWithLong:withInt:);
+  methods[24].selector = @selector(setWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:);
+  methods[25].selector = @selector(setWithLong:withNSString:withJavaUtilLocale:);
+  methods[26].selector = @selector(setWithLong:withNSString:);
+  methods[27].selector = @selector(setWithOrgJodaTimeReadablePartial:withInt:withIntArray:withNSString:withJavaUtilLocale:);
+  methods[28].selector = @selector(getDurationField);
+  methods[29].selector = @selector(getRangeDurationField);
+  methods[30].selector = @selector(isLeapWithLong:);
+  methods[31].selector = @selector(getLeapAmountWithLong:);
+  methods[32].selector = @selector(getLeapDurationField);
+  methods[33].selector = @selector(getMinimumValue);
+  methods[34].selector = @selector(getMinimumValueWithLong:);
+  methods[35].selector = @selector(getMinimumValueWithOrgJodaTimeReadablePartial:);
+  methods[36].selector = @selector(getMinimumValueWithOrgJodaTimeReadablePartial:withIntArray:);
+  methods[37].selector = @selector(getMaximumValue);
+  methods[38].selector = @selector(getMaximumValueWithLong:);
+  methods[39].selector = @selector(getMaximumValueWithOrgJodaTimeReadablePartial:);
+  methods[40].selector = @selector(getMaximumValueWithOrgJodaTimeReadablePartial:withIntArray:);
+  methods[41].selector = @selector(getMaximumTextLengthWithJavaUtilLocale:);
+  methods[42].selector = @selector(getMaximumShortTextLengthWithJavaUtilLocale:);
+  methods[43].selector = @selector(roundFloorWithLong:);
+  methods[44].selector = @selector(roundCeilingWithLong:);
+  methods[45].selector = @selector(roundHalfFloorWithLong:);
+  methods[46].selector = @selector(roundHalfCeilingWithLong:);
+  methods[47].selector = @selector(roundHalfEvenWithLong:);
+  methods[48].selector = @selector(remainderWithLong:);
+  methods[49].selector = @selector(description);
+  methods[50].selector = @selector(init);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "get", "J", "getAsText", "JLJavaUtilLocale;", "LOrgJodaTimeReadablePartial;ILJavaUtilLocale;", "LOrgJodaTimeReadablePartial;LJavaUtilLocale;", "ILJavaUtilLocale;", "getAsShortText", "add", "JI", "JJ", "LOrgJodaTimeReadablePartial;I[II", "addWrapPartial", "addWrapField", "getDifference", "getDifferenceAsLong", "set", "JLNSString;LJavaUtilLocale;", "JLNSString;", "LOrgJodaTimeReadablePartial;I[ILNSString;LJavaUtilLocale;", "isLeap", "getLeapAmount", "getMinimumValue", "LOrgJodaTimeReadablePartial;", "LOrgJodaTimeReadablePartial;[I", "getMaximumValue", "getMaximumTextLength", "LJavaUtilLocale;", "getMaximumShortTextLength", "roundFloor", "roundCeiling", "roundHalfFloor", "roundHalfCeiling", "roundHalfEven", "remainder", "toString" };
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeField = { "DateTimeField", "org.joda.time", ptrTable, methods, NULL, 7, 0x401, 51, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeDateTimeField;
 }
 

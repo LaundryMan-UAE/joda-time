@@ -4,8 +4,10 @@
 //
 
 #include "IOSClass.h"
+#include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "java/lang/IllegalArgumentException.h"
+#include "java/lang/annotation/Annotation.h"
 #include "java/util/Calendar.h"
 #include "java/util/Date.h"
 #include "java/util/GregorianCalendar.h"
@@ -16,13 +18,14 @@
 #include "org/joda/time/DateTimeField.h"
 #include "org/joda/time/DateTimeFieldType.h"
 #include "org/joda/time/DateTimeZone.h"
-#include "org/joda/time/ReadableInstant.h"
 #include "org/joda/time/base/AbstractDateTime.h"
 #include "org/joda/time/base/AbstractInstant.h"
 #include "org/joda/time/format/DateTimeFormat.h"
 #include "org/joda/time/format/DateTimeFormatter.h"
 
 #pragma clang diagnostic ignored "-Wprotocol"
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeBaseAbstractDateTime__Annotations$0();
 
 @implementation OrgJodaTimeBaseAbstractDateTime
 
@@ -35,9 +38,9 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (jint)getWithOrgJodaTimeDateTimeFieldType:(OrgJodaTimeDateTimeFieldType *)type {
   if (type == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The DateTimeFieldType must not be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The DateTimeFieldType must not be null");
   }
-  return [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeDateTimeFieldType *) nil_chk(type)) getFieldWithOrgJodaTimeChronology:[self getChronology]])) getWithLong:[self getMillis]];
+  return [((OrgJodaTimeDateTimeField *) nil_chk([type getFieldWithOrgJodaTimeChronology:[self getChronology]])) getWithLong:[self getMillis]];
 }
 
 - (jint)getEra {
@@ -124,7 +127,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 - (JavaUtilGregorianCalendar *)toGregorianCalendar {
   OrgJodaTimeDateTimeZone *zone = [self getZone];
-  JavaUtilGregorianCalendar *cal = [new_JavaUtilGregorianCalendar_initWithJavaUtilTimeZone_([((OrgJodaTimeDateTimeZone *) nil_chk(zone)) toTimeZone]) autorelease];
+  JavaUtilGregorianCalendar *cal = create_JavaUtilGregorianCalendar_initWithJavaUtilTimeZone_([((OrgJodaTimeDateTimeZone *) nil_chk(zone)) toTimeZone]);
   [cal setTimeWithJavaUtilDate:[self toDate]];
   return cal;
 }
@@ -148,39 +151,64 @@ J2OBJC_IGNORE_DESIGNATED_END
   return [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk([((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(OrgJodaTimeFormatDateTimeFormat_forPatternWithNSString_(pattern))) withLocaleWithJavaUtilLocale:locale])) printWithOrgJodaTimeReadableInstant:self];
 }
 
-+ (IOSObjectArray *)__annotations_toString {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "AbstractDateTime", NULL, 0x4, NULL, NULL },
-    { "getWithOrgJodaTimeDateTimeFieldType:", "get", "I", 0x1, NULL, NULL },
-    { "getEra", NULL, "I", 0x1, NULL, NULL },
-    { "getCenturyOfEra", NULL, "I", 0x1, NULL, NULL },
-    { "getYearOfEra", NULL, "I", 0x1, NULL, NULL },
-    { "getYearOfCentury", NULL, "I", 0x1, NULL, NULL },
-    { "getYear", NULL, "I", 0x1, NULL, NULL },
-    { "getWeekyear", NULL, "I", 0x1, NULL, NULL },
-    { "getMonthOfYear", NULL, "I", 0x1, NULL, NULL },
-    { "getWeekOfWeekyear", NULL, "I", 0x1, NULL, NULL },
-    { "getDayOfYear", NULL, "I", 0x1, NULL, NULL },
-    { "getDayOfMonth", NULL, "I", 0x1, NULL, NULL },
-    { "getDayOfWeek", NULL, "I", 0x1, NULL, NULL },
-    { "getHourOfDay", NULL, "I", 0x1, NULL, NULL },
-    { "getMinuteOfDay", NULL, "I", 0x1, NULL, NULL },
-    { "getMinuteOfHour", NULL, "I", 0x1, NULL, NULL },
-    { "getSecondOfDay", NULL, "I", 0x1, NULL, NULL },
-    { "getSecondOfMinute", NULL, "I", 0x1, NULL, NULL },
-    { "getMillisOfDay", NULL, "I", 0x1, NULL, NULL },
-    { "getMillisOfSecond", NULL, "I", 0x1, NULL, NULL },
-    { "toCalendarWithJavaUtilLocale:", "toCalendar", "Ljava.util.Calendar;", 0x1, NULL, NULL },
-    { "toGregorianCalendar", NULL, "Ljava.util.GregorianCalendar;", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "toStringWithNSString:", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "toStringWithNSString:withJavaUtilLocale:", "toString", "Ljava.lang.String;", 0x1, "Ljava.lang.IllegalArgumentException;", NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilCalendar;", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilGregorianCalendar;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, -1, -1, -1, 5, -1 },
+    { NULL, "LNSString;", 0x1, 4, 6, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, 7, 8, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractDateTime = { 2, "AbstractDateTime", "org.joda.time.base", NULL, 0x401, 25, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getWithOrgJodaTimeDateTimeFieldType:);
+  methods[2].selector = @selector(getEra);
+  methods[3].selector = @selector(getCenturyOfEra);
+  methods[4].selector = @selector(getYearOfEra);
+  methods[5].selector = @selector(getYearOfCentury);
+  methods[6].selector = @selector(getYear);
+  methods[7].selector = @selector(getWeekyear);
+  methods[8].selector = @selector(getMonthOfYear);
+  methods[9].selector = @selector(getWeekOfWeekyear);
+  methods[10].selector = @selector(getDayOfYear);
+  methods[11].selector = @selector(getDayOfMonth);
+  methods[12].selector = @selector(getDayOfWeek);
+  methods[13].selector = @selector(getHourOfDay);
+  methods[14].selector = @selector(getMinuteOfDay);
+  methods[15].selector = @selector(getMinuteOfHour);
+  methods[16].selector = @selector(getSecondOfDay);
+  methods[17].selector = @selector(getSecondOfMinute);
+  methods[18].selector = @selector(getMillisOfDay);
+  methods[19].selector = @selector(getMillisOfSecond);
+  methods[20].selector = @selector(toCalendarWithJavaUtilLocale:);
+  methods[21].selector = @selector(toGregorianCalendar);
+  methods[22].selector = @selector(description);
+  methods[23].selector = @selector(toStringWithNSString:);
+  methods[24].selector = @selector(toStringWithNSString:withJavaUtilLocale:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "get", "LOrgJodaTimeDateTimeFieldType;", "toCalendar", "LJavaUtilLocale;", "toString", (void *)&OrgJodaTimeBaseAbstractDateTime__Annotations$0, "LNSString;", "LNSString;LJavaUtilLocale;", "LJavaLangIllegalArgumentException;" };
+  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractDateTime = { "AbstractDateTime", "org.joda.time.base", ptrTable, methods, NULL, 7, 0x401, 25, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeBaseAbstractDateTime;
 }
 
@@ -188,6 +216,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 void OrgJodaTimeBaseAbstractDateTime_init(OrgJodaTimeBaseAbstractDateTime *self) {
   OrgJodaTimeBaseAbstractInstant_init(self);
+}
+
+IOSObjectArray *OrgJodaTimeBaseAbstractDateTime__Annotations$0() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_OrgJodaConvertToString() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseAbstractDateTime)

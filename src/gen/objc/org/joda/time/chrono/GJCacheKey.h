@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronoGJCacheKey_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronoGJCacheKey_RESTRICT
-#define OrgJodaTimeChronoGJCacheKey_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronoGJCacheKey")
+#ifdef RESTRICT_OrgJodaTimeChronoGJCacheKey
+#define INCLUDE_ALL_OrgJodaTimeChronoGJCacheKey 0
 #else
-#define OrgJodaTimeChronoGJCacheKey_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronoGJCacheKey 1
 #endif
-#undef OrgJodaTimeChronoGJCacheKey_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronoGJCacheKey
 
-#if !defined (OrgJodaTimeChronoGJCacheKey_) && (OrgJodaTimeChronoGJCacheKey_INCLUDE_ALL || defined(OrgJodaTimeChronoGJCacheKey_INCLUDE))
+#if !defined (OrgJodaTimeChronoGJCacheKey_) && (INCLUDE_ALL_OrgJodaTimeChronoGJCacheKey || defined(INCLUDE_OrgJodaTimeChronoGJCacheKey))
 #define OrgJodaTimeChronoGJCacheKey_
 
 @class OrgJodaTimeDateTimeZone;
@@ -50,4 +50,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJCacheKey)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronoGJCacheKey_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronoGJCacheKey")

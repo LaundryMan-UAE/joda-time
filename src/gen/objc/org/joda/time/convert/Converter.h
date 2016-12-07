@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertConverter_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertConverter_RESTRICT
-#define OrgJodaTimeConvertConverter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertConverter")
+#ifdef RESTRICT_OrgJodaTimeConvertConverter
+#define INCLUDE_ALL_OrgJodaTimeConvertConverter 0
 #else
-#define OrgJodaTimeConvertConverter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertConverter 1
 #endif
-#undef OrgJodaTimeConvertConverter_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertConverter
 
-#if !defined (OrgJodaTimeConvertConverter_) && (OrgJodaTimeConvertConverter_INCLUDE_ALL || defined(OrgJodaTimeConvertConverter_INCLUDE))
+#if !defined (OrgJodaTimeConvertConverter_) && (INCLUDE_ALL_OrgJodaTimeConvertConverter || defined(INCLUDE_OrgJodaTimeConvertConverter))
 #define OrgJodaTimeConvertConverter_
 
 @class IOSClass;
@@ -23,7 +23,7 @@
  @author Brian S O'Neill
  @since 1.0
  */
-@protocol OrgJodaTimeConvertConverter < NSObject, JavaObject >
+@protocol OrgJodaTimeConvertConverter < JavaObject >
 
 /*!
  @brief Returns the object type that this converter supports, which may
@@ -40,4 +40,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertConverter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertConverter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertConverter")

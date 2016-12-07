@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_RESTRICT
-#define OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField")
+#ifdef RESTRICT_OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField
+#define INCLUDE_ALL_OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField 0
 #else
-#define OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField 1
 #endif
-#undef OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField
 
-#if !defined (OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_) && (OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_INCLUDE_ALL || defined(OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_INCLUDE))
+#if !defined (OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_) && (INCLUDE_ALL_OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField || defined(INCLUDE_OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField))
 #define OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_
 
-#define OrgJodaTimeFieldPreciseDurationDateTimeField_RESTRICT 1
-#define OrgJodaTimeFieldPreciseDurationDateTimeField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldPreciseDurationDateTimeField 1
+#define INCLUDE_OrgJodaTimeFieldPreciseDurationDateTimeField 1
 #include "org/joda/time/field/PreciseDurationDateTimeField.h"
 
 @class IOSIntArray;
@@ -90,4 +90,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeField")

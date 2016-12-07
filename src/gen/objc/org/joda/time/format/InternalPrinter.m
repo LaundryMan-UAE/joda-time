@@ -3,14 +3,7 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/Joda-Time/src/main/java/org/joda/time/format/InternalPrinter.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
-#include "java/io/IOException.h"
-#include "java/lang/Appendable.h"
-#include "java/util/Locale.h"
-#include "org/joda/time/Chronology.h"
-#include "org/joda/time/DateTimeZone.h"
-#include "org/joda/time/ReadablePartial.h"
 #include "org/joda/time/format/InternalPrinter.h"
 
 @interface OrgJodaTimeFormatInternalPrinter : NSObject
@@ -20,12 +13,19 @@
 @implementation OrgJodaTimeFormatInternalPrinter
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "estimatePrintedLength", NULL, "I", 0x401, NULL, NULL },
-    { "printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:", "printTo", "V", 0x401, "Ljava.io.IOException;", NULL },
-    { "printToWithJavaLangAppendable:withOrgJodaTimeReadablePartial:withJavaUtilLocale:", "printTo", "V", 0x401, "Ljava.io.IOException;", NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 0, 1, 2, -1, -1, -1 },
+    { NULL, "V", 0x401, 0, 3, 2, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatInternalPrinter = { 2, "InternalPrinter", "org.joda.time.format", NULL, 0x608, 3, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(estimatePrintedLength);
+  methods[1].selector = @selector(printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
+  methods[2].selector = @selector(printToWithJavaLangAppendable:withOrgJodaTimeReadablePartial:withJavaUtilLocale:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "printTo", "LJavaLangAppendable;JLOrgJodaTimeChronology;ILOrgJodaTimeDateTimeZone;LJavaUtilLocale;", "LJavaIoIOException;", "LJavaLangAppendable;LOrgJodaTimeReadablePartial;LJavaUtilLocale;" };
+  static const J2ObjcClassInfo _OrgJodaTimeFormatInternalPrinter = { "InternalPrinter", "org.joda.time.format", ptrTable, methods, NULL, 7, 0x608, 3, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFormatInternalPrinter;
 }
 

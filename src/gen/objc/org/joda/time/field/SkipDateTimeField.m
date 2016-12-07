@@ -75,7 +75,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFieldSkipDateTimeField)
   OrgJodaTimeFieldFieldUtils_verifyValueBoundsWithOrgJodaTimeDateTimeField_withInt_withInt_withInt_(self, value, iMinValue_, [self getMaximumValue]);
   if (value <= iSkip_) {
     if (value == iSkip_) {
-      @throw [new_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_(OrgJodaTimeDateTimeFieldType_year(), JavaLangInteger_valueOfWithInt_(value), nil, nil) autorelease];
+      @throw create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_(OrgJodaTimeDateTimeFieldType_year(), JavaLangInteger_valueOfWithInt_(value), nil, nil);
     }
     value++;
   }
@@ -95,30 +95,40 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFieldSkipDateTimeField)
   [super dealloc];
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeChronology:withOrgJodaTimeDateTimeField:);
+  methods[1].selector = @selector(initWithOrgJodaTimeChronology:withOrgJodaTimeDateTimeField:withInt:);
+  methods[2].selector = @selector(getWithLong:);
+  methods[3].selector = @selector(setWithLong:withInt:);
+  methods[4].selector = @selector(getMinimumValue);
+  methods[5].selector = @selector(readResolve);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldSkipDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iChronology_", "LOrgJodaTimeChronology;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iSkip_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iMinValue_", "I", .constantValue.asLong = 0, 0x82, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "LOrgJodaTimeChronology;LOrgJodaTimeDateTimeField;", "LOrgJodaTimeChronology;LOrgJodaTimeDateTimeField;I", "get", "J", "set", "JI" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldSkipDateTimeField = { "SkipDateTimeField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x11, 6, 4, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeFieldSkipDateTimeField;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeFieldSkipDateTimeField class]) {
     OrgJodaTimeFieldSkipDateTimeField_super$_getMinimumValue = (jint (*)(id, SEL))[OrgJodaTimeFieldDelegatedDateTimeField instanceMethodForSelector:@selector(getMinimumValue)];
     J2OBJC_SET_INITIALIZED(OrgJodaTimeFieldSkipDateTimeField)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeChronology:withOrgJodaTimeDateTimeField:", "SkipDateTimeField", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeChronology:withOrgJodaTimeDateTimeField:withInt:", "SkipDateTimeField", NULL, 0x1, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x1, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x1, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldSkipDateTimeField_serialVersionUID },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iSkip_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iMinValue_", NULL, 0x82, "I", NULL, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldSkipDateTimeField = { 2, "SkipDateTimeField", "org.joda.time.field", NULL, 0x11, 6, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeFieldSkipDateTimeField;
 }
 
 @end
@@ -128,15 +138,11 @@ void OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJoda
 }
 
 OrgJodaTimeFieldSkipDateTimeField *new_OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field) {
-  OrgJodaTimeFieldSkipDateTimeField *self = [OrgJodaTimeFieldSkipDateTimeField alloc];
-  OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(self, chronology, field);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldSkipDateTimeField, initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_, chronology, field)
 }
 
 OrgJodaTimeFieldSkipDateTimeField *create_OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field) {
-  OrgJodaTimeFieldSkipDateTimeField *self = [[OrgJodaTimeFieldSkipDateTimeField alloc] autorelease];
-  OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_(self, chronology, field);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldSkipDateTimeField, initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_, chronology, field)
 }
 
 void OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(OrgJodaTimeFieldSkipDateTimeField *self, OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field, jint skip) {
@@ -156,15 +162,11 @@ void OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJoda
 }
 
 OrgJodaTimeFieldSkipDateTimeField *new_OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field, jint skip) {
-  OrgJodaTimeFieldSkipDateTimeField *self = [OrgJodaTimeFieldSkipDateTimeField alloc];
-  OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(self, chronology, field, skip);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldSkipDateTimeField, initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_, chronology, field, skip)
 }
 
 OrgJodaTimeFieldSkipDateTimeField *create_OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(OrgJodaTimeChronology *chronology, OrgJodaTimeDateTimeField *field, jint skip) {
-  OrgJodaTimeFieldSkipDateTimeField *self = [[OrgJodaTimeFieldSkipDateTimeField alloc] autorelease];
-  OrgJodaTimeFieldSkipDateTimeField_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_(self, chronology, field, skip);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldSkipDateTimeField, initWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeField_withInt_, chronology, field, skip)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldSkipDateTimeField)

@@ -4,8 +4,6 @@
 //
 
 #include "J2ObjC_source.h"
-#include "org/joda/time/Chronology.h"
-#include "org/joda/time/DateTimeZone.h"
 #include "org/joda/time/convert/InstantConverter.h"
 
 @interface OrgJodaTimeConvertInstantConverter : NSObject
@@ -15,12 +13,19 @@
 @implementation OrgJodaTimeConvertInstantConverter
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getChronologyWithId:withOrgJodaTimeDateTimeZone:", "getChronology", "Lorg.joda.time.Chronology;", 0x401, NULL, NULL },
-    { "getChronologyWithId:withOrgJodaTimeChronology:", "getChronology", "Lorg.joda.time.Chronology;", 0x401, NULL, NULL },
-    { "getInstantMillisWithId:withOrgJodaTimeChronology:", "getInstantMillis", "J", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeChronology;", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x401, 0, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 3, 2, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertInstantConverter = { 2, "InstantConverter", "org.joda.time.convert", NULL, 0x609, 3, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getChronologyWithId:withOrgJodaTimeDateTimeZone:);
+  methods[1].selector = @selector(getChronologyWithId:withOrgJodaTimeChronology:);
+  methods[2].selector = @selector(getInstantMillisWithId:withOrgJodaTimeChronology:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "getChronology", "LNSObject;LOrgJodaTimeDateTimeZone;", "LNSObject;LOrgJodaTimeChronology;", "getInstantMillis" };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertInstantConverter = { "InstantConverter", "org.joda.time.convert", ptrTable, methods, NULL, 7, 0x609, 3, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeConvertInstantConverter;
 }
 

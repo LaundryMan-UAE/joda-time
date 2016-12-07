@@ -136,22 +136,35 @@ __attribute__((unused)) static OrgJodaTimeDateTimeField *OrgJodaTimeChronoStrict
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getInstanceWithOrgJodaTimeChronology:", "getInstance", "Lorg.joda.time.chrono.StrictChronology;", 0x9, NULL, NULL },
-    { "initWithOrgJodaTimeChronology:", "StrictChronology", NULL, 0x2, NULL, NULL },
-    { "withUTC", NULL, "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "withZoneWithOrgJodaTimeDateTimeZone:", "withZone", "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "assembleWithOrgJodaTimeChronoAssembledChronology_Fields:", "assemble", "V", 0x4, NULL, NULL },
-    { "convertFieldWithOrgJodaTimeDateTimeField:", "convertField", "Lorg.joda.time.DateTimeField;", 0x1a, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeChronoStrictChronology;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x2, -1, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 4, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x1a, 6, 7, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 8, 9, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 10, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 11, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getInstanceWithOrgJodaTimeChronology:);
+  methods[1].selector = @selector(initWithOrgJodaTimeChronology:);
+  methods[2].selector = @selector(withUTC);
+  methods[3].selector = @selector(withZoneWithOrgJodaTimeDateTimeZone:);
+  methods[4].selector = @selector(assembleWithOrgJodaTimeChronoAssembledChronology_Fields:);
+  methods[5].selector = @selector(convertFieldWithOrgJodaTimeDateTimeField:);
+  methods[6].selector = @selector(isEqual:);
+  methods[7].selector = @selector(hash);
+  methods[8].selector = @selector(description);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoStrictChronology_serialVersionUID },
-    { "iWithUTC_", NULL, 0x82, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoStrictChronology_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iWithUTC_", "LOrgJodaTimeChronology;", .constantValue.asLong = 0, 0x82, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoStrictChronology = { 2, "StrictChronology", "org.joda.time.chrono", NULL, 0x11, 9, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "getInstance", "LOrgJodaTimeChronology;", "withZone", "LOrgJodaTimeDateTimeZone;", "assemble", "LOrgJodaTimeChronoAssembledChronology_Fields;", "convertField", "LOrgJodaTimeDateTimeField;", "equals", "LNSObject;", "hashCode", "toString" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoStrictChronology = { "StrictChronology", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x11, 9, 2, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeChronoStrictChronology;
 }
 
@@ -160,9 +173,9 @@ __attribute__((unused)) static OrgJodaTimeDateTimeField *OrgJodaTimeChronoStrict
 OrgJodaTimeChronoStrictChronology *OrgJodaTimeChronoStrictChronology_getInstanceWithOrgJodaTimeChronology_(OrgJodaTimeChronology *base) {
   OrgJodaTimeChronoStrictChronology_initialize();
   if (base == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Must supply a chronology") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"Must supply a chronology");
   }
-  return [new_OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(base) autorelease];
+  return create_OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(base);
 }
 
 void OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronoStrictChronology *self, OrgJodaTimeChronology *base) {
@@ -170,15 +183,11 @@ void OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(OrgJodaTim
 }
 
 OrgJodaTimeChronoStrictChronology *new_OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *base) {
-  OrgJodaTimeChronoStrictChronology *self = [OrgJodaTimeChronoStrictChronology alloc];
-  OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(self, base);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoStrictChronology, initWithOrgJodaTimeChronology_, base)
 }
 
 OrgJodaTimeChronoStrictChronology *create_OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(OrgJodaTimeChronology *base) {
-  OrgJodaTimeChronoStrictChronology *self = [[OrgJodaTimeChronoStrictChronology alloc] autorelease];
-  OrgJodaTimeChronoStrictChronology_initWithOrgJodaTimeChronology_(self, base);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoStrictChronology, initWithOrgJodaTimeChronology_, base)
 }
 
 OrgJodaTimeDateTimeField *OrgJodaTimeChronoStrictChronology_convertFieldWithOrgJodaTimeDateTimeField_(OrgJodaTimeDateTimeField *field) {

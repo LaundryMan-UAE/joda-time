@@ -98,14 +98,14 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeBaseBaseSingleFieldPeriod, START_1972, j
 
 - (OrgJodaTimeDurationFieldType *)getFieldTypeWithInt:(jint)index {
   if (index != 0) {
-    @throw [new_JavaLangIndexOutOfBoundsException_initWithNSString_(NSString_valueOfInt_(index)) autorelease];
+    @throw create_JavaLangIndexOutOfBoundsException_initWithNSString_(NSString_valueOfInt_(index));
   }
   return [self getFieldType];
 }
 
 - (jint)getValueWithInt:(jint)index {
   if (index != 0) {
-    @throw [new_JavaLangIndexOutOfBoundsException_initWithNSString_(NSString_valueOfInt_(index)) autorelease];
+    @throw create_JavaLangIndexOutOfBoundsException_initWithNSString_(NSString_valueOfInt_(index));
   }
   return [self getValue];
 }
@@ -126,7 +126,7 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeBaseBaseSingleFieldPeriod, START_1972, j
 }
 
 - (OrgJodaTimeMutablePeriod *)toMutablePeriod {
-  OrgJodaTimeMutablePeriod *period = [new_OrgJodaTimeMutablePeriod_init() autorelease];
+  OrgJodaTimeMutablePeriod *period = create_OrgJodaTimeMutablePeriod_init();
   [period addWithOrgJodaTimeReadablePeriod:self];
   return period;
 }
@@ -152,7 +152,7 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeBaseBaseSingleFieldPeriod, START_1972, j
 - (jint)compareToWithId:(OrgJodaTimeBaseBaseSingleFieldPeriod *)other {
   cast_chk(other, [OrgJodaTimeBaseBaseSingleFieldPeriod class]);
   if ([((OrgJodaTimeBaseBaseSingleFieldPeriod *) nil_chk(other)) getClass] != (id) [self getClass]) {
-    @throw [new_JavaLangClassCastException_initWithNSString_(JreStrcat("@$@", [self getClass], @" cannot be compared to ", [other getClass])) autorelease];
+    @throw create_JavaLangClassCastException_initWithNSString_(JreStrcat("@$@", [self getClass], @" cannot be compared to ", [other getClass]));
   }
   jint otherValue = [other getValue];
   jint thisValue = [self getValue];
@@ -166,32 +166,54 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeBaseBaseSingleFieldPeriod, START_1972, j
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "betweenWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:withOrgJodaTimeDurationFieldType:", "between", "I", 0xc, NULL, NULL },
-    { "betweenWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePeriod:", "between", "I", 0xc, NULL, NULL },
-    { "standardPeriodInWithOrgJodaTimeReadablePeriod:withLong:", "standardPeriodIn", "I", 0xc, NULL, NULL },
-    { "initWithInt:", "BaseSingleFieldPeriod", NULL, 0x4, NULL, NULL },
-    { "getValue", NULL, "I", 0x4, NULL, NULL },
-    { "setValueWithInt:", "setValue", "V", 0x4, NULL, NULL },
-    { "getFieldType", NULL, "Lorg.joda.time.DurationFieldType;", 0x401, NULL, NULL },
-    { "getPeriodType", NULL, "Lorg.joda.time.PeriodType;", 0x401, NULL, NULL },
-    { "size", NULL, "I", 0x1, NULL, NULL },
-    { "getFieldTypeWithInt:", "getFieldType", "Lorg.joda.time.DurationFieldType;", 0x1, NULL, NULL },
-    { "getValueWithInt:", "getValue", "I", 0x1, NULL, NULL },
-    { "getWithOrgJodaTimeDurationFieldType:", "get", "I", 0x1, NULL, NULL },
-    { "isSupportedWithOrgJodaTimeDurationFieldType:", "isSupported", "Z", 0x1, NULL, NULL },
-    { "toPeriod", NULL, "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "toMutablePeriod", NULL, "Lorg.joda.time.MutablePeriod;", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "compareToWithId:", "compareTo", "I", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "I", 0xc, 0, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0xc, 0, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0xc, 3, 4, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 6, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriodType;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x1, 7, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 8, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 9, 10, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 11, 10, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMutablePeriod;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 12, 13, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 14, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 15, 16, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(betweenWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:withOrgJodaTimeDurationFieldType:);
+  methods[1].selector = @selector(betweenWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePeriod:);
+  methods[2].selector = @selector(standardPeriodInWithOrgJodaTimeReadablePeriod:withLong:);
+  methods[3].selector = @selector(initWithInt:);
+  methods[4].selector = @selector(getValue);
+  methods[5].selector = @selector(setValueWithInt:);
+  methods[6].selector = @selector(getFieldType);
+  methods[7].selector = @selector(getPeriodType);
+  methods[8].selector = @selector(size);
+  methods[9].selector = @selector(getFieldTypeWithInt:);
+  methods[10].selector = @selector(getValueWithInt:);
+  methods[11].selector = @selector(getWithOrgJodaTimeDurationFieldType:);
+  methods[12].selector = @selector(isSupportedWithOrgJodaTimeDurationFieldType:);
+  methods[13].selector = @selector(toPeriod);
+  methods[14].selector = @selector(toMutablePeriod);
+  methods[15].selector = @selector(isEqual:);
+  methods[16].selector = @selector(hash);
+  methods[17].selector = @selector(compareToWithId:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeBaseBaseSingleFieldPeriod_serialVersionUID },
-    { "START_1972", "START_1972", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeBaseBaseSingleFieldPeriod_START_1972 },
-    { "iPeriod_", NULL, 0x42, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeBaseBaseSingleFieldPeriod_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "START_1972", "J", .constantValue.asLong = OrgJodaTimeBaseBaseSingleFieldPeriod_START_1972, 0x1a, -1, -1, -1, -1 },
+    { "iPeriod_", "I", .constantValue.asLong = 0, 0x42, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseSingleFieldPeriod = { 2, "BaseSingleFieldPeriod", "org.joda.time.base", NULL, 0x401, 18, methods, 3, fields, 0, NULL, 0, NULL, NULL, "Ljava/lang/Object;Lorg/joda/time/ReadablePeriod;Ljava/lang/Comparable<Lorg/joda/time/base/BaseSingleFieldPeriod;>;Ljava/io/Serializable;" };
+  static const void *ptrTable[] = { "between", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableInstant;LOrgJodaTimeDurationFieldType;", "LOrgJodaTimeReadablePartial;LOrgJodaTimeReadablePartial;LOrgJodaTimeReadablePeriod;", "standardPeriodIn", "LOrgJodaTimeReadablePeriod;J", "I", "setValue", "getFieldType", "getValue", "get", "LOrgJodaTimeDurationFieldType;", "isSupported", "equals", "LNSObject;", "hashCode", "compareTo", "LOrgJodaTimeBaseBaseSingleFieldPeriod;", "Ljava/lang/Object;Lorg/joda/time/ReadablePeriod;Ljava/lang/Comparable<Lorg/joda/time/base/BaseSingleFieldPeriod;>;Ljava/io/Serializable;" };
+  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseSingleFieldPeriod = { "BaseSingleFieldPeriod", "org.joda.time.base", ptrTable, methods, fields, 7, 0x401, 18, 3, -1, -1, -1, 17, -1 };
   return &_OrgJodaTimeBaseBaseSingleFieldPeriod;
 }
 
@@ -200,31 +222,31 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeBaseBaseSingleFieldPeriod, START_1972, j
 jint OrgJodaTimeBaseBaseSingleFieldPeriod_betweenWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimeDurationFieldType_(id<OrgJodaTimeReadableInstant> start, id<OrgJodaTimeReadableInstant> end, OrgJodaTimeDurationFieldType *field) {
   OrgJodaTimeBaseBaseSingleFieldPeriod_initialize();
   if (start == nil || end == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"ReadableInstant objects must not be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"ReadableInstant objects must not be null");
   }
   OrgJodaTimeChronology *chrono = OrgJodaTimeDateTimeUtils_getInstantChronologyWithOrgJodaTimeReadableInstant_(start);
-  jint amount = [((OrgJodaTimeDurationField *) nil_chk([((OrgJodaTimeDurationFieldType *) nil_chk(field)) getFieldWithOrgJodaTimeChronology:chrono])) getDifferenceWithLong:[((id<OrgJodaTimeReadableInstant>) nil_chk(end)) getMillis] withLong:[((id<OrgJodaTimeReadableInstant>) nil_chk(start)) getMillis]];
+  jint amount = [((OrgJodaTimeDurationField *) nil_chk([((OrgJodaTimeDurationFieldType *) nil_chk(field)) getFieldWithOrgJodaTimeChronology:chrono])) getDifferenceWithLong:[end getMillis] withLong:[start getMillis]];
   return amount;
 }
 
 jint OrgJodaTimeBaseBaseSingleFieldPeriod_betweenWithOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePartial_withOrgJodaTimeReadablePeriod_(id<OrgJodaTimeReadablePartial> start, id<OrgJodaTimeReadablePartial> end, id<OrgJodaTimeReadablePeriod> zeroInstance) {
   OrgJodaTimeBaseBaseSingleFieldPeriod_initialize();
   if (start == nil || end == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must not be null") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must not be null");
   }
-  if ([((id<OrgJodaTimeReadablePartial>) nil_chk(start)) size] != [((id<OrgJodaTimeReadablePartial>) nil_chk(end)) size]) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must have the same set of fields") autorelease];
+  if ([start size] != [end size]) {
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must have the same set of fields");
   }
   for (jint i = 0, isize = [start size]; i < isize; i++) {
     if ([start getFieldTypeWithInt:i] != [end getFieldTypeWithInt:i]) {
-      @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must have the same set of fields") autorelease];
+      @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must have the same set of fields");
     }
   }
   if (OrgJodaTimeDateTimeUtils_isContiguousWithOrgJodaTimeReadablePartial_(start) == false) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must be contiguous") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"ReadablePartial objects must be contiguous");
   }
   OrgJodaTimeChronology *chrono = [((OrgJodaTimeChronology *) nil_chk(OrgJodaTimeDateTimeUtils_getChronologyWithOrgJodaTimeChronology_([start getChronology]))) withUTC];
-  IOSIntArray *values = [chrono getWithOrgJodaTimeReadablePeriod:zeroInstance withLong:[((OrgJodaTimeChronology *) nil_chk(chrono)) setWithOrgJodaTimeReadablePartial:start withLong:OrgJodaTimeBaseBaseSingleFieldPeriod_START_1972] withLong:[chrono setWithOrgJodaTimeReadablePartial:end withLong:OrgJodaTimeBaseBaseSingleFieldPeriod_START_1972]];
+  IOSIntArray *values = [((OrgJodaTimeChronology *) nil_chk(chrono)) getWithOrgJodaTimeReadablePeriod:zeroInstance withLong:[chrono setWithOrgJodaTimeReadablePartial:start withLong:OrgJodaTimeBaseBaseSingleFieldPeriod_START_1972] withLong:[chrono setWithOrgJodaTimeReadablePartial:end withLong:OrgJodaTimeBaseBaseSingleFieldPeriod_START_1972]];
   return IOSIntArray_Get(nil_chk(values), 0);
 }
 
@@ -235,12 +257,12 @@ jint OrgJodaTimeBaseBaseSingleFieldPeriod_standardPeriodInWithOrgJodaTimeReadabl
   }
   OrgJodaTimeChronology *iso = OrgJodaTimeChronoISOChronology_getInstanceUTC();
   jlong duration = 0LL;
-  for (jint i = 0; i < [((id<OrgJodaTimeReadablePeriod>) nil_chk(period)) size]; i++) {
+  for (jint i = 0; i < [period size]; i++) {
     jint value = [period getValueWithInt:i];
     if (value != 0) {
       OrgJodaTimeDurationField *field = [((OrgJodaTimeDurationFieldType *) nil_chk([period getFieldTypeWithInt:i])) getFieldWithOrgJodaTimeChronology:iso];
       if ([((OrgJodaTimeDurationField *) nil_chk(field)) isPrecise] == false) {
-        @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$$@", @"Cannot convert period to duration as ", [field getName], @" is not precise in the period ", period)) autorelease];
+        @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$$@", @"Cannot convert period to duration as ", [field getName], @" is not precise in the period ", period));
       }
       duration = OrgJodaTimeFieldFieldUtils_safeAddWithLong_withLong_(duration, OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withInt_([field getUnitMillis], value));
     }

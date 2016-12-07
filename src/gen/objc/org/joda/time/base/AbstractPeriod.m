@@ -7,6 +7,7 @@
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
+#include "java/lang/annotation/Annotation.h"
 #include "org/joda/convert/ToString.h"
 #include "org/joda/time/DurationFieldType.h"
 #include "org/joda/time/MutablePeriod.h"
@@ -18,6 +19,8 @@
 #include "org/joda/time/format/PeriodFormatter.h"
 
 #pragma clang diagnostic ignored "-Wprotocol"
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeBaseAbstractPeriod__Annotations$0();
 
 @implementation OrgJodaTimeBaseAbstractPeriod
 
@@ -69,11 +72,11 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (OrgJodaTimePeriod *)toPeriod {
-  return [new_OrgJodaTimePeriod_initWithId_(self) autorelease];
+  return create_OrgJodaTimePeriod_initWithId_(self);
 }
 
 - (OrgJodaTimeMutablePeriod *)toMutablePeriod {
-  return [new_OrgJodaTimeMutablePeriod_initWithId_(self) autorelease];
+  return create_OrgJodaTimeMutablePeriod_initWithId_(self);
 }
 
 - (jboolean)isEqual:(id)period {
@@ -112,31 +115,45 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (formatter == nil) {
     return [self description];
   }
-  return [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(formatter)) printWithOrgJodaTimeReadablePeriod:self];
-}
-
-+ (IOSObjectArray *)__annotations_toString {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
+  return [formatter printWithOrgJodaTimeReadablePeriod:self];
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "AbstractPeriod", NULL, 0x4, NULL, NULL },
-    { "size", NULL, "I", 0x1, NULL, NULL },
-    { "getFieldTypeWithInt:", "getFieldType", "Lorg.joda.time.DurationFieldType;", 0x1, NULL, NULL },
-    { "getFieldTypes", NULL, "[Lorg.joda.time.DurationFieldType;", 0x1, NULL, NULL },
-    { "getValues", NULL, "[I", 0x1, NULL, NULL },
-    { "getWithOrgJodaTimeDurationFieldType:", "get", "I", 0x1, NULL, NULL },
-    { "isSupportedWithOrgJodaTimeDurationFieldType:", "isSupported", "Z", 0x1, NULL, NULL },
-    { "indexOfWithOrgJodaTimeDurationFieldType:", "indexOf", "I", 0x1, NULL, NULL },
-    { "toPeriod", NULL, "Lorg.joda.time.Period;", 0x1, NULL, NULL },
-    { "toMutablePeriod", NULL, "Lorg.joda.time.MutablePeriod;", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "toStringWithOrgJodaTimeFormatPeriodFormatter:", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "[LOrgJodaTimeDurationFieldType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "[I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 4, 3, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 5, 3, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMutablePeriod;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 6, 7, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 8, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 9, -1, -1, -1, 10, -1 },
+    { NULL, "LNSString;", 0x1, 9, 11, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractPeriod = { 2, "AbstractPeriod", "org.joda.time.base", NULL, 0x401, 14, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(size);
+  methods[2].selector = @selector(getFieldTypeWithInt:);
+  methods[3].selector = @selector(getFieldTypes);
+  methods[4].selector = @selector(getValues);
+  methods[5].selector = @selector(getWithOrgJodaTimeDurationFieldType:);
+  methods[6].selector = @selector(isSupportedWithOrgJodaTimeDurationFieldType:);
+  methods[7].selector = @selector(indexOfWithOrgJodaTimeDurationFieldType:);
+  methods[8].selector = @selector(toPeriod);
+  methods[9].selector = @selector(toMutablePeriod);
+  methods[10].selector = @selector(isEqual:);
+  methods[11].selector = @selector(hash);
+  methods[12].selector = @selector(description);
+  methods[13].selector = @selector(toStringWithOrgJodaTimeFormatPeriodFormatter:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "getFieldType", "I", "get", "LOrgJodaTimeDurationFieldType;", "isSupported", "indexOf", "equals", "LNSObject;", "hashCode", "toString", (void *)&OrgJodaTimeBaseAbstractPeriod__Annotations$0, "LOrgJodaTimeFormatPeriodFormatter;" };
+  static const J2ObjcClassInfo _OrgJodaTimeBaseAbstractPeriod = { "AbstractPeriod", "org.joda.time.base", ptrTable, methods, NULL, 7, 0x401, 14, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeBaseAbstractPeriod;
 }
 
@@ -144,6 +161,10 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 void OrgJodaTimeBaseAbstractPeriod_init(OrgJodaTimeBaseAbstractPeriod *self) {
   NSObject_init(self);
+}
+
+IOSObjectArray *OrgJodaTimeBaseAbstractPeriod__Annotations$0() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_OrgJodaConvertToString() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeBaseAbstractPeriod)

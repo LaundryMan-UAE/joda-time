@@ -4,9 +4,6 @@
 //
 
 #include "J2ObjC_source.h"
-#include "org/joda/time/Chronology.h"
-#include "org/joda/time/PeriodType.h"
-#include "org/joda/time/ReadWritablePeriod.h"
 #include "org/joda/time/convert/PeriodConverter.h"
 
 @interface OrgJodaTimeConvertPeriodConverter : NSObject
@@ -16,11 +13,17 @@
 @implementation OrgJodaTimeConvertPeriodConverter
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "setIntoWithOrgJodaTimeReadWritablePeriod:withId:withOrgJodaTimeChronology:", "setInto", "V", 0x401, NULL, NULL },
-    { "getPeriodTypeWithId:", "getPeriodType", "Lorg.joda.time.PeriodType;", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "V", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriodType;", 0x401, 2, 3, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertPeriodConverter = { 2, "PeriodConverter", "org.joda.time.convert", NULL, 0x609, 2, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(setIntoWithOrgJodaTimeReadWritablePeriod:withId:withOrgJodaTimeChronology:);
+  methods[1].selector = @selector(getPeriodTypeWithId:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "setInto", "LOrgJodaTimeReadWritablePeriod;LNSObject;LOrgJodaTimeChronology;", "getPeriodType", "LNSObject;" };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertPeriodConverter = { "PeriodConverter", "org.joda.time.convert", ptrTable, methods, NULL, 7, 0x609, 2, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeConvertPeriodConverter;
 }
 

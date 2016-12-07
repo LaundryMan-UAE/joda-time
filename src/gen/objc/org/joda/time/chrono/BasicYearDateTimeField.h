@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronoBasicYearDateTimeField_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronoBasicYearDateTimeField_RESTRICT
-#define OrgJodaTimeChronoBasicYearDateTimeField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronoBasicYearDateTimeField")
+#ifdef RESTRICT_OrgJodaTimeChronoBasicYearDateTimeField
+#define INCLUDE_ALL_OrgJodaTimeChronoBasicYearDateTimeField 0
 #else
-#define OrgJodaTimeChronoBasicYearDateTimeField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronoBasicYearDateTimeField 1
 #endif
-#undef OrgJodaTimeChronoBasicYearDateTimeField_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronoBasicYearDateTimeField
 
-#if !defined (OrgJodaTimeChronoBasicYearDateTimeField_) && (OrgJodaTimeChronoBasicYearDateTimeField_INCLUDE_ALL || defined(OrgJodaTimeChronoBasicYearDateTimeField_INCLUDE))
+#if !defined (OrgJodaTimeChronoBasicYearDateTimeField_) && (INCLUDE_ALL_OrgJodaTimeChronoBasicYearDateTimeField || defined(INCLUDE_OrgJodaTimeChronoBasicYearDateTimeField))
 #define OrgJodaTimeChronoBasicYearDateTimeField_
 
-#define OrgJodaTimeFieldImpreciseDateTimeField_RESTRICT 1
-#define OrgJodaTimeFieldImpreciseDateTimeField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldImpreciseDateTimeField 1
+#define INCLUDE_OrgJodaTimeFieldImpreciseDateTimeField 1
 #include "org/joda/time/field/ImpreciseDateTimeField.h"
 
 @class OrgJodaTimeChronoBasicChronology;
@@ -101,4 +101,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicYearDateTimeField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronoBasicYearDateTimeField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronoBasicYearDateTimeField")

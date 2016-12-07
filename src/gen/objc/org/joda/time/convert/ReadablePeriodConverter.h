@@ -5,23 +5,23 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertReadablePeriodConverter_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertReadablePeriodConverter_RESTRICT
-#define OrgJodaTimeConvertReadablePeriodConverter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertReadablePeriodConverter")
+#ifdef RESTRICT_OrgJodaTimeConvertReadablePeriodConverter
+#define INCLUDE_ALL_OrgJodaTimeConvertReadablePeriodConverter 0
 #else
-#define OrgJodaTimeConvertReadablePeriodConverter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertReadablePeriodConverter 1
 #endif
-#undef OrgJodaTimeConvertReadablePeriodConverter_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertReadablePeriodConverter
 
-#if !defined (OrgJodaTimeConvertReadablePeriodConverter_) && (OrgJodaTimeConvertReadablePeriodConverter_INCLUDE_ALL || defined(OrgJodaTimeConvertReadablePeriodConverter_INCLUDE))
+#if !defined (OrgJodaTimeConvertReadablePeriodConverter_) && (INCLUDE_ALL_OrgJodaTimeConvertReadablePeriodConverter || defined(INCLUDE_OrgJodaTimeConvertReadablePeriodConverter))
 #define OrgJodaTimeConvertReadablePeriodConverter_
 
-#define OrgJodaTimeConvertAbstractConverter_RESTRICT 1
-#define OrgJodaTimeConvertAbstractConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertAbstractConverter 1
+#define INCLUDE_OrgJodaTimeConvertAbstractConverter 1
 #include "org/joda/time/convert/AbstractConverter.h"
 
-#define OrgJodaTimeConvertPeriodConverter_RESTRICT 1
-#define OrgJodaTimeConvertPeriodConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertPeriodConverter 1
+#define INCLUDE_OrgJodaTimeConvertPeriodConverter 1
 #include "org/joda/time/convert/PeriodConverter.h"
 
 @class IOSClass;
@@ -97,4 +97,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertReadablePeriodConverter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertReadablePeriodConverter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertReadablePeriodConverter")

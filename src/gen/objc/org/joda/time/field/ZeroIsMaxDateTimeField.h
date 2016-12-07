@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFieldZeroIsMaxDateTimeField_INCLUDE_ALL")
-#ifdef OrgJodaTimeFieldZeroIsMaxDateTimeField_RESTRICT
-#define OrgJodaTimeFieldZeroIsMaxDateTimeField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFieldZeroIsMaxDateTimeField")
+#ifdef RESTRICT_OrgJodaTimeFieldZeroIsMaxDateTimeField
+#define INCLUDE_ALL_OrgJodaTimeFieldZeroIsMaxDateTimeField 0
 #else
-#define OrgJodaTimeFieldZeroIsMaxDateTimeField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFieldZeroIsMaxDateTimeField 1
 #endif
-#undef OrgJodaTimeFieldZeroIsMaxDateTimeField_RESTRICT
+#undef RESTRICT_OrgJodaTimeFieldZeroIsMaxDateTimeField
 
-#if !defined (OrgJodaTimeFieldZeroIsMaxDateTimeField_) && (OrgJodaTimeFieldZeroIsMaxDateTimeField_INCLUDE_ALL || defined(OrgJodaTimeFieldZeroIsMaxDateTimeField_INCLUDE))
+#if !defined (OrgJodaTimeFieldZeroIsMaxDateTimeField_) && (INCLUDE_ALL_OrgJodaTimeFieldZeroIsMaxDateTimeField || defined(INCLUDE_OrgJodaTimeFieldZeroIsMaxDateTimeField))
 #define OrgJodaTimeFieldZeroIsMaxDateTimeField_
 
-#define OrgJodaTimeFieldDecoratedDateTimeField_RESTRICT 1
-#define OrgJodaTimeFieldDecoratedDateTimeField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldDecoratedDateTimeField 1
+#define INCLUDE_OrgJodaTimeFieldDecoratedDateTimeField 1
 #include "org/joda/time/field/DecoratedDateTimeField.h"
 
 @class IOSIntArray;
@@ -160,4 +160,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldZeroIsMaxDateTimeField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFieldZeroIsMaxDateTimeField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFieldZeroIsMaxDateTimeField")

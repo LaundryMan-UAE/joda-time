@@ -5,30 +5,30 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatPeriodFormatterBuilder_RESTRICT
-#define OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder")
+#ifdef RESTRICT_OrgJodaTimeFormatPeriodFormatterBuilder
+#define INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder 0
 #else
-#define OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder 1
 #endif
-#undef OrgJodaTimeFormatPeriodFormatterBuilder_RESTRICT
-#ifdef OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_INCLUDE
-#define OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_INCLUDE 1
+#undef RESTRICT_OrgJodaTimeFormatPeriodFormatterBuilder
+#ifdef INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix
+#define INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix 1
 #endif
-#ifdef OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_INCLUDE
-#define OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_INCLUDE 1
+#ifdef INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix
+#define INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix 1
 #endif
-#ifdef OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_INCLUDE
-#define OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_INCLUDE 1
+#ifdef INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix
+#define INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix 1
 #endif
-#ifdef OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix_INCLUDE
-#define OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_INCLUDE 1
+#ifdef INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix
+#define INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix 1
 #endif
-#ifdef OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_INCLUDE
-#define OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_INCLUDE 1
+#ifdef INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix
+#define INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix 1
 #endif
 
-#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_) && (OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE))
+#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_) && (INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder))
 #define OrgJodaTimeFormatPeriodFormatterBuilder_
 
 @class IOSObjectArray;
@@ -552,7 +552,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_) && (OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_INCLUDE))
+#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_) && (INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix))
 #define OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix_
 
 @class IOSObjectArray;
@@ -564,7 +564,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder)
  @brief Defines a formatted field's prefix or suffix text.
  This can be used for fields such as 'n hours' or 'nH' or 'Hour:n'.
  */
-@protocol OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix < NSObject, JavaObject >
+@protocol OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix < JavaObject >
 
 - (jint)calculatePrintedLengthWithInt:(jint)value;
 
@@ -611,7 +611,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAf
 
 #endif
 
-#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_) && (OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_INCLUDE))
+#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_) && (INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix))
 #define OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffix_
 
 @protocol JavaUtilSet;
@@ -654,7 +654,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_IgnorableAffi
 
 #endif
 
-#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix_) && (OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix_INCLUDE))
+#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix_) && (INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix))
 #define OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix_
 
 @class IOSObjectArray;
@@ -702,7 +702,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleAffix)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_) && (OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_INCLUDE))
+#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_) && (INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix))
 #define OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix_
 
 @class IOSObjectArray;
@@ -752,7 +752,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_PluralAffix)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_) && (OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_INCLUDE))
+#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_) && (INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix))
 #define OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_
 
 @class IOSObjectArray;
@@ -802,7 +802,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_) && (OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_INCLUDE))
+#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_) && (INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix))
 #define OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffix_
 
 @class IOSObjectArray;
@@ -852,15 +852,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_CompositeAffi
 
 #endif
 
-#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_) && (OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_INCLUDE))
+#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_) && (INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter))
 #define OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter_
 
-#define OrgJodaTimeFormatPeriodPrinter_RESTRICT 1
-#define OrgJodaTimeFormatPeriodPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatPeriodPrinter 1
+#define INCLUDE_OrgJodaTimeFormatPeriodPrinter 1
 #include "org/joda/time/format/PeriodPrinter.h"
 
-#define OrgJodaTimeFormatPeriodParser_RESTRICT 1
-#define OrgJodaTimeFormatPeriodParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatPeriodParser 1
+#define INCLUDE_OrgJodaTimeFormatPeriodParser 1
 #include "org/joda/time/format/PeriodParser.h"
 
 @class IOSObjectArray;
@@ -951,15 +951,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatte
 
 #endif
 
-#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_Literal_) && (OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatPeriodFormatterBuilder_Literal_INCLUDE))
+#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_Literal_) && (INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_Literal))
 #define OrgJodaTimeFormatPeriodFormatterBuilder_Literal_
 
-#define OrgJodaTimeFormatPeriodPrinter_RESTRICT 1
-#define OrgJodaTimeFormatPeriodPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatPeriodPrinter 1
+#define INCLUDE_OrgJodaTimeFormatPeriodPrinter 1
 #include "org/joda/time/format/PeriodPrinter.h"
 
-#define OrgJodaTimeFormatPeriodParser_RESTRICT 1
-#define OrgJodaTimeFormatPeriodParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatPeriodParser 1
+#define INCLUDE_OrgJodaTimeFormatPeriodParser 1
 #include "org/joda/time/format/PeriodParser.h"
 
 @class JavaIoWriter;
@@ -1018,15 +1018,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_Literal)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_Separator_) && (OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatPeriodFormatterBuilder_Separator_INCLUDE))
+#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_Separator_) && (INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_Separator))
 #define OrgJodaTimeFormatPeriodFormatterBuilder_Separator_
 
-#define OrgJodaTimeFormatPeriodPrinter_RESTRICT 1
-#define OrgJodaTimeFormatPeriodPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatPeriodPrinter 1
+#define INCLUDE_OrgJodaTimeFormatPeriodPrinter 1
 #include "org/joda/time/format/PeriodPrinter.h"
 
-#define OrgJodaTimeFormatPeriodParser_RESTRICT 1
-#define OrgJodaTimeFormatPeriodParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatPeriodParser 1
+#define INCLUDE_OrgJodaTimeFormatPeriodParser 1
 #include "org/joda/time/format/PeriodParser.h"
 
 @class IOSObjectArray;
@@ -1091,15 +1091,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_Separator)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_Composite_) && (OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatPeriodFormatterBuilder_Composite_INCLUDE))
+#if !defined (OrgJodaTimeFormatPeriodFormatterBuilder_Composite_) && (INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatPeriodFormatterBuilder_Composite))
 #define OrgJodaTimeFormatPeriodFormatterBuilder_Composite_
 
-#define OrgJodaTimeFormatPeriodPrinter_RESTRICT 1
-#define OrgJodaTimeFormatPeriodPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatPeriodPrinter 1
+#define INCLUDE_OrgJodaTimeFormatPeriodPrinter 1
 #include "org/joda/time/format/PeriodPrinter.h"
 
-#define OrgJodaTimeFormatPeriodParser_RESTRICT 1
-#define OrgJodaTimeFormatPeriodParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatPeriodParser 1
+#define INCLUDE_OrgJodaTimeFormatPeriodParser 1
 #include "org/joda/time/format/PeriodParser.h"
 
 @class JavaIoWriter;
@@ -1154,4 +1154,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatterBuilder_Composite)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatPeriodFormatterBuilder_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatterBuilder")

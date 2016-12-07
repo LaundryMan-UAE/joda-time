@@ -3,13 +3,8 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/Joda-Time/src/main/java/org/joda/time/convert/PartialConverter.java
 //
 
-#include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
-#include "org/joda/time/Chronology.h"
-#include "org/joda/time/DateTimeZone.h"
-#include "org/joda/time/ReadablePartial.h"
 #include "org/joda/time/convert/PartialConverter.h"
-#include "org/joda/time/format/DateTimeFormatter.h"
 
 @interface OrgJodaTimeConvertPartialConverter : NSObject
 
@@ -18,13 +13,21 @@
 @implementation OrgJodaTimeConvertPartialConverter
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getChronologyWithId:withOrgJodaTimeDateTimeZone:", "getChronology", "Lorg.joda.time.Chronology;", 0x401, NULL, NULL },
-    { "getChronologyWithId:withOrgJodaTimeChronology:", "getChronology", "Lorg.joda.time.Chronology;", 0x401, NULL, NULL },
-    { "getPartialValuesWithOrgJodaTimeReadablePartial:withId:withOrgJodaTimeChronology:", "getPartialValues", "[I", 0x401, NULL, NULL },
-    { "getPartialValuesWithOrgJodaTimeReadablePartial:withId:withOrgJodaTimeChronology:withOrgJodaTimeFormatDateTimeFormatter:", "getPartialValues", "[I", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeChronology;", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x401, 0, 2, -1, -1, -1, -1 },
+    { NULL, "[I", 0x401, 3, 4, -1, -1, -1, -1 },
+    { NULL, "[I", 0x401, 3, 5, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertPartialConverter = { 2, "PartialConverter", "org.joda.time.convert", NULL, 0x609, 4, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getChronologyWithId:withOrgJodaTimeDateTimeZone:);
+  methods[1].selector = @selector(getChronologyWithId:withOrgJodaTimeChronology:);
+  methods[2].selector = @selector(getPartialValuesWithOrgJodaTimeReadablePartial:withId:withOrgJodaTimeChronology:);
+  methods[3].selector = @selector(getPartialValuesWithOrgJodaTimeReadablePartial:withId:withOrgJodaTimeChronology:withOrgJodaTimeFormatDateTimeFormatter:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "getChronology", "LNSObject;LOrgJodaTimeDateTimeZone;", "LNSObject;LOrgJodaTimeChronology;", "getPartialValues", "LOrgJodaTimeReadablePartial;LNSObject;LOrgJodaTimeChronology;", "LOrgJodaTimeReadablePartial;LNSObject;LOrgJodaTimeChronology;LOrgJodaTimeFormatDateTimeFormatter;" };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertPartialConverter = { "PartialConverter", "org.joda.time.convert", ptrTable, methods, NULL, 7, 0x609, 4, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeConvertPartialConverter;
 }
 

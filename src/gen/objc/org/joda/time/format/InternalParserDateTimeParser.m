@@ -73,18 +73,28 @@ __attribute__((unused)) static OrgJodaTimeFormatInternalParserDateTimeParser *cr
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "ofWithOrgJodaTimeFormatInternalParser:", "of", "Lorg.joda.time.format.DateTimeParser;", 0x8, NULL, NULL },
-    { "initWithOrgJodaTimeFormatInternalParser:", "InternalParserDateTimeParser", NULL, 0x2, NULL, NULL },
-    { "estimateParsedLength", NULL, "I", 0x1, NULL, NULL },
-    { "parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withJavaLangCharSequence:withInt:", "parseInto", "I", 0x1, NULL, NULL },
-    { "parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withNSString:withInt:", "parseInto", "I", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeFormatDateTimeParser;", 0x8, 0, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x2, -1, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 2, 4, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 5, 6, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(ofWithOrgJodaTimeFormatInternalParser:);
+  methods[1].selector = @selector(initWithOrgJodaTimeFormatInternalParser:);
+  methods[2].selector = @selector(estimateParsedLength);
+  methods[3].selector = @selector(parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withJavaLangCharSequence:withInt:);
+  methods[4].selector = @selector(parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withNSString:withInt:);
+  methods[5].selector = @selector(isEqual:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "underlying_", NULL, 0x12, "Lorg.joda.time.format.InternalParser;", NULL, NULL, .constantValue.asLong = 0 },
+    { "underlying_", "LOrgJodaTimeFormatInternalParser;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatInternalParserDateTimeParser = { 2, "InternalParserDateTimeParser", "org.joda.time.format", NULL, 0x0, 6, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "of", "LOrgJodaTimeFormatInternalParser;", "parseInto", "LOrgJodaTimeFormatDateTimeParserBucket;LJavaLangCharSequence;I", "LOrgJodaTimeFormatDateTimeParserBucket;LNSString;I", "equals", "LNSObject;" };
+  static const J2ObjcClassInfo _OrgJodaTimeFormatInternalParserDateTimeParser = { "InternalParserDateTimeParser", "org.joda.time.format", ptrTable, methods, fields, 7, 0x0, 6, 1, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFormatInternalParserDateTimeParser;
 }
 
@@ -101,7 +111,7 @@ id<OrgJodaTimeFormatDateTimeParser> OrgJodaTimeFormatInternalParserDateTimeParse
   if (underlying == nil) {
     return nil;
   }
-  return [new_OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(underlying) autorelease];
+  return create_OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(underlying);
 }
 
 void OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(OrgJodaTimeFormatInternalParserDateTimeParser *self, id<OrgJodaTimeFormatInternalParser> underlying) {
@@ -110,15 +120,11 @@ void OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInte
 }
 
 OrgJodaTimeFormatInternalParserDateTimeParser *new_OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(id<OrgJodaTimeFormatInternalParser> underlying) {
-  OrgJodaTimeFormatInternalParserDateTimeParser *self = [OrgJodaTimeFormatInternalParserDateTimeParser alloc];
-  OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(self, underlying);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFormatInternalParserDateTimeParser, initWithOrgJodaTimeFormatInternalParser_, underlying)
 }
 
 OrgJodaTimeFormatInternalParserDateTimeParser *create_OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(id<OrgJodaTimeFormatInternalParser> underlying) {
-  OrgJodaTimeFormatInternalParserDateTimeParser *self = [[OrgJodaTimeFormatInternalParserDateTimeParser alloc] autorelease];
-  OrgJodaTimeFormatInternalParserDateTimeParser_initWithOrgJodaTimeFormatInternalParser_(self, underlying);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFormatInternalParserDateTimeParser, initWithOrgJodaTimeFormatInternalParser_, underlying)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatInternalParserDateTimeParser)

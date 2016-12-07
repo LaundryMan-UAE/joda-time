@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeBaseAbstractPeriod_INCLUDE_ALL")
-#ifdef OrgJodaTimeBaseAbstractPeriod_RESTRICT
-#define OrgJodaTimeBaseAbstractPeriod_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeBaseAbstractPeriod")
+#ifdef RESTRICT_OrgJodaTimeBaseAbstractPeriod
+#define INCLUDE_ALL_OrgJodaTimeBaseAbstractPeriod 0
 #else
-#define OrgJodaTimeBaseAbstractPeriod_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeBaseAbstractPeriod 1
 #endif
-#undef OrgJodaTimeBaseAbstractPeriod_RESTRICT
+#undef RESTRICT_OrgJodaTimeBaseAbstractPeriod
 
-#if !defined (OrgJodaTimeBaseAbstractPeriod_) && (OrgJodaTimeBaseAbstractPeriod_INCLUDE_ALL || defined(OrgJodaTimeBaseAbstractPeriod_INCLUDE))
+#if !defined (OrgJodaTimeBaseAbstractPeriod_) && (INCLUDE_ALL_OrgJodaTimeBaseAbstractPeriod || defined(INCLUDE_OrgJodaTimeBaseAbstractPeriod))
 #define OrgJodaTimeBaseAbstractPeriod_
 
-#define OrgJodaTimeReadablePeriod_RESTRICT 1
-#define OrgJodaTimeReadablePeriod_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadablePeriod 1
+#define INCLUDE_OrgJodaTimeReadablePeriod 1
 #include "org/joda/time/ReadablePeriod.h"
 
 @class IOSIntArray;
@@ -178,4 +178,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseAbstractPeriod)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeBaseAbstractPeriod_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeBaseAbstractPeriod")

@@ -13,35 +13,65 @@
 @implementation OrgJodaTimeReadWritableDateTime
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "setYearWithInt:", "setYear", "V", 0x401, NULL, NULL },
-    { "addYearsWithInt:", "addYears", "V", 0x401, NULL, NULL },
-    { "setWeekyearWithInt:", "setWeekyear", "V", 0x401, NULL, NULL },
-    { "addWeekyearsWithInt:", "addWeekyears", "V", 0x401, NULL, NULL },
-    { "setMonthOfYearWithInt:", "setMonthOfYear", "V", 0x401, NULL, NULL },
-    { "addMonthsWithInt:", "addMonths", "V", 0x401, NULL, NULL },
-    { "setWeekOfWeekyearWithInt:", "setWeekOfWeekyear", "V", 0x401, NULL, NULL },
-    { "addWeeksWithInt:", "addWeeks", "V", 0x401, NULL, NULL },
-    { "setDayOfYearWithInt:", "setDayOfYear", "V", 0x401, NULL, NULL },
-    { "setDayOfMonthWithInt:", "setDayOfMonth", "V", 0x401, NULL, NULL },
-    { "setDayOfWeekWithInt:", "setDayOfWeek", "V", 0x401, NULL, NULL },
-    { "addDaysWithInt:", "addDays", "V", 0x401, NULL, NULL },
-    { "setHourOfDayWithInt:", "setHourOfDay", "V", 0x401, NULL, NULL },
-    { "addHoursWithInt:", "addHours", "V", 0x401, NULL, NULL },
-    { "setMinuteOfDayWithInt:", "setMinuteOfDay", "V", 0x401, NULL, NULL },
-    { "setMinuteOfHourWithInt:", "setMinuteOfHour", "V", 0x401, NULL, NULL },
-    { "addMinutesWithInt:", "addMinutes", "V", 0x401, NULL, NULL },
-    { "setSecondOfDayWithInt:", "setSecondOfDay", "V", 0x401, NULL, NULL },
-    { "setSecondOfMinuteWithInt:", "setSecondOfMinute", "V", 0x401, NULL, NULL },
-    { "addSecondsWithInt:", "addSeconds", "V", 0x401, NULL, NULL },
-    { "setMillisOfDayWithInt:", "setMillisOfDay", "V", 0x401, NULL, NULL },
-    { "setMillisOfSecondWithInt:", "setMillisOfSecond", "V", 0x401, NULL, NULL },
-    { "addMillisWithInt:", "addMillis", "V", 0x401, NULL, NULL },
-    { "setDateWithInt:withInt:withInt:", "setDate", "V", 0x401, NULL, NULL },
-    { "setTimeWithInt:withInt:withInt:withInt:", "setTime", "V", 0x401, NULL, NULL },
-    { "setDateTimeWithInt:withInt:withInt:withInt:withInt:withInt:withInt:", "setDateTime", "V", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "V", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 2, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 3, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 4, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 5, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 6, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 7, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 8, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 9, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 10, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 11, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 12, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 13, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 14, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 15, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 16, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 17, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 18, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 19, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 20, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 21, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 22, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 23, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 24, 25, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 26, 27, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 28, 29, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadWritableDateTime = { 2, "ReadWritableDateTime", "org.joda.time", NULL, 0x609, 26, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(setYearWithInt:);
+  methods[1].selector = @selector(addYearsWithInt:);
+  methods[2].selector = @selector(setWeekyearWithInt:);
+  methods[3].selector = @selector(addWeekyearsWithInt:);
+  methods[4].selector = @selector(setMonthOfYearWithInt:);
+  methods[5].selector = @selector(addMonthsWithInt:);
+  methods[6].selector = @selector(setWeekOfWeekyearWithInt:);
+  methods[7].selector = @selector(addWeeksWithInt:);
+  methods[8].selector = @selector(setDayOfYearWithInt:);
+  methods[9].selector = @selector(setDayOfMonthWithInt:);
+  methods[10].selector = @selector(setDayOfWeekWithInt:);
+  methods[11].selector = @selector(addDaysWithInt:);
+  methods[12].selector = @selector(setHourOfDayWithInt:);
+  methods[13].selector = @selector(addHoursWithInt:);
+  methods[14].selector = @selector(setMinuteOfDayWithInt:);
+  methods[15].selector = @selector(setMinuteOfHourWithInt:);
+  methods[16].selector = @selector(addMinutesWithInt:);
+  methods[17].selector = @selector(setSecondOfDayWithInt:);
+  methods[18].selector = @selector(setSecondOfMinuteWithInt:);
+  methods[19].selector = @selector(addSecondsWithInt:);
+  methods[20].selector = @selector(setMillisOfDayWithInt:);
+  methods[21].selector = @selector(setMillisOfSecondWithInt:);
+  methods[22].selector = @selector(addMillisWithInt:);
+  methods[23].selector = @selector(setDateWithInt:withInt:withInt:);
+  methods[24].selector = @selector(setTimeWithInt:withInt:withInt:withInt:);
+  methods[25].selector = @selector(setDateTimeWithInt:withInt:withInt:withInt:withInt:withInt:withInt:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "setYear", "I", "addYears", "setWeekyear", "addWeekyears", "setMonthOfYear", "addMonths", "setWeekOfWeekyear", "addWeeks", "setDayOfYear", "setDayOfMonth", "setDayOfWeek", "addDays", "setHourOfDay", "addHours", "setMinuteOfDay", "setMinuteOfHour", "addMinutes", "setSecondOfDay", "setSecondOfMinute", "addSeconds", "setMillisOfDay", "setMillisOfSecond", "addMillis", "setDate", "III", "setTime", "IIII", "setDateTime", "IIIIIII" };
+  static const J2ObjcClassInfo _OrgJodaTimeReadWritableDateTime = { "ReadWritableDateTime", "org.joda.time", ptrTable, methods, NULL, 7, 0x609, 26, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeReadWritableDateTime;
 }
 

@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeIllegalFieldValueException_INCLUDE_ALL")
-#ifdef OrgJodaTimeIllegalFieldValueException_RESTRICT
-#define OrgJodaTimeIllegalFieldValueException_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeIllegalFieldValueException")
+#ifdef RESTRICT_OrgJodaTimeIllegalFieldValueException
+#define INCLUDE_ALL_OrgJodaTimeIllegalFieldValueException 0
 #else
-#define OrgJodaTimeIllegalFieldValueException_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeIllegalFieldValueException 1
 #endif
-#undef OrgJodaTimeIllegalFieldValueException_RESTRICT
+#undef RESTRICT_OrgJodaTimeIllegalFieldValueException
 
-#if !defined (OrgJodaTimeIllegalFieldValueException_) && (OrgJodaTimeIllegalFieldValueException_INCLUDE_ALL || defined(OrgJodaTimeIllegalFieldValueException_INCLUDE))
+#if !defined (OrgJodaTimeIllegalFieldValueException_) && (INCLUDE_ALL_OrgJodaTimeIllegalFieldValueException || defined(INCLUDE_OrgJodaTimeIllegalFieldValueException))
 #define OrgJodaTimeIllegalFieldValueException_
 
-#define JavaLangIllegalArgumentException_RESTRICT 1
-#define JavaLangIllegalArgumentException_INCLUDE 1
+#define RESTRICT_JavaLangIllegalArgumentException 1
+#define INCLUDE_JavaLangIllegalArgumentException 1
 #include "java/lang/IllegalArgumentException.h"
 
 @class OrgJodaTimeDateTimeFieldType;
@@ -210,4 +210,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeIllegalFieldValueException)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeIllegalFieldValueException_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeIllegalFieldValueException")

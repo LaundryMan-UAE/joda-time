@@ -4,7 +4,6 @@
 //
 
 #include "J2ObjC_source.h"
-#include "java/util/Locale.h"
 #include "org/joda/time/tz/NameProvider.h"
 
 @interface OrgJodaTimeTzNameProvider : NSObject
@@ -14,11 +13,17 @@
 @implementation OrgJodaTimeTzNameProvider
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getShortNameWithJavaUtilLocale:withNSString:withNSString:", "getShortName", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "getNameWithJavaUtilLocale:withNSString:withNSString:", "getName", "Ljava.lang.String;", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LNSString;", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 2, 1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzNameProvider = { 2, "NameProvider", "org.joda.time.tz", NULL, 0x609, 2, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getShortNameWithJavaUtilLocale:withNSString:withNSString:);
+  methods[1].selector = @selector(getNameWithJavaUtilLocale:withNSString:withNSString:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "getShortName", "LJavaUtilLocale;LNSString;LNSString;", "getName" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzNameProvider = { "NameProvider", "org.joda.time.tz", ptrTable, methods, NULL, 7, 0x609, 2, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeTzNameProvider;
 }
 

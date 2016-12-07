@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeTzDefaultNameProvider_INCLUDE_ALL")
-#ifdef OrgJodaTimeTzDefaultNameProvider_RESTRICT
-#define OrgJodaTimeTzDefaultNameProvider_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeTzDefaultNameProvider")
+#ifdef RESTRICT_OrgJodaTimeTzDefaultNameProvider
+#define INCLUDE_ALL_OrgJodaTimeTzDefaultNameProvider 0
 #else
-#define OrgJodaTimeTzDefaultNameProvider_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeTzDefaultNameProvider 1
 #endif
-#undef OrgJodaTimeTzDefaultNameProvider_RESTRICT
+#undef RESTRICT_OrgJodaTimeTzDefaultNameProvider
 
-#if !defined (OrgJodaTimeTzDefaultNameProvider_) && (OrgJodaTimeTzDefaultNameProvider_INCLUDE_ALL || defined(OrgJodaTimeTzDefaultNameProvider_INCLUDE))
+#if !defined (OrgJodaTimeTzDefaultNameProvider_) && (INCLUDE_ALL_OrgJodaTimeTzDefaultNameProvider || defined(INCLUDE_OrgJodaTimeTzDefaultNameProvider))
 #define OrgJodaTimeTzDefaultNameProvider_
 
-#define OrgJodaTimeTzNameProvider_RESTRICT 1
-#define OrgJodaTimeTzNameProvider_INCLUDE 1
+#define RESTRICT_OrgJodaTimeTzNameProvider 1
+#define INCLUDE_OrgJodaTimeTzNameProvider 1
 #include "org/joda/time/tz/NameProvider.h"
 
 @class JavaUtilLocale;
@@ -58,4 +58,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzDefaultNameProvider)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeTzDefaultNameProvider_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeTzDefaultNameProvider")

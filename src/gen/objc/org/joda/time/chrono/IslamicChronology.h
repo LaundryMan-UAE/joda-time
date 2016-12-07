@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronoIslamicChronology_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronoIslamicChronology_RESTRICT
-#define OrgJodaTimeChronoIslamicChronology_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronoIslamicChronology")
+#ifdef RESTRICT_OrgJodaTimeChronoIslamicChronology
+#define INCLUDE_ALL_OrgJodaTimeChronoIslamicChronology 0
 #else
-#define OrgJodaTimeChronoIslamicChronology_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronoIslamicChronology 1
 #endif
-#undef OrgJodaTimeChronoIslamicChronology_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronoIslamicChronology
 
-#if !defined (OrgJodaTimeChronoIslamicChronology_) && (OrgJodaTimeChronoIslamicChronology_INCLUDE_ALL || defined(OrgJodaTimeChronoIslamicChronology_INCLUDE))
+#if !defined (OrgJodaTimeChronoIslamicChronology_) && (INCLUDE_ALL_OrgJodaTimeChronoIslamicChronology || defined(INCLUDE_OrgJodaTimeChronoIslamicChronology))
 #define OrgJodaTimeChronoIslamicChronology_
 
-#define OrgJodaTimeChronoBasicChronology_RESTRICT 1
-#define OrgJodaTimeChronoBasicChronology_INCLUDE 1
+#define RESTRICT_OrgJodaTimeChronoBasicChronology 1
+#define INCLUDE_OrgJodaTimeChronoBasicChronology 1
 #include "org/joda/time/chrono/BasicChronology.h"
 
 @class OrgJodaTimeChronoAssembledChronology_Fields;
@@ -248,11 +248,11 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoIslamicChronology)
 
 #endif
 
-#if !defined (OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_) && (OrgJodaTimeChronoIslamicChronology_INCLUDE_ALL || defined(OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_INCLUDE))
+#if !defined (OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_) && (INCLUDE_ALL_OrgJodaTimeChronoIslamicChronology || defined(INCLUDE_OrgJodaTimeChronoIslamicChronology_LeapYearPatternType))
 #define OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 /*!
@@ -311,4 +311,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoIslamicChronology_LeapYearPatternTyp
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronoIslamicChronology_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronoIslamicChronology")

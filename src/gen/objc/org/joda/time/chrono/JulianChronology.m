@@ -17,7 +17,6 @@
 #include "org/joda/time/DateTimeZone.h"
 #include "org/joda/time/IllegalFieldValueException.h"
 #include "org/joda/time/chrono/AssembledChronology.h"
-#include "org/joda/time/chrono/BasicChronology.h"
 #include "org/joda/time/chrono/BasicGJChronology.h"
 #include "org/joda/time/chrono/JulianChronology.h"
 #include "org/joda/time/chrono/ZonedChronology.h"
@@ -186,6 +185,64 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoJulianChronology)
   }
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "I", 0x8, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronoJulianChronology;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronoJulianChronology;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronoJulianChronology;", 0x9, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronoJulianChronology;", 0x9, 2, 4, -1, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, 5, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, 6, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, 7, 8, 9, -1, -1, -1 },
+    { NULL, "Z", 0x0, 10, 1, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, 11, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 12, 13, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(adjustYearForSetWithInt:);
+  methods[1].selector = @selector(getInstanceUTC);
+  methods[2].selector = @selector(getInstance);
+  methods[3].selector = @selector(getInstanceWithOrgJodaTimeDateTimeZone:);
+  methods[4].selector = @selector(getInstanceWithOrgJodaTimeDateTimeZone:withInt:);
+  methods[5].selector = @selector(initWithOrgJodaTimeChronology:withId:withInt:);
+  methods[6].selector = @selector(readResolve);
+  methods[7].selector = @selector(withUTC);
+  methods[8].selector = @selector(withZoneWithOrgJodaTimeDateTimeZone:);
+  methods[9].selector = @selector(getDateMidnightMillisWithInt:withInt:withInt:);
+  methods[10].selector = @selector(isLeapYearWithInt:);
+  methods[11].selector = @selector(calculateFirstDayOfYearMillisWithInt:);
+  methods[12].selector = @selector(getMinYear);
+  methods[13].selector = @selector(getMaxYear);
+  methods[14].selector = @selector(getAverageMillisPerYear);
+  methods[15].selector = @selector(getAverageMillisPerYearDividedByTwo);
+  methods[16].selector = @selector(getAverageMillisPerMonth);
+  methods[17].selector = @selector(getApproxMillisAtEpochDividedByTwo);
+  methods[18].selector = @selector(assembleWithOrgJodaTimeChronoAssembledChronology_Fields:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoJulianChronology_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "MILLIS_PER_YEAR", "J", .constantValue.asLong = OrgJodaTimeChronoJulianChronology_MILLIS_PER_YEAR, 0x1a, -1, -1, -1, -1 },
+    { "MILLIS_PER_MONTH", "J", .constantValue.asLong = OrgJodaTimeChronoJulianChronology_MILLIS_PER_MONTH, 0x1a, -1, -1, -1, -1 },
+    { "MIN_YEAR", "I", .constantValue.asInt = OrgJodaTimeChronoJulianChronology_MIN_YEAR, 0x1a, -1, -1, -1, -1 },
+    { "MAX_YEAR", "I", .constantValue.asInt = OrgJodaTimeChronoJulianChronology_MAX_YEAR, 0x1a, -1, -1, -1, -1 },
+    { "INSTANCE_UTC", "LOrgJodaTimeChronoJulianChronology;", .constantValue.asLong = 0, 0x1a, -1, 14, -1, -1 },
+    { "cCache", "LJavaUtilConcurrentConcurrentHashMap;", .constantValue.asLong = 0, 0x1a, -1, 15, 16, -1 },
+  };
+  static const void *ptrTable[] = { "adjustYearForSet", "I", "getInstance", "LOrgJodaTimeDateTimeZone;", "LOrgJodaTimeDateTimeZone;I", "LOrgJodaTimeChronology;LNSObject;I", "withZone", "getDateMidnightMillis", "III", "LJavaLangIllegalArgumentException;", "isLeapYear", "calculateFirstDayOfYearMillis", "assemble", "LOrgJodaTimeChronoAssembledChronology_Fields;", &OrgJodaTimeChronoJulianChronology_INSTANCE_UTC, &OrgJodaTimeChronoJulianChronology_cCache, "Ljava/util/concurrent/ConcurrentHashMap<Lorg/joda/time/DateTimeZone;[Lorg/joda/time/chrono/JulianChronology;>;" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoJulianChronology = { "JulianChronology", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x11, 19, 7, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeChronoJulianChronology;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeChronoJulianChronology class]) {
     JreStrongAssignAndConsume(&OrgJodaTimeChronoJulianChronology_cCache, new_JavaUtilConcurrentConcurrentHashMap_init());
@@ -196,48 +253,13 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoJulianChronology)
   }
 }
 
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "adjustYearForSetWithInt:", "adjustYearForSet", "I", 0x8, NULL, NULL },
-    { "getInstanceUTC", NULL, "Lorg.joda.time.chrono.JulianChronology;", 0x9, NULL, NULL },
-    { "getInstance", NULL, "Lorg.joda.time.chrono.JulianChronology;", 0x9, NULL, NULL },
-    { "getInstanceWithOrgJodaTimeDateTimeZone:", "getInstance", "Lorg.joda.time.chrono.JulianChronology;", 0x9, NULL, NULL },
-    { "getInstanceWithOrgJodaTimeDateTimeZone:withInt:", "getInstance", "Lorg.joda.time.chrono.JulianChronology;", 0x9, NULL, NULL },
-    { "initWithOrgJodaTimeChronology:withId:withInt:", "JulianChronology", NULL, 0x0, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
-    { "withUTC", NULL, "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "withZoneWithOrgJodaTimeDateTimeZone:", "withZone", "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "getDateMidnightMillisWithInt:withInt:withInt:", "getDateMidnightMillis", "J", 0x0, "Ljava.lang.IllegalArgumentException;", NULL },
-    { "isLeapYearWithInt:", "isLeapYear", "Z", 0x0, NULL, NULL },
-    { "calculateFirstDayOfYearMillisWithInt:", "calculateFirstDayOfYearMillis", "J", 0x0, NULL, NULL },
-    { "getMinYear", NULL, "I", 0x0, NULL, NULL },
-    { "getMaxYear", NULL, "I", 0x0, NULL, NULL },
-    { "getAverageMillisPerYear", NULL, "J", 0x0, NULL, NULL },
-    { "getAverageMillisPerYearDividedByTwo", NULL, "J", 0x0, NULL, NULL },
-    { "getAverageMillisPerMonth", NULL, "J", 0x0, NULL, NULL },
-    { "getApproxMillisAtEpochDividedByTwo", NULL, "J", 0x0, NULL, NULL },
-    { "assembleWithOrgJodaTimeChronoAssembledChronology_Fields:", "assemble", "V", 0x4, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoJulianChronology_serialVersionUID },
-    { "MILLIS_PER_YEAR", "MILLIS_PER_YEAR", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoJulianChronology_MILLIS_PER_YEAR },
-    { "MILLIS_PER_MONTH", "MILLIS_PER_MONTH", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoJulianChronology_MILLIS_PER_MONTH },
-    { "MIN_YEAR", "MIN_YEAR", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoJulianChronology_MIN_YEAR },
-    { "MAX_YEAR", "MAX_YEAR", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoJulianChronology_MAX_YEAR },
-    { "INSTANCE_UTC", "INSTANCE_UTC", 0x1a, "Lorg.joda.time.chrono.JulianChronology;", &OrgJodaTimeChronoJulianChronology_INSTANCE_UTC, NULL, .constantValue.asLong = 0 },
-    { "cCache", "cCache", 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoJulianChronology_cCache, "Ljava/util/concurrent/ConcurrentHashMap<Lorg/joda/time/DateTimeZone;L[Lorg/joda/time/chrono/JulianChronology;;>;", .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoJulianChronology = { 2, "JulianChronology", "org.joda.time.chrono", NULL, 0x11, 19, methods, 7, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeChronoJulianChronology;
-}
-
 @end
 
 jint OrgJodaTimeChronoJulianChronology_adjustYearForSetWithInt_(jint year) {
   OrgJodaTimeChronoJulianChronology_initialize();
   if (year <= 0) {
     if (year == 0) {
-      @throw [new_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_(OrgJodaTimeDateTimeFieldType_year(), JavaLangInteger_valueOfWithInt_(year), nil, nil) autorelease];
+      @throw create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_(OrgJodaTimeDateTimeFieldType_year(), JavaLangInteger_valueOfWithInt_(year), nil, nil);
     }
     year++;
   }
@@ -274,21 +296,21 @@ OrgJodaTimeChronoJulianChronology *OrgJodaTimeChronoJulianChronology_getInstance
     }
   }
   @try {
-    chrono = IOSObjectArray_Get(nil_chk(chronos), minDaysInFirstWeek - 1);
+    chrono = IOSObjectArray_Get(chronos, minDaysInFirstWeek - 1);
   }
   @catch (JavaLangArrayIndexOutOfBoundsException *e) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Invalid min days in first week: ", minDaysInFirstWeek)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Invalid min days in first week: ", minDaysInFirstWeek));
   }
   if (chrono == nil) {
     @synchronized(chronos) {
-      chrono = IOSObjectArray_Get(nil_chk(chronos), minDaysInFirstWeek - 1);
+      chrono = IOSObjectArray_Get(chronos, minDaysInFirstWeek - 1);
       if (chrono == nil) {
         if (zone == JreLoadStatic(OrgJodaTimeDateTimeZone, UTC)) {
-          chrono = [new_OrgJodaTimeChronoJulianChronology_initWithOrgJodaTimeChronology_withId_withInt_(nil, nil, minDaysInFirstWeek) autorelease];
+          chrono = create_OrgJodaTimeChronoJulianChronology_initWithOrgJodaTimeChronology_withId_withInt_(nil, nil, minDaysInFirstWeek);
         }
         else {
           chrono = OrgJodaTimeChronoJulianChronology_getInstanceWithOrgJodaTimeDateTimeZone_withInt_(JreLoadStatic(OrgJodaTimeDateTimeZone, UTC), minDaysInFirstWeek);
-          chrono = [new_OrgJodaTimeChronoJulianChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronoZonedChronology_getInstanceWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_(chrono, zone), nil, minDaysInFirstWeek) autorelease];
+          chrono = create_OrgJodaTimeChronoJulianChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronoZonedChronology_getInstanceWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_(chrono, zone), nil, minDaysInFirstWeek);
         }
         IOSObjectArray_Set(chronos, minDaysInFirstWeek - 1, chrono);
       }
@@ -302,15 +324,11 @@ void OrgJodaTimeChronoJulianChronology_initWithOrgJodaTimeChronology_withId_with
 }
 
 OrgJodaTimeChronoJulianChronology *new_OrgJodaTimeChronoJulianChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronology *base, id param, jint minDaysInFirstWeek) {
-  OrgJodaTimeChronoJulianChronology *self = [OrgJodaTimeChronoJulianChronology alloc];
-  OrgJodaTimeChronoJulianChronology_initWithOrgJodaTimeChronology_withId_withInt_(self, base, param, minDaysInFirstWeek);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoJulianChronology, initWithOrgJodaTimeChronology_withId_withInt_, base, param, minDaysInFirstWeek)
 }
 
 OrgJodaTimeChronoJulianChronology *create_OrgJodaTimeChronoJulianChronology_initWithOrgJodaTimeChronology_withId_withInt_(OrgJodaTimeChronology *base, id param, jint minDaysInFirstWeek) {
-  OrgJodaTimeChronoJulianChronology *self = [[OrgJodaTimeChronoJulianChronology alloc] autorelease];
-  OrgJodaTimeChronoJulianChronology_initWithOrgJodaTimeChronology_withId_withInt_(self, base, param, minDaysInFirstWeek);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoJulianChronology, initWithOrgJodaTimeChronology_withId_withInt_, base, param, minDaysInFirstWeek)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoJulianChronology)

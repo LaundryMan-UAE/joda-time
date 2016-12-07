@@ -125,26 +125,47 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "FieldUtils", NULL, 0x2, NULL, NULL },
-    { "safeNegateWithInt:", "safeNegate", "I", 0x9, NULL, NULL },
-    { "safeAddWithInt:withInt:", "safeAdd", "I", 0x9, NULL, NULL },
-    { "safeAddWithLong:withLong:", "safeAdd", "J", 0x9, NULL, NULL },
-    { "safeSubtractWithLong:withLong:", "safeSubtract", "J", 0x9, NULL, NULL },
-    { "safeMultiplyWithInt:withInt:", "safeMultiply", "I", 0x9, NULL, NULL },
-    { "safeMultiplyWithLong:withInt:", "safeMultiply", "J", 0x9, NULL, NULL },
-    { "safeMultiplyWithLong:withLong:", "safeMultiply", "J", 0x9, NULL, NULL },
-    { "safeDivideWithLong:withLong:", "safeDivide", "J", 0x9, NULL, NULL },
-    { "safeToIntWithLong:", "safeToInt", "I", 0x9, NULL, NULL },
-    { "safeMultiplyToIntWithLong:withLong:", "safeMultiplyToInt", "I", 0x9, NULL, NULL },
-    { "verifyValueBoundsWithOrgJodaTimeDateTimeField:withInt:withInt:withInt:", "verifyValueBounds", "V", 0x9, NULL, NULL },
-    { "verifyValueBoundsWithOrgJodaTimeDateTimeFieldType:withInt:withInt:withInt:", "verifyValueBounds", "V", 0x9, NULL, NULL },
-    { "verifyValueBoundsWithNSString:withInt:withInt:withInt:", "verifyValueBounds", "V", 0x9, NULL, NULL },
-    { "getWrappedValueWithInt:withInt:withInt:withInt:", "getWrappedValue", "I", 0x9, NULL, NULL },
-    { "getWrappedValueWithInt:withInt:withInt:", "getWrappedValue", "I", 0x9, NULL, NULL },
-    { "equalsWithId:withId:", "equals", "Z", 0x9, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 2, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x9, 2, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x9, 5, 4, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 6, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x9, 6, 7, -1, -1, -1, -1 },
+    { NULL, "J", 0x9, 6, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x9, 8, 4, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 9, 10, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 11, 4, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 12, 13, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 12, 14, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 12, 15, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 16, 17, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 16, 18, -1, -1, -1, -1 },
+    { NULL, "Z", 0x9, 19, 20, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldFieldUtils = { 2, "FieldUtils", "org.joda.time.field", NULL, 0x1, 17, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(safeNegateWithInt:);
+  methods[2].selector = @selector(safeAddWithInt:withInt:);
+  methods[3].selector = @selector(safeAddWithLong:withLong:);
+  methods[4].selector = @selector(safeSubtractWithLong:withLong:);
+  methods[5].selector = @selector(safeMultiplyWithInt:withInt:);
+  methods[6].selector = @selector(safeMultiplyWithLong:withInt:);
+  methods[7].selector = @selector(safeMultiplyWithLong:withLong:);
+  methods[8].selector = @selector(safeDivideWithLong:withLong:);
+  methods[9].selector = @selector(safeToIntWithLong:);
+  methods[10].selector = @selector(safeMultiplyToIntWithLong:withLong:);
+  methods[11].selector = @selector(verifyValueBoundsWithOrgJodaTimeDateTimeField:withInt:withInt:withInt:);
+  methods[12].selector = @selector(verifyValueBoundsWithOrgJodaTimeDateTimeFieldType:withInt:withInt:withInt:);
+  methods[13].selector = @selector(verifyValueBoundsWithNSString:withInt:withInt:withInt:);
+  methods[14].selector = @selector(getWrappedValueWithInt:withInt:withInt:withInt:);
+  methods[15].selector = @selector(getWrappedValueWithInt:withInt:withInt:);
+  methods[16].selector = @selector(equalsWithId:withId:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "safeNegate", "I", "safeAdd", "II", "JJ", "safeSubtract", "safeMultiply", "JI", "safeDivide", "safeToInt", "J", "safeMultiplyToInt", "verifyValueBounds", "LOrgJodaTimeDateTimeField;III", "LOrgJodaTimeDateTimeFieldType;III", "LNSString;III", "getWrappedValue", "IIII", "III", "equals", "LNSObject;LNSObject;" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldFieldUtils = { "FieldUtils", "org.joda.time.field", ptrTable, methods, NULL, 7, 0x1, 17, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldFieldUtils;
 }
 
@@ -155,21 +176,17 @@ void OrgJodaTimeFieldFieldUtils_init(OrgJodaTimeFieldFieldUtils *self) {
 }
 
 OrgJodaTimeFieldFieldUtils *new_OrgJodaTimeFieldFieldUtils_init() {
-  OrgJodaTimeFieldFieldUtils *self = [OrgJodaTimeFieldFieldUtils alloc];
-  OrgJodaTimeFieldFieldUtils_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldFieldUtils, init)
 }
 
 OrgJodaTimeFieldFieldUtils *create_OrgJodaTimeFieldFieldUtils_init() {
-  OrgJodaTimeFieldFieldUtils *self = [[OrgJodaTimeFieldFieldUtils alloc] autorelease];
-  OrgJodaTimeFieldFieldUtils_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldFieldUtils, init)
 }
 
 jint OrgJodaTimeFieldFieldUtils_safeNegateWithInt_(jint value) {
   OrgJodaTimeFieldFieldUtils_initialize();
   if (value == JavaLangInteger_MIN_VALUE) {
-    @throw [new_JavaLangArithmeticException_initWithNSString_(@"Integer.MIN_VALUE cannot be negated") autorelease];
+    @throw create_JavaLangArithmeticException_initWithNSString_(@"Integer.MIN_VALUE cannot be negated");
   }
   return -value;
 }
@@ -178,7 +195,7 @@ jint OrgJodaTimeFieldFieldUtils_safeAddWithInt_withInt_(jint val1, jint val2) {
   OrgJodaTimeFieldFieldUtils_initialize();
   jint sum = val1 + val2;
   if ((val1 ^ sum) < 0 && (val1 ^ val2) >= 0) {
-    @throw [new_JavaLangArithmeticException_initWithNSString_(JreStrcat("$I$I", @"The calculation caused an overflow: ", val1, @" + ", val2)) autorelease];
+    @throw create_JavaLangArithmeticException_initWithNSString_(JreStrcat("$I$I", @"The calculation caused an overflow: ", val1, @" + ", val2));
   }
   return sum;
 }
@@ -187,7 +204,7 @@ jlong OrgJodaTimeFieldFieldUtils_safeAddWithLong_withLong_(jlong val1, jlong val
   OrgJodaTimeFieldFieldUtils_initialize();
   jlong sum = val1 + val2;
   if ((val1 ^ sum) < 0 && (val1 ^ val2) >= 0) {
-    @throw [new_JavaLangArithmeticException_initWithNSString_(JreStrcat("$J$J", @"The calculation caused an overflow: ", val1, @" + ", val2)) autorelease];
+    @throw create_JavaLangArithmeticException_initWithNSString_(JreStrcat("$J$J", @"The calculation caused an overflow: ", val1, @" + ", val2));
   }
   return sum;
 }
@@ -196,7 +213,7 @@ jlong OrgJodaTimeFieldFieldUtils_safeSubtractWithLong_withLong_(jlong val1, jlon
   OrgJodaTimeFieldFieldUtils_initialize();
   jlong diff = val1 - val2;
   if ((val1 ^ diff) < 0 && (val1 ^ val2) < 0) {
-    @throw [new_JavaLangArithmeticException_initWithNSString_(JreStrcat("$J$J", @"The calculation caused an overflow: ", val1, @" - ", val2)) autorelease];
+    @throw create_JavaLangArithmeticException_initWithNSString_(JreStrcat("$J$J", @"The calculation caused an overflow: ", val1, @" - ", val2));
   }
   return diff;
 }
@@ -205,7 +222,7 @@ jint OrgJodaTimeFieldFieldUtils_safeMultiplyWithInt_withInt_(jint val1, jint val
   OrgJodaTimeFieldFieldUtils_initialize();
   jlong total = (jlong) val1 * (jlong) val2;
   if (total < JavaLangInteger_MIN_VALUE || total > JavaLangInteger_MAX_VALUE) {
-    @throw [new_JavaLangArithmeticException_initWithNSString_(JreStrcat("$I$I", @"Multiplication overflows an int: ", val1, @" * ", val2)) autorelease];
+    @throw create_JavaLangArithmeticException_initWithNSString_(JreStrcat("$I$I", @"Multiplication overflows an int: ", val1, @" * ", val2));
   }
   return (jint) total;
 }
@@ -215,7 +232,7 @@ jlong OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withInt_(jlong val1, jint 
   switch (val2) {
     case -1:
     if (val1 == JavaLangLong_MIN_VALUE) {
-      @throw [new_JavaLangArithmeticException_initWithNSString_(JreStrcat("$J$I", @"Multiplication overflows a long: ", val1, @" * ", val2)) autorelease];
+      @throw create_JavaLangArithmeticException_initWithNSString_(JreStrcat("$J$I", @"Multiplication overflows a long: ", val1, @" * ", val2));
     }
     return -val1;
     case 0:
@@ -225,7 +242,7 @@ jlong OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withInt_(jlong val1, jint 
   }
   jlong total = val1 * val2;
   if (total / val2 != val1) {
-    @throw [new_JavaLangArithmeticException_initWithNSString_(JreStrcat("$J$I", @"Multiplication overflows a long: ", val1, @" * ", val2)) autorelease];
+    @throw create_JavaLangArithmeticException_initWithNSString_(JreStrcat("$J$I", @"Multiplication overflows a long: ", val1, @" * ", val2));
   }
   return total;
 }
@@ -243,7 +260,7 @@ jlong OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withLong_(jlong val1, jlon
   }
   jlong total = val1 * val2;
   if (total / val2 != val1 || (val1 == JavaLangLong_MIN_VALUE && val2 == -1) || (val2 == JavaLangLong_MIN_VALUE && val1 == -1)) {
-    @throw [new_JavaLangArithmeticException_initWithNSString_(JreStrcat("$J$J", @"Multiplication overflows a long: ", val1, @" * ", val2)) autorelease];
+    @throw create_JavaLangArithmeticException_initWithNSString_(JreStrcat("$J$J", @"Multiplication overflows a long: ", val1, @" * ", val2));
   }
   return total;
 }
@@ -251,7 +268,7 @@ jlong OrgJodaTimeFieldFieldUtils_safeMultiplyWithLong_withLong_(jlong val1, jlon
 jlong OrgJodaTimeFieldFieldUtils_safeDivideWithLong_withLong_(jlong dividend, jlong divisor) {
   OrgJodaTimeFieldFieldUtils_initialize();
   if (dividend == JavaLangLong_MIN_VALUE && divisor == -1LL) {
-    @throw [new_JavaLangArithmeticException_initWithNSString_(JreStrcat("$J$J", @"Multiplication overflows a long: ", dividend, @" / ", divisor)) autorelease];
+    @throw create_JavaLangArithmeticException_initWithNSString_(JreStrcat("$J$J", @"Multiplication overflows a long: ", dividend, @" / ", divisor));
   }
   return dividend / divisor;
 }
@@ -261,7 +278,7 @@ jint OrgJodaTimeFieldFieldUtils_safeToIntWithLong_(jlong value) {
   if (JavaLangInteger_MIN_VALUE <= value && value <= JavaLangInteger_MAX_VALUE) {
     return (jint) value;
   }
-  @throw [new_JavaLangArithmeticException_initWithNSString_(JreStrcat("$J", @"Value cannot fit in an int: ", value)) autorelease];
+  @throw create_JavaLangArithmeticException_initWithNSString_(JreStrcat("$J", @"Value cannot fit in an int: ", value));
 }
 
 jint OrgJodaTimeFieldFieldUtils_safeMultiplyToIntWithLong_withLong_(jlong val1, jlong val2) {
@@ -273,21 +290,21 @@ jint OrgJodaTimeFieldFieldUtils_safeMultiplyToIntWithLong_withLong_(jlong val1, 
 void OrgJodaTimeFieldFieldUtils_verifyValueBoundsWithOrgJodaTimeDateTimeField_withInt_withInt_withInt_(OrgJodaTimeDateTimeField *field, jint value, jint lowerBound, jint upperBound) {
   OrgJodaTimeFieldFieldUtils_initialize();
   if ((value < lowerBound) || (value > upperBound)) {
-    @throw [new_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_([((OrgJodaTimeDateTimeField *) nil_chk(field)) getType], JavaLangInteger_valueOfWithInt_(value), JavaLangInteger_valueOfWithInt_(lowerBound), JavaLangInteger_valueOfWithInt_(upperBound)) autorelease];
+    @throw create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_([((OrgJodaTimeDateTimeField *) nil_chk(field)) getType], JavaLangInteger_valueOfWithInt_(value), JavaLangInteger_valueOfWithInt_(lowerBound), JavaLangInteger_valueOfWithInt_(upperBound));
   }
 }
 
 void OrgJodaTimeFieldFieldUtils_verifyValueBoundsWithOrgJodaTimeDateTimeFieldType_withInt_withInt_withInt_(OrgJodaTimeDateTimeFieldType *fieldType, jint value, jint lowerBound, jint upperBound) {
   OrgJodaTimeFieldFieldUtils_initialize();
   if ((value < lowerBound) || (value > upperBound)) {
-    @throw [new_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_(fieldType, JavaLangInteger_valueOfWithInt_(value), JavaLangInteger_valueOfWithInt_(lowerBound), JavaLangInteger_valueOfWithInt_(upperBound)) autorelease];
+    @throw create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_(fieldType, JavaLangInteger_valueOfWithInt_(value), JavaLangInteger_valueOfWithInt_(lowerBound), JavaLangInteger_valueOfWithInt_(upperBound));
   }
 }
 
 void OrgJodaTimeFieldFieldUtils_verifyValueBoundsWithNSString_withInt_withInt_withInt_(NSString *fieldName, jint value, jint lowerBound, jint upperBound) {
   OrgJodaTimeFieldFieldUtils_initialize();
   if ((value < lowerBound) || (value > upperBound)) {
-    @throw [new_OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSNumber_withNSNumber_withNSNumber_(fieldName, JavaLangInteger_valueOfWithInt_(value), JavaLangInteger_valueOfWithInt_(lowerBound), JavaLangInteger_valueOfWithInt_(upperBound)) autorelease];
+    @throw create_OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSNumber_withNSNumber_withNSNumber_(fieldName, JavaLangInteger_valueOfWithInt_(value), JavaLangInteger_valueOfWithInt_(lowerBound), JavaLangInteger_valueOfWithInt_(upperBound));
   }
 }
 
@@ -299,7 +316,7 @@ jint OrgJodaTimeFieldFieldUtils_getWrappedValueWithInt_withInt_withInt_withInt_(
 jint OrgJodaTimeFieldFieldUtils_getWrappedValueWithInt_withInt_withInt_(jint value, jint minValue, jint maxValue) {
   OrgJodaTimeFieldFieldUtils_initialize();
   if (minValue >= maxValue) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"MIN > MAX") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"MIN > MAX");
   }
   jint wrapRange = maxValue - minValue + 1;
   value -= minValue;
@@ -321,7 +338,7 @@ jboolean OrgJodaTimeFieldFieldUtils_equalsWithId_withId_(id object1, id object2)
   if (object1 == nil || object2 == nil) {
     return false;
   }
-  return [nil_chk(object1) isEqual:object2];
+  return [object1 isEqual:object2];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldFieldUtils)

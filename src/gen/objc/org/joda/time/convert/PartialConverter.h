@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertPartialConverter_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertPartialConverter_RESTRICT
-#define OrgJodaTimeConvertPartialConverter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertPartialConverter")
+#ifdef RESTRICT_OrgJodaTimeConvertPartialConverter
+#define INCLUDE_ALL_OrgJodaTimeConvertPartialConverter 0
 #else
-#define OrgJodaTimeConvertPartialConverter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertPartialConverter 1
 #endif
-#undef OrgJodaTimeConvertPartialConverter_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertPartialConverter
 
-#if !defined (OrgJodaTimeConvertPartialConverter_) && (OrgJodaTimeConvertPartialConverter_INCLUDE_ALL || defined(OrgJodaTimeConvertPartialConverter_INCLUDE))
+#if !defined (OrgJodaTimeConvertPartialConverter_) && (INCLUDE_ALL_OrgJodaTimeConvertPartialConverter || defined(INCLUDE_OrgJodaTimeConvertPartialConverter))
 #define OrgJodaTimeConvertPartialConverter_
 
-#define OrgJodaTimeConvertConverter_RESTRICT 1
-#define OrgJodaTimeConvertConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertConverter 1
+#define INCLUDE_OrgJodaTimeConvertConverter 1
 #include "org/joda/time/convert/Converter.h"
 
 @class IOSIntArray;
@@ -35,7 +35,7 @@
  @author Stephen Colebourne
  @since 1.0
  */
-@protocol OrgJodaTimeConvertPartialConverter < OrgJodaTimeConvertConverter, NSObject, JavaObject >
+@protocol OrgJodaTimeConvertPartialConverter < OrgJodaTimeConvertConverter, JavaObject >
 
 /*!
  @brief Extracts the chronology from an object of this converter's type
@@ -101,4 +101,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertPartialConverter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertPartialConverter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertPartialConverter")

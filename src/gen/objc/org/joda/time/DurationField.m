@@ -121,7 +121,7 @@
 - (jlong)subtractWithLong:(jlong)instant
                  withLong:(jlong)value {
   if (value == JavaLangLong_MIN_VALUE) {
-    @throw [new_JavaLangArithmeticException_initWithNSString_(@"Long.MIN_VALUE cannot be negated") autorelease];
+    @throw create_JavaLangArithmeticException_initWithNSString_(@"Long.MIN_VALUE cannot be negated");
   }
   return [self addWithLong:instant withLong:-value];
 }
@@ -154,30 +154,55 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getType", NULL, "Lorg.joda.time.DurationFieldType;", 0x401, NULL, NULL },
-    { "getName", NULL, "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "isSupported", NULL, "Z", 0x401, NULL, NULL },
-    { "isPrecise", NULL, "Z", 0x401, NULL, NULL },
-    { "getUnitMillis", NULL, "J", 0x401, NULL, NULL },
-    { "getValueWithLong:", "getValue", "I", 0x401, NULL, NULL },
-    { "getValueAsLongWithLong:", "getValueAsLong", "J", 0x401, NULL, NULL },
-    { "getValueWithLong:withLong:", "getValue", "I", 0x401, NULL, NULL },
-    { "getValueAsLongWithLong:withLong:", "getValueAsLong", "J", 0x401, NULL, NULL },
-    { "getMillisWithInt:", "getMillis", "J", 0x401, NULL, NULL },
-    { "getMillisWithLong:", "getMillis", "J", 0x401, NULL, NULL },
-    { "getMillisWithInt:withLong:", "getMillis", "J", 0x401, NULL, NULL },
-    { "getMillisWithLong:withLong:", "getMillis", "J", 0x401, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x401, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x401, NULL, NULL },
-    { "subtractWithLong:withInt:", "subtract", "J", 0x1, NULL, NULL },
-    { "subtractWithLong:withLong:", "subtract", "J", 0x1, NULL, NULL },
-    { "getDifferenceWithLong:withLong:", "getDifference", "I", 0x401, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x401, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "init", NULL, NULL, 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 2, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 0, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 2, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 4, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 4, 1, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 4, 6, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 4, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 7, 8, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 7, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 8, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 3, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 10, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 11, 3, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 12, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDurationField = { 2, "DurationField", "org.joda.time", NULL, 0x401, 21, methods, 0, NULL, 0, NULL, 0, NULL, NULL, "Ljava/lang/Object;Ljava/lang/Comparable<Lorg/joda/time/DurationField;>;" };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getType);
+  methods[1].selector = @selector(getName);
+  methods[2].selector = @selector(isSupported);
+  methods[3].selector = @selector(isPrecise);
+  methods[4].selector = @selector(getUnitMillis);
+  methods[5].selector = @selector(getValueWithLong:);
+  methods[6].selector = @selector(getValueAsLongWithLong:);
+  methods[7].selector = @selector(getValueWithLong:withLong:);
+  methods[8].selector = @selector(getValueAsLongWithLong:withLong:);
+  methods[9].selector = @selector(getMillisWithInt:);
+  methods[10].selector = @selector(getMillisWithLong:);
+  methods[11].selector = @selector(getMillisWithInt:withLong:);
+  methods[12].selector = @selector(getMillisWithLong:withLong:);
+  methods[13].selector = @selector(addWithLong:withInt:);
+  methods[14].selector = @selector(addWithLong:withLong:);
+  methods[15].selector = @selector(subtractWithLong:withInt:);
+  methods[16].selector = @selector(subtractWithLong:withLong:);
+  methods[17].selector = @selector(getDifferenceWithLong:withLong:);
+  methods[18].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  methods[19].selector = @selector(description);
+  methods[20].selector = @selector(init);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "getValue", "J", "getValueAsLong", "JJ", "getMillis", "I", "IJ", "add", "JI", "subtract", "getDifference", "getDifferenceAsLong", "toString", "Ljava/lang/Object;Ljava/lang/Comparable<Lorg/joda/time/DurationField;>;" };
+  static const J2ObjcClassInfo _OrgJodaTimeDurationField = { "DurationField", "org.joda.time", ptrTable, methods, NULL, 7, 0x401, 21, 0, -1, -1, -1, 13, -1 };
   return &_OrgJodaTimeDurationField;
 }
 

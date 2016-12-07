@@ -83,26 +83,35 @@ J2OBJC_IGNORE_DESIGNATED_END
   return JavaUtilCalendar_class_();
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, 0, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 1, -1, -1, -1, -1 },
+    { NULL, "LIOSClass;", 0x1, -1, -1, -1, 4, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getChronologyWithId:withOrgJodaTimeChronology:);
+  methods[2].selector = @selector(getChronologyWithId:withOrgJodaTimeDateTimeZone:);
+  methods[3].selector = @selector(getInstantMillisWithId:withOrgJodaTimeChronology:);
+  methods[4].selector = @selector(getSupportedType);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "INSTANCE", "LOrgJodaTimeConvertCalendarConverter;", .constantValue.asLong = 0, 0x18, -1, 5, -1, -1 },
+  };
+  static const void *ptrTable[] = { "getChronology", "LNSObject;LOrgJodaTimeChronology;", "LNSObject;LOrgJodaTimeDateTimeZone;", "getInstantMillis", "()Ljava/lang/Class<*>;", &OrgJodaTimeConvertCalendarConverter_INSTANCE };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertCalendarConverter = { "CalendarConverter", "org.joda.time.convert", ptrTable, methods, fields, 7, 0x10, 5, 1, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeConvertCalendarConverter;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeConvertCalendarConverter class]) {
     JreStrongAssignAndConsume(&OrgJodaTimeConvertCalendarConverter_INSTANCE, new_OrgJodaTimeConvertCalendarConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertCalendarConverter)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "CalendarConverter", NULL, 0x4, NULL, NULL },
-    { "getChronologyWithId:withOrgJodaTimeChronology:", "getChronology", "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "getChronologyWithId:withOrgJodaTimeDateTimeZone:", "getChronology", "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "getInstantMillisWithId:withOrgJodaTimeChronology:", "getInstantMillis", "J", 0x1, NULL, NULL },
-    { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, "()Ljava/lang/Class<*>;" },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE", "INSTANCE", 0x18, "Lorg.joda.time.convert.CalendarConverter;", &OrgJodaTimeConvertCalendarConverter_INSTANCE, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertCalendarConverter = { 2, "CalendarConverter", "org.joda.time.convert", NULL, 0x10, 5, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeConvertCalendarConverter;
 }
 
 @end
@@ -112,15 +121,11 @@ void OrgJodaTimeConvertCalendarConverter_init(OrgJodaTimeConvertCalendarConverte
 }
 
 OrgJodaTimeConvertCalendarConverter *new_OrgJodaTimeConvertCalendarConverter_init() {
-  OrgJodaTimeConvertCalendarConverter *self = [OrgJodaTimeConvertCalendarConverter alloc];
-  OrgJodaTimeConvertCalendarConverter_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeConvertCalendarConverter, init)
 }
 
 OrgJodaTimeConvertCalendarConverter *create_OrgJodaTimeConvertCalendarConverter_init() {
-  OrgJodaTimeConvertCalendarConverter *self = [[OrgJodaTimeConvertCalendarConverter alloc] autorelease];
-  OrgJodaTimeConvertCalendarConverter_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeConvertCalendarConverter, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertCalendarConverter)

@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatDateTimePrinterInternalPrinter_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatDateTimePrinterInternalPrinter_RESTRICT
-#define OrgJodaTimeFormatDateTimePrinterInternalPrinter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatDateTimePrinterInternalPrinter")
+#ifdef RESTRICT_OrgJodaTimeFormatDateTimePrinterInternalPrinter
+#define INCLUDE_ALL_OrgJodaTimeFormatDateTimePrinterInternalPrinter 0
 #else
-#define OrgJodaTimeFormatDateTimePrinterInternalPrinter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatDateTimePrinterInternalPrinter 1
 #endif
-#undef OrgJodaTimeFormatDateTimePrinterInternalPrinter_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatDateTimePrinterInternalPrinter
 
-#if !defined (OrgJodaTimeFormatDateTimePrinterInternalPrinter_) && (OrgJodaTimeFormatDateTimePrinterInternalPrinter_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimePrinterInternalPrinter_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimePrinterInternalPrinter_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimePrinterInternalPrinter || defined(INCLUDE_OrgJodaTimeFormatDateTimePrinterInternalPrinter))
 #define OrgJodaTimeFormatDateTimePrinterInternalPrinter_
 
-#define OrgJodaTimeFormatInternalPrinter_RESTRICT 1
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalPrinter 1
+#define INCLUDE_OrgJodaTimeFormatInternalPrinter 1
 #include "org/joda/time/format/InternalPrinter.h"
 
 @class JavaUtilLocale;
@@ -65,4 +65,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimePrinterInternalPrinter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatDateTimePrinterInternalPrinter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatDateTimePrinterInternalPrinter")

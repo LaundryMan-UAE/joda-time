@@ -371,10 +371,10 @@ withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType:(OrgJodaTimeChronoIsl
 
 - (jlong)calculateFirstDayOfYearMillisWithInt:(jint)year {
   if (year > OrgJodaTimeChronoIslamicChronology_MAX_YEAR) {
-    @throw [new_JavaLangArithmeticException_initWithNSString_(JreStrcat("$I$I", @"Year is too large: ", year, @" > ", OrgJodaTimeChronoIslamicChronology_MAX_YEAR)) autorelease];
+    @throw create_JavaLangArithmeticException_initWithNSString_(JreStrcat("$I$I", @"Year is too large: ", year, @" > ", OrgJodaTimeChronoIslamicChronology_MAX_YEAR));
   }
   if (year < OrgJodaTimeChronoIslamicChronology_MIN_YEAR) {
-    @throw [new_JavaLangArithmeticException_initWithNSString_(JreStrcat("$I$I", @"Year is too small: ", year, @" < ", OrgJodaTimeChronoIslamicChronology_MIN_YEAR)) autorelease];
+    @throw create_JavaLangArithmeticException_initWithNSString_(JreStrcat("$I$I", @"Year is too small: ", year, @" < ", OrgJodaTimeChronoIslamicChronology_MIN_YEAR));
   }
   year--;
   jlong cycle = year / OrgJodaTimeChronoIslamicChronology_CYCLE;
@@ -412,6 +412,105 @@ withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType:(OrgJodaTimeChronoIsl
   [super dealloc];
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeChronoIslamicChronology;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronoIslamicChronology;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronoIslamicChronology;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronoIslamicChronology;", 0x9, 0, 2, -1, -1, -1, -1 },
+    { NULL, NULL, 0x0, -1, 3, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronoIslamicChronology_LeapYearPatternType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, 4, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 7, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, 8, 9, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, 10, 11, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, 12, 13, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, 14, 15, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, 16, 9, -1, -1, -1, -1 },
+    { NULL, "Z", 0x0, 17, 18, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, 19, 18, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, 20, 15, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, 21, 18, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, 22, 11, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, 23, 18, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 24, 25, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getInstanceUTC);
+  methods[1].selector = @selector(getInstance);
+  methods[2].selector = @selector(getInstanceWithOrgJodaTimeDateTimeZone:);
+  methods[3].selector = @selector(getInstanceWithOrgJodaTimeDateTimeZone:withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType:);
+  methods[4].selector = @selector(initWithOrgJodaTimeChronology:withId:withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType:);
+  methods[5].selector = @selector(readResolve);
+  methods[6].selector = @selector(getLeapYearPatternType);
+  methods[7].selector = @selector(withUTC);
+  methods[8].selector = @selector(withZoneWithOrgJodaTimeDateTimeZone:);
+  methods[9].selector = @selector(isEqual:);
+  methods[10].selector = @selector(hash);
+  methods[11].selector = @selector(getYearWithLong:);
+  methods[12].selector = @selector(setYearWithLong:withInt:);
+  methods[13].selector = @selector(getYearDifferenceWithLong:withLong:);
+  methods[14].selector = @selector(getTotalMillisByYearMonthWithInt:withInt:);
+  methods[15].selector = @selector(getDayOfMonthWithLong:);
+  methods[16].selector = @selector(isLeapYearWithInt:);
+  methods[17].selector = @selector(getDaysInYearMax);
+  methods[18].selector = @selector(getDaysInYearWithInt:);
+  methods[19].selector = @selector(getDaysInYearMonthWithInt:withInt:);
+  methods[20].selector = @selector(getDaysInMonthMax);
+  methods[21].selector = @selector(getDaysInMonthMaxWithInt:);
+  methods[22].selector = @selector(getMonthOfYearWithLong:withInt:);
+  methods[23].selector = @selector(getAverageMillisPerYear);
+  methods[24].selector = @selector(getAverageMillisPerYearDividedByTwo);
+  methods[25].selector = @selector(getAverageMillisPerMonth);
+  methods[26].selector = @selector(calculateFirstDayOfYearMillisWithInt:);
+  methods[27].selector = @selector(getMinYear);
+  methods[28].selector = @selector(getMaxYear);
+  methods[29].selector = @selector(getApproxMillisAtEpochDividedByTwo);
+  methods[30].selector = @selector(assembleWithOrgJodaTimeChronoAssembledChronology_Fields:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "AH", "I", .constantValue.asInt = OrgJodaTimeChronoIslamicChronology_AH, 0x19, -1, -1, -1, -1 },
+    { "ERA_FIELD", "LOrgJodaTimeDateTimeField;", .constantValue.asLong = 0, 0x1a, -1, 26, -1, -1 },
+    { "LEAP_YEAR_15_BASED", "LOrgJodaTimeChronoIslamicChronology_LeapYearPatternType;", .constantValue.asLong = 0, 0x19, -1, 27, -1, -1 },
+    { "LEAP_YEAR_16_BASED", "LOrgJodaTimeChronoIslamicChronology_LeapYearPatternType;", .constantValue.asLong = 0, 0x19, -1, 28, -1, -1 },
+    { "LEAP_YEAR_INDIAN", "LOrgJodaTimeChronoIslamicChronology_LeapYearPatternType;", .constantValue.asLong = 0, 0x19, -1, 29, -1, -1 },
+    { "LEAP_YEAR_HABASH_AL_HASIB", "LOrgJodaTimeChronoIslamicChronology_LeapYearPatternType;", .constantValue.asLong = 0, 0x19, -1, 30, -1, -1 },
+    { "MIN_YEAR", "I", .constantValue.asInt = OrgJodaTimeChronoIslamicChronology_MIN_YEAR, 0x1a, -1, -1, -1, -1 },
+    { "MAX_YEAR", "I", .constantValue.asInt = OrgJodaTimeChronoIslamicChronology_MAX_YEAR, 0x1a, -1, -1, -1, -1 },
+    { "MONTH_PAIR_LENGTH", "I", .constantValue.asInt = OrgJodaTimeChronoIslamicChronology_MONTH_PAIR_LENGTH, 0x1a, -1, -1, -1, -1 },
+    { "LONG_MONTH_LENGTH", "I", .constantValue.asInt = OrgJodaTimeChronoIslamicChronology_LONG_MONTH_LENGTH, 0x1a, -1, -1, -1, -1 },
+    { "SHORT_MONTH_LENGTH", "I", .constantValue.asInt = OrgJodaTimeChronoIslamicChronology_SHORT_MONTH_LENGTH, 0x1a, -1, -1, -1, -1 },
+    { "MILLIS_PER_MONTH_PAIR", "J", .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_PER_MONTH_PAIR, 0x1a, -1, -1, -1, -1 },
+    { "MILLIS_PER_MONTH", "J", .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_PER_MONTH, 0x1a, -1, -1, -1, -1 },
+    { "MILLIS_PER_LONG_MONTH", "J", .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_PER_LONG_MONTH, 0x1a, -1, -1, -1, -1 },
+    { "MILLIS_PER_YEAR", "J", .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_PER_YEAR, 0x1a, -1, -1, -1, -1 },
+    { "MILLIS_PER_SHORT_YEAR", "J", .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_PER_SHORT_YEAR, 0x1a, -1, -1, -1, -1 },
+    { "MILLIS_PER_LONG_YEAR", "J", .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_PER_LONG_YEAR, 0x1a, -1, -1, -1, -1 },
+    { "MILLIS_YEAR_1", "J", .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_YEAR_1, 0x1a, -1, -1, -1, -1 },
+    { "CYCLE", "I", .constantValue.asInt = OrgJodaTimeChronoIslamicChronology_CYCLE, 0x1a, -1, -1, -1, -1 },
+    { "MILLIS_PER_CYCLE", "J", .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_PER_CYCLE, 0x1a, -1, -1, -1, -1 },
+    { "cCache", "LJavaUtilConcurrentConcurrentHashMap;", .constantValue.asLong = 0, 0x1a, -1, 31, 32, -1 },
+    { "INSTANCE_UTC", "LOrgJodaTimeChronoIslamicChronology;", .constantValue.asLong = 0, 0x1a, -1, 33, -1, -1 },
+    { "iLeapYears_", "LOrgJodaTimeChronoIslamicChronology_LeapYearPatternType;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "getInstance", "LOrgJodaTimeDateTimeZone;", "LOrgJodaTimeDateTimeZone;LOrgJodaTimeChronoIslamicChronology_LeapYearPatternType;", "LOrgJodaTimeChronology;LNSObject;LOrgJodaTimeChronoIslamicChronology_LeapYearPatternType;", "withZone", "equals", "LNSObject;", "hashCode", "getYear", "J", "setYear", "JI", "getYearDifference", "JJ", "getTotalMillisByYearMonth", "II", "getDayOfMonth", "isLeapYear", "I", "getDaysInYear", "getDaysInYearMonth", "getDaysInMonthMax", "getMonthOfYear", "calculateFirstDayOfYearMillis", "assemble", "LOrgJodaTimeChronoAssembledChronology_Fields;", &OrgJodaTimeChronoIslamicChronology_ERA_FIELD, &OrgJodaTimeChronoIslamicChronology_LEAP_YEAR_15_BASED, &OrgJodaTimeChronoIslamicChronology_LEAP_YEAR_16_BASED, &OrgJodaTimeChronoIslamicChronology_LEAP_YEAR_INDIAN, &OrgJodaTimeChronoIslamicChronology_LEAP_YEAR_HABASH_AL_HASIB, &OrgJodaTimeChronoIslamicChronology_cCache, "Ljava/util/concurrent/ConcurrentHashMap<Lorg/joda/time/DateTimeZone;[Lorg/joda/time/chrono/IslamicChronology;>;", &OrgJodaTimeChronoIslamicChronology_INSTANCE_UTC, "LOrgJodaTimeChronoIslamicChronology_LeapYearPatternType;" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoIslamicChronology = { "IslamicChronology", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x11, 31, 24, -1, 34, -1, -1, -1 };
+  return &_OrgJodaTimeChronoIslamicChronology;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeChronoIslamicChronology class]) {
     JreStrongAssignAndConsume(&OrgJodaTimeChronoIslamicChronology_ERA_FIELD, new_OrgJodaTimeChronoBasicSingleEraDateTimeField_initWithNSString_(@"AH"));
@@ -425,71 +524,6 @@ withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType:(OrgJodaTimeChronoIsl
     }
     J2OBJC_SET_INITIALIZED(OrgJodaTimeChronoIslamicChronology)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getInstanceUTC", NULL, "Lorg.joda.time.chrono.IslamicChronology;", 0x9, NULL, NULL },
-    { "getInstance", NULL, "Lorg.joda.time.chrono.IslamicChronology;", 0x9, NULL, NULL },
-    { "getInstanceWithOrgJodaTimeDateTimeZone:", "getInstance", "Lorg.joda.time.chrono.IslamicChronology;", 0x9, NULL, NULL },
-    { "getInstanceWithOrgJodaTimeDateTimeZone:withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType:", "getInstance", "Lorg.joda.time.chrono.IslamicChronology;", 0x9, NULL, NULL },
-    { "initWithOrgJodaTimeChronology:withId:withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType:", "IslamicChronology", NULL, 0x0, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
-    { "getLeapYearPatternType", NULL, "Lorg.joda.time.chrono.IslamicChronology$LeapYearPatternType;", 0x1, NULL, NULL },
-    { "withUTC", NULL, "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "withZoneWithOrgJodaTimeDateTimeZone:", "withZone", "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "getYearWithLong:", "getYear", "I", 0x0, NULL, NULL },
-    { "setYearWithLong:withInt:", "setYear", "J", 0x0, NULL, NULL },
-    { "getYearDifferenceWithLong:withLong:", "getYearDifference", "J", 0x0, NULL, NULL },
-    { "getTotalMillisByYearMonthWithInt:withInt:", "getTotalMillisByYearMonth", "J", 0x0, NULL, NULL },
-    { "getDayOfMonthWithLong:", "getDayOfMonth", "I", 0x0, NULL, NULL },
-    { "isLeapYearWithInt:", "isLeapYear", "Z", 0x0, NULL, NULL },
-    { "getDaysInYearMax", NULL, "I", 0x0, NULL, NULL },
-    { "getDaysInYearWithInt:", "getDaysInYear", "I", 0x0, NULL, NULL },
-    { "getDaysInYearMonthWithInt:withInt:", "getDaysInYearMonth", "I", 0x0, NULL, NULL },
-    { "getDaysInMonthMax", NULL, "I", 0x0, NULL, NULL },
-    { "getDaysInMonthMaxWithInt:", "getDaysInMonthMax", "I", 0x0, NULL, NULL },
-    { "getMonthOfYearWithLong:withInt:", "getMonthOfYear", "I", 0x0, NULL, NULL },
-    { "getAverageMillisPerYear", NULL, "J", 0x0, NULL, NULL },
-    { "getAverageMillisPerYearDividedByTwo", NULL, "J", 0x0, NULL, NULL },
-    { "getAverageMillisPerMonth", NULL, "J", 0x0, NULL, NULL },
-    { "calculateFirstDayOfYearMillisWithInt:", "calculateFirstDayOfYearMillis", "J", 0x0, NULL, NULL },
-    { "getMinYear", NULL, "I", 0x0, NULL, NULL },
-    { "getMaxYear", NULL, "I", 0x0, NULL, NULL },
-    { "getApproxMillisAtEpochDividedByTwo", NULL, "J", 0x0, NULL, NULL },
-    { "assembleWithOrgJodaTimeChronoAssembledChronology_Fields:", "assemble", "V", 0x4, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_serialVersionUID },
-    { "AH", "AH", 0x19, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoIslamicChronology_AH },
-    { "ERA_FIELD", "ERA_FIELD", 0x1a, "Lorg.joda.time.DateTimeField;", &OrgJodaTimeChronoIslamicChronology_ERA_FIELD, NULL, .constantValue.asLong = 0 },
-    { "LEAP_YEAR_15_BASED", "LEAP_YEAR_15_BASED", 0x19, "Lorg.joda.time.chrono.IslamicChronology$LeapYearPatternType;", &OrgJodaTimeChronoIslamicChronology_LEAP_YEAR_15_BASED, NULL, .constantValue.asLong = 0 },
-    { "LEAP_YEAR_16_BASED", "LEAP_YEAR_16_BASED", 0x19, "Lorg.joda.time.chrono.IslamicChronology$LeapYearPatternType;", &OrgJodaTimeChronoIslamicChronology_LEAP_YEAR_16_BASED, NULL, .constantValue.asLong = 0 },
-    { "LEAP_YEAR_INDIAN", "LEAP_YEAR_INDIAN", 0x19, "Lorg.joda.time.chrono.IslamicChronology$LeapYearPatternType;", &OrgJodaTimeChronoIslamicChronology_LEAP_YEAR_INDIAN, NULL, .constantValue.asLong = 0 },
-    { "LEAP_YEAR_HABASH_AL_HASIB", "LEAP_YEAR_HABASH_AL_HASIB", 0x19, "Lorg.joda.time.chrono.IslamicChronology$LeapYearPatternType;", &OrgJodaTimeChronoIslamicChronology_LEAP_YEAR_HABASH_AL_HASIB, NULL, .constantValue.asLong = 0 },
-    { "MIN_YEAR", "MIN_YEAR", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoIslamicChronology_MIN_YEAR },
-    { "MAX_YEAR", "MAX_YEAR", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoIslamicChronology_MAX_YEAR },
-    { "MONTH_PAIR_LENGTH", "MONTH_PAIR_LENGTH", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoIslamicChronology_MONTH_PAIR_LENGTH },
-    { "LONG_MONTH_LENGTH", "LONG_MONTH_LENGTH", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoIslamicChronology_LONG_MONTH_LENGTH },
-    { "SHORT_MONTH_LENGTH", "SHORT_MONTH_LENGTH", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoIslamicChronology_SHORT_MONTH_LENGTH },
-    { "MILLIS_PER_MONTH_PAIR", "MILLIS_PER_MONTH_PAIR", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_PER_MONTH_PAIR },
-    { "MILLIS_PER_MONTH", "MILLIS_PER_MONTH", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_PER_MONTH },
-    { "MILLIS_PER_LONG_MONTH", "MILLIS_PER_LONG_MONTH", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_PER_LONG_MONTH },
-    { "MILLIS_PER_YEAR", "MILLIS_PER_YEAR", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_PER_YEAR },
-    { "MILLIS_PER_SHORT_YEAR", "MILLIS_PER_SHORT_YEAR", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_PER_SHORT_YEAR },
-    { "MILLIS_PER_LONG_YEAR", "MILLIS_PER_LONG_YEAR", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_PER_LONG_YEAR },
-    { "MILLIS_YEAR_1", "MILLIS_YEAR_1", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_YEAR_1 },
-    { "CYCLE", "CYCLE", 0x1a, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoIslamicChronology_CYCLE },
-    { "MILLIS_PER_CYCLE", "MILLIS_PER_CYCLE", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_MILLIS_PER_CYCLE },
-    { "cCache", "cCache", 0x1a, "Ljava.util.concurrent.ConcurrentHashMap;", &OrgJodaTimeChronoIslamicChronology_cCache, "Ljava/util/concurrent/ConcurrentHashMap<Lorg/joda/time/DateTimeZone;L[Lorg/joda/time/chrono/IslamicChronology;;>;", .constantValue.asLong = 0 },
-    { "INSTANCE_UTC", "INSTANCE_UTC", 0x1a, "Lorg.joda.time.chrono.IslamicChronology;", &OrgJodaTimeChronoIslamicChronology_INSTANCE_UTC, NULL, .constantValue.asLong = 0 },
-    { "iLeapYears_", NULL, 0x12, "Lorg.joda.time.chrono.IslamicChronology$LeapYearPatternType;", NULL, NULL, .constantValue.asLong = 0 },
-  };
-  static const char *inner_classes[] = {"Lorg.joda.time.chrono.IslamicChronology$LeapYearPatternType;"};
-  static const J2ObjcClassInfo _OrgJodaTimeChronoIslamicChronology = { 2, "IslamicChronology", "org.joda.time.chrono", NULL, 0x11, 31, methods, 24, fields, 0, NULL, 1, inner_classes, NULL, NULL };
-  return &_OrgJodaTimeChronoIslamicChronology;
 }
 
 @end
@@ -523,19 +557,19 @@ OrgJodaTimeChronoIslamicChronology *OrgJodaTimeChronoIslamicChronology_getInstan
       chronos = oldChronos;
     }
   }
-  chrono = IOSObjectArray_Get(nil_chk(chronos), ((OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *) nil_chk(leapYears))->index_);
+  chrono = IOSObjectArray_Get(chronos, ((OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *) nil_chk(leapYears))->index_);
   if (chrono == nil) {
     @synchronized(chronos) {
       chrono = IOSObjectArray_Get(chronos, leapYears->index_);
       if (chrono == nil) {
         if (zone == JreLoadStatic(OrgJodaTimeDateTimeZone, UTC)) {
-          chrono = [new_OrgJodaTimeChronoIslamicChronology_initWithOrgJodaTimeChronology_withId_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_(nil, nil, leapYears) autorelease];
-          OrgJodaTimeDateTime *lowerLimit = [new_OrgJodaTimeDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(1, 1, 1, 0, 0, 0, 0, chrono) autorelease];
-          chrono = [new_OrgJodaTimeChronoIslamicChronology_initWithOrgJodaTimeChronology_withId_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_(OrgJodaTimeChronoLimitChronology_getInstanceWithOrgJodaTimeChronology_withOrgJodaTimeReadableDateTime_withOrgJodaTimeReadableDateTime_(chrono, lowerLimit, nil), nil, leapYears) autorelease];
+          chrono = create_OrgJodaTimeChronoIslamicChronology_initWithOrgJodaTimeChronology_withId_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_(nil, nil, leapYears);
+          OrgJodaTimeDateTime *lowerLimit = create_OrgJodaTimeDateTime_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimeChronology_(1, 1, 1, 0, 0, 0, 0, chrono);
+          chrono = create_OrgJodaTimeChronoIslamicChronology_initWithOrgJodaTimeChronology_withId_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_(OrgJodaTimeChronoLimitChronology_getInstanceWithOrgJodaTimeChronology_withOrgJodaTimeReadableDateTime_withOrgJodaTimeReadableDateTime_(chrono, lowerLimit, nil), nil, leapYears);
         }
         else {
           chrono = OrgJodaTimeChronoIslamicChronology_getInstanceWithOrgJodaTimeDateTimeZone_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_(JreLoadStatic(OrgJodaTimeDateTimeZone, UTC), leapYears);
-          chrono = [new_OrgJodaTimeChronoIslamicChronology_initWithOrgJodaTimeChronology_withId_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_(OrgJodaTimeChronoZonedChronology_getInstanceWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_(chrono, zone), nil, leapYears) autorelease];
+          chrono = create_OrgJodaTimeChronoIslamicChronology_initWithOrgJodaTimeChronology_withId_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_(OrgJodaTimeChronoZonedChronology_getInstanceWithOrgJodaTimeChronology_withOrgJodaTimeDateTimeZone_(chrono, zone), nil, leapYears);
         }
         IOSObjectArray_Set(chronos, leapYears->index_, chrono);
       }
@@ -550,15 +584,11 @@ void OrgJodaTimeChronoIslamicChronology_initWithOrgJodaTimeChronology_withId_wit
 }
 
 OrgJodaTimeChronoIslamicChronology *new_OrgJodaTimeChronoIslamicChronology_initWithOrgJodaTimeChronology_withId_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_(OrgJodaTimeChronology *base, id param, OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *leapYears) {
-  OrgJodaTimeChronoIslamicChronology *self = [OrgJodaTimeChronoIslamicChronology alloc];
-  OrgJodaTimeChronoIslamicChronology_initWithOrgJodaTimeChronology_withId_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_(self, base, param, leapYears);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoIslamicChronology, initWithOrgJodaTimeChronology_withId_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_, base, param, leapYears)
 }
 
 OrgJodaTimeChronoIslamicChronology *create_OrgJodaTimeChronoIslamicChronology_initWithOrgJodaTimeChronology_withId_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_(OrgJodaTimeChronology *base, id param, OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *leapYears) {
-  OrgJodaTimeChronoIslamicChronology *self = [[OrgJodaTimeChronoIslamicChronology alloc] autorelease];
-  OrgJodaTimeChronoIslamicChronology_initWithOrgJodaTimeChronology_withId_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_(self, base, param, leapYears);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoIslamicChronology, initWithOrgJodaTimeChronology_withId_withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType_, base, param, leapYears)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoIslamicChronology)
@@ -603,19 +633,28 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoIslamicChronology)
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithInt:withInt:", "LeapYearPatternType", NULL, 0x0, NULL, NULL },
-    { "isLeapYearWithInt:", "isLeapYear", "Z", 0x0, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "Z", 0x0, 1, 2, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 5, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithInt:withInt:);
+  methods[1].selector = @selector(isLeapYearWithInt:);
+  methods[2].selector = @selector(readResolve);
+  methods[3].selector = @selector(isEqual:);
+  methods[4].selector = @selector(hash);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_serialVersionUID },
-    { "index_", NULL, 0x10, "B", NULL, NULL, .constantValue.asLong = 0 },
-    { "pattern_", NULL, 0x10, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "index_", "B", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "pattern_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoIslamicChronology_LeapYearPatternType = { 2, "LeapYearPatternType", "org.joda.time.chrono", "IslamicChronology", 0x9, 5, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "II", "isLeapYear", "I", "equals", "LNSObject;", "hashCode", "LOrgJodaTimeChronoIslamicChronology;" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoIslamicChronology_LeapYearPatternType = { "LeapYearPatternType", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x9, 5, 3, 6, -1, -1, -1, -1 };
   return &_OrgJodaTimeChronoIslamicChronology_LeapYearPatternType;
 }
 
@@ -628,15 +667,11 @@ void OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_initWithInt_withInt_
 }
 
 OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *new_OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_initWithInt_withInt_(jint index, jint pattern) {
-  OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *self = [OrgJodaTimeChronoIslamicChronology_LeapYearPatternType alloc];
-  OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_initWithInt_withInt_(self, index, pattern);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoIslamicChronology_LeapYearPatternType, initWithInt_withInt_, index, pattern)
 }
 
 OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *create_OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_initWithInt_withInt_(jint index, jint pattern) {
-  OrgJodaTimeChronoIslamicChronology_LeapYearPatternType *self = [[OrgJodaTimeChronoIslamicChronology_LeapYearPatternType alloc] autorelease];
-  OrgJodaTimeChronoIslamicChronology_LeapYearPatternType_initWithInt_withInt_(self, index, pattern);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoIslamicChronology_LeapYearPatternType, initWithInt_withInt_, index, pattern)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoIslamicChronology_LeapYearPatternType)

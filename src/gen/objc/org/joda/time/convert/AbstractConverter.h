@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertAbstractConverter_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertAbstractConverter_RESTRICT
-#define OrgJodaTimeConvertAbstractConverter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertAbstractConverter")
+#ifdef RESTRICT_OrgJodaTimeConvertAbstractConverter
+#define INCLUDE_ALL_OrgJodaTimeConvertAbstractConverter 0
 #else
-#define OrgJodaTimeConvertAbstractConverter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertAbstractConverter 1
 #endif
-#undef OrgJodaTimeConvertAbstractConverter_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertAbstractConverter
 
-#if !defined (OrgJodaTimeConvertAbstractConverter_) && (OrgJodaTimeConvertAbstractConverter_INCLUDE_ALL || defined(OrgJodaTimeConvertAbstractConverter_INCLUDE))
+#if !defined (OrgJodaTimeConvertAbstractConverter_) && (INCLUDE_ALL_OrgJodaTimeConvertAbstractConverter || defined(INCLUDE_OrgJodaTimeConvertAbstractConverter))
 #define OrgJodaTimeConvertAbstractConverter_
 
-#define OrgJodaTimeConvertConverter_RESTRICT 1
-#define OrgJodaTimeConvertConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertConverter 1
+#define INCLUDE_OrgJodaTimeConvertConverter 1
 #include "org/joda/time/convert/Converter.h"
 
 @class IOSIntArray;
@@ -150,4 +150,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertAbstractConverter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertAbstractConverter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertAbstractConverter")

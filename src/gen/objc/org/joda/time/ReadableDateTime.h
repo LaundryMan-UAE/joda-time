@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeReadableDateTime_INCLUDE_ALL")
-#ifdef OrgJodaTimeReadableDateTime_RESTRICT
-#define OrgJodaTimeReadableDateTime_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeReadableDateTime")
+#ifdef RESTRICT_OrgJodaTimeReadableDateTime
+#define INCLUDE_ALL_OrgJodaTimeReadableDateTime 0
 #else
-#define OrgJodaTimeReadableDateTime_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeReadableDateTime 1
 #endif
-#undef OrgJodaTimeReadableDateTime_RESTRICT
+#undef RESTRICT_OrgJodaTimeReadableDateTime
 
-#if !defined (OrgJodaTimeReadableDateTime_) && (OrgJodaTimeReadableDateTime_INCLUDE_ALL || defined(OrgJodaTimeReadableDateTime_INCLUDE))
+#if !defined (OrgJodaTimeReadableDateTime_) && (INCLUDE_ALL_OrgJodaTimeReadableDateTime || defined(INCLUDE_OrgJodaTimeReadableDateTime))
 #define OrgJodaTimeReadableDateTime_
 
-#define OrgJodaTimeReadableInstant_RESTRICT 1
-#define OrgJodaTimeReadableInstant_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadableInstant 1
+#define INCLUDE_OrgJodaTimeReadableInstant 1
 #include "org/joda/time/ReadableInstant.h"
 
 @class JavaUtilLocale;
@@ -37,7 +37,7 @@
  @author Brian S O'Neill
  @since 1.0
  */
-@protocol OrgJodaTimeReadableDateTime < OrgJodaTimeReadableInstant, NSObject, JavaObject >
+@protocol OrgJodaTimeReadableDateTime < OrgJodaTimeReadableInstant, JavaObject >
 
 /*!
  @brief Get the day of week field value.
@@ -200,4 +200,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadableDateTime)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeReadableDateTime_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeReadableDateTime")

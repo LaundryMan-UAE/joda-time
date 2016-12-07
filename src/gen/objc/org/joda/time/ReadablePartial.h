@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeReadablePartial_INCLUDE_ALL")
-#ifdef OrgJodaTimeReadablePartial_RESTRICT
-#define OrgJodaTimeReadablePartial_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeReadablePartial")
+#ifdef RESTRICT_OrgJodaTimeReadablePartial
+#define INCLUDE_ALL_OrgJodaTimeReadablePartial 0
 #else
-#define OrgJodaTimeReadablePartial_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeReadablePartial 1
 #endif
-#undef OrgJodaTimeReadablePartial_RESTRICT
+#undef RESTRICT_OrgJodaTimeReadablePartial
 
-#if !defined (OrgJodaTimeReadablePartial_) && (OrgJodaTimeReadablePartial_INCLUDE_ALL || defined(OrgJodaTimeReadablePartial_INCLUDE))
+#if !defined (OrgJodaTimeReadablePartial_) && (INCLUDE_ALL_OrgJodaTimeReadablePartial || defined(INCLUDE_OrgJodaTimeReadablePartial))
 #define OrgJodaTimeReadablePartial_
 
-#define JavaLangComparable_RESTRICT 1
-#define JavaLangComparable_INCLUDE 1
+#define RESTRICT_JavaLangComparable 1
+#define INCLUDE_JavaLangComparable 1
 #include "java/lang/Comparable.h"
 
 @class OrgJodaTimeChronology;
@@ -45,7 +45,7 @@
  @author Stephen Colebourne
  @since 1.0
  */
-@protocol OrgJodaTimeReadablePartial < JavaLangComparable, NSObject, JavaObject >
+@protocol OrgJodaTimeReadablePartial < JavaLangComparable, JavaObject >
 
 /*!
  @brief Gets the number of fields that this partial supports.
@@ -167,4 +167,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadablePartial)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeReadablePartial_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeReadablePartial")

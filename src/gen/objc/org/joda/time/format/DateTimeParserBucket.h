@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatDateTimeParserBucket_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatDateTimeParserBucket_RESTRICT
-#define OrgJodaTimeFormatDateTimeParserBucket_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatDateTimeParserBucket")
+#ifdef RESTRICT_OrgJodaTimeFormatDateTimeParserBucket
+#define INCLUDE_ALL_OrgJodaTimeFormatDateTimeParserBucket 0
 #else
-#define OrgJodaTimeFormatDateTimeParserBucket_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatDateTimeParserBucket 1
 #endif
-#undef OrgJodaTimeFormatDateTimeParserBucket_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatDateTimeParserBucket
 
-#if !defined (OrgJodaTimeFormatDateTimeParserBucket_) && (OrgJodaTimeFormatDateTimeParserBucket_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeParserBucket_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeParserBucket_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeParserBucket || defined(INCLUDE_OrgJodaTimeFormatDateTimeParserBucket))
 #define OrgJodaTimeFormatDateTimeParserBucket_
 
 @class JavaLangInteger;
@@ -308,7 +308,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeParserBucket)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeParserBucket_SavedState_) && (OrgJodaTimeFormatDateTimeParserBucket_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeParserBucket_SavedState_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeParserBucket_SavedState_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeParserBucket || defined(INCLUDE_OrgJodaTimeFormatDateTimeParserBucket_SavedState))
 #define OrgJodaTimeFormatDateTimeParserBucket_SavedState_
 
 @class IOSObjectArray;
@@ -348,11 +348,11 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeParserBucket_SavedState)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeParserBucket_SavedField_) && (OrgJodaTimeFormatDateTimeParserBucket_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeParserBucket_SavedField_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeParserBucket_SavedField_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeParserBucket || defined(INCLUDE_OrgJodaTimeFormatDateTimeParserBucket_SavedField))
 #define OrgJodaTimeFormatDateTimeParserBucket_SavedField_
 
-#define JavaLangComparable_RESTRICT 1
-#define JavaLangComparable_INCLUDE 1
+#define RESTRICT_JavaLangComparable 1
+#define INCLUDE_JavaLangComparable 1
 #include "java/lang/Comparable.h"
 
 @class JavaUtilLocale;
@@ -408,4 +408,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeParserBucket_SavedField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatDateTimeParserBucket_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatDateTimeParserBucket")

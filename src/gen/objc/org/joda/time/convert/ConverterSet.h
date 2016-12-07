@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertConverterSet_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertConverterSet_RESTRICT
-#define OrgJodaTimeConvertConverterSet_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertConverterSet")
+#ifdef RESTRICT_OrgJodaTimeConvertConverterSet
+#define INCLUDE_ALL_OrgJodaTimeConvertConverterSet 0
 #else
-#define OrgJodaTimeConvertConverterSet_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertConverterSet 1
 #endif
-#undef OrgJodaTimeConvertConverterSet_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertConverterSet
 
-#if !defined (OrgJodaTimeConvertConverterSet_) && (OrgJodaTimeConvertConverterSet_INCLUDE_ALL || defined(OrgJodaTimeConvertConverterSet_INCLUDE))
+#if !defined (OrgJodaTimeConvertConverterSet_) && (INCLUDE_ALL_OrgJodaTimeConvertConverterSet || defined(INCLUDE_OrgJodaTimeConvertConverterSet))
 #define OrgJodaTimeConvertConverterSet_
 
 @class IOSClass;
@@ -100,7 +100,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertConverterSet)
 
 #endif
 
-#if !defined (OrgJodaTimeConvertConverterSet_Entry_) && (OrgJodaTimeConvertConverterSet_INCLUDE_ALL || defined(OrgJodaTimeConvertConverterSet_Entry_INCLUDE))
+#if !defined (OrgJodaTimeConvertConverterSet_Entry_) && (INCLUDE_ALL_OrgJodaTimeConvertConverterSet || defined(INCLUDE_OrgJodaTimeConvertConverterSet_Entry))
 #define OrgJodaTimeConvertConverterSet_Entry_
 
 @class IOSClass;
@@ -134,4 +134,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertConverterSet_Entry)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertConverterSet_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertConverterSet")

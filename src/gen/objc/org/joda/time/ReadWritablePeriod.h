@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeReadWritablePeriod_INCLUDE_ALL")
-#ifdef OrgJodaTimeReadWritablePeriod_RESTRICT
-#define OrgJodaTimeReadWritablePeriod_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeReadWritablePeriod")
+#ifdef RESTRICT_OrgJodaTimeReadWritablePeriod
+#define INCLUDE_ALL_OrgJodaTimeReadWritablePeriod 0
 #else
-#define OrgJodaTimeReadWritablePeriod_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeReadWritablePeriod 1
 #endif
-#undef OrgJodaTimeReadWritablePeriod_RESTRICT
+#undef RESTRICT_OrgJodaTimeReadWritablePeriod
 
-#if !defined (OrgJodaTimeReadWritablePeriod_) && (OrgJodaTimeReadWritablePeriod_INCLUDE_ALL || defined(OrgJodaTimeReadWritablePeriod_INCLUDE))
+#if !defined (OrgJodaTimeReadWritablePeriod_) && (INCLUDE_ALL_OrgJodaTimeReadWritablePeriod || defined(INCLUDE_OrgJodaTimeReadWritablePeriod))
 #define OrgJodaTimeReadWritablePeriod_
 
-#define OrgJodaTimeReadablePeriod_RESTRICT 1
-#define OrgJodaTimeReadablePeriod_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadablePeriod 1
+#define INCLUDE_OrgJodaTimeReadablePeriod 1
 #include "org/joda/time/ReadablePeriod.h"
 
 @class OrgJodaTimeDurationFieldType;
@@ -32,7 +32,7 @@
  @author Stephen Colebourne
  @since 1.0
  */
-@protocol OrgJodaTimeReadWritablePeriod < OrgJodaTimeReadablePeriod, NSObject, JavaObject >
+@protocol OrgJodaTimeReadWritablePeriod < OrgJodaTimeReadablePeriod, JavaObject >
 
 /*!
  @brief Clears the period, setting all values back to zero.
@@ -273,4 +273,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadWritablePeriod)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeReadWritablePeriod_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeReadWritablePeriod")

@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertIntervalConverter_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertIntervalConverter_RESTRICT
-#define OrgJodaTimeConvertIntervalConverter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertIntervalConverter")
+#ifdef RESTRICT_OrgJodaTimeConvertIntervalConverter
+#define INCLUDE_ALL_OrgJodaTimeConvertIntervalConverter 0
 #else
-#define OrgJodaTimeConvertIntervalConverter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertIntervalConverter 1
 #endif
-#undef OrgJodaTimeConvertIntervalConverter_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertIntervalConverter
 
-#if !defined (OrgJodaTimeConvertIntervalConverter_) && (OrgJodaTimeConvertIntervalConverter_INCLUDE_ALL || defined(OrgJodaTimeConvertIntervalConverter_INCLUDE))
+#if !defined (OrgJodaTimeConvertIntervalConverter_) && (INCLUDE_ALL_OrgJodaTimeConvertIntervalConverter || defined(INCLUDE_OrgJodaTimeConvertIntervalConverter))
 #define OrgJodaTimeConvertIntervalConverter_
 
-#define OrgJodaTimeConvertConverter_RESTRICT 1
-#define OrgJodaTimeConvertConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertConverter 1
+#define INCLUDE_OrgJodaTimeConvertConverter 1
 #include "org/joda/time/convert/Converter.h"
 
 @class OrgJodaTimeChronology;
@@ -29,7 +29,7 @@
  @author Stephen Colebourne
  @since 1.0
  */
-@protocol OrgJodaTimeConvertIntervalConverter < OrgJodaTimeConvertConverter, NSObject, JavaObject >
+@protocol OrgJodaTimeConvertIntervalConverter < OrgJodaTimeConvertConverter, JavaObject >
 
 /*!
  @brief Checks if the input is a ReadableInterval.
@@ -63,4 +63,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertIntervalConverter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertIntervalConverter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertIntervalConverter")

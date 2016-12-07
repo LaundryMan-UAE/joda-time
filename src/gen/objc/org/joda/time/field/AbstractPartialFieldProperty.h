@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFieldAbstractPartialFieldProperty_INCLUDE_ALL")
-#ifdef OrgJodaTimeFieldAbstractPartialFieldProperty_RESTRICT
-#define OrgJodaTimeFieldAbstractPartialFieldProperty_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFieldAbstractPartialFieldProperty")
+#ifdef RESTRICT_OrgJodaTimeFieldAbstractPartialFieldProperty
+#define INCLUDE_ALL_OrgJodaTimeFieldAbstractPartialFieldProperty 0
 #else
-#define OrgJodaTimeFieldAbstractPartialFieldProperty_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFieldAbstractPartialFieldProperty 1
 #endif
-#undef OrgJodaTimeFieldAbstractPartialFieldProperty_RESTRICT
+#undef RESTRICT_OrgJodaTimeFieldAbstractPartialFieldProperty
 
-#if !defined (OrgJodaTimeFieldAbstractPartialFieldProperty_) && (OrgJodaTimeFieldAbstractPartialFieldProperty_INCLUDE_ALL || defined(OrgJodaTimeFieldAbstractPartialFieldProperty_INCLUDE))
+#if !defined (OrgJodaTimeFieldAbstractPartialFieldProperty_) && (INCLUDE_ALL_OrgJodaTimeFieldAbstractPartialFieldProperty || defined(INCLUDE_OrgJodaTimeFieldAbstractPartialFieldProperty))
 #define OrgJodaTimeFieldAbstractPartialFieldProperty_
 
 @class JavaUtilLocale;
@@ -264,4 +264,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldAbstractPartialFieldProperty)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFieldAbstractPartialFieldProperty_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFieldAbstractPartialFieldProperty")

@@ -5,24 +5,24 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatDateTimeFormatterBuilder_RESTRICT
-#define OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder")
+#ifdef RESTRICT_OrgJodaTimeFormatDateTimeFormatterBuilder
+#define INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder 0
 #else
-#define OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder 1
 #endif
-#undef OrgJodaTimeFormatDateTimeFormatterBuilder_RESTRICT
-#ifdef OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber_INCLUDE
-#define OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber_INCLUDE 1
+#undef RESTRICT_OrgJodaTimeFormatDateTimeFormatterBuilder
+#ifdef INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber
+#define INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber 1
 #endif
-#ifdef OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber_INCLUDE
-#define OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter_INCLUDE 1
+#ifdef INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber
+#define INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter 1
 #endif
-#ifdef OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber_INCLUDE
-#define OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter_INCLUDE 1
+#ifdef INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber
+#define INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter 1
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_
 
 @class IOSObjectArray;
@@ -840,15 +840,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLiteral_
 
-#define OrgJodaTimeFormatInternalPrinter_RESTRICT 1
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalPrinter 1
+#define INCLUDE_OrgJodaTimeFormatInternalPrinter 1
 #include "org/joda/time/format/InternalPrinter.h"
 
-#define OrgJodaTimeFormatInternalParser_RESTRICT 1
-#define OrgJodaTimeFormatInternalParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalParser 1
+#define INCLUDE_OrgJodaTimeFormatInternalParser 1
 #include "org/joda/time/format/InternalParser.h"
 
 @class JavaUtilLocale;
@@ -900,15 +900,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_CharacterLi
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiteral_
 
-#define OrgJodaTimeFormatInternalPrinter_RESTRICT 1
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalPrinter 1
+#define INCLUDE_OrgJodaTimeFormatInternalPrinter 1
 #include "org/joda/time/format/InternalPrinter.h"
 
-#define OrgJodaTimeFormatInternalParser_RESTRICT 1
-#define OrgJodaTimeFormatInternalParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalParser 1
+#define INCLUDE_OrgJodaTimeFormatInternalParser 1
 #include "org/joda/time/format/InternalParser.h"
 
 @class JavaUtilLocale;
@@ -960,15 +960,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_StringLiter
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_NumberFormatter_
 
-#define OrgJodaTimeFormatInternalPrinter_RESTRICT 1
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalPrinter 1
+#define INCLUDE_OrgJodaTimeFormatInternalPrinter 1
 #include "org/joda/time/format/InternalPrinter.h"
 
-#define OrgJodaTimeFormatInternalParser_RESTRICT 1
-#define OrgJodaTimeFormatInternalParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalParser 1
+#define INCLUDE_OrgJodaTimeFormatInternalParser 1
 #include "org/joda/time/format/InternalParser.h"
 
 @class OrgJodaTimeDateTimeFieldType;
@@ -1008,7 +1008,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_NumberForma
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNumber_
 
 @class JavaUtilLocale;
@@ -1055,7 +1055,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_UnpaddedNum
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumber_
 
 @class JavaUtilLocale;
@@ -1106,7 +1106,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_PaddedNumbe
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber_
 
 @class OrgJodaTimeDateTimeFieldType;
@@ -1141,15 +1141,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_FixedNumber
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYear_
 
-#define OrgJodaTimeFormatInternalPrinter_RESTRICT 1
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalPrinter 1
+#define INCLUDE_OrgJodaTimeFormatInternalPrinter 1
 #include "org/joda/time/format/InternalPrinter.h"
 
-#define OrgJodaTimeFormatInternalParser_RESTRICT 1
-#define OrgJodaTimeFormatInternalParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalParser 1
+#define INCLUDE_OrgJodaTimeFormatInternalParser 1
 #include "org/joda/time/format/InternalParser.h"
 
 @class JavaUtilLocale;
@@ -1204,15 +1204,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_TwoDigitYea
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_TextField))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_TextField_
 
-#define OrgJodaTimeFormatInternalPrinter_RESTRICT 1
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalPrinter 1
+#define INCLUDE_OrgJodaTimeFormatInternalPrinter 1
 #include "org/joda/time/format/InternalPrinter.h"
 
-#define OrgJodaTimeFormatInternalParser_RESTRICT 1
-#define OrgJodaTimeFormatInternalParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalParser 1
+#define INCLUDE_OrgJodaTimeFormatInternalParser 1
 #include "org/joda/time/format/InternalParser.h"
 
 @class JavaUtilLocale;
@@ -1266,15 +1266,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction_
 
-#define OrgJodaTimeFormatInternalPrinter_RESTRICT 1
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalPrinter 1
+#define INCLUDE_OrgJodaTimeFormatInternalPrinter 1
 #include "org/joda/time/format/InternalPrinter.h"
 
-#define OrgJodaTimeFormatInternalParser_RESTRICT 1
-#define OrgJodaTimeFormatInternalParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalParser 1
+#define INCLUDE_OrgJodaTimeFormatInternalParser 1
 #include "org/joda/time/format/InternalParser.h"
 
 @class JavaUtilLocale;
@@ -1337,15 +1337,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_Fraction)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOffset_
 
-#define OrgJodaTimeFormatInternalPrinter_RESTRICT 1
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalPrinter 1
+#define INCLUDE_OrgJodaTimeFormatInternalPrinter 1
 #include "org/joda/time/format/InternalPrinter.h"
 
-#define OrgJodaTimeFormatInternalParser_RESTRICT 1
-#define OrgJodaTimeFormatInternalParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalParser 1
+#define INCLUDE_OrgJodaTimeFormatInternalParser 1
 #include "org/joda/time/format/InternalParser.h"
 
 @class JavaUtilLocale;
@@ -1401,15 +1401,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneOff
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneName_
 
-#define OrgJodaTimeFormatInternalPrinter_RESTRICT 1
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalPrinter 1
+#define INCLUDE_OrgJodaTimeFormatInternalPrinter 1
 #include "org/joda/time/format/InternalPrinter.h"
 
-#define OrgJodaTimeFormatInternalParser_RESTRICT 1
-#define OrgJodaTimeFormatInternalParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalParser 1
+#define INCLUDE_OrgJodaTimeFormatInternalParser 1
 #include "org/joda/time/format/InternalParser.h"
 
 @class JavaUtilLocale;
@@ -1471,21 +1471,22 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneNam
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId_
 
-#define JavaLangEnum_RESTRICT 1
-#define JavaLangEnum_INCLUDE 1
+#define RESTRICT_JavaLangEnum 1
+#define INCLUDE_JavaLangEnum 1
 #include "java/lang/Enum.h"
 
-#define OrgJodaTimeFormatInternalPrinter_RESTRICT 1
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalPrinter 1
+#define INCLUDE_OrgJodaTimeFormatInternalPrinter 1
 #include "org/joda/time/format/InternalPrinter.h"
 
-#define OrgJodaTimeFormatInternalParser_RESTRICT 1
-#define OrgJodaTimeFormatInternalParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalParser 1
+#define INCLUDE_OrgJodaTimeFormatInternalParser 1
 #include "org/joda/time/format/InternalParser.h"
 
+@class IOSObjectArray;
 @class JavaUtilLocale;
 @class OrgJodaTimeChronology;
 @class OrgJodaTimeDateTimeZone;
@@ -1522,11 +1523,11 @@ typedef NS_ENUM(NSUInteger, OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId
        withOrgJodaTimeReadablePartial:(id<OrgJodaTimeReadablePartial>)partial
                    withJavaUtilLocale:(JavaUtilLocale *)locale;
 
-#pragma mark Package-Private
++ (OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId *)valueOfWithNSString:(NSString *)name;
 
 + (IOSObjectArray *)values;
 
-+ (OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId *)valueOfWithNSString:(NSString *)name;
+#pragma mark Package-Private
 
 - (id)copyWithZone:(NSZone *)zone;
 
@@ -1560,15 +1561,15 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_Composite))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_Composite_
 
-#define OrgJodaTimeFormatInternalPrinter_RESTRICT 1
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalPrinter 1
+#define INCLUDE_OrgJodaTimeFormatInternalPrinter 1
 #include "org/joda/time/format/InternalPrinter.h"
 
-#define OrgJodaTimeFormatInternalParser_RESTRICT 1
-#define OrgJodaTimeFormatInternalParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalParser 1
+#define INCLUDE_OrgJodaTimeFormatInternalParser 1
 #include "org/joda/time/format/InternalParser.h"
 
 @class JavaUtilLocale;
@@ -1625,11 +1626,11 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_Composite)
 
 #endif
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser_) && (OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser))
 #define OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingParser_
 
-#define OrgJodaTimeFormatInternalParser_RESTRICT 1
-#define OrgJodaTimeFormatInternalParser_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalParser 1
+#define INCLUDE_OrgJodaTimeFormatInternalParser 1
 #include "org/joda/time/format/InternalParser.h"
 
 @class IOSObjectArray;
@@ -1664,4 +1665,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatterBuilder_MatchingPar
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatDateTimeFormatterBuilder_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatterBuilder")

@@ -3,6 +3,7 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/Joda-Time/src/main/java/org/joda/time/format/PeriodFormat.java
 //
 
+#include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "java/util/Enumeration.h"
@@ -89,30 +90,42 @@ J2OBJC_IGNORE_DESIGNATED_END
   return OrgJodaTimeFormatPeriodFormat_containsKeyWithJavaUtilResourceBundle_withNSString_(bundle, key);
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatPeriodFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatPeriodFormatter;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatPeriodFormatter;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatPeriodFormatter;", 0xa, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeFormatPeriodFormatter;", 0xa, 4, 3, -1, -1, -1, -1 },
+    { NULL, "[LNSString;", 0xa, 5, 3, -1, -1, -1, -1 },
+    { NULL, "Z", 0xa, 6, 7, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getDefault);
+  methods[2].selector = @selector(wordBased);
+  methods[3].selector = @selector(wordBasedWithJavaUtilLocale:);
+  methods[4].selector = @selector(buildRegExFormatterWithJavaUtilResourceBundle:);
+  methods[5].selector = @selector(buildNonRegExFormatterWithJavaUtilResourceBundle:);
+  methods[6].selector = @selector(retrieveVariantsWithJavaUtilResourceBundle:);
+  methods[7].selector = @selector(containsKeyWithJavaUtilResourceBundle:withNSString:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "BUNDLE_NAME", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 8, -1, -1 },
+    { "FORMATTERS", "LJavaUtilConcurrentConcurrentMap;", .constantValue.asLong = 0, 0x1a, -1, 9, 10, -1 },
+  };
+  static const void *ptrTable[] = { "wordBased", "LJavaUtilLocale;", "buildRegExFormatter", "LJavaUtilResourceBundle;", "buildNonRegExFormatter", "retrieveVariants", "containsKey", "LJavaUtilResourceBundle;LNSString;", &OrgJodaTimeFormatPeriodFormat_BUNDLE_NAME, &OrgJodaTimeFormatPeriodFormat_FORMATTERS, "Ljava/util/concurrent/ConcurrentMap<Ljava/util/Locale;Lorg/joda/time/format/PeriodFormatter;>;" };
+  static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormat = { "PeriodFormat", "org.joda.time.format", ptrTable, methods, fields, 7, 0x1, 8, 2, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeFormatPeriodFormat;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeFormatPeriodFormat class]) {
     JreStrongAssignAndConsume(&OrgJodaTimeFormatPeriodFormat_FORMATTERS, new_JavaUtilConcurrentConcurrentHashMap_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeFormatPeriodFormat)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "PeriodFormat", NULL, 0x4, NULL, NULL },
-    { "getDefault", NULL, "Lorg.joda.time.format.PeriodFormatter;", 0x9, NULL, NULL },
-    { "wordBased", NULL, "Lorg.joda.time.format.PeriodFormatter;", 0x9, NULL, NULL },
-    { "wordBasedWithJavaUtilLocale:", "wordBased", "Lorg.joda.time.format.PeriodFormatter;", 0x9, NULL, NULL },
-    { "buildRegExFormatterWithJavaUtilResourceBundle:", "buildRegExFormatter", "Lorg.joda.time.format.PeriodFormatter;", 0xa, NULL, NULL },
-    { "buildNonRegExFormatterWithJavaUtilResourceBundle:", "buildNonRegExFormatter", "Lorg.joda.time.format.PeriodFormatter;", 0xa, NULL, NULL },
-    { "retrieveVariantsWithJavaUtilResourceBundle:", "retrieveVariants", "[Ljava.lang.String;", 0xa, NULL, NULL },
-    { "containsKeyWithJavaUtilResourceBundle:withNSString:", "containsKey", "Z", 0xa, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "BUNDLE_NAME", "BUNDLE_NAME", 0x1a, "Ljava.lang.String;", &OrgJodaTimeFormatPeriodFormat_BUNDLE_NAME, NULL, .constantValue.asLong = 0 },
-    { "FORMATTERS", "FORMATTERS", 0x1a, "Ljava.util.concurrent.ConcurrentMap;", &OrgJodaTimeFormatPeriodFormat_FORMATTERS, "Ljava/util/concurrent/ConcurrentMap<Ljava/util/Locale;Lorg/joda/time/format/PeriodFormatter;>;", .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodFormat = { 2, "PeriodFormat", "org.joda.time.format", NULL, 0x1, 8, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeFormatPeriodFormat;
 }
 
 @end
@@ -122,15 +135,11 @@ void OrgJodaTimeFormatPeriodFormat_init(OrgJodaTimeFormatPeriodFormat *self) {
 }
 
 OrgJodaTimeFormatPeriodFormat *new_OrgJodaTimeFormatPeriodFormat_init() {
-  OrgJodaTimeFormatPeriodFormat *self = [OrgJodaTimeFormatPeriodFormat alloc];
-  OrgJodaTimeFormatPeriodFormat_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFormatPeriodFormat, init)
 }
 
 OrgJodaTimeFormatPeriodFormat *create_OrgJodaTimeFormatPeriodFormat_init() {
-  OrgJodaTimeFormatPeriodFormat *self = [[OrgJodaTimeFormatPeriodFormat alloc] autorelease];
-  OrgJodaTimeFormatPeriodFormat_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFormatPeriodFormat, init)
 }
 
 OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormat_getDefault() {
@@ -163,7 +172,7 @@ OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormat_buildRegExFormat
   OrgJodaTimeFormatPeriodFormat_initialize();
   IOSObjectArray *variants = OrgJodaTimeFormatPeriodFormat_retrieveVariantsWithJavaUtilResourceBundle_(b);
   NSString *regExSeparator = [((JavaUtilResourceBundle *) nil_chk(b)) getStringWithNSString:@"PeriodFormat.regex.separator"];
-  OrgJodaTimeFormatPeriodFormatterBuilder *builder = [new_OrgJodaTimeFormatPeriodFormatterBuilder_init() autorelease];
+  OrgJodaTimeFormatPeriodFormatterBuilder *builder = create_OrgJodaTimeFormatPeriodFormatterBuilder_init();
   [builder appendYears];
   if (OrgJodaTimeFormatPeriodFormat_containsKeyWithJavaUtilResourceBundle_withNSString_(b, @"PeriodFormat.years.regex")) {
     [builder appendSuffixWithNSStringArray:[((NSString *) nil_chk([b getStringWithNSString:@"PeriodFormat.years.regex"])) split:regExSeparator] withNSStringArray:[((NSString *) nil_chk([b getStringWithNSString:@"PeriodFormat.years.list"])) split:regExSeparator]];
@@ -233,7 +242,7 @@ OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormat_buildRegExFormat
 OrgJodaTimeFormatPeriodFormatter *OrgJodaTimeFormatPeriodFormat_buildNonRegExFormatterWithJavaUtilResourceBundle_(JavaUtilResourceBundle *b) {
   OrgJodaTimeFormatPeriodFormat_initialize();
   IOSObjectArray *variants = OrgJodaTimeFormatPeriodFormat_retrieveVariantsWithJavaUtilResourceBundle_(b);
-  return [((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) [new_OrgJodaTimeFormatPeriodFormatterBuilder_init() autorelease]) appendYears])) appendSuffixWithNSString:[((JavaUtilResourceBundle *) nil_chk(b)) getStringWithNSString:@"PeriodFormat.year"] withNSString:[b getStringWithNSString:@"PeriodFormat.years"]])) appendSeparatorWithNSString:[b getStringWithNSString:@"PeriodFormat.commaspace"] withNSString:[b getStringWithNSString:@"PeriodFormat.spaceandspace"] withNSStringArray:variants])) appendMonths])) appendSuffixWithNSString:[b getStringWithNSString:@"PeriodFormat.month"] withNSString:[b getStringWithNSString:@"PeriodFormat.months"]])) appendSeparatorWithNSString:[b getStringWithNSString:@"PeriodFormat.commaspace"] withNSString:[b getStringWithNSString:@"PeriodFormat.spaceandspace"] withNSStringArray:variants])) appendWeeks])) appendSuffixWithNSString:[b getStringWithNSString:@"PeriodFormat.week"] withNSString:[b getStringWithNSString:@"PeriodFormat.weeks"]])) appendSeparatorWithNSString:[b getStringWithNSString:@"PeriodFormat.commaspace"] withNSString:[b getStringWithNSString:@"PeriodFormat.spaceandspace"] withNSStringArray:variants])) appendDays])) appendSuffixWithNSString:[b getStringWithNSString:@"PeriodFormat.day"] withNSString:[b getStringWithNSString:@"PeriodFormat.days"]])) appendSeparatorWithNSString:[b getStringWithNSString:@"PeriodFormat.commaspace"] withNSString:[b getStringWithNSString:@"PeriodFormat.spaceandspace"] withNSStringArray:variants])) appendHours])) appendSuffixWithNSString:[b getStringWithNSString:@"PeriodFormat.hour"] withNSString:[b getStringWithNSString:@"PeriodFormat.hours"]])) appendSeparatorWithNSString:[b getStringWithNSString:@"PeriodFormat.commaspace"] withNSString:[b getStringWithNSString:@"PeriodFormat.spaceandspace"] withNSStringArray:variants])) appendMinutes])) appendSuffixWithNSString:[b getStringWithNSString:@"PeriodFormat.minute"] withNSString:[b getStringWithNSString:@"PeriodFormat.minutes"]])) appendSeparatorWithNSString:[b getStringWithNSString:@"PeriodFormat.commaspace"] withNSString:[b getStringWithNSString:@"PeriodFormat.spaceandspace"] withNSStringArray:variants])) appendSeconds])) appendSuffixWithNSString:[b getStringWithNSString:@"PeriodFormat.second"] withNSString:[b getStringWithNSString:@"PeriodFormat.seconds"]])) appendSeparatorWithNSString:[b getStringWithNSString:@"PeriodFormat.commaspace"] withNSString:[b getStringWithNSString:@"PeriodFormat.spaceandspace"] withNSStringArray:variants])) appendMillis])) appendSuffixWithNSString:[b getStringWithNSString:@"PeriodFormat.millisecond"] withNSString:[b getStringWithNSString:@"PeriodFormat.milliseconds"]])) toFormatter];
+  return [((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([((OrgJodaTimeFormatPeriodFormatterBuilder *) nil_chk([create_OrgJodaTimeFormatPeriodFormatterBuilder_init() appendYears])) appendSuffixWithNSString:[((JavaUtilResourceBundle *) nil_chk(b)) getStringWithNSString:@"PeriodFormat.year"] withNSString:[b getStringWithNSString:@"PeriodFormat.years"]])) appendSeparatorWithNSString:[b getStringWithNSString:@"PeriodFormat.commaspace"] withNSString:[b getStringWithNSString:@"PeriodFormat.spaceandspace"] withNSStringArray:variants])) appendMonths])) appendSuffixWithNSString:[b getStringWithNSString:@"PeriodFormat.month"] withNSString:[b getStringWithNSString:@"PeriodFormat.months"]])) appendSeparatorWithNSString:[b getStringWithNSString:@"PeriodFormat.commaspace"] withNSString:[b getStringWithNSString:@"PeriodFormat.spaceandspace"] withNSStringArray:variants])) appendWeeks])) appendSuffixWithNSString:[b getStringWithNSString:@"PeriodFormat.week"] withNSString:[b getStringWithNSString:@"PeriodFormat.weeks"]])) appendSeparatorWithNSString:[b getStringWithNSString:@"PeriodFormat.commaspace"] withNSString:[b getStringWithNSString:@"PeriodFormat.spaceandspace"] withNSStringArray:variants])) appendDays])) appendSuffixWithNSString:[b getStringWithNSString:@"PeriodFormat.day"] withNSString:[b getStringWithNSString:@"PeriodFormat.days"]])) appendSeparatorWithNSString:[b getStringWithNSString:@"PeriodFormat.commaspace"] withNSString:[b getStringWithNSString:@"PeriodFormat.spaceandspace"] withNSStringArray:variants])) appendHours])) appendSuffixWithNSString:[b getStringWithNSString:@"PeriodFormat.hour"] withNSString:[b getStringWithNSString:@"PeriodFormat.hours"]])) appendSeparatorWithNSString:[b getStringWithNSString:@"PeriodFormat.commaspace"] withNSString:[b getStringWithNSString:@"PeriodFormat.spaceandspace"] withNSStringArray:variants])) appendMinutes])) appendSuffixWithNSString:[b getStringWithNSString:@"PeriodFormat.minute"] withNSString:[b getStringWithNSString:@"PeriodFormat.minutes"]])) appendSeparatorWithNSString:[b getStringWithNSString:@"PeriodFormat.commaspace"] withNSString:[b getStringWithNSString:@"PeriodFormat.spaceandspace"] withNSStringArray:variants])) appendSeconds])) appendSuffixWithNSString:[b getStringWithNSString:@"PeriodFormat.second"] withNSString:[b getStringWithNSString:@"PeriodFormat.seconds"]])) appendSeparatorWithNSString:[b getStringWithNSString:@"PeriodFormat.commaspace"] withNSString:[b getStringWithNSString:@"PeriodFormat.spaceandspace"] withNSStringArray:variants])) appendMillis])) appendSuffixWithNSString:[b getStringWithNSString:@"PeriodFormat.millisecond"] withNSString:[b getStringWithNSString:@"PeriodFormat.milliseconds"]])) toFormatter];
 }
 
 IOSObjectArray *OrgJodaTimeFormatPeriodFormat_retrieveVariantsWithJavaUtilResourceBundle_(JavaUtilResourceBundle *b) {

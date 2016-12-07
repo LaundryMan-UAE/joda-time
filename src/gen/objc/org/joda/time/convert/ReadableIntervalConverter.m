@@ -66,27 +66,37 @@ J2OBJC_IGNORE_DESIGNATED_END
   return OrgJodaTimeReadableInterval_class_();
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 2, 6, -1, -1, -1, -1 },
+    { NULL, "LIOSClass;", 0x1, -1, -1, -1, 7, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getDurationMillisWithId:);
+  methods[2].selector = @selector(setIntoWithOrgJodaTimeReadWritablePeriod:withId:withOrgJodaTimeChronology:);
+  methods[3].selector = @selector(isReadableIntervalWithId:withOrgJodaTimeChronology:);
+  methods[4].selector = @selector(setIntoWithOrgJodaTimeReadWritableInterval:withId:withOrgJodaTimeChronology:);
+  methods[5].selector = @selector(getSupportedType);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "INSTANCE", "LOrgJodaTimeConvertReadableIntervalConverter;", .constantValue.asLong = 0, 0x18, -1, 8, -1, -1 },
+  };
+  static const void *ptrTable[] = { "getDurationMillis", "LNSObject;", "setInto", "LOrgJodaTimeReadWritablePeriod;LNSObject;LOrgJodaTimeChronology;", "isReadableInterval", "LNSObject;LOrgJodaTimeChronology;", "LOrgJodaTimeReadWritableInterval;LNSObject;LOrgJodaTimeChronology;", "()Ljava/lang/Class<*>;", &OrgJodaTimeConvertReadableIntervalConverter_INSTANCE };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertReadableIntervalConverter = { "ReadableIntervalConverter", "org.joda.time.convert", ptrTable, methods, fields, 7, 0x0, 6, 1, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeConvertReadableIntervalConverter;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeConvertReadableIntervalConverter class]) {
     JreStrongAssignAndConsume(&OrgJodaTimeConvertReadableIntervalConverter_INSTANCE, new_OrgJodaTimeConvertReadableIntervalConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertReadableIntervalConverter)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "ReadableIntervalConverter", NULL, 0x4, NULL, NULL },
-    { "getDurationMillisWithId:", "getDurationMillis", "J", 0x1, NULL, NULL },
-    { "setIntoWithOrgJodaTimeReadWritablePeriod:withId:withOrgJodaTimeChronology:", "setInto", "V", 0x1, NULL, NULL },
-    { "isReadableIntervalWithId:withOrgJodaTimeChronology:", "isReadableInterval", "Z", 0x1, NULL, NULL },
-    { "setIntoWithOrgJodaTimeReadWritableInterval:withId:withOrgJodaTimeChronology:", "setInto", "V", 0x1, NULL, NULL },
-    { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, "()Ljava/lang/Class<*>;" },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE", "INSTANCE", 0x18, "Lorg.joda.time.convert.ReadableIntervalConverter;", &OrgJodaTimeConvertReadableIntervalConverter_INSTANCE, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertReadableIntervalConverter = { 2, "ReadableIntervalConverter", "org.joda.time.convert", NULL, 0x0, 6, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeConvertReadableIntervalConverter;
 }
 
 @end
@@ -96,15 +106,11 @@ void OrgJodaTimeConvertReadableIntervalConverter_init(OrgJodaTimeConvertReadable
 }
 
 OrgJodaTimeConvertReadableIntervalConverter *new_OrgJodaTimeConvertReadableIntervalConverter_init() {
-  OrgJodaTimeConvertReadableIntervalConverter *self = [OrgJodaTimeConvertReadableIntervalConverter alloc];
-  OrgJodaTimeConvertReadableIntervalConverter_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeConvertReadableIntervalConverter, init)
 }
 
 OrgJodaTimeConvertReadableIntervalConverter *create_OrgJodaTimeConvertReadableIntervalConverter_init() {
-  OrgJodaTimeConvertReadableIntervalConverter *self = [[OrgJodaTimeConvertReadableIntervalConverter alloc] autorelease];
-  OrgJodaTimeConvertReadableIntervalConverter_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeConvertReadableIntervalConverter, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertReadableIntervalConverter)

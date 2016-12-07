@@ -5,27 +5,27 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeBaseBasePartial_INCLUDE_ALL")
-#ifdef OrgJodaTimeBaseBasePartial_RESTRICT
-#define OrgJodaTimeBaseBasePartial_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeBaseBasePartial")
+#ifdef RESTRICT_OrgJodaTimeBaseBasePartial
+#define INCLUDE_ALL_OrgJodaTimeBaseBasePartial 0
 #else
-#define OrgJodaTimeBaseBasePartial_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeBaseBasePartial 1
 #endif
-#undef OrgJodaTimeBaseBasePartial_RESTRICT
+#undef RESTRICT_OrgJodaTimeBaseBasePartial
 
-#if !defined (OrgJodaTimeBaseBasePartial_) && (OrgJodaTimeBaseBasePartial_INCLUDE_ALL || defined(OrgJodaTimeBaseBasePartial_INCLUDE))
+#if !defined (OrgJodaTimeBaseBasePartial_) && (INCLUDE_ALL_OrgJodaTimeBaseBasePartial || defined(INCLUDE_OrgJodaTimeBaseBasePartial))
 #define OrgJodaTimeBaseBasePartial_
 
-#define OrgJodaTimeBaseAbstractPartial_RESTRICT 1
-#define OrgJodaTimeBaseAbstractPartial_INCLUDE 1
+#define RESTRICT_OrgJodaTimeBaseAbstractPartial 1
+#define INCLUDE_OrgJodaTimeBaseAbstractPartial 1
 #include "org/joda/time/base/AbstractPartial.h"
 
-#define OrgJodaTimeReadablePartial_RESTRICT 1
-#define OrgJodaTimeReadablePartial_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadablePartial 1
+#define INCLUDE_OrgJodaTimeReadablePartial 1
 #include "org/joda/time/ReadablePartial.h"
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class IOSIntArray;
@@ -262,4 +262,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseBasePartial)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeBaseBasePartial_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeBaseBasePartial")

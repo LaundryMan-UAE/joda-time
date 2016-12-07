@@ -5,27 +5,27 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeMutableDateTime_INCLUDE_ALL")
-#ifdef OrgJodaTimeMutableDateTime_RESTRICT
-#define OrgJodaTimeMutableDateTime_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeMutableDateTime")
+#ifdef RESTRICT_OrgJodaTimeMutableDateTime
+#define INCLUDE_ALL_OrgJodaTimeMutableDateTime 0
 #else
-#define OrgJodaTimeMutableDateTime_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeMutableDateTime 1
 #endif
-#undef OrgJodaTimeMutableDateTime_RESTRICT
+#undef RESTRICT_OrgJodaTimeMutableDateTime
 
-#if !defined (OrgJodaTimeMutableDateTime_) && (OrgJodaTimeMutableDateTime_INCLUDE_ALL || defined(OrgJodaTimeMutableDateTime_INCLUDE))
+#if !defined (OrgJodaTimeMutableDateTime_) && (INCLUDE_ALL_OrgJodaTimeMutableDateTime || defined(INCLUDE_OrgJodaTimeMutableDateTime))
 #define OrgJodaTimeMutableDateTime_
 
-#define OrgJodaTimeBaseBaseDateTime_RESTRICT 1
-#define OrgJodaTimeBaseBaseDateTime_INCLUDE 1
+#define RESTRICT_OrgJodaTimeBaseBaseDateTime 1
+#define INCLUDE_OrgJodaTimeBaseBaseDateTime 1
 #include "org/joda/time/base/BaseDateTime.h"
 
-#define OrgJodaTimeReadWritableDateTime_RESTRICT 1
-#define OrgJodaTimeReadWritableDateTime_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadWritableDateTime 1
+#define INCLUDE_OrgJodaTimeReadWritableDateTime 1
 #include "org/joda/time/ReadWritableDateTime.h"
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class OrgJodaTimeChronology;
@@ -973,11 +973,11 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeMutableDateTime)
 
 #endif
 
-#if !defined (OrgJodaTimeMutableDateTime_Property_) && (OrgJodaTimeMutableDateTime_INCLUDE_ALL || defined(OrgJodaTimeMutableDateTime_Property_INCLUDE))
+#if !defined (OrgJodaTimeMutableDateTime_Property_) && (INCLUDE_ALL_OrgJodaTimeMutableDateTime || defined(INCLUDE_OrgJodaTimeMutableDateTime_Property))
 #define OrgJodaTimeMutableDateTime_Property_
 
-#define OrgJodaTimeFieldAbstractReadableInstantFieldProperty_RESTRICT 1
-#define OrgJodaTimeFieldAbstractReadableInstantFieldProperty_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldAbstractReadableInstantFieldProperty 1
+#define INCLUDE_OrgJodaTimeFieldAbstractReadableInstantFieldProperty 1
 #include "org/joda/time/field/AbstractReadableInstantFieldProperty.h"
 
 @class JavaUtilLocale;
@@ -1152,4 +1152,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeMutableDateTime_Property)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeMutableDateTime_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeMutableDateTime")

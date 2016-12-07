@@ -340,7 +340,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField)
 }
 
 - (void)assembleWithOrgJodaTimeChronoAssembledChronology_Fields:(OrgJodaTimeChronoAssembledChronology_Fields *)fields {
-  JavaUtilHashMap *converted = [new_JavaUtilHashMap_init() autorelease];
+  JavaUtilHashMap *converted = create_JavaUtilHashMap_init();
   JreStrongAssign(&((OrgJodaTimeChronoAssembledChronology_Fields *) nil_chk(fields))->eras_, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->eras_, converted));
   JreStrongAssign(&fields->centuries_, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->centuries_, converted));
   JreStrongAssign(&fields->years_, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, fields->years_, converted));
@@ -392,10 +392,10 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField)
                withNSString:(NSString *)desc {
   OrgJodaTimeDateTime *limit;
   if ((limit = iLowerLimit_) != nil && instant < [((OrgJodaTimeDateTime *) nil_chk(limit)) getMillis]) {
-    @throw [new_OrgJodaTimeChronoLimitChronology_LimitException_initWithOrgJodaTimeChronoLimitChronology_withNSString_withBoolean_(self, desc, true) autorelease];
+    @throw create_OrgJodaTimeChronoLimitChronology_LimitException_initWithOrgJodaTimeChronoLimitChronology_withNSString_withBoolean_(self, desc, true);
   }
   if ((limit = iUpperLimit_) != nil && instant >= [((OrgJodaTimeDateTime *) nil_chk(limit)) getMillis]) {
-    @throw [new_OrgJodaTimeChronoLimitChronology_LimitException_initWithOrgJodaTimeChronoLimitChronology_withNSString_withBoolean_(self, desc, false) autorelease];
+    @throw create_OrgJodaTimeChronoLimitChronology_LimitException_initWithOrgJodaTimeChronoLimitChronology_withNSString_withBoolean_(self, desc, false);
   }
 }
 
@@ -430,32 +430,51 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField)
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getInstanceWithOrgJodaTimeChronology:withOrgJodaTimeReadableDateTime:withOrgJodaTimeReadableDateTime:", "getInstance", "Lorg.joda.time.chrono.LimitChronology;", 0x9, NULL, NULL },
-    { "initWithOrgJodaTimeChronology:withOrgJodaTimeDateTime:withOrgJodaTimeDateTime:", "LimitChronology", NULL, 0x2, NULL, NULL },
-    { "getLowerLimit", NULL, "Lorg.joda.time.DateTime;", 0x1, NULL, NULL },
-    { "getUpperLimit", NULL, "Lorg.joda.time.DateTime;", 0x1, NULL, NULL },
-    { "withUTC", NULL, "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "withZoneWithOrgJodaTimeDateTimeZone:", "withZone", "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "getDateTimeMillisWithInt:withInt:withInt:withInt:", "getDateTimeMillis", "J", 0x1, "Ljava.lang.IllegalArgumentException;", NULL },
-    { "getDateTimeMillisWithInt:withInt:withInt:withInt:withInt:withInt:withInt:", "getDateTimeMillis", "J", 0x1, "Ljava.lang.IllegalArgumentException;", NULL },
-    { "getDateTimeMillisWithLong:withInt:withInt:withInt:withInt:", "getDateTimeMillis", "J", 0x1, "Ljava.lang.IllegalArgumentException;", NULL },
-    { "assembleWithOrgJodaTimeChronoAssembledChronology_Fields:", "assemble", "V", 0x4, NULL, NULL },
-    { "convertFieldWithOrgJodaTimeDurationField:withJavaUtilHashMap:", "convertField", "Lorg.joda.time.DurationField;", 0x2, NULL, "(Lorg/joda/time/DurationField;Ljava/util/HashMap<Ljava/lang/Object;Ljava/lang/Object;>;)Lorg/joda/time/DurationField;" },
-    { "convertFieldWithOrgJodaTimeDateTimeField:withJavaUtilHashMap:", "convertField", "Lorg.joda.time.DateTimeField;", 0x2, NULL, "(Lorg/joda/time/DateTimeField;Ljava/util/HashMap<Ljava/lang/Object;Ljava/lang/Object;>;)Lorg/joda/time/DateTimeField;" },
-    { "checkLimitsWithLong:withNSString:", "checkLimits", "V", 0x0, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeChronoLimitChronology;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x2, -1, 2, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 6, 7, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 8, 7, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 9, 7, -1, -1, -1 },
+    { NULL, "V", 0x4, 10, 11, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x2, 12, 13, -1, 14, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x2, 12, 15, -1, 16, -1, -1 },
+    { NULL, "V", 0x0, 17, 18, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 19, 20, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 21, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 22, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getInstanceWithOrgJodaTimeChronology:withOrgJodaTimeReadableDateTime:withOrgJodaTimeReadableDateTime:);
+  methods[1].selector = @selector(initWithOrgJodaTimeChronology:withOrgJodaTimeDateTime:withOrgJodaTimeDateTime:);
+  methods[2].selector = @selector(getLowerLimit);
+  methods[3].selector = @selector(getUpperLimit);
+  methods[4].selector = @selector(withUTC);
+  methods[5].selector = @selector(withZoneWithOrgJodaTimeDateTimeZone:);
+  methods[6].selector = @selector(getDateTimeMillisWithInt:withInt:withInt:withInt:);
+  methods[7].selector = @selector(getDateTimeMillisWithInt:withInt:withInt:withInt:withInt:withInt:withInt:);
+  methods[8].selector = @selector(getDateTimeMillisWithLong:withInt:withInt:withInt:withInt:);
+  methods[9].selector = @selector(assembleWithOrgJodaTimeChronoAssembledChronology_Fields:);
+  methods[10].selector = @selector(convertFieldWithOrgJodaTimeDurationField:withJavaUtilHashMap:);
+  methods[11].selector = @selector(convertFieldWithOrgJodaTimeDateTimeField:withJavaUtilHashMap:);
+  methods[12].selector = @selector(checkLimitsWithLong:withNSString:);
+  methods[13].selector = @selector(isEqual:);
+  methods[14].selector = @selector(hash);
+  methods[15].selector = @selector(description);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoLimitChronology_serialVersionUID },
-    { "iLowerLimit_", NULL, 0x10, "Lorg.joda.time.DateTime;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iUpperLimit_", NULL, 0x10, "Lorg.joda.time.DateTime;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iWithUTC_", NULL, 0x82, "Lorg.joda.time.chrono.LimitChronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoLimitChronology_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iLowerLimit_", "LOrgJodaTimeDateTime;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iUpperLimit_", "LOrgJodaTimeDateTime;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iWithUTC_", "LOrgJodaTimeChronoLimitChronology;", .constantValue.asLong = 0, 0x82, -1, -1, -1, -1 },
   };
-  static const char *inner_classes[] = {"Lorg.joda.time.chrono.LimitChronology$LimitException;", "Lorg.joda.time.chrono.LimitChronology$LimitDurationField;", "Lorg.joda.time.chrono.LimitChronology$LimitDateTimeField;"};
-  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology = { 2, "LimitChronology", "org.joda.time.chrono", NULL, 0x11, 16, methods, 4, fields, 0, NULL, 3, inner_classes, NULL, NULL };
+  static const void *ptrTable[] = { "getInstance", "LOrgJodaTimeChronology;LOrgJodaTimeReadableDateTime;LOrgJodaTimeReadableDateTime;", "LOrgJodaTimeChronology;LOrgJodaTimeDateTime;LOrgJodaTimeDateTime;", "withZone", "LOrgJodaTimeDateTimeZone;", "getDateTimeMillis", "IIII", "LJavaLangIllegalArgumentException;", "IIIIIII", "JIIII", "assemble", "LOrgJodaTimeChronoAssembledChronology_Fields;", "convertField", "LOrgJodaTimeDurationField;LJavaUtilHashMap;", "(Lorg/joda/time/DurationField;Ljava/util/HashMap<Ljava/lang/Object;Ljava/lang/Object;>;)Lorg/joda/time/DurationField;", "LOrgJodaTimeDateTimeField;LJavaUtilHashMap;", "(Lorg/joda/time/DateTimeField;Ljava/util/HashMap<Ljava/lang/Object;Ljava/lang/Object;>;)Lorg/joda/time/DateTimeField;", "checkLimits", "JLNSString;", "equals", "LNSObject;", "hashCode", "toString", "LOrgJodaTimeChronoLimitChronology_LimitException;LOrgJodaTimeChronoLimitChronology_LimitDurationField;LOrgJodaTimeChronoLimitChronology_LimitDateTimeField;" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology = { "LimitChronology", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x11, 16, 4, -1, 23, -1, -1, -1 };
   return &_OrgJodaTimeChronoLimitChronology;
 }
 
@@ -464,16 +483,16 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField)
 OrgJodaTimeChronoLimitChronology *OrgJodaTimeChronoLimitChronology_getInstanceWithOrgJodaTimeChronology_withOrgJodaTimeReadableDateTime_withOrgJodaTimeReadableDateTime_(OrgJodaTimeChronology *base, id<OrgJodaTimeReadableDateTime> lowerLimit, id<OrgJodaTimeReadableDateTime> upperLimit) {
   OrgJodaTimeChronoLimitChronology_initialize();
   if (base == nil) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Must supply a chronology") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"Must supply a chronology");
   }
   lowerLimit = lowerLimit == nil ? nil : [lowerLimit toDateTime];
   upperLimit = upperLimit == nil ? nil : [upperLimit toDateTime];
   if (lowerLimit != nil && upperLimit != nil) {
     if (![lowerLimit isBeforeWithOrgJodaTimeReadableInstant:upperLimit]) {
-      @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The lower limit must be come before than the upper limit") autorelease];
+      @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The lower limit must be come before than the upper limit");
     }
   }
-  return [new_OrgJodaTimeChronoLimitChronology_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTime_withOrgJodaTimeDateTime_(base, (OrgJodaTimeDateTime *) cast_chk(lowerLimit, [OrgJodaTimeDateTime class]), (OrgJodaTimeDateTime *) cast_chk(upperLimit, [OrgJodaTimeDateTime class])) autorelease];
+  return create_OrgJodaTimeChronoLimitChronology_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTime_withOrgJodaTimeDateTime_(base, (OrgJodaTimeDateTime *) cast_chk(lowerLimit, [OrgJodaTimeDateTime class]), (OrgJodaTimeDateTime *) cast_chk(upperLimit, [OrgJodaTimeDateTime class]));
 }
 
 void OrgJodaTimeChronoLimitChronology_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTime_withOrgJodaTimeDateTime_(OrgJodaTimeChronoLimitChronology *self, OrgJodaTimeChronology *base, OrgJodaTimeDateTime *lowerLimit, OrgJodaTimeDateTime *upperLimit) {
@@ -483,15 +502,11 @@ void OrgJodaTimeChronoLimitChronology_initWithOrgJodaTimeChronology_withOrgJodaT
 }
 
 OrgJodaTimeChronoLimitChronology *new_OrgJodaTimeChronoLimitChronology_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTime_withOrgJodaTimeDateTime_(OrgJodaTimeChronology *base, OrgJodaTimeDateTime *lowerLimit, OrgJodaTimeDateTime *upperLimit) {
-  OrgJodaTimeChronoLimitChronology *self = [OrgJodaTimeChronoLimitChronology alloc];
-  OrgJodaTimeChronoLimitChronology_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTime_withOrgJodaTimeDateTime_(self, base, lowerLimit, upperLimit);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoLimitChronology, initWithOrgJodaTimeChronology_withOrgJodaTimeDateTime_withOrgJodaTimeDateTime_, base, lowerLimit, upperLimit)
 }
 
 OrgJodaTimeChronoLimitChronology *create_OrgJodaTimeChronoLimitChronology_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTime_withOrgJodaTimeDateTime_(OrgJodaTimeChronology *base, OrgJodaTimeDateTime *lowerLimit, OrgJodaTimeDateTime *upperLimit) {
-  OrgJodaTimeChronoLimitChronology *self = [[OrgJodaTimeChronoLimitChronology alloc] autorelease];
-  OrgJodaTimeChronoLimitChronology_initWithOrgJodaTimeChronology_withOrgJodaTimeDateTime_withOrgJodaTimeDateTime_(self, base, lowerLimit, upperLimit);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoLimitChronology, initWithOrgJodaTimeChronology_withOrgJodaTimeDateTime_withOrgJodaTimeDateTime_, base, lowerLimit, upperLimit)
 }
 
 OrgJodaTimeDurationField *OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(OrgJodaTimeChronoLimitChronology *self, OrgJodaTimeDurationField *field, JavaUtilHashMap *converted) {
@@ -501,7 +516,7 @@ OrgJodaTimeDurationField *OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJo
   if ([((JavaUtilHashMap *) nil_chk(converted)) containsKeyWithId:field]) {
     return (OrgJodaTimeDurationField *) cast_chk([converted getWithId:field], [OrgJodaTimeDurationField class]);
   }
-  OrgJodaTimeChronoLimitChronology_LimitDurationField *limitField = [new_OrgJodaTimeChronoLimitChronology_LimitDurationField_initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDurationField_(self, field) autorelease];
+  OrgJodaTimeChronoLimitChronology_LimitDurationField *limitField = create_OrgJodaTimeChronoLimitChronology_LimitDurationField_initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDurationField_(self, field);
   [converted putWithId:field withId:limitField];
   return limitField;
 }
@@ -513,7 +528,7 @@ OrgJodaTimeDateTimeField *OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJo
   if ([((JavaUtilHashMap *) nil_chk(converted)) containsKeyWithId:field]) {
     return (OrgJodaTimeDateTimeField *) cast_chk([converted getWithId:field], [OrgJodaTimeDateTimeField class]);
   }
-  OrgJodaTimeChronoLimitChronology_LimitDateTimeField *limitField = [new_OrgJodaTimeChronoLimitChronology_LimitDateTimeField_initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(self, field, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, [((OrgJodaTimeDateTimeField *) nil_chk(field)) getDurationField], converted), OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, [field getRangeDurationField], converted), OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, [field getLeapDurationField], converted)) autorelease];
+  OrgJodaTimeChronoLimitChronology_LimitDateTimeField *limitField = create_OrgJodaTimeChronoLimitChronology_LimitDateTimeField_initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(self, field, OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, [field getDurationField], converted), OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, [field getRangeDurationField], converted), OrgJodaTimeChronoLimitChronology_convertFieldWithOrgJodaTimeDurationField_withJavaUtilHashMap_(self, [field getLeapDurationField], converted));
   [converted putWithId:field withId:limitField];
   return limitField;
 }
@@ -530,7 +545,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoLimitChronology)
 }
 
 - (NSString *)getMessage {
-  JavaLangStringBuffer *buf = [new_JavaLangStringBuffer_initWithInt_(85) autorelease];
+  JavaLangStringBuffer *buf = create_JavaLangStringBuffer_initWithInt_(85);
   [buf appendWithNSString:@"The"];
   NSString *desc = [super getMessage];
   if (desc != nil) {
@@ -564,17 +579,24 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoLimitChronology)
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeChronoLimitChronology:withNSString:withBoolean:", "LimitException", NULL, 0x0, NULL, NULL },
-    { "getMessage", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeChronoLimitChronology:withNSString:withBoolean:);
+  methods[1].selector = @selector(getMessage);
+  methods[2].selector = @selector(description);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", NULL, 0x1012, "Lorg.joda.time.chrono.LimitChronology;", NULL, NULL, .constantValue.asLong = 0 },
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoLimitChronology_LimitException_serialVersionUID },
-    { "iIsLow_", NULL, 0x12, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "this$0_", "LOrgJodaTimeChronoLimitChronology;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoLimitChronology_LimitException_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iIsLow_", "Z", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology_LimitException = { 2, "LimitException", "org.joda.time.chrono", "LimitChronology", 0x2, 3, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeChronoLimitChronology;LNSString;Z", "toString", "LOrgJodaTimeChronoLimitChronology;" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology_LimitException = { "LimitException", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x2, 3, 3, 2, -1, -1, -1, -1 };
   return &_OrgJodaTimeChronoLimitChronology_LimitException;
 }
 
@@ -587,15 +609,11 @@ void OrgJodaTimeChronoLimitChronology_LimitException_initWithOrgJodaTimeChronoLi
 }
 
 OrgJodaTimeChronoLimitChronology_LimitException *new_OrgJodaTimeChronoLimitChronology_LimitException_initWithOrgJodaTimeChronoLimitChronology_withNSString_withBoolean_(OrgJodaTimeChronoLimitChronology *outer$, NSString *desc, jboolean isLow) {
-  OrgJodaTimeChronoLimitChronology_LimitException *self = [OrgJodaTimeChronoLimitChronology_LimitException alloc];
-  OrgJodaTimeChronoLimitChronology_LimitException_initWithOrgJodaTimeChronoLimitChronology_withNSString_withBoolean_(self, outer$, desc, isLow);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoLimitChronology_LimitException, initWithOrgJodaTimeChronoLimitChronology_withNSString_withBoolean_, outer$, desc, isLow)
 }
 
 OrgJodaTimeChronoLimitChronology_LimitException *create_OrgJodaTimeChronoLimitChronology_LimitException_initWithOrgJodaTimeChronoLimitChronology_withNSString_withBoolean_(OrgJodaTimeChronoLimitChronology *outer$, NSString *desc, jboolean isLow) {
-  OrgJodaTimeChronoLimitChronology_LimitException *self = [[OrgJodaTimeChronoLimitChronology_LimitException alloc] autorelease];
-  OrgJodaTimeChronoLimitChronology_LimitException_initWithOrgJodaTimeChronoLimitChronology_withNSString_withBoolean_(self, outer$, desc, isLow);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoLimitChronology_LimitException, initWithOrgJodaTimeChronoLimitChronology_withNSString_withBoolean_, outer$, desc, isLow)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoLimitChronology_LimitException)
@@ -668,22 +686,35 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoLimitChronology_LimitException
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeChronoLimitChronology:withOrgJodaTimeDurationField:", "LimitDurationField", NULL, 0x0, NULL, NULL },
-    { "getValueWithLong:withLong:", "getValue", "I", 0x1, NULL, NULL },
-    { "getValueAsLongWithLong:withLong:", "getValueAsLong", "J", 0x1, NULL, NULL },
-    { "getMillisWithInt:withLong:", "getMillis", "J", 0x1, NULL, NULL },
-    { "getMillisWithLong:withLong:", "getMillis", "J", 0x1, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x1, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x1, NULL, NULL },
-    { "getDifferenceWithLong:withLong:", "getDifference", "I", 0x1, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 4, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 7, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 8, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 2, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeChronoLimitChronology:withOrgJodaTimeDurationField:);
+  methods[1].selector = @selector(getValueWithLong:withLong:);
+  methods[2].selector = @selector(getValueAsLongWithLong:withLong:);
+  methods[3].selector = @selector(getMillisWithInt:withLong:);
+  methods[4].selector = @selector(getMillisWithLong:withLong:);
+  methods[5].selector = @selector(addWithLong:withInt:);
+  methods[6].selector = @selector(addWithLong:withLong:);
+  methods[7].selector = @selector(getDifferenceWithLong:withLong:);
+  methods[8].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", NULL, 0x1012, "Lorg.joda.time.chrono.LimitChronology;", NULL, NULL, .constantValue.asLong = 0 },
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoLimitChronology_LimitDurationField_serialVersionUID },
+    { "this$0_", "LOrgJodaTimeChronoLimitChronology;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoLimitChronology_LimitDurationField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology_LimitDurationField = { 2, "LimitDurationField", "org.joda.time.chrono", "LimitChronology", 0x2, 9, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeChronoLimitChronology;LOrgJodaTimeDurationField;", "getValue", "JJ", "getValueAsLong", "getMillis", "IJ", "add", "JI", "getDifference", "getDifferenceAsLong", "LOrgJodaTimeChronoLimitChronology;" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology_LimitDurationField = { "LimitDurationField", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x2, 9, 2, 10, -1, -1, -1, -1 };
   return &_OrgJodaTimeChronoLimitChronology_LimitDurationField;
 }
 
@@ -695,15 +726,11 @@ void OrgJodaTimeChronoLimitChronology_LimitDurationField_initWithOrgJodaTimeChro
 }
 
 OrgJodaTimeChronoLimitChronology_LimitDurationField *new_OrgJodaTimeChronoLimitChronology_LimitDurationField_initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDurationField_(OrgJodaTimeChronoLimitChronology *outer$, OrgJodaTimeDurationField *field) {
-  OrgJodaTimeChronoLimitChronology_LimitDurationField *self = [OrgJodaTimeChronoLimitChronology_LimitDurationField alloc];
-  OrgJodaTimeChronoLimitChronology_LimitDurationField_initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDurationField_(self, outer$, field);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoLimitChronology_LimitDurationField, initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDurationField_, outer$, field)
 }
 
 OrgJodaTimeChronoLimitChronology_LimitDurationField *create_OrgJodaTimeChronoLimitChronology_LimitDurationField_initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDurationField_(OrgJodaTimeChronoLimitChronology *outer$, OrgJodaTimeDurationField *field) {
-  OrgJodaTimeChronoLimitChronology_LimitDurationField *self = [[OrgJodaTimeChronoLimitChronology_LimitDurationField alloc] autorelease];
-  OrgJodaTimeChronoLimitChronology_LimitDurationField_initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDurationField_(self, outer$, field);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoLimitChronology_LimitDurationField, initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDurationField_, outer$, field)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoLimitChronology_LimitDurationField)
@@ -882,42 +909,72 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoLimitChronology_LimitDurationF
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeChronoLimitChronology:withOrgJodaTimeDateTimeField:withOrgJodaTimeDurationField:withOrgJodaTimeDurationField:withOrgJodaTimeDurationField:", "LimitDateTimeField", NULL, 0x0, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x1, NULL, NULL },
-    { "getAsTextWithLong:withJavaUtilLocale:", "getAsText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsShortTextWithLong:withJavaUtilLocale:", "getAsShortText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x1, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x1, NULL, NULL },
-    { "addWrapFieldWithLong:withInt:", "addWrapField", "J", 0x1, NULL, NULL },
-    { "getDifferenceWithLong:withLong:", "getDifference", "I", 0x1, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x1, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
-    { "setWithLong:withNSString:withJavaUtilLocale:", "set", "J", 0x1, NULL, NULL },
-    { "getDurationField", NULL, "Lorg.joda.time.DurationField;", 0x11, NULL, NULL },
-    { "getRangeDurationField", NULL, "Lorg.joda.time.DurationField;", 0x11, NULL, NULL },
-    { "isLeapWithLong:", "isLeap", "Z", 0x1, NULL, NULL },
-    { "getLeapAmountWithLong:", "getLeapAmount", "I", 0x1, NULL, NULL },
-    { "getLeapDurationField", NULL, "Lorg.joda.time.DurationField;", 0x11, NULL, NULL },
-    { "roundFloorWithLong:", "roundFloor", "J", 0x1, NULL, NULL },
-    { "roundCeilingWithLong:", "roundCeiling", "J", 0x1, NULL, NULL },
-    { "roundHalfFloorWithLong:", "roundHalfFloor", "J", 0x1, NULL, NULL },
-    { "roundHalfCeilingWithLong:", "roundHalfCeiling", "J", 0x1, NULL, NULL },
-    { "roundHalfEvenWithLong:", "roundHalfEven", "J", 0x1, NULL, NULL },
-    { "remainderWithLong:", "remainder", "J", 0x1, NULL, NULL },
-    { "getMinimumValueWithLong:", "getMinimumValue", "I", 0x1, NULL, NULL },
-    { "getMaximumValueWithLong:", "getMaximumValue", "I", 0x1, NULL, NULL },
-    { "getMaximumTextLengthWithJavaUtilLocale:", "getMaximumTextLength", "I", 0x1, NULL, NULL },
-    { "getMaximumShortTextLengthWithJavaUtilLocale:", "getMaximumShortTextLength", "I", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 5, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 7, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 8, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 7, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 10, 8, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 11, 8, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 12, 7, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 12, 13, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x11, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x11, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 14, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 15, 2, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x11, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 16, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 17, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 18, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 19, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 20, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 21, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 22, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 23, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 24, 25, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 26, 25, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeChronoLimitChronology:withOrgJodaTimeDateTimeField:withOrgJodaTimeDurationField:withOrgJodaTimeDurationField:withOrgJodaTimeDurationField:);
+  methods[1].selector = @selector(getWithLong:);
+  methods[2].selector = @selector(getAsTextWithLong:withJavaUtilLocale:);
+  methods[3].selector = @selector(getAsShortTextWithLong:withJavaUtilLocale:);
+  methods[4].selector = @selector(addWithLong:withInt:);
+  methods[5].selector = @selector(addWithLong:withLong:);
+  methods[6].selector = @selector(addWrapFieldWithLong:withInt:);
+  methods[7].selector = @selector(getDifferenceWithLong:withLong:);
+  methods[8].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  methods[9].selector = @selector(setWithLong:withInt:);
+  methods[10].selector = @selector(setWithLong:withNSString:withJavaUtilLocale:);
+  methods[11].selector = @selector(getDurationField);
+  methods[12].selector = @selector(getRangeDurationField);
+  methods[13].selector = @selector(isLeapWithLong:);
+  methods[14].selector = @selector(getLeapAmountWithLong:);
+  methods[15].selector = @selector(getLeapDurationField);
+  methods[16].selector = @selector(roundFloorWithLong:);
+  methods[17].selector = @selector(roundCeilingWithLong:);
+  methods[18].selector = @selector(roundHalfFloorWithLong:);
+  methods[19].selector = @selector(roundHalfCeilingWithLong:);
+  methods[20].selector = @selector(roundHalfEvenWithLong:);
+  methods[21].selector = @selector(remainderWithLong:);
+  methods[22].selector = @selector(getMinimumValueWithLong:);
+  methods[23].selector = @selector(getMaximumValueWithLong:);
+  methods[24].selector = @selector(getMaximumTextLengthWithJavaUtilLocale:);
+  methods[25].selector = @selector(getMaximumShortTextLengthWithJavaUtilLocale:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "this$0_", NULL, 0x1012, "Lorg.joda.time.chrono.LimitChronology;", NULL, NULL, .constantValue.asLong = 0 },
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoLimitChronology_LimitDateTimeField_serialVersionUID },
-    { "iDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iRangeDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iLeapDurationField_", NULL, 0x12, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
+    { "this$0_", "LOrgJodaTimeChronoLimitChronology;", .constantValue.asLong = 0, 0x1012, -1, -1, -1, -1 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoLimitChronology_LimitDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iDurationField_", "LOrgJodaTimeDurationField;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iRangeDurationField_", "LOrgJodaTimeDurationField;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iLeapDurationField_", "LOrgJodaTimeDurationField;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology_LimitDateTimeField = { 2, "LimitDateTimeField", "org.joda.time.chrono", "LimitChronology", 0x2, 26, methods, 5, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeChronoLimitChronology;LOrgJodaTimeDateTimeField;LOrgJodaTimeDurationField;LOrgJodaTimeDurationField;LOrgJodaTimeDurationField;", "get", "J", "getAsText", "JLJavaUtilLocale;", "getAsShortText", "add", "JI", "JJ", "addWrapField", "getDifference", "getDifferenceAsLong", "set", "JLNSString;LJavaUtilLocale;", "isLeap", "getLeapAmount", "roundFloor", "roundCeiling", "roundHalfFloor", "roundHalfCeiling", "roundHalfEven", "remainder", "getMinimumValue", "getMaximumValue", "getMaximumTextLength", "LJavaUtilLocale;", "getMaximumShortTextLength", "LOrgJodaTimeChronoLimitChronology;" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoLimitChronology_LimitDateTimeField = { "LimitDateTimeField", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x2, 26, 5, 27, -1, -1, -1, -1 };
   return &_OrgJodaTimeChronoLimitChronology_LimitDateTimeField;
 }
 
@@ -932,15 +989,11 @@ void OrgJodaTimeChronoLimitChronology_LimitDateTimeField_initWithOrgJodaTimeChro
 }
 
 OrgJodaTimeChronoLimitChronology_LimitDateTimeField *new_OrgJodaTimeChronoLimitChronology_LimitDateTimeField_initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeChronoLimitChronology *outer$, OrgJodaTimeDateTimeField *field, OrgJodaTimeDurationField *durationField, OrgJodaTimeDurationField *rangeDurationField, OrgJodaTimeDurationField *leapDurationField) {
-  OrgJodaTimeChronoLimitChronology_LimitDateTimeField *self = [OrgJodaTimeChronoLimitChronology_LimitDateTimeField alloc];
-  OrgJodaTimeChronoLimitChronology_LimitDateTimeField_initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(self, outer$, field, durationField, rangeDurationField, leapDurationField);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoLimitChronology_LimitDateTimeField, initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_, outer$, field, durationField, rangeDurationField, leapDurationField)
 }
 
 OrgJodaTimeChronoLimitChronology_LimitDateTimeField *create_OrgJodaTimeChronoLimitChronology_LimitDateTimeField_initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(OrgJodaTimeChronoLimitChronology *outer$, OrgJodaTimeDateTimeField *field, OrgJodaTimeDurationField *durationField, OrgJodaTimeDurationField *rangeDurationField, OrgJodaTimeDurationField *leapDurationField) {
-  OrgJodaTimeChronoLimitChronology_LimitDateTimeField *self = [[OrgJodaTimeChronoLimitChronology_LimitDateTimeField alloc] autorelease];
-  OrgJodaTimeChronoLimitChronology_LimitDateTimeField_initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_(self, outer$, field, durationField, rangeDurationField, leapDurationField);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoLimitChronology_LimitDateTimeField, initWithOrgJodaTimeChronoLimitChronology_withOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_withOrgJodaTimeDurationField_, outer$, field, durationField, rangeDurationField, leapDurationField)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoLimitChronology_LimitDateTimeField)

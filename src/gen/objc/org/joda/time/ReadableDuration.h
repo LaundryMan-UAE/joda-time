@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeReadableDuration_INCLUDE_ALL")
-#ifdef OrgJodaTimeReadableDuration_RESTRICT
-#define OrgJodaTimeReadableDuration_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeReadableDuration")
+#ifdef RESTRICT_OrgJodaTimeReadableDuration
+#define INCLUDE_ALL_OrgJodaTimeReadableDuration 0
 #else
-#define OrgJodaTimeReadableDuration_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeReadableDuration 1
 #endif
-#undef OrgJodaTimeReadableDuration_RESTRICT
+#undef RESTRICT_OrgJodaTimeReadableDuration
 
-#if !defined (OrgJodaTimeReadableDuration_) && (OrgJodaTimeReadableDuration_INCLUDE_ALL || defined(OrgJodaTimeReadableDuration_INCLUDE))
+#if !defined (OrgJodaTimeReadableDuration_) && (INCLUDE_ALL_OrgJodaTimeReadableDuration || defined(INCLUDE_OrgJodaTimeReadableDuration))
 #define OrgJodaTimeReadableDuration_
 
-#define JavaLangComparable_RESTRICT 1
-#define JavaLangComparable_INCLUDE 1
+#define RESTRICT_JavaLangComparable 1
+#define INCLUDE_JavaLangComparable 1
 #include "java/lang/Comparable.h"
 
 @class OrgJodaTimeDuration;
@@ -43,7 +43,7 @@
  @author Stephen Colebourne
  @since 1.0
  */
-@protocol OrgJodaTimeReadableDuration < JavaLangComparable, NSObject, JavaObject >
+@protocol OrgJodaTimeReadableDuration < JavaLangComparable, JavaObject >
 
 /*!
  @brief Gets the total length of this duration in milliseconds.
@@ -142,4 +142,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadableDuration)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeReadableDuration_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeReadableDuration")

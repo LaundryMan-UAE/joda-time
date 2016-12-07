@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeTzZoneInfoCompiler_INCLUDE_ALL")
-#ifdef OrgJodaTimeTzZoneInfoCompiler_RESTRICT
-#define OrgJodaTimeTzZoneInfoCompiler_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeTzZoneInfoCompiler")
+#ifdef RESTRICT_OrgJodaTimeTzZoneInfoCompiler
+#define INCLUDE_ALL_OrgJodaTimeTzZoneInfoCompiler 0
 #else
-#define OrgJodaTimeTzZoneInfoCompiler_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeTzZoneInfoCompiler 1
 #endif
-#undef OrgJodaTimeTzZoneInfoCompiler_RESTRICT
+#undef RESTRICT_OrgJodaTimeTzZoneInfoCompiler
 
-#if !defined (OrgJodaTimeTzZoneInfoCompiler_) && (OrgJodaTimeTzZoneInfoCompiler_INCLUDE_ALL || defined(OrgJodaTimeTzZoneInfoCompiler_INCLUDE))
+#if !defined (OrgJodaTimeTzZoneInfoCompiler_) && (INCLUDE_ALL_OrgJodaTimeTzZoneInfoCompiler || defined(INCLUDE_OrgJodaTimeTzZoneInfoCompiler))
 #define OrgJodaTimeTzZoneInfoCompiler_
 
 @class IOSObjectArray;
@@ -165,7 +165,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzZoneInfoCompiler)
 
 #endif
 
-#if !defined (OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear_) && (OrgJodaTimeTzZoneInfoCompiler_INCLUDE_ALL || defined(OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear_INCLUDE))
+#if !defined (OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear_) && (INCLUDE_ALL_OrgJodaTimeTzZoneInfoCompiler || defined(INCLUDE_OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear))
 #define OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear_
 
 @class JavaUtilStringTokenizer;
@@ -226,4 +226,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeTzZoneInfoCompiler_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeTzZoneInfoCompiler")

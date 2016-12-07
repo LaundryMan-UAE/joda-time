@@ -3,13 +3,7 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/Joda-Time/src/main/java/org/joda/time/format/PeriodPrinter.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
-#include "java/io/IOException.h"
-#include "java/io/Writer.h"
-#include "java/lang/StringBuffer.h"
-#include "java/util/Locale.h"
-#include "org/joda/time/ReadablePeriod.h"
 #include "org/joda/time/format/PeriodPrinter.h"
 
 @interface OrgJodaTimeFormatPeriodPrinter : NSObject
@@ -19,13 +13,21 @@
 @implementation OrgJodaTimeFormatPeriodPrinter
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "calculatePrintedLengthWithOrgJodaTimeReadablePeriod:withJavaUtilLocale:", "calculatePrintedLength", "I", 0x401, NULL, NULL },
-    { "countFieldsToPrintWithOrgJodaTimeReadablePeriod:withInt:withJavaUtilLocale:", "countFieldsToPrint", "I", 0x401, NULL, NULL },
-    { "printToWithJavaLangStringBuffer:withOrgJodaTimeReadablePeriod:withJavaUtilLocale:", "printTo", "V", 0x401, NULL, NULL },
-    { "printToWithJavaIoWriter:withOrgJodaTimeReadablePeriod:withJavaUtilLocale:", "printTo", "V", 0x401, "Ljava.io.IOException;", NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "I", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 2, 3, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 4, 5, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 4, 6, 7, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodPrinter = { 2, "PeriodPrinter", "org.joda.time.format", NULL, 0x609, 4, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(calculatePrintedLengthWithOrgJodaTimeReadablePeriod:withJavaUtilLocale:);
+  methods[1].selector = @selector(countFieldsToPrintWithOrgJodaTimeReadablePeriod:withInt:withJavaUtilLocale:);
+  methods[2].selector = @selector(printToWithJavaLangStringBuffer:withOrgJodaTimeReadablePeriod:withJavaUtilLocale:);
+  methods[3].selector = @selector(printToWithJavaIoWriter:withOrgJodaTimeReadablePeriod:withJavaUtilLocale:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "calculatePrintedLength", "LOrgJodaTimeReadablePeriod;LJavaUtilLocale;", "countFieldsToPrint", "LOrgJodaTimeReadablePeriod;ILJavaUtilLocale;", "printTo", "LJavaLangStringBuffer;LOrgJodaTimeReadablePeriod;LJavaUtilLocale;", "LJavaIoWriter;LOrgJodaTimeReadablePeriod;LJavaUtilLocale;", "LJavaIoIOException;" };
+  static const J2ObjcClassInfo _OrgJodaTimeFormatPeriodPrinter = { "PeriodPrinter", "org.joda.time.format", ptrTable, methods, NULL, 7, 0x609, 4, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFormatPeriodPrinter;
 }
 

@@ -147,38 +147,68 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldZeroIsMaxDateTimeField, serialVersi
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeFieldType:", "ZeroIsMaxDateTimeField", NULL, 0x1, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x1, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x1, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x1, NULL, NULL },
-    { "addWrapFieldWithLong:withInt:", "addWrapField", "J", 0x1, NULL, NULL },
-    { "addWrapFieldWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:", "addWrapField", "[I", 0x1, NULL, NULL },
-    { "getDifferenceWithLong:withLong:", "getDifference", "I", 0x1, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x1, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
-    { "isLeapWithLong:", "isLeap", "Z", 0x1, NULL, NULL },
-    { "getLeapAmountWithLong:", "getLeapAmount", "I", 0x1, NULL, NULL },
-    { "getLeapDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMinimumValueWithLong:", "getMinimumValue", "I", 0x1, NULL, NULL },
-    { "getMinimumValueWithOrgJodaTimeReadablePartial:", "getMinimumValue", "I", 0x1, NULL, NULL },
-    { "getMinimumValueWithOrgJodaTimeReadablePartial:withIntArray:", "getMinimumValue", "I", 0x1, NULL, NULL },
-    { "getMaximumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumValueWithLong:", "getMaximumValue", "I", 0x1, NULL, NULL },
-    { "getMaximumValueWithOrgJodaTimeReadablePartial:", "getMaximumValue", "I", 0x1, NULL, NULL },
-    { "getMaximumValueWithOrgJodaTimeReadablePartial:withIntArray:", "getMaximumValue", "I", 0x1, NULL, NULL },
-    { "roundFloorWithLong:", "roundFloor", "J", 0x1, NULL, NULL },
-    { "roundCeilingWithLong:", "roundCeiling", "J", 0x1, NULL, NULL },
-    { "roundHalfFloorWithLong:", "roundHalfFloor", "J", 0x1, NULL, NULL },
-    { "roundHalfCeilingWithLong:", "roundHalfCeiling", "J", 0x1, NULL, NULL },
-    { "roundHalfEvenWithLong:", "roundHalfEven", "J", 0x1, NULL, NULL },
-    { "remainderWithLong:", "remainder", "J", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 4, -1, -1, -1, -1 },
+    { NULL, "[I", 0x1, 6, 7, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 8, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 10, 4, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 11, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 12, 2, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 13, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 13, 14, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 13, 15, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 16, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 16, 14, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 16, 15, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 17, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 18, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 19, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 20, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 21, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 22, 2, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeFieldType:);
+  methods[1].selector = @selector(getWithLong:);
+  methods[2].selector = @selector(addWithLong:withInt:);
+  methods[3].selector = @selector(addWithLong:withLong:);
+  methods[4].selector = @selector(addWrapFieldWithLong:withInt:);
+  methods[5].selector = @selector(addWrapFieldWithOrgJodaTimeReadablePartial:withInt:withIntArray:withInt:);
+  methods[6].selector = @selector(getDifferenceWithLong:withLong:);
+  methods[7].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  methods[8].selector = @selector(setWithLong:withInt:);
+  methods[9].selector = @selector(isLeapWithLong:);
+  methods[10].selector = @selector(getLeapAmountWithLong:);
+  methods[11].selector = @selector(getLeapDurationField);
+  methods[12].selector = @selector(getMinimumValue);
+  methods[13].selector = @selector(getMinimumValueWithLong:);
+  methods[14].selector = @selector(getMinimumValueWithOrgJodaTimeReadablePartial:);
+  methods[15].selector = @selector(getMinimumValueWithOrgJodaTimeReadablePartial:withIntArray:);
+  methods[16].selector = @selector(getMaximumValue);
+  methods[17].selector = @selector(getMaximumValueWithLong:);
+  methods[18].selector = @selector(getMaximumValueWithOrgJodaTimeReadablePartial:);
+  methods[19].selector = @selector(getMaximumValueWithOrgJodaTimeReadablePartial:withIntArray:);
+  methods[20].selector = @selector(roundFloorWithLong:);
+  methods[21].selector = @selector(roundCeilingWithLong:);
+  methods[22].selector = @selector(roundHalfFloorWithLong:);
+  methods[23].selector = @selector(roundHalfCeilingWithLong:);
+  methods[24].selector = @selector(roundHalfEvenWithLong:);
+  methods[25].selector = @selector(remainderWithLong:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldZeroIsMaxDateTimeField_serialVersionUID },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldZeroIsMaxDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldZeroIsMaxDateTimeField = { 2, "ZeroIsMaxDateTimeField", "org.joda.time.field", NULL, 0x11, 26, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeDateTimeField;LOrgJodaTimeDateTimeFieldType;", "get", "J", "add", "JI", "JJ", "addWrapField", "LOrgJodaTimeReadablePartial;I[II", "getDifference", "getDifferenceAsLong", "set", "isLeap", "getLeapAmount", "getMinimumValue", "LOrgJodaTimeReadablePartial;", "LOrgJodaTimeReadablePartial;[I", "getMaximumValue", "roundFloor", "roundCeiling", "roundHalfFloor", "roundHalfCeiling", "roundHalfEven", "remainder" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldZeroIsMaxDateTimeField = { "ZeroIsMaxDateTimeField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x11, 26, 1, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldZeroIsMaxDateTimeField;
 }
 
@@ -187,20 +217,16 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldZeroIsMaxDateTimeField, serialVersi
 void OrgJodaTimeFieldZeroIsMaxDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldZeroIsMaxDateTimeField *self, OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type) {
   OrgJodaTimeFieldDecoratedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, field, type);
   if ([((OrgJodaTimeDateTimeField *) nil_chk(field)) getMinimumValue] != 0) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"Wrapped field's minumum value must be zero") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"Wrapped field's minumum value must be zero");
   }
 }
 
 OrgJodaTimeFieldZeroIsMaxDateTimeField *new_OrgJodaTimeFieldZeroIsMaxDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type) {
-  OrgJodaTimeFieldZeroIsMaxDateTimeField *self = [OrgJodaTimeFieldZeroIsMaxDateTimeField alloc];
-  OrgJodaTimeFieldZeroIsMaxDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, field, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldZeroIsMaxDateTimeField, initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_, field, type)
 }
 
 OrgJodaTimeFieldZeroIsMaxDateTimeField *create_OrgJodaTimeFieldZeroIsMaxDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type) {
-  OrgJodaTimeFieldZeroIsMaxDateTimeField *self = [[OrgJodaTimeFieldZeroIsMaxDateTimeField alloc] autorelease];
-  OrgJodaTimeFieldZeroIsMaxDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, field, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldZeroIsMaxDateTimeField, initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_, field, type)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldZeroIsMaxDateTimeField)

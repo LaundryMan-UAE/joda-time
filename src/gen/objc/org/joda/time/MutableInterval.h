@@ -5,27 +5,27 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeMutableInterval_INCLUDE_ALL")
-#ifdef OrgJodaTimeMutableInterval_RESTRICT
-#define OrgJodaTimeMutableInterval_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeMutableInterval")
+#ifdef RESTRICT_OrgJodaTimeMutableInterval
+#define INCLUDE_ALL_OrgJodaTimeMutableInterval 0
 #else
-#define OrgJodaTimeMutableInterval_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeMutableInterval 1
 #endif
-#undef OrgJodaTimeMutableInterval_RESTRICT
+#undef RESTRICT_OrgJodaTimeMutableInterval
 
-#if !defined (OrgJodaTimeMutableInterval_) && (OrgJodaTimeMutableInterval_INCLUDE_ALL || defined(OrgJodaTimeMutableInterval_INCLUDE))
+#if !defined (OrgJodaTimeMutableInterval_) && (INCLUDE_ALL_OrgJodaTimeMutableInterval || defined(INCLUDE_OrgJodaTimeMutableInterval))
 #define OrgJodaTimeMutableInterval_
 
-#define OrgJodaTimeBaseBaseInterval_RESTRICT 1
-#define OrgJodaTimeBaseBaseInterval_INCLUDE 1
+#define RESTRICT_OrgJodaTimeBaseBaseInterval 1
+#define INCLUDE_OrgJodaTimeBaseBaseInterval 1
 #include "org/joda/time/base/BaseInterval.h"
 
-#define OrgJodaTimeReadWritableInterval_RESTRICT 1
-#define OrgJodaTimeReadWritableInterval_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadWritableInterval 1
+#define INCLUDE_OrgJodaTimeReadWritableInterval 1
 #include "org/joda/time/ReadWritableInterval.h"
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class OrgJodaTimeChronology;
@@ -382,4 +382,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeMutableInterval)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeMutableInterval_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeMutableInterval")

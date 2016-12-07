@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatPeriodFormatter_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatPeriodFormatter_RESTRICT
-#define OrgJodaTimeFormatPeriodFormatter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatter")
+#ifdef RESTRICT_OrgJodaTimeFormatPeriodFormatter
+#define INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatter 0
 #else
-#define OrgJodaTimeFormatPeriodFormatter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatter 1
 #endif
-#undef OrgJodaTimeFormatPeriodFormatter_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatPeriodFormatter
 
-#if !defined (OrgJodaTimeFormatPeriodFormatter_) && (OrgJodaTimeFormatPeriodFormatter_INCLUDE_ALL || defined(OrgJodaTimeFormatPeriodFormatter_INCLUDE))
+#if !defined (OrgJodaTimeFormatPeriodFormatter_) && (INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatter || defined(INCLUDE_OrgJodaTimeFormatPeriodFormatter))
 #define OrgJodaTimeFormatPeriodFormatter_
 
 @class JavaIoWriter;
@@ -212,4 +212,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatPeriodFormatter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatPeriodFormatter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatPeriodFormatter")

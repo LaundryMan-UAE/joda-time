@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeDurationFieldType_INCLUDE_ALL")
-#ifdef OrgJodaTimeDurationFieldType_RESTRICT
-#define OrgJodaTimeDurationFieldType_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeDurationFieldType")
+#ifdef RESTRICT_OrgJodaTimeDurationFieldType
+#define INCLUDE_ALL_OrgJodaTimeDurationFieldType 0
 #else
-#define OrgJodaTimeDurationFieldType_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeDurationFieldType 1
 #endif
-#undef OrgJodaTimeDurationFieldType_RESTRICT
+#undef RESTRICT_OrgJodaTimeDurationFieldType
 
-#if !defined (OrgJodaTimeDurationFieldType_) && (OrgJodaTimeDurationFieldType_INCLUDE_ALL || defined(OrgJodaTimeDurationFieldType_INCLUDE))
+#if !defined (OrgJodaTimeDurationFieldType_) && (INCLUDE_ALL_OrgJodaTimeDurationFieldType || defined(INCLUDE_OrgJodaTimeDurationFieldType))
 #define OrgJodaTimeDurationFieldType_
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class OrgJodaTimeChronology;
@@ -330,4 +330,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeDurationFieldType)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeDurationFieldType_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeDurationFieldType")

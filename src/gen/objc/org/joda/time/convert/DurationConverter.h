@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertDurationConverter_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertDurationConverter_RESTRICT
-#define OrgJodaTimeConvertDurationConverter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertDurationConverter")
+#ifdef RESTRICT_OrgJodaTimeConvertDurationConverter
+#define INCLUDE_ALL_OrgJodaTimeConvertDurationConverter 0
 #else
-#define OrgJodaTimeConvertDurationConverter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertDurationConverter 1
 #endif
-#undef OrgJodaTimeConvertDurationConverter_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertDurationConverter
 
-#if !defined (OrgJodaTimeConvertDurationConverter_) && (OrgJodaTimeConvertDurationConverter_INCLUDE_ALL || defined(OrgJodaTimeConvertDurationConverter_INCLUDE))
+#if !defined (OrgJodaTimeConvertDurationConverter_) && (INCLUDE_ALL_OrgJodaTimeConvertDurationConverter || defined(INCLUDE_OrgJodaTimeConvertDurationConverter))
 #define OrgJodaTimeConvertDurationConverter_
 
-#define OrgJodaTimeConvertConverter_RESTRICT 1
-#define OrgJodaTimeConvertConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertConverter 1
+#define INCLUDE_OrgJodaTimeConvertConverter 1
 #include "org/joda/time/convert/Converter.h"
 
 /*!
@@ -26,7 +26,7 @@
  @author Brian S O'Neill
  @since 1.0
  */
-@protocol OrgJodaTimeConvertDurationConverter < OrgJodaTimeConvertConverter, NSObject, JavaObject >
+@protocol OrgJodaTimeConvertDurationConverter < OrgJodaTimeConvertConverter, JavaObject >
 
 /*!
  @brief Extracts the millis from an object of this convertor's type.
@@ -44,4 +44,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertDurationConverter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertDurationConverter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertDurationConverter")

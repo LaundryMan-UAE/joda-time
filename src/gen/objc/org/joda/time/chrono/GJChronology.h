@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronoGJChronology_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronoGJChronology_RESTRICT
-#define OrgJodaTimeChronoGJChronology_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronoGJChronology")
+#ifdef RESTRICT_OrgJodaTimeChronoGJChronology
+#define INCLUDE_ALL_OrgJodaTimeChronoGJChronology 0
 #else
-#define OrgJodaTimeChronoGJChronology_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronoGJChronology 1
 #endif
-#undef OrgJodaTimeChronoGJChronology_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronoGJChronology
 
-#if !defined (OrgJodaTimeChronoGJChronology_) && (OrgJodaTimeChronoGJChronology_INCLUDE_ALL || defined(OrgJodaTimeChronoGJChronology_INCLUDE))
+#if !defined (OrgJodaTimeChronoGJChronology_) && (INCLUDE_ALL_OrgJodaTimeChronoGJChronology || defined(INCLUDE_OrgJodaTimeChronoGJChronology))
 #define OrgJodaTimeChronoGJChronology_
 
-#define OrgJodaTimeChronoAssembledChronology_RESTRICT 1
-#define OrgJodaTimeChronoAssembledChronology_INCLUDE 1
+#define RESTRICT_OrgJodaTimeChronoAssembledChronology 1
+#define INCLUDE_OrgJodaTimeChronoAssembledChronology 1
 #include "org/joda/time/chrono/AssembledChronology.h"
 
 @class OrgJodaTimeChronoAssembledChronology_Fields;
@@ -246,4 +246,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJChronology)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronoGJChronology_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronoGJChronology")

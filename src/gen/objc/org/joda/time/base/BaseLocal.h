@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeBaseBaseLocal_INCLUDE_ALL")
-#ifdef OrgJodaTimeBaseBaseLocal_RESTRICT
-#define OrgJodaTimeBaseBaseLocal_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeBaseBaseLocal")
+#ifdef RESTRICT_OrgJodaTimeBaseBaseLocal
+#define INCLUDE_ALL_OrgJodaTimeBaseBaseLocal 0
 #else
-#define OrgJodaTimeBaseBaseLocal_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeBaseBaseLocal 1
 #endif
-#undef OrgJodaTimeBaseBaseLocal_RESTRICT
+#undef RESTRICT_OrgJodaTimeBaseBaseLocal
 
-#if !defined (OrgJodaTimeBaseBaseLocal_) && (OrgJodaTimeBaseBaseLocal_INCLUDE_ALL || defined(OrgJodaTimeBaseBaseLocal_INCLUDE))
+#if !defined (OrgJodaTimeBaseBaseLocal_) && (INCLUDE_ALL_OrgJodaTimeBaseBaseLocal || defined(INCLUDE_OrgJodaTimeBaseBaseLocal))
 #define OrgJodaTimeBaseBaseLocal_
 
-#define OrgJodaTimeBaseAbstractPartial_RESTRICT 1
-#define OrgJodaTimeBaseAbstractPartial_INCLUDE 1
+#define RESTRICT_OrgJodaTimeBaseAbstractPartial 1
+#define INCLUDE_OrgJodaTimeBaseAbstractPartial 1
 #include "org/joda/time/base/AbstractPartial.h"
 
 /*!
@@ -66,4 +66,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseBaseLocal)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeBaseBaseLocal_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeBaseBaseLocal")

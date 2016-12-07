@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeTzZoneInfoProvider_INCLUDE_ALL")
-#ifdef OrgJodaTimeTzZoneInfoProvider_RESTRICT
-#define OrgJodaTimeTzZoneInfoProvider_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeTzZoneInfoProvider")
+#ifdef RESTRICT_OrgJodaTimeTzZoneInfoProvider
+#define INCLUDE_ALL_OrgJodaTimeTzZoneInfoProvider 0
 #else
-#define OrgJodaTimeTzZoneInfoProvider_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeTzZoneInfoProvider 1
 #endif
-#undef OrgJodaTimeTzZoneInfoProvider_RESTRICT
+#undef RESTRICT_OrgJodaTimeTzZoneInfoProvider
 
-#if !defined (OrgJodaTimeTzZoneInfoProvider_) && (OrgJodaTimeTzZoneInfoProvider_INCLUDE_ALL || defined(OrgJodaTimeTzZoneInfoProvider_INCLUDE))
+#if !defined (OrgJodaTimeTzZoneInfoProvider_) && (INCLUDE_ALL_OrgJodaTimeTzZoneInfoProvider || defined(INCLUDE_OrgJodaTimeTzZoneInfoProvider))
 #define OrgJodaTimeTzZoneInfoProvider_
 
-#define OrgJodaTimeTzProvider_RESTRICT 1
-#define OrgJodaTimeTzProvider_INCLUDE 1
+#define RESTRICT_OrgJodaTimeTzProvider 1
+#define INCLUDE_OrgJodaTimeTzProvider 1
 #include "org/joda/time/tz/Provider.h"
 
 @class JavaIoFile;
@@ -111,4 +111,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzZoneInfoProvider)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeTzZoneInfoProvider_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeTzZoneInfoProvider")

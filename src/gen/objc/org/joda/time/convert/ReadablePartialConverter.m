@@ -58,26 +58,35 @@ J2OBJC_IGNORE_DESIGNATED_END
   return OrgJodaTimeReadablePartial_class_();
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, 0, 2, -1, -1, -1, -1 },
+    { NULL, "[I", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "LIOSClass;", 0x1, -1, -1, -1, 5, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getChronologyWithId:withOrgJodaTimeDateTimeZone:);
+  methods[2].selector = @selector(getChronologyWithId:withOrgJodaTimeChronology:);
+  methods[3].selector = @selector(getPartialValuesWithOrgJodaTimeReadablePartial:withId:withOrgJodaTimeChronology:);
+  methods[4].selector = @selector(getSupportedType);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "INSTANCE", "LOrgJodaTimeConvertReadablePartialConverter;", .constantValue.asLong = 0, 0x18, -1, 6, -1, -1 },
+  };
+  static const void *ptrTable[] = { "getChronology", "LNSObject;LOrgJodaTimeDateTimeZone;", "LNSObject;LOrgJodaTimeChronology;", "getPartialValues", "LOrgJodaTimeReadablePartial;LNSObject;LOrgJodaTimeChronology;", "()Ljava/lang/Class<*>;", &OrgJodaTimeConvertReadablePartialConverter_INSTANCE };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertReadablePartialConverter = { "ReadablePartialConverter", "org.joda.time.convert", ptrTable, methods, fields, 7, 0x0, 5, 1, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeConvertReadablePartialConverter;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeConvertReadablePartialConverter class]) {
     JreStrongAssignAndConsume(&OrgJodaTimeConvertReadablePartialConverter_INSTANCE, new_OrgJodaTimeConvertReadablePartialConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertReadablePartialConverter)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "ReadablePartialConverter", NULL, 0x4, NULL, NULL },
-    { "getChronologyWithId:withOrgJodaTimeDateTimeZone:", "getChronology", "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "getChronologyWithId:withOrgJodaTimeChronology:", "getChronology", "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "getPartialValuesWithOrgJodaTimeReadablePartial:withId:withOrgJodaTimeChronology:", "getPartialValues", "[I", 0x1, NULL, NULL },
-    { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, "()Ljava/lang/Class<*>;" },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE", "INSTANCE", 0x18, "Lorg.joda.time.convert.ReadablePartialConverter;", &OrgJodaTimeConvertReadablePartialConverter_INSTANCE, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertReadablePartialConverter = { 2, "ReadablePartialConverter", "org.joda.time.convert", NULL, 0x0, 5, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeConvertReadablePartialConverter;
 }
 
 @end
@@ -87,15 +96,11 @@ void OrgJodaTimeConvertReadablePartialConverter_init(OrgJodaTimeConvertReadableP
 }
 
 OrgJodaTimeConvertReadablePartialConverter *new_OrgJodaTimeConvertReadablePartialConverter_init() {
-  OrgJodaTimeConvertReadablePartialConverter *self = [OrgJodaTimeConvertReadablePartialConverter alloc];
-  OrgJodaTimeConvertReadablePartialConverter_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeConvertReadablePartialConverter, init)
 }
 
 OrgJodaTimeConvertReadablePartialConverter *create_OrgJodaTimeConvertReadablePartialConverter_init() {
-  OrgJodaTimeConvertReadablePartialConverter *self = [[OrgJodaTimeConvertReadablePartialConverter alloc] autorelease];
-  OrgJodaTimeConvertReadablePartialConverter_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeConvertReadablePartialConverter, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertReadablePartialConverter)

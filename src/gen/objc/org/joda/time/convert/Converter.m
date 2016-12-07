@@ -3,7 +3,6 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/Joda-Time/src/main/java/org/joda/time/convert/Converter.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "org/joda/time/convert/Converter.h"
 
@@ -14,10 +13,15 @@
 @implementation OrgJodaTimeConvertConverter
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getSupportedType", NULL, "Ljava.lang.Class;", 0x401, NULL, "()Ljava/lang/Class<*>;" },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LIOSClass;", 0x401, -1, -1, -1, 0, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertConverter = { 2, "Converter", "org.joda.time.convert", NULL, 0x609, 1, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getSupportedType);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "()Ljava/lang/Class<*>;" };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertConverter = { "Converter", "org.joda.time.convert", ptrTable, methods, NULL, 7, 0x609, 1, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeConvertConverter;
 }
 

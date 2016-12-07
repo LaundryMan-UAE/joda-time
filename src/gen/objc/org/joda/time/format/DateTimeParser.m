@@ -5,7 +5,6 @@
 
 #include "J2ObjC_source.h"
 #include "org/joda/time/format/DateTimeParser.h"
-#include "org/joda/time/format/DateTimeParserBucket.h"
 
 @interface OrgJodaTimeFormatDateTimeParser : NSObject
 
@@ -14,11 +13,17 @@
 @implementation OrgJodaTimeFormatDateTimeParser
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "estimateParsedLength", NULL, "I", 0x401, NULL, NULL },
-    { "parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withNSString:withInt:", "parseInto", "I", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 0, 1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeParser = { 2, "DateTimeParser", "org.joda.time.format", NULL, 0x609, 2, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(estimateParsedLength);
+  methods[1].selector = @selector(parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withNSString:withInt:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "parseInto", "LOrgJodaTimeFormatDateTimeParserBucket;LNSString;I" };
+  static const J2ObjcClassInfo _OrgJodaTimeFormatDateTimeParser = { "DateTimeParser", "org.joda.time.format", ptrTable, methods, NULL, 7, 0x609, 2, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFormatDateTimeParser;
 }
 

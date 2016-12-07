@@ -5,23 +5,23 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatInternalPrinterDateTimePrinter_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatInternalPrinterDateTimePrinter_RESTRICT
-#define OrgJodaTimeFormatInternalPrinterDateTimePrinter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatInternalPrinterDateTimePrinter")
+#ifdef RESTRICT_OrgJodaTimeFormatInternalPrinterDateTimePrinter
+#define INCLUDE_ALL_OrgJodaTimeFormatInternalPrinterDateTimePrinter 0
 #else
-#define OrgJodaTimeFormatInternalPrinterDateTimePrinter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatInternalPrinterDateTimePrinter 1
 #endif
-#undef OrgJodaTimeFormatInternalPrinterDateTimePrinter_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatInternalPrinterDateTimePrinter
 
-#if !defined (OrgJodaTimeFormatInternalPrinterDateTimePrinter_) && (OrgJodaTimeFormatInternalPrinterDateTimePrinter_INCLUDE_ALL || defined(OrgJodaTimeFormatInternalPrinterDateTimePrinter_INCLUDE))
+#if !defined (OrgJodaTimeFormatInternalPrinterDateTimePrinter_) && (INCLUDE_ALL_OrgJodaTimeFormatInternalPrinterDateTimePrinter || defined(INCLUDE_OrgJodaTimeFormatInternalPrinterDateTimePrinter))
 #define OrgJodaTimeFormatInternalPrinterDateTimePrinter_
 
-#define OrgJodaTimeFormatDateTimePrinter_RESTRICT 1
-#define OrgJodaTimeFormatDateTimePrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatDateTimePrinter 1
+#define INCLUDE_OrgJodaTimeFormatDateTimePrinter 1
 #include "org/joda/time/format/DateTimePrinter.h"
 
-#define OrgJodaTimeFormatInternalPrinter_RESTRICT 1
-#define OrgJodaTimeFormatInternalPrinter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFormatInternalPrinter 1
+#define INCLUDE_OrgJodaTimeFormatInternalPrinter 1
 #include "org/joda/time/format/InternalPrinter.h"
 
 @class JavaIoWriter;
@@ -92,4 +92,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatInternalPrinterDateTimePrinter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatInternalPrinterDateTimePrinter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatInternalPrinterDateTimePrinter")

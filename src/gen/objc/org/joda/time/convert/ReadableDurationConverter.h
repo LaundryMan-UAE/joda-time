@@ -5,27 +5,27 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertReadableDurationConverter_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertReadableDurationConverter_RESTRICT
-#define OrgJodaTimeConvertReadableDurationConverter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertReadableDurationConverter")
+#ifdef RESTRICT_OrgJodaTimeConvertReadableDurationConverter
+#define INCLUDE_ALL_OrgJodaTimeConvertReadableDurationConverter 0
 #else
-#define OrgJodaTimeConvertReadableDurationConverter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertReadableDurationConverter 1
 #endif
-#undef OrgJodaTimeConvertReadableDurationConverter_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertReadableDurationConverter
 
-#if !defined (OrgJodaTimeConvertReadableDurationConverter_) && (OrgJodaTimeConvertReadableDurationConverter_INCLUDE_ALL || defined(OrgJodaTimeConvertReadableDurationConverter_INCLUDE))
+#if !defined (OrgJodaTimeConvertReadableDurationConverter_) && (INCLUDE_ALL_OrgJodaTimeConvertReadableDurationConverter || defined(INCLUDE_OrgJodaTimeConvertReadableDurationConverter))
 #define OrgJodaTimeConvertReadableDurationConverter_
 
-#define OrgJodaTimeConvertAbstractConverter_RESTRICT 1
-#define OrgJodaTimeConvertAbstractConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertAbstractConverter 1
+#define INCLUDE_OrgJodaTimeConvertAbstractConverter 1
 #include "org/joda/time/convert/AbstractConverter.h"
 
-#define OrgJodaTimeConvertDurationConverter_RESTRICT 1
-#define OrgJodaTimeConvertDurationConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertDurationConverter 1
+#define INCLUDE_OrgJodaTimeConvertDurationConverter 1
 #include "org/joda/time/convert/DurationConverter.h"
 
-#define OrgJodaTimeConvertPeriodConverter_RESTRICT 1
-#define OrgJodaTimeConvertPeriodConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertPeriodConverter 1
+#define INCLUDE_OrgJodaTimeConvertPeriodConverter 1
 #include "org/joda/time/convert/PeriodConverter.h"
 
 @class IOSClass;
@@ -101,4 +101,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertReadableDurationConverter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertReadableDurationConverter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertReadableDurationConverter")

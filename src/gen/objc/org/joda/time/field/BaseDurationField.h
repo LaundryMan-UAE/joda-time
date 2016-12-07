@@ -5,23 +5,23 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFieldBaseDurationField_INCLUDE_ALL")
-#ifdef OrgJodaTimeFieldBaseDurationField_RESTRICT
-#define OrgJodaTimeFieldBaseDurationField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFieldBaseDurationField")
+#ifdef RESTRICT_OrgJodaTimeFieldBaseDurationField
+#define INCLUDE_ALL_OrgJodaTimeFieldBaseDurationField 0
 #else
-#define OrgJodaTimeFieldBaseDurationField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFieldBaseDurationField 1
 #endif
-#undef OrgJodaTimeFieldBaseDurationField_RESTRICT
+#undef RESTRICT_OrgJodaTimeFieldBaseDurationField
 
-#if !defined (OrgJodaTimeFieldBaseDurationField_) && (OrgJodaTimeFieldBaseDurationField_INCLUDE_ALL || defined(OrgJodaTimeFieldBaseDurationField_INCLUDE))
+#if !defined (OrgJodaTimeFieldBaseDurationField_) && (INCLUDE_ALL_OrgJodaTimeFieldBaseDurationField || defined(INCLUDE_OrgJodaTimeFieldBaseDurationField))
 #define OrgJodaTimeFieldBaseDurationField_
 
-#define OrgJodaTimeDurationField_RESTRICT 1
-#define OrgJodaTimeDurationField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeDurationField 1
+#define INCLUDE_OrgJodaTimeDurationField 1
 #include "org/joda/time/DurationField.h"
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class OrgJodaTimeDurationFieldType;
@@ -130,4 +130,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldBaseDurationField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFieldBaseDurationField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFieldBaseDurationField")

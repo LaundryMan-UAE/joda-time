@@ -338,59 +338,113 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getZone", NULL, "Lorg.joda.time.DateTimeZone;", 0x401, NULL, NULL },
-    { "withUTC", NULL, "Lorg.joda.time.Chronology;", 0x401, NULL, NULL },
-    { "withZoneWithOrgJodaTimeDateTimeZone:", "withZone", "Lorg.joda.time.Chronology;", 0x401, NULL, NULL },
-    { "getDateTimeMillisWithInt:withInt:withInt:withInt:", "getDateTimeMillis", "J", 0x401, NULL, NULL },
-    { "getDateTimeMillisWithInt:withInt:withInt:withInt:withInt:withInt:withInt:", "getDateTimeMillis", "J", 0x401, NULL, NULL },
-    { "getDateTimeMillisWithLong:withInt:withInt:withInt:withInt:", "getDateTimeMillis", "J", 0x401, NULL, NULL },
-    { "validateWithOrgJodaTimeReadablePartial:withIntArray:", "validate", "V", 0x401, NULL, NULL },
-    { "getWithOrgJodaTimeReadablePartial:withLong:", "get", "[I", 0x401, NULL, NULL },
-    { "setWithOrgJodaTimeReadablePartial:withLong:", "set", "J", 0x401, NULL, NULL },
-    { "getWithOrgJodaTimeReadablePeriod:withLong:withLong:", "get", "[I", 0x401, NULL, NULL },
-    { "getWithOrgJodaTimeReadablePeriod:withLong:", "get", "[I", 0x401, NULL, NULL },
-    { "addWithOrgJodaTimeReadablePeriod:withLong:withInt:", "add", "J", 0x401, NULL, NULL },
-    { "addWithLong:withLong:withInt:", "add", "J", 0x401, NULL, NULL },
-    { "millis", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "millisOfSecond", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "millisOfDay", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "seconds", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "secondOfMinute", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "secondOfDay", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "minutes", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "minuteOfHour", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "minuteOfDay", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "hours", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "hourOfDay", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "clockhourOfDay", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "halfdays", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "hourOfHalfday", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "clockhourOfHalfday", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "halfdayOfDay", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "days", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "dayOfWeek", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "dayOfMonth", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "dayOfYear", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "weeks", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "weekOfWeekyear", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "weekyears", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "weekyear", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "weekyearOfCentury", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "months", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "monthOfYear", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "years", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "year", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "yearOfEra", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "yearOfCentury", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "centuries", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "centuryOfEra", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "eras", NULL, "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "era", NULL, "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x401, NULL, NULL },
-    { "init", NULL, NULL, 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeDateTimeZone;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 2, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 2, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 2, 5, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 6, 7, -1, -1, -1, -1 },
+    { NULL, "[I", 0x401, 8, 9, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 10, 9, -1, -1, -1, -1 },
+    { NULL, "[I", 0x401, 8, 11, -1, -1, -1, -1 },
+    { NULL, "[I", 0x401, 8, 12, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 13, 14, -1, -1, -1, -1 },
+    { NULL, "J", 0x401, 13, 15, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 16, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronology = { 2, "Chronology", "org.joda.time", NULL, 0x401, 50, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getZone);
+  methods[1].selector = @selector(withUTC);
+  methods[2].selector = @selector(withZoneWithOrgJodaTimeDateTimeZone:);
+  methods[3].selector = @selector(getDateTimeMillisWithInt:withInt:withInt:withInt:);
+  methods[4].selector = @selector(getDateTimeMillisWithInt:withInt:withInt:withInt:withInt:withInt:withInt:);
+  methods[5].selector = @selector(getDateTimeMillisWithLong:withInt:withInt:withInt:withInt:);
+  methods[6].selector = @selector(validateWithOrgJodaTimeReadablePartial:withIntArray:);
+  methods[7].selector = @selector(getWithOrgJodaTimeReadablePartial:withLong:);
+  methods[8].selector = @selector(setWithOrgJodaTimeReadablePartial:withLong:);
+  methods[9].selector = @selector(getWithOrgJodaTimeReadablePeriod:withLong:withLong:);
+  methods[10].selector = @selector(getWithOrgJodaTimeReadablePeriod:withLong:);
+  methods[11].selector = @selector(addWithOrgJodaTimeReadablePeriod:withLong:withInt:);
+  methods[12].selector = @selector(addWithLong:withLong:withInt:);
+  methods[13].selector = @selector(millis);
+  methods[14].selector = @selector(millisOfSecond);
+  methods[15].selector = @selector(millisOfDay);
+  methods[16].selector = @selector(seconds);
+  methods[17].selector = @selector(secondOfMinute);
+  methods[18].selector = @selector(secondOfDay);
+  methods[19].selector = @selector(minutes);
+  methods[20].selector = @selector(minuteOfHour);
+  methods[21].selector = @selector(minuteOfDay);
+  methods[22].selector = @selector(hours);
+  methods[23].selector = @selector(hourOfDay);
+  methods[24].selector = @selector(clockhourOfDay);
+  methods[25].selector = @selector(halfdays);
+  methods[26].selector = @selector(hourOfHalfday);
+  methods[27].selector = @selector(clockhourOfHalfday);
+  methods[28].selector = @selector(halfdayOfDay);
+  methods[29].selector = @selector(days);
+  methods[30].selector = @selector(dayOfWeek);
+  methods[31].selector = @selector(dayOfMonth);
+  methods[32].selector = @selector(dayOfYear);
+  methods[33].selector = @selector(weeks);
+  methods[34].selector = @selector(weekOfWeekyear);
+  methods[35].selector = @selector(weekyears);
+  methods[36].selector = @selector(weekyear);
+  methods[37].selector = @selector(weekyearOfCentury);
+  methods[38].selector = @selector(months);
+  methods[39].selector = @selector(monthOfYear);
+  methods[40].selector = @selector(years);
+  methods[41].selector = @selector(year);
+  methods[42].selector = @selector(yearOfEra);
+  methods[43].selector = @selector(yearOfCentury);
+  methods[44].selector = @selector(centuries);
+  methods[45].selector = @selector(centuryOfEra);
+  methods[46].selector = @selector(eras);
+  methods[47].selector = @selector(era);
+  methods[48].selector = @selector(description);
+  methods[49].selector = @selector(init);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "withZone", "LOrgJodaTimeDateTimeZone;", "getDateTimeMillis", "IIII", "IIIIIII", "JIIII", "validate", "LOrgJodaTimeReadablePartial;[I", "get", "LOrgJodaTimeReadablePartial;J", "set", "LOrgJodaTimeReadablePeriod;JJ", "LOrgJodaTimeReadablePeriod;J", "add", "LOrgJodaTimeReadablePeriod;JI", "JJI", "toString" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronology = { "Chronology", "org.joda.time", ptrTable, methods, NULL, 7, 0x401, 50, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeChronology;
 }
 

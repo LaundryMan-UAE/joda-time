@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronoBasicFixedMonthChronology_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronoBasicFixedMonthChronology_RESTRICT
-#define OrgJodaTimeChronoBasicFixedMonthChronology_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronoBasicFixedMonthChronology")
+#ifdef RESTRICT_OrgJodaTimeChronoBasicFixedMonthChronology
+#define INCLUDE_ALL_OrgJodaTimeChronoBasicFixedMonthChronology 0
 #else
-#define OrgJodaTimeChronoBasicFixedMonthChronology_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronoBasicFixedMonthChronology 1
 #endif
-#undef OrgJodaTimeChronoBasicFixedMonthChronology_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronoBasicFixedMonthChronology
 
-#if !defined (OrgJodaTimeChronoBasicFixedMonthChronology_) && (OrgJodaTimeChronoBasicFixedMonthChronology_INCLUDE_ALL || defined(OrgJodaTimeChronoBasicFixedMonthChronology_INCLUDE))
+#if !defined (OrgJodaTimeChronoBasicFixedMonthChronology_) && (INCLUDE_ALL_OrgJodaTimeChronoBasicFixedMonthChronology || defined(INCLUDE_OrgJodaTimeChronoBasicFixedMonthChronology))
 #define OrgJodaTimeChronoBasicFixedMonthChronology_
 
-#define OrgJodaTimeChronoBasicChronology_RESTRICT 1
-#define OrgJodaTimeChronoBasicChronology_INCLUDE 1
+#define RESTRICT_OrgJodaTimeChronoBasicChronology 1
+#define INCLUDE_OrgJodaTimeChronoBasicChronology 1
 #include "org/joda/time/chrono/BasicChronology.h"
 
 @class OrgJodaTimeChronology;
@@ -113,4 +113,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoBasicFixedMonthChronology)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronoBasicFixedMonthChronology_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronoBasicFixedMonthChronology")

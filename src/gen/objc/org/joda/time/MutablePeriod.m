@@ -4,10 +4,12 @@
 //
 
 #include "IOSClass.h"
+#include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "java/lang/CloneNotSupportedException.h"
 #include "java/lang/InternalError.h"
+#include "java/lang/annotation/Annotation.h"
 #include "org/joda/convert/FromString.h"
 #include "org/joda/time/Chronology.h"
 #include "org/joda/time/DateTimeUtils.h"
@@ -19,7 +21,6 @@
 #include "org/joda/time/ReadableInstant.h"
 #include "org/joda/time/ReadableInterval.h"
 #include "org/joda/time/ReadablePeriod.h"
-#include "org/joda/time/base/AbstractPeriod.h"
 #include "org/joda/time/base/BasePeriod.h"
 #include "org/joda/time/field/FieldUtils.h"
 #include "org/joda/time/format/ISOPeriodFormat.h"
@@ -31,6 +32,8 @@
 inline jlong OrgJodaTimeMutablePeriod_get_serialVersionUID();
 #define OrgJodaTimeMutablePeriod_serialVersionUID 3436451121567212165LL
 J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeMutablePeriod, serialVersionUID, jlong)
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeMutablePeriod__Annotations$0();
 
 @implementation OrgJodaTimeMutablePeriod
 
@@ -315,17 +318,17 @@ withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
 
 - (void)addWithOrgJodaTimeReadableDuration:(id<OrgJodaTimeReadableDuration>)duration {
   if (duration != nil) {
-    [self addWithOrgJodaTimeReadablePeriod:[new_OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_([duration getMillis], [self getPeriodType]) autorelease]];
+    [self addWithOrgJodaTimeReadablePeriod:create_OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_([duration getMillis], [self getPeriodType])];
   }
 }
 
 - (void)addWithLong:(jlong)duration {
-  [self addWithOrgJodaTimeReadablePeriod:[new_OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_(duration, [self getPeriodType]) autorelease]];
+  [self addWithOrgJodaTimeReadablePeriod:create_OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_(duration, [self getPeriodType])];
 }
 
 - (void)addWithLong:(jlong)duration
 withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
-  [self addWithOrgJodaTimeReadablePeriod:[new_OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(duration, [self getPeriodType], chrono) autorelease]];
+  [self addWithOrgJodaTimeReadablePeriod:create_OrgJodaTimePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(duration, [self getPeriodType], chrono)];
 }
 
 - (void)mergePeriodWithOrgJodaTimeReadablePeriod:(id<OrgJodaTimeReadablePeriod>)period {
@@ -437,98 +440,170 @@ withOrgJodaTimeChronology:(OrgJodaTimeChronology *)chrono {
     return [super clone];
   }
   @catch (JavaLangCloneNotSupportedException *ex) {
-    @throw [new_JavaLangInternalError_initWithNSString_(@"Clone error") autorelease];
+    @throw create_JavaLangInternalError_initWithNSString_(@"Clone error");
   }
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeMutablePeriod;", 0x9, 0, 1, -1, -1, 2, -1 },
+    { NULL, "LOrgJodaTimeMutablePeriod;", 0x9, 0, 3, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 4, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 5, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 6, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 7, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 8, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 9, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 10, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 11, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 12, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 13, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 14, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 15, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 16, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 17, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 18, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 19, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 20, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 21, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 22, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 23, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 24, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 25, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 26, 27, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 28, 29, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 30, 31, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 30, 6, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 30, 32, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 30, 16, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 30, 12, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 30, 14, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 30, 33, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 30, 34, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 30, 8, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 30, 10, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 35, 29, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 35, 31, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 35, 6, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 35, 32, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 35, 33, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 35, 8, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 35, 10, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 36, 31, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 37, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 39, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 40, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 41, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 42, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 43, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 44, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 45, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 46, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 47, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 48, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 49, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 50, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 51, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 52, 38, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 53, 38, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMutablePeriod;", 0x1, 54, -1, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x1, -1, -1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(parseWithNSString:);
+  methods[1].selector = @selector(parseWithNSString:withOrgJodaTimeFormatPeriodFormatter:);
+  methods[2].selector = @selector(init);
+  methods[3].selector = @selector(initWithOrgJodaTimePeriodType:);
+  methods[4].selector = @selector(initWithInt:withInt:withInt:withInt:);
+  methods[5].selector = @selector(initWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withInt:);
+  methods[6].selector = @selector(initWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withInt:withOrgJodaTimePeriodType:);
+  methods[7].selector = @selector(initWithLong:);
+  methods[8].selector = @selector(initWithLong:withOrgJodaTimePeriodType:);
+  methods[9].selector = @selector(initWithLong:withOrgJodaTimeChronology:);
+  methods[10].selector = @selector(initWithLong:withOrgJodaTimePeriodType:withOrgJodaTimeChronology:);
+  methods[11].selector = @selector(initWithLong:withLong:);
+  methods[12].selector = @selector(initWithLong:withLong:withOrgJodaTimePeriodType:);
+  methods[13].selector = @selector(initWithLong:withLong:withOrgJodaTimeChronology:);
+  methods[14].selector = @selector(initWithLong:withLong:withOrgJodaTimePeriodType:withOrgJodaTimeChronology:);
+  methods[15].selector = @selector(initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:);
+  methods[16].selector = @selector(initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:withOrgJodaTimePeriodType:);
+  methods[17].selector = @selector(initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableDuration:);
+  methods[18].selector = @selector(initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableDuration:withOrgJodaTimePeriodType:);
+  methods[19].selector = @selector(initWithOrgJodaTimeReadableDuration:withOrgJodaTimeReadableInstant:);
+  methods[20].selector = @selector(initWithOrgJodaTimeReadableDuration:withOrgJodaTimeReadableInstant:withOrgJodaTimePeriodType:);
+  methods[21].selector = @selector(initWithId:);
+  methods[22].selector = @selector(initWithId:withOrgJodaTimePeriodType:);
+  methods[23].selector = @selector(initWithId:withOrgJodaTimeChronology:);
+  methods[24].selector = @selector(initWithId:withOrgJodaTimePeriodType:withOrgJodaTimeChronology:);
+  methods[25].selector = @selector(clear);
+  methods[26].selector = @selector(setValueWithInt:withInt:);
+  methods[27].selector = @selector(setWithOrgJodaTimeDurationFieldType:withInt:);
+  methods[28].selector = @selector(setPeriodWithOrgJodaTimeReadablePeriod:);
+  methods[29].selector = @selector(setPeriodWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withInt:);
+  methods[30].selector = @selector(setPeriodWithOrgJodaTimeReadableInterval:);
+  methods[31].selector = @selector(setPeriodWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:);
+  methods[32].selector = @selector(setPeriodWithLong:withLong:);
+  methods[33].selector = @selector(setPeriodWithLong:withLong:withOrgJodaTimeChronology:);
+  methods[34].selector = @selector(setPeriodWithOrgJodaTimeReadableDuration:);
+  methods[35].selector = @selector(setPeriodWithOrgJodaTimeReadableDuration:withOrgJodaTimeChronology:);
+  methods[36].selector = @selector(setPeriodWithLong:);
+  methods[37].selector = @selector(setPeriodWithLong:withOrgJodaTimeChronology:);
+  methods[38].selector = @selector(addWithOrgJodaTimeDurationFieldType:withInt:);
+  methods[39].selector = @selector(addWithOrgJodaTimeReadablePeriod:);
+  methods[40].selector = @selector(addWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withInt:);
+  methods[41].selector = @selector(addWithOrgJodaTimeReadableInterval:);
+  methods[42].selector = @selector(addWithOrgJodaTimeReadableDuration:);
+  methods[43].selector = @selector(addWithLong:);
+  methods[44].selector = @selector(addWithLong:withOrgJodaTimeChronology:);
+  methods[45].selector = @selector(mergePeriodWithOrgJodaTimeReadablePeriod:);
+  methods[46].selector = @selector(getYears);
+  methods[47].selector = @selector(getMonths);
+  methods[48].selector = @selector(getWeeks);
+  methods[49].selector = @selector(getDays);
+  methods[50].selector = @selector(getHours);
+  methods[51].selector = @selector(getMinutes);
+  methods[52].selector = @selector(getSeconds);
+  methods[53].selector = @selector(getMillis);
+  methods[54].selector = @selector(setYearsWithInt:);
+  methods[55].selector = @selector(addYearsWithInt:);
+  methods[56].selector = @selector(setMonthsWithInt:);
+  methods[57].selector = @selector(addMonthsWithInt:);
+  methods[58].selector = @selector(setWeeksWithInt:);
+  methods[59].selector = @selector(addWeeksWithInt:);
+  methods[60].selector = @selector(setDaysWithInt:);
+  methods[61].selector = @selector(addDaysWithInt:);
+  methods[62].selector = @selector(setHoursWithInt:);
+  methods[63].selector = @selector(addHoursWithInt:);
+  methods[64].selector = @selector(setMinutesWithInt:);
+  methods[65].selector = @selector(addMinutesWithInt:);
+  methods[66].selector = @selector(setSecondsWithInt:);
+  methods[67].selector = @selector(addSecondsWithInt:);
+  methods[68].selector = @selector(setMillisWithInt:);
+  methods[69].selector = @selector(addMillisWithInt:);
+  methods[70].selector = @selector(copy__);
+  methods[71].selector = @selector(clone);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeMutablePeriod_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "parse", "LNSString;", (void *)&OrgJodaTimeMutablePeriod__Annotations$0, "LNSString;LOrgJodaTimeFormatPeriodFormatter;", "LOrgJodaTimePeriodType;", "IIII", "IIIIIIII", "IIIIIIIILOrgJodaTimePeriodType;", "J", "JLOrgJodaTimePeriodType;", "JLOrgJodaTimeChronology;", "JLOrgJodaTimePeriodType;LOrgJodaTimeChronology;", "JJ", "JJLOrgJodaTimePeriodType;", "JJLOrgJodaTimeChronology;", "JJLOrgJodaTimePeriodType;LOrgJodaTimeChronology;", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableInstant;", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableInstant;LOrgJodaTimePeriodType;", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableDuration;", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableDuration;LOrgJodaTimePeriodType;", "LOrgJodaTimeReadableDuration;LOrgJodaTimeReadableInstant;", "LOrgJodaTimeReadableDuration;LOrgJodaTimeReadableInstant;LOrgJodaTimePeriodType;", "LNSObject;", "LNSObject;LOrgJodaTimePeriodType;", "LNSObject;LOrgJodaTimeChronology;", "LNSObject;LOrgJodaTimePeriodType;LOrgJodaTimeChronology;", "setValue", "II", "set", "LOrgJodaTimeDurationFieldType;I", "setPeriod", "LOrgJodaTimeReadablePeriod;", "LOrgJodaTimeReadableInterval;", "LOrgJodaTimeReadableDuration;", "LOrgJodaTimeReadableDuration;LOrgJodaTimeChronology;", "add", "mergePeriod", "setYears", "I", "addYears", "setMonths", "addMonths", "setWeeks", "addWeeks", "setDays", "addDays", "setHours", "addHours", "setMinutes", "addMinutes", "setSeconds", "addSeconds", "setMillis", "addMillis", "copy" };
+  static const J2ObjcClassInfo _OrgJodaTimeMutablePeriod = { "MutablePeriod", "org.joda.time", ptrTable, methods, fields, 7, 0x1, 72, 1, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeMutablePeriod;
 }
 
 - (id)copyWithZone:(NSZone *)zone {
   return [[self clone] retain];
-}
-
-+ (IOSObjectArray *)__annotations_parseWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "parseWithNSString:", "parse", "Lorg.joda.time.MutablePeriod;", 0x9, NULL, NULL },
-    { "parseWithNSString:withOrgJodaTimeFormatPeriodFormatter:", "parse", "Lorg.joda.time.MutablePeriod;", 0x9, NULL, NULL },
-    { "init", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimePeriodType:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithInt:withInt:withInt:withInt:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withInt:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withInt:withOrgJodaTimePeriodType:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithLong:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withOrgJodaTimePeriodType:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withOrgJodaTimeChronology:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withOrgJodaTimePeriodType:withOrgJodaTimeChronology:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withLong:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withLong:withOrgJodaTimePeriodType:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withLong:withOrgJodaTimeChronology:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withLong:withOrgJodaTimePeriodType:withOrgJodaTimeChronology:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:withOrgJodaTimePeriodType:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableDuration:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableDuration:withOrgJodaTimePeriodType:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadableDuration:withOrgJodaTimeReadableInstant:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeReadableDuration:withOrgJodaTimeReadableInstant:withOrgJodaTimePeriodType:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithId:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithId:withOrgJodaTimePeriodType:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithId:withOrgJodaTimeChronology:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "initWithId:withOrgJodaTimePeriodType:withOrgJodaTimeChronology:", "MutablePeriod", NULL, 0x1, NULL, NULL },
-    { "clear", NULL, "V", 0x1, NULL, NULL },
-    { "setValueWithInt:withInt:", "setValue", "V", 0x1, NULL, NULL },
-    { "setWithOrgJodaTimeDurationFieldType:withInt:", "set", "V", 0x1, NULL, NULL },
-    { "setPeriodWithOrgJodaTimeReadablePeriod:", "setPeriod", "V", 0x1, NULL, NULL },
-    { "setPeriodWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withInt:", "setPeriod", "V", 0x1, NULL, NULL },
-    { "setPeriodWithOrgJodaTimeReadableInterval:", "setPeriod", "V", 0x1, NULL, NULL },
-    { "setPeriodWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:", "setPeriod", "V", 0x1, NULL, NULL },
-    { "setPeriodWithLong:withLong:", "setPeriod", "V", 0x1, NULL, NULL },
-    { "setPeriodWithLong:withLong:withOrgJodaTimeChronology:", "setPeriod", "V", 0x1, NULL, NULL },
-    { "setPeriodWithOrgJodaTimeReadableDuration:", "setPeriod", "V", 0x1, NULL, NULL },
-    { "setPeriodWithOrgJodaTimeReadableDuration:withOrgJodaTimeChronology:", "setPeriod", "V", 0x1, NULL, NULL },
-    { "setPeriodWithLong:", "setPeriod", "V", 0x1, NULL, NULL },
-    { "setPeriodWithLong:withOrgJodaTimeChronology:", "setPeriod", "V", 0x1, NULL, NULL },
-    { "addWithOrgJodaTimeDurationFieldType:withInt:", "add", "V", 0x1, NULL, NULL },
-    { "addWithOrgJodaTimeReadablePeriod:", "add", "V", 0x1, NULL, NULL },
-    { "addWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withInt:", "add", "V", 0x1, NULL, NULL },
-    { "addWithOrgJodaTimeReadableInterval:", "add", "V", 0x1, NULL, NULL },
-    { "addWithOrgJodaTimeReadableDuration:", "add", "V", 0x1, NULL, NULL },
-    { "addWithLong:", "add", "V", 0x1, NULL, NULL },
-    { "addWithLong:withOrgJodaTimeChronology:", "add", "V", 0x1, NULL, NULL },
-    { "mergePeriodWithOrgJodaTimeReadablePeriod:", "mergePeriod", "V", 0x1, NULL, NULL },
-    { "getYears", NULL, "I", 0x1, NULL, NULL },
-    { "getMonths", NULL, "I", 0x1, NULL, NULL },
-    { "getWeeks", NULL, "I", 0x1, NULL, NULL },
-    { "getDays", NULL, "I", 0x1, NULL, NULL },
-    { "getHours", NULL, "I", 0x1, NULL, NULL },
-    { "getMinutes", NULL, "I", 0x1, NULL, NULL },
-    { "getSeconds", NULL, "I", 0x1, NULL, NULL },
-    { "getMillis", NULL, "I", 0x1, NULL, NULL },
-    { "setYearsWithInt:", "setYears", "V", 0x1, NULL, NULL },
-    { "addYearsWithInt:", "addYears", "V", 0x1, NULL, NULL },
-    { "setMonthsWithInt:", "setMonths", "V", 0x1, NULL, NULL },
-    { "addMonthsWithInt:", "addMonths", "V", 0x1, NULL, NULL },
-    { "setWeeksWithInt:", "setWeeks", "V", 0x1, NULL, NULL },
-    { "addWeeksWithInt:", "addWeeks", "V", 0x1, NULL, NULL },
-    { "setDaysWithInt:", "setDays", "V", 0x1, NULL, NULL },
-    { "addDaysWithInt:", "addDays", "V", 0x1, NULL, NULL },
-    { "setHoursWithInt:", "setHours", "V", 0x1, NULL, NULL },
-    { "addHoursWithInt:", "addHours", "V", 0x1, NULL, NULL },
-    { "setMinutesWithInt:", "setMinutes", "V", 0x1, NULL, NULL },
-    { "addMinutesWithInt:", "addMinutes", "V", 0x1, NULL, NULL },
-    { "setSecondsWithInt:", "setSeconds", "V", 0x1, NULL, NULL },
-    { "addSecondsWithInt:", "addSeconds", "V", 0x1, NULL, NULL },
-    { "setMillisWithInt:", "setMillis", "V", 0x1, NULL, NULL },
-    { "addMillisWithInt:", "addMillis", "V", 0x1, NULL, NULL },
-    { "copy__", "copy", "Lorg.joda.time.MutablePeriod;", 0x1, NULL, NULL },
-    { "clone", NULL, "Ljava.lang.Object;", 0x1, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeMutablePeriod_serialVersionUID },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeMutablePeriod = { 2, "MutablePeriod", "org.joda.time", NULL, 0x1, 72, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeMutablePeriod;
 }
 
 @end
@@ -548,15 +623,11 @@ void OrgJodaTimeMutablePeriod_init(OrgJodaTimeMutablePeriod *self) {
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_init() {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, init)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_init() {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, init)
 }
 
 void OrgJodaTimeMutablePeriod_initWithOrgJodaTimePeriodType_(OrgJodaTimeMutablePeriod *self, OrgJodaTimePeriodType *type) {
@@ -564,15 +635,11 @@ void OrgJodaTimeMutablePeriod_initWithOrgJodaTimePeriodType_(OrgJodaTimeMutableP
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithOrgJodaTimePeriodType_(OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithOrgJodaTimePeriodType_(self, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithOrgJodaTimePeriodType_, type)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithOrgJodaTimePeriodType_(OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithOrgJodaTimePeriodType_(self, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithOrgJodaTimePeriodType_, type)
 }
 
 void OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_(OrgJodaTimeMutablePeriod *self, jint hours, jint minutes, jint seconds, jint millis) {
@@ -580,15 +647,11 @@ void OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_(OrgJodaTimeMu
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_(jint hours, jint minutes, jint seconds, jint millis) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_(self, hours, minutes, seconds, millis);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithInt_withInt_withInt_withInt_, hours, minutes, seconds, millis)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_(jint hours, jint minutes, jint seconds, jint millis) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_(self, hours, minutes, seconds, millis);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithInt_withInt_withInt_withInt_, hours, minutes, seconds, millis)
 }
 
 void OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(OrgJodaTimeMutablePeriod *self, jint years, jint months, jint weeks, jint days, jint hours, jint minutes, jint seconds, jint millis) {
@@ -596,15 +659,11 @@ void OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_withInt_withIn
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(jint years, jint months, jint weeks, jint days, jint hours, jint minutes, jint seconds, jint millis) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(self, years, months, weeks, days, hours, minutes, seconds, millis);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_, years, months, weeks, days, hours, minutes, seconds, millis)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(jint years, jint months, jint weeks, jint days, jint hours, jint minutes, jint seconds, jint millis) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_(self, years, months, weeks, days, hours, minutes, seconds, millis);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_, years, months, weeks, days, hours, minutes, seconds, millis)
 }
 
 void OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimePeriodType_(OrgJodaTimeMutablePeriod *self, jint years, jint months, jint weeks, jint days, jint hours, jint minutes, jint seconds, jint millis, OrgJodaTimePeriodType *type) {
@@ -612,15 +671,11 @@ void OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_withInt_withIn
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimePeriodType_(jint years, jint months, jint weeks, jint days, jint hours, jint minutes, jint seconds, jint millis, OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimePeriodType_(self, years, months, weeks, days, hours, minutes, seconds, millis, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimePeriodType_, years, months, weeks, days, hours, minutes, seconds, millis, type)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimePeriodType_(jint years, jint months, jint weeks, jint days, jint hours, jint minutes, jint seconds, jint millis, OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimePeriodType_(self, years, months, weeks, days, hours, minutes, seconds, millis, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithInt_withInt_withInt_withInt_withInt_withInt_withInt_withInt_withOrgJodaTimePeriodType_, years, months, weeks, days, hours, minutes, seconds, millis, type)
 }
 
 void OrgJodaTimeMutablePeriod_initWithLong_(OrgJodaTimeMutablePeriod *self, jlong duration) {
@@ -628,15 +683,11 @@ void OrgJodaTimeMutablePeriod_initWithLong_(OrgJodaTimeMutablePeriod *self, jlon
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithLong_(jlong duration) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithLong_(self, duration);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithLong_, duration)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithLong_(jlong duration) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithLong_(self, duration);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithLong_, duration)
 }
 
 void OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimePeriodType_(OrgJodaTimeMutablePeriod *self, jlong duration, OrgJodaTimePeriodType *type) {
@@ -644,15 +695,11 @@ void OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimePeriodType_(OrgJodaTim
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimePeriodType_(jlong duration, OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimePeriodType_(self, duration, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithLong_withOrgJodaTimePeriodType_, duration, type)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimePeriodType_(jlong duration, OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimePeriodType_(self, duration, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithLong_withOrgJodaTimePeriodType_, duration, type)
 }
 
 void OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimeChronology_(OrgJodaTimeMutablePeriod *self, jlong duration, OrgJodaTimeChronology *chronology) {
@@ -660,15 +707,11 @@ void OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimeChronology_(OrgJodaTim
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimeChronology_(jlong duration, OrgJodaTimeChronology *chronology) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimeChronology_(self, duration, chronology);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithLong_withOrgJodaTimeChronology_, duration, chronology)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimeChronology_(jlong duration, OrgJodaTimeChronology *chronology) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimeChronology_(self, duration, chronology);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithLong_withOrgJodaTimeChronology_, duration, chronology)
 }
 
 void OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(OrgJodaTimeMutablePeriod *self, jlong duration, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chronology) {
@@ -676,15 +719,11 @@ void OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJoda
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(jlong duration, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chronology) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(self, duration, type, chronology);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_, duration, type, chronology)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(jlong duration, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chronology) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(self, duration, type, chronology);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_, duration, type, chronology)
 }
 
 void OrgJodaTimeMutablePeriod_initWithLong_withLong_(OrgJodaTimeMutablePeriod *self, jlong startInstant, jlong endInstant) {
@@ -692,15 +731,11 @@ void OrgJodaTimeMutablePeriod_initWithLong_withLong_(OrgJodaTimeMutablePeriod *s
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithLong_withLong_(jlong startInstant, jlong endInstant) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithLong_withLong_(self, startInstant, endInstant);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithLong_withLong_, startInstant, endInstant)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithLong_withLong_(jlong startInstant, jlong endInstant) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithLong_withLong_(self, startInstant, endInstant);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithLong_withLong_, startInstant, endInstant)
 }
 
 void OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_(OrgJodaTimeMutablePeriod *self, jlong startInstant, jlong endInstant, OrgJodaTimePeriodType *type) {
@@ -708,15 +743,11 @@ void OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_(O
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_(jlong startInstant, jlong endInstant, OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_(self, startInstant, endInstant, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithLong_withLong_withOrgJodaTimePeriodType_, startInstant, endInstant, type)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_(jlong startInstant, jlong endInstant, OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_(self, startInstant, endInstant, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithLong_withLong_withOrgJodaTimePeriodType_, startInstant, endInstant, type)
 }
 
 void OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimeChronology_(OrgJodaTimeMutablePeriod *self, jlong startInstant, jlong endInstant, OrgJodaTimeChronology *chrono) {
@@ -724,15 +755,11 @@ void OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimeChronology_(O
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimeChronology_(jlong startInstant, jlong endInstant, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimeChronology_(self, startInstant, endInstant, chrono);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithLong_withLong_withOrgJodaTimeChronology_, startInstant, endInstant, chrono)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimeChronology_(jlong startInstant, jlong endInstant, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimeChronology_(self, startInstant, endInstant, chrono);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithLong_withLong_withOrgJodaTimeChronology_, startInstant, endInstant, chrono)
 }
 
 void OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(OrgJodaTimeMutablePeriod *self, jlong startInstant, jlong endInstant, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chrono) {
@@ -740,15 +767,11 @@ void OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_wi
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(jlong startInstant, jlong endInstant, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(self, startInstant, endInstant, type, chrono);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_, startInstant, endInstant, type, chrono)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(jlong startInstant, jlong endInstant, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(self, startInstant, endInstant, type, chrono);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithLong_withLong_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_, startInstant, endInstant, type, chrono)
 }
 
 void OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(OrgJodaTimeMutablePeriod *self, id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableInstant> endInstant) {
@@ -756,15 +779,11 @@ void OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTime
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableInstant> endInstant) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(self, startInstant, endInstant);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_, startInstant, endInstant)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableInstant> endInstant) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_(self, startInstant, endInstant);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_, startInstant, endInstant)
 }
 
 void OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(OrgJodaTimeMutablePeriod *self, id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableInstant> endInstant, OrgJodaTimePeriodType *type) {
@@ -772,15 +791,11 @@ void OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTime
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableInstant> endInstant, OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(self, startInstant, endInstant, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_, startInstant, endInstant, type)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableInstant> endInstant, OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(self, startInstant, endInstant, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_, startInstant, endInstant, type)
 }
 
 void OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_(OrgJodaTimeMutablePeriod *self, id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableDuration> duration) {
@@ -788,15 +803,11 @@ void OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTime
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableDuration> duration) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_(self, startInstant, duration);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_, startInstant, duration)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableDuration> duration) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_(self, startInstant, duration);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_, startInstant, duration)
 }
 
 void OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_withOrgJodaTimePeriodType_(OrgJodaTimeMutablePeriod *self, id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableDuration> duration, OrgJodaTimePeriodType *type) {
@@ -804,15 +815,11 @@ void OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTime
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_withOrgJodaTimePeriodType_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableDuration> duration, OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_withOrgJodaTimePeriodType_(self, startInstant, duration, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_withOrgJodaTimePeriodType_, startInstant, duration, type)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_withOrgJodaTimePeriodType_(id<OrgJodaTimeReadableInstant> startInstant, id<OrgJodaTimeReadableDuration> duration, OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_withOrgJodaTimePeriodType_(self, startInstant, duration, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableDuration_withOrgJodaTimePeriodType_, startInstant, duration, type)
 }
 
 void OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(OrgJodaTimeMutablePeriod *self, id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> endInstant) {
@@ -820,15 +827,11 @@ void OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTim
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> endInstant) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(self, duration, endInstant);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_, duration, endInstant)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> endInstant) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_(self, duration, endInstant);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_, duration, endInstant)
 }
 
 void OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(OrgJodaTimeMutablePeriod *self, id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> endInstant, OrgJodaTimePeriodType *type) {
@@ -836,15 +839,11 @@ void OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTim
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> endInstant, OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(self, duration, endInstant, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_, duration, endInstant, type)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(id<OrgJodaTimeReadableDuration> duration, id<OrgJodaTimeReadableInstant> endInstant, OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_(self, duration, endInstant, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithOrgJodaTimeReadableDuration_withOrgJodaTimeReadableInstant_withOrgJodaTimePeriodType_, duration, endInstant, type)
 }
 
 void OrgJodaTimeMutablePeriod_initWithId_(OrgJodaTimeMutablePeriod *self, id period) {
@@ -852,15 +851,11 @@ void OrgJodaTimeMutablePeriod_initWithId_(OrgJodaTimeMutablePeriod *self, id per
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithId_(id period) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithId_(self, period);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithId_, period)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithId_(id period) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithId_(self, period);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithId_, period)
 }
 
 void OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimePeriodType_(OrgJodaTimeMutablePeriod *self, id period, OrgJodaTimePeriodType *type) {
@@ -868,15 +863,11 @@ void OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimePeriodType_(OrgJodaTimeM
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimePeriodType_(id period, OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimePeriodType_(self, period, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithId_withOrgJodaTimePeriodType_, period, type)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimePeriodType_(id period, OrgJodaTimePeriodType *type) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimePeriodType_(self, period, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithId_withOrgJodaTimePeriodType_, period, type)
 }
 
 void OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimeChronology_(OrgJodaTimeMutablePeriod *self, id period, OrgJodaTimeChronology *chrono) {
@@ -884,15 +875,11 @@ void OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimeChronology_(OrgJodaTimeM
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimeChronology_(id period, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimeChronology_(self, period, chrono);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithId_withOrgJodaTimeChronology_, period, chrono)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimeChronology_(id period, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimeChronology_(self, period, chrono);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithId_withOrgJodaTimeChronology_, period, chrono)
 }
 
 void OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(OrgJodaTimeMutablePeriod *self, id period, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chrono) {
@@ -900,15 +887,15 @@ void OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimePeriodType_withOrgJodaTi
 }
 
 OrgJodaTimeMutablePeriod *new_OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(id period, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimeMutablePeriod *self = [OrgJodaTimeMutablePeriod alloc];
-  OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(self, period, type, chrono);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMutablePeriod, initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_, period, type, chrono)
 }
 
 OrgJodaTimeMutablePeriod *create_OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(id period, OrgJodaTimePeriodType *type, OrgJodaTimeChronology *chrono) {
-  OrgJodaTimeMutablePeriod *self = [[OrgJodaTimeMutablePeriod alloc] autorelease];
-  OrgJodaTimeMutablePeriod_initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_(self, period, type, chrono);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMutablePeriod, initWithId_withOrgJodaTimePeriodType_withOrgJodaTimeChronology_, period, type, chrono)
+}
+
+IOSObjectArray *OrgJodaTimeMutablePeriod__Annotations$0() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_OrgJodaConvertFromString() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeMutablePeriod)

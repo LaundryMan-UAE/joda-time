@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatDateTimeParser_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatDateTimeParser_RESTRICT
-#define OrgJodaTimeFormatDateTimeParser_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatDateTimeParser")
+#ifdef RESTRICT_OrgJodaTimeFormatDateTimeParser
+#define INCLUDE_ALL_OrgJodaTimeFormatDateTimeParser 0
 #else
-#define OrgJodaTimeFormatDateTimeParser_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatDateTimeParser 1
 #endif
-#undef OrgJodaTimeFormatDateTimeParser_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatDateTimeParser
 
-#if !defined (OrgJodaTimeFormatDateTimeParser_) && (OrgJodaTimeFormatDateTimeParser_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeParser_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeParser_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeParser || defined(INCLUDE_OrgJodaTimeFormatDateTimeParser))
 #define OrgJodaTimeFormatDateTimeParser_
 
 @class OrgJodaTimeFormatDateTimeParserBucket;
@@ -34,7 +34,7 @@
  - seealso: DateTimeFormat
  @since 1.0
  */
-@protocol OrgJodaTimeFormatDateTimeParser < NSObject, JavaObject >
+@protocol OrgJodaTimeFormatDateTimeParser < JavaObject >
 
 /*!
  @brief Returns the expected maximum number of characters consumed.
@@ -72,4 +72,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeParser)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatDateTimeParser_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatDateTimeParser")

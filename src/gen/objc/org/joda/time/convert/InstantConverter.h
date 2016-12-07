@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeConvertInstantConverter_INCLUDE_ALL")
-#ifdef OrgJodaTimeConvertInstantConverter_RESTRICT
-#define OrgJodaTimeConvertInstantConverter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeConvertInstantConverter")
+#ifdef RESTRICT_OrgJodaTimeConvertInstantConverter
+#define INCLUDE_ALL_OrgJodaTimeConvertInstantConverter 0
 #else
-#define OrgJodaTimeConvertInstantConverter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeConvertInstantConverter 1
 #endif
-#undef OrgJodaTimeConvertInstantConverter_RESTRICT
+#undef RESTRICT_OrgJodaTimeConvertInstantConverter
 
-#if !defined (OrgJodaTimeConvertInstantConverter_) && (OrgJodaTimeConvertInstantConverter_INCLUDE_ALL || defined(OrgJodaTimeConvertInstantConverter_INCLUDE))
+#if !defined (OrgJodaTimeConvertInstantConverter_) && (INCLUDE_ALL_OrgJodaTimeConvertInstantConverter || defined(INCLUDE_OrgJodaTimeConvertInstantConverter))
 #define OrgJodaTimeConvertInstantConverter_
 
-#define OrgJodaTimeConvertConverter_RESTRICT 1
-#define OrgJodaTimeConvertConverter_INCLUDE 1
+#define RESTRICT_OrgJodaTimeConvertConverter 1
+#define INCLUDE_OrgJodaTimeConvertConverter 1
 #include "org/joda/time/convert/Converter.h"
 
 @class OrgJodaTimeChronology;
@@ -32,7 +32,7 @@
  @author Stephen Colebourne
  @since 1.0
  */
-@protocol OrgJodaTimeConvertInstantConverter < OrgJodaTimeConvertConverter, NSObject, JavaObject >
+@protocol OrgJodaTimeConvertInstantConverter < OrgJodaTimeConvertConverter, JavaObject >
 
 /*!
  @brief Extracts the chronology from an object of this converter's type
@@ -80,4 +80,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeConvertInstantConverter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeConvertInstantConverter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeConvertInstantConverter")

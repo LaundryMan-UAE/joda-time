@@ -30,12 +30,19 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "UTCProvider", NULL, 0x1, NULL, NULL },
-    { "getZoneWithNSString:", "getZone", "Lorg.joda.time.DateTimeZone;", 0x1, NULL, NULL },
-    { "getAvailableIDs", NULL, "Ljava.util.Set;", 0x1, NULL, "()Ljava/util/Set<Ljava/lang/String;>;" },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeZone;", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilSet;", 0x1, -1, -1, -1, 2, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzUTCProvider = { 2, "UTCProvider", "org.joda.time.tz", NULL, 0x11, 3, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getZoneWithNSString:);
+  methods[2].selector = @selector(getAvailableIDs);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "getZone", "LNSString;", "()Ljava/util/Set<Ljava/lang/String;>;" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzUTCProvider = { "UTCProvider", "org.joda.time.tz", ptrTable, methods, NULL, 7, 0x11, 3, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeTzUTCProvider;
 }
 
@@ -46,15 +53,11 @@ void OrgJodaTimeTzUTCProvider_init(OrgJodaTimeTzUTCProvider *self) {
 }
 
 OrgJodaTimeTzUTCProvider *new_OrgJodaTimeTzUTCProvider_init() {
-  OrgJodaTimeTzUTCProvider *self = [OrgJodaTimeTzUTCProvider alloc];
-  OrgJodaTimeTzUTCProvider_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzUTCProvider, init)
 }
 
 OrgJodaTimeTzUTCProvider *create_OrgJodaTimeTzUTCProvider_init() {
-  OrgJodaTimeTzUTCProvider *self = [[OrgJodaTimeTzUTCProvider alloc] autorelease];
-  OrgJodaTimeTzUTCProvider_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzUTCProvider, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzUTCProvider)

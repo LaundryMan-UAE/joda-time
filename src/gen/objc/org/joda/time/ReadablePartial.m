@@ -4,11 +4,6 @@
 //
 
 #include "J2ObjC_source.h"
-#include "org/joda/time/Chronology.h"
-#include "org/joda/time/DateTime.h"
-#include "org/joda/time/DateTimeField.h"
-#include "org/joda/time/DateTimeFieldType.h"
-#include "org/joda/time/ReadableInstant.h"
 #include "org/joda/time/ReadablePartial.h"
 
 @interface OrgJodaTimeReadablePartial : NSObject
@@ -18,20 +13,35 @@
 @implementation OrgJodaTimeReadablePartial
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "size", NULL, "I", 0x401, NULL, NULL },
-    { "getFieldTypeWithInt:", "getFieldType", "Lorg.joda.time.DateTimeFieldType;", 0x401, NULL, NULL },
-    { "getFieldWithInt:", "getField", "Lorg.joda.time.DateTimeField;", 0x401, NULL, NULL },
-    { "getValueWithInt:", "getValue", "I", 0x401, NULL, NULL },
-    { "getChronology", NULL, "Lorg.joda.time.Chronology;", 0x401, NULL, NULL },
-    { "getWithOrgJodaTimeDateTimeFieldType:", "get", "I", 0x401, NULL, NULL },
-    { "isSupportedWithOrgJodaTimeDateTimeFieldType:", "isSupported", "Z", 0x401, NULL, NULL },
-    { "toDateTimeWithOrgJodaTimeReadableInstant:", "toDateTime", "Lorg.joda.time.DateTime;", 0x401, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x401, NULL, NULL },
-    { "hash", "hashCode", "I", 0x401, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "I", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x401, 2, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 3, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 4, 5, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 6, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x401, 7, 8, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 9, 10, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 11, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 12, -1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadablePartial = { 2, "ReadablePartial", "org.joda.time", NULL, 0x609, 11, methods, 0, NULL, 0, NULL, 0, NULL, NULL, "Ljava/lang/Object;Ljava/lang/Comparable<Lorg/joda/time/ReadablePartial;>;" };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(size);
+  methods[1].selector = @selector(getFieldTypeWithInt:);
+  methods[2].selector = @selector(getFieldWithInt:);
+  methods[3].selector = @selector(getValueWithInt:);
+  methods[4].selector = @selector(getChronology);
+  methods[5].selector = @selector(getWithOrgJodaTimeDateTimeFieldType:);
+  methods[6].selector = @selector(isSupportedWithOrgJodaTimeDateTimeFieldType:);
+  methods[7].selector = @selector(toDateTimeWithOrgJodaTimeReadableInstant:);
+  methods[8].selector = @selector(isEqual:);
+  methods[9].selector = @selector(hash);
+  methods[10].selector = @selector(description);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "getFieldType", "I", "getField", "getValue", "get", "LOrgJodaTimeDateTimeFieldType;", "isSupported", "toDateTime", "LOrgJodaTimeReadableInstant;", "equals", "LNSObject;", "hashCode", "toString", "Ljava/lang/Object;Ljava/lang/Comparable<Lorg/joda/time/ReadablePartial;>;" };
+  static const J2ObjcClassInfo _OrgJodaTimeReadablePartial = { "ReadablePartial", "org.joda.time", ptrTable, methods, NULL, 7, 0x609, 11, 0, -1, -1, -1, 13, -1 };
   return &_OrgJodaTimeReadablePartial;
 }
 

@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronoGJDayOfWeekDateTimeField_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronoGJDayOfWeekDateTimeField_RESTRICT
-#define OrgJodaTimeChronoGJDayOfWeekDateTimeField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronoGJDayOfWeekDateTimeField")
+#ifdef RESTRICT_OrgJodaTimeChronoGJDayOfWeekDateTimeField
+#define INCLUDE_ALL_OrgJodaTimeChronoGJDayOfWeekDateTimeField 0
 #else
-#define OrgJodaTimeChronoGJDayOfWeekDateTimeField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronoGJDayOfWeekDateTimeField 1
 #endif
-#undef OrgJodaTimeChronoGJDayOfWeekDateTimeField_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronoGJDayOfWeekDateTimeField
 
-#if !defined (OrgJodaTimeChronoGJDayOfWeekDateTimeField_) && (OrgJodaTimeChronoGJDayOfWeekDateTimeField_INCLUDE_ALL || defined(OrgJodaTimeChronoGJDayOfWeekDateTimeField_INCLUDE))
+#if !defined (OrgJodaTimeChronoGJDayOfWeekDateTimeField_) && (INCLUDE_ALL_OrgJodaTimeChronoGJDayOfWeekDateTimeField || defined(INCLUDE_OrgJodaTimeChronoGJDayOfWeekDateTimeField))
 #define OrgJodaTimeChronoGJDayOfWeekDateTimeField_
 
-#define OrgJodaTimeFieldPreciseDurationDateTimeField_RESTRICT 1
-#define OrgJodaTimeFieldPreciseDurationDateTimeField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeFieldPreciseDurationDateTimeField 1
+#define INCLUDE_OrgJodaTimeFieldPreciseDurationDateTimeField 1
 #include "org/joda/time/field/PreciseDurationDateTimeField.h"
 
 @class JavaUtilLocale;
@@ -123,4 +123,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJDayOfWeekDateTimeField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronoGJDayOfWeekDateTimeField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronoGJDayOfWeekDateTimeField")

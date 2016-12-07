@@ -143,30 +143,51 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeChronoGJEraDateTimeField, serialVersionU
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeChronoBasicChronology:", "GJEraDateTimeField", NULL, 0x0, NULL, NULL },
-    { "isLenient", NULL, "Z", 0x1, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x1, NULL, NULL },
-    { "getAsTextWithInt:withJavaUtilLocale:", "getAsText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
-    { "setWithLong:withNSString:withJavaUtilLocale:", "set", "J", 0x1, NULL, NULL },
-    { "roundFloorWithLong:", "roundFloor", "J", 0x1, NULL, NULL },
-    { "roundCeilingWithLong:", "roundCeiling", "J", 0x1, NULL, NULL },
-    { "roundHalfFloorWithLong:", "roundHalfFloor", "J", 0x1, NULL, NULL },
-    { "roundHalfCeilingWithLong:", "roundHalfCeiling", "J", 0x1, NULL, NULL },
-    { "roundHalfEvenWithLong:", "roundHalfEven", "J", 0x1, NULL, NULL },
-    { "getDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getRangeDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumTextLengthWithJavaUtilLocale:", "getMaximumTextLength", "I", 0x1, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 7, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 8, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 10, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 11, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 12, 2, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 13, 14, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeChronoBasicChronology:);
+  methods[1].selector = @selector(isLenient);
+  methods[2].selector = @selector(getWithLong:);
+  methods[3].selector = @selector(getAsTextWithInt:withJavaUtilLocale:);
+  methods[4].selector = @selector(setWithLong:withInt:);
+  methods[5].selector = @selector(setWithLong:withNSString:withJavaUtilLocale:);
+  methods[6].selector = @selector(roundFloorWithLong:);
+  methods[7].selector = @selector(roundCeilingWithLong:);
+  methods[8].selector = @selector(roundHalfFloorWithLong:);
+  methods[9].selector = @selector(roundHalfCeilingWithLong:);
+  methods[10].selector = @selector(roundHalfEvenWithLong:);
+  methods[11].selector = @selector(getDurationField);
+  methods[12].selector = @selector(getRangeDurationField);
+  methods[13].selector = @selector(getMinimumValue);
+  methods[14].selector = @selector(getMaximumValue);
+  methods[15].selector = @selector(getMaximumTextLengthWithJavaUtilLocale:);
+  methods[16].selector = @selector(readResolve);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoGJEraDateTimeField_serialVersionUID },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoGJEraDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iChronology_", "LOrgJodaTimeChronoBasicChronology;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoGJEraDateTimeField = { 2, "GJEraDateTimeField", "org.joda.time.chrono", NULL, 0x10, 17, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeChronoBasicChronology;", "get", "J", "getAsText", "ILJavaUtilLocale;", "set", "JI", "JLNSString;LJavaUtilLocale;", "roundFloor", "roundCeiling", "roundHalfFloor", "roundHalfCeiling", "roundHalfEven", "getMaximumTextLength", "LJavaUtilLocale;" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoGJEraDateTimeField = { "GJEraDateTimeField", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x10, 17, 2, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeChronoGJEraDateTimeField;
 }
 
@@ -178,15 +199,11 @@ void OrgJodaTimeChronoGJEraDateTimeField_initWithOrgJodaTimeChronoBasicChronolog
 }
 
 OrgJodaTimeChronoGJEraDateTimeField *new_OrgJodaTimeChronoGJEraDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(OrgJodaTimeChronoBasicChronology *chronology) {
-  OrgJodaTimeChronoGJEraDateTimeField *self = [OrgJodaTimeChronoGJEraDateTimeField alloc];
-  OrgJodaTimeChronoGJEraDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self, chronology);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoGJEraDateTimeField, initWithOrgJodaTimeChronoBasicChronology_, chronology)
 }
 
 OrgJodaTimeChronoGJEraDateTimeField *create_OrgJodaTimeChronoGJEraDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(OrgJodaTimeChronoBasicChronology *chronology) {
-  OrgJodaTimeChronoGJEraDateTimeField *self = [[OrgJodaTimeChronoGJEraDateTimeField alloc] autorelease];
-  OrgJodaTimeChronoGJEraDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self, chronology);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoGJEraDateTimeField, initWithOrgJodaTimeChronoBasicChronology_, chronology)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJEraDateTimeField)

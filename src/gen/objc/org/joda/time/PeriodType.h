@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimePeriodType_INCLUDE_ALL")
-#ifdef OrgJodaTimePeriodType_RESTRICT
-#define OrgJodaTimePeriodType_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimePeriodType")
+#ifdef RESTRICT_OrgJodaTimePeriodType
+#define INCLUDE_ALL_OrgJodaTimePeriodType 0
 #else
-#define OrgJodaTimePeriodType_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimePeriodType 1
 #endif
-#undef OrgJodaTimePeriodType_RESTRICT
+#undef RESTRICT_OrgJodaTimePeriodType
 
-#if !defined (OrgJodaTimePeriodType_) && (OrgJodaTimePeriodType_INCLUDE_ALL || defined(OrgJodaTimePeriodType_INCLUDE))
+#if !defined (OrgJodaTimePeriodType_) && (INCLUDE_ALL_OrgJodaTimePeriodType || defined(INCLUDE_OrgJodaTimePeriodType))
 #define OrgJodaTimePeriodType_
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class IOSIntArray;
@@ -487,4 +487,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimePeriodType)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimePeriodType_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimePeriodType")

@@ -145,42 +145,63 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   JreVolatileStrongAssign(&iChronology_, [self checkChronologyWithOrgJodaTimeChronology:chronology]);
 }
 
-- (void)dealloc {
-  JreReleaseVolatile(&iChronology_);
-  [super dealloc];
-}
-
 - (void)__javaClone:(OrgJodaTimeBaseBaseDateTime *)original {
   [super __javaClone:original];
   JreCloneVolatileStrong(&iChronology_, &original->iChronology_);
 }
 
+- (void)dealloc {
+  JreReleaseVolatile(&iChronology_);
+  [super dealloc];
+}
+
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "BaseDateTime", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeDateTimeZone:", "BaseDateTime", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeChronology:", "BaseDateTime", NULL, 0x1, NULL, NULL },
-    { "initWithLong:", "BaseDateTime", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withOrgJodaTimeDateTimeZone:", "BaseDateTime", NULL, 0x1, NULL, NULL },
-    { "initWithLong:withOrgJodaTimeChronology:", "BaseDateTime", NULL, 0x1, NULL, NULL },
-    { "initWithId:withOrgJodaTimeDateTimeZone:", "BaseDateTime", NULL, 0x1, NULL, NULL },
-    { "initWithId:withOrgJodaTimeChronology:", "BaseDateTime", NULL, 0x1, NULL, NULL },
-    { "initWithInt:withInt:withInt:withInt:withInt:withInt:withInt:", "BaseDateTime", NULL, 0x1, NULL, NULL },
-    { "initWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withOrgJodaTimeDateTimeZone:", "BaseDateTime", NULL, 0x1, NULL, NULL },
-    { "initWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withOrgJodaTimeChronology:", "BaseDateTime", NULL, 0x1, NULL, NULL },
-    { "checkChronologyWithOrgJodaTimeChronology:", "checkChronology", "Lorg.joda.time.Chronology;", 0x4, NULL, NULL },
-    { "checkInstantWithLong:withOrgJodaTimeChronology:", "checkInstant", "J", 0x4, NULL, NULL },
-    { "getMillis", NULL, "J", 0x1, NULL, NULL },
-    { "getChronology", NULL, "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "setMillisWithLong:", "setMillis", "V", 0x4, NULL, NULL },
-    { "setChronologyWithOrgJodaTimeChronology:", "setChronology", "V", 0x4, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 2, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 3, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 4, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 5, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 6, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 7, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 8, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 9, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x4, 10, 1, -1, -1, -1, -1 },
+    { NULL, "J", 0x4, 11, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 12, 2, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 13, 1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(initWithOrgJodaTimeDateTimeZone:);
+  methods[2].selector = @selector(initWithOrgJodaTimeChronology:);
+  methods[3].selector = @selector(initWithLong:);
+  methods[4].selector = @selector(initWithLong:withOrgJodaTimeDateTimeZone:);
+  methods[5].selector = @selector(initWithLong:withOrgJodaTimeChronology:);
+  methods[6].selector = @selector(initWithId:withOrgJodaTimeDateTimeZone:);
+  methods[7].selector = @selector(initWithId:withOrgJodaTimeChronology:);
+  methods[8].selector = @selector(initWithInt:withInt:withInt:withInt:withInt:withInt:withInt:);
+  methods[9].selector = @selector(initWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withOrgJodaTimeDateTimeZone:);
+  methods[10].selector = @selector(initWithInt:withInt:withInt:withInt:withInt:withInt:withInt:withOrgJodaTimeChronology:);
+  methods[11].selector = @selector(checkChronologyWithOrgJodaTimeChronology:);
+  methods[12].selector = @selector(checkInstantWithLong:withOrgJodaTimeChronology:);
+  methods[13].selector = @selector(getMillis);
+  methods[14].selector = @selector(getChronology);
+  methods[15].selector = @selector(setMillisWithLong:);
+  methods[16].selector = @selector(setChronologyWithOrgJodaTimeChronology:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeBaseBaseDateTime_serialVersionUID },
-    { "iMillis_", NULL, 0x42, "J", NULL, NULL, .constantValue.asLong = 0 },
-    { "iChronology_", NULL, 0x42, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeBaseBaseDateTime_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iMillis_", "J", .constantValue.asLong = 0, 0x42, -1, -1, -1, -1 },
+    { "iChronology_", "LOrgJodaTimeChronology;", .constantValue.asLong = 0, 0x42, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseDateTime = { 2, "BaseDateTime", "org.joda.time.base", NULL, 0x401, 17, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeDateTimeZone;", "LOrgJodaTimeChronology;", "J", "JLOrgJodaTimeDateTimeZone;", "JLOrgJodaTimeChronology;", "LNSObject;LOrgJodaTimeDateTimeZone;", "LNSObject;LOrgJodaTimeChronology;", "IIIIIII", "IIIIIIILOrgJodaTimeDateTimeZone;", "IIIIIIILOrgJodaTimeChronology;", "checkChronology", "checkInstant", "setMillis", "setChronology" };
+  static const J2ObjcClassInfo _OrgJodaTimeBaseBaseDateTime = { "BaseDateTime", "org.joda.time.base", ptrTable, methods, fields, 7, 0x401, 17, 3, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeBaseBaseDateTime;
 }
 
@@ -211,7 +232,7 @@ void OrgJodaTimeBaseBaseDateTime_initWithLong_withOrgJodaTimeChronology_(OrgJoda
   JreVolatileStrongAssign(&self->iChronology_, [self checkChronologyWithOrgJodaTimeChronology:chronology]);
   JreAssignVolatileLong(&self->iMillis_, [self checkInstantWithLong:instant withOrgJodaTimeChronology:JreLoadVolatileId(&self->iChronology_)]);
   if ([((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeChronology *) nil_chk(JreLoadVolatileId(&self->iChronology_))) year])) isSupported]) {
-    [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeChronology *) JreLoadVolatileId(&self->iChronology_)) year])) setWithLong:JreLoadVolatileLong(&self->iMillis_) withInt:[((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeChronology *) JreLoadVolatileId(&self->iChronology_)) year])) getWithLong:JreLoadVolatileLong(&self->iMillis_)]];
+    [((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeChronology *) nil_chk(JreLoadVolatileId(&self->iChronology_))) year])) setWithLong:JreLoadVolatileLong(&self->iMillis_) withInt:[((OrgJodaTimeDateTimeField *) nil_chk([((OrgJodaTimeChronology *) nil_chk(JreLoadVolatileId(&self->iChronology_))) year])) getWithLong:JreLoadVolatileLong(&self->iMillis_)]];
   }
 }
 

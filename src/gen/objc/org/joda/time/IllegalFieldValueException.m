@@ -199,6 +199,66 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeIllegalFieldValueException)
   [super dealloc];
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LNSString;", 0xa, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0xa, 0, 2, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 3, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 4, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 5, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 6, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 7, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 8, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 2, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSNumber;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSNumber;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSNumber;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 9, 10, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(createMessageWithNSString:withNSNumber:withNSNumber:withNSNumber:withNSString:);
+  methods[1].selector = @selector(createMessageWithNSString:withNSString:);
+  methods[2].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withNSNumber:withNSNumber:withNSNumber:);
+  methods[3].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withNSNumber:withNSString:);
+  methods[4].selector = @selector(initWithOrgJodaTimeDurationFieldType:withNSNumber:withNSNumber:withNSNumber:);
+  methods[5].selector = @selector(initWithNSString:withNSNumber:withNSNumber:withNSNumber:);
+  methods[6].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withNSString:);
+  methods[7].selector = @selector(initWithOrgJodaTimeDurationFieldType:withNSString:);
+  methods[8].selector = @selector(initWithNSString:withNSString:);
+  methods[9].selector = @selector(getDateTimeFieldType);
+  methods[10].selector = @selector(getDurationFieldType);
+  methods[11].selector = @selector(getFieldName);
+  methods[12].selector = @selector(getIllegalNumberValue);
+  methods[13].selector = @selector(getIllegalStringValue);
+  methods[14].selector = @selector(getIllegalValueAsString);
+  methods[15].selector = @selector(getLowerBound);
+  methods[16].selector = @selector(getUpperBound);
+  methods[17].selector = @selector(getMessage);
+  methods[18].selector = @selector(prependMessageWithNSString:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeIllegalFieldValueException_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iDateTimeFieldType_", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iDurationFieldType_", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iFieldName_", "LNSString;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iNumberValue_", "LNSNumber;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iStringValue_", "LNSString;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iLowerBound_", "LNSNumber;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iUpperBound_", "LNSNumber;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iMessage_", "LNSString;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "createMessage", "LNSString;LNSNumber;LNSNumber;LNSNumber;LNSString;", "LNSString;LNSString;", "LOrgJodaTimeDateTimeFieldType;LNSNumber;LNSNumber;LNSNumber;", "LOrgJodaTimeDateTimeFieldType;LNSNumber;LNSString;", "LOrgJodaTimeDurationFieldType;LNSNumber;LNSNumber;LNSNumber;", "LNSString;LNSNumber;LNSNumber;LNSNumber;", "LOrgJodaTimeDateTimeFieldType;LNSString;", "LOrgJodaTimeDurationFieldType;LNSString;", "prependMessage", "LNSString;" };
+  static const J2ObjcClassInfo _OrgJodaTimeIllegalFieldValueException = { "IllegalFieldValueException", "org.joda.time", ptrTable, methods, fields, 7, 0x1, 19, 9, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeIllegalFieldValueException;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeIllegalFieldValueException class]) {
     OrgJodaTimeIllegalFieldValueException_super$_getMessage = (id (*)(id, SEL))[JavaLangIllegalArgumentException instanceMethodForSelector:@selector(getMessage)];
@@ -206,48 +266,11 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeIllegalFieldValueException)
   }
 }
 
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "createMessageWithNSString:withNSNumber:withNSNumber:withNSNumber:withNSString:", "createMessage", "Ljava.lang.String;", 0xa, NULL, NULL },
-    { "createMessageWithNSString:withNSString:", "createMessage", "Ljava.lang.String;", 0xa, NULL, NULL },
-    { "initWithOrgJodaTimeDateTimeFieldType:withNSNumber:withNSNumber:withNSNumber:", "IllegalFieldValueException", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeDateTimeFieldType:withNSNumber:withNSString:", "IllegalFieldValueException", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeDurationFieldType:withNSNumber:withNSNumber:withNSNumber:", "IllegalFieldValueException", NULL, 0x1, NULL, NULL },
-    { "initWithNSString:withNSNumber:withNSNumber:withNSNumber:", "IllegalFieldValueException", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeDateTimeFieldType:withNSString:", "IllegalFieldValueException", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeDurationFieldType:withNSString:", "IllegalFieldValueException", NULL, 0x1, NULL, NULL },
-    { "initWithNSString:withNSString:", "IllegalFieldValueException", NULL, 0x1, NULL, NULL },
-    { "getDateTimeFieldType", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x1, NULL, NULL },
-    { "getDurationFieldType", NULL, "Lorg.joda.time.DurationFieldType;", 0x1, NULL, NULL },
-    { "getFieldName", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getIllegalNumberValue", NULL, "Ljava.lang.Number;", 0x1, NULL, NULL },
-    { "getIllegalStringValue", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getIllegalValueAsString", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getLowerBound", NULL, "Ljava.lang.Number;", 0x1, NULL, NULL },
-    { "getUpperBound", NULL, "Ljava.lang.Number;", 0x1, NULL, NULL },
-    { "getMessage", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "prependMessageWithNSString:", "prependMessage", "V", 0x1, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeIllegalFieldValueException_serialVersionUID },
-    { "iDateTimeFieldType_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iDurationFieldType_", NULL, 0x12, "Lorg.joda.time.DurationFieldType;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iFieldName_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iNumberValue_", NULL, 0x12, "Ljava.lang.Number;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iStringValue_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iLowerBound_", NULL, 0x12, "Ljava.lang.Number;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iUpperBound_", NULL, 0x12, "Ljava.lang.Number;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iMessage_", NULL, 0x2, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeIllegalFieldValueException = { 2, "IllegalFieldValueException", "org.joda.time", NULL, 0x1, 19, methods, 9, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeIllegalFieldValueException;
-}
-
 @end
 
 NSString *OrgJodaTimeIllegalFieldValueException_createMessageWithNSString_withNSNumber_withNSNumber_withNSNumber_withNSString_(NSString *fieldName, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound, NSString *explain) {
   OrgJodaTimeIllegalFieldValueException_initialize();
-  JavaLangStringBuilder *buf = [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) [new_JavaLangStringBuilder_init() autorelease]) appendWithNSString:@"Value "])) appendWithId:value])) appendWithNSString:@" for "])) appendWithNSString:fieldName])) appendWithChar:' '];
+  JavaLangStringBuilder *buf = [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([create_JavaLangStringBuilder_init() appendWithNSString:@"Value "])) appendWithId:value])) appendWithNSString:@" for "])) appendWithNSString:fieldName])) appendWithChar:' '];
   if (lowerBound == nil) {
     if (upperBound == nil) {
       [((JavaLangStringBuilder *) nil_chk(buf)) appendWithNSString:@"is not supported"];
@@ -263,14 +286,14 @@ NSString *OrgJodaTimeIllegalFieldValueException_createMessageWithNSString_withNS
     [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk(buf)) appendWithNSString:@"must be in the range ["])) appendWithId:lowerBound])) appendWithChar:','])) appendWithId:upperBound])) appendWithChar:']'];
   }
   if (explain != nil) {
-    [((JavaLangStringBuilder *) nil_chk([((JavaLangStringBuilder *) nil_chk(buf)) appendWithNSString:@": "])) appendWithNSString:explain];
+    [((JavaLangStringBuilder *) nil_chk([buf appendWithNSString:@": "])) appendWithNSString:explain];
   }
-  return [((JavaLangStringBuilder *) nil_chk(buf)) description];
+  return [buf description];
 }
 
 NSString *OrgJodaTimeIllegalFieldValueException_createMessageWithNSString_withNSString_(NSString *fieldName, NSString *value) {
   OrgJodaTimeIllegalFieldValueException_initialize();
-  JavaLangStringBuffer *buf = [((JavaLangStringBuffer *) [new_JavaLangStringBuffer_init() autorelease]) appendWithNSString:@"Value "];
+  JavaLangStringBuffer *buf = [create_JavaLangStringBuffer_init() appendWithNSString:@"Value "];
   if (value == nil) {
     [((JavaLangStringBuffer *) nil_chk(buf)) appendWithNSString:@"null"];
   }
@@ -279,7 +302,7 @@ NSString *OrgJodaTimeIllegalFieldValueException_createMessageWithNSString_withNS
     [buf appendWithNSString:value];
     [buf appendWithChar:'"'];
   }
-  [((JavaLangStringBuffer *) nil_chk([((JavaLangStringBuffer *) nil_chk([((JavaLangStringBuffer *) nil_chk([((JavaLangStringBuffer *) nil_chk(buf)) appendWithNSString:@" for "])) appendWithNSString:fieldName])) appendWithChar:' '])) appendWithNSString:@"is not supported"];
+  [((JavaLangStringBuffer *) nil_chk([((JavaLangStringBuffer *) nil_chk([((JavaLangStringBuffer *) nil_chk([buf appendWithNSString:@" for "])) appendWithNSString:fieldName])) appendWithChar:' '])) appendWithNSString:@"is not supported"];
   return [buf description];
 }
 
@@ -296,15 +319,11 @@ void OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_
 }
 
 OrgJodaTimeIllegalFieldValueException *new_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_(OrgJodaTimeDateTimeFieldType *fieldType, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound) {
-  OrgJodaTimeIllegalFieldValueException *self = [OrgJodaTimeIllegalFieldValueException alloc];
-  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_(self, fieldType, value, lowerBound, upperBound);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeIllegalFieldValueException, initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_, fieldType, value, lowerBound, upperBound)
 }
 
 OrgJodaTimeIllegalFieldValueException *create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_(OrgJodaTimeDateTimeFieldType *fieldType, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound) {
-  OrgJodaTimeIllegalFieldValueException *self = [[OrgJodaTimeIllegalFieldValueException alloc] autorelease];
-  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_(self, fieldType, value, lowerBound, upperBound);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeIllegalFieldValueException, initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSNumber_withNSNumber_, fieldType, value, lowerBound, upperBound)
 }
 
 void OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSString_(OrgJodaTimeIllegalFieldValueException *self, OrgJodaTimeDateTimeFieldType *fieldType, NSNumber *value, NSString *explain) {
@@ -320,15 +339,11 @@ void OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_
 }
 
 OrgJodaTimeIllegalFieldValueException *new_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSString_(OrgJodaTimeDateTimeFieldType *fieldType, NSNumber *value, NSString *explain) {
-  OrgJodaTimeIllegalFieldValueException *self = [OrgJodaTimeIllegalFieldValueException alloc];
-  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSString_(self, fieldType, value, explain);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeIllegalFieldValueException, initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSString_, fieldType, value, explain)
 }
 
 OrgJodaTimeIllegalFieldValueException *create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSString_(OrgJodaTimeDateTimeFieldType *fieldType, NSNumber *value, NSString *explain) {
-  OrgJodaTimeIllegalFieldValueException *self = [[OrgJodaTimeIllegalFieldValueException alloc] autorelease];
-  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSString_(self, fieldType, value, explain);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeIllegalFieldValueException, initWithOrgJodaTimeDateTimeFieldType_withNSNumber_withNSString_, fieldType, value, explain)
 }
 
 void OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSNumber_withNSNumber_withNSNumber_(OrgJodaTimeIllegalFieldValueException *self, OrgJodaTimeDurationFieldType *fieldType, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound) {
@@ -344,15 +359,11 @@ void OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_
 }
 
 OrgJodaTimeIllegalFieldValueException *new_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSNumber_withNSNumber_withNSNumber_(OrgJodaTimeDurationFieldType *fieldType, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound) {
-  OrgJodaTimeIllegalFieldValueException *self = [OrgJodaTimeIllegalFieldValueException alloc];
-  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSNumber_withNSNumber_withNSNumber_(self, fieldType, value, lowerBound, upperBound);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeIllegalFieldValueException, initWithOrgJodaTimeDurationFieldType_withNSNumber_withNSNumber_withNSNumber_, fieldType, value, lowerBound, upperBound)
 }
 
 OrgJodaTimeIllegalFieldValueException *create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSNumber_withNSNumber_withNSNumber_(OrgJodaTimeDurationFieldType *fieldType, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound) {
-  OrgJodaTimeIllegalFieldValueException *self = [[OrgJodaTimeIllegalFieldValueException alloc] autorelease];
-  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSNumber_withNSNumber_withNSNumber_(self, fieldType, value, lowerBound, upperBound);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeIllegalFieldValueException, initWithOrgJodaTimeDurationFieldType_withNSNumber_withNSNumber_withNSNumber_, fieldType, value, lowerBound, upperBound)
 }
 
 void OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSNumber_withNSNumber_withNSNumber_(OrgJodaTimeIllegalFieldValueException *self, NSString *fieldName, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound) {
@@ -368,15 +379,11 @@ void OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSNumber_withNSN
 }
 
 OrgJodaTimeIllegalFieldValueException *new_OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSNumber_withNSNumber_withNSNumber_(NSString *fieldName, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound) {
-  OrgJodaTimeIllegalFieldValueException *self = [OrgJodaTimeIllegalFieldValueException alloc];
-  OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSNumber_withNSNumber_withNSNumber_(self, fieldName, value, lowerBound, upperBound);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeIllegalFieldValueException, initWithNSString_withNSNumber_withNSNumber_withNSNumber_, fieldName, value, lowerBound, upperBound)
 }
 
 OrgJodaTimeIllegalFieldValueException *create_OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSNumber_withNSNumber_withNSNumber_(NSString *fieldName, NSNumber *value, NSNumber *lowerBound, NSNumber *upperBound) {
-  OrgJodaTimeIllegalFieldValueException *self = [[OrgJodaTimeIllegalFieldValueException alloc] autorelease];
-  OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSNumber_withNSNumber_withNSNumber_(self, fieldName, value, lowerBound, upperBound);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeIllegalFieldValueException, initWithNSString_withNSNumber_withNSNumber_withNSNumber_, fieldName, value, lowerBound, upperBound)
 }
 
 void OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSString_(OrgJodaTimeIllegalFieldValueException *self, OrgJodaTimeDateTimeFieldType *fieldType, NSString *value) {
@@ -392,15 +399,11 @@ void OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_
 }
 
 OrgJodaTimeIllegalFieldValueException *new_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSString_(OrgJodaTimeDateTimeFieldType *fieldType, NSString *value) {
-  OrgJodaTimeIllegalFieldValueException *self = [OrgJodaTimeIllegalFieldValueException alloc];
-  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSString_(self, fieldType, value);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeIllegalFieldValueException, initWithOrgJodaTimeDateTimeFieldType_withNSString_, fieldType, value)
 }
 
 OrgJodaTimeIllegalFieldValueException *create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSString_(OrgJodaTimeDateTimeFieldType *fieldType, NSString *value) {
-  OrgJodaTimeIllegalFieldValueException *self = [[OrgJodaTimeIllegalFieldValueException alloc] autorelease];
-  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDateTimeFieldType_withNSString_(self, fieldType, value);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeIllegalFieldValueException, initWithOrgJodaTimeDateTimeFieldType_withNSString_, fieldType, value)
 }
 
 void OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSString_(OrgJodaTimeIllegalFieldValueException *self, OrgJodaTimeDurationFieldType *fieldType, NSString *value) {
@@ -416,15 +419,11 @@ void OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_
 }
 
 OrgJodaTimeIllegalFieldValueException *new_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSString_(OrgJodaTimeDurationFieldType *fieldType, NSString *value) {
-  OrgJodaTimeIllegalFieldValueException *self = [OrgJodaTimeIllegalFieldValueException alloc];
-  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSString_(self, fieldType, value);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeIllegalFieldValueException, initWithOrgJodaTimeDurationFieldType_withNSString_, fieldType, value)
 }
 
 OrgJodaTimeIllegalFieldValueException *create_OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSString_(OrgJodaTimeDurationFieldType *fieldType, NSString *value) {
-  OrgJodaTimeIllegalFieldValueException *self = [[OrgJodaTimeIllegalFieldValueException alloc] autorelease];
-  OrgJodaTimeIllegalFieldValueException_initWithOrgJodaTimeDurationFieldType_withNSString_(self, fieldType, value);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeIllegalFieldValueException, initWithOrgJodaTimeDurationFieldType_withNSString_, fieldType, value)
 }
 
 void OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSString_(OrgJodaTimeIllegalFieldValueException *self, NSString *fieldName, NSString *value) {
@@ -440,15 +439,11 @@ void OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSString_(OrgJod
 }
 
 OrgJodaTimeIllegalFieldValueException *new_OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSString_(NSString *fieldName, NSString *value) {
-  OrgJodaTimeIllegalFieldValueException *self = [OrgJodaTimeIllegalFieldValueException alloc];
-  OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSString_(self, fieldName, value);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeIllegalFieldValueException, initWithNSString_withNSString_, fieldName, value)
 }
 
 OrgJodaTimeIllegalFieldValueException *create_OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSString_(NSString *fieldName, NSString *value) {
-  OrgJodaTimeIllegalFieldValueException *self = [[OrgJodaTimeIllegalFieldValueException alloc] autorelease];
-  OrgJodaTimeIllegalFieldValueException_initWithNSString_withNSString_(self, fieldName, value);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeIllegalFieldValueException, initWithNSString_withNSString_, fieldName, value)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeIllegalFieldValueException)

@@ -4,8 +4,6 @@
 //
 
 #include "J2ObjC_source.h"
-#include "org/joda/time/Chronology.h"
-#include "org/joda/time/ReadWritableInterval.h"
 #include "org/joda/time/convert/IntervalConverter.h"
 
 @interface OrgJodaTimeConvertIntervalConverter : NSObject
@@ -15,11 +13,17 @@
 @implementation OrgJodaTimeConvertIntervalConverter
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "isReadableIntervalWithId:withOrgJodaTimeChronology:", "isReadableInterval", "Z", 0x401, NULL, NULL },
-    { "setIntoWithOrgJodaTimeReadWritableInterval:withId:withOrgJodaTimeChronology:", "setInto", "V", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "Z", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "V", 0x401, 2, 3, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertIntervalConverter = { 2, "IntervalConverter", "org.joda.time.convert", NULL, 0x609, 2, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(isReadableIntervalWithId:withOrgJodaTimeChronology:);
+  methods[1].selector = @selector(setIntoWithOrgJodaTimeReadWritableInterval:withId:withOrgJodaTimeChronology:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "isReadableInterval", "LNSObject;LOrgJodaTimeChronology;", "setInto", "LOrgJodaTimeReadWritableInterval;LNSObject;LOrgJodaTimeChronology;" };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertIntervalConverter = { "IntervalConverter", "org.joda.time.convert", ptrTable, methods, NULL, 7, 0x609, 2, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeConvertIntervalConverter;
 }
 

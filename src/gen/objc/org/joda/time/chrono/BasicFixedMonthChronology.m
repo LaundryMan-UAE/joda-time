@@ -106,30 +106,49 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeChronoBasicFixedMonthChronology, serialV
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeChronology:withId:withInt:", "BasicFixedMonthChronology", NULL, 0x0, NULL, NULL },
-    { "setYearWithLong:withInt:", "setYear", "J", 0x0, NULL, NULL },
-    { "getYearDifferenceWithLong:withLong:", "getYearDifference", "J", 0x0, NULL, NULL },
-    { "getTotalMillisByYearMonthWithInt:withInt:", "getTotalMillisByYearMonth", "J", 0x0, NULL, NULL },
-    { "getDayOfMonthWithLong:", "getDayOfMonth", "I", 0x0, NULL, NULL },
-    { "isLeapYearWithInt:", "isLeapYear", "Z", 0x0, NULL, NULL },
-    { "getDaysInYearMonthWithInt:withInt:", "getDaysInYearMonth", "I", 0x0, NULL, NULL },
-    { "getDaysInMonthMax", NULL, "I", 0x0, NULL, NULL },
-    { "getDaysInMonthMaxWithInt:", "getDaysInMonthMax", "I", 0x0, NULL, NULL },
-    { "getMonthOfYearWithLong:", "getMonthOfYear", "I", 0x0, NULL, NULL },
-    { "getMonthOfYearWithLong:withInt:", "getMonthOfYear", "I", 0x0, NULL, NULL },
-    { "getMaxMonth", NULL, "I", 0x0, NULL, NULL },
-    { "getAverageMillisPerYear", NULL, "J", 0x0, NULL, NULL },
-    { "getAverageMillisPerYearDividedByTwo", NULL, "J", 0x0, NULL, NULL },
-    { "getAverageMillisPerMonth", NULL, "J", 0x0, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, 1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, 3, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, 5, 6, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, 7, 8, -1, -1, -1, -1 },
+    { NULL, "Z", 0x0, 9, 10, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, 11, 6, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, 12, 10, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, 13, 8, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, 13, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x0, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeChronology:withId:withInt:);
+  methods[1].selector = @selector(setYearWithLong:withInt:);
+  methods[2].selector = @selector(getYearDifferenceWithLong:withLong:);
+  methods[3].selector = @selector(getTotalMillisByYearMonthWithInt:withInt:);
+  methods[4].selector = @selector(getDayOfMonthWithLong:);
+  methods[5].selector = @selector(isLeapYearWithInt:);
+  methods[6].selector = @selector(getDaysInYearMonthWithInt:withInt:);
+  methods[7].selector = @selector(getDaysInMonthMax);
+  methods[8].selector = @selector(getDaysInMonthMaxWithInt:);
+  methods[9].selector = @selector(getMonthOfYearWithLong:);
+  methods[10].selector = @selector(getMonthOfYearWithLong:withInt:);
+  methods[11].selector = @selector(getMaxMonth);
+  methods[12].selector = @selector(getAverageMillisPerYear);
+  methods[13].selector = @selector(getAverageMillisPerYearDividedByTwo);
+  methods[14].selector = @selector(getAverageMillisPerMonth);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoBasicFixedMonthChronology_serialVersionUID },
-    { "MONTH_LENGTH", "MONTH_LENGTH", 0x18, "I", NULL, NULL, .constantValue.asInt = OrgJodaTimeChronoBasicFixedMonthChronology_MONTH_LENGTH },
-    { "MILLIS_PER_YEAR", "MILLIS_PER_YEAR", 0x18, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoBasicFixedMonthChronology_MILLIS_PER_YEAR },
-    { "MILLIS_PER_MONTH", "MILLIS_PER_MONTH", 0x18, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoBasicFixedMonthChronology_MILLIS_PER_MONTH },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoBasicFixedMonthChronology_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "MONTH_LENGTH", "I", .constantValue.asInt = OrgJodaTimeChronoBasicFixedMonthChronology_MONTH_LENGTH, 0x18, -1, -1, -1, -1 },
+    { "MILLIS_PER_YEAR", "J", .constantValue.asLong = OrgJodaTimeChronoBasicFixedMonthChronology_MILLIS_PER_YEAR, 0x18, -1, -1, -1, -1 },
+    { "MILLIS_PER_MONTH", "J", .constantValue.asLong = OrgJodaTimeChronoBasicFixedMonthChronology_MILLIS_PER_MONTH, 0x18, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicFixedMonthChronology = { 2, "BasicFixedMonthChronology", "org.joda.time.chrono", NULL, 0x400, 15, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeChronology;LNSObject;I", "setYear", "JI", "getYearDifference", "JJ", "getTotalMillisByYearMonth", "II", "getDayOfMonth", "J", "isLeapYear", "I", "getDaysInYearMonth", "getDaysInMonthMax", "getMonthOfYear" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicFixedMonthChronology = { "BasicFixedMonthChronology", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x400, 15, 4, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeChronoBasicFixedMonthChronology;
 }
 

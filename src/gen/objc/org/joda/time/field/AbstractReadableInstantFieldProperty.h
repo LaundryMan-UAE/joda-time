@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFieldAbstractReadableInstantFieldProperty_INCLUDE_ALL")
-#ifdef OrgJodaTimeFieldAbstractReadableInstantFieldProperty_RESTRICT
-#define OrgJodaTimeFieldAbstractReadableInstantFieldProperty_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFieldAbstractReadableInstantFieldProperty")
+#ifdef RESTRICT_OrgJodaTimeFieldAbstractReadableInstantFieldProperty
+#define INCLUDE_ALL_OrgJodaTimeFieldAbstractReadableInstantFieldProperty 0
 #else
-#define OrgJodaTimeFieldAbstractReadableInstantFieldProperty_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFieldAbstractReadableInstantFieldProperty 1
 #endif
-#undef OrgJodaTimeFieldAbstractReadableInstantFieldProperty_RESTRICT
+#undef RESTRICT_OrgJodaTimeFieldAbstractReadableInstantFieldProperty
 
-#if !defined (OrgJodaTimeFieldAbstractReadableInstantFieldProperty_) && (OrgJodaTimeFieldAbstractReadableInstantFieldProperty_INCLUDE_ALL || defined(OrgJodaTimeFieldAbstractReadableInstantFieldProperty_INCLUDE))
+#if !defined (OrgJodaTimeFieldAbstractReadableInstantFieldProperty_) && (INCLUDE_ALL_OrgJodaTimeFieldAbstractReadableInstantFieldProperty || defined(INCLUDE_OrgJodaTimeFieldAbstractReadableInstantFieldProperty))
 #define OrgJodaTimeFieldAbstractReadableInstantFieldProperty_
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class JavaUtilLocale;
@@ -346,4 +346,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldAbstractReadableInstantFieldProperty)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFieldAbstractReadableInstantFieldProperty_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFieldAbstractReadableInstantFieldProperty")

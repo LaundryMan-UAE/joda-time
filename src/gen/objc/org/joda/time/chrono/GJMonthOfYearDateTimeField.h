@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeChronoGJMonthOfYearDateTimeField_INCLUDE_ALL")
-#ifdef OrgJodaTimeChronoGJMonthOfYearDateTimeField_RESTRICT
-#define OrgJodaTimeChronoGJMonthOfYearDateTimeField_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeChronoGJMonthOfYearDateTimeField")
+#ifdef RESTRICT_OrgJodaTimeChronoGJMonthOfYearDateTimeField
+#define INCLUDE_ALL_OrgJodaTimeChronoGJMonthOfYearDateTimeField 0
 #else
-#define OrgJodaTimeChronoGJMonthOfYearDateTimeField_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeChronoGJMonthOfYearDateTimeField 1
 #endif
-#undef OrgJodaTimeChronoGJMonthOfYearDateTimeField_RESTRICT
+#undef RESTRICT_OrgJodaTimeChronoGJMonthOfYearDateTimeField
 
-#if !defined (OrgJodaTimeChronoGJMonthOfYearDateTimeField_) && (OrgJodaTimeChronoGJMonthOfYearDateTimeField_INCLUDE_ALL || defined(OrgJodaTimeChronoGJMonthOfYearDateTimeField_INCLUDE))
+#if !defined (OrgJodaTimeChronoGJMonthOfYearDateTimeField_) && (INCLUDE_ALL_OrgJodaTimeChronoGJMonthOfYearDateTimeField || defined(INCLUDE_OrgJodaTimeChronoGJMonthOfYearDateTimeField))
 #define OrgJodaTimeChronoGJMonthOfYearDateTimeField_
 
-#define OrgJodaTimeChronoBasicMonthOfYearDateTimeField_RESTRICT 1
-#define OrgJodaTimeChronoBasicMonthOfYearDateTimeField_INCLUDE 1
+#define RESTRICT_OrgJodaTimeChronoBasicMonthOfYearDateTimeField 1
+#define INCLUDE_OrgJodaTimeChronoBasicMonthOfYearDateTimeField 1
 #include "org/joda/time/chrono/BasicMonthOfYearDateTimeField.h"
 
 @class JavaUtilLocale;
@@ -70,4 +70,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoGJMonthOfYearDateTimeField)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeChronoGJMonthOfYearDateTimeField_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeChronoGJMonthOfYearDateTimeField")

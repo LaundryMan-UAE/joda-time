@@ -128,35 +128,59 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldOffsetDateTimeField, serialVersionU
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeDateTimeField:withInt:", "OffsetDateTimeField", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeFieldType:withInt:", "OffsetDateTimeField", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeFieldType:withInt:withInt:withInt:", "OffsetDateTimeField", NULL, 0x1, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x1, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x1, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x1, NULL, NULL },
-    { "addWrapFieldWithLong:withInt:", "addWrapField", "J", 0x1, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
-    { "isLeapWithLong:", "isLeap", "Z", 0x1, NULL, NULL },
-    { "getLeapAmountWithLong:", "getLeapAmount", "I", 0x1, NULL, NULL },
-    { "getLeapDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumValue", NULL, "I", 0x1, NULL, NULL },
-    { "roundFloorWithLong:", "roundFloor", "J", 0x1, NULL, NULL },
-    { "roundCeilingWithLong:", "roundCeiling", "J", 0x1, NULL, NULL },
-    { "roundHalfFloorWithLong:", "roundHalfFloor", "J", 0x1, NULL, NULL },
-    { "roundHalfCeilingWithLong:", "roundHalfCeiling", "J", 0x1, NULL, NULL },
-    { "roundHalfEvenWithLong:", "roundHalfEven", "J", 0x1, NULL, NULL },
-    { "remainderWithLong:", "remainder", "J", 0x1, NULL, NULL },
-    { "getOffset", NULL, "I", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 7, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 8, 6, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 6, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 10, 4, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 11, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 12, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 13, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 14, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 15, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 16, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 17, 4, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeDateTimeField:withInt:);
+  methods[1].selector = @selector(initWithOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeFieldType:withInt:);
+  methods[2].selector = @selector(initWithOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeFieldType:withInt:withInt:withInt:);
+  methods[3].selector = @selector(getWithLong:);
+  methods[4].selector = @selector(addWithLong:withInt:);
+  methods[5].selector = @selector(addWithLong:withLong:);
+  methods[6].selector = @selector(addWrapFieldWithLong:withInt:);
+  methods[7].selector = @selector(setWithLong:withInt:);
+  methods[8].selector = @selector(isLeapWithLong:);
+  methods[9].selector = @selector(getLeapAmountWithLong:);
+  methods[10].selector = @selector(getLeapDurationField);
+  methods[11].selector = @selector(getMinimumValue);
+  methods[12].selector = @selector(getMaximumValue);
+  methods[13].selector = @selector(roundFloorWithLong:);
+  methods[14].selector = @selector(roundCeilingWithLong:);
+  methods[15].selector = @selector(roundHalfFloorWithLong:);
+  methods[16].selector = @selector(roundHalfCeilingWithLong:);
+  methods[17].selector = @selector(roundHalfEvenWithLong:);
+  methods[18].selector = @selector(remainderWithLong:);
+  methods[19].selector = @selector(getOffset);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldOffsetDateTimeField_serialVersionUID },
-    { "iOffset_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iMin_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iMax_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldOffsetDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iOffset_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iMin_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iMax_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldOffsetDateTimeField = { 2, "OffsetDateTimeField", "org.joda.time.field", NULL, 0x1, 20, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeDateTimeField;I", "LOrgJodaTimeDateTimeField;LOrgJodaTimeDateTimeFieldType;I", "LOrgJodaTimeDateTimeField;LOrgJodaTimeDateTimeFieldType;III", "get", "J", "add", "JI", "JJ", "addWrapField", "set", "isLeap", "getLeapAmount", "roundFloor", "roundCeiling", "roundHalfFloor", "roundHalfCeiling", "roundHalfEven", "remainder" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldOffsetDateTimeField = { "OffsetDateTimeField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x1, 20, 4, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldOffsetDateTimeField;
 }
 
@@ -167,15 +191,11 @@ void OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withIn
 }
 
 OrgJodaTimeFieldOffsetDateTimeField *new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withInt_(OrgJodaTimeDateTimeField *field, jint offset) {
-  OrgJodaTimeFieldOffsetDateTimeField *self = [OrgJodaTimeFieldOffsetDateTimeField alloc];
-  OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withInt_(self, field, offset);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldOffsetDateTimeField, initWithOrgJodaTimeDateTimeField_withInt_, field, offset)
 }
 
 OrgJodaTimeFieldOffsetDateTimeField *create_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withInt_(OrgJodaTimeDateTimeField *field, jint offset) {
-  OrgJodaTimeFieldOffsetDateTimeField *self = [[OrgJodaTimeFieldOffsetDateTimeField alloc] autorelease];
-  OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withInt_(self, field, offset);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldOffsetDateTimeField, initWithOrgJodaTimeDateTimeField_withInt_, field, offset)
 }
 
 void OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeFieldOffsetDateTimeField *self, OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type, jint offset) {
@@ -183,21 +203,17 @@ void OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOr
 }
 
 OrgJodaTimeFieldOffsetDateTimeField *new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type, jint offset) {
-  OrgJodaTimeFieldOffsetDateTimeField *self = [OrgJodaTimeFieldOffsetDateTimeField alloc];
-  OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(self, field, type, offset);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldOffsetDateTimeField, initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_, field, type, offset)
 }
 
 OrgJodaTimeFieldOffsetDateTimeField *create_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type, jint offset) {
-  OrgJodaTimeFieldOffsetDateTimeField *self = [[OrgJodaTimeFieldOffsetDateTimeField alloc] autorelease];
-  OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(self, field, type, offset);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldOffsetDateTimeField, initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_, field, type, offset)
 }
 
 void OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_withInt_withInt_(OrgJodaTimeFieldOffsetDateTimeField *self, OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type, jint offset, jint minValue, jint maxValue) {
   OrgJodaTimeFieldDecoratedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, field, type);
   if (offset == 0) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The offset cannot be zero") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The offset cannot be zero");
   }
   self->iOffset_ = offset;
   if (minValue < ([((OrgJodaTimeDateTimeField *) nil_chk(field)) getMinimumValue] + offset)) {
@@ -215,15 +231,11 @@ void OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOr
 }
 
 OrgJodaTimeFieldOffsetDateTimeField *new_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_withInt_withInt_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type, jint offset, jint minValue, jint maxValue) {
-  OrgJodaTimeFieldOffsetDateTimeField *self = [OrgJodaTimeFieldOffsetDateTimeField alloc];
-  OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_withInt_withInt_(self, field, type, offset, minValue, maxValue);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldOffsetDateTimeField, initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_withInt_withInt_, field, type, offset, minValue, maxValue)
 }
 
 OrgJodaTimeFieldOffsetDateTimeField *create_OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_withInt_withInt_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type, jint offset, jint minValue, jint maxValue) {
-  OrgJodaTimeFieldOffsetDateTimeField *self = [[OrgJodaTimeFieldOffsetDateTimeField alloc] autorelease];
-  OrgJodaTimeFieldOffsetDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_withInt_withInt_(self, field, type, offset, minValue, maxValue);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldOffsetDateTimeField, initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_withInt_withInt_, field, type, offset, minValue, maxValue)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldOffsetDateTimeField)

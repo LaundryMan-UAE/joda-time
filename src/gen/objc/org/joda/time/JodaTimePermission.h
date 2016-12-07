@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeJodaTimePermission_INCLUDE_ALL")
-#ifdef OrgJodaTimeJodaTimePermission_RESTRICT
-#define OrgJodaTimeJodaTimePermission_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeJodaTimePermission")
+#ifdef RESTRICT_OrgJodaTimeJodaTimePermission
+#define INCLUDE_ALL_OrgJodaTimeJodaTimePermission 0
 #else
-#define OrgJodaTimeJodaTimePermission_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeJodaTimePermission 1
 #endif
-#undef OrgJodaTimeJodaTimePermission_RESTRICT
+#undef RESTRICT_OrgJodaTimeJodaTimePermission
 
-#if !defined (OrgJodaTimeJodaTimePermission_) && (OrgJodaTimeJodaTimePermission_INCLUDE_ALL || defined(OrgJodaTimeJodaTimePermission_INCLUDE))
+#if !defined (OrgJodaTimeJodaTimePermission_) && (INCLUDE_ALL_OrgJodaTimeJodaTimePermission || defined(INCLUDE_OrgJodaTimeJodaTimePermission))
 #define OrgJodaTimeJodaTimePermission_
 
-#define JavaSecurityBasicPermission_RESTRICT 1
-#define JavaSecurityBasicPermission_INCLUDE 1
+#define RESTRICT_JavaSecurityBasicPermission 1
+#define INCLUDE_JavaSecurityBasicPermission 1
 #include "java/security/BasicPermission.h"
 
 /*!
@@ -69,4 +69,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeJodaTimePermission)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeJodaTimePermission_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeJodaTimePermission")

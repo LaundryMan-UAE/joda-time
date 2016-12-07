@@ -64,7 +64,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (len >= 4 && ([str charAtWithInt:0] == 'P' || [str charAtWithInt:0] == 'p') && ([str charAtWithInt:1] == 'T' || [str charAtWithInt:1] == 't') && ([str charAtWithInt:len - 1] == 'S' || [str charAtWithInt:len - 1] == 's')) {
   }
   else {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$C", @"Invalid format: \"", original, '"')) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$C", @"Invalid format: \"", original, '"'));
   }
   str = [str substring:2 endIndex:len - 1];
   jint dot = -1;
@@ -79,7 +79,7 @@ J2OBJC_IGNORE_DESIGNATED_END
       dot = i;
     }
     else {
-      @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$C", @"Invalid format: \"", original, '"')) autorelease];
+      @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$C", @"Invalid format: \"", original, '"'));
     }
   }
   jlong millis = 0, seconds = 0;
@@ -117,7 +117,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     if (pos < 0) {
       [((OrgJodaTimeFormatPeriodFormatter *) nil_chk([parser withParseTypeWithOrgJodaTimePeriodType:[period getPeriodType]])) parseMutablePeriodWithNSString:str];
     }
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$C", @"Invalid format: \"", str, '"')) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$C", @"Invalid format: \"", str, '"'));
   }
 }
 
@@ -127,15 +127,15 @@ J2OBJC_IGNORE_DESIGNATED_END
   NSString *str = (NSString *) cast_chk(object, [NSString class]);
   jint separator = [((NSString *) nil_chk(str)) indexOf:'/'];
   if (separator < 0) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"Format requires a '/' separator: ", str)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"Format requires a '/' separator: ", str));
   }
   NSString *leftStr = [str substring:0 endIndex:separator];
   if (((jint) [((NSString *) nil_chk(leftStr)) length]) <= 0) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"Format invalid: ", str)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"Format invalid: ", str));
   }
   NSString *rightStr = [str substring:separator + 1];
   if (((jint) [((NSString *) nil_chk(rightStr)) length]) <= 0) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"Format invalid: ", str)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"Format invalid: ", str));
   }
   OrgJodaTimeFormatDateTimeFormatter *dateTimeParser = OrgJodaTimeFormatISODateTimeFormat_dateTimeParser();
   dateTimeParser = [((OrgJodaTimeFormatDateTimeFormatter *) nil_chk(dateTimeParser)) withChronologyWithOrgJodaTimeChronology:chrono];
@@ -155,7 +155,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   c = [rightStr charAtWithInt:0];
   if (c == 'P' || c == 'p') {
     if (period != nil) {
-      @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"Interval composed of two durations: ", str)) autorelease];
+      @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$$", @"Interval composed of two durations: ", str));
     }
     period = [((OrgJodaTimeFormatPeriodFormatter *) nil_chk([((OrgJodaTimeFormatPeriodFormatter *) nil_chk(periodParser)) withParseTypeWithOrgJodaTimePeriodType:[self getPeriodTypeWithId:rightStr]])) parsePeriodWithNSString:rightStr];
     chrono = (chrono != nil ? chrono : parsedChrono);
@@ -178,28 +178,39 @@ J2OBJC_IGNORE_DESIGNATED_END
   return NSString_class_();
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 0, 1, -1, -1, -1, -1 },
+    { NULL, "[I", 0x1, 2, 3, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 6, 7, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 6, 8, -1, -1, -1, -1 },
+    { NULL, "LIOSClass;", 0x1, -1, -1, -1, 9, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getInstantMillisWithId:withOrgJodaTimeChronology:);
+  methods[2].selector = @selector(getPartialValuesWithOrgJodaTimeReadablePartial:withId:withOrgJodaTimeChronology:withOrgJodaTimeFormatDateTimeFormatter:);
+  methods[3].selector = @selector(getDurationMillisWithId:);
+  methods[4].selector = @selector(setIntoWithOrgJodaTimeReadWritablePeriod:withId:withOrgJodaTimeChronology:);
+  methods[5].selector = @selector(setIntoWithOrgJodaTimeReadWritableInterval:withId:withOrgJodaTimeChronology:);
+  methods[6].selector = @selector(getSupportedType);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "INSTANCE", "LOrgJodaTimeConvertStringConverter;", .constantValue.asLong = 0, 0x18, -1, 10, -1, -1 },
+  };
+  static const void *ptrTable[] = { "getInstantMillis", "LNSObject;LOrgJodaTimeChronology;", "getPartialValues", "LOrgJodaTimeReadablePartial;LNSObject;LOrgJodaTimeChronology;LOrgJodaTimeFormatDateTimeFormatter;", "getDurationMillis", "LNSObject;", "setInto", "LOrgJodaTimeReadWritablePeriod;LNSObject;LOrgJodaTimeChronology;", "LOrgJodaTimeReadWritableInterval;LNSObject;LOrgJodaTimeChronology;", "()Ljava/lang/Class<*>;", &OrgJodaTimeConvertStringConverter_INSTANCE };
+  static const J2ObjcClassInfo _OrgJodaTimeConvertStringConverter = { "StringConverter", "org.joda.time.convert", ptrTable, methods, fields, 7, 0x0, 7, 1, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeConvertStringConverter;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeConvertStringConverter class]) {
     JreStrongAssignAndConsume(&OrgJodaTimeConvertStringConverter_INSTANCE, new_OrgJodaTimeConvertStringConverter_init());
     J2OBJC_SET_INITIALIZED(OrgJodaTimeConvertStringConverter)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "StringConverter", NULL, 0x4, NULL, NULL },
-    { "getInstantMillisWithId:withOrgJodaTimeChronology:", "getInstantMillis", "J", 0x1, NULL, NULL },
-    { "getPartialValuesWithOrgJodaTimeReadablePartial:withId:withOrgJodaTimeChronology:withOrgJodaTimeFormatDateTimeFormatter:", "getPartialValues", "[I", 0x1, NULL, NULL },
-    { "getDurationMillisWithId:", "getDurationMillis", "J", 0x1, NULL, NULL },
-    { "setIntoWithOrgJodaTimeReadWritablePeriod:withId:withOrgJodaTimeChronology:", "setInto", "V", 0x1, NULL, NULL },
-    { "setIntoWithOrgJodaTimeReadWritableInterval:withId:withOrgJodaTimeChronology:", "setInto", "V", 0x1, NULL, NULL },
-    { "getSupportedType", NULL, "Ljava.lang.Class;", 0x1, NULL, "()Ljava/lang/Class<*>;" },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "INSTANCE", "INSTANCE", 0x18, "Lorg.joda.time.convert.StringConverter;", &OrgJodaTimeConvertStringConverter_INSTANCE, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeConvertStringConverter = { 2, "StringConverter", "org.joda.time.convert", NULL, 0x0, 7, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeConvertStringConverter;
 }
 
 @end
@@ -209,15 +220,11 @@ void OrgJodaTimeConvertStringConverter_init(OrgJodaTimeConvertStringConverter *s
 }
 
 OrgJodaTimeConvertStringConverter *new_OrgJodaTimeConvertStringConverter_init() {
-  OrgJodaTimeConvertStringConverter *self = [OrgJodaTimeConvertStringConverter alloc];
-  OrgJodaTimeConvertStringConverter_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeConvertStringConverter, init)
 }
 
 OrgJodaTimeConvertStringConverter *create_OrgJodaTimeConvertStringConverter_init() {
-  OrgJodaTimeConvertStringConverter *self = [[OrgJodaTimeConvertStringConverter alloc] autorelease];
-  OrgJodaTimeConvertStringConverter_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeConvertStringConverter, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertStringConverter)

@@ -4,8 +4,10 @@
 //
 
 #include "IOSClass.h"
+#include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "java/lang/Integer.h"
+#include "java/lang/annotation/Annotation.h"
 #include "org/joda/convert/FromString.h"
 #include "org/joda/convert/ToString.h"
 #include "org/joda/time/Chronology.h"
@@ -69,6 +71,10 @@ __attribute__((unused)) static void OrgJodaTimeMinutes_initWithInt_(OrgJodaTimeM
 __attribute__((unused)) static OrgJodaTimeMinutes *new_OrgJodaTimeMinutes_initWithInt_(jint minutes) NS_RETURNS_RETAINED;
 
 __attribute__((unused)) static OrgJodaTimeMinutes *create_OrgJodaTimeMinutes_initWithInt_(jint minutes);
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeMinutes__Annotations$0();
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeMinutes__Annotations$1();
 
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeMinutes)
 
@@ -142,7 +148,7 @@ OrgJodaTimeMinutes *OrgJodaTimeMinutes_MIN_VALUE;
 
 - (OrgJodaTimeDuration *)toStandardDuration {
   jlong minutes = [self getValue];
-  return [new_OrgJodaTimeDuration_initWithLong_(minutes * OrgJodaTimeDateTimeConstants_MILLIS_PER_MINUTE) autorelease];
+  return create_OrgJodaTimeDuration_initWithLong_(minutes * OrgJodaTimeDateTimeConstants_MILLIS_PER_MINUTE);
 }
 
 - (jint)getMinutes {
@@ -160,7 +166,7 @@ OrgJodaTimeMinutes *OrgJodaTimeMinutes_MIN_VALUE;
   if (minutes == nil) {
     return self;
   }
-  return [self plusWithInt:[((OrgJodaTimeMinutes *) nil_chk(minutes)) getValue]];
+  return [self plusWithInt:[minutes getValue]];
 }
 
 - (OrgJodaTimeMinutes *)minusWithInt:(jint)minutes {
@@ -171,7 +177,7 @@ OrgJodaTimeMinutes *OrgJodaTimeMinutes_MIN_VALUE;
   if (minutes == nil) {
     return self;
   }
-  return [self minusWithInt:[((OrgJodaTimeMinutes *) nil_chk(minutes)) getValue]];
+  return [self minusWithInt:[minutes getValue]];
 }
 
 - (OrgJodaTimeMinutes *)multipliedByWithInt:(jint)scalar {
@@ -193,18 +199,91 @@ OrgJodaTimeMinutes *OrgJodaTimeMinutes_MIN_VALUE;
   if (other == nil) {
     return [self getValue] > 0;
   }
-  return [self getValue] > [((OrgJodaTimeMinutes *) nil_chk(other)) getValue];
+  return [self getValue] > [other getValue];
 }
 
 - (jboolean)isLessThanWithOrgJodaTimeMinutes:(OrgJodaTimeMinutes *)other {
   if (other == nil) {
     return [self getValue] < 0;
   }
-  return [self getValue] < [((OrgJodaTimeMinutes *) nil_chk(other)) getValue];
+  return [self getValue] < [other getValue];
 }
 
 - (NSString *)description {
   return JreStrcat("$$C", @"PT", NSString_valueOfInt_([self getValue]), 'M');
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeMinutes;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMinutes;", 0x9, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMinutes;", 0x9, 2, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMinutes;", 0x9, 5, 6, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMinutes;", 0x9, 7, 8, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMinutes;", 0x9, 9, 10, -1, -1, 11, -1 },
+    { NULL, NULL, 0x2, -1, 1, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriodType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeWeeks;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDays;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeHours;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeSeconds;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMinutes;", 0x1, 12, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMinutes;", 0x1, 12, 13, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMinutes;", 0x1, 14, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMinutes;", 0x1, 14, 13, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMinutes;", 0x1, 15, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMinutes;", 0x1, 16, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMinutes;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 17, 13, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 18, 13, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 19, -1, -1, -1, 20, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(minutesWithInt:);
+  methods[1].selector = @selector(minutesBetweenWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:);
+  methods[2].selector = @selector(minutesBetweenWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:);
+  methods[3].selector = @selector(minutesInWithOrgJodaTimeReadableInterval:);
+  methods[4].selector = @selector(standardMinutesInWithOrgJodaTimeReadablePeriod:);
+  methods[5].selector = @selector(parseMinutesWithNSString:);
+  methods[6].selector = @selector(initWithInt:);
+  methods[7].selector = @selector(readResolve);
+  methods[8].selector = @selector(getFieldType);
+  methods[9].selector = @selector(getPeriodType);
+  methods[10].selector = @selector(toStandardWeeks);
+  methods[11].selector = @selector(toStandardDays);
+  methods[12].selector = @selector(toStandardHours);
+  methods[13].selector = @selector(toStandardSeconds);
+  methods[14].selector = @selector(toStandardDuration);
+  methods[15].selector = @selector(getMinutes);
+  methods[16].selector = @selector(plusWithInt:);
+  methods[17].selector = @selector(plusWithOrgJodaTimeMinutes:);
+  methods[18].selector = @selector(minusWithInt:);
+  methods[19].selector = @selector(minusWithOrgJodaTimeMinutes:);
+  methods[20].selector = @selector(multipliedByWithInt:);
+  methods[21].selector = @selector(dividedByWithInt:);
+  methods[22].selector = @selector(negated);
+  methods[23].selector = @selector(isGreaterThanWithOrgJodaTimeMinutes:);
+  methods[24].selector = @selector(isLessThanWithOrgJodaTimeMinutes:);
+  methods[25].selector = @selector(description);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "ZERO", "LOrgJodaTimeMinutes;", .constantValue.asLong = 0, 0x19, -1, 21, -1, -1 },
+    { "ONE", "LOrgJodaTimeMinutes;", .constantValue.asLong = 0, 0x19, -1, 22, -1, -1 },
+    { "TWO", "LOrgJodaTimeMinutes;", .constantValue.asLong = 0, 0x19, -1, 23, -1, -1 },
+    { "THREE", "LOrgJodaTimeMinutes;", .constantValue.asLong = 0, 0x19, -1, 24, -1, -1 },
+    { "MAX_VALUE", "LOrgJodaTimeMinutes;", .constantValue.asLong = 0, 0x19, -1, 25, -1, -1 },
+    { "MIN_VALUE", "LOrgJodaTimeMinutes;", .constantValue.asLong = 0, 0x19, -1, 26, -1, -1 },
+    { "PARSER", "LOrgJodaTimeFormatPeriodFormatter;", .constantValue.asLong = 0, 0x1a, -1, 27, -1, -1 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeMinutes_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "minutes", "I", "minutesBetween", "LOrgJodaTimeReadableInstant;LOrgJodaTimeReadableInstant;", "LOrgJodaTimeReadablePartial;LOrgJodaTimeReadablePartial;", "minutesIn", "LOrgJodaTimeReadableInterval;", "standardMinutesIn", "LOrgJodaTimeReadablePeriod;", "parseMinutes", "LNSString;", (void *)&OrgJodaTimeMinutes__Annotations$0, "plus", "LOrgJodaTimeMinutes;", "minus", "multipliedBy", "dividedBy", "isGreaterThan", "isLessThan", "toString", (void *)&OrgJodaTimeMinutes__Annotations$1, &OrgJodaTimeMinutes_ZERO, &OrgJodaTimeMinutes_ONE, &OrgJodaTimeMinutes_TWO, &OrgJodaTimeMinutes_THREE, &OrgJodaTimeMinutes_MAX_VALUE, &OrgJodaTimeMinutes_MIN_VALUE, &OrgJodaTimeMinutes_PARSER };
+  static const J2ObjcClassInfo _OrgJodaTimeMinutes = { "Minutes", "org.joda.time", ptrTable, methods, fields, 7, 0x11, 26, 8, -1, -1, -1, -1, -1 };
+  return &_OrgJodaTimeMinutes;
 }
 
 + (void)initialize {
@@ -218,57 +297,6 @@ OrgJodaTimeMinutes *OrgJodaTimeMinutes_MIN_VALUE;
     JreStrongAssign(&OrgJodaTimeMinutes_PARSER, [((OrgJodaTimeFormatPeriodFormatter *) nil_chk(OrgJodaTimeFormatISOPeriodFormat_standard())) withParseTypeWithOrgJodaTimePeriodType:OrgJodaTimePeriodType_minutes()]);
     J2OBJC_SET_INITIALIZED(OrgJodaTimeMinutes)
   }
-}
-
-+ (IOSObjectArray *)__annotations_parseMinutesWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
-+ (IOSObjectArray *)__annotations_toString {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertToString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "minutesWithInt:", "minutes", "Lorg.joda.time.Minutes;", 0x9, NULL, NULL },
-    { "minutesBetweenWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:", "minutesBetween", "Lorg.joda.time.Minutes;", 0x9, NULL, NULL },
-    { "minutesBetweenWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:", "minutesBetween", "Lorg.joda.time.Minutes;", 0x9, NULL, NULL },
-    { "minutesInWithOrgJodaTimeReadableInterval:", "minutesIn", "Lorg.joda.time.Minutes;", 0x9, NULL, NULL },
-    { "standardMinutesInWithOrgJodaTimeReadablePeriod:", "standardMinutesIn", "Lorg.joda.time.Minutes;", 0x9, NULL, NULL },
-    { "parseMinutesWithNSString:", "parseMinutes", "Lorg.joda.time.Minutes;", 0x9, NULL, NULL },
-    { "initWithInt:", "Minutes", NULL, 0x2, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
-    { "getFieldType", NULL, "Lorg.joda.time.DurationFieldType;", 0x1, NULL, NULL },
-    { "getPeriodType", NULL, "Lorg.joda.time.PeriodType;", 0x1, NULL, NULL },
-    { "toStandardWeeks", NULL, "Lorg.joda.time.Weeks;", 0x1, NULL, NULL },
-    { "toStandardDays", NULL, "Lorg.joda.time.Days;", 0x1, NULL, NULL },
-    { "toStandardHours", NULL, "Lorg.joda.time.Hours;", 0x1, NULL, NULL },
-    { "toStandardSeconds", NULL, "Lorg.joda.time.Seconds;", 0x1, NULL, NULL },
-    { "toStandardDuration", NULL, "Lorg.joda.time.Duration;", 0x1, NULL, NULL },
-    { "getMinutes", NULL, "I", 0x1, NULL, NULL },
-    { "plusWithInt:", "plus", "Lorg.joda.time.Minutes;", 0x1, NULL, NULL },
-    { "plusWithOrgJodaTimeMinutes:", "plus", "Lorg.joda.time.Minutes;", 0x1, NULL, NULL },
-    { "minusWithInt:", "minus", "Lorg.joda.time.Minutes;", 0x1, NULL, NULL },
-    { "minusWithOrgJodaTimeMinutes:", "minus", "Lorg.joda.time.Minutes;", 0x1, NULL, NULL },
-    { "multipliedByWithInt:", "multipliedBy", "Lorg.joda.time.Minutes;", 0x1, NULL, NULL },
-    { "dividedByWithInt:", "dividedBy", "Lorg.joda.time.Minutes;", 0x1, NULL, NULL },
-    { "negated", NULL, "Lorg.joda.time.Minutes;", 0x1, NULL, NULL },
-    { "isGreaterThanWithOrgJodaTimeMinutes:", "isGreaterThan", "Z", 0x1, NULL, NULL },
-    { "isLessThanWithOrgJodaTimeMinutes:", "isLessThan", "Z", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "ZERO", "ZERO", 0x19, "Lorg.joda.time.Minutes;", &OrgJodaTimeMinutes_ZERO, NULL, .constantValue.asLong = 0 },
-    { "ONE", "ONE", 0x19, "Lorg.joda.time.Minutes;", &OrgJodaTimeMinutes_ONE, NULL, .constantValue.asLong = 0 },
-    { "TWO", "TWO", 0x19, "Lorg.joda.time.Minutes;", &OrgJodaTimeMinutes_TWO, NULL, .constantValue.asLong = 0 },
-    { "THREE", "THREE", 0x19, "Lorg.joda.time.Minutes;", &OrgJodaTimeMinutes_THREE, NULL, .constantValue.asLong = 0 },
-    { "MAX_VALUE", "MAX_VALUE", 0x19, "Lorg.joda.time.Minutes;", &OrgJodaTimeMinutes_MAX_VALUE, NULL, .constantValue.asLong = 0 },
-    { "MIN_VALUE", "MIN_VALUE", 0x19, "Lorg.joda.time.Minutes;", &OrgJodaTimeMinutes_MIN_VALUE, NULL, .constantValue.asLong = 0 },
-    { "PARSER", "PARSER", 0x1a, "Lorg.joda.time.format.PeriodFormatter;", &OrgJodaTimeMinutes_PARSER, NULL, .constantValue.asLong = 0 },
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeMinutes_serialVersionUID },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeMinutes = { 2, "Minutes", "org.joda.time", NULL, 0x11, 26, methods, 8, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_OrgJodaTimeMinutes;
 }
 
 @end
@@ -289,7 +317,7 @@ OrgJodaTimeMinutes *OrgJodaTimeMinutes_minutesWithInt_(jint minutes) {
     case JavaLangInteger_MIN_VALUE:
     return OrgJodaTimeMinutes_MIN_VALUE;
     default:
-    return [new_OrgJodaTimeMinutes_initWithInt_(minutes) autorelease];
+    return create_OrgJodaTimeMinutes_initWithInt_(minutes);
   }
 }
 
@@ -315,7 +343,7 @@ OrgJodaTimeMinutes *OrgJodaTimeMinutes_minutesInWithOrgJodaTimeReadableInterval_
   if (interval == nil) {
     return OrgJodaTimeMinutes_ZERO;
   }
-  jint amount = OrgJodaTimeBaseBaseSingleFieldPeriod_betweenWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimeDurationFieldType_([((id<OrgJodaTimeReadableInterval>) nil_chk(interval)) getStart], [interval getEnd], OrgJodaTimeDurationFieldType_minutes());
+  jint amount = OrgJodaTimeBaseBaseSingleFieldPeriod_betweenWithOrgJodaTimeReadableInstant_withOrgJodaTimeReadableInstant_withOrgJodaTimeDurationFieldType_([interval getStart], [interval getEnd], OrgJodaTimeDurationFieldType_minutes());
   return OrgJodaTimeMinutes_minutesWithInt_(amount);
 }
 
@@ -339,15 +367,19 @@ void OrgJodaTimeMinutes_initWithInt_(OrgJodaTimeMinutes *self, jint minutes) {
 }
 
 OrgJodaTimeMinutes *new_OrgJodaTimeMinutes_initWithInt_(jint minutes) {
-  OrgJodaTimeMinutes *self = [OrgJodaTimeMinutes alloc];
-  OrgJodaTimeMinutes_initWithInt_(self, minutes);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeMinutes, initWithInt_, minutes)
 }
 
 OrgJodaTimeMinutes *create_OrgJodaTimeMinutes_initWithInt_(jint minutes) {
-  OrgJodaTimeMinutes *self = [[OrgJodaTimeMinutes alloc] autorelease];
-  OrgJodaTimeMinutes_initWithInt_(self, minutes);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeMinutes, initWithInt_, minutes)
+}
+
+IOSObjectArray *OrgJodaTimeMinutes__Annotations$0() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_OrgJodaConvertFromString() } count:1 type:JavaLangAnnotationAnnotation_class_()];
+}
+
+IOSObjectArray *OrgJodaTimeMinutes__Annotations$1() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_OrgJodaConvertToString() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeMinutes)

@@ -108,24 +108,39 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeChronoBasicDayOfMonthDateTimeField, seri
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeChronoBasicChronology:withOrgJodaTimeDurationField:", "BasicDayOfMonthDateTimeField", NULL, 0x0, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x1, NULL, NULL },
-    { "getRangeDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumValueWithLong:", "getMaximumValue", "I", 0x1, NULL, NULL },
-    { "getMaximumValueWithOrgJodaTimeReadablePartial:", "getMaximumValue", "I", 0x1, NULL, NULL },
-    { "getMaximumValueWithOrgJodaTimeReadablePartial:withIntArray:", "getMaximumValue", "I", 0x1, NULL, NULL },
-    { "getMaximumValueForSetWithLong:withInt:", "getMaximumValueForSet", "I", 0x4, NULL, NULL },
-    { "isLeapWithLong:", "isLeap", "Z", 0x1, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 3, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 3, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x4, 6, 7, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 8, 2, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeChronoBasicChronology:withOrgJodaTimeDurationField:);
+  methods[1].selector = @selector(getWithLong:);
+  methods[2].selector = @selector(getRangeDurationField);
+  methods[3].selector = @selector(getMinimumValue);
+  methods[4].selector = @selector(getMaximumValue);
+  methods[5].selector = @selector(getMaximumValueWithLong:);
+  methods[6].selector = @selector(getMaximumValueWithOrgJodaTimeReadablePartial:);
+  methods[7].selector = @selector(getMaximumValueWithOrgJodaTimeReadablePartial:withIntArray:);
+  methods[8].selector = @selector(getMaximumValueForSetWithLong:withInt:);
+  methods[9].selector = @selector(isLeapWithLong:);
+  methods[10].selector = @selector(readResolve);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoBasicDayOfMonthDateTimeField_serialVersionUID },
-    { "iChronology_", NULL, 0x12, "Lorg.joda.time.chrono.BasicChronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoBasicDayOfMonthDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iChronology_", "LOrgJodaTimeChronoBasicChronology;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicDayOfMonthDateTimeField = { 2, "BasicDayOfMonthDateTimeField", "org.joda.time.chrono", NULL, 0x10, 11, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeChronoBasicChronology;LOrgJodaTimeDurationField;", "get", "J", "getMaximumValue", "LOrgJodaTimeReadablePartial;", "LOrgJodaTimeReadablePartial;[I", "getMaximumValueForSet", "JI", "isLeap" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoBasicDayOfMonthDateTimeField = { "BasicDayOfMonthDateTimeField", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x10, 11, 2, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeChronoBasicDayOfMonthDateTimeField;
 }
 
@@ -137,15 +152,11 @@ void OrgJodaTimeChronoBasicDayOfMonthDateTimeField_initWithOrgJodaTimeChronoBasi
 }
 
 OrgJodaTimeChronoBasicDayOfMonthDateTimeField *new_OrgJodaTimeChronoBasicDayOfMonthDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(OrgJodaTimeChronoBasicChronology *chronology, OrgJodaTimeDurationField *days) {
-  OrgJodaTimeChronoBasicDayOfMonthDateTimeField *self = [OrgJodaTimeChronoBasicDayOfMonthDateTimeField alloc];
-  OrgJodaTimeChronoBasicDayOfMonthDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(self, chronology, days);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoBasicDayOfMonthDateTimeField, initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_, chronology, days)
 }
 
 OrgJodaTimeChronoBasicDayOfMonthDateTimeField *create_OrgJodaTimeChronoBasicDayOfMonthDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(OrgJodaTimeChronoBasicChronology *chronology, OrgJodaTimeDurationField *days) {
-  OrgJodaTimeChronoBasicDayOfMonthDateTimeField *self = [[OrgJodaTimeChronoBasicDayOfMonthDateTimeField alloc] autorelease];
-  OrgJodaTimeChronoBasicDayOfMonthDateTimeField_initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_(self, chronology, days);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoBasicDayOfMonthDateTimeField, initWithOrgJodaTimeChronoBasicChronology_withOrgJodaTimeDurationField_, chronology, days)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicDayOfMonthDateTimeField)

@@ -5,6 +5,11 @@
 
 #include "IOSClass.h"
 #include "J2ObjC_source.h"
+#include "java/util/Comparator.h"
+#include "java/util/function/Function.h"
+#include "java/util/function/ToDoubleFunction.h"
+#include "java/util/function/ToIntFunction.h"
+#include "java/util/function/ToLongFunction.h"
 #include "org/joda/time/Chronology.h"
 #include "org/joda/time/DateTimeComparator.h"
 #include "org/joda/time/DateTimeField.h"
@@ -154,10 +159,84 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeComparator)
   }
 }
 
+- (id<JavaUtilComparator>)reversed {
+  return JavaUtilComparator_reversed(self);
+}
+
+- (id<JavaUtilComparator>)thenComparingWithJavaUtilComparator:(id<JavaUtilComparator>)arg0 {
+  return JavaUtilComparator_thenComparingWithJavaUtilComparator_(self, arg0);
+}
+
+- (id<JavaUtilComparator>)thenComparingWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0 {
+  return JavaUtilComparator_thenComparingWithJavaUtilFunctionFunction_(self, arg0);
+}
+
+- (id<JavaUtilComparator>)thenComparingWithJavaUtilFunctionFunction:(id<JavaUtilFunctionFunction>)arg0
+                                             withJavaUtilComparator:(id<JavaUtilComparator>)arg1 {
+  return JavaUtilComparator_thenComparingWithJavaUtilFunctionFunction_withJavaUtilComparator_(self, arg0, arg1);
+}
+
+- (id<JavaUtilComparator>)thenComparingDoubleWithJavaUtilFunctionToDoubleFunction:(id<JavaUtilFunctionToDoubleFunction>)arg0 {
+  return JavaUtilComparator_thenComparingDoubleWithJavaUtilFunctionToDoubleFunction_(self, arg0);
+}
+
+- (id<JavaUtilComparator>)thenComparingIntWithJavaUtilFunctionToIntFunction:(id<JavaUtilFunctionToIntFunction>)arg0 {
+  return JavaUtilComparator_thenComparingIntWithJavaUtilFunctionToIntFunction_(self, arg0);
+}
+
+- (id<JavaUtilComparator>)thenComparingLongWithJavaUtilFunctionToLongFunction:(id<JavaUtilFunctionToLongFunction>)arg0 {
+  return JavaUtilComparator_thenComparingLongWithJavaUtilFunctionToLongFunction_(self, arg0);
+}
+
 - (void)dealloc {
   RELEASE_(iLowerLimit_);
   RELEASE_(iUpperLimit_);
   [super dealloc];
+}
+
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeDateTimeComparator;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeComparator;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeComparator;", 0x9, 0, 2, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeComparator;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeComparator;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 2, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTimeFieldType;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 7, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 8, -1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getInstance);
+  methods[1].selector = @selector(getInstanceWithOrgJodaTimeDateTimeFieldType:);
+  methods[2].selector = @selector(getInstanceWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDateTimeFieldType:);
+  methods[3].selector = @selector(getDateOnlyInstance);
+  methods[4].selector = @selector(getTimeOnlyInstance);
+  methods[5].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDateTimeFieldType:);
+  methods[6].selector = @selector(getLowerLimit);
+  methods[7].selector = @selector(getUpperLimit);
+  methods[8].selector = @selector(compareWithId:withId:);
+  methods[9].selector = @selector(readResolve);
+  methods[10].selector = @selector(isEqual:);
+  methods[11].selector = @selector(hash);
+  methods[12].selector = @selector(description);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeDateTimeComparator_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "ALL_INSTANCE", "LOrgJodaTimeDateTimeComparator;", .constantValue.asLong = 0, 0x1a, -1, 9, -1, -1 },
+    { "DATE_INSTANCE", "LOrgJodaTimeDateTimeComparator;", .constantValue.asLong = 0, 0x1a, -1, 10, -1, -1 },
+    { "TIME_INSTANCE", "LOrgJodaTimeDateTimeComparator;", .constantValue.asLong = 0, 0x1a, -1, 11, -1, -1 },
+    { "iLowerLimit_", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iUpperLimit_", "LOrgJodaTimeDateTimeFieldType;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "getInstance", "LOrgJodaTimeDateTimeFieldType;", "LOrgJodaTimeDateTimeFieldType;LOrgJodaTimeDateTimeFieldType;", "compare", "LNSObject;LNSObject;", "equals", "LNSObject;", "hashCode", "toString", &OrgJodaTimeDateTimeComparator_ALL_INSTANCE, &OrgJodaTimeDateTimeComparator_DATE_INSTANCE, &OrgJodaTimeDateTimeComparator_TIME_INSTANCE, "Ljava/lang/Object;Ljava/util/Comparator<Ljava/lang/Object;>;Ljava/io/Serializable;" };
+  static const J2ObjcClassInfo _OrgJodaTimeDateTimeComparator = { "DateTimeComparator", "org.joda.time", ptrTable, methods, fields, 7, 0x1, 13, 6, -1, -1, -1, 12, -1 };
+  return &_OrgJodaTimeDateTimeComparator;
 }
 
 + (void)initialize {
@@ -167,34 +246,6 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeComparator)
     JreStrongAssignAndConsume(&OrgJodaTimeDateTimeComparator_TIME_INSTANCE, new_OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(nil, OrgJodaTimeDateTimeFieldType_dayOfYear()));
     J2OBJC_SET_INITIALIZED(OrgJodaTimeDateTimeComparator)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getInstance", NULL, "Lorg.joda.time.DateTimeComparator;", 0x9, NULL, NULL },
-    { "getInstanceWithOrgJodaTimeDateTimeFieldType:", "getInstance", "Lorg.joda.time.DateTimeComparator;", 0x9, NULL, NULL },
-    { "getInstanceWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDateTimeFieldType:", "getInstance", "Lorg.joda.time.DateTimeComparator;", 0x9, NULL, NULL },
-    { "getDateOnlyInstance", NULL, "Lorg.joda.time.DateTimeComparator;", 0x9, NULL, NULL },
-    { "getTimeOnlyInstance", NULL, "Lorg.joda.time.DateTimeComparator;", 0x9, NULL, NULL },
-    { "initWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDateTimeFieldType:", "DateTimeComparator", NULL, 0x4, NULL, NULL },
-    { "getLowerLimit", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x1, NULL, NULL },
-    { "getUpperLimit", NULL, "Lorg.joda.time.DateTimeFieldType;", 0x1, NULL, NULL },
-    { "compareWithId:withId:", "compare", "I", 0x1, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeDateTimeComparator_serialVersionUID },
-    { "ALL_INSTANCE", "ALL_INSTANCE", 0x1a, "Lorg.joda.time.DateTimeComparator;", &OrgJodaTimeDateTimeComparator_ALL_INSTANCE, NULL, .constantValue.asLong = 0 },
-    { "DATE_INSTANCE", "DATE_INSTANCE", 0x1a, "Lorg.joda.time.DateTimeComparator;", &OrgJodaTimeDateTimeComparator_DATE_INSTANCE, NULL, .constantValue.asLong = 0 },
-    { "TIME_INSTANCE", "TIME_INSTANCE", 0x1a, "Lorg.joda.time.DateTimeComparator;", &OrgJodaTimeDateTimeComparator_TIME_INSTANCE, NULL, .constantValue.asLong = 0 },
-    { "iLowerLimit_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iUpperLimit_", NULL, 0x12, "Lorg.joda.time.DateTimeFieldType;", NULL, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _OrgJodaTimeDateTimeComparator = { 2, "DateTimeComparator", "org.joda.time", NULL, 0x1, 13, methods, 6, fields, 0, NULL, 0, NULL, NULL, "Ljava/lang/Object;Ljava/util/Comparator<Ljava/lang/Object;>;Ljava/io/Serializable;" };
-  return &_OrgJodaTimeDateTimeComparator;
 }
 
 @end
@@ -220,7 +271,7 @@ OrgJodaTimeDateTimeComparator *OrgJodaTimeDateTimeComparator_getInstanceWithOrgJ
   if (lowerLimit == nil && upperLimit == OrgJodaTimeDateTimeFieldType_dayOfYear()) {
     return OrgJodaTimeDateTimeComparator_TIME_INSTANCE;
   }
-  return [new_OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(lowerLimit, upperLimit) autorelease];
+  return create_OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(lowerLimit, upperLimit);
 }
 
 OrgJodaTimeDateTimeComparator *OrgJodaTimeDateTimeComparator_getDateOnlyInstance() {
@@ -240,15 +291,11 @@ void OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJ
 }
 
 OrgJodaTimeDateTimeComparator *new_OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeFieldType *lowerLimit, OrgJodaTimeDateTimeFieldType *upperLimit) {
-  OrgJodaTimeDateTimeComparator *self = [OrgJodaTimeDateTimeComparator alloc];
-  OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(self, lowerLimit, upperLimit);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeDateTimeComparator, initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_, lowerLimit, upperLimit)
 }
 
 OrgJodaTimeDateTimeComparator *create_OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeDateTimeFieldType *lowerLimit, OrgJodaTimeDateTimeFieldType *upperLimit) {
-  OrgJodaTimeDateTimeComparator *self = [[OrgJodaTimeDateTimeComparator alloc] autorelease];
-  OrgJodaTimeDateTimeComparator_initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_(self, lowerLimit, upperLimit);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeDateTimeComparator, initWithOrgJodaTimeDateTimeFieldType_withOrgJodaTimeDateTimeFieldType_, lowerLimit, upperLimit)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDateTimeComparator)

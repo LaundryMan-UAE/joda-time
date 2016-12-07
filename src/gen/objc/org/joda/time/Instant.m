@@ -4,8 +4,10 @@
 //
 
 #include "IOSClass.h"
+#include "IOSObjectArray.h"
 #include "J2ObjC_source.h"
 #include "java/lang/Deprecated.h"
+#include "java/lang/annotation/Annotation.h"
 #include "org/joda/convert/FromString.h"
 #include "org/joda/time/Chronology.h"
 #include "org/joda/time/DateTime.h"
@@ -36,6 +38,12 @@
 inline jlong OrgJodaTimeInstant_get_serialVersionUID();
 #define OrgJodaTimeInstant_serialVersionUID 3299096530934209741LL
 J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeInstant, serialVersionUID, jlong)
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeInstant__Annotations$0();
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeInstant__Annotations$1();
+
+__attribute__((unused)) static IOSObjectArray *OrgJodaTimeInstant__Annotations$2();
 
 @implementation OrgJodaTimeInstant
 
@@ -74,7 +82,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (OrgJodaTimeInstant *)withMillisWithLong:(jlong)newMillis {
-  return (newMillis == iMillis_ ? self : [new_OrgJodaTimeInstant_initWithLong_(newMillis) autorelease]);
+  return (newMillis == iMillis_ ? self : create_OrgJodaTimeInstant_initWithLong_(newMillis));
 }
 
 - (OrgJodaTimeInstant *)withDurationAddedWithLong:(jlong)durationToAdd
@@ -91,7 +99,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (durationToAdd == nil || scalar == 0) {
     return self;
   }
-  return [self withDurationAddedWithLong:[((id<OrgJodaTimeReadableDuration>) nil_chk(durationToAdd)) getMillis] withInt:scalar];
+  return [self withDurationAddedWithLong:[durationToAdd getMillis] withInt:scalar];
 }
 
 - (OrgJodaTimeInstant *)plusWithLong:(jlong)duration {
@@ -119,7 +127,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (OrgJodaTimeDateTime *)toDateTime {
-  return [new_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], OrgJodaTimeChronoISOChronology_getInstance()) autorelease];
+  return create_OrgJodaTimeDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], OrgJodaTimeChronoISOChronology_getInstance());
 }
 
 - (OrgJodaTimeDateTime *)toDateTimeISO {
@@ -127,53 +135,65 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (OrgJodaTimeMutableDateTime *)toMutableDateTime {
-  return [new_OrgJodaTimeMutableDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], OrgJodaTimeChronoISOChronology_getInstance()) autorelease];
+  return create_OrgJodaTimeMutableDateTime_initWithLong_withOrgJodaTimeChronology_([self getMillis], OrgJodaTimeChronoISOChronology_getInstance());
 }
 
 - (OrgJodaTimeMutableDateTime *)toMutableDateTimeISO {
   return [self toMutableDateTime];
 }
 
-+ (IOSObjectArray *)__annotations_parseWithNSString_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[OrgJodaConvertFromString alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
-+ (IOSObjectArray *)__annotations_toDateTimeISO {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
-+ (IOSObjectArray *)__annotations_toMutableDateTimeISO {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "now", NULL, "Lorg.joda.time.Instant;", 0x9, NULL, NULL },
-    { "parseWithNSString:", "parse", "Lorg.joda.time.Instant;", 0x9, NULL, NULL },
-    { "parseWithNSString:withOrgJodaTimeFormatDateTimeFormatter:", "parse", "Lorg.joda.time.Instant;", 0x9, NULL, NULL },
-    { "init", "Instant", NULL, 0x1, NULL, NULL },
-    { "initWithLong:", "Instant", NULL, 0x1, NULL, NULL },
-    { "initWithId:", "Instant", NULL, 0x1, NULL, NULL },
-    { "toInstant", NULL, "Lorg.joda.time.Instant;", 0x1, NULL, NULL },
-    { "withMillisWithLong:", "withMillis", "Lorg.joda.time.Instant;", 0x1, NULL, NULL },
-    { "withDurationAddedWithLong:withInt:", "withDurationAdded", "Lorg.joda.time.Instant;", 0x1, NULL, NULL },
-    { "withDurationAddedWithOrgJodaTimeReadableDuration:withInt:", "withDurationAdded", "Lorg.joda.time.Instant;", 0x1, NULL, NULL },
-    { "plusWithLong:", "plus", "Lorg.joda.time.Instant;", 0x1, NULL, NULL },
-    { "plusWithOrgJodaTimeReadableDuration:", "plus", "Lorg.joda.time.Instant;", 0x1, NULL, NULL },
-    { "minusWithLong:", "minus", "Lorg.joda.time.Instant;", 0x1, NULL, NULL },
-    { "minusWithOrgJodaTimeReadableDuration:", "minus", "Lorg.joda.time.Instant;", 0x1, NULL, NULL },
-    { "getMillis", NULL, "J", 0x1, NULL, NULL },
-    { "getChronology", NULL, "Lorg.joda.time.Chronology;", 0x1, NULL, NULL },
-    { "toDateTime", NULL, "Lorg.joda.time.DateTime;", 0x1, NULL, NULL },
-    { "toDateTimeISO", NULL, "Lorg.joda.time.DateTime;", 0x1, NULL, NULL },
-    { "toMutableDateTime", NULL, "Lorg.joda.time.MutableDateTime;", 0x1, NULL, NULL },
-    { "toMutableDateTimeISO", NULL, "Lorg.joda.time.MutableDateTime;", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeInstant;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeInstant;", 0x9, 0, 1, -1, -1, 2, -1 },
+    { NULL, "LOrgJodaTimeInstant;", 0x9, 0, 3, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 4, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 5, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeInstant;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeInstant;", 0x1, 6, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeInstant;", 0x1, 7, 8, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeInstant;", 0x1, 7, 9, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeInstant;", 0x1, 10, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeInstant;", 0x1, 10, 11, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeInstant;", 0x1, 12, 4, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeInstant;", 0x1, 12, 11, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeChronology;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDateTime;", 0x1, -1, -1, -1, -1, 13, -1 },
+    { NULL, "LOrgJodaTimeMutableDateTime;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeMutableDateTime;", 0x1, -1, -1, -1, -1, 14, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(now);
+  methods[1].selector = @selector(parseWithNSString:);
+  methods[2].selector = @selector(parseWithNSString:withOrgJodaTimeFormatDateTimeFormatter:);
+  methods[3].selector = @selector(init);
+  methods[4].selector = @selector(initWithLong:);
+  methods[5].selector = @selector(initWithId:);
+  methods[6].selector = @selector(toInstant);
+  methods[7].selector = @selector(withMillisWithLong:);
+  methods[8].selector = @selector(withDurationAddedWithLong:withInt:);
+  methods[9].selector = @selector(withDurationAddedWithOrgJodaTimeReadableDuration:withInt:);
+  methods[10].selector = @selector(plusWithLong:);
+  methods[11].selector = @selector(plusWithOrgJodaTimeReadableDuration:);
+  methods[12].selector = @selector(minusWithLong:);
+  methods[13].selector = @selector(minusWithOrgJodaTimeReadableDuration:);
+  methods[14].selector = @selector(getMillis);
+  methods[15].selector = @selector(getChronology);
+  methods[16].selector = @selector(toDateTime);
+  methods[17].selector = @selector(toDateTimeISO);
+  methods[18].selector = @selector(toMutableDateTime);
+  methods[19].selector = @selector(toMutableDateTimeISO);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeInstant_serialVersionUID },
-    { "iMillis_", NULL, 0x12, "J", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeInstant_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iMillis_", "J", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeInstant = { 2, "Instant", "org.joda.time", NULL, 0x11, 20, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "parse", "LNSString;", (void *)&OrgJodaTimeInstant__Annotations$0, "LNSString;LOrgJodaTimeFormatDateTimeFormatter;", "J", "LNSObject;", "withMillis", "withDurationAdded", "JI", "LOrgJodaTimeReadableDuration;I", "plus", "LOrgJodaTimeReadableDuration;", "minus", (void *)&OrgJodaTimeInstant__Annotations$1, (void *)&OrgJodaTimeInstant__Annotations$2 };
+  static const J2ObjcClassInfo _OrgJodaTimeInstant = { "Instant", "org.joda.time", ptrTable, methods, fields, 7, 0x11, 20, 2, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeInstant;
 }
 
@@ -181,7 +201,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 
 OrgJodaTimeInstant *OrgJodaTimeInstant_now() {
   OrgJodaTimeInstant_initialize();
-  return [new_OrgJodaTimeInstant_init() autorelease];
+  return create_OrgJodaTimeInstant_init();
 }
 
 OrgJodaTimeInstant *OrgJodaTimeInstant_parseWithNSString_(NSString *str) {
@@ -200,15 +220,11 @@ void OrgJodaTimeInstant_init(OrgJodaTimeInstant *self) {
 }
 
 OrgJodaTimeInstant *new_OrgJodaTimeInstant_init() {
-  OrgJodaTimeInstant *self = [OrgJodaTimeInstant alloc];
-  OrgJodaTimeInstant_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeInstant, init)
 }
 
 OrgJodaTimeInstant *create_OrgJodaTimeInstant_init() {
-  OrgJodaTimeInstant *self = [[OrgJodaTimeInstant alloc] autorelease];
-  OrgJodaTimeInstant_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeInstant, init)
 }
 
 void OrgJodaTimeInstant_initWithLong_(OrgJodaTimeInstant *self, jlong instant) {
@@ -217,15 +233,11 @@ void OrgJodaTimeInstant_initWithLong_(OrgJodaTimeInstant *self, jlong instant) {
 }
 
 OrgJodaTimeInstant *new_OrgJodaTimeInstant_initWithLong_(jlong instant) {
-  OrgJodaTimeInstant *self = [OrgJodaTimeInstant alloc];
-  OrgJodaTimeInstant_initWithLong_(self, instant);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeInstant, initWithLong_, instant)
 }
 
 OrgJodaTimeInstant *create_OrgJodaTimeInstant_initWithLong_(jlong instant) {
-  OrgJodaTimeInstant *self = [[OrgJodaTimeInstant alloc] autorelease];
-  OrgJodaTimeInstant_initWithLong_(self, instant);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeInstant, initWithLong_, instant)
 }
 
 void OrgJodaTimeInstant_initWithId_(OrgJodaTimeInstant *self, id instant) {
@@ -235,15 +247,23 @@ void OrgJodaTimeInstant_initWithId_(OrgJodaTimeInstant *self, id instant) {
 }
 
 OrgJodaTimeInstant *new_OrgJodaTimeInstant_initWithId_(id instant) {
-  OrgJodaTimeInstant *self = [OrgJodaTimeInstant alloc];
-  OrgJodaTimeInstant_initWithId_(self, instant);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeInstant, initWithId_, instant)
 }
 
 OrgJodaTimeInstant *create_OrgJodaTimeInstant_initWithId_(id instant) {
-  OrgJodaTimeInstant *self = [[OrgJodaTimeInstant alloc] autorelease];
-  OrgJodaTimeInstant_initWithId_(self, instant);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeInstant, initWithId_, instant)
+}
+
+IOSObjectArray *OrgJodaTimeInstant__Annotations$0() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_OrgJodaConvertFromString() } count:1 type:JavaLangAnnotationAnnotation_class_()];
+}
+
+IOSObjectArray *OrgJodaTimeInstant__Annotations$1() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_JavaLangDeprecated() } count:1 type:JavaLangAnnotationAnnotation_class_()];
+}
+
+IOSObjectArray *OrgJodaTimeInstant__Annotations$2() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_JavaLangDeprecated() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeInstant)

@@ -48,18 +48,28 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeChronoGJMonthOfYearDateTimeField, serial
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeChronoBasicChronology:", "GJMonthOfYearDateTimeField", NULL, 0x0, NULL, NULL },
-    { "getAsTextWithInt:withJavaUtilLocale:", "getAsText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getAsShortTextWithInt:withJavaUtilLocale:", "getAsShortText", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "convertTextWithNSString:withJavaUtilLocale:", "convertText", "I", 0x4, NULL, NULL },
-    { "getMaximumTextLengthWithJavaUtilLocale:", "getMaximumTextLength", "I", 0x1, NULL, NULL },
-    { "getMaximumShortTextLengthWithJavaUtilLocale:", "getMaximumShortTextLength", "I", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 3, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x4, 4, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 6, 7, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 8, 7, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeChronoBasicChronology:);
+  methods[1].selector = @selector(getAsTextWithInt:withJavaUtilLocale:);
+  methods[2].selector = @selector(getAsShortTextWithInt:withJavaUtilLocale:);
+  methods[3].selector = @selector(convertTextWithNSString:withJavaUtilLocale:);
+  methods[4].selector = @selector(getMaximumTextLengthWithJavaUtilLocale:);
+  methods[5].selector = @selector(getMaximumShortTextLengthWithJavaUtilLocale:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeChronoGJMonthOfYearDateTimeField_serialVersionUID },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeChronoGJMonthOfYearDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeChronoGJMonthOfYearDateTimeField = { 2, "GJMonthOfYearDateTimeField", "org.joda.time.chrono", NULL, 0x10, 6, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeChronoBasicChronology;", "getAsText", "ILJavaUtilLocale;", "getAsShortText", "convertText", "LNSString;LJavaUtilLocale;", "getMaximumTextLength", "LJavaUtilLocale;", "getMaximumShortTextLength" };
+  static const J2ObjcClassInfo _OrgJodaTimeChronoGJMonthOfYearDateTimeField = { "GJMonthOfYearDateTimeField", "org.joda.time.chrono", ptrTable, methods, fields, 7, 0x10, 6, 1, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeChronoGJMonthOfYearDateTimeField;
 }
 
@@ -70,15 +80,11 @@ void OrgJodaTimeChronoGJMonthOfYearDateTimeField_initWithOrgJodaTimeChronoBasicC
 }
 
 OrgJodaTimeChronoGJMonthOfYearDateTimeField *new_OrgJodaTimeChronoGJMonthOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(OrgJodaTimeChronoBasicChronology *chronology) {
-  OrgJodaTimeChronoGJMonthOfYearDateTimeField *self = [OrgJodaTimeChronoGJMonthOfYearDateTimeField alloc];
-  OrgJodaTimeChronoGJMonthOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self, chronology);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeChronoGJMonthOfYearDateTimeField, initWithOrgJodaTimeChronoBasicChronology_, chronology)
 }
 
 OrgJodaTimeChronoGJMonthOfYearDateTimeField *create_OrgJodaTimeChronoGJMonthOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(OrgJodaTimeChronoBasicChronology *chronology) {
-  OrgJodaTimeChronoGJMonthOfYearDateTimeField *self = [[OrgJodaTimeChronoGJMonthOfYearDateTimeField alloc] autorelease];
-  OrgJodaTimeChronoGJMonthOfYearDateTimeField_initWithOrgJodaTimeChronoBasicChronology_(self, chronology);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeChronoGJMonthOfYearDateTimeField, initWithOrgJodaTimeChronoBasicChronology_, chronology)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJMonthOfYearDateTimeField)

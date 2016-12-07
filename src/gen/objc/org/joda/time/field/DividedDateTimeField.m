@@ -125,7 +125,7 @@ __attribute__((unused)) static jint OrgJodaTimeFieldDividedDateTimeField_getRema
 
 - (jlong)roundFloorWithLong:(jlong)instant {
   OrgJodaTimeDateTimeField *field = [self getWrappedField];
-  return [field roundFloorWithLong:[((OrgJodaTimeDateTimeField *) nil_chk(field)) setWithLong:instant withInt:[self getWithLong:instant] * iDivisor_]];
+  return [((OrgJodaTimeDateTimeField *) nil_chk(field)) roundFloorWithLong:[field setWithLong:instant withInt:[self getWithLong:instant] * iDivisor_]];
 }
 
 - (jlong)remainderWithLong:(jlong)instant {
@@ -147,36 +147,59 @@ __attribute__((unused)) static jint OrgJodaTimeFieldDividedDateTimeField_getRema
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeFieldType:withInt:", "DividedDateTimeField", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeDateTimeField:withOrgJodaTimeDurationField:withOrgJodaTimeDateTimeFieldType:withInt:", "DividedDateTimeField", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeFieldRemainderDateTimeField:withOrgJodaTimeDateTimeFieldType:", "DividedDateTimeField", NULL, 0x1, NULL, NULL },
-    { "initWithOrgJodaTimeFieldRemainderDateTimeField:withOrgJodaTimeDurationField:withOrgJodaTimeDateTimeFieldType:", "DividedDateTimeField", NULL, 0x1, NULL, NULL },
-    { "getRangeDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getWithLong:", "get", "I", 0x1, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x1, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x1, NULL, NULL },
-    { "addWrapFieldWithLong:withInt:", "addWrapField", "J", 0x1, NULL, NULL },
-    { "getDifferenceWithLong:withLong:", "getDifference", "I", 0x1, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x1, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
-    { "getDurationField", NULL, "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "getMinimumValue", NULL, "I", 0x1, NULL, NULL },
-    { "getMaximumValue", NULL, "I", 0x1, NULL, NULL },
-    { "roundFloorWithLong:", "roundFloor", "J", 0x1, NULL, NULL },
-    { "remainderWithLong:", "remainder", "J", 0x1, NULL, NULL },
-    { "getDivisor", NULL, "I", 0x1, NULL, NULL },
-    { "getRemainderWithInt:", "getRemainder", "I", 0x2, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 2, -1, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, 3, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 7, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 8, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 9, 7, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 10, 8, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 11, 8, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 12, 7, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 13, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 14, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x2, 15, 16, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeFieldType:withInt:);
+  methods[1].selector = @selector(initWithOrgJodaTimeDateTimeField:withOrgJodaTimeDurationField:withOrgJodaTimeDateTimeFieldType:withInt:);
+  methods[2].selector = @selector(initWithOrgJodaTimeFieldRemainderDateTimeField:withOrgJodaTimeDateTimeFieldType:);
+  methods[3].selector = @selector(initWithOrgJodaTimeFieldRemainderDateTimeField:withOrgJodaTimeDurationField:withOrgJodaTimeDateTimeFieldType:);
+  methods[4].selector = @selector(getRangeDurationField);
+  methods[5].selector = @selector(getWithLong:);
+  methods[6].selector = @selector(addWithLong:withInt:);
+  methods[7].selector = @selector(addWithLong:withLong:);
+  methods[8].selector = @selector(addWrapFieldWithLong:withInt:);
+  methods[9].selector = @selector(getDifferenceWithLong:withLong:);
+  methods[10].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  methods[11].selector = @selector(setWithLong:withInt:);
+  methods[12].selector = @selector(getDurationField);
+  methods[13].selector = @selector(getMinimumValue);
+  methods[14].selector = @selector(getMaximumValue);
+  methods[15].selector = @selector(roundFloorWithLong:);
+  methods[16].selector = @selector(remainderWithLong:);
+  methods[17].selector = @selector(getDivisor);
+  methods[18].selector = @selector(getRemainderWithInt:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldDividedDateTimeField_serialVersionUID },
-    { "iDivisor_", NULL, 0x10, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iDurationField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iRangeDurationField_", NULL, 0x10, "Lorg.joda.time.DurationField;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iMin_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iMax_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldDividedDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iDivisor_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iDurationField_", "LOrgJodaTimeDurationField;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iRangeDurationField_", "LOrgJodaTimeDurationField;", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "iMin_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iMax_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldDividedDateTimeField = { 2, "DividedDateTimeField", "org.joda.time.field", NULL, 0x1, 19, methods, 6, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeDateTimeField;LOrgJodaTimeDateTimeFieldType;I", "LOrgJodaTimeDateTimeField;LOrgJodaTimeDurationField;LOrgJodaTimeDateTimeFieldType;I", "LOrgJodaTimeFieldRemainderDateTimeField;LOrgJodaTimeDateTimeFieldType;", "LOrgJodaTimeFieldRemainderDateTimeField;LOrgJodaTimeDurationField;LOrgJodaTimeDateTimeFieldType;", "get", "J", "add", "JI", "JJ", "addWrapField", "getDifference", "getDifferenceAsLong", "set", "roundFloor", "remainder", "getRemainder", "I" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldDividedDateTimeField = { "DividedDateTimeField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x1, 19, 6, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldDividedDateTimeField;
 }
 
@@ -187,21 +210,17 @@ void OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withO
 }
 
 OrgJodaTimeFieldDividedDateTimeField *new_OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type, jint divisor) {
-  OrgJodaTimeFieldDividedDateTimeField *self = [OrgJodaTimeFieldDividedDateTimeField alloc];
-  OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(self, field, type, divisor);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldDividedDateTimeField, initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_, field, type, divisor)
 }
 
 OrgJodaTimeFieldDividedDateTimeField *create_OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDateTimeFieldType *type, jint divisor) {
-  OrgJodaTimeFieldDividedDateTimeField *self = [[OrgJodaTimeFieldDividedDateTimeField alloc] autorelease];
-  OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_(self, field, type, divisor);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldDividedDateTimeField, initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_withInt_, field, type, divisor)
 }
 
 void OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeFieldDividedDateTimeField *self, OrgJodaTimeDateTimeField *field, OrgJodaTimeDurationField *rangeField, OrgJodaTimeDateTimeFieldType *type, jint divisor) {
   OrgJodaTimeFieldDecoratedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, field, type);
   if (divisor < 2) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The divisor must be at least 2") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The divisor must be at least 2");
   }
   OrgJodaTimeDurationField *unitField = [((OrgJodaTimeDateTimeField *) nil_chk(field)) getDurationField];
   if (unitField == nil) {
@@ -221,15 +240,11 @@ void OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withO
 }
 
 OrgJodaTimeFieldDividedDateTimeField *new_OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDurationField *rangeField, OrgJodaTimeDateTimeFieldType *type, jint divisor) {
-  OrgJodaTimeFieldDividedDateTimeField *self = [OrgJodaTimeFieldDividedDateTimeField alloc];
-  OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_withInt_(self, field, rangeField, type, divisor);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldDividedDateTimeField, initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_withInt_, field, rangeField, type, divisor)
 }
 
 OrgJodaTimeFieldDividedDateTimeField *create_OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_withInt_(OrgJodaTimeDateTimeField *field, OrgJodaTimeDurationField *rangeField, OrgJodaTimeDateTimeFieldType *type, jint divisor) {
-  OrgJodaTimeFieldDividedDateTimeField *self = [[OrgJodaTimeFieldDividedDateTimeField alloc] autorelease];
-  OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_withInt_(self, field, rangeField, type, divisor);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldDividedDateTimeField, initWithOrgJodaTimeDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_withInt_, field, rangeField, type, divisor)
 }
 
 void OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldDividedDateTimeField *self, OrgJodaTimeFieldRemainderDateTimeField *remainderField, OrgJodaTimeDateTimeFieldType *type) {
@@ -237,15 +252,11 @@ void OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeFieldRemainderDateT
 }
 
 OrgJodaTimeFieldDividedDateTimeField *new_OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldRemainderDateTimeField *remainderField, OrgJodaTimeDateTimeFieldType *type) {
-  OrgJodaTimeFieldDividedDateTimeField *self = [OrgJodaTimeFieldDividedDateTimeField alloc];
-  OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, remainderField, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldDividedDateTimeField, initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDateTimeFieldType_, remainderField, type)
 }
 
 OrgJodaTimeFieldDividedDateTimeField *create_OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldRemainderDateTimeField *remainderField, OrgJodaTimeDateTimeFieldType *type) {
-  OrgJodaTimeFieldDividedDateTimeField *self = [[OrgJodaTimeFieldDividedDateTimeField alloc] autorelease];
-  OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDateTimeFieldType_(self, remainderField, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldDividedDateTimeField, initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDateTimeFieldType_, remainderField, type)
 }
 
 void OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldDividedDateTimeField *self, OrgJodaTimeFieldRemainderDateTimeField *remainderField, OrgJodaTimeDurationField *rangeField, OrgJodaTimeDateTimeFieldType *type) {
@@ -263,15 +274,11 @@ void OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeFieldRemainderDateT
 }
 
 OrgJodaTimeFieldDividedDateTimeField *new_OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldRemainderDateTimeField *remainderField, OrgJodaTimeDurationField *rangeField, OrgJodaTimeDateTimeFieldType *type) {
-  OrgJodaTimeFieldDividedDateTimeField *self = [OrgJodaTimeFieldDividedDateTimeField alloc];
-  OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(self, remainderField, rangeField, type);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldDividedDateTimeField, initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_, remainderField, rangeField, type)
 }
 
 OrgJodaTimeFieldDividedDateTimeField *create_OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(OrgJodaTimeFieldRemainderDateTimeField *remainderField, OrgJodaTimeDurationField *rangeField, OrgJodaTimeDateTimeFieldType *type) {
-  OrgJodaTimeFieldDividedDateTimeField *self = [[OrgJodaTimeFieldDividedDateTimeField alloc] autorelease];
-  OrgJodaTimeFieldDividedDateTimeField_initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_(self, remainderField, rangeField, type);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldDividedDateTimeField, initWithOrgJodaTimeFieldRemainderDateTimeField_withOrgJodaTimeDurationField_withOrgJodaTimeDateTimeFieldType_, remainderField, rangeField, type)
 }
 
 jint OrgJodaTimeFieldDividedDateTimeField_getRemainderWithInt_(OrgJodaTimeFieldDividedDateTimeField *self, jint value) {

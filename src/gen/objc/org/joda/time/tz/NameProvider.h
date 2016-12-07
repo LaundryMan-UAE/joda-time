@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeTzNameProvider_INCLUDE_ALL")
-#ifdef OrgJodaTimeTzNameProvider_RESTRICT
-#define OrgJodaTimeTzNameProvider_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeTzNameProvider")
+#ifdef RESTRICT_OrgJodaTimeTzNameProvider
+#define INCLUDE_ALL_OrgJodaTimeTzNameProvider 0
 #else
-#define OrgJodaTimeTzNameProvider_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeTzNameProvider 1
 #endif
-#undef OrgJodaTimeTzNameProvider_RESTRICT
+#undef RESTRICT_OrgJodaTimeTzNameProvider
 
-#if !defined (OrgJodaTimeTzNameProvider_) && (OrgJodaTimeTzNameProvider_INCLUDE_ALL || defined(OrgJodaTimeTzNameProvider_INCLUDE))
+#if !defined (OrgJodaTimeTzNameProvider_) && (INCLUDE_ALL_OrgJodaTimeTzNameProvider || defined(INCLUDE_OrgJodaTimeTzNameProvider))
 #define OrgJodaTimeTzNameProvider_
 
 @class JavaUtilLocale;
@@ -23,7 +23,7 @@
  @author Brian S O'Neill
  @since 1.0
  */
-@protocol OrgJodaTimeTzNameProvider < NSObject, JavaObject >
+@protocol OrgJodaTimeTzNameProvider < JavaObject >
 
 /*!
  @brief Returns a localized short name, or null if not found.
@@ -53,4 +53,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzNameProvider)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeTzNameProvider_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeTzNameProvider")

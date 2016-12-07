@@ -36,16 +36,24 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldStrictDateTimeField, serialVersionU
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getInstanceWithOrgJodaTimeDateTimeField:", "getInstance", "Lorg.joda.time.DateTimeField;", 0x9, NULL, NULL },
-    { "initWithOrgJodaTimeDateTimeField:", "StrictDateTimeField", NULL, 0x4, NULL, NULL },
-    { "isLenient", NULL, "Z", 0x11, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x11, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 2, 3, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getInstanceWithOrgJodaTimeDateTimeField:);
+  methods[1].selector = @selector(initWithOrgJodaTimeDateTimeField:);
+  methods[2].selector = @selector(isLenient);
+  methods[3].selector = @selector(setWithLong:withInt:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldStrictDateTimeField_serialVersionUID },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldStrictDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldStrictDateTimeField = { 2, "StrictDateTimeField", "org.joda.time.field", NULL, 0x1, 4, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "getInstance", "LOrgJodaTimeDateTimeField;", "set", "JI" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldStrictDateTimeField = { "StrictDateTimeField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x1, 4, 1, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldStrictDateTimeField;
 }
 
@@ -57,12 +65,12 @@ OrgJodaTimeDateTimeField *OrgJodaTimeFieldStrictDateTimeField_getInstanceWithOrg
     return nil;
   }
   if ([field isKindOfClass:[OrgJodaTimeFieldLenientDateTimeField class]]) {
-    field = [((OrgJodaTimeFieldLenientDateTimeField *) nil_chk(((OrgJodaTimeFieldLenientDateTimeField *) cast_chk(field, [OrgJodaTimeFieldLenientDateTimeField class])))) getWrappedField];
+    field = [((OrgJodaTimeFieldLenientDateTimeField *) cast_chk(field, [OrgJodaTimeFieldLenientDateTimeField class])) getWrappedField];
   }
   if (![((OrgJodaTimeDateTimeField *) nil_chk(field)) isLenient]) {
     return field;
   }
-  return [new_OrgJodaTimeFieldStrictDateTimeField_initWithOrgJodaTimeDateTimeField_(field) autorelease];
+  return create_OrgJodaTimeFieldStrictDateTimeField_initWithOrgJodaTimeDateTimeField_(field);
 }
 
 void OrgJodaTimeFieldStrictDateTimeField_initWithOrgJodaTimeDateTimeField_(OrgJodaTimeFieldStrictDateTimeField *self, OrgJodaTimeDateTimeField *field) {
@@ -70,15 +78,11 @@ void OrgJodaTimeFieldStrictDateTimeField_initWithOrgJodaTimeDateTimeField_(OrgJo
 }
 
 OrgJodaTimeFieldStrictDateTimeField *new_OrgJodaTimeFieldStrictDateTimeField_initWithOrgJodaTimeDateTimeField_(OrgJodaTimeDateTimeField *field) {
-  OrgJodaTimeFieldStrictDateTimeField *self = [OrgJodaTimeFieldStrictDateTimeField alloc];
-  OrgJodaTimeFieldStrictDateTimeField_initWithOrgJodaTimeDateTimeField_(self, field);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldStrictDateTimeField, initWithOrgJodaTimeDateTimeField_, field)
 }
 
 OrgJodaTimeFieldStrictDateTimeField *create_OrgJodaTimeFieldStrictDateTimeField_initWithOrgJodaTimeDateTimeField_(OrgJodaTimeDateTimeField *field) {
-  OrgJodaTimeFieldStrictDateTimeField *self = [[OrgJodaTimeFieldStrictDateTimeField alloc] autorelease];
-  OrgJodaTimeFieldStrictDateTimeField_initWithOrgJodaTimeDateTimeField_(self, field);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldStrictDateTimeField, initWithOrgJodaTimeDateTimeField_, field)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldStrictDateTimeField)

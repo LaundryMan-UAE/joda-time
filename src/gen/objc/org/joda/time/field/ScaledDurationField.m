@@ -7,7 +7,6 @@
 #include "java/lang/IllegalArgumentException.h"
 #include "org/joda/time/DurationField.h"
 #include "org/joda/time/DurationFieldType.h"
-#include "org/joda/time/field/BaseDurationField.h"
 #include "org/joda/time/field/DecoratedDurationField.h"
 #include "org/joda/time/field/FieldUtils.h"
 #include "org/joda/time/field/ScaledDurationField.h"
@@ -122,30 +121,51 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldScaledDurationField, serialVersionU
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithOrgJodaTimeDurationField:withOrgJodaTimeDurationFieldType:withInt:", "ScaledDurationField", NULL, 0x1, NULL, NULL },
-    { "getValueWithLong:", "getValue", "I", 0x1, NULL, NULL },
-    { "getValueAsLongWithLong:", "getValueAsLong", "J", 0x1, NULL, NULL },
-    { "getValueWithLong:withLong:", "getValue", "I", 0x1, NULL, NULL },
-    { "getValueAsLongWithLong:withLong:", "getValueAsLong", "J", 0x1, NULL, NULL },
-    { "getMillisWithInt:", "getMillis", "J", 0x1, NULL, NULL },
-    { "getMillisWithLong:", "getMillis", "J", 0x1, NULL, NULL },
-    { "getMillisWithInt:withLong:", "getMillis", "J", 0x1, NULL, NULL },
-    { "getMillisWithLong:withLong:", "getMillis", "J", 0x1, NULL, NULL },
-    { "addWithLong:withInt:", "add", "J", 0x1, NULL, NULL },
-    { "addWithLong:withLong:", "add", "J", 0x1, NULL, NULL },
-    { "getDifferenceWithLong:withLong:", "getDifference", "I", 0x1, NULL, NULL },
-    { "getDifferenceAsLongWithLong:withLong:", "getDifferenceAsLong", "J", 0x1, NULL, NULL },
-    { "getUnitMillis", NULL, "J", 0x1, NULL, NULL },
-    { "getScalar", NULL, "I", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 1, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 3, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 6, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 7, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 5, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 8, 9, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 8, 4, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 10, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 11, 4, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 12, 13, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 14, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithOrgJodaTimeDurationField:withOrgJodaTimeDurationFieldType:withInt:);
+  methods[1].selector = @selector(getValueWithLong:);
+  methods[2].selector = @selector(getValueAsLongWithLong:);
+  methods[3].selector = @selector(getValueWithLong:withLong:);
+  methods[4].selector = @selector(getValueAsLongWithLong:withLong:);
+  methods[5].selector = @selector(getMillisWithInt:);
+  methods[6].selector = @selector(getMillisWithLong:);
+  methods[7].selector = @selector(getMillisWithInt:withLong:);
+  methods[8].selector = @selector(getMillisWithLong:withLong:);
+  methods[9].selector = @selector(addWithLong:withInt:);
+  methods[10].selector = @selector(addWithLong:withLong:);
+  methods[11].selector = @selector(getDifferenceWithLong:withLong:);
+  methods[12].selector = @selector(getDifferenceAsLongWithLong:withLong:);
+  methods[13].selector = @selector(getUnitMillis);
+  methods[14].selector = @selector(getScalar);
+  methods[15].selector = @selector(isEqual:);
+  methods[16].selector = @selector(hash);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldScaledDurationField_serialVersionUID },
-    { "iScalar_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldScaledDurationField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iScalar_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldScaledDurationField = { 2, "ScaledDurationField", "org.joda.time.field", NULL, 0x1, 17, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LOrgJodaTimeDurationField;LOrgJodaTimeDurationFieldType;I", "getValue", "J", "getValueAsLong", "JJ", "getMillis", "I", "IJ", "add", "JI", "getDifference", "getDifferenceAsLong", "equals", "LNSObject;", "hashCode" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldScaledDurationField = { "ScaledDurationField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x1, 17, 2, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldScaledDurationField;
 }
 
@@ -154,21 +174,17 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldScaledDurationField, serialVersionU
 void OrgJodaTimeFieldScaledDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_withInt_(OrgJodaTimeFieldScaledDurationField *self, OrgJodaTimeDurationField *field, OrgJodaTimeDurationFieldType *type, jint scalar) {
   OrgJodaTimeFieldDecoratedDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_(self, field, type);
   if (scalar == 0 || scalar == 1) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(@"The scalar must not be 0 or 1") autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(@"The scalar must not be 0 or 1");
   }
   self->iScalar_ = scalar;
 }
 
 OrgJodaTimeFieldScaledDurationField *new_OrgJodaTimeFieldScaledDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_withInt_(OrgJodaTimeDurationField *field, OrgJodaTimeDurationFieldType *type, jint scalar) {
-  OrgJodaTimeFieldScaledDurationField *self = [OrgJodaTimeFieldScaledDurationField alloc];
-  OrgJodaTimeFieldScaledDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_withInt_(self, field, type, scalar);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldScaledDurationField, initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_withInt_, field, type, scalar)
 }
 
 OrgJodaTimeFieldScaledDurationField *create_OrgJodaTimeFieldScaledDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_withInt_(OrgJodaTimeDurationField *field, OrgJodaTimeDurationFieldType *type, jint scalar) {
-  OrgJodaTimeFieldScaledDurationField *self = [[OrgJodaTimeFieldScaledDurationField alloc] autorelease];
-  OrgJodaTimeFieldScaledDurationField_initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_withInt_(self, field, type, scalar);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldScaledDurationField, initWithOrgJodaTimeDurationField_withOrgJodaTimeDurationFieldType_withInt_, field, type, scalar)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldScaledDurationField)

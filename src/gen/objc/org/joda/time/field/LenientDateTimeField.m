@@ -57,17 +57,25 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldLenientDateTimeField, serialVersion
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getInstanceWithOrgJodaTimeDateTimeField:withOrgJodaTimeChronology:", "getInstance", "Lorg.joda.time.DateTimeField;", 0x9, NULL, NULL },
-    { "initWithOrgJodaTimeDateTimeField:withOrgJodaTimeChronology:", "LenientDateTimeField", NULL, 0x4, NULL, NULL },
-    { "isLenient", NULL, "Z", 0x11, NULL, NULL },
-    { "setWithLong:withInt:", "set", "J", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeDateTimeField;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x4, -1, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x11, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 2, 3, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getInstanceWithOrgJodaTimeDateTimeField:withOrgJodaTimeChronology:);
+  methods[1].selector = @selector(initWithOrgJodaTimeDateTimeField:withOrgJodaTimeChronology:);
+  methods[2].selector = @selector(isLenient);
+  methods[3].selector = @selector(setWithLong:withInt:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeFieldLenientDateTimeField_serialVersionUID },
-    { "iBase_", NULL, 0x12, "Lorg.joda.time.Chronology;", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeFieldLenientDateTimeField_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iBase_", "LOrgJodaTimeChronology;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeFieldLenientDateTimeField = { 2, "LenientDateTimeField", "org.joda.time.field", NULL, 0x1, 4, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "getInstance", "LOrgJodaTimeDateTimeField;LOrgJodaTimeChronology;", "set", "JI" };
+  static const J2ObjcClassInfo _OrgJodaTimeFieldLenientDateTimeField = { "LenientDateTimeField", "org.joda.time.field", ptrTable, methods, fields, 7, 0x1, 4, 2, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeFieldLenientDateTimeField;
 }
 
@@ -79,12 +87,12 @@ OrgJodaTimeDateTimeField *OrgJodaTimeFieldLenientDateTimeField_getInstanceWithOr
     return nil;
   }
   if ([field isKindOfClass:[OrgJodaTimeFieldStrictDateTimeField class]]) {
-    field = [((OrgJodaTimeFieldStrictDateTimeField *) nil_chk(((OrgJodaTimeFieldStrictDateTimeField *) cast_chk(field, [OrgJodaTimeFieldStrictDateTimeField class])))) getWrappedField];
+    field = [((OrgJodaTimeFieldStrictDateTimeField *) cast_chk(field, [OrgJodaTimeFieldStrictDateTimeField class])) getWrappedField];
   }
   if ([((OrgJodaTimeDateTimeField *) nil_chk(field)) isLenient]) {
     return field;
   }
-  return [new_OrgJodaTimeFieldLenientDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronology_(field, base) autorelease];
+  return create_OrgJodaTimeFieldLenientDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronology_(field, base);
 }
 
 void OrgJodaTimeFieldLenientDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronology_(OrgJodaTimeFieldLenientDateTimeField *self, OrgJodaTimeDateTimeField *field, OrgJodaTimeChronology *base) {
@@ -93,15 +101,11 @@ void OrgJodaTimeFieldLenientDateTimeField_initWithOrgJodaTimeDateTimeField_withO
 }
 
 OrgJodaTimeFieldLenientDateTimeField *new_OrgJodaTimeFieldLenientDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronology_(OrgJodaTimeDateTimeField *field, OrgJodaTimeChronology *base) {
-  OrgJodaTimeFieldLenientDateTimeField *self = [OrgJodaTimeFieldLenientDateTimeField alloc];
-  OrgJodaTimeFieldLenientDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronology_(self, field, base);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeFieldLenientDateTimeField, initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronology_, field, base)
 }
 
 OrgJodaTimeFieldLenientDateTimeField *create_OrgJodaTimeFieldLenientDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronology_(OrgJodaTimeDateTimeField *field, OrgJodaTimeChronology *base) {
-  OrgJodaTimeFieldLenientDateTimeField *self = [[OrgJodaTimeFieldLenientDateTimeField alloc] autorelease];
-  OrgJodaTimeFieldLenientDateTimeField_initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronology_(self, field, base);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeFieldLenientDateTimeField, initWithOrgJodaTimeDateTimeField_withOrgJodaTimeChronology_, field, base)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldLenientDateTimeField)

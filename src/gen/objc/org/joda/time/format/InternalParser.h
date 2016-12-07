@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatInternalParser_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatInternalParser_RESTRICT
-#define OrgJodaTimeFormatInternalParser_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatInternalParser")
+#ifdef RESTRICT_OrgJodaTimeFormatInternalParser
+#define INCLUDE_ALL_OrgJodaTimeFormatInternalParser 0
 #else
-#define OrgJodaTimeFormatInternalParser_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatInternalParser 1
 #endif
-#undef OrgJodaTimeFormatInternalParser_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatInternalParser
 
-#if !defined (OrgJodaTimeFormatInternalParser_) && (OrgJodaTimeFormatInternalParser_INCLUDE_ALL || defined(OrgJodaTimeFormatInternalParser_INCLUDE))
+#if !defined (OrgJodaTimeFormatInternalParser_) && (INCLUDE_ALL_OrgJodaTimeFormatInternalParser || defined(INCLUDE_OrgJodaTimeFormatInternalParser))
 #define OrgJodaTimeFormatInternalParser_
 
 @class OrgJodaTimeFormatDateTimeParserBucket;
@@ -27,7 +27,7 @@
  @author Stephen Colebourne
  @since 2.4
  */
-@protocol OrgJodaTimeFormatInternalParser < NSObject, JavaObject >
+@protocol OrgJodaTimeFormatInternalParser < JavaObject >
 
 /*!
  @brief Returns the expected maximum number of characters consumed.
@@ -65,4 +65,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatInternalParser)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatInternalParser_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatInternalParser")

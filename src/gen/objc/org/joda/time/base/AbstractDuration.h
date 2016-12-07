@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeBaseAbstractDuration_INCLUDE_ALL")
-#ifdef OrgJodaTimeBaseAbstractDuration_RESTRICT
-#define OrgJodaTimeBaseAbstractDuration_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeBaseAbstractDuration")
+#ifdef RESTRICT_OrgJodaTimeBaseAbstractDuration
+#define INCLUDE_ALL_OrgJodaTimeBaseAbstractDuration 0
 #else
-#define OrgJodaTimeBaseAbstractDuration_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeBaseAbstractDuration 1
 #endif
-#undef OrgJodaTimeBaseAbstractDuration_RESTRICT
+#undef RESTRICT_OrgJodaTimeBaseAbstractDuration
 
-#if !defined (OrgJodaTimeBaseAbstractDuration_) && (OrgJodaTimeBaseAbstractDuration_INCLUDE_ALL || defined(OrgJodaTimeBaseAbstractDuration_INCLUDE))
+#if !defined (OrgJodaTimeBaseAbstractDuration_) && (INCLUDE_ALL_OrgJodaTimeBaseAbstractDuration || defined(INCLUDE_OrgJodaTimeBaseAbstractDuration))
 #define OrgJodaTimeBaseAbstractDuration_
 
-#define OrgJodaTimeReadableDuration_RESTRICT 1
-#define OrgJodaTimeReadableDuration_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadableDuration 1
+#define INCLUDE_OrgJodaTimeReadableDuration 1
 #include "org/joda/time/ReadableDuration.h"
 
 @class OrgJodaTimeDuration;
@@ -142,4 +142,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseAbstractDuration)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeBaseAbstractDuration_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeBaseAbstractDuration")

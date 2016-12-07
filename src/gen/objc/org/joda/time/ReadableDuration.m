@@ -4,8 +4,6 @@
 //
 
 #include "J2ObjC_source.h"
-#include "org/joda/time/Duration.h"
-#include "org/joda/time/Period.h"
 #include "org/joda/time/ReadableDuration.h"
 
 @interface OrgJodaTimeReadableDuration : NSObject
@@ -15,18 +13,31 @@
 @implementation OrgJodaTimeReadableDuration
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getMillis", NULL, "J", 0x401, NULL, NULL },
-    { "toDuration", NULL, "Lorg.joda.time.Duration;", 0x401, NULL, NULL },
-    { "toPeriod", NULL, "Lorg.joda.time.Period;", 0x401, NULL, NULL },
-    { "isEqualWithOrgJodaTimeReadableDuration:", "isEqual", "Z", 0x401, NULL, NULL },
-    { "isLongerThanWithOrgJodaTimeReadableDuration:", "isLongerThan", "Z", 0x401, NULL, NULL },
-    { "isShorterThanWithOrgJodaTimeReadableDuration:", "isShorterThan", "Z", 0x401, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x401, NULL, NULL },
-    { "hash", "hashCode", "I", 0x401, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x401, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "J", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDuration;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimePeriod;", 0x401, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 2, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 3, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x401, 4, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x401, 6, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x401, 7, -1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeReadableDuration = { 2, "ReadableDuration", "org.joda.time", NULL, 0x609, 9, methods, 0, NULL, 0, NULL, 0, NULL, NULL, "Ljava/lang/Object;Ljava/lang/Comparable<Lorg/joda/time/ReadableDuration;>;" };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getMillis);
+  methods[1].selector = @selector(toDuration);
+  methods[2].selector = @selector(toPeriod);
+  methods[3].selector = @selector(isEqualWithOrgJodaTimeReadableDuration:);
+  methods[4].selector = @selector(isLongerThanWithOrgJodaTimeReadableDuration:);
+  methods[5].selector = @selector(isShorterThanWithOrgJodaTimeReadableDuration:);
+  methods[6].selector = @selector(isEqual:);
+  methods[7].selector = @selector(hash);
+  methods[8].selector = @selector(description);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "isEqual", "LOrgJodaTimeReadableDuration;", "isLongerThan", "isShorterThan", "equals", "LNSObject;", "hashCode", "toString", "Ljava/lang/Object;Ljava/lang/Comparable<Lorg/joda/time/ReadableDuration;>;" };
+  static const J2ObjcClassInfo _OrgJodaTimeReadableDuration = { "ReadableDuration", "org.joda.time", ptrTable, methods, NULL, 7, 0x609, 9, 0, -1, -1, -1, 8, -1 };
   return &_OrgJodaTimeReadableDuration;
 }
 

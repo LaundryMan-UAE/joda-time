@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatDateTimeFormatter_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatDateTimeFormatter_RESTRICT
-#define OrgJodaTimeFormatDateTimeFormatter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatter")
+#ifdef RESTRICT_OrgJodaTimeFormatDateTimeFormatter
+#define INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatter 0
 #else
-#define OrgJodaTimeFormatDateTimeFormatter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatter 1
 #endif
-#undef OrgJodaTimeFormatDateTimeFormatter_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatDateTimeFormatter
 
-#if !defined (OrgJodaTimeFormatDateTimeFormatter_) && (OrgJodaTimeFormatDateTimeFormatter_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimeFormatter_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimeFormatter_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatter || defined(INCLUDE_OrgJodaTimeFormatDateTimeFormatter))
 #define OrgJodaTimeFormatDateTimeFormatter_
 
 @class JavaIoWriter;
@@ -618,4 +618,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimeFormatter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatDateTimeFormatter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatDateTimeFormatter")

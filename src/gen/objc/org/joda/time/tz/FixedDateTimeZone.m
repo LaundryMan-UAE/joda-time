@@ -67,7 +67,7 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeTzFixedDateTimeZone, serialVersionUID, j
   if (((jint) [((NSString *) nil_chk(id_)) length]) == 6 && ([id_ hasPrefix:@"+"] || [id_ hasPrefix:@"-"])) {
     return JavaUtilTimeZone_getTimeZoneWithNSString_(JreStrcat("$$", @"GMT", [self getID]));
   }
-  return [new_JavaUtilSimpleTimeZone_initWithInt_withNSString_(iWallOffset_, [self getID]) autorelease];
+  return create_JavaUtilSimpleTimeZone_initWithInt_withNSString_(iWallOffset_, [self getID]);
 }
 
 - (jboolean)isEqual:(id)obj {
@@ -91,26 +91,41 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeTzFixedDateTimeZone, serialVersionUID, j
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:withNSString:withInt:withInt:", "FixedDateTimeZone", NULL, 0x1, NULL, NULL },
-    { "getNameKeyWithLong:", "getNameKey", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getOffsetWithLong:", "getOffset", "I", 0x1, NULL, NULL },
-    { "getStandardOffsetWithLong:", "getStandardOffset", "I", 0x1, NULL, NULL },
-    { "getOffsetFromLocalWithLong:", "getOffsetFromLocal", "I", 0x1, NULL, NULL },
-    { "isFixed", NULL, "Z", 0x1, NULL, NULL },
-    { "nextTransitionWithLong:", "nextTransition", "J", 0x1, NULL, NULL },
-    { "previousTransitionWithLong:", "previousTransition", "J", 0x1, NULL, NULL },
-    { "toTimeZone", NULL, "Ljava.util.TimeZone;", 0x1, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 3, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 4, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 5, 2, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 6, 2, -1, -1, -1, -1 },
+    { NULL, "J", 0x1, 7, 2, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilTimeZone;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 8, 9, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 10, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithNSString:withNSString:withInt:withInt:);
+  methods[1].selector = @selector(getNameKeyWithLong:);
+  methods[2].selector = @selector(getOffsetWithLong:);
+  methods[3].selector = @selector(getStandardOffsetWithLong:);
+  methods[4].selector = @selector(getOffsetFromLocalWithLong:);
+  methods[5].selector = @selector(isFixed);
+  methods[6].selector = @selector(nextTransitionWithLong:);
+  methods[7].selector = @selector(previousTransitionWithLong:);
+  methods[8].selector = @selector(toTimeZone);
+  methods[9].selector = @selector(isEqual:);
+  methods[10].selector = @selector(hash);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeTzFixedDateTimeZone_serialVersionUID },
-    { "iNameKey_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-    { "iWallOffset_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "iStandardOffset_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeTzFixedDateTimeZone_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iNameKey_", "LNSString;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iWallOffset_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "iStandardOffset_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzFixedDateTimeZone = { 2, "FixedDateTimeZone", "org.joda.time.tz", NULL, 0x11, 11, methods, 4, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LNSString;LNSString;II", "getNameKey", "J", "getOffset", "getStandardOffset", "getOffsetFromLocal", "nextTransition", "previousTransition", "equals", "LNSObject;", "hashCode" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzFixedDateTimeZone = { "FixedDateTimeZone", "org.joda.time.tz", ptrTable, methods, fields, 7, 0x11, 11, 4, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeTzFixedDateTimeZone;
 }
 
@@ -124,15 +139,11 @@ void OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSString_withInt_withIn
 }
 
 OrgJodaTimeTzFixedDateTimeZone *new_OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSString_withInt_withInt_(NSString *id_, NSString *nameKey, jint wallOffset, jint standardOffset) {
-  OrgJodaTimeTzFixedDateTimeZone *self = [OrgJodaTimeTzFixedDateTimeZone alloc];
-  OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSString_withInt_withInt_(self, id_, nameKey, wallOffset, standardOffset);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeTzFixedDateTimeZone, initWithNSString_withNSString_withInt_withInt_, id_, nameKey, wallOffset, standardOffset)
 }
 
 OrgJodaTimeTzFixedDateTimeZone *create_OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSString_withInt_withInt_(NSString *id_, NSString *nameKey, jint wallOffset, jint standardOffset) {
-  OrgJodaTimeTzFixedDateTimeZone *self = [[OrgJodaTimeTzFixedDateTimeZone alloc] autorelease];
-  OrgJodaTimeTzFixedDateTimeZone_initWithNSString_withNSString_withInt_withInt_(self, id_, nameKey, wallOffset, standardOffset);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeTzFixedDateTimeZone, initWithNSString_withNSString_withInt_withInt_, id_, nameKey, wallOffset, standardOffset)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzFixedDateTimeZone)

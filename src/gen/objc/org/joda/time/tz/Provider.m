@@ -4,8 +4,6 @@
 //
 
 #include "J2ObjC_source.h"
-#include "java/util/Set.h"
-#include "org/joda/time/DateTimeZone.h"
 #include "org/joda/time/tz/Provider.h"
 
 @interface OrgJodaTimeTzProvider : NSObject
@@ -15,11 +13,17 @@
 @implementation OrgJodaTimeTzProvider
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getZoneWithNSString:", "getZone", "Lorg.joda.time.DateTimeZone;", 0x401, NULL, NULL },
-    { "getAvailableIDs", NULL, "Ljava.util.Set;", 0x401, NULL, "()Ljava/util/Set<Ljava/lang/String;>;" },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LOrgJodaTimeDateTimeZone;", 0x401, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilSet;", 0x401, -1, -1, -1, 2, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeTzProvider = { 2, "Provider", "org.joda.time.tz", NULL, 0x609, 2, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getZoneWithNSString:);
+  methods[1].selector = @selector(getAvailableIDs);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "getZone", "LNSString;", "()Ljava/util/Set<Ljava/lang/String;>;" };
+  static const J2ObjcClassInfo _OrgJodaTimeTzProvider = { "Provider", "org.joda.time.tz", ptrTable, methods, NULL, 7, 0x609, 2, 0, -1, -1, -1, -1, -1 };
   return &_OrgJodaTimeTzProvider;
 }
 

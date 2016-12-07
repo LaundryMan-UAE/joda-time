@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeReadableInterval_INCLUDE_ALL")
-#ifdef OrgJodaTimeReadableInterval_RESTRICT
-#define OrgJodaTimeReadableInterval_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeReadableInterval")
+#ifdef RESTRICT_OrgJodaTimeReadableInterval
+#define INCLUDE_ALL_OrgJodaTimeReadableInterval 0
 #else
-#define OrgJodaTimeReadableInterval_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeReadableInterval 1
 #endif
-#undef OrgJodaTimeReadableInterval_RESTRICT
+#undef RESTRICT_OrgJodaTimeReadableInterval
 
-#if !defined (OrgJodaTimeReadableInterval_) && (OrgJodaTimeReadableInterval_INCLUDE_ALL || defined(OrgJodaTimeReadableInterval_INCLUDE))
+#if !defined (OrgJodaTimeReadableInterval_) && (INCLUDE_ALL_OrgJodaTimeReadableInterval || defined(INCLUDE_OrgJodaTimeReadableInterval))
 #define OrgJodaTimeReadableInterval_
 
 @class OrgJodaTimeChronology;
@@ -49,7 +49,7 @@
  @author Stephen Colebourne
  @since 1.0
  */
-@protocol OrgJodaTimeReadableInterval < NSObject, JavaObject >
+@protocol OrgJodaTimeReadableInterval < JavaObject >
 
 /*!
  @brief Gets the chronology of the interval, which is the chronology of the first datetime.
@@ -308,4 +308,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadableInterval)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeReadableInterval_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeReadableInterval")

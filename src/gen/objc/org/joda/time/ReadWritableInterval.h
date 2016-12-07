@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeReadWritableInterval_INCLUDE_ALL")
-#ifdef OrgJodaTimeReadWritableInterval_RESTRICT
-#define OrgJodaTimeReadWritableInterval_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeReadWritableInterval")
+#ifdef RESTRICT_OrgJodaTimeReadWritableInterval
+#define INCLUDE_ALL_OrgJodaTimeReadWritableInterval 0
 #else
-#define OrgJodaTimeReadWritableInterval_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeReadWritableInterval 1
 #endif
-#undef OrgJodaTimeReadWritableInterval_RESTRICT
+#undef RESTRICT_OrgJodaTimeReadWritableInterval
 
-#if !defined (OrgJodaTimeReadWritableInterval_) && (OrgJodaTimeReadWritableInterval_INCLUDE_ALL || defined(OrgJodaTimeReadWritableInterval_INCLUDE))
+#if !defined (OrgJodaTimeReadWritableInterval_) && (INCLUDE_ALL_OrgJodaTimeReadWritableInterval || defined(INCLUDE_OrgJodaTimeReadWritableInterval))
 #define OrgJodaTimeReadWritableInterval_
 
-#define OrgJodaTimeReadableInterval_RESTRICT 1
-#define OrgJodaTimeReadableInterval_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadableInterval 1
+#define INCLUDE_OrgJodaTimeReadableInterval 1
 #include "org/joda/time/ReadableInterval.h"
 
 @class OrgJodaTimeChronology;
@@ -31,7 +31,7 @@
  @author Brian S O'Neill
  @since 1.0
  */
-@protocol OrgJodaTimeReadWritableInterval < OrgJodaTimeReadableInterval, NSObject, JavaObject >
+@protocol OrgJodaTimeReadWritableInterval < OrgJodaTimeReadableInterval, JavaObject >
 
 /*!
  @brief Sets this interval from two millisecond instants.
@@ -134,4 +134,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadWritableInterval)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeReadWritableInterval_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeReadWritableInterval")

@@ -174,6 +174,79 @@ OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_MILLIS_TYPE;
   [super dealloc];
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x4, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationFieldType;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x401, 1, 2, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 3, 2, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 4, -1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithNSString:);
+  methods[1].selector = @selector(millis);
+  methods[2].selector = @selector(seconds);
+  methods[3].selector = @selector(minutes);
+  methods[4].selector = @selector(hours);
+  methods[5].selector = @selector(halfdays);
+  methods[6].selector = @selector(days);
+  methods[7].selector = @selector(weeks);
+  methods[8].selector = @selector(weekyears);
+  methods[9].selector = @selector(months);
+  methods[10].selector = @selector(years);
+  methods[11].selector = @selector(centuries);
+  methods[12].selector = @selector(eras);
+  methods[13].selector = @selector(getName);
+  methods[14].selector = @selector(getFieldWithOrgJodaTimeChronology:);
+  methods[15].selector = @selector(isSupportedWithOrgJodaTimeChronology:);
+  methods[16].selector = @selector(description);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeDurationFieldType_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "ERAS", "B", .constantValue.asChar = OrgJodaTimeDurationFieldType_ERAS, 0x18, -1, -1, -1, -1 },
+    { "CENTURIES", "B", .constantValue.asChar = OrgJodaTimeDurationFieldType_CENTURIES, 0x18, -1, -1, -1, -1 },
+    { "WEEKYEARS", "B", .constantValue.asChar = OrgJodaTimeDurationFieldType_WEEKYEARS, 0x18, -1, -1, -1, -1 },
+    { "YEARS", "B", .constantValue.asChar = OrgJodaTimeDurationFieldType_YEARS, 0x18, -1, -1, -1, -1 },
+    { "MONTHS", "B", .constantValue.asChar = OrgJodaTimeDurationFieldType_MONTHS, 0x18, -1, -1, -1, -1 },
+    { "WEEKS", "B", .constantValue.asChar = OrgJodaTimeDurationFieldType_WEEKS, 0x18, -1, -1, -1, -1 },
+    { "DAYS", "B", .constantValue.asChar = OrgJodaTimeDurationFieldType_DAYS, 0x18, -1, -1, -1, -1 },
+    { "HALFDAYS", "B", .constantValue.asChar = OrgJodaTimeDurationFieldType_HALFDAYS, 0x18, -1, -1, -1, -1 },
+    { "HOURS", "B", .constantValue.asChar = OrgJodaTimeDurationFieldType_HOURS, 0x18, -1, -1, -1, -1 },
+    { "MINUTES", "B", .constantValue.asChar = OrgJodaTimeDurationFieldType_MINUTES, 0x18, -1, -1, -1, -1 },
+    { "SECONDS", "B", .constantValue.asChar = OrgJodaTimeDurationFieldType_SECONDS, 0x18, -1, -1, -1, -1 },
+    { "MILLIS", "B", .constantValue.asChar = OrgJodaTimeDurationFieldType_MILLIS, 0x18, -1, -1, -1, -1 },
+    { "ERAS_TYPE", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x18, -1, 5, -1, -1 },
+    { "CENTURIES_TYPE", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x18, -1, 6, -1, -1 },
+    { "WEEKYEARS_TYPE", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x18, -1, 7, -1, -1 },
+    { "YEARS_TYPE", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x18, -1, 8, -1, -1 },
+    { "MONTHS_TYPE", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x18, -1, 9, -1, -1 },
+    { "WEEKS_TYPE", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x18, -1, 10, -1, -1 },
+    { "DAYS_TYPE", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x18, -1, 11, -1, -1 },
+    { "HALFDAYS_TYPE", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x18, -1, 12, -1, -1 },
+    { "HOURS_TYPE", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x18, -1, 13, -1, -1 },
+    { "MINUTES_TYPE", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x18, -1, 14, -1, -1 },
+    { "SECONDS_TYPE", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x18, -1, 15, -1, -1 },
+    { "MILLIS_TYPE", "LOrgJodaTimeDurationFieldType;", .constantValue.asLong = 0, 0x18, -1, 16, -1, -1 },
+    { "iName_", "LNSString;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+  };
+  static const void *ptrTable[] = { "LNSString;", "getField", "LOrgJodaTimeChronology;", "isSupported", "toString", &OrgJodaTimeDurationFieldType_ERAS_TYPE, &OrgJodaTimeDurationFieldType_CENTURIES_TYPE, &OrgJodaTimeDurationFieldType_WEEKYEARS_TYPE, &OrgJodaTimeDurationFieldType_YEARS_TYPE, &OrgJodaTimeDurationFieldType_MONTHS_TYPE, &OrgJodaTimeDurationFieldType_WEEKS_TYPE, &OrgJodaTimeDurationFieldType_DAYS_TYPE, &OrgJodaTimeDurationFieldType_HALFDAYS_TYPE, &OrgJodaTimeDurationFieldType_HOURS_TYPE, &OrgJodaTimeDurationFieldType_MINUTES_TYPE, &OrgJodaTimeDurationFieldType_SECONDS_TYPE, &OrgJodaTimeDurationFieldType_MILLIS_TYPE, "LOrgJodaTimeDurationFieldType_StandardDurationFieldType;" };
+  static const J2ObjcClassInfo _OrgJodaTimeDurationFieldType = { "DurationFieldType", "org.joda.time", ptrTable, methods, fields, 7, 0x401, 17, 26, -1, 17, -1, -1, -1 };
+  return &_OrgJodaTimeDurationFieldType;
+}
+
 + (void)initialize {
   if (self == [OrgJodaTimeDurationFieldType class]) {
     JreStrongAssignAndConsume(&OrgJodaTimeDurationFieldType_ERAS_TYPE, new_OrgJodaTimeDurationFieldType_StandardDurationFieldType_initWithNSString_withByte_(@"eras", OrgJodaTimeDurationFieldType_ERAS));
@@ -190,59 +263,6 @@ OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_MILLIS_TYPE;
     JreStrongAssignAndConsume(&OrgJodaTimeDurationFieldType_MILLIS_TYPE, new_OrgJodaTimeDurationFieldType_StandardDurationFieldType_initWithNSString_withByte_(@"millis", OrgJodaTimeDurationFieldType_MILLIS));
     J2OBJC_SET_INITIALIZED(OrgJodaTimeDurationFieldType)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:", "DurationFieldType", NULL, 0x4, NULL, NULL },
-    { "millis", NULL, "Lorg.joda.time.DurationFieldType;", 0x9, NULL, NULL },
-    { "seconds", NULL, "Lorg.joda.time.DurationFieldType;", 0x9, NULL, NULL },
-    { "minutes", NULL, "Lorg.joda.time.DurationFieldType;", 0x9, NULL, NULL },
-    { "hours", NULL, "Lorg.joda.time.DurationFieldType;", 0x9, NULL, NULL },
-    { "halfdays", NULL, "Lorg.joda.time.DurationFieldType;", 0x9, NULL, NULL },
-    { "days", NULL, "Lorg.joda.time.DurationFieldType;", 0x9, NULL, NULL },
-    { "weeks", NULL, "Lorg.joda.time.DurationFieldType;", 0x9, NULL, NULL },
-    { "weekyears", NULL, "Lorg.joda.time.DurationFieldType;", 0x9, NULL, NULL },
-    { "months", NULL, "Lorg.joda.time.DurationFieldType;", 0x9, NULL, NULL },
-    { "years", NULL, "Lorg.joda.time.DurationFieldType;", 0x9, NULL, NULL },
-    { "centuries", NULL, "Lorg.joda.time.DurationFieldType;", 0x9, NULL, NULL },
-    { "eras", NULL, "Lorg.joda.time.DurationFieldType;", 0x9, NULL, NULL },
-    { "getName", NULL, "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "getFieldWithOrgJodaTimeChronology:", "getField", "Lorg.joda.time.DurationField;", 0x401, NULL, NULL },
-    { "isSupportedWithOrgJodaTimeChronology:", "isSupported", "Z", 0x1, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeDurationFieldType_serialVersionUID },
-    { "ERAS", "ERAS", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDurationFieldType_ERAS },
-    { "CENTURIES", "CENTURIES", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDurationFieldType_CENTURIES },
-    { "WEEKYEARS", "WEEKYEARS", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDurationFieldType_WEEKYEARS },
-    { "YEARS", "YEARS", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDurationFieldType_YEARS },
-    { "MONTHS", "MONTHS", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDurationFieldType_MONTHS },
-    { "WEEKS", "WEEKS", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDurationFieldType_WEEKS },
-    { "DAYS", "DAYS", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDurationFieldType_DAYS },
-    { "HALFDAYS", "HALFDAYS", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDurationFieldType_HALFDAYS },
-    { "HOURS", "HOURS", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDurationFieldType_HOURS },
-    { "MINUTES", "MINUTES", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDurationFieldType_MINUTES },
-    { "SECONDS", "SECONDS", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDurationFieldType_SECONDS },
-    { "MILLIS", "MILLIS", 0x18, "B", NULL, NULL, .constantValue.asChar = OrgJodaTimeDurationFieldType_MILLIS },
-    { "ERAS_TYPE", "ERAS_TYPE", 0x18, "Lorg.joda.time.DurationFieldType;", &OrgJodaTimeDurationFieldType_ERAS_TYPE, NULL, .constantValue.asLong = 0 },
-    { "CENTURIES_TYPE", "CENTURIES_TYPE", 0x18, "Lorg.joda.time.DurationFieldType;", &OrgJodaTimeDurationFieldType_CENTURIES_TYPE, NULL, .constantValue.asLong = 0 },
-    { "WEEKYEARS_TYPE", "WEEKYEARS_TYPE", 0x18, "Lorg.joda.time.DurationFieldType;", &OrgJodaTimeDurationFieldType_WEEKYEARS_TYPE, NULL, .constantValue.asLong = 0 },
-    { "YEARS_TYPE", "YEARS_TYPE", 0x18, "Lorg.joda.time.DurationFieldType;", &OrgJodaTimeDurationFieldType_YEARS_TYPE, NULL, .constantValue.asLong = 0 },
-    { "MONTHS_TYPE", "MONTHS_TYPE", 0x18, "Lorg.joda.time.DurationFieldType;", &OrgJodaTimeDurationFieldType_MONTHS_TYPE, NULL, .constantValue.asLong = 0 },
-    { "WEEKS_TYPE", "WEEKS_TYPE", 0x18, "Lorg.joda.time.DurationFieldType;", &OrgJodaTimeDurationFieldType_WEEKS_TYPE, NULL, .constantValue.asLong = 0 },
-    { "DAYS_TYPE", "DAYS_TYPE", 0x18, "Lorg.joda.time.DurationFieldType;", &OrgJodaTimeDurationFieldType_DAYS_TYPE, NULL, .constantValue.asLong = 0 },
-    { "HALFDAYS_TYPE", "HALFDAYS_TYPE", 0x18, "Lorg.joda.time.DurationFieldType;", &OrgJodaTimeDurationFieldType_HALFDAYS_TYPE, NULL, .constantValue.asLong = 0 },
-    { "HOURS_TYPE", "HOURS_TYPE", 0x18, "Lorg.joda.time.DurationFieldType;", &OrgJodaTimeDurationFieldType_HOURS_TYPE, NULL, .constantValue.asLong = 0 },
-    { "MINUTES_TYPE", "MINUTES_TYPE", 0x18, "Lorg.joda.time.DurationFieldType;", &OrgJodaTimeDurationFieldType_MINUTES_TYPE, NULL, .constantValue.asLong = 0 },
-    { "SECONDS_TYPE", "SECONDS_TYPE", 0x18, "Lorg.joda.time.DurationFieldType;", &OrgJodaTimeDurationFieldType_SECONDS_TYPE, NULL, .constantValue.asLong = 0 },
-    { "MILLIS_TYPE", "MILLIS_TYPE", 0x18, "Lorg.joda.time.DurationFieldType;", &OrgJodaTimeDurationFieldType_MILLIS_TYPE, NULL, .constantValue.asLong = 0 },
-    { "iName_", NULL, 0x12, "Ljava.lang.String;", NULL, NULL, .constantValue.asLong = 0 },
-  };
-  static const char *inner_classes[] = {"Lorg.joda.time.DurationFieldType$StandardDurationFieldType;"};
-  static const J2ObjcClassInfo _OrgJodaTimeDurationFieldType = { 2, "DurationFieldType", "org.joda.time", NULL, 0x401, 17, methods, 26, fields, 0, NULL, 1, inner_classes, NULL, NULL };
-  return &_OrgJodaTimeDurationFieldType;
 }
 
 @end
@@ -364,7 +384,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDurationFieldType)
     case OrgJodaTimeDurationFieldType_MILLIS:
     return [((OrgJodaTimeChronology *) nil_chk(chronology)) millis];
     default:
-    @throw [new_JavaLangInternalError_init() autorelease];
+    @throw create_JavaLangInternalError_init();
   }
 }
 
@@ -400,18 +420,27 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDurationFieldType)
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:withByte:", "StandardDurationFieldType", NULL, 0x0, NULL, NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "getFieldWithOrgJodaTimeChronology:", "getField", "Lorg.joda.time.DurationField;", 0x1, NULL, NULL },
-    { "readResolve", NULL, "Ljava.lang.Object;", 0x2, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, 1, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 3, -1, -1, -1, -1, -1 },
+    { NULL, "LOrgJodaTimeDurationField;", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x2, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithNSString:withByte:);
+  methods[1].selector = @selector(isEqual:);
+  methods[2].selector = @selector(hash);
+  methods[3].selector = @selector(getFieldWithOrgJodaTimeChronology:);
+  methods[4].selector = @selector(readResolve);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = OrgJodaTimeDurationFieldType_StandardDurationFieldType_serialVersionUID },
-    { "iOrdinal_", NULL, 0x12, "B", NULL, NULL, .constantValue.asLong = 0 },
+    { "serialVersionUID", "J", .constantValue.asLong = OrgJodaTimeDurationFieldType_StandardDurationFieldType_serialVersionUID, 0x1a, -1, -1, -1, -1 },
+    { "iOrdinal_", "B", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _OrgJodaTimeDurationFieldType_StandardDurationFieldType = { 2, "StandardDurationFieldType", "org.joda.time", "DurationFieldType", 0xa, 5, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LNSString;B", "equals", "LNSObject;", "hashCode", "getField", "LOrgJodaTimeChronology;", "LOrgJodaTimeDurationFieldType;" };
+  static const J2ObjcClassInfo _OrgJodaTimeDurationFieldType_StandardDurationFieldType = { "StandardDurationFieldType", "org.joda.time", ptrTable, methods, fields, 7, 0xa, 5, 2, 6, -1, -1, -1, -1 };
   return &_OrgJodaTimeDurationFieldType_StandardDurationFieldType;
 }
 
@@ -423,15 +452,11 @@ void OrgJodaTimeDurationFieldType_StandardDurationFieldType_initWithNSString_wit
 }
 
 OrgJodaTimeDurationFieldType_StandardDurationFieldType *new_OrgJodaTimeDurationFieldType_StandardDurationFieldType_initWithNSString_withByte_(NSString *name, jbyte ordinal) {
-  OrgJodaTimeDurationFieldType_StandardDurationFieldType *self = [OrgJodaTimeDurationFieldType_StandardDurationFieldType alloc];
-  OrgJodaTimeDurationFieldType_StandardDurationFieldType_initWithNSString_withByte_(self, name, ordinal);
-  return self;
+  J2OBJC_NEW_IMPL(OrgJodaTimeDurationFieldType_StandardDurationFieldType, initWithNSString_withByte_, name, ordinal)
 }
 
 OrgJodaTimeDurationFieldType_StandardDurationFieldType *create_OrgJodaTimeDurationFieldType_StandardDurationFieldType_initWithNSString_withByte_(NSString *name, jbyte ordinal) {
-  OrgJodaTimeDurationFieldType_StandardDurationFieldType *self = [[OrgJodaTimeDurationFieldType_StandardDurationFieldType alloc] autorelease];
-  OrgJodaTimeDurationFieldType_StandardDurationFieldType_initWithNSString_withByte_(self, name, ordinal);
-  return self;
+  J2OBJC_CREATE_IMPL(OrgJodaTimeDurationFieldType_StandardDurationFieldType, initWithNSString_withByte_, name, ordinal)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDurationFieldType_StandardDurationFieldType)

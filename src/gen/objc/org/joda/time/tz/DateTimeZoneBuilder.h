@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeTzDateTimeZoneBuilder_INCLUDE_ALL")
-#ifdef OrgJodaTimeTzDateTimeZoneBuilder_RESTRICT
-#define OrgJodaTimeTzDateTimeZoneBuilder_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeTzDateTimeZoneBuilder")
+#ifdef RESTRICT_OrgJodaTimeTzDateTimeZoneBuilder
+#define INCLUDE_ALL_OrgJodaTimeTzDateTimeZoneBuilder 0
 #else
-#define OrgJodaTimeTzDateTimeZoneBuilder_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeTzDateTimeZoneBuilder 1
 #endif
-#undef OrgJodaTimeTzDateTimeZoneBuilder_RESTRICT
+#undef RESTRICT_OrgJodaTimeTzDateTimeZoneBuilder
 
-#if !defined (OrgJodaTimeTzDateTimeZoneBuilder_) && (OrgJodaTimeTzDateTimeZoneBuilder_INCLUDE_ALL || defined(OrgJodaTimeTzDateTimeZoneBuilder_INCLUDE))
+#if !defined (OrgJodaTimeTzDateTimeZoneBuilder_) && (INCLUDE_ALL_OrgJodaTimeTzDateTimeZoneBuilder || defined(INCLUDE_OrgJodaTimeTzDateTimeZoneBuilder))
 #define OrgJodaTimeTzDateTimeZoneBuilder_
 
 @class JavaIoInputStream;
@@ -228,4 +228,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeTzDateTimeZoneBuilder)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeTzDateTimeZoneBuilder_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeTzDateTimeZoneBuilder")

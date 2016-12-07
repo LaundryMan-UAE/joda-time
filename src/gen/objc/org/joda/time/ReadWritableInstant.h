@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeReadWritableInstant_INCLUDE_ALL")
-#ifdef OrgJodaTimeReadWritableInstant_RESTRICT
-#define OrgJodaTimeReadWritableInstant_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeReadWritableInstant")
+#ifdef RESTRICT_OrgJodaTimeReadWritableInstant
+#define INCLUDE_ALL_OrgJodaTimeReadWritableInstant 0
 #else
-#define OrgJodaTimeReadWritableInstant_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeReadWritableInstant 1
 #endif
-#undef OrgJodaTimeReadWritableInstant_RESTRICT
+#undef RESTRICT_OrgJodaTimeReadWritableInstant
 
-#if !defined (OrgJodaTimeReadWritableInstant_) && (OrgJodaTimeReadWritableInstant_INCLUDE_ALL || defined(OrgJodaTimeReadWritableInstant_INCLUDE))
+#if !defined (OrgJodaTimeReadWritableInstant_) && (INCLUDE_ALL_OrgJodaTimeReadWritableInstant || defined(INCLUDE_OrgJodaTimeReadWritableInstant))
 #define OrgJodaTimeReadWritableInstant_
 
-#define OrgJodaTimeReadableInstant_RESTRICT 1
-#define OrgJodaTimeReadableInstant_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadableInstant 1
+#define INCLUDE_OrgJodaTimeReadableInstant 1
 #include "org/joda/time/ReadableInstant.h"
 
 @class OrgJodaTimeChronology;
@@ -36,7 +36,7 @@
  @author Stephen Colebourne
  @since 1.0
  */
-@protocol OrgJodaTimeReadWritableInstant < OrgJodaTimeReadableInstant, NSObject, JavaObject >
+@protocol OrgJodaTimeReadWritableInstant < OrgJodaTimeReadableInstant, JavaObject >
 
 /*!
  @brief Sets the value as the number of milliseconds since
@@ -164,4 +164,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeReadWritableInstant)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeReadWritableInstant_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeReadWritableInstant")

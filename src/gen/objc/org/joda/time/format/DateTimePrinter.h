@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeFormatDateTimePrinter_INCLUDE_ALL")
-#ifdef OrgJodaTimeFormatDateTimePrinter_RESTRICT
-#define OrgJodaTimeFormatDateTimePrinter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeFormatDateTimePrinter")
+#ifdef RESTRICT_OrgJodaTimeFormatDateTimePrinter
+#define INCLUDE_ALL_OrgJodaTimeFormatDateTimePrinter 0
 #else
-#define OrgJodaTimeFormatDateTimePrinter_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeFormatDateTimePrinter 1
 #endif
-#undef OrgJodaTimeFormatDateTimePrinter_RESTRICT
+#undef RESTRICT_OrgJodaTimeFormatDateTimePrinter
 
-#if !defined (OrgJodaTimeFormatDateTimePrinter_) && (OrgJodaTimeFormatDateTimePrinter_INCLUDE_ALL || defined(OrgJodaTimeFormatDateTimePrinter_INCLUDE))
+#if !defined (OrgJodaTimeFormatDateTimePrinter_) && (INCLUDE_ALL_OrgJodaTimeFormatDateTimePrinter || defined(INCLUDE_OrgJodaTimeFormatDateTimePrinter))
 #define OrgJodaTimeFormatDateTimePrinter_
 
 @class JavaIoWriter;
@@ -40,7 +40,7 @@
  - seealso: ISODateTimeFormat
  @since 1.0
  */
-@protocol OrgJodaTimeFormatDateTimePrinter < NSObject, JavaObject >
+@protocol OrgJodaTimeFormatDateTimePrinter < JavaObject >
 
 /*!
  @brief Returns the expected maximum number of characters produced.
@@ -113,4 +113,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFormatDateTimePrinter)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeFormatDateTimePrinter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeFormatDateTimePrinter")

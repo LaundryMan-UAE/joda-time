@@ -5,27 +5,27 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("OrgJodaTimeBaseBaseDateTime_INCLUDE_ALL")
-#ifdef OrgJodaTimeBaseBaseDateTime_RESTRICT
-#define OrgJodaTimeBaseBaseDateTime_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_OrgJodaTimeBaseBaseDateTime")
+#ifdef RESTRICT_OrgJodaTimeBaseBaseDateTime
+#define INCLUDE_ALL_OrgJodaTimeBaseBaseDateTime 0
 #else
-#define OrgJodaTimeBaseBaseDateTime_INCLUDE_ALL 1
+#define INCLUDE_ALL_OrgJodaTimeBaseBaseDateTime 1
 #endif
-#undef OrgJodaTimeBaseBaseDateTime_RESTRICT
+#undef RESTRICT_OrgJodaTimeBaseBaseDateTime
 
-#if !defined (OrgJodaTimeBaseBaseDateTime_) && (OrgJodaTimeBaseBaseDateTime_INCLUDE_ALL || defined(OrgJodaTimeBaseBaseDateTime_INCLUDE))
+#if !defined (OrgJodaTimeBaseBaseDateTime_) && (INCLUDE_ALL_OrgJodaTimeBaseBaseDateTime || defined(INCLUDE_OrgJodaTimeBaseBaseDateTime))
 #define OrgJodaTimeBaseBaseDateTime_
 
-#define OrgJodaTimeBaseAbstractDateTime_RESTRICT 1
-#define OrgJodaTimeBaseAbstractDateTime_INCLUDE 1
+#define RESTRICT_OrgJodaTimeBaseAbstractDateTime 1
+#define INCLUDE_OrgJodaTimeBaseAbstractDateTime 1
 #include "org/joda/time/base/AbstractDateTime.h"
 
-#define OrgJodaTimeReadableDateTime_RESTRICT 1
-#define OrgJodaTimeReadableDateTime_INCLUDE 1
+#define RESTRICT_OrgJodaTimeReadableDateTime 1
+#define INCLUDE_OrgJodaTimeReadableDateTime 1
 #include "org/joda/time/ReadableDateTime.h"
 
-#define JavaIoSerializable_RESTRICT 1
-#define JavaIoSerializable_INCLUDE 1
+#define RESTRICT_JavaIoSerializable 1
+#define INCLUDE_JavaIoSerializable 1
 #include "java/io/Serializable.h"
 
 @class OrgJodaTimeChronology;
@@ -288,4 +288,4 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeBaseBaseDateTime)
 
 #endif
 
-#pragma pop_macro("OrgJodaTimeBaseBaseDateTime_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_OrgJodaTimeBaseBaseDateTime")
