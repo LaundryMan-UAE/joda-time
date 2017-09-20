@@ -17,6 +17,7 @@ Pod::Spec.new do |s|
   s.resources = "src/tz-data/*"
   s.public_header_files = 'src/gen/objc/**/*.h'
   s.header_mappings_dir = 'src/gen/objc'
+  s.compiler_flags = '-Wno-nullability-completeness'
 
   s.xcconfig = { 'HEADER_SEARCH_PATHS' => "\"${PODS_ROOT}/J2ObjC/dist/include\"" }
 end
