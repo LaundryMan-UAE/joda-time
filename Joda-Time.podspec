@@ -10,14 +10,12 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '7.0'
   s.requires_arc = false
 
-  s.dependency 'Joda-Convert', '~> 1.8.1'
+  s.dependency 'Joda-Convert'
 
   s.source_files = 'src/gen/objc/**/*.{h,m}'
   s.exclude_files = 'src/main/java/*.java'
   s.resources = "src/tz-data/*"
   s.public_header_files = 'src/gen/objc/**/*.h'
   s.header_mappings_dir = 'src/gen/objc'
-  s.compiler_flags = '-Wno-nullability-completeness'
 
-  s.xcconfig = { 'HEADER_SEARCH_PATHS' => "\"${PODS_ROOT}/J2ObjC/dist/include\"" }
 end
