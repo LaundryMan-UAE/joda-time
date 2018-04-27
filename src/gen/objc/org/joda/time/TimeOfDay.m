@@ -449,6 +449,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(fromCalendarFieldsWithJavaUtilCalendar:);
   methods[1].selector = @selector(fromDateFieldsWithJavaUtilDate:);
   methods[2].selector = @selector(fromMillisOfDayWithLong:);
@@ -832,6 +833,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTimeOfDay)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeTimeOfDay:withInt:);
   methods[1].selector = @selector(getField);
   methods[2].selector = @selector(getReadablePartial);

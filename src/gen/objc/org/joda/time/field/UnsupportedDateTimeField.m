@@ -395,6 +395,7 @@ __attribute__((unused)) static JavaLangUnsupportedOperationException *OrgJodaTim
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(getInstanceWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDurationField:);
   methods[1].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDurationField:);
   methods[2].selector = @selector(getType);

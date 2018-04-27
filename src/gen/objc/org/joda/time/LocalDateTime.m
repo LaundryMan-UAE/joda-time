@@ -989,6 +989,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)zone {
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(now);
   methods[1].selector = @selector(nowWithOrgJodaTimeDateTimeZone:);
   methods[2].selector = @selector(nowWithOrgJodaTimeChronology:);
@@ -1516,6 +1517,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeLocalDateTime)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeLocalDateTime:withOrgJodaTimeDateTimeField:);
   methods[1].selector = @selector(writeObjectWithJavaIoObjectOutputStream:);
   methods[2].selector = @selector(readObjectWithJavaIoObjectInputStream:);

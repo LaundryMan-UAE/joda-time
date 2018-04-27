@@ -458,6 +458,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(verbose);
   methods[1].selector = @selector(mainWithNSStringArray:);
   methods[2].selector = @selector(printUsage);
@@ -767,6 +768,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(initialValue);
   #pragma clang diagnostic pop
@@ -830,6 +832,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(initWithJavaUtilStringTokenizer:);
   methods[2].selector = @selector(addRecurringWithOrgJodaTimeTzDateTimeZoneBuilder:withNSString:withInt:withInt:withInt:);
@@ -986,6 +989,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzZoneInfoCompiler_DateTimeOfYear)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithJavaUtilStringTokenizer:);
   methods[1].selector = @selector(addRecurringWithOrgJodaTimeTzDateTimeZoneBuilder:withNSString:);
   methods[2].selector = @selector(formatNameWithNSString:);
@@ -1092,6 +1096,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzZoneInfoCompiler_Rule)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeTzZoneInfoCompiler_Rule:);
   methods[1].selector = @selector(addRuleWithOrgJodaTimeTzZoneInfoCompiler_Rule:);
   methods[2].selector = @selector(addRecurringWithOrgJodaTimeTzDateTimeZoneBuilder:withNSString:);
@@ -1183,6 +1188,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzZoneInfoCompiler_RuleSet)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithJavaUtilStringTokenizer:);
   methods[1].selector = @selector(initWithNSString:withJavaUtilStringTokenizer:);
   methods[2].selector = @selector(chainWithJavaUtilStringTokenizer:);

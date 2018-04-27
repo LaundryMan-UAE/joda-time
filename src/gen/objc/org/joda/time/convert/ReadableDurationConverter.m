@@ -55,6 +55,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(getDurationMillisWithId:);
   methods[2].selector = @selector(setIntoWithOrgJodaTimeReadWritablePeriod:withId:withOrgJodaTimeChronology:);

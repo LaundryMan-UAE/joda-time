@@ -306,6 +306,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(forPatternWithNSString:);
   methods[1].selector = @selector(forStyleWithNSString:);
   methods[2].selector = @selector(patternForStyleWithNSString:withJavaUtilLocale:);
@@ -856,6 +857,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatDateTimeFormat_StyleFormatter)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithInt:withInt:withInt:);
   methods[1].selector = @selector(estimatePrintedLength);
   methods[2].selector = @selector(printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
@@ -972,6 +974,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormat_StyleFormatter)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithInt:withInt:withInt:withJavaUtilLocale:);
   methods[1].selector = @selector(hash);
   methods[2].selector = @selector(isEqual:);

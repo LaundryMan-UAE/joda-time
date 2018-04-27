@@ -19,6 +19,7 @@
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(getShortNameWithJavaUtilLocale:withNSString:withNSString:);
   methods[1].selector = @selector(getNameWithJavaUtilLocale:withNSString:withNSString:);
   #pragma clang diagnostic pop

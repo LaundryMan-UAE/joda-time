@@ -19,6 +19,7 @@
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(isReadableIntervalWithId:withOrgJodaTimeChronology:);
   methods[1].selector = @selector(setIntoWithOrgJodaTimeReadWritableInterval:withId:withOrgJodaTimeChronology:);
   #pragma clang diagnostic pop

@@ -451,6 +451,7 @@ withOrgJodaTimeChronoIslamicChronology_LeapYearPatternType:(OrgJodaTimeChronoIsl
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(getInstanceUTC);
   methods[1].selector = @selector(getInstance);
   methods[2].selector = @selector(getInstanceWithOrgJodaTimeDateTimeZone:);
@@ -639,6 +640,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoIslamicChronology)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithInt:withInt:);
   methods[1].selector = @selector(isLeapYearWithInt:);
   methods[2].selector = @selector(readResolve);

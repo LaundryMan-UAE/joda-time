@@ -147,6 +147,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBasicGJChronology)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeChronology:withId:withInt:);
   methods[1].selector = @selector(isLeapDayWithLong:);
   methods[2].selector = @selector(getMonthOfYearWithLong:withInt:);

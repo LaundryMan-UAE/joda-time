@@ -698,6 +698,7 @@ OrgJodaTimeDateTimeZone *OrgJodaTimeDateTimeZone_UTC;
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(getDefault);
   methods[1].selector = @selector(setDefaultWithOrgJodaTimeDateTimeZone:);
   methods[2].selector = @selector(forIDWithNSString:);
@@ -1219,6 +1220,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(getZone);
   methods[2].selector = @selector(withUTC);
@@ -1280,6 +1282,7 @@ OrgJodaTimeDateTimeZone_1 *create_OrgJodaTimeDateTimeZone_1_init() {
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithNSString:);
   methods[1].selector = @selector(writeObjectWithJavaIoObjectOutputStream:);
   methods[2].selector = @selector(readObjectWithJavaIoObjectInputStream:);

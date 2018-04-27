@@ -726,6 +726,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(toFormatter);
   methods[2].selector = @selector(toPrinter);
@@ -982,6 +983,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(calculatePrintedLengthWithInt:);
   methods[1].selector = @selector(printToWithJavaLangStringBuffer:withInt:);
   methods[2].selector = @selector(printToWithJavaIoWriter:withInt:);
@@ -1080,6 +1082,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(finishWithJavaUtilSet:);
   methods[2].selector = @selector(matchesOtherAffixWithInt:withNSString:withInt:);
@@ -1189,6 +1192,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_Ignorab
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithNSString:);
   methods[1].selector = @selector(calculatePrintedLengthWithInt:);
   methods[2].selector = @selector(printToWithJavaLangStringBuffer:withInt:);
@@ -1315,6 +1319,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_SimpleA
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithNSString:withNSString:);
   methods[1].selector = @selector(calculatePrintedLengthWithInt:);
   methods[2].selector = @selector(printToWithJavaLangStringBuffer:withInt:);
@@ -1441,6 +1446,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithNSStringArray:withNSStringArray:);
   methods[1].selector = @selector(selectSuffixIndexWithInt:);
   methods[2].selector = @selector(calculatePrintedLengthWithInt:);
@@ -1556,6 +1562,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(compareWithId:withId:);
   #pragma clang diagnostic pop
@@ -1654,6 +1661,7 @@ OrgJodaTimeFormatPeriodFormatterBuilder_RegExAffix_1 *create_OrgJodaTimeFormatPe
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:);
   methods[1].selector = @selector(calculatePrintedLengthWithInt:);
   methods[2].selector = @selector(printToWithJavaLangStringBuffer:withInt:);
@@ -2175,6 +2183,7 @@ withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:(id<OrgJodaTimeForm
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithInt:withInt:withInt:withBoolean:withInt:withOrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatterArray:withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:);
   methods[1].selector = @selector(initWithOrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatter:withOrgJodaTimeFormatPeriodFormatterBuilder_PeriodFieldAffix:);
   methods[2].selector = @selector(finishWithOrgJodaTimeFormatPeriodFormatterBuilder_FieldFormatterArray:);
@@ -2339,6 +2348,7 @@ OrgJodaTimeFormatPeriodFormatterBuilder_Literal *OrgJodaTimeFormatPeriodFormatte
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithNSString:);
   methods[1].selector = @selector(countFieldsToPrintWithOrgJodaTimeReadablePeriod:withInt:withJavaUtilLocale:);
   methods[2].selector = @selector(calculatePrintedLengthWithOrgJodaTimeReadablePeriod:withJavaUtilLocale:);
@@ -2550,6 +2560,7 @@ withOrgJodaTimeFormatPeriodParser:(id<OrgJodaTimeFormatPeriodParser>)beforeParse
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithNSString:withNSString:withNSStringArray:withOrgJodaTimeFormatPeriodPrinter:withOrgJodaTimeFormatPeriodParser:withBoolean:withBoolean:);
   methods[1].selector = @selector(countFieldsToPrintWithOrgJodaTimeReadablePeriod:withInt:withJavaUtilLocale:);
   methods[2].selector = @selector(calculatePrintedLengthWithOrgJodaTimeReadablePeriod:withJavaUtilLocale:);
@@ -2705,6 +2716,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatPeriodFormatterBuilder_Separat
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithJavaUtilList:);
   methods[1].selector = @selector(countFieldsToPrintWithOrgJodaTimeReadablePeriod:withInt:withJavaUtilLocale:);
   methods[2].selector = @selector(calculatePrintedLengthWithOrgJodaTimeReadablePeriod:withJavaUtilLocale:);

@@ -85,6 +85,7 @@ J2OBJC_FIELD_SETTER(OrgJodaTimeChronoGJCacheKey, cutoverInstant_, OrgJodaTimeIns
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDateTimeZone:withOrgJodaTimeInstant:withInt:);
   methods[1].selector = @selector(hash);
   methods[2].selector = @selector(isEqual:);

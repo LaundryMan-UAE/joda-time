@@ -440,6 +440,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeFieldType)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithNSString:);
   methods[1].selector = @selector(millisOfSecond);
   methods[2].selector = @selector(millisOfDay);
@@ -787,6 +788,7 @@ withOrgJodaTimeDurationFieldType:(OrgJodaTimeDurationFieldType *)rangeType {
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithNSString:withByte:withOrgJodaTimeDurationFieldType:withOrgJodaTimeDurationFieldType:);
   methods[1].selector = @selector(getDurationType);
   methods[2].selector = @selector(getRangeDurationType);

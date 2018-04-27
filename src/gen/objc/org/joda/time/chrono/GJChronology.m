@@ -727,6 +727,7 @@ OrgJodaTimeInstant *OrgJodaTimeChronoGJChronology_DEFAULT_CUTOVER;
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(convertByYearWithLong:withOrgJodaTimeChronology:withOrgJodaTimeChronology:);
   methods[1].selector = @selector(convertByWeekyearWithLong:withOrgJodaTimeChronology:withOrgJodaTimeChronology:);
   methods[2].selector = @selector(getInstanceUTC);
@@ -1243,6 +1244,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJChronology)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeChronoGJChronology:withOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeField:withLong:);
   methods[1].selector = @selector(initWithOrgJodaTimeChronoGJChronology:withOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeField:withLong:withBoolean:);
   methods[2].selector = @selector(initWithOrgJodaTimeChronoGJChronology:withOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeField:withOrgJodaTimeDurationField:withLong:withBoolean:);
@@ -1526,6 +1528,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoGJChronology_CutoverField)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeChronoGJChronology:withOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeField:withLong:);
   methods[1].selector = @selector(initWithOrgJodaTimeChronoGJChronology:withOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeField:withOrgJodaTimeDurationField:withLong:);
   methods[2].selector = @selector(initWithOrgJodaTimeChronoGJChronology:withOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeField:withOrgJodaTimeDurationField:withOrgJodaTimeDurationField:withLong:);
@@ -1647,6 +1650,7 @@ withOrgJodaTimeChronoGJChronology_ImpreciseCutoverField:(OrgJodaTimeChronoGJChro
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDurationField:withOrgJodaTimeChronoGJChronology_ImpreciseCutoverField:);
   methods[1].selector = @selector(addWithLong:withInt:);
   methods[2].selector = @selector(addWithLong:withLong:);

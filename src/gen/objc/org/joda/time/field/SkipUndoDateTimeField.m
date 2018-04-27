@@ -102,6 +102,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFieldSkipUndoDateTimeField)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeChronology:withOrgJodaTimeDateTimeField:);
   methods[1].selector = @selector(initWithOrgJodaTimeChronology:withOrgJodaTimeDateTimeField:withInt:);
   methods[2].selector = @selector(getWithLong:);

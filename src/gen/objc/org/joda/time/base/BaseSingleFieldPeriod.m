@@ -190,6 +190,7 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeBaseBaseSingleFieldPeriod, START_1972, j
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(betweenWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:withOrgJodaTimeDurationFieldType:);
   methods[1].selector = @selector(betweenWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePeriod:);
   methods[2].selector = @selector(standardPeriodInWithOrgJodaTimeReadablePeriod:withLong:);

@@ -246,6 +246,7 @@ OrgJodaTimeWeeks *OrgJodaTimeWeeks_MIN_VALUE;
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(weeksWithInt:);
   methods[1].selector = @selector(weeksBetweenWithOrgJodaTimeReadableInstant:withOrgJodaTimeReadableInstant:);
   methods[2].selector = @selector(weeksBetweenWithOrgJodaTimeReadablePartial:withOrgJodaTimeReadablePartial:);

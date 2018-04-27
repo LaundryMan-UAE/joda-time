@@ -108,6 +108,7 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldPreciseDurationDateTimeField, seria
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDurationField:);
   methods[1].selector = @selector(isLenient);
   methods[2].selector = @selector(setWithLong:withInt:);

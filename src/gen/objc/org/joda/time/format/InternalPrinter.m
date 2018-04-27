@@ -20,6 +20,7 @@
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(estimatePrintedLength);
   methods[1].selector = @selector(printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
   methods[2].selector = @selector(printToWithJavaLangAppendable:withOrgJodaTimeReadablePartial:withJavaUtilLocale:);

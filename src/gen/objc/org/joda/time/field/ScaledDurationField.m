@@ -142,6 +142,7 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldScaledDurationField, serialVersionU
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDurationField:withOrgJodaTimeDurationFieldType:withInt:);
   methods[1].selector = @selector(getValueWithLong:);
   methods[2].selector = @selector(getValueAsLongWithLong:);

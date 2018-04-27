@@ -412,6 +412,7 @@ withOrgJodaTimeDurationFieldTypeArray:(IOSObjectArray *)types
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(standard);
   methods[1].selector = @selector(yearMonthDayTime);
   methods[2].selector = @selector(yearMonthDay);

@@ -495,6 +495,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoAssembledChronology)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeChronology:withId:);
   methods[1].selector = @selector(getZone);
   methods[2].selector = @selector(getDateTimeMillisWithInt:withInt:withInt:withInt:);
@@ -880,6 +881,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(copyFieldsFromWithOrgJodaTimeChronology:);
   methods[2].selector = @selector(isSupportedWithOrgJodaTimeDurationField:);

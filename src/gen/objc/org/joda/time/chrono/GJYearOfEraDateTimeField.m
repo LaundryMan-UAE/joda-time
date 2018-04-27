@@ -145,6 +145,7 @@ __attribute__((unused)) static id OrgJodaTimeChronoGJYearOfEraDateTimeField_read
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDateTimeField:withOrgJodaTimeChronoBasicChronology:);
   methods[1].selector = @selector(getRangeDurationField);
   methods[2].selector = @selector(getWithLong:);

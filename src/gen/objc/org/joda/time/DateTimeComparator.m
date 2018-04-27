@@ -213,6 +213,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeComparator)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(getInstance);
   methods[1].selector = @selector(getInstanceWithOrgJodaTimeDateTimeFieldType:);
   methods[2].selector = @selector(getInstanceWithOrgJodaTimeDateTimeFieldType:withOrgJodaTimeDateTimeFieldType:);

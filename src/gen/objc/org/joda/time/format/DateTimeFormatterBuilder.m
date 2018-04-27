@@ -825,6 +825,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(toFormatter);
   methods[2].selector = @selector(toPrinter);
@@ -1105,6 +1106,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithChar:);
   methods[1].selector = @selector(estimatePrintedLength);
   methods[2].selector = @selector(printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
@@ -1192,6 +1194,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_Chara
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithNSString:);
   methods[1].selector = @selector(estimatePrintedLength);
   methods[2].selector = @selector(printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
@@ -1256,6 +1259,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_Strin
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withInt:withBoolean:);
   methods[1].selector = @selector(estimateParsedLength);
   methods[2].selector = @selector(parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withJavaLangCharSequence:withInt:);
@@ -1390,6 +1394,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_Numbe
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withInt:withBoolean:);
   methods[1].selector = @selector(estimatePrintedLength);
   methods[2].selector = @selector(printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
@@ -1470,6 +1475,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_Unpad
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withInt:withBoolean:withInt:);
   methods[1].selector = @selector(estimatePrintedLength);
   methods[2].selector = @selector(printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
@@ -1541,6 +1547,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_Padde
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withInt:withBoolean:);
   methods[1].selector = @selector(parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withJavaLangCharSequence:withInt:);
   #pragma clang diagnostic pop
@@ -1731,6 +1738,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_Fixed
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withInt:withBoolean:);
   methods[1].selector = @selector(estimateParsedLength);
   methods[2].selector = @selector(parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withJavaLangCharSequence:withInt:);
@@ -1925,6 +1933,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeFormatDateTimeFormatterBuilder_TextField)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withBoolean:);
   methods[1].selector = @selector(estimatePrintedLength);
   methods[2].selector = @selector(printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
@@ -2134,6 +2143,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_TextF
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withInt:withInt:);
   methods[1].selector = @selector(estimatePrintedLength);
   methods[2].selector = @selector(printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
@@ -2494,6 +2504,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_Fract
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithNSString:withNSString:withBoolean:withInt:withInt:);
   methods[1].selector = @selector(estimatePrintedLength);
   methods[2].selector = @selector(printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
@@ -2628,6 +2639,7 @@ withOrgJodaTimeDateTimeZone:(OrgJodaTimeDateTimeZone *)displayZone
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithInt:withJavaUtilMap:);
   methods[1].selector = @selector(estimatePrintedLength);
   methods[2].selector = @selector(printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
@@ -2747,6 +2759,7 @@ OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId *OrgJodaTimeFormatDateTimeF
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(estimatePrintedLength);
   methods[1].selector = @selector(printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
   methods[2].selector = @selector(printToWithJavaLangAppendable:withOrgJodaTimeReadablePartial:withJavaUtilLocale:);
@@ -2772,7 +2785,7 @@ OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId *OrgJodaTimeFormatDateTimeF
     uintptr_t ptr = (uintptr_t)calloc(allocSize, 1);
     id e;
     for (jint i = 0; i < 1; i++) {
-      (OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId_values_[i] = e = objc_constructInstance(self, (void *)ptr), ptr += objSize);
+      ((void)(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId_values_[i] = e = objc_constructInstance(self, (void *)ptr)), ptr += objSize);
       OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId_initWithNSString_withInt_(e, JreEnumConstantName(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId_class_(), i), i);
     }
     JreStrongAssign(&OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZoneId_ALL_IDS, OrgJodaTimeDateTimeZone_getAvailableIDs());
@@ -2924,6 +2937,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_TimeZ
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithJavaUtilList:);
   methods[1].selector = @selector(estimatePrintedLength);
   methods[2].selector = @selector(printToWithJavaLangAppendable:withLong:withOrgJodaTimeChronology:withInt:withOrgJodaTimeDateTimeZone:withJavaUtilLocale:);
@@ -3095,6 +3109,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFormatDateTimeFormatterBuilder_Compo
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeFormatInternalParserArray:);
   methods[1].selector = @selector(estimateParsedLength);
   methods[2].selector = @selector(parseIntoWithOrgJodaTimeFormatDateTimeParserBucket:withJavaLangCharSequence:withInt:);

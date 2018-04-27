@@ -237,6 +237,7 @@ __attribute__((unused)) static void OrgJodaTimeFormatPeriodFormatter_checkParser
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeFormatPeriodPrinter:withOrgJodaTimeFormatPeriodParser:);
   methods[1].selector = @selector(initWithOrgJodaTimeFormatPeriodPrinter:withOrgJodaTimeFormatPeriodParser:withJavaUtilLocale:withOrgJodaTimePeriodType:);
   methods[2].selector = @selector(isPrinter);

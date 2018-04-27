@@ -69,6 +69,7 @@ __attribute__((unused)) static OrgJodaTimeFormatDateTimeParserInternalParser *cr
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(ofWithOrgJodaTimeFormatDateTimeParser:);
   methods[1].selector = @selector(initWithOrgJodaTimeFormatDateTimeParser:);
   methods[2].selector = @selector(getUnderlying);

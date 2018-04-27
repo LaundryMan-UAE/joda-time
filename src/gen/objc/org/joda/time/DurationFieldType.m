@@ -196,6 +196,7 @@ OrgJodaTimeDurationFieldType *OrgJodaTimeDurationFieldType_MILLIS_TYPE;
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithNSString:);
   methods[1].selector = @selector(millis);
   methods[2].selector = @selector(seconds);
@@ -402,6 +403,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeDurationFieldType)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithNSString:withByte:);
   methods[1].selector = @selector(isEqual:);
   methods[2].selector = @selector(hash);

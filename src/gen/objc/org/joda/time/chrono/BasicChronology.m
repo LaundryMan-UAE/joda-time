@@ -668,6 +668,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeChronoBasicChronology)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeChronology:withId:withInt:);
   methods[1].selector = @selector(getZone);
   methods[2].selector = @selector(getDateTimeMillisWithInt:withInt:withInt:withInt:);
@@ -830,6 +831,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(getAsTextWithInt:withJavaUtilLocale:);
   methods[2].selector = @selector(setWithLong:withNSString:withJavaUtilLocale:);
@@ -873,6 +875,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoBasicChronology_HalfdayField)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithInt:withLong:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {

@@ -443,6 +443,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeChronoLimitChronology_LimitDateTimeField)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(getInstanceWithOrgJodaTimeChronology:withOrgJodaTimeReadableDateTime:withOrgJodaTimeReadableDateTime:);
   methods[1].selector = @selector(initWithOrgJodaTimeChronology:withOrgJodaTimeDateTime:withOrgJodaTimeDateTime:);
   methods[2].selector = @selector(getLowerLimit);
@@ -579,6 +580,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoLimitChronology)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeChronoLimitChronology:withNSString:withBoolean:);
   methods[1].selector = @selector(getMessage);
   methods[2].selector = @selector(description);
@@ -692,6 +694,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoLimitChronology_LimitException
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeChronoLimitChronology:withOrgJodaTimeDurationField:);
   methods[1].selector = @selector(getValueWithLong:withLong:);
   methods[2].selector = @selector(getValueAsLongWithLong:withLong:);
@@ -932,6 +935,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoLimitChronology_LimitDurationF
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeChronoLimitChronology:withOrgJodaTimeDateTimeField:withOrgJodaTimeDurationField:withOrgJodaTimeDurationField:withOrgJodaTimeDurationField:);
   methods[1].selector = @selector(getWithLong:);
   methods[2].selector = @selector(getAsTextWithLong:withJavaUtilLocale:);

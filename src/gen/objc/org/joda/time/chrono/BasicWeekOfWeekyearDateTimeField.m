@@ -127,6 +127,7 @@ __attribute__((unused)) static id OrgJodaTimeChronoBasicWeekOfWeekyearDateTimeFi
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeChronoBasicChronology:withOrgJodaTimeDurationField:);
   methods[1].selector = @selector(getWithLong:);
   methods[2].selector = @selector(getRangeDurationField);

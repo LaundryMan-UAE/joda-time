@@ -738,6 +738,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_Transition:(OrgJodaTimeTzDateTimeZoneBuilde
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(readFromWithJavaIoInputStream:withNSString:);
   methods[1].selector = @selector(readFromWithJavaIoDataInput:withNSString:);
   methods[2].selector = @selector(writeMillisWithJavaIoDataOutput:withLong:);
@@ -1077,6 +1078,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(readFromWithJavaIoDataInput:);
   methods[1].selector = @selector(initWithChar:withInt:withInt:withInt:withBoolean:withInt:);
   methods[2].selector = @selector(setInstantWithInt:withInt:withInt:);
@@ -1283,6 +1285,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder_OfYear)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(readFromWithJavaIoDataInput:);
   methods[1].selector = @selector(initWithOrgJodaTimeTzDateTimeZoneBuilder_OfYear:withNSString:withInt:);
   methods[2].selector = @selector(getOfYear);
@@ -1402,6 +1405,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzDateTimeZoneBuilder_Recurrence)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeTzDateTimeZoneBuilder_Recurrence:withInt:withInt:);
   methods[1].selector = @selector(getFromYear);
   methods[2].selector = @selector(getToYear);
@@ -1508,6 +1512,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_Rule:(OrgJodaTimeTzDateTimeZoneBuilder_Rule
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithLong:withOrgJodaTimeTzDateTimeZoneBuilder_Transition:);
   methods[1].selector = @selector(initWithLong:withOrgJodaTimeTzDateTimeZoneBuilder_Rule:withInt:);
   methods[2].selector = @selector(initWithLong:withNSString:withInt:withInt:);
@@ -1733,6 +1738,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_OfYear:(OrgJodaTimeTzDateTimeZoneBuilder_Of
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(initWithOrgJodaTimeTzDateTimeZoneBuilder_RuleSet:);
   methods[2].selector = @selector(getStandardOffset);
@@ -1946,6 +1952,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence:(OrgJodaTimeTzDateTimeZoneBuilde
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(readFromWithJavaIoDataInput:withNSString:);
   methods[1].selector = @selector(initWithNSString:withInt:withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence:withOrgJodaTimeTzDateTimeZoneBuilder_Recurrence:);
   methods[2].selector = @selector(getNameKeyWithLong:);
@@ -2261,6 +2268,7 @@ withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone:(OrgJodaTimeTzDateTimeZoneBuilder_D
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(readFromWithJavaIoDataInput:withNSString:);
   methods[1].selector = @selector(createWithNSString:withBoolean:withJavaUtilArrayList:withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone:);
   methods[2].selector = @selector(initWithNSString:withLongArray:withIntArray:withIntArray:withNSStringArray:withOrgJodaTimeTzDateTimeZoneBuilder_DSTZone:);

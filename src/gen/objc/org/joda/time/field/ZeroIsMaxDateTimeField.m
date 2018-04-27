@@ -177,6 +177,7 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldZeroIsMaxDateTimeField, serialVersi
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeFieldType:);
   methods[1].selector = @selector(getWithLong:);
   methods[2].selector = @selector(addWithLong:withInt:);

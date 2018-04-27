@@ -65,6 +65,7 @@ J2OBJC_STATIC_FIELD_CONSTANT(OrgJodaTimeFieldLenientDateTimeField, serialVersion
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(getInstanceWithOrgJodaTimeDateTimeField:withOrgJodaTimeChronology:);
   methods[1].selector = @selector(initWithOrgJodaTimeDateTimeField:withOrgJodaTimeChronology:);
   methods[2].selector = @selector(isLenient);

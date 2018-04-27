@@ -180,6 +180,7 @@ J2OBJC_TYPE_LITERAL_HEADER(OrgJodaTimeFieldImpreciseDateTimeField_LinkedDuration
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDateTimeFieldType:withLong:);
   methods[1].selector = @selector(getWithLong:);
   methods[2].selector = @selector(setWithLong:withInt:);
@@ -289,6 +290,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeFieldImpreciseDateTimeField)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeFieldImpreciseDateTimeField:withOrgJodaTimeDurationFieldType:);
   methods[1].selector = @selector(isPrecise);
   methods[2].selector = @selector(getUnitMillis);

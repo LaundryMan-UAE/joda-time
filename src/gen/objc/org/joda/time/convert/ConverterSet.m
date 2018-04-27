@@ -184,6 +184,7 @@ __attribute__((unused)) static id<OrgJodaTimeConvertConverter> OrgJodaTimeConver
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeConvertConverterArray:);
   methods[1].selector = @selector(selectWithIOSClass:);
   methods[2].selector = @selector(size);
@@ -293,6 +294,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeConvertConverterSet)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithIOSClass:withOrgJodaTimeConvertConverter:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {

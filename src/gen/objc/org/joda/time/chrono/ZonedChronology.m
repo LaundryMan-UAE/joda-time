@@ -257,6 +257,7 @@ __attribute__((unused)) static jint OrgJodaTimeChronoZonedChronology_ZonedDateTi
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(getInstanceWithOrgJodaTimeChronology:withOrgJodaTimeDateTimeZone:);
   methods[1].selector = @selector(useTimeArithmeticWithOrgJodaTimeDurationField:);
   methods[2].selector = @selector(initWithOrgJodaTimeChronology:withOrgJodaTimeDateTimeZone:);
@@ -469,6 +470,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDurationField:withOrgJodaTimeDateTimeZone:);
   methods[1].selector = @selector(isPrecise);
   methods[2].selector = @selector(getUnitMillis);
@@ -824,6 +826,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeChronoZonedChronology_ZonedDurationF
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDateTimeField:withOrgJodaTimeDateTimeZone:withOrgJodaTimeDurationField:withOrgJodaTimeDurationField:withOrgJodaTimeDurationField:);
   methods[1].selector = @selector(isLenient);
   methods[2].selector = @selector(getWithLong:);

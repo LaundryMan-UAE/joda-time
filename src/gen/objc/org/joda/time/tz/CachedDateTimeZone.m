@@ -170,6 +170,7 @@ J2OBJC_INITIALIZED_DEFN(OrgJodaTimeTzCachedDateTimeZone)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(forZoneWithOrgJodaTimeDateTimeZone:);
   methods[1].selector = @selector(initWithOrgJodaTimeDateTimeZone:);
   methods[2].selector = @selector(getUncachedZone);
@@ -333,6 +334,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(OrgJodaTimeTzCachedDateTimeZone)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithOrgJodaTimeDateTimeZone:withLong:);
   methods[1].selector = @selector(getNameKeyWithLong:);
   methods[2].selector = @selector(getOffsetWithLong:);
