@@ -22,3 +22,31 @@ dependencies {
     compile group: 'org.joda', name: 'joda-convert', version:'1.2'
     testCompile group: 'junit', name: 'junit', version:'3.8.2'
 }
+
+task copyZoneInfo(type:Copy) {
+    from 'src/tz-data/ZoneInfoMap'
+    into 'src/gen/objc/org/joda/time/tz/data'
+}
+
+task cycleFinder(type:Exec) {
+    inputs.files sourceSets.main.allJava
+    executable "${J2OBJC_HOME_LATEST}/cycle_finder"
+    args '-sourcepath', (sourceSets.main.allJava.srcDirs)
+    args '-classpath', sourceSets.main.runtimeClasspath.collect { it.absolutePath }.join(':')
+    args inputs.files
+}
+
+task translateJava(dependsOn: ['translateJavaInternal', 'copyZoneInfo']) {
+
+}
+
+task translateJavaInternal(type:Exec) {
+    inputs.files sourceSets.main.allJava
+
+    // the classpath is built from the runtime dependencies for the sourcesets ...
+    executable "${J2OBJC_HOME_LATEST}/j2objc"
+    args '-d', file('src/gen/objc').path
+    args '-sourcepath', sourceSets.main.allJava.srcDirs.join(' ')
+    args '-classpath', sourceSets.main.runtimeClasspath.collect { it.absolutePath }.join(':')
+    args inputs.files
+}
