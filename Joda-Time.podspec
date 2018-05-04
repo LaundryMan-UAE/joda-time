@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '7.0'
   s.requires_arc = false
 
-  s.dependency 'Joda-Convert'
+  s.dependency 'Joda-Convert', '~> 1.2'
 
   s.source_files = 'src/gen/objc/**/*.{h,m}'
   s.exclude_files = 'src/main/java/*.java'
