@@ -18,4 +18,6 @@ Pod::Spec.new do |s|
   s.public_header_files = 'src/gen/objc/**/*.h'
   s.header_mappings_dir = 'src/gen/objc'
 
+s.xcconfig = { 'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/J2ObjC/dist/include"' }
+
 end
