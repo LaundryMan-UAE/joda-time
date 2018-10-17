@@ -37,7 +37,7 @@ task translateJava(type:Exec) {
     inputs.files sourceSets.main.allJava
     outputs.files files((sourceSets.main.allJava).collect { i ->
         i.collect { j ->
-            def name = projectDir.path + 'src/main/gen/objc/' + i.name
+            def name = projectDir.path + 'src/gen/objc/' + i.name
             return [name.replace('.java', '.h'), name.replace('.java', '.m')]
         }
     }.flatten())
@@ -46,7 +46,7 @@ task translateJava(type:Exec) {
     args '--doc-comments'
     args '--nullability'
 //    args '--strip-reflection' // Uncomment this line if the library does not use reflection, search the source for '.reflect'
-    args '-d', file('src/main/gen/objc').path
+    args '-d', file('src/gen/objc').path
     args '-sourcepath', (sourceSets.main.allJava.srcDirs).join(':')
     args '-classpath', sourceSets.main.runtimeClasspath.collect { it.absolutePath }.join(':')
     args inputs.files
