@@ -1,0 +1,53 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = 'joda-time'
+version = '2.10'
+
+description = """Joda-Time"""
+
+sourceCompatibility = 1.5
+targetCompatibility = 1.5
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+configurations.all {
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.maven.apache.org/maven2" }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java'] // change this to point to where your src code lives
+        }
+    }
+}
+
+dependencies {
+    compile group: 'org.joda', name: 'joda-convert', version: '1.2'
+}
+
+task translateJava(type:Exec) {
+    inputs.files sourceSets.main.allJava
+    outputs.files files((sourceSets.main.allJava).collect { i ->
+        i.collect { j ->
+            def name = projectDir.path + 'src/main/gen/objc/' + i.name
+            return [name.replace('.java', '.h'), name.replace('.java', '.m')]
+        }
+    }.flatten())
+
+    executable "${J2OBJC_HOME}/j2objc"
+    args '--doc-comments'
+    args '--nullability'
+//    args '--strip-reflection' // Uncomment this line if the library does not use reflection, search the source for '.reflect'
+    args '-d', file('src/main/gen/objc').path
+    args '-sourcepath', (sourceSets.main.allJava.srcDirs).join(':')
+    args '-classpath', sourceSets.main.runtimeClasspath.collect { it.absolutePath }.join(':')
+    args inputs.files
+}
