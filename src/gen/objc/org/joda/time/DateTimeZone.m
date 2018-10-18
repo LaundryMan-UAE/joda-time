@@ -281,7 +281,7 @@ __attribute__((unused)) static OrgJodaTimeDateTimeZone_LazyInit_$1 *create_OrgJo
 J2OBJC_INITIALIZED_DEFN(OrgJodaTimeDateTimeZone)
 
 OrgJodaTimeDateTimeZone *OrgJodaTimeDateTimeZone_UTC;
-NSString *OrgJodaTimeDateTimeZone_DEFAULT_TZ_DATA_PATH = @"org/joda/time/tz/data";
+NSString *OrgJodaTimeDateTimeZone_DEFAULT_TZ_DATA_PATH = @"";
 
 @implementation OrgJodaTimeDateTimeZone
 
