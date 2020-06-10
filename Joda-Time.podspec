@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name             = "Joda-Time"
   s.version          = '2.10-J2ObjC'
   s.author           = { "Michael Voong" => "michael@laundrapp.com" }
-  s.source           = { :git => "https://github.com/LaundryMan-UAE/joda-time.git", :tag => "v2.10.1-J2ObjC-2.6-1" }
+  s.source           = { :git => "https://github.com/LaundryMan-UAE/joda-time.git", :tag => "v2.10.1-J2ObjC-2.6-2" }
   s.summary          = "Joda-Time is the widely used replacement for the Java date and time classes. Converted to Objective-C using J2ObjC."
   s.homepage         = "http://www.joda.org/joda-time/"
   s.license          = { :type => 'Apache License, Version 2.0', :file => 'LICENSE.txt' }
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'src/gen/objc/**/*.{h,m}'
   s.exclude_files = 'src/main/java/*.java'
-  s.resources = "src/tz-data/*"
+  s.resources = "src/main/java/org/joda/time/tz/src/*"
   s.public_header_files = 'src/gen/objc/**/*.h'
   s.header_mappings_dir = 'src/gen/objc'
 
