@@ -131,7 +131,8 @@ public abstract class DateTimeZone implements Serializable {
      * The default TZ data path
      * This is the default classpath location containing the compiled data files.
      */
-    public static final String DEFAULT_TZ_DATA_PATH = "org/joda/time/tz/data";
+//    public static final String DEFAULT_TZ_DATA_PATH = "org/joda/time/tz/data";
+    public static final String DEFAULT_TZ_DATA_PATH = "";
 
     //-----------------------------------------------------------------------
     /**
