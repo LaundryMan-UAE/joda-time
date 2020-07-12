@@ -1,3 +1,18 @@
+Laundrapp Translation Instructions
+------------
+
+No build is required for Android.
+
+The library will need to be transpiled for use with iOS. To do this open up a co
+mmand line, clone the project, switch branches to 2.10-J2ObjC-2.6, cd into the project root and run the following:
+
+```./gradlew translateJava```
+
+Once translated then check all the changed files into github.
+
+Once checked in the tag the HEAD of the new checkin, copy the commit hash and pa
+ste this into the customer-ios/Podfile entry for Joda-Time.
+
 Joda-Time
 ---------
 
