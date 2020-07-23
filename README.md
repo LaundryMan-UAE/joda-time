@@ -1,17 +1,25 @@
-Laundrapp Translation Instructions
-------------
+Objective-C Translation Instructions
+====================================
 
 No build is required for Android.
 
-The library will need to be transpiled for use with iOS. To do this open up a co
-mmand line, clone the project, switch branches to 2.10-J2ObjC-2.6, cd into the project root and run the following:
+The library will need to be transpiled for use with iOS. To do this open up a command line, clone the project and run the following from root of the cloned directory:
 
-```./gradlew translateJava```
+```
+./gradlew translateJava
+```
 
 Once translated then check all the changed files into github.
 
-Once checked in the tag the HEAD of the new checkin, copy the commit hash and pa
-ste this into the customer-ios/Podfile entry for Joda-Time.
+Open Joda-Time.podspec and replace the tag in the following line with the tag you will tag the commit with.
+
+```
+  s.source           = { :git => "https://github.com/LaundryMan-UAE/joda-time.git", :tag => "v2.10.1-J2ObjC-2.6-4" }
+```
+
+Once checked in and tagged, copy the commit hash from the tagged commit and paste this into the customer-ios/Podfile entry for joda-time.
+
+
 
 Joda-Time
 ---------
@@ -20,7 +28,7 @@ Joda-Time provides a quality replacement for the Java date and time classes.
 The design allows for multiple calendar systems, while still providing a simple API.
 The 'default' calendar is the ISO8601 standard which is used by XML.
 The Gregorian, Julian, Buddhist, Coptic, Ethiopic and Islamic systems are also included, and we welcome further additions.
-Supporting classes include time zone, duration, format and parsing. 
+Supporting classes include time zone, duration, format and parsing.
 
 As a flavour of Joda-Time, here's some example code:
 
